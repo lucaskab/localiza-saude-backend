@@ -1,0 +1,28 @@
+meta {
+  name: Delete Clinic
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/clinics/{{clinicId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  clinicId: {{clinicId}}
+}
+
+docs {
+  Delete a clinic by ID.
+  
+  **Authentication required** - Add your Bearer token in environment variables.
+  
+  ⚠️ Warning: This action cannot be undone!
+  Make sure to use a test clinic ID.
+}

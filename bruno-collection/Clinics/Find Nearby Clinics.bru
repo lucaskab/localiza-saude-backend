@@ -1,0 +1,30 @@
+meta {
+  name: Find Nearby Clinics
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/clinics/nearby?latitude={{latitude}}&longitude={{longitude}}&radiusInKm={{radiusInKm}}
+  body: none
+  auth: none
+}
+
+params:query {
+  latitude: {{latitude}}
+  longitude: {{longitude}}
+  radiusInKm: {{radiusInKm}}
+}
+
+docs {
+  Find clinics within a specified radius from given coordinates.
+  
+  Uses Haversine formula for accurate distance calculations.
+  Results are ordered by distance (nearest first).
+  
+  Default radius: 10km
+  
+  Test coordinates:
+  - São Paulo (Paulista): -23.5505, -46.6333
+  - Rio (Copacabana): -22.9711, -43.1822
+}

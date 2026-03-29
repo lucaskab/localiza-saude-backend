@@ -1,0 +1,17 @@
+meta {
+  name: List All Clinics
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/clinics
+  body: none
+  auth: none
+}
+
+docs {
+  Returns a list of all clinics in the database, ordered by creation date (newest first).
+  
+  No authentication required.
+}

@@ -1,0 +1,42 @@
+meta {
+  name: Create Clinic
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/clinics
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "name": "Nova Clínica Teste",
+    "phone": "+5511912345678",
+    "email": "novaclinica@test.com",
+    "description": "Clínica de teste criada via Bruno",
+    "type": "MEDICAL",
+    "latitude": -23.5505,
+    "longitude": -46.6333,
+    "ownerId": "{{ownerId}}"
+  }
+}
+
+docs {
+  Create a new clinic.
+  
+  **Authentication required** - Add your Bearer token in environment variables.
+  
+  Clinic Types:
+  - MEDICAL: General medical clinics
+  - HEALTH: Health and wellness centers
+  - DENTAL: Dental clinics
+  - EYE: Ophthalmology clinics
+  - BEAUTY: Aesthetic clinics
+  - FREE: Free/public health services
+}

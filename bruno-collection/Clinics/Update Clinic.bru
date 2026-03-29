@@ -1,0 +1,35 @@
+meta {
+  name: Update Clinic
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/clinics/{{clinicId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  clinicId: {{clinicId}}
+}
+
+body:json {
+  {
+    "name": "Centro Médico Paulista - Atualizado",
+    "description": "Clínica atualizada via Bruno",
+    "phone": "+5511988888888"
+  }
+}
+
+docs {
+  Update an existing clinic.
+  
+  **Authentication required** - Add your Bearer token in environment variables.
+  
+  All fields are optional - only send the fields you want to update.
+}

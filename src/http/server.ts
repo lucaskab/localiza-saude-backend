@@ -1,8 +1,20 @@
 import fastifyCors from "@fastify/cors";
 import Fastify from "fastify";
+import {
+	serializerCompiler,
+	validatorCompiler,
+	type ZodTypeProvider,
+} from "fastify-type-provider-zod";
 import { auth } from "@/auth";
+import { errorHandler } from "@/http/error-handler";
+import { routerLoader } from "@/loaders/router/router";
 
-const fastify = Fastify({ logger: true });
+const fastify = Fastify({ logger: true }).withTypeProvider<ZodTypeProvider>();
+
+fastify.setSerializerCompiler(serializerCompiler);
+fastify.setValidatorCompiler(validatorCompiler);
+
+fastify.setErrorHandler(errorHandler);
 
 // Configure CORS policies
 fastify.register(fastifyCors, {
@@ -46,10 +58,12 @@ fastify.route({
 
 			// Forward response to client
 			reply.status(response.status);
-			response.headers.forEach((value, key) => reply.header(key, value));
+			response.headers.forEach((value, key) => {
+				reply.header(key, value);
+			});
 			reply.send(response.body ? await response.text() : null);
 		} catch (error) {
-			fastify.log.error("Authentication Error:", error);
+			fastify.log.error(error, "Authentication Error");
 			reply.status(500).send({
 				error: "Internal authentication error",
 				code: "AUTH_FAILURE",
@@ -58,13 +72,18 @@ fastify.route({
 	},
 });
 
-// Initialize server
-fastify.listen({ port: 3333 }, (err) => {
-	if (err) {
-		fastify.log.error(err);
-		process.exit(1);
-	}
-	console.log("Server running on port 3333");
-});
+// Load and register all routes
+routerLoader()
+	.loadRoutes(fastify)
+	.then(() => {
+		// Initialize server
+		fastify.listen({ port: 3333, host: "0.0.0.0" }, (err) => {
+			if (err) {
+				fastify.log.error(err);
+				process.exit(1);
+			}
+			console.log("Server running on http://localhost:3333");
+		});
+	});
 
 export { fastify as app };
