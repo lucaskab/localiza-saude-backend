@@ -1,0 +1,25 @@
+model user {
+  id            String     @id @default(cuid())
+  name          String
+  firstName     String?
+  lastName      String?
+  phone         String?
+  email         String     @unique
+  emailVerified Boolean    @default(false) @map("email_verified")
+  image         String?
+  role          UserRole   @default(CUSTOMER)
+  createdAt     DateTime   @default(now()) @map("created_at")
+  updatedAt     DateTime   @updatedAt @map("updated_at")
+  sessions      session[]
+  accounts      account[]
+
+  ownedClinics clinic[] @relation("ClinicOwner")
+  clinics      clinic[] @relation("ClinicEmployees")
+
+  @@map("users")
+}
+
+enum UserRole {
+  HEALTHCARE_PROVIDER
+  CUSTOMER
+}

@@ -1,0 +1,110 @@
+model account {
+  id                    String    @id @default(cuid())
+  accountId             String
+  providerId            String
+  userId                String    @default(cuid())
+  user                  user      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+model clinic {
+  id          String     @id @default(cuid())
+  name        String
+  phone       String
+  description String?
+  email       String     @unique
+  type        ClinicType @default(MEDICAL)
+  latitude    Float
+  longitude   Float
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  ownerId     String     @map("owner_id")
+  owner       user       @relation("ClinicOwner", fields: [ownerId], references: [id])
+  employees   user[]     @relation("ClinicEmployees")
+
+  @@index([ownerId])
+  @@map("clinics")
+}
+
+enum ClinicType {
+  MEDICAL
+  HEALTH
+  DENTAL
+  EYE
+  BEAUTY
+  FREE
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model session {
+  id        String   @id @default(cuid())
+  expiresAt DateTime @map("expires_at")
+  token     String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+  userId    String   @default(cuid()) @map("user_id")
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("sessions")
+}
+
+model user {
+  id            String    @id @default(cuid())
+  name          String
+  firstName     String?
+  lastName      String?
+  phone         String?
+  email         String    @unique
+  emailVerified Boolean   @default(false) @map("email_verified")
+  image         String?
+  role          UserRole  @default(CUSTOMER)
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  sessions      session[]
+  accounts      account[]
+
+  ownedClinics clinic[] @relation("ClinicOwner")
+  clinics      clinic[] @relation("ClinicEmployees")
+
+  @@map("users")
+}
+
+enum UserRole {
+  HEALTHCARE_PROVIDER
+  CUSTOMER
+}
+
+model verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verifications")
+}

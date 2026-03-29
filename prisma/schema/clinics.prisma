@@ -1,0 +1,27 @@
+model clinic {
+  id          String     @id @default(cuid())
+  name        String
+  phone       String
+  description String?
+  email       String     @unique
+  type        ClinicType @default(MEDICAL)
+  latitude    Float
+  longitude   Float
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  ownerId     String     @map("owner_id")
+  owner        user    @relation("ClinicOwner", fields: [ownerId], references: [id])
+  employees user[] @relation("ClinicEmployees")
+
+  @@index([ownerId])
+  @@map("clinics")
+}
+
+enum ClinicType {
+  MEDICAL
+  HEALTH
+  DENTAL
+  EYE
+  BEAUTY
+  FREE
+}
