@@ -23,6 +23,7 @@ fastify.register(fastifyCors, {
 		"http://localhost:8081",
 		"http://localhost:8082",
 		"http://localhost:3333",
+		"https://localiza-saude-backend-development.onrender.com",
 		"http://192.168.1.108:3333",
 		/^exp:\/\/.*$/,
 		/^localizasaude:\/\/.*$/,
