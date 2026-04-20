@@ -1,0 +1,29 @@
+meta {
+  name: Delete Message
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/conversations/messages/{{messageId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Delete a specific message from a conversation.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  URL Parameters:
+  - messageId: ID of the message to be deleted
+
+  Notes:
+  - Only the sender of the message can delete it
+  - Deleted messages cannot be recovered
+  - The message will be marked as deleted in the conversation history
+}

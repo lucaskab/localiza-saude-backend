@@ -1,0 +1,28 @@
+meta {
+  name: List Appointments for Single Day
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/appointments?startDate=2026-04-05&endDate=2026-04-05
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Returns all appointments for a single day.
+
+  When startDate and endDate are the same, the endpoint returns
+  all appointments from 00:00:00 to 23:59:59.999 of that day.
+
+  **Query Parameters:**
+  - startDate: Date in YYYY-MM-DD format
+  - endDate: Same date as startDate
+
+  **Authentication required**
+}

@@ -1,0 +1,27 @@
+meta {
+  name: Get Provider Rating Stats
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}/rating-stats
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Get rating statistics for a healthcare provider.
+
+  Returns only the statistics:
+  - averageRating: Average score (1-10)
+  - totalRatings: Total number of ratings
+
+  Useful for displaying rating summary without fetching all reviews.
+
+  **Authentication required**
+}

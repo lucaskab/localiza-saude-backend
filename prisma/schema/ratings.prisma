@@ -1,0 +1,16 @@
+model rating {
+  id                   String              @id @default(cuid())
+  customerId           String              @map("customer_id")
+  customer             customer            @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  rating               Int
+  comment              String?
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  @@unique([customerId, healthcareProviderId])
+  @@index([customerId])
+  @@index([healthcareProviderId])
+  @@map("ratings")
+}

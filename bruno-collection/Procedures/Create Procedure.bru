@@ -1,0 +1,40 @@
+meta {
+  name: Create Procedure
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/procedures
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "name": "Consulta Médica Geral",
+    "description": "Consulta médica completa com avaliação geral de saúde",
+    "priceInCents": 15000,
+    "durationInMinutes": 30,
+    "healthcareProviderId": "{{healthcareProviderId}}"
+  }
+}
+
+docs {
+  Create a new procedure.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  Required fields:
+  - name: Name of the procedure
+  - priceInCents: Price in cents (e.g., 15000 = R$ 150.00)
+  - durationInMinutes: Duration of the procedure in minutes
+  - healthcareProviderId: ID of the healthcare provider offering this procedure
+
+  Optional fields:
+  - description: Detailed description of the procedure
+}

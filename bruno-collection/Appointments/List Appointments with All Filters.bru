@@ -1,0 +1,28 @@
+meta {
+  name: List Appointments with All Filters
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/appointments?healthcareProviderId={{healthcareProviderId}}&startDate=2026-04-01&endDate=2026-04-30
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Returns appointments filtered by both provider and date range.
+
+  **Query Parameters:**
+  - healthcareProviderId: Filter by healthcare provider ID
+  - startDate: Start date in YYYY-MM-DD format
+  - endDate: End date in YYYY-MM-DD format
+
+  All parameters are optional and can be combined.
+
+  **Authentication required**
+}

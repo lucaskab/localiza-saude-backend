@@ -1,0 +1,19 @@
+model healthcare_provider {
+  id             String      @id @default(cuid())
+  userId         String      @unique @map("user_id")
+  user           user        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  specialty      String?
+  professionalId String?     @map("professional_id")
+  bio            String?
+  createdAt      DateTime    @default(now()) @map("created_at")
+  updatedAt      DateTime    @updatedAt @map("updated_at")
+
+  procedures   procedure[]
+  appointments appointment[]
+  schedules    healthcare_provider_schedule[]
+  categories   healthcare_provider_category[]
+  ratings      rating[]
+  conversations conversation[]
+
+  @@map("healthcare_providers")
+}

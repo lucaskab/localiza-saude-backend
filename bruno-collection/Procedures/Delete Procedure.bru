@@ -1,0 +1,28 @@
+meta {
+  name: Delete Procedure
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/procedures/{{procedureId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  procedureId: {{procedureId}}
+}
+
+docs {
+  Delete a procedure by ID.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  ⚠️ Warning: This action cannot be undone!
+  Make sure to use a test procedure ID.
+}

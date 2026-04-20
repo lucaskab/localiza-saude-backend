@@ -1,0 +1,38 @@
+meta {
+  name: Send File Message
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/conversations/messages/file
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:multipart-form {
+  file: @file(/path/to/file.pdf)
+  recipientId: {{recipientId}}
+  conversationId: {{conversationId}}
+  relatedAppointmentId: {{appointmentId}}
+}
+
+docs {
+  Send a file message in a conversation.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  Required fields:
+  - file: The file to upload (PDF, images, documents, etc.)
+  - recipientId: ID of the message recipient
+
+  Optional fields:
+  - conversationId: ID of existing conversation (if not provided, will create or find one)
+  - relatedAppointmentId: ID of related appointment for context
+
+  Supported file types and size limits are defined by server configuration.
+}

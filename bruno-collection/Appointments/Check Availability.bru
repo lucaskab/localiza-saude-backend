@@ -1,0 +1,31 @@
+meta {
+  name: Check Availability
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}/availability?date=2024-03-15&procedureIds=id1,id2
+  body: none
+  auth: none
+}
+
+params:path {
+  healthcareProviderId: {{healthcareProviderId}}
+}
+
+params:query {
+  date: 2024-03-15
+  procedureIds: id1,id2
+}
+
+docs {
+  Check availability for a healthcare provider on a specific date.
+
+  Query parameters:
+  - date: Date to check availability (format: YYYY-MM-DD)
+  - procedureIds: Comma-separated list of procedure IDs
+
+  Returns available time slots based on provider's schedule and existing appointments.
+  No authentication required.
+}

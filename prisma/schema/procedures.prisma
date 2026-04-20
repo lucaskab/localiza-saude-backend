@@ -1,0 +1,16 @@
+model procedure {
+  id                   String              @id @default(cuid())
+  name                 String
+  description          String?
+  priceInCents         Int                 @map("price_in_cents")
+  durationInMinutes    Int                 @map("duration_in_minutes")
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  appointmentProcedures appointment_procedure[]
+
+  @@index([healthcareProviderId])
+  @@map("procedures")
+}

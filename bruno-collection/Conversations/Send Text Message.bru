@@ -1,0 +1,40 @@
+meta {
+  name: Send Text Message
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/conversations/messages/text
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "recipientId": "{{recipientId}}",
+    "content": "Olá! Gostaria de confirmar nossa consulta.",
+    "conversationId": "{{conversationId}}",
+    "relatedAppointmentId": "{{appointmentId}}"
+  }
+}
+
+docs {
+  Send a text message in a conversation.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  Required fields:
+  - recipientId: ID of the message recipient
+  - content: Text content of the message
+
+  Optional fields:
+  - conversationId: ID of an existing conversation (if not provided, will use or create conversation with recipient)
+  - relatedAppointmentId: ID of the appointment this message is related to
+
+  The message will be sent in real-time and stored in the conversation history.
+}

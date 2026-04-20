@@ -1,0 +1,28 @@
+meta {
+  name: Update Category
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/categories/{{categoryId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "name": "Updated Category Name",
+    "description": "Updated description"
+  }
+}
+
+docs {
+  Update an existing category.
+
+  **Authentication required**
+}

@@ -17,7 +17,7 @@
     "@biomejs/biome": "2.4.8",
     "@types/bun": "latest",
     "@types/pg": "^8.18.0",
-    "prisma": "^7.5.0"
+    "prisma": "^7.7.0"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -26,10 +26,12 @@
     "@better-auth/expo": "^1.5.5",
     "@better-auth/prisma-adapter": "^1.5.5",
     "@fastify/cors": "^11.2.0",
+    "@fastify/multipart": "^10.0.0",
     "@prisma/adapter-pg": "^7.5.0",
-    "@prisma/client": "^7.5.0",
+    "@prisma/client": "^7.7.0",
     "better-auth": "^1.5.5",
     "fastify": "^5.8.4",
+    "fastify-plugin": "^5.1.0",
     "fastify-type-provider-zod": "^6.1.0",
     "glob": "^13.0.6",
     "pg": "^8.20.0",

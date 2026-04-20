@@ -1,0 +1,53 @@
+model conversation {
+  id                   String                 @id @default(cuid())
+  customerId           String                 @map("customer_id")
+  customer             customer               @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String                 @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider    @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  lastMessageAt        DateTime?              @map("last_message_at")
+  createdAt            DateTime               @default(now()) @map("created_at")
+  updatedAt            DateTime               @updatedAt @map("updated_at")
+
+  messages             conversation_message[]
+
+  @@unique([customerId, healthcareProviderId])
+  @@index([customerId])
+  @@index([healthcareProviderId])
+  @@index([lastMessageAt])
+  @@map("conversations")
+}
+
+model conversation_message {
+  id                   String            @id @default(cuid())
+  conversationId       String            @map("conversation_id")
+  conversation         conversation      @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderId             String            @map("sender_id")
+  sender               user              @relation(fields: [senderId], references: [id])
+  senderType           MessageSenderType @map("sender_type")
+  messageType          MessageType       @map("message_type")
+  content              String?
+  relatedAppointmentId String?           @map("related_appointment_id")
+  relatedAppointment   appointment?      @relation(fields: [relatedAppointmentId], references: [id], onDelete: SetNull)
+  fileUrl              String?           @map("file_url")
+  fileName             String?           @map("file_name")
+  fileSize             Int?              @map("file_size")
+  fileMimeType         String?           @map("file_mime_type")
+  createdAt            DateTime          @default(now()) @map("created_at")
+  updatedAt            DateTime          @updatedAt @map("updated_at")
+
+  @@index([conversationId])
+  @@index([senderId])
+  @@index([relatedAppointmentId])
+  @@index([createdAt])
+  @@map("conversation_messages")
+}
+
+enum MessageSenderType {
+  CUSTOMER
+  HEALTHCARE_PROVIDER
+}
+
+enum MessageType {
+  TEXT
+  FILE
+}

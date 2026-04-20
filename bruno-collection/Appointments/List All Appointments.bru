@@ -1,0 +1,21 @@
+meta {
+  name: List All Appointments
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/appointments
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Returns all appointments without filters.
+
+  **Authentication required**
+}

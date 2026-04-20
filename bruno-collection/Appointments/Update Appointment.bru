@@ -1,0 +1,39 @@
+meta {
+  name: Update Appointment
+  type: http
+  seq: 6
+}
+
+patch {
+  url: {{baseUrl}}/appointments/{{appointmentId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  appointmentId: {{appointmentId}}
+}
+
+body:json {
+  {
+    "scheduledAt": "2024-03-15T14:00:00.000Z",
+    "status": "CONFIRMED",
+    "notes": "Appointment rescheduled"
+  }
+}
+
+docs {
+  Update an existing appointment.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  All fields are optional - only send the fields you want to update.
+  Fields that can be updated:
+  - scheduledAt: New date/time for the appointment (ISO 8601 format)
+  - status: Appointment status (PENDING, CONFIRMED, CANCELLED, COMPLETED)
+  - notes: Additional notes or comments
+}

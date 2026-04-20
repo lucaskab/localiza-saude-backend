@@ -1,0 +1,40 @@
+meta {
+  name: Update Healthcare Provider
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  healthcareProviderId: {{healthcareProviderId}}
+}
+
+body:json {
+  {
+    "specialty": "Cardiologia Atualizada",
+    "professionalId": "CRM-SP 999999",
+    "bio": "Especialista em cardiologia com mais de 20 anos de experiência"
+  }
+}
+
+docs {
+  Update a healthcare provider's profile information.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  All fields are optional - only send the fields you want to update.
+
+  Fields that can be updated:
+  - specialty: Medical specialty
+  - professionalId: Professional ID (e.g., CRM number)
+  - bio: Professional biography/description
+}

@@ -1,0 +1,12 @@
+model appointment_procedure {
+  id            String      @id @default(cuid())
+  appointmentId String      @map("appointment_id")
+  appointment   appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  procedureId   String      @map("procedure_id")
+  procedure     procedure   @relation(fields: [procedureId], references: [id])
+  createdAt     DateTime    @default(now()) @map("created_at")
+
+  @@index([appointmentId])
+  @@index([procedureId])
+  @@map("appointment_procedures")
+}

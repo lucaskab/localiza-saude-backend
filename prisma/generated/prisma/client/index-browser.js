@@ -136,6 +136,41 @@ exports.Prisma.AccountScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.Appointment_procedureScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  procedureId: 'procedureId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AppointmentScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  healthcareProviderId: 'healthcareProviderId',
+  scheduledAt: 'scheduledAt',
+  status: 'status',
+  totalDurationMinutes: 'totalDurationMinutes',
+  totalPriceCents: 'totalPriceCents',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Healthcare_provider_categoryScalarFieldEnum = {
+  id: 'id',
+  healthcareProviderId: 'healthcareProviderId',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.ClinicScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -148,6 +183,83 @@ exports.Prisma.ClinicScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   ownerId: 'ownerId'
+};
+
+exports.Prisma.CustomerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  cpf: 'cpf',
+  dateOfBirth: 'dateOfBirth',
+  address: 'address',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Healthcare_provider_scheduleScalarFieldEnum = {
+  id: 'id',
+  healthcareProviderId: 'healthcareProviderId',
+  dayOfWeek: 'dayOfWeek',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Healthcare_providerScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  specialty: 'specialty',
+  professionalId: 'professionalId',
+  bio: 'bio',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ConversationScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  healthcareProviderId: 'healthcareProviderId',
+  lastMessageAt: 'lastMessageAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Conversation_messageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  senderId: 'senderId',
+  senderType: 'senderType',
+  messageType: 'messageType',
+  content: 'content',
+  relatedAppointmentId: 'relatedAppointmentId',
+  fileUrl: 'fileUrl',
+  fileName: 'fileName',
+  fileSize: 'fileSize',
+  fileMimeType: 'fileMimeType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProcedureScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  priceInCents: 'priceInCents',
+  durationInMinutes: 'durationInMinutes',
+  healthcareProviderId: 'healthcareProviderId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RatingScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  healthcareProviderId: 'healthcareProviderId',
+  rating: 'rating',
+  comment: 'comment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
@@ -198,6 +310,15 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.AppointmentStatus = exports.$Enums.AppointmentStatus = {
+  SCHEDULED: 'SCHEDULED',
+  CONFIRMED: 'CONFIRMED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED',
+  NO_SHOW: 'NO_SHOW'
+};
+
 exports.ClinicType = exports.$Enums.ClinicType = {
   MEDICAL: 'MEDICAL',
   HEALTH: 'HEALTH',
@@ -207,6 +328,16 @@ exports.ClinicType = exports.$Enums.ClinicType = {
   FREE: 'FREE'
 };
 
+exports.MessageSenderType = exports.$Enums.MessageSenderType = {
+  CUSTOMER: 'CUSTOMER',
+  HEALTHCARE_PROVIDER: 'HEALTHCARE_PROVIDER'
+};
+
+exports.MessageType = exports.$Enums.MessageType = {
+  TEXT: 'TEXT',
+  FILE: 'FILE'
+};
+
 exports.UserRole = exports.$Enums.UserRole = {
   HEALTHCARE_PROVIDER: 'HEALTHCARE_PROVIDER',
   CUSTOMER: 'CUSTOMER'
@@ -214,7 +345,18 @@ exports.UserRole = exports.$Enums.UserRole = {
 
 exports.Prisma.ModelName = {
   account: 'account',
+  appointment_procedure: 'appointment_procedure',
+  appointment: 'appointment',
+  category: 'category',
+  healthcare_provider_category: 'healthcare_provider_category',
   clinic: 'clinic',
+  customer: 'customer',
+  healthcare_provider_schedule: 'healthcare_provider_schedule',
+  healthcare_provider: 'healthcare_provider',
+  conversation: 'conversation',
+  conversation_message: 'conversation_message',
+  procedure: 'procedure',
+  rating: 'rating',
   session: 'session',
   user: 'user',
   verification: 'verification'

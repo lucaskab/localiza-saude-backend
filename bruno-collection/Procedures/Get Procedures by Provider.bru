@@ -1,0 +1,22 @@
+meta {
+  name: Get Procedures by Provider
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}/procedures
+  body: none
+  auth: none
+}
+
+params:path {
+  healthcareProviderId: {{healthcareProviderId}}
+}
+
+docs {
+  Get all procedures offered by a specific healthcare provider.
+
+  Use the healthcareProviderId from environment variables or replace with actual provider ID.
+  No authentication required.
+}

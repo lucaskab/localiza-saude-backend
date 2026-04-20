@@ -1,0 +1,14 @@
+model healthcare_provider_schedule {
+  id                   String              @id @default(cuid())
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  dayOfWeek            Int                 @map("day_of_week")
+  startTime            String              @map("start_time")
+  endTime              String              @map("end_time")
+  isActive             Boolean             @default(true) @map("is_active")
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  @@index([healthcareProviderId])
+  @@map("healthcare_provider_schedules")
+}

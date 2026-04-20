@@ -1,0 +1,41 @@
+meta {
+  name: Update Schedule
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{baseUrl}}/healthcare-provider-schedules/{{scheduleId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  scheduleId: {{scheduleId}}
+}
+
+body:json {
+  {
+    "dayOfWeek": 1,
+    "startTime": "09:00",
+    "endTime": "18:00",
+    "isActive": true
+  }
+}
+
+docs {
+  Update an existing healthcare provider schedule.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  All fields are optional - only send the fields you want to update.
+  Fields that can be updated:
+  - dayOfWeek: Day of the week (0=Sunday, 1=Monday, ..., 6=Saturday)
+  - startTime: Start time in HH:MM format
+  - endTime: End time in HH:MM format
+  - isActive: Whether the schedule is active (true/false)
+}

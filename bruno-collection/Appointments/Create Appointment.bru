@@ -1,0 +1,40 @@
+meta {
+  name: Create Appointment
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/appointments
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "customerId": "{{customerId}}",
+    "healthcareProviderId": "{{healthcareProviderId}}",
+    "scheduledAt": "2024-03-15T10:00:00.000Z",
+    "procedureIds": ["{{procedureId}}"],
+    "notes": "Consulta de rotina"
+  }
+}
+
+docs {
+  Create a new appointment.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  Required fields:
+  - customerId: ID of the customer booking the appointment
+  - healthcareProviderId: ID of the healthcare provider
+  - scheduledAt: ISO 8601 date/time for the appointment
+  - procedureIds: Array of procedure IDs to be performed
+
+  Optional fields:
+  - notes: Additional notes or comments
+}

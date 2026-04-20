@@ -1,0 +1,21 @@
+meta {
+  name: Delete Rating
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/ratings/{{ratingId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Delete a rating.
+
+  **Authentication required**
+}

@@ -1,0 +1,22 @@
+meta {
+  name: Get Customer Appointments
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/customers/{{customerId}}/appointments
+  body: none
+  auth: none
+}
+
+params:path {
+  customerId: {{customerId}}
+}
+
+docs {
+  Get all appointments for a specific customer.
+
+  Use the customerId from environment variables or replace with actual customer ID.
+  No authentication required.
+}

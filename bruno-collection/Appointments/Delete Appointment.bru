@@ -1,0 +1,28 @@
+meta {
+  name: Delete Appointment
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseUrl}}/appointments/{{appointmentId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  appointmentId: {{appointmentId}}
+}
+
+docs {
+  Delete an appointment by ID.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  ⚠️ Warning: This action cannot be undone!
+  Make sure to use a test appointment ID.
+}

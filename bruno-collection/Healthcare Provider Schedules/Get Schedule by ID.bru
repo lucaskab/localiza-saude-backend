@@ -1,0 +1,22 @@
+meta {
+  name: Get Schedule by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/healthcare-provider-schedules/{{scheduleId}}
+  body: none
+  auth: none
+}
+
+params:path {
+  scheduleId: {{scheduleId}}
+}
+
+docs {
+  Get details of a specific healthcare provider schedule by its ID.
+
+  Use the scheduleId from environment variables or replace with actual schedule ID.
+  No authentication required.
+}

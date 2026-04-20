@@ -1,0 +1,37 @@
+meta {
+  name: Get Time Slots
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}/slots?date=2024-12-20&procedureIds={{procedureId1}},{{procedureId2}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Get all time slots for a specific date with availability status.
+
+  This endpoint returns ALL possible slots for the day, each marked as available or unavailable.
+
+  **How it works:**
+  - Slot interval is based on the shortest procedure the provider offers
+  - Only slots that can fit the total duration of selected procedures are marked as available
+  - Existing appointments block slots
+
+  **Query Parameters:**
+  - date: Date in YYYY-MM-DD format
+  - procedureIds: Comma-separated list of procedure IDs
+
+  **Example:**
+  - Provider offers procedures of 15min, 30min, 60min
+  - Slots are generated every 15min (shortest procedure)
+  - If user selects 2 procedures totaling 60min
+  - Only slots with 60min of free time are marked available=true
+  - Other slots shown as available=false for UI display
+}

@@ -1,0 +1,28 @@
+meta {
+  name: Create Category
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/categories
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "name": "Gastroenterology",
+    "description": "Digestive system specialists"
+  }
+}
+
+docs {
+  Create a new category.
+
+  **Authentication required**
+}

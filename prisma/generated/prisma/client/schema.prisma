@@ -18,6 +18,77 @@ model account {
   @@map("accounts")
 }
 
+model appointment_procedure {
+  id            String      @id @default(cuid())
+  appointmentId String      @map("appointment_id")
+  appointment   appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  procedureId   String      @map("procedure_id")
+  procedure     procedure   @relation(fields: [procedureId], references: [id])
+  createdAt     DateTime    @default(now()) @map("created_at")
+
+  @@index([appointmentId])
+  @@index([procedureId])
+  @@map("appointment_procedures")
+}
+
+model appointment {
+  id                   String              @id @default(cuid())
+  customerId           String              @map("customer_id")
+  customer             customer            @relation(fields: [customerId], references: [id])
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id])
+  scheduledAt          DateTime            @map("scheduled_at")
+  status               AppointmentStatus   @default(SCHEDULED)
+  totalDurationMinutes Int                 @map("total_duration_minutes")
+  totalPriceCents      Int                 @map("total_price_cents")
+  notes                String?
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  appointmentProcedures appointment_procedure[]
+  relatedMessages       conversation_message[]
+
+  @@index([customerId])
+  @@index([healthcareProviderId])
+  @@index([scheduledAt])
+  @@map("appointments")
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+model category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  healthcareProviderCategories healthcare_provider_category[]
+
+  @@map("categories")
+}
+
+model healthcare_provider_category {
+  id                   String              @id @default(cuid())
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  categoryId           String              @map("category_id")
+  category             category            @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt            DateTime            @default(now()) @map("created_at")
+
+  @@unique([healthcareProviderId, categoryId])
+  @@index([healthcareProviderId])
+  @@index([categoryId])
+  @@map("healthcare_provider_categories")
+}
+
 model clinic {
   id          String     @id @default(cuid())
   name        String
@@ -46,6 +117,146 @@ enum ClinicType {
   FREE
 }
 
+model customer {
+  id          String    @id @default(cuid())
+  userId      String    @unique @map("user_id")
+  user        user      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cpf         String?
+  dateOfBirth DateTime? @map("date_of_birth")
+  address     String?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  appointments  appointment[]
+  ratings       rating[]
+  conversations conversation[]
+
+  @@map("customers")
+}
+
+model healthcare_provider_schedule {
+  id                   String              @id @default(cuid())
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  dayOfWeek            Int                 @map("day_of_week")
+  startTime            String              @map("start_time")
+  endTime              String              @map("end_time")
+  isActive             Boolean             @default(true) @map("is_active")
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  @@index([healthcareProviderId])
+  @@map("healthcare_provider_schedules")
+}
+
+model healthcare_provider {
+  id             String   @id @default(cuid())
+  userId         String   @unique @map("user_id")
+  user           user     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  specialty      String?
+  professionalId String?  @map("professional_id")
+  bio            String?
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  procedures    procedure[]
+  appointments  appointment[]
+  schedules     healthcare_provider_schedule[]
+  categories    healthcare_provider_category[]
+  ratings       rating[]
+  conversations conversation[]
+
+  @@map("healthcare_providers")
+}
+
+model conversation {
+  id                   String              @id @default(cuid())
+  customerId           String              @map("customer_id")
+  customer             customer            @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  lastMessageAt        DateTime?           @map("last_message_at")
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  messages conversation_message[]
+
+  @@unique([customerId, healthcareProviderId])
+  @@index([customerId])
+  @@index([healthcareProviderId])
+  @@index([lastMessageAt])
+  @@map("conversations")
+}
+
+model conversation_message {
+  id                   String            @id @default(cuid())
+  conversationId       String            @map("conversation_id")
+  conversation         conversation      @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderId             String            @map("sender_id")
+  sender               user              @relation(fields: [senderId], references: [id])
+  senderType           MessageSenderType @map("sender_type")
+  messageType          MessageType       @map("message_type")
+  content              String?
+  relatedAppointmentId String?           @map("related_appointment_id")
+  relatedAppointment   appointment?      @relation(fields: [relatedAppointmentId], references: [id], onDelete: SetNull)
+  fileUrl              String?           @map("file_url")
+  fileName             String?           @map("file_name")
+  fileSize             Int?              @map("file_size")
+  fileMimeType         String?           @map("file_mime_type")
+  createdAt            DateTime          @default(now()) @map("created_at")
+  updatedAt            DateTime          @updatedAt @map("updated_at")
+
+  @@index([conversationId])
+  @@index([senderId])
+  @@index([relatedAppointmentId])
+  @@index([createdAt])
+  @@map("conversation_messages")
+}
+
+enum MessageSenderType {
+  CUSTOMER
+  HEALTHCARE_PROVIDER
+}
+
+enum MessageType {
+  TEXT
+  FILE
+}
+
+model procedure {
+  id                   String              @id @default(cuid())
+  name                 String
+  description          String?
+  priceInCents         Int                 @map("price_in_cents")
+  durationInMinutes    Int                 @map("duration_in_minutes")
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  appointmentProcedures appointment_procedure[]
+
+  @@index([healthcareProviderId])
+  @@map("procedures")
+}
+
+model rating {
+  id                   String              @id @default(cuid())
+  customerId           String              @map("customer_id")
+  customer             customer            @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  rating               Int
+  comment              String?
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  @@unique([customerId, healthcareProviderId])
+  @@index([customerId])
+  @@index([healthcareProviderId])
+  @@map("ratings")
+}
+
 generator client {
   provider = "prisma-client-js"
   output   = "../generated/prisma/client"
@@ -72,22 +283,26 @@ model session {
 }
 
 model user {
-  id            String    @id @default(cuid())
+  id            String   @id @default(cuid())
   name          String
-  firstName     String?
-  lastName      String?
+  firstName     String?  @map("first_name")
+  lastName      String?  @map("last_name")
   phone         String?
-  email         String    @unique
-  emailVerified Boolean   @default(false) @map("email_verified")
+  email         String   @unique
+  emailVerified Boolean  @default(false) @map("email_verified")
   image         String?
-  role          UserRole  @default(CUSTOMER)
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @updatedAt @map("updated_at")
-  sessions      session[]
-  accounts      account[]
+  role          UserRole @default(CUSTOMER)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
 
-  ownedClinics clinic[] @relation("ClinicOwner")
-  clinics      clinic[] @relation("ClinicEmployees")
+  sessions     session[]
+  accounts     account[]
+  ownedClinics clinic[]  @relation("ClinicOwner")
+  clinics      clinic[]  @relation("ClinicEmployees")
+
+  healthcareProvider   healthcare_provider?
+  customer             customer?
+  conversationMessages conversation_message[]
 
   @@map("users")
 }

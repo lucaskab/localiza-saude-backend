@@ -1,0 +1,34 @@
+meta {
+  name: List Appointments by Date Range
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/appointments?startDate=2026-04-01&endDate=2026-04-30
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Returns all appointments within a date range.
+
+  **Date Range Behavior:**
+  - startDate: Begins at 00:00:00 of the date
+  - endDate: Ends at 23:59:59.999 of the date
+  - If both dates are the same, returns all appointments from that day
+
+  **Examples:**
+  - `startDate=2026-04-05&endDate=2026-04-05` → All appointments on April 5th
+  - `startDate=2026-04-01&endDate=2026-04-30` → All appointments in April
+
+  **Query Parameters:**
+  - startDate: Start date in YYYY-MM-DD format
+  - endDate: End date in YYYY-MM-DD format
+
+  **Authentication required**
+}

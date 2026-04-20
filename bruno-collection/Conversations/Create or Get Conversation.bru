@@ -1,0 +1,34 @@
+meta {
+  name: Create or Get Conversation
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/conversations
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "participantId": "{{recipientId}}"
+  }
+}
+
+docs {
+  Create a new conversation or get an existing one with a participant.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  Required fields:
+  - participantId: ID of the participant to start or get conversation with
+
+  Returns:
+  - Existing conversation if one already exists between the users
+  - New conversation if none exists
+}

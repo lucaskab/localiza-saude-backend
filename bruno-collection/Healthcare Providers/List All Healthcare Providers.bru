@@ -1,0 +1,22 @@
+meta {
+  name: List All Healthcare Providers
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers
+  body: none
+  auth: none
+}
+
+docs {
+  Returns a list of all healthcare providers with their user information and procedures.
+
+  Response includes:
+  - User details (name, email, phone, image)
+  - Professional information (specialty, professionalId, bio)
+  - Associated procedures
+
+  No authentication required - public endpoint for browsing available providers.
+}

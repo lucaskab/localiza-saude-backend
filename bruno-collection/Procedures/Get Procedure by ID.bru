@@ -1,0 +1,22 @@
+meta {
+  name: Get Procedure by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/procedures/{{procedureId}}
+  body: none
+  auth: none
+}
+
+params:path {
+  procedureId: {{procedureId}}
+}
+
+docs {
+  Get details of a specific procedure by its ID.
+
+  Use the procedureId from environment variables or replace with actual procedure ID.
+  No authentication required.
+}

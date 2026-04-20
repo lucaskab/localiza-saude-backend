@@ -1,0 +1,17 @@
+meta {
+  name: List All Procedures
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/procedures
+  body: none
+  auth: none
+}
+
+docs {
+  Returns a list of all procedures in the database, ordered by creation date (newest first).
+
+  No authentication required.
+}

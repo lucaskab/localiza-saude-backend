@@ -1,0 +1,38 @@
+meta {
+  name: Create Schedule
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/healthcare-provider-schedules
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "healthcareProviderId": "{{healthcareProviderId}}",
+    "dayOfWeek": 1,
+    "startTime": "09:00",
+    "endTime": "17:00"
+  }
+}
+
+docs {
+  Create a new healthcare provider schedule.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  Required fields:
+  - healthcareProviderId: ID of the healthcare provider
+  - dayOfWeek: Day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+  - startTime: Start time in HH:MM format (24-hour)
+  - endTime: End time in HH:MM format (24-hour)
+
+  Example: Setting Monday 9 AM to 5 PM schedule
+}

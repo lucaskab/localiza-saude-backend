@@ -1,0 +1,40 @@
+meta {
+  name: Create Healthcare Provider
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/healthcare-providers
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "userId": "{{ownerId}}",
+    "specialty": "Cardiologia",
+    "professionalId": "CRM-SP 123456",
+    "bio": "Cardiologista com mais de 15 anos de experiência em prevenção e tratamento de doenças cardiovasculares."
+  }
+}
+
+docs {
+  Create a new healthcare provider profile.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  Required fields:
+  - userId: ID of the user account (must have HEALTHCARE_PROVIDER role)
+
+  Optional fields:
+  - specialty: Medical specialty (e.g., "Cardiologia", "Dermatologia")
+  - professionalId: Professional registration number (e.g., "CRM-SP 123456")
+  - bio: Professional biography/description
+
+  Note: The user must exist and have the HEALTHCARE_PROVIDER role before creating the provider profile.
+}

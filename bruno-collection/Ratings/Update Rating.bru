@@ -1,0 +1,34 @@
+meta {
+  name: Update Rating
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/ratings/{{ratingId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+body:json {
+  {
+    "rating": 10,
+    "comment": "Updated review: Even better than I thought!"
+  }
+}
+
+docs {
+  Update an existing rating.
+
+  You can update:
+  - rating: New score (1-10)
+  - comment: New or updated comment
+
+  Both fields are optional, update only what you need.
+
+  **Authentication required**
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Delete Category
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/categories/{{categoryId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Delete a category by its ID.
+
+  **Authentication required**
+
+  Note: This will also remove all associations between healthcare providers and this category.
+}

@@ -1,0 +1,27 @@
+meta {
+  name: Get Healthcare Provider by User ID
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers/user/{{userId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Get a healthcare provider by their associated user ID.
+
+  Returns the complete healthcare provider profile including:
+  - User information
+  - Specialty and professional ID
+  - Bio
+  - All procedures offered
+
+  **Authentication required**
+}

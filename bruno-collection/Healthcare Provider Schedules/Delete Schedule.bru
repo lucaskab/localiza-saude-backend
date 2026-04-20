@@ -1,0 +1,28 @@
+meta {
+  name: Delete Schedule
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/healthcare-provider-schedules/{{scheduleId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  scheduleId: {{scheduleId}}
+}
+
+docs {
+  Delete a healthcare provider schedule by ID.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  ⚠️ Warning: This action cannot be undone!
+  Make sure to use a test schedule ID.
+}

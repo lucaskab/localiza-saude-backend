@@ -1,0 +1,22 @@
+meta {
+  name: Get Appointment by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/appointments/{{appointmentId}}
+  body: none
+  auth: none
+}
+
+params:path {
+  appointmentId: {{appointmentId}}
+}
+
+docs {
+  Get details of a specific appointment by its ID.
+
+  Use the appointmentId from environment variables or replace with actual appointment ID.
+  No authentication required.
+}

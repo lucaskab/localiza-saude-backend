@@ -1,0 +1,27 @@
+meta {
+  name: Get Healthcare Provider by ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}
+  body: none
+  auth: none
+}
+
+params:path {
+  healthcareProviderId: {{healthcareProviderId}}
+}
+
+docs {
+  Get details of a specific healthcare provider by their ID.
+
+  Returns the provider's profile including:
+  - User information (name, email, phone, image)
+  - Professional details (specialty, professional ID, bio)
+  - List of procedures they offer
+
+  Use the healthcareProviderId from environment variables or replace with actual provider ID.
+  No authentication required - this is a public endpoint for customers to browse providers.
+}

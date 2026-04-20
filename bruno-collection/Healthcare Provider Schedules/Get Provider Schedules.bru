@@ -1,0 +1,23 @@
+meta {
+  name: Get Provider Schedules
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}/schedules
+  body: none
+  auth: none
+}
+
+params:path {
+  healthcareProviderId: {{healthcareProviderId}}
+}
+
+docs {
+  Get all schedules for a specific healthcare provider.
+
+  Use the healthcareProviderId from environment variables or replace with actual provider ID.
+  Returns the weekly schedule configuration for the provider.
+  No authentication required.
+}

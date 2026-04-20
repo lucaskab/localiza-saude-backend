@@ -1,0 +1,37 @@
+meta {
+  name: Update Procedure
+  type: http
+  seq: 5
+}
+
+patch {
+  url: {{baseUrl}}/procedures/{{procedureId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  procedureId: {{procedureId}}
+}
+
+body:json {
+  {
+    "name": "Consulta Médica Atualizada",
+    "description": "Descrição atualizada",
+    "priceInCents": 18000,
+    "durationInMinutes": 45
+  }
+}
+
+docs {
+  Update an existing procedure.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  All fields are optional - only send the fields you want to update.
+  Fields that can be updated: name, description, priceInCents, durationInMinutes
+}

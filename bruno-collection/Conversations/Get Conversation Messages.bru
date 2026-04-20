@@ -1,0 +1,37 @@
+meta {
+  name: Get Conversation Messages
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/conversations/{{conversationId}}/messages?limit=50&offset=0&relatedAppointmentId=
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:query {
+  limit: 50
+  offset: 0
+  relatedAppointmentId:
+}
+
+docs {
+  Get all messages from a specific conversation.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  Path parameters:
+  - conversationId: ID of the conversation
+
+  Query parameters:
+  - limit: Maximum number of messages to return (default: 50)
+  - offset: Number of messages to skip for pagination (default: 0)
+  - relatedAppointmentId: Optional filter by related appointment ID
+
+  Returns a paginated list of messages ordered by creation date.
+}

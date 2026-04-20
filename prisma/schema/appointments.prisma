@@ -1,0 +1,31 @@
+model appointment {
+  id                   String              @id @default(cuid())
+  customerId           String              @map("customer_id")
+  customer             customer            @relation(fields: [customerId], references: [id])
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id])
+  scheduledAt          DateTime            @map("scheduled_at")
+  status               AppointmentStatus   @default(SCHEDULED)
+  totalDurationMinutes Int                 @map("total_duration_minutes")
+  totalPriceCents      Int                 @map("total_price_cents")
+  notes                String?
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  appointmentProcedures appointment_procedure[]
+  relatedMessages       conversation_message[]
+
+  @@index([customerId])
+  @@index([healthcareProviderId])
+  @@index([scheduledAt])
+  @@map("appointments")
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}

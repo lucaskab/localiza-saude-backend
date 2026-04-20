@@ -1,4 +1,5 @@
 import fastifyCors from "@fastify/cors";
+import fastifyMultipart from "@fastify/multipart";
 import Fastify from "fastify";
 import {
 	serializerCompiler,
@@ -9,7 +10,7 @@ import { auth } from "@/auth";
 import { errorHandler } from "@/http/error-handler";
 import { routerLoader } from "@/loaders/router/router";
 
-const fastify = Fastify({ logger: true }).withTypeProvider<ZodTypeProvider>();
+const fastify = Fastify().withTypeProvider<ZodTypeProvider>();
 
 fastify.setSerializerCompiler(serializerCompiler);
 fastify.setValidatorCompiler(validatorCompiler);
@@ -22,6 +23,7 @@ fastify.register(fastifyCors, {
 		"http://localhost:8081",
 		"http://localhost:8082",
 		"http://localhost:3333",
+		"http://192.168.1.108:3333",
 		/^exp:\/\/.*$/,
 		/^localizasaude:\/\/.*$/,
 	],
@@ -29,6 +31,13 @@ fastify.register(fastifyCors, {
 	allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
 	credentials: true,
 	maxAge: 86400,
+});
+
+// Register multipart for file uploads
+fastify.register(fastifyMultipart, {
+	limits: {
+		fileSize: 10 * 1024 * 1024, // 10MB
+	},
 });
 
 // Register authentication endpoint
@@ -76,13 +85,17 @@ fastify.route({
 routerLoader()
 	.loadRoutes(fastify)
 	.then(() => {
+		// Log all registered routes
+		console.log("\n📋 Registered Routes:");
+		console.log(fastify.printRoutes());
+
 		// Initialize server
 		fastify.listen({ port: 3333, host: "0.0.0.0" }, (err) => {
 			if (err) {
 				fastify.log.error(err);
 				process.exit(1);
 			}
-			console.log("Server running on http://localhost:3333");
+			console.log("\n✅ Server running on http://localhost:3333\n");
 		});
 	});
 

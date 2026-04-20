@@ -1,0 +1,28 @@
+meta {
+  name: Delete Healthcare Provider
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+params:path {
+  healthcareProviderId: {{healthcareProviderId}}
+}
+
+docs {
+  Delete a healthcare provider by ID.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  ⚠️ Warning: This action cannot be undone!
+  This will also delete all procedures associated with this healthcare provider due to cascade delete.
+}

@@ -1,0 +1,16 @@
+model customer {
+  id          String    @id @default(cuid())
+  userId      String    @unique @map("user_id")
+  user        user      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cpf         String?
+  dateOfBirth DateTime? @map("date_of_birth")
+  address     String?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  appointments appointment[]
+  ratings      rating[]
+  conversations conversation[]
+
+  @@map("customers")
+}

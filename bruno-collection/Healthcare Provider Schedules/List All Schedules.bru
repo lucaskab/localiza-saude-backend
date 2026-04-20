@@ -1,0 +1,17 @@
+meta {
+  name: List All Schedules
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/healthcare-provider-schedules
+  body: none
+  auth: none
+}
+
+docs {
+  Returns a list of all healthcare provider schedules in the database.
+
+  No authentication required.
+}

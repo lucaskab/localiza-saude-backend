@@ -1,0 +1,25 @@
+meta {
+  name: Get Provider Ratings
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}/ratings
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Get all ratings for a healthcare provider.
+
+  Returns:
+  - List of all ratings with customer details
+  - Statistics (average rating and total count)
+
+  **Authentication required**
+}

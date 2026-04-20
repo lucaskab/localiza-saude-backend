@@ -1,0 +1,32 @@
+meta {
+  name: Get Conversations
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/conversations?limit=20&offset=0
+  body: none
+  auth: bearer
+}
+
+params:query {
+  limit: 20
+  offset: 0
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Get all conversations for the authenticated user.
+
+  **Authentication required** - Add your Bearer token in environment variables.
+
+  Query parameters:
+  - limit: Number of conversations to retrieve (default: 20)
+  - offset: Number of conversations to skip for pagination (default: 0)
+
+  Returns a paginated list of conversations with basic information about participants and last message.
+}

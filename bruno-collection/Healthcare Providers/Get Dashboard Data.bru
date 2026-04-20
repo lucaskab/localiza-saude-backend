@@ -1,0 +1,54 @@
+meta {
+  name: Get Dashboard Data
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}/healthcare-providers/{{healthcareProviderId}}/dashboard
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{authToken}}
+}
+
+docs {
+  Get comprehensive dashboard metrics for a healthcare provider.
+
+  **Metrics Included:**
+
+  1. **Today's Appointments**
+     - Total, scheduled, completed, cancelled counts
+
+  2. **Monthly Revenue**
+     - Current month revenue
+     - Last month revenue
+     - Growth percentage
+
+  3. **Ratings**
+     - Average rating (1-10)
+     - Total ratings count
+     - 5 most recent ratings with customer names
+
+  4. **Appointments Stats**
+     - Upcoming appointments count
+     - This month vs last month comparison
+     - Growth percentage
+     - Last 7 days trend
+
+  5. **Patients**
+     - Total unique patients (all time)
+     - New patients this month
+
+  6. **Popular Procedures**
+     - Top 5 most booked procedures this month
+     - Count and revenue for each
+
+  7. **Cancellation Rate**
+     - This month cancellation rate (%)
+     - Last month cancellation rate (%)
+
+  **Authentication required**
+}

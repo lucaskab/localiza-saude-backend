@@ -9,7 +9,7 @@ import { UnauthorizedError } from "./routes/_errors/unauthorized-error";
 
 type FastifyErrorHandler = FastifyInstance["errorHandler"];
 
-export const errorHandler: FastifyErrorHandler = (error, _, reply) => {
+export const errorHandler: FastifyErrorHandler = (error, request, reply) => {
 	if (error instanceof ResponseSerializationError) {
 		console.error(error.cause);
 
