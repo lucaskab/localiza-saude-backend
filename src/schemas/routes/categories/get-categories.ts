@@ -17,6 +17,8 @@ const healthcareProviderSchema = z.object({
 	professionalId: z.string().nullable(),
 	bio: z.string().nullable(),
 	nextAvailableAt: z.date().nullable().optional(),
+	averageRating: z.number().optional(),
+	totalRatings: z.number().int().optional(),
 	user: userSchema,
 });
 

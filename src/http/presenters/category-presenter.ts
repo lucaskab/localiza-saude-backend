@@ -17,6 +17,10 @@ export const categoryPresenter = {
 	toHTTP(
 		category: CategoryWithProviders,
 		nextAvailableByProviderId?: Map<string, Date | null>,
+		ratingSummariesByProviderId?: Map<
+			string,
+			{ averageRating: number; totalRatings: number }
+		>,
 	) {
 		return {
 			id: category.id,
@@ -32,6 +36,12 @@ export const categoryPresenter = {
 				bio: hpc.healthcareProvider.bio,
 				nextAvailableAt:
 					nextAvailableByProviderId?.get(hpc.healthcareProvider.id) ?? null,
+				averageRating:
+					ratingSummariesByProviderId?.get(hpc.healthcareProvider.id)
+						?.averageRating ?? 0,
+				totalRatings:
+					ratingSummariesByProviderId?.get(hpc.healthcareProvider.id)
+						?.totalRatings ?? 0,
 				user: {
 					id: hpc.healthcareProvider.user.id,
 					name: hpc.healthcareProvider.user.name,
@@ -48,9 +58,17 @@ export const categoryPresenter = {
 	toHTTPMany(
 		categories: CategoryWithProviders[],
 		nextAvailableByProviderId?: Map<string, Date | null>,
+		ratingSummariesByProviderId?: Map<
+			string,
+			{ averageRating: number; totalRatings: number }
+		>,
 	) {
 		return categories.map((category) =>
-			this.toHTTP(category, nextAvailableByProviderId),
+			this.toHTTP(
+				category,
+				nextAvailableByProviderId,
+				ratingSummariesByProviderId,
+			),
 		);
 	},
 };

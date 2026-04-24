@@ -11,6 +11,7 @@ model customer {
   appointments appointment[]
   ratings      rating[]
   conversations conversation[]
+  favoriteProviders customer_favorite_provider[]
 
   @@map("customers")
 }

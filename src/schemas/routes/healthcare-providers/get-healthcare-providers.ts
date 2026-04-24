@@ -18,6 +18,8 @@ export const healthcareProviderSchema = z.object({
 	professionalId: z.string().nullable().optional(),
 	bio: z.string().nullable().optional(),
 	nextAvailableAt: z.date().nullable().optional(),
+	averageRating: z.number().optional(),
+	totalRatings: z.number().int().optional(),
 	procedures: z.array(procedureSchema),
 	createdAt: z.date(),
 	updatedAt: z.date(),

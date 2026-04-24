@@ -38,7 +38,6 @@ export const ratingSchema = z.object({
 });
 
 export const createRatingBodySchema = z.object({
-	customerId: z.cuid(),
 	healthcareProviderId: z.cuid(),
 	rating: z.number().int().min(1).max(10),
 	comment: z.string().nullable().optional(),

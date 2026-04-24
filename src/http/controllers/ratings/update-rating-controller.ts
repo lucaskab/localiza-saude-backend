@@ -1,4 +1,6 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
+import { prisma } from "@/database/prisma";
+import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { updateRatingUseCase } from "@/http/useCases/ratings/update-rating-use-case";
 import type {
 	UpdateRatingBodySchema,
@@ -15,8 +17,16 @@ export const updateRatingController = {
 	) {
 		const { id } = request.params;
 		const data = request.body;
+		const user = await request.getCurrentUser();
+		const customer = await prisma.customer.findUnique({
+			where: { userId: user.id },
+		});
 
-		const result = await updateRatingUseCase.execute(id, data);
+		if (!customer) {
+			throw new BadRequestError("User is not registered as a customer");
+		}
+
+		const result = await updateRatingUseCase.execute(id, data, customer.id);
 
 		return reply.status(200).send(result);
 	},

@@ -14,6 +14,7 @@ model healthcare_provider {
   categories   healthcare_provider_category[]
   ratings      rating[]
   conversations conversation[]
+  favoritedBy  customer_favorite_provider[]
 
   @@map("healthcare_providers")
 }
