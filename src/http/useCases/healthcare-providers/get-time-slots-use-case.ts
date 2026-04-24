@@ -38,7 +38,7 @@ function minutesToTime(minutes: number): string {
 }
 
 function getDayOfWeek(date: Date): number {
-	return date.getDay();
+	return date.getUTCDay();
 }
 
 function hasTimeOverlap(
@@ -48,6 +48,11 @@ function hasTimeOverlap(
 	apptEnd: number,
 ): boolean {
 	return slotStart < apptEnd && slotEnd > apptStart;
+}
+
+function parseUtcDateString(date: string): Date {
+	const [year, month, day] = date.split("-").map(Number);
+	return new Date(Date.UTC(year || 0, (month || 1) - 1, day || 1));
 }
 
 export const getTimeSlotsUseCase = {
@@ -108,8 +113,8 @@ export const getTimeSlotsUseCase = {
 		}
 		const slotIntervalMinutes = shortestProcedure.durationInMinutes;
 
-		// Parse date and get day of week
-		const dateObj = new Date(date);
+		// Parse date as UTC to keep slot generation independent from server timezone
+		const dateObj = parseUtcDateString(date);
 		const dayOfWeek = getDayOfWeek(dateObj);
 
 		// Get provider's schedule for this day
@@ -138,9 +143,9 @@ export const getTimeSlotsUseCase = {
 
 		// Get existing appointments for this day
 		const startOfDay = new Date(dateObj);
-		startOfDay.setHours(0, 0, 0, 0);
+		startOfDay.setUTCHours(0, 0, 0, 0);
 		const endOfDay = new Date(dateObj);
-		endOfDay.setHours(23, 59, 59, 999);
+		endOfDay.setUTCHours(23, 59, 59, 999);
 
 		const existingAppointments =
 			await prismaAppointmentRepository.findByProviderAndDateRange(
@@ -186,7 +191,8 @@ export const getTimeSlotsUseCase = {
 
 			for (const appointment of existingAppointments) {
 				const apptDate = new Date(appointment.scheduledAt);
-				const apptStart = apptDate.getHours() * 60 + apptDate.getMinutes();
+				const apptStart =
+					apptDate.getUTCHours() * 60 + apptDate.getUTCMinutes();
 				const apptEnd = apptStart + appointment.totalDurationMinutes;
 
 				if (

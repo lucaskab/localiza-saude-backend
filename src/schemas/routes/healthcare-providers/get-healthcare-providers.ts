@@ -17,6 +17,7 @@ export const healthcareProviderSchema = z.object({
 	specialty: z.string().nullable().optional(),
 	professionalId: z.string().nullable().optional(),
 	bio: z.string().nullable().optional(),
+	nextAvailableAt: z.date().nullable().optional(),
 	procedures: z.array(procedureSchema),
 	createdAt: z.date(),
 	updatedAt: z.date(),

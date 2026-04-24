@@ -16,6 +16,7 @@ const healthcareProviderSchema = z.object({
 	specialty: z.string().nullable(),
 	professionalId: z.string().nullable(),
 	bio: z.string().nullable(),
+	nextAvailableAt: z.date().nullable().optional(),
 	user: userSchema,
 });
 

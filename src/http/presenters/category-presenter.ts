@@ -14,7 +14,10 @@ type CategoryWithProviders = category & {
 };
 
 export const categoryPresenter = {
-	toHTTP(category: CategoryWithProviders) {
+	toHTTP(
+		category: CategoryWithProviders,
+		nextAvailableByProviderId?: Map<string, Date | null>,
+	) {
 		return {
 			id: category.id,
 			name: category.name,
@@ -27,6 +30,8 @@ export const categoryPresenter = {
 				specialty: hpc.healthcareProvider.specialty,
 				professionalId: hpc.healthcareProvider.professionalId,
 				bio: hpc.healthcareProvider.bio,
+				nextAvailableAt:
+					nextAvailableByProviderId?.get(hpc.healthcareProvider.id) ?? null,
 				user: {
 					id: hpc.healthcareProvider.user.id,
 					name: hpc.healthcareProvider.user.name,
@@ -40,7 +45,12 @@ export const categoryPresenter = {
 		};
 	},
 
-	toHTTPMany(categories: CategoryWithProviders[]) {
-		return categories.map((category) => this.toHTTP(category));
+	toHTTPMany(
+		categories: CategoryWithProviders[],
+		nextAvailableByProviderId?: Map<string, Date | null>,
+	) {
+		return categories.map((category) =>
+			this.toHTTP(category, nextAvailableByProviderId),
+		);
 	},
 };
