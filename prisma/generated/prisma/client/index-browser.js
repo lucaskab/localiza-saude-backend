@@ -24,12 +24,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.5.0
- * Query Engine version: 280c870be64f457428992c43c1f6d557fab6e29e
+ * Prisma Client JS version: 7.7.0
+ * Query Engine version: 75cbdc1eb7150937890ad5465d861175c6624711
  */
 Prisma.prismaVersion = {
-  client: "7.5.0",
-  engine: "280c870be64f457428992c43c1f6d557fab6e29e"
+  client: "7.7.0",
+  engine: "75cbdc1eb7150937890ad5465d861175c6624711"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -183,6 +183,29 @@ exports.Prisma.ClinicScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   ownerId: 'ownerId'
+};
+
+exports.Prisma.Customer_favorite_providerScalarFieldEnum = {
+  customerId: 'customerId',
+  healthcareProviderId: 'healthcareProviderId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.Customer_medical_recordScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  bloodType: 'bloodType',
+  medications: 'medications',
+  chronicPain: 'chronicPain',
+  preExistingConditions: 'preExistingConditions',
+  allergies: 'allergies',
+  surgeries: 'surgeries',
+  familyHistory: 'familyHistory',
+  lifestyleNotes: 'lifestyleNotes',
+  emergencyContactName: 'emergencyContactName',
+  emergencyContactPhone: 'emergencyContactPhone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.CustomerScalarFieldEnum = {
@@ -350,6 +373,8 @@ exports.Prisma.ModelName = {
   category: 'category',
   healthcare_provider_category: 'healthcare_provider_category',
   clinic: 'clinic',
+  customer_favorite_provider: 'customer_favorite_provider',
+  customer_medical_record: 'customer_medical_record',
   customer: 'customer',
   healthcare_provider_schedule: 'healthcare_provider_schedule',
   healthcare_provider: 'healthcare_provider',

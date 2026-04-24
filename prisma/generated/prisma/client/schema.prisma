@@ -117,6 +117,40 @@ enum ClinicType {
   FREE
 }
 
+model customer_favorite_provider {
+  customerId           String              @map("customer_id")
+  customer             customer            @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  createdAt            DateTime            @default(now()) @map("created_at")
+
+  @@id([customerId, healthcareProviderId])
+  @@index([customerId])
+  @@index([healthcareProviderId])
+  @@map("customer_favorite_providers")
+}
+
+model customer_medical_record {
+  id                    String   @id @default(cuid())
+  customerId            String   @unique @map("customer_id")
+  customer              customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  bloodType             String?  @map("blood_type")
+  medications           String?
+  chronicPain           String?  @map("chronic_pain")
+  preExistingConditions String?  @map("pre_existing_conditions")
+  allergies             String?
+  surgeries             String?
+  familyHistory         String?  @map("family_history")
+  lifestyleNotes        String?  @map("lifestyle_notes")
+  emergencyContactName  String?  @map("emergency_contact_name")
+  emergencyContactPhone String?  @map("emergency_contact_phone")
+  createdAt             DateTime @default(now()) @map("created_at")
+  updatedAt             DateTime @updatedAt @map("updated_at")
+
+  @@index([customerId])
+  @@map("customer_medical_records")
+}
+
 model customer {
   id          String    @id @default(cuid())
   userId      String    @unique @map("user_id")
@@ -127,9 +161,11 @@ model customer {
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
 
-  appointments  appointment[]
-  ratings       rating[]
-  conversations conversation[]
+  appointments      appointment[]
+  ratings           rating[]
+  conversations     conversation[]
+  favoriteProviders customer_favorite_provider[]
+  medicalRecord     customer_medical_record?
 
   @@map("customers")
 }
@@ -165,6 +201,7 @@ model healthcare_provider {
   categories    healthcare_provider_category[]
   ratings       rating[]
   conversations conversation[]
+  favoritedBy   customer_favorite_provider[]
 
   @@map("healthcare_providers")
 }

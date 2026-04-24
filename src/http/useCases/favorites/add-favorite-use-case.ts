@@ -1,4 +1,5 @@
-import { prisma } from "@/database/prisma";
+import { prismaFavoriteRepository } from "@/http/repositories/favorites/favorites-repository-implementation";
+import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 
 type AddFavoriteData = {
@@ -8,25 +9,22 @@ type AddFavoriteData = {
 
 export const addFavoriteUseCase = {
 	async execute({ customerId, healthcareProviderId }: AddFavoriteData) {
-		const provider = await prisma.healthcare_provider.findUnique({
-			where: { id: healthcareProviderId },
-			select: { id: true },
-		});
+		const provider =
+			await prismaHealthcareProviderRepository.findById(healthcareProviderId);
 
 		if (!provider) {
 			throw new BadRequestError("Healthcare provider not found");
 		}
 
-		await prisma.$executeRaw`
-			INSERT INTO customer_favorite_providers (customer_id, healthcare_provider_id)
-			VALUES (${customerId}, ${healthcareProviderId})
-			ON CONFLICT (customer_id, healthcare_provider_id) DO NOTHING
-		`;
+		const favorite = await prismaFavoriteRepository.add(
+			customerId,
+			healthcareProviderId,
+		);
 
 		return {
 			favorite: {
-				customerId,
-				healthcareProviderId,
+				customerId: favorite.customerId,
+				healthcareProviderId: favorite.healthcareProviderId,
 			},
 		};
 	},

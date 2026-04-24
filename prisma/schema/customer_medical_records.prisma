@@ -1,0 +1,20 @@
+model customer_medical_record {
+  id                    String   @id @default(cuid())
+  customerId            String   @unique @map("customer_id")
+  customer              customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  bloodType             String?  @map("blood_type")
+  medications           String?
+  chronicPain           String?  @map("chronic_pain")
+  preExistingConditions String?  @map("pre_existing_conditions")
+  allergies             String?
+  surgeries             String?
+  familyHistory         String?  @map("family_history")
+  lifestyleNotes        String?  @map("lifestyle_notes")
+  emergencyContactName  String?  @map("emergency_contact_name")
+  emergencyContactPhone String?  @map("emergency_contact_phone")
+  createdAt             DateTime @default(now()) @map("created_at")
+  updatedAt             DateTime @updatedAt @map("updated_at")
+
+  @@index([customerId])
+  @@map("customer_medical_records")
+}

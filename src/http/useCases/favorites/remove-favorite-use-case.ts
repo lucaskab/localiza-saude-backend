@@ -1,4 +1,4 @@
-import { prisma } from "@/database/prisma";
+import { prismaFavoriteRepository } from "@/http/repositories/favorites/favorites-repository-implementation";
 
 type RemoveFavoriteData = {
 	customerId: string;
@@ -7,11 +7,7 @@ type RemoveFavoriteData = {
 
 export const removeFavoriteUseCase = {
 	async execute({ customerId, healthcareProviderId }: RemoveFavoriteData) {
-		await prisma.$executeRaw`
-			DELETE FROM customer_favorite_providers
-			WHERE customer_id = ${customerId}
-				AND healthcare_provider_id = ${healthcareProviderId}
-		`;
+		await prismaFavoriteRepository.remove(customerId, healthcareProviderId);
 
 		return {
 			message: "Favorite removed successfully",

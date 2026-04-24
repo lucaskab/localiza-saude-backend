@@ -151,6 +151,18 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 		return appointments as AppointmentWithRelations[];
 	},
 
+	async existsByCustomerAndProvider(customerId: string, healthcareProviderId: string) {
+		const appointment = await prisma.appointment.findFirst({
+			where: {
+				customerId,
+				healthcareProviderId,
+			},
+			select: { id: true },
+		});
+
+		return Boolean(appointment);
+	},
+
 	async create(data: CreateAppointmentData) {
 		const procedures = await prisma.procedure.findMany({
 			where: {

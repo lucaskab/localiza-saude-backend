@@ -12,6 +12,7 @@ model customer {
   ratings      rating[]
   conversations conversation[]
   favoriteProviders customer_favorite_provider[]
+  medicalRecord customer_medical_record?
 
   @@map("customers")
 }

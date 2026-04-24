@@ -66,6 +66,10 @@ export type AppointmentRepository = {
 		healthcareProviderId: string,
 		params: DateRangeParams,
 	) => Promise<AppointmentWithRelations[]>;
+	existsByCustomerAndProvider: (
+		customerId: string,
+		healthcareProviderId: string,
+	) => Promise<boolean>;
 	create: (data: CreateAppointmentData) => Promise<AppointmentWithRelations>;
 	update: (
 		id: string,
