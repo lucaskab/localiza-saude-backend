@@ -13,6 +13,7 @@ model customer {
   conversations conversation[]
   favoriteProviders customer_favorite_provider[]
   medicalRecord customer_medical_record?
+  patientProfiles patient_profile[] @relation("CustomerPatientProfiles")
 
   @@map("customers")
 }

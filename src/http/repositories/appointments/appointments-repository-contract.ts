@@ -3,14 +3,17 @@ import type {
 	appointment,
 	customer,
 	healthcare_provider,
+	patient_profile,
 	procedure,
 	user,
 } from "../../../../prisma/generated/prisma/client";
 
 export type CreateAppointmentData = {
-	customerId: string;
+	customerId?: string | null;
+	patientProfileId?: string | null;
 	healthcareProviderId: string;
 	scheduledAt: Date;
+	status?: AppointmentStatus;
 	procedureIds: string[];
 	notes?: string | null;
 };
@@ -30,9 +33,10 @@ export type AppointmentProcedure = {
 };
 
 export type AppointmentWithRelations = appointment & {
-	customer: customer & {
+	customer: (customer & {
 		user: user;
-	};
+	}) | null;
+	patientProfile: patient_profile | null;
 	healthcareProvider: healthcare_provider & {
 		user: user;
 	};
@@ -68,6 +72,14 @@ export type AppointmentRepository = {
 	) => Promise<AppointmentWithRelations[]>;
 	existsByCustomerAndProvider: (
 		customerId: string,
+		healthcareProviderId: string,
+	) => Promise<boolean>;
+	existsConfirmedByCustomerAndProvider: (
+		customerId: string,
+		healthcareProviderId: string,
+	) => Promise<boolean>;
+	existsByPatientProfileAndProvider: (
+		patientProfileId: string,
 		healthcareProviderId: string,
 	) => Promise<boolean>;
 	create: (data: CreateAppointmentData) => Promise<AppointmentWithRelations>;

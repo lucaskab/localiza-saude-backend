@@ -15,6 +15,7 @@ model healthcare_provider {
   ratings      rating[]
   conversations conversation[]
   favoritedBy  customer_favorite_provider[]
+  createdPatientProfiles patient_profile[] @relation("ProviderCreatedPatientProfiles")
 
   @@map("healthcare_providers")
 }

@@ -79,6 +79,11 @@ export type conversation = $Result.DefaultSelection<Prisma.$conversationPayload>
  */
 export type conversation_message = $Result.DefaultSelection<Prisma.$conversation_messagePayload>
 /**
+ * Model patient_profile
+ *
+ */
+export type patient_profile = $Result.DefaultSelection<Prisma.$patient_profilePayload>
+/**
  * Model procedure
  *
  */
@@ -427,6 +432,16 @@ export class PrismaClient<
     * ```
     */
   get conversation_message(): Prisma.conversation_messageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.patient_profile`: Exposes CRUD operations for the **patient_profile** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Patient_profiles
+    * const patient_profiles = await prisma.patient_profile.findMany()
+    * ```
+    */
+  get patient_profile(): Prisma.patient_profileDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.procedure`: Exposes CRUD operations for the **procedure** model.
@@ -924,6 +939,7 @@ export namespace Prisma {
     healthcare_provider: 'healthcare_provider',
     conversation: 'conversation',
     conversation_message: 'conversation_message',
+    patient_profile: 'patient_profile',
     procedure: 'procedure',
     rating: 'rating',
     session: 'session',
@@ -944,7 +960,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "appointment_procedure" | "appointment" | "category" | "healthcare_provider_category" | "clinic" | "customer_favorite_provider" | "customer_medical_record" | "customer" | "healthcare_provider_schedule" | "healthcare_provider" | "conversation" | "conversation_message" | "procedure" | "rating" | "session" | "user" | "verification"
+      modelProps: "account" | "appointment_procedure" | "appointment" | "category" | "healthcare_provider_category" | "clinic" | "customer_favorite_provider" | "customer_medical_record" | "customer" | "healthcare_provider_schedule" | "healthcare_provider" | "conversation" | "conversation_message" | "patient_profile" | "procedure" | "rating" | "session" | "user" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1910,6 +1926,80 @@ export namespace Prisma {
           }
         }
       }
+      patient_profile: {
+        payload: Prisma.$patient_profilePayload<ExtArgs>
+        fields: Prisma.patient_profileFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.patient_profileFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.patient_profileFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload>
+          }
+          findFirst: {
+            args: Prisma.patient_profileFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.patient_profileFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload>
+          }
+          findMany: {
+            args: Prisma.patient_profileFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload>[]
+          }
+          create: {
+            args: Prisma.patient_profileCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload>
+          }
+          createMany: {
+            args: Prisma.patient_profileCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.patient_profileCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload>[]
+          }
+          delete: {
+            args: Prisma.patient_profileDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload>
+          }
+          update: {
+            args: Prisma.patient_profileUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload>
+          }
+          deleteMany: {
+            args: Prisma.patient_profileDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.patient_profileUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.patient_profileUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload>[]
+          }
+          upsert: {
+            args: Prisma.patient_profileUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$patient_profilePayload>
+          }
+          aggregate: {
+            args: Prisma.Patient_profileAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePatient_profile>
+          }
+          groupBy: {
+            args: Prisma.patient_profileGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Patient_profileGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.patient_profileCountArgs<ExtArgs>
+            result: $Utils.Optional<Patient_profileCountAggregateOutputType> | number
+          }
+        }
+      }
       procedure: {
         payload: Prisma.$procedurePayload<ExtArgs>
         fields: Prisma.procedureFieldRefs
@@ -2401,6 +2491,7 @@ export namespace Prisma {
     healthcare_provider?: healthcare_providerOmit
     conversation?: conversationOmit
     conversation_message?: conversation_messageOmit
+    patient_profile?: patient_profileOmit
     procedure?: procedureOmit
     rating?: ratingOmit
     session?: sessionOmit
@@ -2592,6 +2683,7 @@ export namespace Prisma {
     ratings: number
     conversations: number
     favoriteProviders: number
+    patientProfiles: number
   }
 
   export type CustomerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2599,6 +2691,7 @@ export namespace Prisma {
     ratings?: boolean | CustomerCountOutputTypeCountRatingsArgs
     conversations?: boolean | CustomerCountOutputTypeCountConversationsArgs
     favoriteProviders?: boolean | CustomerCountOutputTypeCountFavoriteProvidersArgs
+    patientProfiles?: boolean | CustomerCountOutputTypeCountPatientProfilesArgs
   }
 
   // Custom InputTypes
@@ -2640,6 +2733,13 @@ export namespace Prisma {
     where?: customer_favorite_providerWhereInput
   }
 
+  /**
+   * CustomerCountOutputType without action
+   */
+  export type CustomerCountOutputTypeCountPatientProfilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: patient_profileWhereInput
+  }
+
 
   /**
    * Count Type Healthcare_providerCountOutputType
@@ -2653,6 +2753,7 @@ export namespace Prisma {
     ratings: number
     conversations: number
     favoritedBy: number
+    createdPatientProfiles: number
   }
 
   export type Healthcare_providerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2663,6 +2764,7 @@ export namespace Prisma {
     ratings?: boolean | Healthcare_providerCountOutputTypeCountRatingsArgs
     conversations?: boolean | Healthcare_providerCountOutputTypeCountConversationsArgs
     favoritedBy?: boolean | Healthcare_providerCountOutputTypeCountFavoritedByArgs
+    createdPatientProfiles?: boolean | Healthcare_providerCountOutputTypeCountCreatedPatientProfilesArgs
   }
 
   // Custom InputTypes
@@ -2725,6 +2827,13 @@ export namespace Prisma {
     where?: customer_favorite_providerWhereInput
   }
 
+  /**
+   * Healthcare_providerCountOutputType without action
+   */
+  export type Healthcare_providerCountOutputTypeCountCreatedPatientProfilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: patient_profileWhereInput
+  }
+
 
   /**
    * Count Type ConversationCountOutputType
@@ -2754,6 +2863,37 @@ export namespace Prisma {
    */
   export type ConversationCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: conversation_messageWhereInput
+  }
+
+
+  /**
+   * Count Type Patient_profileCountOutputType
+   */
+
+  export type Patient_profileCountOutputType = {
+    appointments: number
+  }
+
+  export type Patient_profileCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    appointments?: boolean | Patient_profileCountOutputTypeCountAppointmentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Patient_profileCountOutputType without action
+   */
+  export type Patient_profileCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Patient_profileCountOutputType
+     */
+    select?: Patient_profileCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Patient_profileCountOutputType without action
+   */
+  export type Patient_profileCountOutputTypeCountAppointmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointmentWhereInput
   }
 
 
@@ -5109,6 +5249,7 @@ export namespace Prisma {
   export type AppointmentMinAggregateOutputType = {
     id: string | null
     customerId: string | null
+    patientProfileId: string | null
     healthcareProviderId: string | null
     scheduledAt: Date | null
     status: $Enums.AppointmentStatus | null
@@ -5122,6 +5263,7 @@ export namespace Prisma {
   export type AppointmentMaxAggregateOutputType = {
     id: string | null
     customerId: string | null
+    patientProfileId: string | null
     healthcareProviderId: string | null
     scheduledAt: Date | null
     status: $Enums.AppointmentStatus | null
@@ -5135,6 +5277,7 @@ export namespace Prisma {
   export type AppointmentCountAggregateOutputType = {
     id: number
     customerId: number
+    patientProfileId: number
     healthcareProviderId: number
     scheduledAt: number
     status: number
@@ -5160,6 +5303,7 @@ export namespace Prisma {
   export type AppointmentMinAggregateInputType = {
     id?: true
     customerId?: true
+    patientProfileId?: true
     healthcareProviderId?: true
     scheduledAt?: true
     status?: true
@@ -5173,6 +5317,7 @@ export namespace Prisma {
   export type AppointmentMaxAggregateInputType = {
     id?: true
     customerId?: true
+    patientProfileId?: true
     healthcareProviderId?: true
     scheduledAt?: true
     status?: true
@@ -5186,6 +5331,7 @@ export namespace Prisma {
   export type AppointmentCountAggregateInputType = {
     id?: true
     customerId?: true
+    patientProfileId?: true
     healthcareProviderId?: true
     scheduledAt?: true
     status?: true
@@ -5285,7 +5431,8 @@ export namespace Prisma {
 
   export type AppointmentGroupByOutputType = {
     id: string
-    customerId: string
+    customerId: string | null
+    patientProfileId: string | null
     healthcareProviderId: string
     scheduledAt: Date
     status: $Enums.AppointmentStatus
@@ -5318,6 +5465,7 @@ export namespace Prisma {
   export type appointmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     customerId?: boolean
+    patientProfileId?: boolean
     healthcareProviderId?: boolean
     scheduledAt?: boolean
     status?: boolean
@@ -5326,7 +5474,8 @@ export namespace Prisma {
     notes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customer?: boolean | customerDefaultArgs<ExtArgs>
+    customer?: boolean | appointment$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
     appointmentProcedures?: boolean | appointment$appointmentProceduresArgs<ExtArgs>
     relatedMessages?: boolean | appointment$relatedMessagesArgs<ExtArgs>
@@ -5336,6 +5485,7 @@ export namespace Prisma {
   export type appointmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     customerId?: boolean
+    patientProfileId?: boolean
     healthcareProviderId?: boolean
     scheduledAt?: boolean
     status?: boolean
@@ -5344,13 +5494,15 @@ export namespace Prisma {
     notes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customer?: boolean | customerDefaultArgs<ExtArgs>
+    customer?: boolean | appointment$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["appointment"]>
 
   export type appointmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     customerId?: boolean
+    patientProfileId?: boolean
     healthcareProviderId?: boolean
     scheduledAt?: boolean
     status?: boolean
@@ -5359,13 +5511,15 @@ export namespace Prisma {
     notes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    customer?: boolean | customerDefaultArgs<ExtArgs>
+    customer?: boolean | appointment$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["appointment"]>
 
   export type appointmentSelectScalar = {
     id?: boolean
     customerId?: boolean
+    patientProfileId?: boolean
     healthcareProviderId?: boolean
     scheduledAt?: boolean
     status?: boolean
@@ -5376,34 +5530,39 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type appointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "healthcareProviderId" | "scheduledAt" | "status" | "totalDurationMinutes" | "totalPriceCents" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment"]>
+  export type appointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "patientProfileId" | "healthcareProviderId" | "scheduledAt" | "status" | "totalDurationMinutes" | "totalPriceCents" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment"]>
   export type appointmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | customerDefaultArgs<ExtArgs>
+    customer?: boolean | appointment$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
     appointmentProcedures?: boolean | appointment$appointmentProceduresArgs<ExtArgs>
     relatedMessages?: boolean | appointment$relatedMessagesArgs<ExtArgs>
     _count?: boolean | AppointmentCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type appointmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | customerDefaultArgs<ExtArgs>
+    customer?: boolean | appointment$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
   }
   export type appointmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | customerDefaultArgs<ExtArgs>
+    customer?: boolean | appointment$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
   }
 
   export type $appointmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "appointment"
     objects: {
-      customer: Prisma.$customerPayload<ExtArgs>
+      customer: Prisma.$customerPayload<ExtArgs> | null
+      patientProfile: Prisma.$patient_profilePayload<ExtArgs> | null
       healthcareProvider: Prisma.$healthcare_providerPayload<ExtArgs>
       appointmentProcedures: Prisma.$appointment_procedurePayload<ExtArgs>[]
       relatedMessages: Prisma.$conversation_messagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      customerId: string
+      customerId: string | null
+      patientProfileId: string | null
       healthcareProviderId: string
       scheduledAt: Date
       status: $Enums.AppointmentStatus
@@ -5806,7 +5965,8 @@ export namespace Prisma {
    */
   export interface Prisma__appointmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends customerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, customerDefaultArgs<ExtArgs>>): Prisma__customerClient<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    customer<T extends appointment$customerArgs<ExtArgs> = {}>(args?: Subset<T, appointment$customerArgs<ExtArgs>>): Prisma__customerClient<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    patientProfile<T extends appointment$patientProfileArgs<ExtArgs> = {}>(args?: Subset<T, appointment$patientProfileArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     healthcareProvider<T extends healthcare_providerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_providerDefaultArgs<ExtArgs>>): Prisma__healthcare_providerClient<$Result.GetResult<Prisma.$healthcare_providerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     appointmentProcedures<T extends appointment$appointmentProceduresArgs<ExtArgs> = {}>(args?: Subset<T, appointment$appointmentProceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     relatedMessages<T extends appointment$relatedMessagesArgs<ExtArgs> = {}>(args?: Subset<T, appointment$relatedMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$conversation_messagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -5841,6 +6001,7 @@ export namespace Prisma {
   interface appointmentFieldRefs {
     readonly id: FieldRef<"appointment", 'String'>
     readonly customerId: FieldRef<"appointment", 'String'>
+    readonly patientProfileId: FieldRef<"appointment", 'String'>
     readonly healthcareProviderId: FieldRef<"appointment", 'String'>
     readonly scheduledAt: FieldRef<"appointment", 'DateTime'>
     readonly status: FieldRef<"appointment", 'AppointmentStatus'>
@@ -6247,6 +6408,44 @@ export namespace Prisma {
      * Limit how many appointments to delete.
      */
     limit?: number
+  }
+
+  /**
+   * appointment.customer
+   */
+  export type appointment$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the customer
+     */
+    select?: customerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the customer
+     */
+    omit?: customerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    where?: customerWhereInput
+  }
+
+  /**
+   * appointment.patientProfile
+   */
+  export type appointment$patientProfileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    where?: patient_profileWhereInput
   }
 
   /**
@@ -12069,6 +12268,7 @@ export namespace Prisma {
     conversations?: boolean | customer$conversationsArgs<ExtArgs>
     favoriteProviders?: boolean | customer$favoriteProvidersArgs<ExtArgs>
     medicalRecord?: boolean | customer$medicalRecordArgs<ExtArgs>
+    patientProfiles?: boolean | customer$patientProfilesArgs<ExtArgs>
     _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["customer"]>
 
@@ -12112,6 +12312,7 @@ export namespace Prisma {
     conversations?: boolean | customer$conversationsArgs<ExtArgs>
     favoriteProviders?: boolean | customer$favoriteProvidersArgs<ExtArgs>
     medicalRecord?: boolean | customer$medicalRecordArgs<ExtArgs>
+    patientProfiles?: boolean | customer$patientProfilesArgs<ExtArgs>
     _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type customerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12130,6 +12331,7 @@ export namespace Prisma {
       conversations: Prisma.$conversationPayload<ExtArgs>[]
       favoriteProviders: Prisma.$customer_favorite_providerPayload<ExtArgs>[]
       medicalRecord: Prisma.$customer_medical_recordPayload<ExtArgs> | null
+      patientProfiles: Prisma.$patient_profilePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -12539,6 +12741,7 @@ export namespace Prisma {
     conversations<T extends customer$conversationsArgs<ExtArgs> = {}>(args?: Subset<T, customer$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$conversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favoriteProviders<T extends customer$favoriteProvidersArgs<ExtArgs> = {}>(args?: Subset<T, customer$favoriteProvidersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customer_favorite_providerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     medicalRecord<T extends customer$medicalRecordArgs<ExtArgs> = {}>(args?: Subset<T, customer$medicalRecordArgs<ExtArgs>>): Prisma__customer_medical_recordClient<$Result.GetResult<Prisma.$customer_medical_recordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    patientProfiles<T extends customer$patientProfilesArgs<ExtArgs> = {}>(args?: Subset<T, customer$patientProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13088,6 +13291,30 @@ export namespace Prisma {
      */
     include?: customer_medical_recordInclude<ExtArgs> | null
     where?: customer_medical_recordWhereInput
+  }
+
+  /**
+   * customer.patientProfiles
+   */
+  export type customer$patientProfilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    where?: patient_profileWhereInput
+    orderBy?: patient_profileOrderByWithRelationInput | patient_profileOrderByWithRelationInput[]
+    cursor?: patient_profileWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Patient_profileScalarFieldEnum | Patient_profileScalarFieldEnum[]
   }
 
   /**
@@ -14433,6 +14660,7 @@ export namespace Prisma {
     ratings?: boolean | healthcare_provider$ratingsArgs<ExtArgs>
     conversations?: boolean | healthcare_provider$conversationsArgs<ExtArgs>
     favoritedBy?: boolean | healthcare_provider$favoritedByArgs<ExtArgs>
+    createdPatientProfiles?: boolean | healthcare_provider$createdPatientProfilesArgs<ExtArgs>
     _count?: boolean | Healthcare_providerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["healthcare_provider"]>
 
@@ -14478,6 +14706,7 @@ export namespace Prisma {
     ratings?: boolean | healthcare_provider$ratingsArgs<ExtArgs>
     conversations?: boolean | healthcare_provider$conversationsArgs<ExtArgs>
     favoritedBy?: boolean | healthcare_provider$favoritedByArgs<ExtArgs>
+    createdPatientProfiles?: boolean | healthcare_provider$createdPatientProfilesArgs<ExtArgs>
     _count?: boolean | Healthcare_providerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type healthcare_providerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14498,6 +14727,7 @@ export namespace Prisma {
       ratings: Prisma.$ratingPayload<ExtArgs>[]
       conversations: Prisma.$conversationPayload<ExtArgs>[]
       favoritedBy: Prisma.$customer_favorite_providerPayload<ExtArgs>[]
+      createdPatientProfiles: Prisma.$patient_profilePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -14909,6 +15139,7 @@ export namespace Prisma {
     ratings<T extends healthcare_provider$ratingsArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_provider$ratingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ratingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     conversations<T extends healthcare_provider$conversationsArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_provider$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$conversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favoritedBy<T extends healthcare_provider$favoritedByArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_provider$favoritedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customer_favorite_providerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    createdPatientProfiles<T extends healthcare_provider$createdPatientProfilesArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_provider$createdPatientProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15511,6 +15742,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Customer_favorite_providerScalarFieldEnum | Customer_favorite_providerScalarFieldEnum[]
+  }
+
+  /**
+   * healthcare_provider.createdPatientProfiles
+   */
+  export type healthcare_provider$createdPatientProfilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    where?: patient_profileWhereInput
+    orderBy?: patient_profileOrderByWithRelationInput | patient_profileOrderByWithRelationInput[]
+    cursor?: patient_profileWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Patient_profileScalarFieldEnum | Patient_profileScalarFieldEnum[]
   }
 
   /**
@@ -17879,6 +18134,1392 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: conversation_messageInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model patient_profile
+   */
+
+  export type AggregatePatient_profile = {
+    _count: Patient_profileCountAggregateOutputType | null
+    _min: Patient_profileMinAggregateOutputType | null
+    _max: Patient_profileMaxAggregateOutputType | null
+  }
+
+  export type Patient_profileMinAggregateOutputType = {
+    id: string | null
+    fullName: string | null
+    dateOfBirth: Date | null
+    cpf: string | null
+    phone: string | null
+    email: string | null
+    address: string | null
+    gender: string | null
+    relationshipToCustomer: string | null
+    notes: string | null
+    customerOwnerId: string | null
+    createdByHealthcareProviderId: string | null
+    bloodType: string | null
+    medications: string | null
+    chronicPain: string | null
+    preExistingConditions: string | null
+    allergies: string | null
+    surgeries: string | null
+    familyHistory: string | null
+    lifestyleNotes: string | null
+    emergencyContactName: string | null
+    emergencyContactPhone: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Patient_profileMaxAggregateOutputType = {
+    id: string | null
+    fullName: string | null
+    dateOfBirth: Date | null
+    cpf: string | null
+    phone: string | null
+    email: string | null
+    address: string | null
+    gender: string | null
+    relationshipToCustomer: string | null
+    notes: string | null
+    customerOwnerId: string | null
+    createdByHealthcareProviderId: string | null
+    bloodType: string | null
+    medications: string | null
+    chronicPain: string | null
+    preExistingConditions: string | null
+    allergies: string | null
+    surgeries: string | null
+    familyHistory: string | null
+    lifestyleNotes: string | null
+    emergencyContactName: string | null
+    emergencyContactPhone: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Patient_profileCountAggregateOutputType = {
+    id: number
+    fullName: number
+    dateOfBirth: number
+    cpf: number
+    phone: number
+    email: number
+    address: number
+    gender: number
+    relationshipToCustomer: number
+    notes: number
+    customerOwnerId: number
+    createdByHealthcareProviderId: number
+    bloodType: number
+    medications: number
+    chronicPain: number
+    preExistingConditions: number
+    allergies: number
+    surgeries: number
+    familyHistory: number
+    lifestyleNotes: number
+    emergencyContactName: number
+    emergencyContactPhone: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Patient_profileMinAggregateInputType = {
+    id?: true
+    fullName?: true
+    dateOfBirth?: true
+    cpf?: true
+    phone?: true
+    email?: true
+    address?: true
+    gender?: true
+    relationshipToCustomer?: true
+    notes?: true
+    customerOwnerId?: true
+    createdByHealthcareProviderId?: true
+    bloodType?: true
+    medications?: true
+    chronicPain?: true
+    preExistingConditions?: true
+    allergies?: true
+    surgeries?: true
+    familyHistory?: true
+    lifestyleNotes?: true
+    emergencyContactName?: true
+    emergencyContactPhone?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Patient_profileMaxAggregateInputType = {
+    id?: true
+    fullName?: true
+    dateOfBirth?: true
+    cpf?: true
+    phone?: true
+    email?: true
+    address?: true
+    gender?: true
+    relationshipToCustomer?: true
+    notes?: true
+    customerOwnerId?: true
+    createdByHealthcareProviderId?: true
+    bloodType?: true
+    medications?: true
+    chronicPain?: true
+    preExistingConditions?: true
+    allergies?: true
+    surgeries?: true
+    familyHistory?: true
+    lifestyleNotes?: true
+    emergencyContactName?: true
+    emergencyContactPhone?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Patient_profileCountAggregateInputType = {
+    id?: true
+    fullName?: true
+    dateOfBirth?: true
+    cpf?: true
+    phone?: true
+    email?: true
+    address?: true
+    gender?: true
+    relationshipToCustomer?: true
+    notes?: true
+    customerOwnerId?: true
+    createdByHealthcareProviderId?: true
+    bloodType?: true
+    medications?: true
+    chronicPain?: true
+    preExistingConditions?: true
+    allergies?: true
+    surgeries?: true
+    familyHistory?: true
+    lifestyleNotes?: true
+    emergencyContactName?: true
+    emergencyContactPhone?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Patient_profileAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which patient_profile to aggregate.
+     */
+    where?: patient_profileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of patient_profiles to fetch.
+     */
+    orderBy?: patient_profileOrderByWithRelationInput | patient_profileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: patient_profileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` patient_profiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` patient_profiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned patient_profiles
+    **/
+    _count?: true | Patient_profileCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: Patient_profileMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: Patient_profileMaxAggregateInputType
+  }
+
+  export type GetPatient_profileAggregateType<T extends Patient_profileAggregateArgs> = {
+        [P in keyof T & keyof AggregatePatient_profile]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePatient_profile[P]>
+      : GetScalarType<T[P], AggregatePatient_profile[P]>
+  }
+
+
+
+
+  export type patient_profileGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: patient_profileWhereInput
+    orderBy?: patient_profileOrderByWithAggregationInput | patient_profileOrderByWithAggregationInput[]
+    by: Patient_profileScalarFieldEnum[] | Patient_profileScalarFieldEnum
+    having?: patient_profileScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Patient_profileCountAggregateInputType | true
+    _min?: Patient_profileMinAggregateInputType
+    _max?: Patient_profileMaxAggregateInputType
+  }
+
+  export type Patient_profileGroupByOutputType = {
+    id: string
+    fullName: string
+    dateOfBirth: Date | null
+    cpf: string | null
+    phone: string | null
+    email: string | null
+    address: string | null
+    gender: string | null
+    relationshipToCustomer: string | null
+    notes: string | null
+    customerOwnerId: string | null
+    createdByHealthcareProviderId: string | null
+    bloodType: string | null
+    medications: string | null
+    chronicPain: string | null
+    preExistingConditions: string | null
+    allergies: string | null
+    surgeries: string | null
+    familyHistory: string | null
+    lifestyleNotes: string | null
+    emergencyContactName: string | null
+    emergencyContactPhone: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: Patient_profileCountAggregateOutputType | null
+    _min: Patient_profileMinAggregateOutputType | null
+    _max: Patient_profileMaxAggregateOutputType | null
+  }
+
+  type GetPatient_profileGroupByPayload<T extends patient_profileGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Patient_profileGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Patient_profileGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Patient_profileGroupByOutputType[P]>
+            : GetScalarType<T[P], Patient_profileGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type patient_profileSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fullName?: boolean
+    dateOfBirth?: boolean
+    cpf?: boolean
+    phone?: boolean
+    email?: boolean
+    address?: boolean
+    gender?: boolean
+    relationshipToCustomer?: boolean
+    notes?: boolean
+    customerOwnerId?: boolean
+    createdByHealthcareProviderId?: boolean
+    bloodType?: boolean
+    medications?: boolean
+    chronicPain?: boolean
+    preExistingConditions?: boolean
+    allergies?: boolean
+    surgeries?: boolean
+    familyHistory?: boolean
+    lifestyleNotes?: boolean
+    emergencyContactName?: boolean
+    emergencyContactPhone?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    customerOwner?: boolean | patient_profile$customerOwnerArgs<ExtArgs>
+    createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
+    appointments?: boolean | patient_profile$appointmentsArgs<ExtArgs>
+    _count?: boolean | Patient_profileCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["patient_profile"]>
+
+  export type patient_profileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fullName?: boolean
+    dateOfBirth?: boolean
+    cpf?: boolean
+    phone?: boolean
+    email?: boolean
+    address?: boolean
+    gender?: boolean
+    relationshipToCustomer?: boolean
+    notes?: boolean
+    customerOwnerId?: boolean
+    createdByHealthcareProviderId?: boolean
+    bloodType?: boolean
+    medications?: boolean
+    chronicPain?: boolean
+    preExistingConditions?: boolean
+    allergies?: boolean
+    surgeries?: boolean
+    familyHistory?: boolean
+    lifestyleNotes?: boolean
+    emergencyContactName?: boolean
+    emergencyContactPhone?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    customerOwner?: boolean | patient_profile$customerOwnerArgs<ExtArgs>
+    createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
+  }, ExtArgs["result"]["patient_profile"]>
+
+  export type patient_profileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fullName?: boolean
+    dateOfBirth?: boolean
+    cpf?: boolean
+    phone?: boolean
+    email?: boolean
+    address?: boolean
+    gender?: boolean
+    relationshipToCustomer?: boolean
+    notes?: boolean
+    customerOwnerId?: boolean
+    createdByHealthcareProviderId?: boolean
+    bloodType?: boolean
+    medications?: boolean
+    chronicPain?: boolean
+    preExistingConditions?: boolean
+    allergies?: boolean
+    surgeries?: boolean
+    familyHistory?: boolean
+    lifestyleNotes?: boolean
+    emergencyContactName?: boolean
+    emergencyContactPhone?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    customerOwner?: boolean | patient_profile$customerOwnerArgs<ExtArgs>
+    createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
+  }, ExtArgs["result"]["patient_profile"]>
+
+  export type patient_profileSelectScalar = {
+    id?: boolean
+    fullName?: boolean
+    dateOfBirth?: boolean
+    cpf?: boolean
+    phone?: boolean
+    email?: boolean
+    address?: boolean
+    gender?: boolean
+    relationshipToCustomer?: boolean
+    notes?: boolean
+    customerOwnerId?: boolean
+    createdByHealthcareProviderId?: boolean
+    bloodType?: boolean
+    medications?: boolean
+    chronicPain?: boolean
+    preExistingConditions?: boolean
+    allergies?: boolean
+    surgeries?: boolean
+    familyHistory?: boolean
+    lifestyleNotes?: boolean
+    emergencyContactName?: boolean
+    emergencyContactPhone?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type patient_profileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "dateOfBirth" | "cpf" | "phone" | "email" | "address" | "gender" | "relationshipToCustomer" | "notes" | "customerOwnerId" | "createdByHealthcareProviderId" | "bloodType" | "medications" | "chronicPain" | "preExistingConditions" | "allergies" | "surgeries" | "familyHistory" | "lifestyleNotes" | "emergencyContactName" | "emergencyContactPhone" | "createdAt" | "updatedAt", ExtArgs["result"]["patient_profile"]>
+  export type patient_profileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customerOwner?: boolean | patient_profile$customerOwnerArgs<ExtArgs>
+    createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
+    appointments?: boolean | patient_profile$appointmentsArgs<ExtArgs>
+    _count?: boolean | Patient_profileCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type patient_profileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customerOwner?: boolean | patient_profile$customerOwnerArgs<ExtArgs>
+    createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
+  }
+  export type patient_profileIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customerOwner?: boolean | patient_profile$customerOwnerArgs<ExtArgs>
+    createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
+  }
+
+  export type $patient_profilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "patient_profile"
+    objects: {
+      customerOwner: Prisma.$customerPayload<ExtArgs> | null
+      createdByHealthcareProvider: Prisma.$healthcare_providerPayload<ExtArgs> | null
+      appointments: Prisma.$appointmentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      fullName: string
+      dateOfBirth: Date | null
+      cpf: string | null
+      phone: string | null
+      email: string | null
+      address: string | null
+      gender: string | null
+      relationshipToCustomer: string | null
+      notes: string | null
+      customerOwnerId: string | null
+      createdByHealthcareProviderId: string | null
+      bloodType: string | null
+      medications: string | null
+      chronicPain: string | null
+      preExistingConditions: string | null
+      allergies: string | null
+      surgeries: string | null
+      familyHistory: string | null
+      lifestyleNotes: string | null
+      emergencyContactName: string | null
+      emergencyContactPhone: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["patient_profile"]>
+    composites: {}
+  }
+
+  type patient_profileGetPayload<S extends boolean | null | undefined | patient_profileDefaultArgs> = $Result.GetResult<Prisma.$patient_profilePayload, S>
+
+  type patient_profileCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<patient_profileFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Patient_profileCountAggregateInputType | true
+    }
+
+  export interface patient_profileDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['patient_profile'], meta: { name: 'patient_profile' } }
+    /**
+     * Find zero or one Patient_profile that matches the filter.
+     * @param {patient_profileFindUniqueArgs} args - Arguments to find a Patient_profile
+     * @example
+     * // Get one Patient_profile
+     * const patient_profile = await prisma.patient_profile.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends patient_profileFindUniqueArgs>(args: SelectSubset<T, patient_profileFindUniqueArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Patient_profile that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {patient_profileFindUniqueOrThrowArgs} args - Arguments to find a Patient_profile
+     * @example
+     * // Get one Patient_profile
+     * const patient_profile = await prisma.patient_profile.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends patient_profileFindUniqueOrThrowArgs>(args: SelectSubset<T, patient_profileFindUniqueOrThrowArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Patient_profile that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patient_profileFindFirstArgs} args - Arguments to find a Patient_profile
+     * @example
+     * // Get one Patient_profile
+     * const patient_profile = await prisma.patient_profile.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends patient_profileFindFirstArgs>(args?: SelectSubset<T, patient_profileFindFirstArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Patient_profile that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patient_profileFindFirstOrThrowArgs} args - Arguments to find a Patient_profile
+     * @example
+     * // Get one Patient_profile
+     * const patient_profile = await prisma.patient_profile.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends patient_profileFindFirstOrThrowArgs>(args?: SelectSubset<T, patient_profileFindFirstOrThrowArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Patient_profiles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patient_profileFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Patient_profiles
+     * const patient_profiles = await prisma.patient_profile.findMany()
+     *
+     * // Get first 10 Patient_profiles
+     * const patient_profiles = await prisma.patient_profile.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const patient_profileWithIdOnly = await prisma.patient_profile.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends patient_profileFindManyArgs>(args?: SelectSubset<T, patient_profileFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Patient_profile.
+     * @param {patient_profileCreateArgs} args - Arguments to create a Patient_profile.
+     * @example
+     * // Create one Patient_profile
+     * const Patient_profile = await prisma.patient_profile.create({
+     *   data: {
+     *     // ... data to create a Patient_profile
+     *   }
+     * })
+     *
+     */
+    create<T extends patient_profileCreateArgs>(args: SelectSubset<T, patient_profileCreateArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Patient_profiles.
+     * @param {patient_profileCreateManyArgs} args - Arguments to create many Patient_profiles.
+     * @example
+     * // Create many Patient_profiles
+     * const patient_profile = await prisma.patient_profile.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends patient_profileCreateManyArgs>(args?: SelectSubset<T, patient_profileCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Patient_profiles and returns the data saved in the database.
+     * @param {patient_profileCreateManyAndReturnArgs} args - Arguments to create many Patient_profiles.
+     * @example
+     * // Create many Patient_profiles
+     * const patient_profile = await prisma.patient_profile.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Patient_profiles and only return the `id`
+     * const patient_profileWithIdOnly = await prisma.patient_profile.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends patient_profileCreateManyAndReturnArgs>(args?: SelectSubset<T, patient_profileCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Patient_profile.
+     * @param {patient_profileDeleteArgs} args - Arguments to delete one Patient_profile.
+     * @example
+     * // Delete one Patient_profile
+     * const Patient_profile = await prisma.patient_profile.delete({
+     *   where: {
+     *     // ... filter to delete one Patient_profile
+     *   }
+     * })
+     *
+     */
+    delete<T extends patient_profileDeleteArgs>(args: SelectSubset<T, patient_profileDeleteArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Patient_profile.
+     * @param {patient_profileUpdateArgs} args - Arguments to update one Patient_profile.
+     * @example
+     * // Update one Patient_profile
+     * const patient_profile = await prisma.patient_profile.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends patient_profileUpdateArgs>(args: SelectSubset<T, patient_profileUpdateArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Patient_profiles.
+     * @param {patient_profileDeleteManyArgs} args - Arguments to filter Patient_profiles to delete.
+     * @example
+     * // Delete a few Patient_profiles
+     * const { count } = await prisma.patient_profile.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends patient_profileDeleteManyArgs>(args?: SelectSubset<T, patient_profileDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Patient_profiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patient_profileUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Patient_profiles
+     * const patient_profile = await prisma.patient_profile.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends patient_profileUpdateManyArgs>(args: SelectSubset<T, patient_profileUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Patient_profiles and returns the data updated in the database.
+     * @param {patient_profileUpdateManyAndReturnArgs} args - Arguments to update many Patient_profiles.
+     * @example
+     * // Update many Patient_profiles
+     * const patient_profile = await prisma.patient_profile.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Patient_profiles and only return the `id`
+     * const patient_profileWithIdOnly = await prisma.patient_profile.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends patient_profileUpdateManyAndReturnArgs>(args: SelectSubset<T, patient_profileUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Patient_profile.
+     * @param {patient_profileUpsertArgs} args - Arguments to update or create a Patient_profile.
+     * @example
+     * // Update or create a Patient_profile
+     * const patient_profile = await prisma.patient_profile.upsert({
+     *   create: {
+     *     // ... data to create a Patient_profile
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Patient_profile we want to update
+     *   }
+     * })
+     */
+    upsert<T extends patient_profileUpsertArgs>(args: SelectSubset<T, patient_profileUpsertArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Patient_profiles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patient_profileCountArgs} args - Arguments to filter Patient_profiles to count.
+     * @example
+     * // Count the number of Patient_profiles
+     * const count = await prisma.patient_profile.count({
+     *   where: {
+     *     // ... the filter for the Patient_profiles we want to count
+     *   }
+     * })
+    **/
+    count<T extends patient_profileCountArgs>(
+      args?: Subset<T, patient_profileCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Patient_profileCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Patient_profile.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Patient_profileAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Patient_profileAggregateArgs>(args: Subset<T, Patient_profileAggregateArgs>): Prisma.PrismaPromise<GetPatient_profileAggregateType<T>>
+
+    /**
+     * Group by Patient_profile.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {patient_profileGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<
+      T extends patient_profileGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: patient_profileGroupByArgs['orderBy'] }
+        : { orderBy?: patient_profileGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, patient_profileGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPatient_profileGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the patient_profile model
+   */
+  readonly fields: patient_profileFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for patient_profile.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__patient_profileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    customerOwner<T extends patient_profile$customerOwnerArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$customerOwnerArgs<ExtArgs>>): Prisma__customerClient<$Result.GetResult<Prisma.$customerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    createdByHealthcareProvider<T extends patient_profile$createdByHealthcareProviderArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$createdByHealthcareProviderArgs<ExtArgs>>): Prisma__healthcare_providerClient<$Result.GetResult<Prisma.$healthcare_providerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    appointments<T extends patient_profile$appointmentsArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$appointmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the patient_profile model
+   */
+  interface patient_profileFieldRefs {
+    readonly id: FieldRef<"patient_profile", 'String'>
+    readonly fullName: FieldRef<"patient_profile", 'String'>
+    readonly dateOfBirth: FieldRef<"patient_profile", 'DateTime'>
+    readonly cpf: FieldRef<"patient_profile", 'String'>
+    readonly phone: FieldRef<"patient_profile", 'String'>
+    readonly email: FieldRef<"patient_profile", 'String'>
+    readonly address: FieldRef<"patient_profile", 'String'>
+    readonly gender: FieldRef<"patient_profile", 'String'>
+    readonly relationshipToCustomer: FieldRef<"patient_profile", 'String'>
+    readonly notes: FieldRef<"patient_profile", 'String'>
+    readonly customerOwnerId: FieldRef<"patient_profile", 'String'>
+    readonly createdByHealthcareProviderId: FieldRef<"patient_profile", 'String'>
+    readonly bloodType: FieldRef<"patient_profile", 'String'>
+    readonly medications: FieldRef<"patient_profile", 'String'>
+    readonly chronicPain: FieldRef<"patient_profile", 'String'>
+    readonly preExistingConditions: FieldRef<"patient_profile", 'String'>
+    readonly allergies: FieldRef<"patient_profile", 'String'>
+    readonly surgeries: FieldRef<"patient_profile", 'String'>
+    readonly familyHistory: FieldRef<"patient_profile", 'String'>
+    readonly lifestyleNotes: FieldRef<"patient_profile", 'String'>
+    readonly emergencyContactName: FieldRef<"patient_profile", 'String'>
+    readonly emergencyContactPhone: FieldRef<"patient_profile", 'String'>
+    readonly createdAt: FieldRef<"patient_profile", 'DateTime'>
+    readonly updatedAt: FieldRef<"patient_profile", 'DateTime'>
+  }
+
+
+  // Custom InputTypes
+  /**
+   * patient_profile findUnique
+   */
+  export type patient_profileFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    /**
+     * Filter, which patient_profile to fetch.
+     */
+    where: patient_profileWhereUniqueInput
+  }
+
+  /**
+   * patient_profile findUniqueOrThrow
+   */
+  export type patient_profileFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    /**
+     * Filter, which patient_profile to fetch.
+     */
+    where: patient_profileWhereUniqueInput
+  }
+
+  /**
+   * patient_profile findFirst
+   */
+  export type patient_profileFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    /**
+     * Filter, which patient_profile to fetch.
+     */
+    where?: patient_profileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of patient_profiles to fetch.
+     */
+    orderBy?: patient_profileOrderByWithRelationInput | patient_profileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for patient_profiles.
+     */
+    cursor?: patient_profileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` patient_profiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` patient_profiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of patient_profiles.
+     */
+    distinct?: Patient_profileScalarFieldEnum | Patient_profileScalarFieldEnum[]
+  }
+
+  /**
+   * patient_profile findFirstOrThrow
+   */
+  export type patient_profileFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    /**
+     * Filter, which patient_profile to fetch.
+     */
+    where?: patient_profileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of patient_profiles to fetch.
+     */
+    orderBy?: patient_profileOrderByWithRelationInput | patient_profileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for patient_profiles.
+     */
+    cursor?: patient_profileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` patient_profiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` patient_profiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of patient_profiles.
+     */
+    distinct?: Patient_profileScalarFieldEnum | Patient_profileScalarFieldEnum[]
+  }
+
+  /**
+   * patient_profile findMany
+   */
+  export type patient_profileFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    /**
+     * Filter, which patient_profiles to fetch.
+     */
+    where?: patient_profileWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of patient_profiles to fetch.
+     */
+    orderBy?: patient_profileOrderByWithRelationInput | patient_profileOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing patient_profiles.
+     */
+    cursor?: patient_profileWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` patient_profiles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` patient_profiles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of patient_profiles.
+     */
+    distinct?: Patient_profileScalarFieldEnum | Patient_profileScalarFieldEnum[]
+  }
+
+  /**
+   * patient_profile create
+   */
+  export type patient_profileCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    /**
+     * The data needed to create a patient_profile.
+     */
+    data: XOR<patient_profileCreateInput, patient_profileUncheckedCreateInput>
+  }
+
+  /**
+   * patient_profile createMany
+   */
+  export type patient_profileCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many patient_profiles.
+     */
+    data: patient_profileCreateManyInput | patient_profileCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * patient_profile createManyAndReturn
+   */
+  export type patient_profileCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * The data used to create many patient_profiles.
+     */
+    data: patient_profileCreateManyInput | patient_profileCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * patient_profile update
+   */
+  export type patient_profileUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    /**
+     * The data needed to update a patient_profile.
+     */
+    data: XOR<patient_profileUpdateInput, patient_profileUncheckedUpdateInput>
+    /**
+     * Choose, which patient_profile to update.
+     */
+    where: patient_profileWhereUniqueInput
+  }
+
+  /**
+   * patient_profile updateMany
+   */
+  export type patient_profileUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update patient_profiles.
+     */
+    data: XOR<patient_profileUpdateManyMutationInput, patient_profileUncheckedUpdateManyInput>
+    /**
+     * Filter which patient_profiles to update
+     */
+    where?: patient_profileWhereInput
+    /**
+     * Limit how many patient_profiles to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * patient_profile updateManyAndReturn
+   */
+  export type patient_profileUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * The data used to update patient_profiles.
+     */
+    data: XOR<patient_profileUpdateManyMutationInput, patient_profileUncheckedUpdateManyInput>
+    /**
+     * Filter which patient_profiles to update
+     */
+    where?: patient_profileWhereInput
+    /**
+     * Limit how many patient_profiles to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * patient_profile upsert
+   */
+  export type patient_profileUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    /**
+     * The filter to search for the patient_profile to update in case it exists.
+     */
+    where: patient_profileWhereUniqueInput
+    /**
+     * In case the patient_profile found by the `where` argument doesn't exist, create a new patient_profile with this data.
+     */
+    create: XOR<patient_profileCreateInput, patient_profileUncheckedCreateInput>
+    /**
+     * In case the patient_profile was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<patient_profileUpdateInput, patient_profileUncheckedUpdateInput>
+  }
+
+  /**
+   * patient_profile delete
+   */
+  export type patient_profileDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    /**
+     * Filter which patient_profile to delete.
+     */
+    where: patient_profileWhereUniqueInput
+  }
+
+  /**
+   * patient_profile deleteMany
+   */
+  export type patient_profileDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which patient_profiles to delete
+     */
+    where?: patient_profileWhereInput
+    /**
+     * Limit how many patient_profiles to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * patient_profile.customerOwner
+   */
+  export type patient_profile$customerOwnerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the customer
+     */
+    select?: customerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the customer
+     */
+    omit?: customerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customerInclude<ExtArgs> | null
+    where?: customerWhereInput
+  }
+
+  /**
+   * patient_profile.createdByHealthcareProvider
+   */
+  export type patient_profile$createdByHealthcareProviderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider
+     */
+    select?: healthcare_providerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider
+     */
+    omit?: healthcare_providerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_providerInclude<ExtArgs> | null
+    where?: healthcare_providerWhereInput
+  }
+
+  /**
+   * patient_profile.appointments
+   */
+  export type patient_profile$appointmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment
+     */
+    select?: appointmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment
+     */
+    omit?: appointmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointmentInclude<ExtArgs> | null
+    where?: appointmentWhereInput
+    orderBy?: appointmentOrderByWithRelationInput | appointmentOrderByWithRelationInput[]
+    cursor?: appointmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AppointmentScalarFieldEnum | AppointmentScalarFieldEnum[]
+  }
+
+  /**
+   * patient_profile without action
+   */
+  export type patient_profileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
   }
 
 
@@ -23655,6 +25296,7 @@ export namespace Prisma {
   export const AppointmentScalarFieldEnum: {
     id: 'id',
     customerId: 'customerId',
+    patientProfileId: 'patientProfileId',
     healthcareProviderId: 'healthcareProviderId',
     scheduledAt: 'scheduledAt',
     status: 'status',
@@ -23804,6 +25446,36 @@ export namespace Prisma {
   };
 
   export type Conversation_messageScalarFieldEnum = (typeof Conversation_messageScalarFieldEnum)[keyof typeof Conversation_messageScalarFieldEnum]
+
+
+  export const Patient_profileScalarFieldEnum: {
+    id: 'id',
+    fullName: 'fullName',
+    dateOfBirth: 'dateOfBirth',
+    cpf: 'cpf',
+    phone: 'phone',
+    email: 'email',
+    address: 'address',
+    gender: 'gender',
+    relationshipToCustomer: 'relationshipToCustomer',
+    notes: 'notes',
+    customerOwnerId: 'customerOwnerId',
+    createdByHealthcareProviderId: 'createdByHealthcareProviderId',
+    bloodType: 'bloodType',
+    medications: 'medications',
+    chronicPain: 'chronicPain',
+    preExistingConditions: 'preExistingConditions',
+    allergies: 'allergies',
+    surgeries: 'surgeries',
+    familyHistory: 'familyHistory',
+    lifestyleNotes: 'lifestyleNotes',
+    emergencyContactName: 'emergencyContactName',
+    emergencyContactPhone: 'emergencyContactPhone',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Patient_profileScalarFieldEnum = (typeof Patient_profileScalarFieldEnum)[keyof typeof Patient_profileScalarFieldEnum]
 
 
   export const ProcedureScalarFieldEnum: {
@@ -24194,7 +25866,8 @@ export namespace Prisma {
     OR?: appointmentWhereInput[]
     NOT?: appointmentWhereInput | appointmentWhereInput[]
     id?: StringFilter<"appointment"> | string
-    customerId?: StringFilter<"appointment"> | string
+    customerId?: StringNullableFilter<"appointment"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment"> | string | null
     healthcareProviderId?: StringFilter<"appointment"> | string
     scheduledAt?: DateTimeFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
@@ -24203,7 +25876,8 @@ export namespace Prisma {
     notes?: StringNullableFilter<"appointment"> | string | null
     createdAt?: DateTimeFilter<"appointment"> | Date | string
     updatedAt?: DateTimeFilter<"appointment"> | Date | string
-    customer?: XOR<CustomerScalarRelationFilter, customerWhereInput>
+    customer?: XOR<CustomerNullableScalarRelationFilter, customerWhereInput> | null
+    patientProfile?: XOR<Patient_profileNullableScalarRelationFilter, patient_profileWhereInput> | null
     healthcareProvider?: XOR<Healthcare_providerScalarRelationFilter, healthcare_providerWhereInput>
     appointmentProcedures?: Appointment_procedureListRelationFilter
     relatedMessages?: Conversation_messageListRelationFilter
@@ -24211,7 +25885,8 @@ export namespace Prisma {
 
   export type appointmentOrderByWithRelationInput = {
     id?: SortOrder
-    customerId?: SortOrder
+    customerId?: SortOrderInput | SortOrder
+    patientProfileId?: SortOrderInput | SortOrder
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
@@ -24221,6 +25896,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     customer?: customerOrderByWithRelationInput
+    patientProfile?: patient_profileOrderByWithRelationInput
     healthcareProvider?: healthcare_providerOrderByWithRelationInput
     appointmentProcedures?: appointment_procedureOrderByRelationAggregateInput
     relatedMessages?: conversation_messageOrderByRelationAggregateInput
@@ -24231,7 +25907,8 @@ export namespace Prisma {
     AND?: appointmentWhereInput | appointmentWhereInput[]
     OR?: appointmentWhereInput[]
     NOT?: appointmentWhereInput | appointmentWhereInput[]
-    customerId?: StringFilter<"appointment"> | string
+    customerId?: StringNullableFilter<"appointment"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment"> | string | null
     healthcareProviderId?: StringFilter<"appointment"> | string
     scheduledAt?: DateTimeFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
@@ -24240,7 +25917,8 @@ export namespace Prisma {
     notes?: StringNullableFilter<"appointment"> | string | null
     createdAt?: DateTimeFilter<"appointment"> | Date | string
     updatedAt?: DateTimeFilter<"appointment"> | Date | string
-    customer?: XOR<CustomerScalarRelationFilter, customerWhereInput>
+    customer?: XOR<CustomerNullableScalarRelationFilter, customerWhereInput> | null
+    patientProfile?: XOR<Patient_profileNullableScalarRelationFilter, patient_profileWhereInput> | null
     healthcareProvider?: XOR<Healthcare_providerScalarRelationFilter, healthcare_providerWhereInput>
     appointmentProcedures?: Appointment_procedureListRelationFilter
     relatedMessages?: Conversation_messageListRelationFilter
@@ -24248,7 +25926,8 @@ export namespace Prisma {
 
   export type appointmentOrderByWithAggregationInput = {
     id?: SortOrder
-    customerId?: SortOrder
+    customerId?: SortOrderInput | SortOrder
+    patientProfileId?: SortOrderInput | SortOrder
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
@@ -24269,7 +25948,8 @@ export namespace Prisma {
     OR?: appointmentScalarWhereWithAggregatesInput[]
     NOT?: appointmentScalarWhereWithAggregatesInput | appointmentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"appointment"> | string
-    customerId?: StringWithAggregatesFilter<"appointment"> | string
+    customerId?: StringNullableWithAggregatesFilter<"appointment"> | string | null
+    patientProfileId?: StringNullableWithAggregatesFilter<"appointment"> | string | null
     healthcareProviderId?: StringWithAggregatesFilter<"appointment"> | string
     scheduledAt?: DateTimeWithAggregatesFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusWithAggregatesFilter<"appointment"> | $Enums.AppointmentStatus
@@ -24645,6 +26325,7 @@ export namespace Prisma {
     conversations?: ConversationListRelationFilter
     favoriteProviders?: Customer_favorite_providerListRelationFilter
     medicalRecord?: XOR<Customer_medical_recordNullableScalarRelationFilter, customer_medical_recordWhereInput> | null
+    patientProfiles?: Patient_profileListRelationFilter
   }
 
   export type customerOrderByWithRelationInput = {
@@ -24661,6 +26342,7 @@ export namespace Prisma {
     conversations?: conversationOrderByRelationAggregateInput
     favoriteProviders?: customer_favorite_providerOrderByRelationAggregateInput
     medicalRecord?: customer_medical_recordOrderByWithRelationInput
+    patientProfiles?: patient_profileOrderByRelationAggregateInput
   }
 
   export type customerWhereUniqueInput = Prisma.AtLeast<{
@@ -24680,6 +26362,7 @@ export namespace Prisma {
     conversations?: ConversationListRelationFilter
     favoriteProviders?: Customer_favorite_providerListRelationFilter
     medicalRecord?: XOR<Customer_medical_recordNullableScalarRelationFilter, customer_medical_recordWhereInput> | null
+    patientProfiles?: Patient_profileListRelationFilter
   }, "id" | "userId">
 
   export type customerOrderByWithAggregationInput = {
@@ -24799,6 +26482,7 @@ export namespace Prisma {
     ratings?: RatingListRelationFilter
     conversations?: ConversationListRelationFilter
     favoritedBy?: Customer_favorite_providerListRelationFilter
+    createdPatientProfiles?: Patient_profileListRelationFilter
   }
 
   export type healthcare_providerOrderByWithRelationInput = {
@@ -24817,6 +26501,7 @@ export namespace Prisma {
     ratings?: ratingOrderByRelationAggregateInput
     conversations?: conversationOrderByRelationAggregateInput
     favoritedBy?: customer_favorite_providerOrderByRelationAggregateInput
+    createdPatientProfiles?: patient_profileOrderByRelationAggregateInput
   }
 
   export type healthcare_providerWhereUniqueInput = Prisma.AtLeast<{
@@ -24838,6 +26523,7 @@ export namespace Prisma {
     ratings?: RatingListRelationFilter
     conversations?: ConversationListRelationFilter
     favoritedBy?: Customer_favorite_providerListRelationFilter
+    createdPatientProfiles?: Patient_profileListRelationFilter
   }, "id" | "userId">
 
   export type healthcare_providerOrderByWithAggregationInput = {
@@ -25034,6 +26720,162 @@ export namespace Prisma {
     fileMimeType?: StringNullableWithAggregatesFilter<"conversation_message"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"conversation_message"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"conversation_message"> | Date | string
+  }
+
+  export type patient_profileWhereInput = {
+    AND?: patient_profileWhereInput | patient_profileWhereInput[]
+    OR?: patient_profileWhereInput[]
+    NOT?: patient_profileWhereInput | patient_profileWhereInput[]
+    id?: StringFilter<"patient_profile"> | string
+    fullName?: StringFilter<"patient_profile"> | string
+    dateOfBirth?: DateTimeNullableFilter<"patient_profile"> | Date | string | null
+    cpf?: StringNullableFilter<"patient_profile"> | string | null
+    phone?: StringNullableFilter<"patient_profile"> | string | null
+    email?: StringNullableFilter<"patient_profile"> | string | null
+    address?: StringNullableFilter<"patient_profile"> | string | null
+    gender?: StringNullableFilter<"patient_profile"> | string | null
+    relationshipToCustomer?: StringNullableFilter<"patient_profile"> | string | null
+    notes?: StringNullableFilter<"patient_profile"> | string | null
+    customerOwnerId?: StringNullableFilter<"patient_profile"> | string | null
+    createdByHealthcareProviderId?: StringNullableFilter<"patient_profile"> | string | null
+    bloodType?: StringNullableFilter<"patient_profile"> | string | null
+    medications?: StringNullableFilter<"patient_profile"> | string | null
+    chronicPain?: StringNullableFilter<"patient_profile"> | string | null
+    preExistingConditions?: StringNullableFilter<"patient_profile"> | string | null
+    allergies?: StringNullableFilter<"patient_profile"> | string | null
+    surgeries?: StringNullableFilter<"patient_profile"> | string | null
+    familyHistory?: StringNullableFilter<"patient_profile"> | string | null
+    lifestyleNotes?: StringNullableFilter<"patient_profile"> | string | null
+    emergencyContactName?: StringNullableFilter<"patient_profile"> | string | null
+    emergencyContactPhone?: StringNullableFilter<"patient_profile"> | string | null
+    createdAt?: DateTimeFilter<"patient_profile"> | Date | string
+    updatedAt?: DateTimeFilter<"patient_profile"> | Date | string
+    customerOwner?: XOR<CustomerNullableScalarRelationFilter, customerWhereInput> | null
+    createdByHealthcareProvider?: XOR<Healthcare_providerNullableScalarRelationFilter, healthcare_providerWhereInput> | null
+    appointments?: AppointmentListRelationFilter
+  }
+
+  export type patient_profileOrderByWithRelationInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    dateOfBirth?: SortOrderInput | SortOrder
+    cpf?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    relationshipToCustomer?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    customerOwnerId?: SortOrderInput | SortOrder
+    createdByHealthcareProviderId?: SortOrderInput | SortOrder
+    bloodType?: SortOrderInput | SortOrder
+    medications?: SortOrderInput | SortOrder
+    chronicPain?: SortOrderInput | SortOrder
+    preExistingConditions?: SortOrderInput | SortOrder
+    allergies?: SortOrderInput | SortOrder
+    surgeries?: SortOrderInput | SortOrder
+    familyHistory?: SortOrderInput | SortOrder
+    lifestyleNotes?: SortOrderInput | SortOrder
+    emergencyContactName?: SortOrderInput | SortOrder
+    emergencyContactPhone?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    customerOwner?: customerOrderByWithRelationInput
+    createdByHealthcareProvider?: healthcare_providerOrderByWithRelationInput
+    appointments?: appointmentOrderByRelationAggregateInput
+  }
+
+  export type patient_profileWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: patient_profileWhereInput | patient_profileWhereInput[]
+    OR?: patient_profileWhereInput[]
+    NOT?: patient_profileWhereInput | patient_profileWhereInput[]
+    fullName?: StringFilter<"patient_profile"> | string
+    dateOfBirth?: DateTimeNullableFilter<"patient_profile"> | Date | string | null
+    cpf?: StringNullableFilter<"patient_profile"> | string | null
+    phone?: StringNullableFilter<"patient_profile"> | string | null
+    email?: StringNullableFilter<"patient_profile"> | string | null
+    address?: StringNullableFilter<"patient_profile"> | string | null
+    gender?: StringNullableFilter<"patient_profile"> | string | null
+    relationshipToCustomer?: StringNullableFilter<"patient_profile"> | string | null
+    notes?: StringNullableFilter<"patient_profile"> | string | null
+    customerOwnerId?: StringNullableFilter<"patient_profile"> | string | null
+    createdByHealthcareProviderId?: StringNullableFilter<"patient_profile"> | string | null
+    bloodType?: StringNullableFilter<"patient_profile"> | string | null
+    medications?: StringNullableFilter<"patient_profile"> | string | null
+    chronicPain?: StringNullableFilter<"patient_profile"> | string | null
+    preExistingConditions?: StringNullableFilter<"patient_profile"> | string | null
+    allergies?: StringNullableFilter<"patient_profile"> | string | null
+    surgeries?: StringNullableFilter<"patient_profile"> | string | null
+    familyHistory?: StringNullableFilter<"patient_profile"> | string | null
+    lifestyleNotes?: StringNullableFilter<"patient_profile"> | string | null
+    emergencyContactName?: StringNullableFilter<"patient_profile"> | string | null
+    emergencyContactPhone?: StringNullableFilter<"patient_profile"> | string | null
+    createdAt?: DateTimeFilter<"patient_profile"> | Date | string
+    updatedAt?: DateTimeFilter<"patient_profile"> | Date | string
+    customerOwner?: XOR<CustomerNullableScalarRelationFilter, customerWhereInput> | null
+    createdByHealthcareProvider?: XOR<Healthcare_providerNullableScalarRelationFilter, healthcare_providerWhereInput> | null
+    appointments?: AppointmentListRelationFilter
+  }, "id">
+
+  export type patient_profileOrderByWithAggregationInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    dateOfBirth?: SortOrderInput | SortOrder
+    cpf?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    relationshipToCustomer?: SortOrderInput | SortOrder
+    notes?: SortOrderInput | SortOrder
+    customerOwnerId?: SortOrderInput | SortOrder
+    createdByHealthcareProviderId?: SortOrderInput | SortOrder
+    bloodType?: SortOrderInput | SortOrder
+    medications?: SortOrderInput | SortOrder
+    chronicPain?: SortOrderInput | SortOrder
+    preExistingConditions?: SortOrderInput | SortOrder
+    allergies?: SortOrderInput | SortOrder
+    surgeries?: SortOrderInput | SortOrder
+    familyHistory?: SortOrderInput | SortOrder
+    lifestyleNotes?: SortOrderInput | SortOrder
+    emergencyContactName?: SortOrderInput | SortOrder
+    emergencyContactPhone?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: patient_profileCountOrderByAggregateInput
+    _max?: patient_profileMaxOrderByAggregateInput
+    _min?: patient_profileMinOrderByAggregateInput
+  }
+
+  export type patient_profileScalarWhereWithAggregatesInput = {
+    AND?: patient_profileScalarWhereWithAggregatesInput | patient_profileScalarWhereWithAggregatesInput[]
+    OR?: patient_profileScalarWhereWithAggregatesInput[]
+    NOT?: patient_profileScalarWhereWithAggregatesInput | patient_profileScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"patient_profile"> | string
+    fullName?: StringWithAggregatesFilter<"patient_profile"> | string
+    dateOfBirth?: DateTimeNullableWithAggregatesFilter<"patient_profile"> | Date | string | null
+    cpf?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    email?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    address?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    gender?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    relationshipToCustomer?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    notes?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    customerOwnerId?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    createdByHealthcareProviderId?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    bloodType?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    medications?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    chronicPain?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    preExistingConditions?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    allergies?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    surgeries?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    familyHistory?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    lifestyleNotes?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    emergencyContactName?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    emergencyContactPhone?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"patient_profile"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"patient_profile"> | Date | string
   }
 
   export type procedureWhereInput = {
@@ -25579,7 +27421,8 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    customer: customerCreateNestedOneWithoutAppointmentsInput
+    customer?: customerCreateNestedOneWithoutAppointmentsInput
+    patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: healthcare_providerCreateNestedOneWithoutAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
@@ -25587,7 +27430,8 @@ export namespace Prisma {
 
   export type appointmentUncheckedCreateInput = {
     id?: string
-    customerId: string
+    customerId?: string | null
+    patientProfileId?: string | null
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
@@ -25609,7 +27453,8 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUpdateOneRequiredWithoutAppointmentsNestedInput
+    customer?: customerUpdateOneWithoutAppointmentsNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: healthcare_providerUpdateOneRequiredWithoutAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
@@ -25617,7 +27462,8 @@ export namespace Prisma {
 
   export type appointmentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
@@ -25632,7 +27478,8 @@ export namespace Prisma {
 
   export type appointmentCreateManyInput = {
     id?: string
-    customerId: string
+    customerId?: string | null
+    patientProfileId?: string | null
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
@@ -25656,7 +27503,8 @@ export namespace Prisma {
 
   export type appointmentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
@@ -26046,6 +27894,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerUncheckedCreateInput = {
@@ -26061,6 +27910,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerUpdateInput = {
@@ -26076,6 +27926,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type customerUncheckedUpdateInput = {
@@ -26091,6 +27942,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type customerCreateManyInput = {
@@ -26213,6 +28065,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateInput = {
@@ -26230,6 +28083,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUpdateInput = {
@@ -26247,6 +28101,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateInput = {
@@ -26264,6 +28119,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerCreateManyInput = {
@@ -26465,6 +28321,197 @@ export namespace Prisma {
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type patient_profileCreateInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customerOwner?: customerCreateNestedOneWithoutPatientProfilesInput
+    createdByHealthcareProvider?: healthcare_providerCreateNestedOneWithoutCreatedPatientProfilesInput
+    appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileUncheckedCreateInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    customerOwnerId?: string | null
+    createdByHealthcareProviderId?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customerOwner?: customerUpdateOneWithoutPatientProfilesNestedInput
+    createdByHealthcareProvider?: healthcare_providerUpdateOneWithoutCreatedPatientProfilesNestedInput
+    appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type patient_profileUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    customerOwnerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdByHealthcareProviderId?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type patient_profileCreateManyInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    customerOwnerId?: string | null
+    createdByHealthcareProviderId?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type patient_profileUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type patient_profileUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    customerOwnerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdByHealthcareProviderId?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -27105,9 +29152,14 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type CustomerScalarRelationFilter = {
-    is?: customerWhereInput
-    isNot?: customerWhereInput
+  export type CustomerNullableScalarRelationFilter = {
+    is?: customerWhereInput | null
+    isNot?: customerWhereInput | null
+  }
+
+  export type Patient_profileNullableScalarRelationFilter = {
+    is?: patient_profileWhereInput | null
+    isNot?: patient_profileWhereInput | null
   }
 
   export type Healthcare_providerScalarRelationFilter = {
@@ -27138,6 +29190,7 @@ export namespace Prisma {
   export type appointmentCountOrderByAggregateInput = {
     id?: SortOrder
     customerId?: SortOrder
+    patientProfileId?: SortOrder
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
@@ -27156,6 +29209,7 @@ export namespace Prisma {
   export type appointmentMaxOrderByAggregateInput = {
     id?: SortOrder
     customerId?: SortOrder
+    patientProfileId?: SortOrder
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
@@ -27169,6 +29223,7 @@ export namespace Prisma {
   export type appointmentMinOrderByAggregateInput = {
     id?: SortOrder
     customerId?: SortOrder
+    patientProfileId?: SortOrder
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
@@ -27381,6 +29436,11 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type CustomerScalarRelationFilter = {
+    is?: customerWhereInput
+    isNot?: customerWhereInput
+  }
+
   export type customer_favorite_providerCustomerIdHealthcareProviderIdCompoundUniqueInput = {
     customerId: string
     healthcareProviderId: string
@@ -27484,6 +29544,12 @@ export namespace Prisma {
     isNot?: customer_medical_recordWhereInput | null
   }
 
+  export type Patient_profileListRelationFilter = {
+    every?: patient_profileWhereInput
+    some?: patient_profileWhereInput
+    none?: patient_profileWhereInput
+  }
+
   export type appointmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -27497,6 +29563,10 @@ export namespace Prisma {
   }
 
   export type customer_favorite_providerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type patient_profileOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -27793,6 +29863,92 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type Healthcare_providerNullableScalarRelationFilter = {
+    is?: healthcare_providerWhereInput | null
+    isNot?: healthcare_providerWhereInput | null
+  }
+
+  export type patient_profileCountOrderByAggregateInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    dateOfBirth?: SortOrder
+    cpf?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
+    gender?: SortOrder
+    relationshipToCustomer?: SortOrder
+    notes?: SortOrder
+    customerOwnerId?: SortOrder
+    createdByHealthcareProviderId?: SortOrder
+    bloodType?: SortOrder
+    medications?: SortOrder
+    chronicPain?: SortOrder
+    preExistingConditions?: SortOrder
+    allergies?: SortOrder
+    surgeries?: SortOrder
+    familyHistory?: SortOrder
+    lifestyleNotes?: SortOrder
+    emergencyContactName?: SortOrder
+    emergencyContactPhone?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type patient_profileMaxOrderByAggregateInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    dateOfBirth?: SortOrder
+    cpf?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
+    gender?: SortOrder
+    relationshipToCustomer?: SortOrder
+    notes?: SortOrder
+    customerOwnerId?: SortOrder
+    createdByHealthcareProviderId?: SortOrder
+    bloodType?: SortOrder
+    medications?: SortOrder
+    chronicPain?: SortOrder
+    preExistingConditions?: SortOrder
+    allergies?: SortOrder
+    surgeries?: SortOrder
+    familyHistory?: SortOrder
+    lifestyleNotes?: SortOrder
+    emergencyContactName?: SortOrder
+    emergencyContactPhone?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type patient_profileMinOrderByAggregateInput = {
+    id?: SortOrder
+    fullName?: SortOrder
+    dateOfBirth?: SortOrder
+    cpf?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
+    gender?: SortOrder
+    relationshipToCustomer?: SortOrder
+    notes?: SortOrder
+    customerOwnerId?: SortOrder
+    createdByHealthcareProviderId?: SortOrder
+    bloodType?: SortOrder
+    medications?: SortOrder
+    chronicPain?: SortOrder
+    preExistingConditions?: SortOrder
+    allergies?: SortOrder
+    surgeries?: SortOrder
+    familyHistory?: SortOrder
+    lifestyleNotes?: SortOrder
+    emergencyContactName?: SortOrder
+    emergencyContactPhone?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type procedureCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -27935,16 +30091,6 @@ export namespace Prisma {
     every?: clinicWhereInput
     some?: clinicWhereInput
     none?: clinicWhereInput
-  }
-
-  export type Healthcare_providerNullableScalarRelationFilter = {
-    is?: healthcare_providerWhereInput | null
-    isNot?: healthcare_providerWhereInput | null
-  }
-
-  export type CustomerNullableScalarRelationFilter = {
-    is?: customerWhereInput | null
-    isNot?: customerWhereInput | null
   }
 
   export type sessionOrderByRelationAggregateInput = {
@@ -28102,6 +30248,12 @@ export namespace Prisma {
     connect?: customerWhereUniqueInput
   }
 
+  export type patient_profileCreateNestedOneWithoutAppointmentsInput = {
+    create?: XOR<patient_profileCreateWithoutAppointmentsInput, patient_profileUncheckedCreateWithoutAppointmentsInput>
+    connectOrCreate?: patient_profileCreateOrConnectWithoutAppointmentsInput
+    connect?: patient_profileWhereUniqueInput
+  }
+
   export type healthcare_providerCreateNestedOneWithoutAppointmentsInput = {
     create?: XOR<healthcare_providerCreateWithoutAppointmentsInput, healthcare_providerUncheckedCreateWithoutAppointmentsInput>
     connectOrCreate?: healthcare_providerCreateOrConnectWithoutAppointmentsInput
@@ -28148,12 +30300,24 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type customerUpdateOneRequiredWithoutAppointmentsNestedInput = {
+  export type customerUpdateOneWithoutAppointmentsNestedInput = {
     create?: XOR<customerCreateWithoutAppointmentsInput, customerUncheckedCreateWithoutAppointmentsInput>
     connectOrCreate?: customerCreateOrConnectWithoutAppointmentsInput
     upsert?: customerUpsertWithoutAppointmentsInput
+    disconnect?: customerWhereInput | boolean
+    delete?: customerWhereInput | boolean
     connect?: customerWhereUniqueInput
     update?: XOR<XOR<customerUpdateToOneWithWhereWithoutAppointmentsInput, customerUpdateWithoutAppointmentsInput>, customerUncheckedUpdateWithoutAppointmentsInput>
+  }
+
+  export type patient_profileUpdateOneWithoutAppointmentsNestedInput = {
+    create?: XOR<patient_profileCreateWithoutAppointmentsInput, patient_profileUncheckedCreateWithoutAppointmentsInput>
+    connectOrCreate?: patient_profileCreateOrConnectWithoutAppointmentsInput
+    upsert?: patient_profileUpsertWithoutAppointmentsInput
+    disconnect?: patient_profileWhereInput | boolean
+    delete?: patient_profileWhereInput | boolean
+    connect?: patient_profileWhereUniqueInput
+    update?: XOR<XOR<patient_profileUpdateToOneWithWhereWithoutAppointmentsInput, patient_profileUpdateWithoutAppointmentsInput>, patient_profileUncheckedUpdateWithoutAppointmentsInput>
   }
 
   export type healthcare_providerUpdateOneRequiredWithoutAppointmentsNestedInput = {
@@ -28436,6 +30600,13 @@ export namespace Prisma {
     connect?: customer_medical_recordWhereUniqueInput
   }
 
+  export type patient_profileCreateNestedManyWithoutCustomerOwnerInput = {
+    create?: XOR<patient_profileCreateWithoutCustomerOwnerInput, patient_profileUncheckedCreateWithoutCustomerOwnerInput> | patient_profileCreateWithoutCustomerOwnerInput[] | patient_profileUncheckedCreateWithoutCustomerOwnerInput[]
+    connectOrCreate?: patient_profileCreateOrConnectWithoutCustomerOwnerInput | patient_profileCreateOrConnectWithoutCustomerOwnerInput[]
+    createMany?: patient_profileCreateManyCustomerOwnerInputEnvelope
+    connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+  }
+
   export type appointmentUncheckedCreateNestedManyWithoutCustomerInput = {
     create?: XOR<appointmentCreateWithoutCustomerInput, appointmentUncheckedCreateWithoutCustomerInput> | appointmentCreateWithoutCustomerInput[] | appointmentUncheckedCreateWithoutCustomerInput[]
     connectOrCreate?: appointmentCreateOrConnectWithoutCustomerInput | appointmentCreateOrConnectWithoutCustomerInput[]
@@ -28468,6 +30639,13 @@ export namespace Prisma {
     create?: XOR<customer_medical_recordCreateWithoutCustomerInput, customer_medical_recordUncheckedCreateWithoutCustomerInput>
     connectOrCreate?: customer_medical_recordCreateOrConnectWithoutCustomerInput
     connect?: customer_medical_recordWhereUniqueInput
+  }
+
+  export type patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput = {
+    create?: XOR<patient_profileCreateWithoutCustomerOwnerInput, patient_profileUncheckedCreateWithoutCustomerOwnerInput> | patient_profileCreateWithoutCustomerOwnerInput[] | patient_profileUncheckedCreateWithoutCustomerOwnerInput[]
+    connectOrCreate?: patient_profileCreateOrConnectWithoutCustomerOwnerInput | patient_profileCreateOrConnectWithoutCustomerOwnerInput[]
+    createMany?: patient_profileCreateManyCustomerOwnerInputEnvelope
+    connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
   }
 
   export type userUpdateOneRequiredWithoutCustomerNestedInput = {
@@ -28544,6 +30722,20 @@ export namespace Prisma {
     update?: XOR<XOR<customer_medical_recordUpdateToOneWithWhereWithoutCustomerInput, customer_medical_recordUpdateWithoutCustomerInput>, customer_medical_recordUncheckedUpdateWithoutCustomerInput>
   }
 
+  export type patient_profileUpdateManyWithoutCustomerOwnerNestedInput = {
+    create?: XOR<patient_profileCreateWithoutCustomerOwnerInput, patient_profileUncheckedCreateWithoutCustomerOwnerInput> | patient_profileCreateWithoutCustomerOwnerInput[] | patient_profileUncheckedCreateWithoutCustomerOwnerInput[]
+    connectOrCreate?: patient_profileCreateOrConnectWithoutCustomerOwnerInput | patient_profileCreateOrConnectWithoutCustomerOwnerInput[]
+    upsert?: patient_profileUpsertWithWhereUniqueWithoutCustomerOwnerInput | patient_profileUpsertWithWhereUniqueWithoutCustomerOwnerInput[]
+    createMany?: patient_profileCreateManyCustomerOwnerInputEnvelope
+    set?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    disconnect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    delete?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    update?: patient_profileUpdateWithWhereUniqueWithoutCustomerOwnerInput | patient_profileUpdateWithWhereUniqueWithoutCustomerOwnerInput[]
+    updateMany?: patient_profileUpdateManyWithWhereWithoutCustomerOwnerInput | patient_profileUpdateManyWithWhereWithoutCustomerOwnerInput[]
+    deleteMany?: patient_profileScalarWhereInput | patient_profileScalarWhereInput[]
+  }
+
   export type appointmentUncheckedUpdateManyWithoutCustomerNestedInput = {
     create?: XOR<appointmentCreateWithoutCustomerInput, appointmentUncheckedCreateWithoutCustomerInput> | appointmentCreateWithoutCustomerInput[] | appointmentUncheckedCreateWithoutCustomerInput[]
     connectOrCreate?: appointmentCreateOrConnectWithoutCustomerInput | appointmentCreateOrConnectWithoutCustomerInput[]
@@ -28608,6 +30800,20 @@ export namespace Prisma {
     delete?: customer_medical_recordWhereInput | boolean
     connect?: customer_medical_recordWhereUniqueInput
     update?: XOR<XOR<customer_medical_recordUpdateToOneWithWhereWithoutCustomerInput, customer_medical_recordUpdateWithoutCustomerInput>, customer_medical_recordUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput = {
+    create?: XOR<patient_profileCreateWithoutCustomerOwnerInput, patient_profileUncheckedCreateWithoutCustomerOwnerInput> | patient_profileCreateWithoutCustomerOwnerInput[] | patient_profileUncheckedCreateWithoutCustomerOwnerInput[]
+    connectOrCreate?: patient_profileCreateOrConnectWithoutCustomerOwnerInput | patient_profileCreateOrConnectWithoutCustomerOwnerInput[]
+    upsert?: patient_profileUpsertWithWhereUniqueWithoutCustomerOwnerInput | patient_profileUpsertWithWhereUniqueWithoutCustomerOwnerInput[]
+    createMany?: patient_profileCreateManyCustomerOwnerInputEnvelope
+    set?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    disconnect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    delete?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    update?: patient_profileUpdateWithWhereUniqueWithoutCustomerOwnerInput | patient_profileUpdateWithWhereUniqueWithoutCustomerOwnerInput[]
+    updateMany?: patient_profileUpdateManyWithWhereWithoutCustomerOwnerInput | patient_profileUpdateManyWithWhereWithoutCustomerOwnerInput[]
+    deleteMany?: patient_profileScalarWhereInput | patient_profileScalarWhereInput[]
   }
 
   export type healthcare_providerCreateNestedOneWithoutSchedulesInput = {
@@ -28683,6 +30889,13 @@ export namespace Prisma {
     connect?: customer_favorite_providerWhereUniqueInput | customer_favorite_providerWhereUniqueInput[]
   }
 
+  export type patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput = {
+    create?: XOR<patient_profileCreateWithoutCreatedByHealthcareProviderInput, patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput> | patient_profileCreateWithoutCreatedByHealthcareProviderInput[] | patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput[]
+    connectOrCreate?: patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput | patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput[]
+    createMany?: patient_profileCreateManyCreatedByHealthcareProviderInputEnvelope
+    connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+  }
+
   export type procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput = {
     create?: XOR<procedureCreateWithoutHealthcareProviderInput, procedureUncheckedCreateWithoutHealthcareProviderInput> | procedureCreateWithoutHealthcareProviderInput[] | procedureUncheckedCreateWithoutHealthcareProviderInput[]
     connectOrCreate?: procedureCreateOrConnectWithoutHealthcareProviderInput | procedureCreateOrConnectWithoutHealthcareProviderInput[]
@@ -28730,6 +30943,13 @@ export namespace Prisma {
     connectOrCreate?: customer_favorite_providerCreateOrConnectWithoutHealthcareProviderInput | customer_favorite_providerCreateOrConnectWithoutHealthcareProviderInput[]
     createMany?: customer_favorite_providerCreateManyHealthcareProviderInputEnvelope
     connect?: customer_favorite_providerWhereUniqueInput | customer_favorite_providerWhereUniqueInput[]
+  }
+
+  export type patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput = {
+    create?: XOR<patient_profileCreateWithoutCreatedByHealthcareProviderInput, patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput> | patient_profileCreateWithoutCreatedByHealthcareProviderInput[] | patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput[]
+    connectOrCreate?: patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput | patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput[]
+    createMany?: patient_profileCreateManyCreatedByHealthcareProviderInputEnvelope
+    connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
   }
 
   export type userUpdateOneRequiredWithoutHealthcareProviderNestedInput = {
@@ -28838,6 +31058,20 @@ export namespace Prisma {
     deleteMany?: customer_favorite_providerScalarWhereInput | customer_favorite_providerScalarWhereInput[]
   }
 
+  export type patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput = {
+    create?: XOR<patient_profileCreateWithoutCreatedByHealthcareProviderInput, patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput> | patient_profileCreateWithoutCreatedByHealthcareProviderInput[] | patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput[]
+    connectOrCreate?: patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput | patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput[]
+    upsert?: patient_profileUpsertWithWhereUniqueWithoutCreatedByHealthcareProviderInput | patient_profileUpsertWithWhereUniqueWithoutCreatedByHealthcareProviderInput[]
+    createMany?: patient_profileCreateManyCreatedByHealthcareProviderInputEnvelope
+    set?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    disconnect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    delete?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    update?: patient_profileUpdateWithWhereUniqueWithoutCreatedByHealthcareProviderInput | patient_profileUpdateWithWhereUniqueWithoutCreatedByHealthcareProviderInput[]
+    updateMany?: patient_profileUpdateManyWithWhereWithoutCreatedByHealthcareProviderInput | patient_profileUpdateManyWithWhereWithoutCreatedByHealthcareProviderInput[]
+    deleteMany?: patient_profileScalarWhereInput | patient_profileScalarWhereInput[]
+  }
+
   export type procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput = {
     create?: XOR<procedureCreateWithoutHealthcareProviderInput, procedureUncheckedCreateWithoutHealthcareProviderInput> | procedureCreateWithoutHealthcareProviderInput[] | procedureUncheckedCreateWithoutHealthcareProviderInput[]
     connectOrCreate?: procedureCreateOrConnectWithoutHealthcareProviderInput | procedureCreateOrConnectWithoutHealthcareProviderInput[]
@@ -28934,6 +31168,20 @@ export namespace Prisma {
     update?: customer_favorite_providerUpdateWithWhereUniqueWithoutHealthcareProviderInput | customer_favorite_providerUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
     updateMany?: customer_favorite_providerUpdateManyWithWhereWithoutHealthcareProviderInput | customer_favorite_providerUpdateManyWithWhereWithoutHealthcareProviderInput[]
     deleteMany?: customer_favorite_providerScalarWhereInput | customer_favorite_providerScalarWhereInput[]
+  }
+
+  export type patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput = {
+    create?: XOR<patient_profileCreateWithoutCreatedByHealthcareProviderInput, patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput> | patient_profileCreateWithoutCreatedByHealthcareProviderInput[] | patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput[]
+    connectOrCreate?: patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput | patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput[]
+    upsert?: patient_profileUpsertWithWhereUniqueWithoutCreatedByHealthcareProviderInput | patient_profileUpsertWithWhereUniqueWithoutCreatedByHealthcareProviderInput[]
+    createMany?: patient_profileCreateManyCreatedByHealthcareProviderInputEnvelope
+    set?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    disconnect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    delete?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+    update?: patient_profileUpdateWithWhereUniqueWithoutCreatedByHealthcareProviderInput | patient_profileUpdateWithWhereUniqueWithoutCreatedByHealthcareProviderInput[]
+    updateMany?: patient_profileUpdateManyWithWhereWithoutCreatedByHealthcareProviderInput | patient_profileUpdateManyWithWhereWithoutCreatedByHealthcareProviderInput[]
+    deleteMany?: patient_profileScalarWhereInput | patient_profileScalarWhereInput[]
   }
 
   export type customerCreateNestedOneWithoutConversationsInput = {
@@ -29064,6 +31312,80 @@ export namespace Prisma {
     delete?: appointmentWhereInput | boolean
     connect?: appointmentWhereUniqueInput
     update?: XOR<XOR<appointmentUpdateToOneWithWhereWithoutRelatedMessagesInput, appointmentUpdateWithoutRelatedMessagesInput>, appointmentUncheckedUpdateWithoutRelatedMessagesInput>
+  }
+
+  export type customerCreateNestedOneWithoutPatientProfilesInput = {
+    create?: XOR<customerCreateWithoutPatientProfilesInput, customerUncheckedCreateWithoutPatientProfilesInput>
+    connectOrCreate?: customerCreateOrConnectWithoutPatientProfilesInput
+    connect?: customerWhereUniqueInput
+  }
+
+  export type healthcare_providerCreateNestedOneWithoutCreatedPatientProfilesInput = {
+    create?: XOR<healthcare_providerCreateWithoutCreatedPatientProfilesInput, healthcare_providerUncheckedCreateWithoutCreatedPatientProfilesInput>
+    connectOrCreate?: healthcare_providerCreateOrConnectWithoutCreatedPatientProfilesInput
+    connect?: healthcare_providerWhereUniqueInput
+  }
+
+  export type appointmentCreateNestedManyWithoutPatientProfileInput = {
+    create?: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput> | appointmentCreateWithoutPatientProfileInput[] | appointmentUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutPatientProfileInput | appointmentCreateOrConnectWithoutPatientProfileInput[]
+    createMany?: appointmentCreateManyPatientProfileInputEnvelope
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+  }
+
+  export type appointmentUncheckedCreateNestedManyWithoutPatientProfileInput = {
+    create?: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput> | appointmentCreateWithoutPatientProfileInput[] | appointmentUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutPatientProfileInput | appointmentCreateOrConnectWithoutPatientProfileInput[]
+    createMany?: appointmentCreateManyPatientProfileInputEnvelope
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+  }
+
+  export type customerUpdateOneWithoutPatientProfilesNestedInput = {
+    create?: XOR<customerCreateWithoutPatientProfilesInput, customerUncheckedCreateWithoutPatientProfilesInput>
+    connectOrCreate?: customerCreateOrConnectWithoutPatientProfilesInput
+    upsert?: customerUpsertWithoutPatientProfilesInput
+    disconnect?: customerWhereInput | boolean
+    delete?: customerWhereInput | boolean
+    connect?: customerWhereUniqueInput
+    update?: XOR<XOR<customerUpdateToOneWithWhereWithoutPatientProfilesInput, customerUpdateWithoutPatientProfilesInput>, customerUncheckedUpdateWithoutPatientProfilesInput>
+  }
+
+  export type healthcare_providerUpdateOneWithoutCreatedPatientProfilesNestedInput = {
+    create?: XOR<healthcare_providerCreateWithoutCreatedPatientProfilesInput, healthcare_providerUncheckedCreateWithoutCreatedPatientProfilesInput>
+    connectOrCreate?: healthcare_providerCreateOrConnectWithoutCreatedPatientProfilesInput
+    upsert?: healthcare_providerUpsertWithoutCreatedPatientProfilesInput
+    disconnect?: healthcare_providerWhereInput | boolean
+    delete?: healthcare_providerWhereInput | boolean
+    connect?: healthcare_providerWhereUniqueInput
+    update?: XOR<XOR<healthcare_providerUpdateToOneWithWhereWithoutCreatedPatientProfilesInput, healthcare_providerUpdateWithoutCreatedPatientProfilesInput>, healthcare_providerUncheckedUpdateWithoutCreatedPatientProfilesInput>
+  }
+
+  export type appointmentUpdateManyWithoutPatientProfileNestedInput = {
+    create?: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput> | appointmentCreateWithoutPatientProfileInput[] | appointmentUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutPatientProfileInput | appointmentCreateOrConnectWithoutPatientProfileInput[]
+    upsert?: appointmentUpsertWithWhereUniqueWithoutPatientProfileInput | appointmentUpsertWithWhereUniqueWithoutPatientProfileInput[]
+    createMany?: appointmentCreateManyPatientProfileInputEnvelope
+    set?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    disconnect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    delete?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    update?: appointmentUpdateWithWhereUniqueWithoutPatientProfileInput | appointmentUpdateWithWhereUniqueWithoutPatientProfileInput[]
+    updateMany?: appointmentUpdateManyWithWhereWithoutPatientProfileInput | appointmentUpdateManyWithWhereWithoutPatientProfileInput[]
+    deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+  }
+
+  export type appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput = {
+    create?: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput> | appointmentCreateWithoutPatientProfileInput[] | appointmentUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutPatientProfileInput | appointmentCreateOrConnectWithoutPatientProfileInput[]
+    upsert?: appointmentUpsertWithWhereUniqueWithoutPatientProfileInput | appointmentUpsertWithWhereUniqueWithoutPatientProfileInput[]
+    createMany?: appointmentCreateManyPatientProfileInputEnvelope
+    set?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    disconnect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    delete?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    update?: appointmentUpdateWithWhereUniqueWithoutPatientProfileInput | appointmentUpdateWithWhereUniqueWithoutPatientProfileInput[]
+    updateMany?: appointmentUpdateManyWithWhereWithoutPatientProfileInput | appointmentUpdateManyWithWhereWithoutPatientProfileInput[]
+    deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
   }
 
   export type healthcare_providerCreateNestedOneWithoutProceduresInput = {
@@ -29845,14 +32167,16 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    customer: customerCreateNestedOneWithoutAppointmentsInput
+    customer?: customerCreateNestedOneWithoutAppointmentsInput
+    patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: healthcare_providerCreateNestedOneWithoutAppointmentsInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutAppointmentProceduresInput = {
     id?: string
-    customerId: string
+    customerId?: string | null
+    patientProfileId?: string | null
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
@@ -29916,14 +32240,16 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUpdateOneRequiredWithoutAppointmentsNestedInput
+    customer?: customerUpdateOneWithoutAppointmentsNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: healthcare_providerUpdateOneRequiredWithoutAppointmentsNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutAppointmentProceduresInput = {
     id?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
@@ -29980,6 +32306,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerUncheckedCreateWithoutAppointmentsInput = {
@@ -29994,11 +32321,71 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerCreateOrConnectWithoutAppointmentsInput = {
     where: customerWhereUniqueInput
     create: XOR<customerCreateWithoutAppointmentsInput, customerUncheckedCreateWithoutAppointmentsInput>
+  }
+
+  export type patient_profileCreateWithoutAppointmentsInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customerOwner?: customerCreateNestedOneWithoutPatientProfilesInput
+    createdByHealthcareProvider?: healthcare_providerCreateNestedOneWithoutCreatedPatientProfilesInput
+  }
+
+  export type patient_profileUncheckedCreateWithoutAppointmentsInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    customerOwnerId?: string | null
+    createdByHealthcareProviderId?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type patient_profileCreateOrConnectWithoutAppointmentsInput = {
+    where: patient_profileWhereUniqueInput
+    create: XOR<patient_profileCreateWithoutAppointmentsInput, patient_profileUncheckedCreateWithoutAppointmentsInput>
   }
 
   export type healthcare_providerCreateWithoutAppointmentsInput = {
@@ -30015,6 +32402,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutAppointmentsInput = {
@@ -30031,6 +32419,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutAppointmentsInput = {
@@ -30123,6 +32512,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type customerUncheckedUpdateWithoutAppointmentsInput = {
@@ -30137,6 +32527,72 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+  }
+
+  export type patient_profileUpsertWithoutAppointmentsInput = {
+    update: XOR<patient_profileUpdateWithoutAppointmentsInput, patient_profileUncheckedUpdateWithoutAppointmentsInput>
+    create: XOR<patient_profileCreateWithoutAppointmentsInput, patient_profileUncheckedCreateWithoutAppointmentsInput>
+    where?: patient_profileWhereInput
+  }
+
+  export type patient_profileUpdateToOneWithWhereWithoutAppointmentsInput = {
+    where?: patient_profileWhereInput
+    data: XOR<patient_profileUpdateWithoutAppointmentsInput, patient_profileUncheckedUpdateWithoutAppointmentsInput>
+  }
+
+  export type patient_profileUpdateWithoutAppointmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customerOwner?: customerUpdateOneWithoutPatientProfilesNestedInput
+    createdByHealthcareProvider?: healthcare_providerUpdateOneWithoutCreatedPatientProfilesNestedInput
+  }
+
+  export type patient_profileUncheckedUpdateWithoutAppointmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    customerOwnerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdByHealthcareProviderId?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type healthcare_providerUpsertWithoutAppointmentsInput = {
@@ -30164,6 +32620,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutAppointmentsInput = {
@@ -30180,6 +32637,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type appointment_procedureUpsertWithWhereUniqueWithoutAppointmentInput = {
@@ -30305,6 +32763,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutCategoriesInput = {
@@ -30321,6 +32780,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutCategoriesInput = {
@@ -30374,6 +32834,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutCategoriesInput = {
@@ -30390,6 +32851,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type categoryUpsertWithoutHealthcareProviderCategoriesInput = {
@@ -30605,6 +33067,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutCustomerInput
     conversations?: conversationCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerUncheckedCreateWithoutFavoriteProvidersInput = {
@@ -30619,6 +33082,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
     conversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerCreateOrConnectWithoutFavoriteProvidersInput = {
@@ -30640,6 +33104,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutFavoritedByInput = {
@@ -30656,6 +33121,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutFavoritedByInput = {
@@ -30686,6 +33152,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutCustomerNestedInput
     conversations?: conversationUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type customerUncheckedUpdateWithoutFavoriteProvidersInput = {
@@ -30700,6 +33167,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type healthcare_providerUpsertWithoutFavoritedByInput = {
@@ -30727,6 +33195,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutFavoritedByInput = {
@@ -30743,6 +33212,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type customerCreateWithoutMedicalRecordInput = {
@@ -30757,6 +33227,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutCustomerInput
     conversations?: conversationCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerUncheckedCreateWithoutMedicalRecordInput = {
@@ -30771,6 +33242,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
     conversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerCreateOrConnectWithoutMedicalRecordInput = {
@@ -30801,6 +33273,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutCustomerNestedInput
     conversations?: conversationUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type customerUncheckedUpdateWithoutMedicalRecordInput = {
@@ -30815,6 +33288,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type userCreateWithoutCustomerInput = {
@@ -30871,6 +33345,7 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: healthcare_providerCreateNestedOneWithoutAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
@@ -30878,6 +33353,7 @@ export namespace Prisma {
 
   export type appointmentUncheckedCreateWithoutCustomerInput = {
     id?: string
+    patientProfileId?: string | null
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
@@ -31013,6 +33489,70 @@ export namespace Prisma {
     create: XOR<customer_medical_recordCreateWithoutCustomerInput, customer_medical_recordUncheckedCreateWithoutCustomerInput>
   }
 
+  export type patient_profileCreateWithoutCustomerOwnerInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdByHealthcareProvider?: healthcare_providerCreateNestedOneWithoutCreatedPatientProfilesInput
+    appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileUncheckedCreateWithoutCustomerOwnerInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    createdByHealthcareProviderId?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileCreateOrConnectWithoutCustomerOwnerInput = {
+    where: patient_profileWhereUniqueInput
+    create: XOR<patient_profileCreateWithoutCustomerOwnerInput, patient_profileUncheckedCreateWithoutCustomerOwnerInput>
+  }
+
+  export type patient_profileCreateManyCustomerOwnerInputEnvelope = {
+    data: patient_profileCreateManyCustomerOwnerInput | patient_profileCreateManyCustomerOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
   export type userUpsertWithoutCustomerInput = {
     update: XOR<userUpdateWithoutCustomerInput, userUncheckedUpdateWithoutCustomerInput>
     create: XOR<userCreateWithoutCustomerInput, userUncheckedCreateWithoutCustomerInput>
@@ -31085,7 +33625,8 @@ export namespace Prisma {
     OR?: appointmentScalarWhereInput[]
     NOT?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
     id?: StringFilter<"appointment"> | string
-    customerId?: StringFilter<"appointment"> | string
+    customerId?: StringNullableFilter<"appointment"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment"> | string | null
     healthcareProviderId?: StringFilter<"appointment"> | string
     scheduledAt?: DateTimeFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
@@ -31221,6 +33762,52 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type patient_profileUpsertWithWhereUniqueWithoutCustomerOwnerInput = {
+    where: patient_profileWhereUniqueInput
+    update: XOR<patient_profileUpdateWithoutCustomerOwnerInput, patient_profileUncheckedUpdateWithoutCustomerOwnerInput>
+    create: XOR<patient_profileCreateWithoutCustomerOwnerInput, patient_profileUncheckedCreateWithoutCustomerOwnerInput>
+  }
+
+  export type patient_profileUpdateWithWhereUniqueWithoutCustomerOwnerInput = {
+    where: patient_profileWhereUniqueInput
+    data: XOR<patient_profileUpdateWithoutCustomerOwnerInput, patient_profileUncheckedUpdateWithoutCustomerOwnerInput>
+  }
+
+  export type patient_profileUpdateManyWithWhereWithoutCustomerOwnerInput = {
+    where: patient_profileScalarWhereInput
+    data: XOR<patient_profileUpdateManyMutationInput, patient_profileUncheckedUpdateManyWithoutCustomerOwnerInput>
+  }
+
+  export type patient_profileScalarWhereInput = {
+    AND?: patient_profileScalarWhereInput | patient_profileScalarWhereInput[]
+    OR?: patient_profileScalarWhereInput[]
+    NOT?: patient_profileScalarWhereInput | patient_profileScalarWhereInput[]
+    id?: StringFilter<"patient_profile"> | string
+    fullName?: StringFilter<"patient_profile"> | string
+    dateOfBirth?: DateTimeNullableFilter<"patient_profile"> | Date | string | null
+    cpf?: StringNullableFilter<"patient_profile"> | string | null
+    phone?: StringNullableFilter<"patient_profile"> | string | null
+    email?: StringNullableFilter<"patient_profile"> | string | null
+    address?: StringNullableFilter<"patient_profile"> | string | null
+    gender?: StringNullableFilter<"patient_profile"> | string | null
+    relationshipToCustomer?: StringNullableFilter<"patient_profile"> | string | null
+    notes?: StringNullableFilter<"patient_profile"> | string | null
+    customerOwnerId?: StringNullableFilter<"patient_profile"> | string | null
+    createdByHealthcareProviderId?: StringNullableFilter<"patient_profile"> | string | null
+    bloodType?: StringNullableFilter<"patient_profile"> | string | null
+    medications?: StringNullableFilter<"patient_profile"> | string | null
+    chronicPain?: StringNullableFilter<"patient_profile"> | string | null
+    preExistingConditions?: StringNullableFilter<"patient_profile"> | string | null
+    allergies?: StringNullableFilter<"patient_profile"> | string | null
+    surgeries?: StringNullableFilter<"patient_profile"> | string | null
+    familyHistory?: StringNullableFilter<"patient_profile"> | string | null
+    lifestyleNotes?: StringNullableFilter<"patient_profile"> | string | null
+    emergencyContactName?: StringNullableFilter<"patient_profile"> | string | null
+    emergencyContactPhone?: StringNullableFilter<"patient_profile"> | string | null
+    createdAt?: DateTimeFilter<"patient_profile"> | Date | string
+    updatedAt?: DateTimeFilter<"patient_profile"> | Date | string
+  }
+
   export type healthcare_providerCreateWithoutSchedulesInput = {
     id?: string
     specialty?: string | null
@@ -31235,6 +33822,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutSchedulesInput = {
@@ -31251,6 +33839,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutSchedulesInput = {
@@ -31283,6 +33872,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutSchedulesInput = {
@@ -31299,6 +33889,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type userCreateWithoutHealthcareProviderInput = {
@@ -31387,14 +33978,16 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    customer: customerCreateNestedOneWithoutAppointmentsInput
+    customer?: customerCreateNestedOneWithoutAppointmentsInput
+    patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutHealthcareProviderInput = {
     id?: string
-    customerId: string
+    customerId?: string | null
+    patientProfileId?: string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     totalDurationMinutes: number
@@ -31541,6 +34134,70 @@ export namespace Prisma {
 
   export type customer_favorite_providerCreateManyHealthcareProviderInputEnvelope = {
     data: customer_favorite_providerCreateManyHealthcareProviderInput | customer_favorite_providerCreateManyHealthcareProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type patient_profileCreateWithoutCreatedByHealthcareProviderInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customerOwner?: customerCreateNestedOneWithoutPatientProfilesInput
+    appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    customerOwnerId?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput = {
+    where: patient_profileWhereUniqueInput
+    create: XOR<patient_profileCreateWithoutCreatedByHealthcareProviderInput, patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput>
+  }
+
+  export type patient_profileCreateManyCreatedByHealthcareProviderInputEnvelope = {
+    data: patient_profileCreateManyCreatedByHealthcareProviderInput | patient_profileCreateManyCreatedByHealthcareProviderInput[]
     skipDuplicates?: boolean
   }
 
@@ -31735,6 +34392,22 @@ export namespace Prisma {
     data: XOR<customer_favorite_providerUpdateManyMutationInput, customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderInput>
   }
 
+  export type patient_profileUpsertWithWhereUniqueWithoutCreatedByHealthcareProviderInput = {
+    where: patient_profileWhereUniqueInput
+    update: XOR<patient_profileUpdateWithoutCreatedByHealthcareProviderInput, patient_profileUncheckedUpdateWithoutCreatedByHealthcareProviderInput>
+    create: XOR<patient_profileCreateWithoutCreatedByHealthcareProviderInput, patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput>
+  }
+
+  export type patient_profileUpdateWithWhereUniqueWithoutCreatedByHealthcareProviderInput = {
+    where: patient_profileWhereUniqueInput
+    data: XOR<patient_profileUpdateWithoutCreatedByHealthcareProviderInput, patient_profileUncheckedUpdateWithoutCreatedByHealthcareProviderInput>
+  }
+
+  export type patient_profileUpdateManyWithWhereWithoutCreatedByHealthcareProviderInput = {
+    where: patient_profileScalarWhereInput
+    data: XOR<patient_profileUpdateManyMutationInput, patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderInput>
+  }
+
   export type customerCreateWithoutConversationsInput = {
     id?: string
     cpf?: string | null
@@ -31747,6 +34420,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerUncheckedCreateWithoutConversationsInput = {
@@ -31761,6 +34435,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerCreateOrConnectWithoutConversationsInput = {
@@ -31782,6 +34457,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutConversationsInput = {
@@ -31798,6 +34474,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutConversationsInput = {
@@ -31868,6 +34545,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type customerUncheckedUpdateWithoutConversationsInput = {
@@ -31882,6 +34560,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type healthcare_providerUpsertWithoutConversationsInput = {
@@ -31909,6 +34588,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutConversationsInput = {
@@ -31925,6 +34605,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type conversation_messageUpsertWithWhereUniqueWithoutConversationInput = {
@@ -32020,14 +34701,16 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    customer: customerCreateNestedOneWithoutAppointmentsInput
+    customer?: customerCreateNestedOneWithoutAppointmentsInput
+    patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: healthcare_providerCreateNestedOneWithoutAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutRelatedMessagesInput = {
     id?: string
-    customerId: string
+    customerId?: string | null
+    patientProfileId?: string | null
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
@@ -32144,14 +34827,16 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUpdateOneRequiredWithoutAppointmentsNestedInput
+    customer?: customerUpdateOneWithoutAppointmentsNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: healthcare_providerUpdateOneRequiredWithoutAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutRelatedMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
@@ -32161,6 +34846,222 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
+  }
+
+  export type customerCreateWithoutPatientProfilesInput = {
+    id?: string
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: userCreateNestedOneWithoutCustomerInput
+    appointments?: appointmentCreateNestedManyWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    conversations?: conversationCreateNestedManyWithoutCustomerInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+  }
+
+  export type customerUncheckedCreateWithoutPatientProfilesInput = {
+    id?: string
+    userId: string
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    conversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+  }
+
+  export type customerCreateOrConnectWithoutPatientProfilesInput = {
+    where: customerWhereUniqueInput
+    create: XOR<customerCreateWithoutPatientProfilesInput, customerUncheckedCreateWithoutPatientProfilesInput>
+  }
+
+  export type healthcare_providerCreateWithoutCreatedPatientProfilesInput = {
+    id?: string
+    specialty?: string | null
+    professionalId?: string | null
+    bio?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: userCreateNestedOneWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    appointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    categories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+  }
+
+  export type healthcare_providerUncheckedCreateWithoutCreatedPatientProfilesInput = {
+    id?: string
+    userId: string
+    specialty?: string | null
+    professionalId?: string | null
+    bio?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    appointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    categories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+  }
+
+  export type healthcare_providerCreateOrConnectWithoutCreatedPatientProfilesInput = {
+    where: healthcare_providerWhereUniqueInput
+    create: XOR<healthcare_providerCreateWithoutCreatedPatientProfilesInput, healthcare_providerUncheckedCreateWithoutCreatedPatientProfilesInput>
+  }
+
+  export type appointmentCreateWithoutPatientProfileInput = {
+    id?: string
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: customerCreateNestedOneWithoutAppointmentsInput
+    healthcareProvider: healthcare_providerCreateNestedOneWithoutAppointmentsInput
+    appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
+  }
+
+  export type appointmentUncheckedCreateWithoutPatientProfileInput = {
+    id?: string
+    customerId?: string | null
+    healthcareProviderId: string
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
+  }
+
+  export type appointmentCreateOrConnectWithoutPatientProfileInput = {
+    where: appointmentWhereUniqueInput
+    create: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput>
+  }
+
+  export type appointmentCreateManyPatientProfileInputEnvelope = {
+    data: appointmentCreateManyPatientProfileInput | appointmentCreateManyPatientProfileInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type customerUpsertWithoutPatientProfilesInput = {
+    update: XOR<customerUpdateWithoutPatientProfilesInput, customerUncheckedUpdateWithoutPatientProfilesInput>
+    create: XOR<customerCreateWithoutPatientProfilesInput, customerUncheckedCreateWithoutPatientProfilesInput>
+    where?: customerWhereInput
+  }
+
+  export type customerUpdateToOneWithWhereWithoutPatientProfilesInput = {
+    where?: customerWhereInput
+    data: XOR<customerUpdateWithoutPatientProfilesInput, customerUncheckedUpdateWithoutPatientProfilesInput>
+  }
+
+  export type customerUpdateWithoutPatientProfilesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: userUpdateOneRequiredWithoutCustomerNestedInput
+    appointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    conversations?: conversationUpdateManyWithoutCustomerNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+  }
+
+  export type customerUncheckedUpdateWithoutPatientProfilesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    conversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+  }
+
+  export type healthcare_providerUpsertWithoutCreatedPatientProfilesInput = {
+    update: XOR<healthcare_providerUpdateWithoutCreatedPatientProfilesInput, healthcare_providerUncheckedUpdateWithoutCreatedPatientProfilesInput>
+    create: XOR<healthcare_providerCreateWithoutCreatedPatientProfilesInput, healthcare_providerUncheckedCreateWithoutCreatedPatientProfilesInput>
+    where?: healthcare_providerWhereInput
+  }
+
+  export type healthcare_providerUpdateToOneWithWhereWithoutCreatedPatientProfilesInput = {
+    where?: healthcare_providerWhereInput
+    data: XOR<healthcare_providerUpdateWithoutCreatedPatientProfilesInput, healthcare_providerUncheckedUpdateWithoutCreatedPatientProfilesInput>
+  }
+
+  export type healthcare_providerUpdateWithoutCreatedPatientProfilesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    appointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    categories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+  }
+
+  export type healthcare_providerUncheckedUpdateWithoutCreatedPatientProfilesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    appointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    categories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+  }
+
+  export type appointmentUpsertWithWhereUniqueWithoutPatientProfileInput = {
+    where: appointmentWhereUniqueInput
+    update: XOR<appointmentUpdateWithoutPatientProfileInput, appointmentUncheckedUpdateWithoutPatientProfileInput>
+    create: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput>
+  }
+
+  export type appointmentUpdateWithWhereUniqueWithoutPatientProfileInput = {
+    where: appointmentWhereUniqueInput
+    data: XOR<appointmentUpdateWithoutPatientProfileInput, appointmentUncheckedUpdateWithoutPatientProfileInput>
+  }
+
+  export type appointmentUpdateManyWithWhereWithoutPatientProfileInput = {
+    where: appointmentScalarWhereInput
+    data: XOR<appointmentUpdateManyMutationInput, appointmentUncheckedUpdateManyWithoutPatientProfileInput>
   }
 
   export type healthcare_providerCreateWithoutProceduresInput = {
@@ -32177,6 +35078,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutProceduresInput = {
@@ -32193,6 +35095,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutProceduresInput = {
@@ -32247,6 +35150,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutProceduresInput = {
@@ -32263,6 +35167,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type appointment_procedureUpsertWithWhereUniqueWithoutProcedureInput = {
@@ -32293,6 +35198,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerUncheckedCreateWithoutRatingsInput = {
@@ -32307,6 +35213,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerCreateOrConnectWithoutRatingsInput = {
@@ -32328,6 +35235,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutRatingsInput = {
@@ -32344,6 +35252,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutRatingsInput = {
@@ -32374,6 +35283,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type customerUncheckedUpdateWithoutRatingsInput = {
@@ -32388,6 +35298,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type healthcare_providerUpsertWithoutRatingsInput = {
@@ -32415,6 +35326,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutRatingsInput = {
@@ -32431,6 +35343,7 @@ export namespace Prisma {
     categories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type userCreateWithoutSessionsInput = {
@@ -32684,6 +35597,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutUserInput = {
@@ -32700,6 +35614,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutUserInput = {
@@ -32719,6 +35634,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerUncheckedCreateWithoutUserInput = {
@@ -32733,6 +35649,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
     favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
     medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
   }
 
   export type customerCreateOrConnectWithoutUserInput = {
@@ -32919,6 +35836,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutUserInput = {
@@ -32935,6 +35853,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
   }
 
   export type customerUpsertWithoutUserInput = {
@@ -32960,6 +35879,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type customerUncheckedUpdateWithoutUserInput = {
@@ -32974,6 +35894,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
     favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
     medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
   }
 
   export type conversation_messageUpsertWithWhereUniqueWithoutSenderInput = {
@@ -33156,6 +36077,7 @@ export namespace Prisma {
 
   export type appointmentCreateManyCustomerInput = {
     id?: string
+    patientProfileId?: string | null
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
@@ -33188,6 +36110,32 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type patient_profileCreateManyCustomerOwnerInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    createdByHealthcareProviderId?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type appointmentUpdateWithoutCustomerInput = {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33197,6 +36145,7 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: healthcare_providerUpdateOneRequiredWithoutAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
@@ -33204,6 +36153,7 @@ export namespace Prisma {
 
   export type appointmentUncheckedUpdateWithoutCustomerInput = {
     id?: StringFieldUpdateOperationsInput | string
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
@@ -33218,6 +36168,7 @@ export namespace Prisma {
 
   export type appointmentUncheckedUpdateManyWithoutCustomerInput = {
     id?: StringFieldUpdateOperationsInput | string
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
@@ -33296,6 +36247,86 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type patient_profileUpdateWithoutCustomerOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdByHealthcareProvider?: healthcare_providerUpdateOneWithoutCreatedPatientProfilesNestedInput
+    appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type patient_profileUncheckedUpdateWithoutCustomerOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdByHealthcareProviderId?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type patient_profileUncheckedUpdateManyWithoutCustomerOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdByHealthcareProviderId?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type procedureCreateManyHealthcareProviderInput = {
     id?: string
     name: string
@@ -33308,7 +36339,8 @@ export namespace Prisma {
 
   export type appointmentCreateManyHealthcareProviderInput = {
     id?: string
-    customerId: string
+    customerId?: string | null
+    patientProfileId?: string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     totalDurationMinutes: number
@@ -33356,6 +36388,32 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type patient_profileCreateManyCreatedByHealthcareProviderInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    customerOwnerId?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type procedureUpdateWithoutHealthcareProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -33397,14 +36455,16 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    customer?: customerUpdateOneRequiredWithoutAppointmentsNestedInput
+    customer?: customerUpdateOneWithoutAppointmentsNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutHealthcareProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
@@ -33418,7 +36478,8 @@ export namespace Prisma {
 
   export type appointmentUncheckedUpdateManyWithoutHealthcareProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
@@ -33544,6 +36605,86 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type patient_profileUpdateWithoutCreatedByHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customerOwner?: customerUpdateOneWithoutPatientProfilesNestedInput
+    appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type patient_profileUncheckedUpdateWithoutCreatedByHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    customerOwnerId?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    customerOwnerId?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type conversation_messageCreateManyConversationInput = {
     id?: string
     senderId: string
@@ -33600,6 +36741,62 @@ export namespace Prisma {
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointmentCreateManyPatientProfileInput = {
+    id?: string
+    customerId?: string | null
+    healthcareProviderId: string
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointmentUpdateWithoutPatientProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: customerUpdateOneWithoutAppointmentsNestedInput
+    healthcareProvider?: healthcare_providerUpdateOneRequiredWithoutAppointmentsNestedInput
+    appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
+  }
+
+  export type appointmentUncheckedUpdateWithoutPatientProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
+  }
+
+  export type appointmentUncheckedUpdateManyWithoutPatientProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -24,6 +24,7 @@ const includeRelations = {
 			},
 		},
 	},
+	patientProfile: true,
 	healthcareProvider: {
 		include: {
 			user: {
@@ -163,6 +164,37 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 		return Boolean(appointment);
 	},
 
+	async existsConfirmedByCustomerAndProvider(
+		customerId: string,
+		healthcareProviderId: string,
+	) {
+		const appointment = await prisma.appointment.findFirst({
+			where: {
+				customerId,
+				healthcareProviderId,
+				status: "CONFIRMED",
+			},
+			select: { id: true },
+		});
+
+		return Boolean(appointment);
+	},
+
+	async existsByPatientProfileAndProvider(
+		patientProfileId: string,
+		healthcareProviderId: string,
+	) {
+		const appointment = await prisma.appointment.findFirst({
+			where: {
+				patientProfileId,
+				healthcareProviderId,
+			},
+			select: { id: true },
+		});
+
+		return Boolean(appointment);
+	},
+
 	async create(data: CreateAppointmentData) {
 		const procedures = await prisma.procedure.findMany({
 			where: {
@@ -184,12 +216,13 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 		const appointment = await prisma.appointment.create({
 			data: {
 				customerId: data.customerId,
+				patientProfileId: data.patientProfileId,
 				healthcareProviderId: data.healthcareProviderId,
 				scheduledAt: data.scheduledAt,
 				notes: data.notes,
 				totalDurationMinutes,
 				totalPriceCents,
-				status: "SCHEDULED",
+				status: data.status ?? "SCHEDULED",
 				appointmentProcedures: {
 					create: data.procedureIds.map((procedureId) => ({
 						procedureId,

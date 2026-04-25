@@ -1,0 +1,37 @@
+model patient_profile {
+  id                            String               @id @default(cuid())
+  fullName                      String               @map("full_name")
+  dateOfBirth                   DateTime?            @map("date_of_birth")
+  cpf                           String?
+  phone                         String?
+  email                         String?
+  address                       String?
+  gender                        String?
+  relationshipToCustomer        String?              @map("relationship_to_customer")
+  notes                         String?
+  customerOwnerId               String?              @map("customer_owner_id")
+  customerOwner                 customer?            @relation("CustomerPatientProfiles", fields: [customerOwnerId], references: [id], onDelete: SetNull)
+  createdByHealthcareProviderId String?              @map("created_by_healthcare_provider_id")
+  createdByHealthcareProvider   healthcare_provider? @relation("ProviderCreatedPatientProfiles", fields: [createdByHealthcareProviderId], references: [id], onDelete: SetNull)
+  bloodType                     String?              @map("blood_type")
+  medications                   String?
+  chronicPain                   String?              @map("chronic_pain")
+  preExistingConditions         String?              @map("pre_existing_conditions")
+  allergies                     String?
+  surgeries                     String?
+  familyHistory                 String?              @map("family_history")
+  lifestyleNotes                String?              @map("lifestyle_notes")
+  emergencyContactName          String?              @map("emergency_contact_name")
+  emergencyContactPhone         String?              @map("emergency_contact_phone")
+  createdAt                     DateTime             @default(now()) @map("created_at")
+  updatedAt                     DateTime             @updatedAt @map("updated_at")
+
+  appointments appointment[]
+
+  @@index([fullName])
+  @@index([phone])
+  @@index([cpf])
+  @@index([customerOwnerId])
+  @@index([createdByHealthcareProviderId])
+  @@map("patient_profiles")
+}

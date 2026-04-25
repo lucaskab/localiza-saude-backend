@@ -1,7 +1,9 @@
 model appointment {
   id                   String              @id @default(cuid())
-  customerId           String              @map("customer_id")
-  customer             customer            @relation(fields: [customerId], references: [id])
+  customerId           String?             @map("customer_id")
+  customer             customer?           @relation(fields: [customerId], references: [id])
+  patientProfileId     String?             @map("patient_profile_id")
+  patientProfile       patient_profile?    @relation(fields: [patientProfileId], references: [id])
   healthcareProviderId String              @map("healthcare_provider_id")
   healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id])
   scheduledAt          DateTime            @map("scheduled_at")
@@ -16,6 +18,7 @@ model appointment {
   relatedMessages       conversation_message[]
 
   @@index([customerId])
+  @@index([patientProfileId])
   @@index([healthcareProviderId])
   @@index([scheduledAt])
   @@map("appointments")

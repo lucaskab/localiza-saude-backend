@@ -14,7 +14,8 @@ const optionalMedicalTextSchema = z.preprocess(
 
 export const medicalRecordSchema = z.object({
 	id: z.string(),
-	customerId: z.cuid(),
+	customerId: z.cuid().nullable(),
+	patientProfileId: z.cuid().nullable().optional(),
 	bloodType: z.string().nullable(),
 	medications: z.string().nullable(),
 	chronicPain: z.string().nullable(),

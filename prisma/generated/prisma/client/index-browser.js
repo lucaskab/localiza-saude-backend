@@ -146,6 +146,7 @@ exports.Prisma.Appointment_procedureScalarFieldEnum = {
 exports.Prisma.AppointmentScalarFieldEnum = {
   id: 'id',
   customerId: 'customerId',
+  patientProfileId: 'patientProfileId',
   healthcareProviderId: 'healthcareProviderId',
   scheduledAt: 'scheduledAt',
   status: 'status',
@@ -260,6 +261,33 @@ exports.Prisma.Conversation_messageScalarFieldEnum = {
   fileName: 'fileName',
   fileSize: 'fileSize',
   fileMimeType: 'fileMimeType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Patient_profileScalarFieldEnum = {
+  id: 'id',
+  fullName: 'fullName',
+  dateOfBirth: 'dateOfBirth',
+  cpf: 'cpf',
+  phone: 'phone',
+  email: 'email',
+  address: 'address',
+  gender: 'gender',
+  relationshipToCustomer: 'relationshipToCustomer',
+  notes: 'notes',
+  customerOwnerId: 'customerOwnerId',
+  createdByHealthcareProviderId: 'createdByHealthcareProviderId',
+  bloodType: 'bloodType',
+  medications: 'medications',
+  chronicPain: 'chronicPain',
+  preExistingConditions: 'preExistingConditions',
+  allergies: 'allergies',
+  surgeries: 'surgeries',
+  familyHistory: 'familyHistory',
+  lifestyleNotes: 'lifestyleNotes',
+  emergencyContactName: 'emergencyContactName',
+  emergencyContactPhone: 'emergencyContactPhone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -380,6 +408,7 @@ exports.Prisma.ModelName = {
   healthcare_provider: 'healthcare_provider',
   conversation: 'conversation',
   conversation_message: 'conversation_message',
+  patient_profile: 'patient_profile',
   procedure: 'procedure',
   rating: 'rating',
   session: 'session',

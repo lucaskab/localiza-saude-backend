@@ -26,6 +26,33 @@ const customerSchema = z.object({
 	updatedAt: z.date(),
 });
 
+export const patientProfileSchema = z.object({
+	id: z.cuid(),
+	fullName: z.string(),
+	dateOfBirth: z.date().nullable(),
+	cpf: z.string().nullable(),
+	phone: z.string().nullable(),
+	email: z.string().nullable(),
+	address: z.string().nullable(),
+	gender: z.string().nullable(),
+	relationshipToCustomer: z.string().nullable(),
+	notes: z.string().nullable(),
+	customerOwnerId: z.string().nullable(),
+	createdByHealthcareProviderId: z.string().nullable(),
+	bloodType: z.string().nullable(),
+	medications: z.string().nullable(),
+	chronicPain: z.string().nullable(),
+	preExistingConditions: z.string().nullable(),
+	allergies: z.string().nullable(),
+	surgeries: z.string().nullable(),
+	familyHistory: z.string().nullable(),
+	lifestyleNotes: z.string().nullable(),
+	emergencyContactName: z.string().nullable(),
+	emergencyContactPhone: z.string().nullable(),
+	createdAt: z.date(),
+	updatedAt: z.date(),
+});
+
 const healthcareProviderSchema = z.object({
 	id: z.cuid(),
 	userId: z.cuid(),
@@ -57,8 +84,10 @@ const appointmentProcedureSchema = z.object({
 
 export const appointmentSchema = z.object({
 	id: z.cuid(),
-	customerId: z.cuid(),
-	customer: customerSchema,
+	customerId: z.cuid().nullable(),
+	customer: customerSchema.nullable(),
+	patientProfileId: z.cuid().nullable(),
+	patientProfile: patientProfileSchema.nullable(),
 	healthcareProviderId: z.cuid(),
 	healthcareProvider: healthcareProviderSchema,
 	scheduledAt: z.date(),

@@ -236,26 +236,13 @@ export const getDashboardUseCase = {
 		}
 
 		// 5. PATIENTS
-		const allTimePatients = await prisma.appointment.findMany({
+		const allPatientAppointments = await prisma.appointment.findMany({
 			where: {
 				healthcareProviderId,
 			},
 			select: {
 				customerId: true,
-			},
-			distinct: ["customerId"],
-		});
-
-		const newPatientsThisMonth = await prisma.appointment.findMany({
-			where: {
-				healthcareProviderId,
-				scheduledAt: {
-					gte: currentMonthStart,
-					lte: currentMonthEnd,
-				},
-			},
-			select: {
-				customerId: true,
+				patientProfileId: true,
 				scheduledAt: true,
 			},
 			orderBy: {
@@ -263,35 +250,37 @@ export const getDashboardUseCase = {
 			},
 		});
 
-		// Count customers whose first appointment was this month
-		const firstAppointmentsByCustomer = new Map<string, Date>();
-		const allAppointmentsForNewPatients = await prisma.appointment.findMany({
-			where: {
-				healthcareProviderId,
-				customerId: {
-					in: newPatientsThisMonth.map((a) => a.customerId),
-				},
-			},
-			select: {
-				customerId: true,
-				scheduledAt: true,
-			},
-			orderBy: {
-				scheduledAt: "asc",
-			},
-		});
+		const getPatientKey = (appointment: {
+			customerId: string | null;
+			patientProfileId: string | null;
+		}) => {
+			if (appointment.patientProfileId) {
+				return `patient-profile:${appointment.patientProfileId}`;
+			}
 
-		for (const appointment of allAppointmentsForNewPatients) {
-			if (!firstAppointmentsByCustomer.has(appointment.customerId)) {
-				firstAppointmentsByCustomer.set(
-					appointment.customerId,
-					appointment.scheduledAt,
-				);
+			if (appointment.customerId) {
+				return `customer:${appointment.customerId}`;
+			}
+
+			return null;
+		};
+
+		const firstAppointmentsByPatient = new Map<string, Date>();
+
+		for (const appointment of allPatientAppointments) {
+			const patientKey = getPatientKey(appointment);
+
+			if (!patientKey) {
+				continue;
+			}
+
+			if (!firstAppointmentsByPatient.has(patientKey)) {
+				firstAppointmentsByPatient.set(patientKey, appointment.scheduledAt);
 			}
 		}
 
 		let newThisMonth = 0;
-		for (const [_, firstAppointment] of firstAppointmentsByCustomer) {
+		for (const [_, firstAppointment] of firstAppointmentsByPatient) {
 			if (
 				firstAppointment >= currentMonthStart &&
 				firstAppointment <= currentMonthEnd
@@ -403,7 +392,7 @@ export const getDashboardUseCase = {
 				weekTrend,
 			},
 			patients: {
-				totalUnique: allTimePatients.length,
+				totalUnique: firstAppointmentsByPatient.size,
 				newThisMonth,
 			},
 			popularProcedures,
