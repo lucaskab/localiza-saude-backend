@@ -5,6 +5,12 @@ import { openAPI } from "better-auth/plugins";
 import { prisma } from "@/database/prisma";
 import { env } from "@/env";
 
+const appleBundleIdentifiers =
+	env.APPLE_APP_BUNDLE_IDENTIFIERS?.split(",")
+		.map((bundleIdentifier) => bundleIdentifier.trim())
+		.filter(Boolean) ??
+	(env.APPLE_APP_BUNDLE_IDENTIFIER ? [env.APPLE_APP_BUNDLE_IDENTIFIER] : []);
+
 export const auth = betterAuth({
 	baseURL: env.BETTER_AUTH_URL,
 	basePath: "/api/auth",
@@ -14,6 +20,7 @@ export const auth = betterAuth({
 		"http://localhost:8081",
 		"http://localhost:8082",
 		"http://localhost:3333",
+		"https://appleid.apple.com",
 		"localizasaude://",
 		...(process.env.NODE_ENV === "development"
 			? [
@@ -67,6 +74,15 @@ export const auth = betterAuth({
 			clientId: env.GOOGLE_CLIENT_ID,
 			clientSecret: env.GOOGLE_CLIENT_SECRET,
 		},
+		apple: {
+			clientId: env.APPLE_CLIENT_ID ?? appleBundleIdentifiers[0] ?? "",
+			clientSecret: env.APPLE_CLIENT_SECRET,
+			appBundleIdentifier: appleBundleIdentifiers[0],
+			audience:
+				appleBundleIdentifiers.length > 0
+				? appleBundleIdentifiers
+					: undefined,
+		},	
 	},
 	databaseHooks: {
 		user: {
