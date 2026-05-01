@@ -16,6 +16,7 @@ model appointment {
 
   appointmentProcedures appointment_procedure[]
   relatedMessages       conversation_message[]
+  notificationDeliveries notification_delivery[]
 
   @@index([customerId])
   @@index([patientProfileId])

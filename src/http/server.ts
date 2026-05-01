@@ -8,6 +8,7 @@ import {
 } from "fastify-type-provider-zod";
 import { auth } from "@/auth";
 import { errorHandler } from "@/http/error-handler";
+import { startAppointmentReminderWorker } from "@/http/services/appointment-reminder-worker";
 import { routerLoader } from "@/loaders/router/router";
 
 const fastify = Fastify().withTypeProvider<ZodTypeProvider>();
@@ -97,6 +98,7 @@ routerLoader()
 				process.exit(1);
 			}
 			console.log("\n✅ Server running on http://localhost:3333\n");
+			startAppointmentReminderWorker();
 		});
 	});
 

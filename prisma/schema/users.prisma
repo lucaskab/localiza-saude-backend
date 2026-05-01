@@ -19,6 +19,9 @@ model user {
   healthcareProvider healthcare_provider?
   customer           customer?
   conversationMessages conversation_message[]
+  pushTokens push_token[]
+  notificationPreferences notification_preference[]
+  notificationDeliveries notification_delivery[]
 
   @@map("users")
 }

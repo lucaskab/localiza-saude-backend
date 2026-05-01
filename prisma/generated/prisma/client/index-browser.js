@@ -265,6 +265,40 @@ exports.Prisma.Conversation_messageScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.Push_tokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  token: 'token',
+  platform: 'platform',
+  deviceId: 'deviceId',
+  isActive: 'isActive',
+  lastUsedAt: 'lastUsedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Notification_preferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  enabled: 'enabled',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Notification_deliveryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  appointmentId: 'appointmentId',
+  type: 'type',
+  status: 'status',
+  expoTicketId: 'expoTicketId',
+  errorMessage: 'errorMessage',
+  sentAt: 'sentAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.Patient_profileScalarFieldEnum = {
   id: 'id',
   fullName: 'fullName',
@@ -389,6 +423,26 @@ exports.MessageType = exports.$Enums.MessageType = {
   FILE: 'FILE'
 };
 
+exports.PushPlatform = exports.$Enums.PushPlatform = {
+  IOS: 'IOS',
+  ANDROID: 'ANDROID',
+  WEB: 'WEB',
+  UNKNOWN: 'UNKNOWN'
+};
+
+exports.NotificationType = exports.$Enums.NotificationType = {
+  APPOINTMENT_REMINDER: 'APPOINTMENT_REMINDER',
+  APPOINTMENT_STATUS_UPDATE: 'APPOINTMENT_STATUS_UPDATE',
+  NEW_APPOINTMENT_REQUEST: 'NEW_APPOINTMENT_REQUEST'
+};
+
+exports.NotificationDeliveryStatus = exports.$Enums.NotificationDeliveryStatus = {
+  PENDING: 'PENDING',
+  SENT: 'SENT',
+  FAILED: 'FAILED',
+  SKIPPED: 'SKIPPED'
+};
+
 exports.UserRole = exports.$Enums.UserRole = {
   HEALTHCARE_PROVIDER: 'HEALTHCARE_PROVIDER',
   CUSTOMER: 'CUSTOMER'
@@ -408,6 +462,9 @@ exports.Prisma.ModelName = {
   healthcare_provider: 'healthcare_provider',
   conversation: 'conversation',
   conversation_message: 'conversation_message',
+  push_token: 'push_token',
+  notification_preference: 'notification_preference',
+  notification_delivery: 'notification_delivery',
   patient_profile: 'patient_profile',
   procedure: 'procedure',
   rating: 'rating',

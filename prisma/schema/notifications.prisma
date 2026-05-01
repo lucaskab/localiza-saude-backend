@@ -1,0 +1,69 @@
+model push_token {
+  id         String       @id @default(cuid())
+  userId     String       @map("user_id")
+  user       user         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token      String       @unique
+  platform   PushPlatform @default(UNKNOWN)
+  deviceId   String?      @map("device_id")
+  isActive   Boolean      @default(true) @map("is_active")
+  lastUsedAt DateTime     @default(now()) @map("last_used_at")
+  createdAt  DateTime     @default(now()) @map("created_at")
+  updatedAt  DateTime     @updatedAt @map("updated_at")
+
+  @@index([userId, isActive])
+  @@map("push_tokens")
+}
+
+model notification_preference {
+  id        String           @id @default(cuid())
+  userId    String           @map("user_id")
+  user      user             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      NotificationType
+  enabled   Boolean          @default(true)
+  createdAt DateTime         @default(now()) @map("created_at")
+  updatedAt DateTime         @updatedAt @map("updated_at")
+
+  @@unique([userId, type])
+  @@index([userId])
+  @@map("notification_preferences")
+}
+
+model notification_delivery {
+  id            String                     @id @default(cuid())
+  userId        String                     @map("user_id")
+  user          user                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  appointmentId String?                    @map("appointment_id")
+  appointment   appointment?               @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  type          NotificationType
+  status        NotificationDeliveryStatus @default(PENDING)
+  expoTicketId  String?                    @map("expo_ticket_id")
+  errorMessage  String?                    @map("error_message")
+  sentAt        DateTime?                  @map("sent_at")
+  createdAt     DateTime                   @default(now()) @map("created_at")
+  updatedAt     DateTime                   @updatedAt @map("updated_at")
+
+  @@unique([userId, type, appointmentId])
+  @@index([appointmentId])
+  @@index([type, status])
+  @@map("notification_deliveries")
+}
+
+enum PushPlatform {
+  IOS
+  ANDROID
+  WEB
+  UNKNOWN
+}
+
+enum NotificationType {
+  APPOINTMENT_REMINDER
+  APPOINTMENT_STATUS_UPDATE
+  NEW_APPOINTMENT_REQUEST
+}
+
+enum NotificationDeliveryStatus {
+  PENDING
+  SENT
+  FAILED
+  SKIPPED
+}

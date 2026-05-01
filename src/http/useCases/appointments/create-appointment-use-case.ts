@@ -9,6 +9,7 @@ import { prismaPatientProfileRepository } from "@/http/repositories/patient-prof
 import { prismaProcedureRepository } from "@/http/repositories/procedures/procedures-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
+import { sendAppointmentEventNotificationUseCase } from "@/http/useCases/notifications/send-appointment-event-notification-use-case";
 import type { CreateAppointmentBodySchema } from "@/schemas/routes/appointments/create-appointment";
 import type {
 	customer,
@@ -263,6 +264,20 @@ export const createAppointmentUseCase = {
 		const appointment = await prismaAppointmentRepository.create(
 			appointmentData,
 		);
+
+		if (isProviderActor) {
+			await sendAppointmentEventNotificationUseCase
+				.sendAppointmentStatusUpdateToCustomer(appointment)
+				.catch((error) => {
+					console.error("Failed to send appointment notification:", error);
+				});
+		} else {
+			await sendAppointmentEventNotificationUseCase
+				.sendNewAppointmentRequestToProvider(appointment)
+				.catch((error) => {
+					console.error("Failed to send appointment notification:", error);
+				});
+		}
 
 		return { appointment };
 	},
