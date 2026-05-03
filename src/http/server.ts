@@ -7,6 +7,7 @@ import {
 	type ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { auth } from "@/auth";
+import { env } from "@/env";
 import { errorHandler } from "@/http/error-handler";
 import { startAppointmentReminderWorker } from "@/http/services/appointment-reminder-worker";
 import { routerLoader } from "@/loaders/router/router";
@@ -24,8 +25,14 @@ fastify.register(fastifyCors, {
 		"http://localhost:8081",
 		"http://localhost:8082",
 		"http://localhost:3333",
+		"http://localhost:5173",
+		"http://localhost:5174",
+		"http://127.0.0.1:5173",
+		"http://127.0.0.1:5174",
+		...(env.WEB_APP_URL ? [env.WEB_APP_URL] : []),
 		"https://localiza-saude-backend-development.onrender.com",
 		"http://192.168.1.108:3333",
+		/^http:\/\/192\.168\.\d{1,3}\.\d{1,3}:517\d$/,
 		/^exp:\/\/.*$/,
 		/^localizasaude:\/\/.*$/,
 	],

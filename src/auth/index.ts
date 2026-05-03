@@ -11,6 +11,14 @@ const appleBundleIdentifiers =
 		.filter(Boolean) ??
 	(env.APPLE_APP_BUNDLE_IDENTIFIER ? [env.APPLE_APP_BUNDLE_IDENTIFIER] : []);
 
+const webOrigins = [
+	"http://localhost:5173",
+	"http://localhost:5174",
+	"http://127.0.0.1:5173",
+	"http://127.0.0.1:5174",
+	...(env.WEB_APP_URL ? [env.WEB_APP_URL] : []),
+];
+
 export const auth = betterAuth({
 	baseURL: env.BETTER_AUTH_URL,
 	basePath: "/api/auth",
@@ -20,6 +28,7 @@ export const auth = betterAuth({
 		"http://localhost:8081",
 		"http://localhost:8082",
 		"http://localhost:3333",
+		...webOrigins,
 		"https://appleid.apple.com",
 		"localizasaude://",
 		...(process.env.NODE_ENV === "development"

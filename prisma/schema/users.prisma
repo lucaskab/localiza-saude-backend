@@ -22,6 +22,7 @@ model user {
   pushTokens push_token[]
   notificationPreferences notification_preference[]
   notificationDeliveries notification_delivery[]
+  supportRequests support_request[]
 
   @@map("users")
 }

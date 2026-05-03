@@ -433,6 +433,43 @@ model session {
   @@map("sessions")
 }
 
+model support_request {
+  id           String               @id @default(cuid())
+  userId       String               @map("user_id")
+  type         SupportRequestType
+  subject      String?
+  message      String
+  contactEmail String?              @map("contact_email")
+  appVersion   String?              @map("app_version")
+  platform     String?
+  environment  String?
+  status       SupportRequestStatus @default(OPEN)
+  createdAt    DateTime             @default(now()) @map("created_at")
+  updatedAt    DateTime             @updatedAt @map("updated_at")
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([type])
+  @@index([status])
+  @@map("support_requests")
+}
+
+enum SupportRequestType {
+  ACCOUNT_DELETION
+  DATA_DELETION
+  PROBLEM_REPORT
+  FEEDBACK
+  SUPPORT_CONTACT
+}
+
+enum SupportRequestStatus {
+  OPEN
+  IN_REVIEW
+  RESOLVED
+  CLOSED
+}
+
 model user {
   id            String   @id @default(cuid())
   name          String
@@ -457,6 +494,7 @@ model user {
   pushTokens              push_token[]
   notificationPreferences notification_preference[]
   notificationDeliveries  notification_delivery[]
+  supportRequests         support_request[]
 
   @@map("users")
 }

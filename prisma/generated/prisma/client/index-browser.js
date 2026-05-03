@@ -358,6 +358,21 @@ exports.Prisma.SessionScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.Support_requestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  subject: 'subject',
+  message: 'message',
+  contactEmail: 'contactEmail',
+  appVersion: 'appVersion',
+  platform: 'platform',
+  environment: 'environment',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -443,6 +458,21 @@ exports.NotificationDeliveryStatus = exports.$Enums.NotificationDeliveryStatus =
   SKIPPED: 'SKIPPED'
 };
 
+exports.SupportRequestType = exports.$Enums.SupportRequestType = {
+  ACCOUNT_DELETION: 'ACCOUNT_DELETION',
+  DATA_DELETION: 'DATA_DELETION',
+  PROBLEM_REPORT: 'PROBLEM_REPORT',
+  FEEDBACK: 'FEEDBACK',
+  SUPPORT_CONTACT: 'SUPPORT_CONTACT'
+};
+
+exports.SupportRequestStatus = exports.$Enums.SupportRequestStatus = {
+  OPEN: 'OPEN',
+  IN_REVIEW: 'IN_REVIEW',
+  RESOLVED: 'RESOLVED',
+  CLOSED: 'CLOSED'
+};
+
 exports.UserRole = exports.$Enums.UserRole = {
   HEALTHCARE_PROVIDER: 'HEALTHCARE_PROVIDER',
   CUSTOMER: 'CUSTOMER'
@@ -469,6 +499,7 @@ exports.Prisma.ModelName = {
   procedure: 'procedure',
   rating: 'rating',
   session: 'session',
+  support_request: 'support_request',
   user: 'user',
   verification: 'verification'
 };
