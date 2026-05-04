@@ -1,5 +1,6 @@
 import fastifyCors from "@fastify/cors";
 import fastifyMultipart from "@fastify/multipart";
+import { fromNodeHeaders } from "better-auth/node";
 import Fastify from "fastify";
 import {
 	serializerCompiler,
@@ -57,13 +58,20 @@ fastify.route({
 	async handler(request, reply) {
 		try {
 			// Construct request URL
-			const url = new URL(request.url, `http://${request.headers.host}`);
+			const forwardedProto = request.headers["x-forwarded-proto"]
+				?.toString()
+				.split(",")[0]
+				?.trim();
+			const forwardedHost = request.headers["x-forwarded-host"]
+				?.toString()
+				.split(",")[0]
+				?.trim();
+			const protocol = forwardedProto || "http";
+			const host = forwardedHost || request.headers.host;
+			const url = new URL(request.url, `${protocol}://${host}`);
 
 			// Convert Fastify headers to standard Headers object
-			const headers = new Headers();
-			Object.entries(request.headers).forEach(([key, value]) => {
-				if (value) headers.append(key, value.toString());
-			});
+			const headers = fromNodeHeaders(request.headers);
 
 			// Create Fetch API-compatible request
 			const req = new Request(url.toString(), {
@@ -78,8 +86,24 @@ fastify.route({
 			// Forward response to client
 			reply.status(response.status);
 			response.headers.forEach((value, key) => {
+				if (key.toLowerCase() === "set-cookie") {
+					return;
+				}
+
 				reply.header(key, value);
 			});
+
+			const setCookieHeaders =
+				"getSetCookie" in response.headers
+					? (response.headers.getSetCookie() as string[])
+					: response.headers.get("set-cookie")
+						? [response.headers.get("set-cookie") as string]
+						: [];
+
+			if (setCookieHeaders.length > 0) {
+				reply.header("set-cookie", setCookieHeaders);
+			}
+
 			reply.send(response.body ? await response.text() : null);
 		} catch (error) {
 			fastify.log.error(error, "Authentication Error");
