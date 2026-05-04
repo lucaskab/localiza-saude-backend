@@ -20,34 +20,8 @@ const webOrigins = [
 	"https://localiza-saude-web.onrender.com",
 ];
 
-const getHostname = (url: string | undefined) => {
-	if (!url) {
-		return null;
-	}
-
-	try {
-		return new URL(url).hostname;
-	} catch {
-		return null;
-	}
-};
-
-const productionAuthHosts = [
-	getHostname(env.BETTER_AUTH_URL),
-	getHostname(env.WEB_APP_URL),
-	"localiza-saude-backend-development.onrender.com",
-	"localiza-saude-web.onrender.com",
-].filter(Boolean) as string[];
-
 export const auth = betterAuth({
-	baseURL:
-		process.env.NODE_ENV === "production"
-			? {
-					allowedHosts: productionAuthHosts,
-					protocol: "https" as const,
-					fallback: env.BETTER_AUTH_URL,
-				}
-			: env.BETTER_AUTH_URL,
+	baseURL: env.BETTER_AUTH_URL,
 	basePath: "/api/auth",
 	secret: env.BETTER_AUTH_SECRET,
 	plugins: [expo(), openAPI()],
@@ -72,24 +46,7 @@ export const auth = betterAuth({
 	database: prismaAdapter(prisma, {
 		provider: "postgresql",
 	}),
-	account: {
-		...(process.env.NODE_ENV === "production"
-			? {
-					skipStateCookieCheck: true,
-				}
-			: {}),
-	},
 	advanced: {
-		...(process.env.NODE_ENV === "production"
-			? {
-					defaultCookieAttributes: {
-						httpOnly: true,
-						sameSite: "none" as const,
-						secure: true,
-						partitioned: true,
-					},
-				}
-			: {}),
 		database: {
 			generateId: false,
 		},
