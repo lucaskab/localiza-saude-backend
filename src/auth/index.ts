@@ -47,6 +47,12 @@ export const auth = betterAuth({
 		provider: "postgresql",
 	}),
 	advanced: {
+		defaultCookieAttributes: {
+			httpOnly: true,
+			sameSite: "none" as const,
+			secure: true,
+			partitioned: true,
+		},
 		database: {
 			generateId: false,
 		},
