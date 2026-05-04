@@ -29,6 +29,7 @@ export const auth = betterAuth({
 		"http://localhost:8081",
 		"http://localhost:8082",
 		"http://localhost:3333",
+		env.BETTER_AUTH_URL,
 		...webOrigins,
 		"https://appleid.apple.com",
 		"localizasaude://",

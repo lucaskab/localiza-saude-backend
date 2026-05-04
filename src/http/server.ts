@@ -8,10 +8,12 @@ import {
 	type ZodTypeProvider,
 } from "fastify-type-provider-zod";
 import { auth } from "@/auth";
+import { prisma } from "@/database/prisma";
 import { env } from "@/env";
 import { errorHandler } from "@/http/error-handler";
 import { startAppointmentReminderWorker } from "@/http/services/appointment-reminder-worker";
 import { routerLoader } from "@/loaders/router/router";
+import { z } from "zod";
 
 const fastify = Fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -55,6 +57,10 @@ const forwardSetCookieHeaders = (headers: Headers, reply: FastifyReply) => {
 	}
 };
 
+const webOAuthCodeBodySchema = z.object({
+	code: z.string().min(1),
+});
+
 // Configure CORS policies
 fastify.register(fastifyCors, {
 	origin: [
@@ -89,9 +95,14 @@ fastify.register(fastifyMultipart, {
 fastify.get("/auth/google", async (request, reply) => {
 	try {
 		const query = request.query as { callbackURL?: string };
-		const callbackURL =
+		const webRedirectURL =
 			query.callbackURL ??
 			(env.WEB_APP_URL ? `${env.WEB_APP_URL}/auth/callback` : undefined);
+		const callbackURL = new URL("/auth/google/callback", getRequestOrigin(request));
+
+		if (webRedirectURL) {
+			callbackURL.searchParams.set("redirectURL", webRedirectURL);
+		}
 
 		const headers = fromNodeHeaders(request.headers);
 		headers.set("content-type", "application/json");
@@ -102,7 +113,7 @@ fastify.get("/auth/google", async (request, reply) => {
 				headers,
 				body: JSON.stringify({
 					provider: "google",
-					callbackURL,
+					callbackURL: callbackURL.toString(),
 				}),
 			}),
 		);
@@ -110,7 +121,7 @@ fastify.get("/auth/google", async (request, reply) => {
 		forwardSetCookieHeaders(response.headers, reply);
 
 		const body = response.body ? await response.json() : null;
-		const redirectURL =
+		const googleRedirectURL =
 			response.headers.get("location") ??
 			(typeof body === "object" &&
 			body !== null &&
@@ -119,17 +130,140 @@ fastify.get("/auth/google", async (request, reply) => {
 				? body.url
 				: null);
 
-		if (!response.ok || !redirectURL) {
+		if (!response.ok || !googleRedirectURL) {
 			reply.status(response.status).send(body);
 			return;
 		}
 
-		reply.redirect(redirectURL);
+		reply.redirect(googleRedirectURL);
 	} catch (error) {
 		fastify.log.error(error, "Google authentication redirect error");
 		reply.status(500).send({
 			error: "Internal Google authentication redirect error",
 			code: "GOOGLE_AUTH_REDIRECT_FAILURE",
+		});
+	}
+});
+
+fastify.get("/auth/google/callback", async (request, reply) => {
+	try {
+		const query = request.query as {
+			redirectURL?: string;
+			error?: string;
+		};
+		const redirectURL = query.redirectURL ?? env.WEB_APP_URL;
+
+		if (!redirectURL) {
+			reply.status(400).send({
+				error: "Missing redirect URL",
+				code: "MISSING_REDIRECT_URL",
+			});
+			return;
+		}
+
+		const url = new URL(redirectURL);
+
+		if (query.error) {
+			url.searchParams.set("error", query.error);
+			reply.redirect(url.toString());
+			return;
+		}
+
+		const response = await auth.handler(
+			new Request(`${getRequestOrigin(request)}/api/auth/get-session`, {
+				method: "GET",
+				headers: fromNodeHeaders(request.headers),
+			}),
+		);
+		const sessionPayload = response.body ? await response.json() : null;
+		const session =
+			typeof sessionPayload === "object" &&
+			sessionPayload !== null &&
+			"session" in sessionPayload
+				? sessionPayload.session
+				: null;
+		const sessionToken =
+			typeof session === "object" &&
+			session !== null &&
+			"token" in session &&
+			typeof session.token === "string"
+				? session.token
+				: null;
+
+		if (!sessionToken) {
+			url.searchParams.set("error", "session");
+			reply.redirect(url.toString());
+			return;
+		}
+
+		const code = crypto.randomUUID();
+
+		await prisma.verification.create({
+			data: {
+				identifier: `web-oauth:${code}`,
+				value: JSON.stringify({ sessionToken }),
+				expiresAt: new Date(Date.now() + 2 * 60 * 1000),
+			},
+		});
+
+		url.searchParams.set("code", code);
+		reply.redirect(url.toString());
+	} catch (error) {
+		fastify.log.error(error, "Google authentication callback bridge error");
+		reply.status(500).send({
+			error: "Internal Google authentication callback bridge error",
+			code: "GOOGLE_AUTH_CALLBACK_BRIDGE_FAILURE",
+		});
+	}
+});
+
+fastify.post("/auth/web/exchange", async (request, reply) => {
+	try {
+		const { code } = webOAuthCodeBodySchema.parse(request.body);
+		const identifier = `web-oauth:${code}`;
+		const verification = await prisma.verification.findFirst({
+			where: { identifier },
+		});
+
+		await prisma.verification.deleteMany({
+			where: { identifier },
+		});
+
+		if (!verification || verification.expiresAt < new Date()) {
+			reply.status(401).send({
+				error: "Invalid or expired OAuth code",
+				code: "INVALID_OAUTH_CODE",
+			});
+			return;
+		}
+
+		const { sessionToken } = z
+			.object({
+				sessionToken: z.string().min(1),
+			})
+			.parse(JSON.parse(verification.value));
+		const session = await prisma.session.findUnique({
+			where: { token: sessionToken },
+			include: { user: true },
+		});
+
+		if (!session || session.expiresAt < new Date()) {
+			reply.status(401).send({
+				error: "Invalid or expired session",
+				code: "INVALID_SESSION",
+			});
+			return;
+		}
+
+		reply.send({
+			sessionToken: session.token,
+			user: session.user,
+		});
+	} catch (error) {
+		fastify.log.error(error, "Google authentication code exchange error");
+		reply.status(400).send({
+			error: "Invalid Google authentication code exchange request",
+			code: "GOOGLE_AUTH_CODE_EXCHANGE_FAILURE",
 		});
 	}
 });
