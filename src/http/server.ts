@@ -93,12 +93,14 @@ fastify.route({
 				reply.header(key, value);
 			});
 
-			const setCookieHeaders =
-				"getSetCookie" in response.headers
-					? (response.headers.getSetCookie() as string[])
-					: response.headers.get("set-cookie")
-						? [response.headers.get("set-cookie") as string]
-						: [];
+			const responseHeaders = response.headers as Headers & {
+				getSetCookie?: () => string[];
+			};
+			const setCookieHeaders = responseHeaders.getSetCookie
+				? responseHeaders.getSetCookie()
+				: responseHeaders.get("set-cookie")
+					? [responseHeaders.get("set-cookie") as string]
+					: [];
 
 			if (setCookieHeaders.length > 0) {
 				reply.header("set-cookie", setCookieHeaders);

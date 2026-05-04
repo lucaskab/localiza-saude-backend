@@ -60,6 +60,7 @@ export const auth = betterAuth({
 						httpOnly: true,
 						sameSite: "none" as const,
 						secure: true,
+						partitioned: true,
 					},
 				}
 			: {}),
