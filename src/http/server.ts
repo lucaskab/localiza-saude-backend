@@ -1,7 +1,7 @@
 import fastifyCors from "@fastify/cors";
 import fastifyMultipart from "@fastify/multipart";
 import { fromNodeHeaders } from "better-auth/node";
-import Fastify from "fastify";
+import Fastify, { type FastifyReply } from "fastify";
 import {
 	serializerCompiler,
 	validatorCompiler,
@@ -19,6 +19,41 @@ fastify.setSerializerCompiler(serializerCompiler);
 fastify.setValidatorCompiler(validatorCompiler);
 
 fastify.setErrorHandler(errorHandler);
+
+const getRequestOrigin = (request: { headers: Record<string, unknown> }) => {
+	const forwardedProto = request.headers["x-forwarded-proto"]
+		?.toString()
+		.split(",")[0]
+		?.trim();
+	const forwardedHost = request.headers["x-forwarded-host"]
+		?.toString()
+		.split(",")[0]
+		?.trim();
+	const protocol = forwardedProto || "http";
+	const host = forwardedHost || request.headers.host;
+
+	return `${protocol}://${host}`;
+};
+
+const getSetCookieHeaders = (headers: Headers) => {
+	const responseHeaders = headers as Headers & {
+		getSetCookie?: () => string[];
+	};
+
+	return responseHeaders.getSetCookie
+		? responseHeaders.getSetCookie()
+		: responseHeaders.get("set-cookie")
+			? [responseHeaders.get("set-cookie") as string]
+			: [];
+};
+
+const forwardSetCookieHeaders = (headers: Headers, reply: FastifyReply) => {
+	const setCookieHeaders = getSetCookieHeaders(headers);
+
+	if (setCookieHeaders.length > 0) {
+		reply.header("set-cookie", setCookieHeaders);
+	}
+};
 
 // Configure CORS policies
 fastify.register(fastifyCors, {
@@ -51,6 +86,54 @@ fastify.register(fastifyMultipart, {
 	},
 });
 
+fastify.get("/auth/google", async (request, reply) => {
+	try {
+		const query = request.query as { callbackURL?: string };
+		const callbackURL =
+			query.callbackURL ??
+			(env.WEB_APP_URL ? `${env.WEB_APP_URL}/auth/callback` : undefined);
+
+		const headers = fromNodeHeaders(request.headers);
+		headers.set("content-type", "application/json");
+
+		const response = await auth.handler(
+			new Request(`${getRequestOrigin(request)}/api/auth/sign-in/social`, {
+				method: "POST",
+				headers,
+				body: JSON.stringify({
+					provider: "google",
+					callbackURL,
+				}),
+			}),
+		);
+
+		forwardSetCookieHeaders(response.headers, reply);
+
+		const body = response.body ? await response.json() : null;
+		const redirectURL =
+			response.headers.get("location") ??
+			(typeof body === "object" &&
+			body !== null &&
+			"url" in body &&
+			typeof body.url === "string"
+				? body.url
+				: null);
+
+		if (!response.ok || !redirectURL) {
+			reply.status(response.status).send(body);
+			return;
+		}
+
+		reply.redirect(redirectURL);
+	} catch (error) {
+		fastify.log.error(error, "Google authentication redirect error");
+		reply.status(500).send({
+			error: "Internal Google authentication redirect error",
+			code: "GOOGLE_AUTH_REDIRECT_FAILURE",
+		});
+	}
+});
+
 // Register authentication endpoint
 fastify.route({
 	method: ["GET", "POST"],
@@ -58,17 +141,7 @@ fastify.route({
 	async handler(request, reply) {
 		try {
 			// Construct request URL
-			const forwardedProto = request.headers["x-forwarded-proto"]
-				?.toString()
-				.split(",")[0]
-				?.trim();
-			const forwardedHost = request.headers["x-forwarded-host"]
-				?.toString()
-				.split(",")[0]
-				?.trim();
-			const protocol = forwardedProto || "http";
-			const host = forwardedHost || request.headers.host;
-			const url = new URL(request.url, `${protocol}://${host}`);
+			const url = new URL(request.url, getRequestOrigin(request));
 
 			// Convert Fastify headers to standard Headers object
 			const headers = fromNodeHeaders(request.headers);
@@ -93,18 +166,7 @@ fastify.route({
 				reply.header(key, value);
 			});
 
-			const responseHeaders = response.headers as Headers & {
-				getSetCookie?: () => string[];
-			};
-			const setCookieHeaders = responseHeaders.getSetCookie
-				? responseHeaders.getSetCookie()
-				: responseHeaders.get("set-cookie")
-					? [responseHeaders.get("set-cookie") as string]
-					: [];
-
-			if (setCookieHeaders.length > 0) {
-				reply.header("set-cookie", setCookieHeaders);
-			}
+			forwardSetCookieHeaders(response.headers, reply);
 
 			reply.send(response.body ? await response.text() : null);
 		} catch (error) {
