@@ -46,6 +46,13 @@ export const auth = betterAuth({
 	database: prismaAdapter(prisma, {
 		provider: "postgresql",
 	}),
+	account: {
+		...(process.env.NODE_ENV === "production"
+			? {
+					skipStateCookieCheck: true,
+				}
+			: {}),
+	},
 	advanced: {
 		...(process.env.NODE_ENV === "production"
 			? {
