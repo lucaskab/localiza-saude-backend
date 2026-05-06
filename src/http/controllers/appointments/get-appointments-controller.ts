@@ -7,7 +7,16 @@ export const getAppointmentsController = {
 		request: FastifyRequest<{ Querystring: GetAppointmentsQuerySchema }>,
 		reply: FastifyReply,
 	) {
-		const { healthcareProviderId, startDate, endDate } = request.query;
+		const {
+			customerId,
+			healthcareProviderId,
+			status,
+			search,
+			startDate,
+			endDate,
+			limit,
+			offset,
+		} = request.query;
 
 		// Adjust endDate to include the entire day (23:59:59.999)
 		let endDateObj: Date | undefined;
@@ -17,9 +26,14 @@ export const getAppointmentsController = {
 		}
 
 		const filters = {
+			customerId,
 			healthcareProviderId,
+			status,
+			search,
 			startDate: startDate ? new Date(startDate) : undefined,
 			endDate: endDateObj,
+			limit,
+			offset,
 		};
 
 		const result = await getAppointmentsUseCase.execute(filters);

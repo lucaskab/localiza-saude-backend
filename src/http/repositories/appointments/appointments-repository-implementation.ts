@@ -49,33 +49,106 @@ const includeRelations = {
 	},
 };
 
+function buildWhereClause(filters?: FindAppointmentsFilters) {
+	const whereClause: Prisma.appointmentWhereInput = {};
+
+	if (filters?.customerId) {
+		whereClause.customerId = filters.customerId;
+	}
+
+	if (filters?.healthcareProviderId) {
+		whereClause.healthcareProviderId = filters.healthcareProviderId;
+	}
+
+	if (filters?.status) {
+		whereClause.status = filters.status;
+	}
+
+	if (filters?.startDate || filters?.endDate) {
+		whereClause.scheduledAt = {};
+		if (filters.startDate) {
+			whereClause.scheduledAt.gte = filters.startDate;
+		}
+		if (filters.endDate) {
+			whereClause.scheduledAt.lte = filters.endDate;
+		}
+	}
+
+	const search = filters?.search?.trim();
+	if (search) {
+		whereClause.OR = [
+			{
+				customer: {
+					user: {
+						name: {
+							contains: search,
+							mode: "insensitive",
+						},
+					},
+				},
+			},
+			{
+				healthcareProvider: {
+					user: {
+						name: {
+							contains: search,
+							mode: "insensitive",
+						},
+					},
+				},
+			},
+			{
+				patientProfile: {
+					fullName: {
+						contains: search,
+						mode: "insensitive",
+					},
+				},
+			},
+			{
+				appointmentProcedures: {
+					some: {
+						procedure: {
+							name: {
+								contains: search,
+								mode: "insensitive",
+							},
+						},
+					},
+				},
+			},
+		];
+	}
+
+	return whereClause;
+}
+
 export const prismaAppointmentRepository: AppointmentRepository = {
 	async findAll(filters?: FindAppointmentsFilters) {
-		const whereClause: Prisma.appointmentWhereInput = {};
+		const whereClause = buildWhereClause(filters);
+		const limit = filters?.limit ?? 20;
+		const offset = filters?.offset ?? 0;
 
-		if (filters?.healthcareProviderId) {
-			whereClause.healthcareProviderId = filters.healthcareProviderId;
-		}
+		const [appointments, total] = await Promise.all([
+			prisma.appointment.findMany({
+				where: whereClause,
+				include: includeRelations,
+				orderBy: {
+					scheduledAt: "desc",
+				},
+				take: limit,
+				skip: offset,
+			}),
+			prisma.appointment.count({ where: whereClause }),
+		]);
 
-		if (filters?.startDate || filters?.endDate) {
-			whereClause.scheduledAt = {};
-			if (filters.startDate) {
-				whereClause.scheduledAt.gte = filters.startDate;
-			}
-			if (filters.endDate) {
-				whereClause.scheduledAt.lte = filters.endDate;
-			}
-		}
-
-		const appointments = await prisma.appointment.findMany({
-			where: whereClause,
-			include: includeRelations,
-			orderBy: {
-				scheduledAt: "desc",
-			},
-		});
-
-		return appointments as AppointmentWithRelations[];
+		return {
+			appointments: appointments as AppointmentWithRelations[],
+			total,
+			limit,
+			offset,
+			hasMore: offset + appointments.length < total,
+		};
 	},
 
 	async findById(id: string) {

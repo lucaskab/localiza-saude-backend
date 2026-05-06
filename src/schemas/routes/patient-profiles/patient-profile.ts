@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { patientProfileSchema } from "@/schemas/routes/appointments/get-appointments";
 
+const BLOOD_TYPES = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"] as const;
+
 const optionalTextSchema = z.preprocess((value) => {
 	if (typeof value !== "string") {
 		return value;
@@ -9,6 +11,15 @@ const optionalTextSchema = z.preprocess((value) => {
 	const trimmed = value.trim();
 	return trimmed.length > 0 ? trimmed : null;
 }, z.string().nullable().optional());
+
+const optionalBloodTypeSchema = z.preprocess((value) => {
+	if (typeof value !== "string") {
+		return value;
+	}
+
+	const trimmed = value.trim();
+	return trimmed.length > 0 ? trimmed : null;
+}, z.enum(BLOOD_TYPES).nullable().optional());
 
 export const patientProfileBodySchema = z.object({
 	fullName: z.string().trim().min(1),
@@ -20,7 +31,7 @@ export const patientProfileBodySchema = z.object({
 	gender: optionalTextSchema,
 	relationshipToCustomer: optionalTextSchema,
 	notes: optionalTextSchema,
-	bloodType: optionalTextSchema,
+	bloodType: optionalBloodTypeSchema,
 	medications: optionalTextSchema,
 	chronicPain: optionalTextSchema,
 	preExistingConditions: optionalTextSchema,

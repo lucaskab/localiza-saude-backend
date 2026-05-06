@@ -101,7 +101,10 @@ export const appointmentSchema = z.object({
 });
 
 export const getAppointmentsQuerySchema = z.object({
+	customerId: z.cuid().optional(),
 	healthcareProviderId: z.cuid().optional(),
+	status: appointmentStatusSchema.optional(),
+	search: z.string().trim().optional(),
 	startDate: z
 		.string()
 		.regex(/^\d{4}-\d{2}-\d{2}$/)
@@ -110,10 +113,16 @@ export const getAppointmentsQuerySchema = z.object({
 		.string()
 		.regex(/^\d{4}-\d{2}-\d{2}$/)
 		.optional(),
+	limit: z.coerce.number().int().min(1).max(50).default(20),
+	offset: z.coerce.number().int().min(0).default(0),
 });
 
 export const getAppointmentsResponseSchema = z.object({
 	appointments: z.array(appointmentSchema),
+	total: z.number().int(),
+	limit: z.number().int(),
+	offset: z.number().int(),
+	hasMore: z.boolean(),
 });
 
 export type GetAppointmentsQuerySchema = z.infer<
@@ -129,7 +138,7 @@ export const getAppointmentsRouteOptions = {
 		tags: ["Appointments"],
 		summary: "Get all appointments with optional filters",
 		description:
-			"Filter appointments by healthcare provider ID and/or date range. Date range includes the entire day: startDate begins at 00:00:00 and endDate ends at 23:59:59.999. If both dates are the same (e.g., startDate=2026-04-05 and endDate=2026-04-05), it returns all appointments from that day.",
+			"Filter appointments by customer, healthcare provider, status, search text, and/or date range. Date range includes the entire day: startDate begins at 00:00:00 and endDate ends at 23:59:59.999. If both dates are the same (e.g., startDate=2026-04-05 and endDate=2026-04-05), it returns all appointments from that day.",
 		security: [{ bearerAuth: [] }],
 		querystring: getAppointmentsQuerySchema,
 		response: {

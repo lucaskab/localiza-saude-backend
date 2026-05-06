@@ -49,15 +49,26 @@ export type DateRangeParams = {
 };
 
 export type FindAppointmentsFilters = {
+	customerId?: string;
 	healthcareProviderId?: string;
+	status?: AppointmentStatus;
+	search?: string;
 	startDate?: Date;
 	endDate?: Date;
+	limit?: number;
+	offset?: number;
+};
+
+export type FindAppointmentsResult = {
+	appointments: AppointmentWithRelations[];
+	total: number;
+	limit: number;
+	offset: number;
+	hasMore: boolean;
 };
 
 export type AppointmentRepository = {
-	findAll: (
-		filters?: FindAppointmentsFilters,
-	) => Promise<AppointmentWithRelations[]>;
+	findAll: (filters?: FindAppointmentsFilters) => Promise<FindAppointmentsResult>;
 	findById: (id: string) => Promise<AppointmentWithRelations | null>;
 	findByCustomerId: (customerId: string) => Promise<AppointmentWithRelations[]>;
 	findByHealthcareProviderId: (

@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+const BLOOD_TYPES = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"] as const;
+
 const optionalMedicalTextSchema = z.preprocess(
 	(value) => {
 		if (typeof value !== "string") {
@@ -10,6 +12,18 @@ const optionalMedicalTextSchema = z.preprocess(
 		return trimmed.length > 0 ? trimmed : null;
 	},
 	z.string().nullable().optional(),
+);
+
+const optionalBloodTypeSchema = z.preprocess(
+	(value) => {
+		if (typeof value !== "string") {
+			return value;
+		}
+
+		const trimmed = value.trim();
+		return trimmed.length > 0 ? trimmed : null;
+	},
+	z.enum(BLOOD_TYPES).nullable().optional(),
 );
 
 export const medicalRecordSchema = z.object({
@@ -31,7 +45,7 @@ export const medicalRecordSchema = z.object({
 });
 
 export const medicalRecordBodySchema = z.object({
-	bloodType: optionalMedicalTextSchema,
+	bloodType: optionalBloodTypeSchema,
 	medications: optionalMedicalTextSchema,
 	chronicPain: optionalMedicalTextSchema,
 	preExistingConditions: optionalMedicalTextSchema,
