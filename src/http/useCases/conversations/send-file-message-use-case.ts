@@ -94,6 +94,20 @@ export const sendFileMessageUseCase = {
 			finalConversationId = conversation.id;
 		} else {
 			finalConversationId = conversationId;
+
+			const conversation =
+				await prismaConversationRepository.getById(finalConversationId);
+
+			if (!conversation) {
+				throw new BadRequestError("Conversation not found");
+			}
+
+			if (
+				conversation.customerId !== customerId ||
+				conversation.healthcareProviderId !== healthcareProviderId
+			) {
+				throw new BadRequestError("Conversation does not match participants");
+			}
 		}
 
 		// Upload file to R2
@@ -108,7 +122,7 @@ export const sendFileMessageUseCase = {
 			senderId,
 			senderType,
 			messageType: "FILE",
-			fileUrl: uploadResult.url,
+			fileKey: uploadResult.key,
 			fileName: uploadResult.fileName,
 			fileSize: uploadResult.fileSize,
 			fileMimeType: uploadResult.mimeType,

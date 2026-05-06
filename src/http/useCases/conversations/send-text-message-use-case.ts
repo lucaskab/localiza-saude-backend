@@ -95,6 +95,20 @@ export const sendTextMessageUseCase = {
 			finalConversationId = conversation.id;
 		} else {
 			finalConversationId = conversationId;
+
+			const conversation =
+				await prismaConversationRepository.getById(finalConversationId);
+
+			if (!conversation) {
+				throw new BadRequestError("Conversation not found");
+			}
+
+			if (
+				conversation.customerId !== customerId ||
+				conversation.healthcareProviderId !== healthcareProviderId
+			) {
+				throw new BadRequestError("Conversation does not match participants");
+			}
 		}
 
 		// Create text message

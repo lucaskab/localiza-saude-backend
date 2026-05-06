@@ -2,6 +2,7 @@ import type {
 	category,
 	healthcare_provider,
 	healthcare_provider_category,
+	procedure,
 	user,
 } from "../../../prisma/generated/prisma/client";
 
@@ -9,9 +10,18 @@ type CategoryWithProviders = category & {
 	healthcareProviderCategories: (healthcare_provider_category & {
 		healthcareProvider: healthcare_provider & {
 			user: user;
+			procedures: procedure[];
 		};
 	})[];
 };
+
+function getStartingPriceCents(provider: healthcare_provider & { procedures: procedure[] }) {
+	if (provider.procedures.length === 0) {
+		return null;
+	}
+
+	return Math.min(...provider.procedures.map((procedure) => procedure.priceInCents));
+}
 
 export const categoryPresenter = {
 	toHTTP(
@@ -31,11 +41,20 @@ export const categoryPresenter = {
 			healthcareProviders: category.healthcareProviderCategories.map((hpc) => ({
 				id: hpc.healthcareProvider.id,
 				userId: hpc.healthcareProvider.userId,
+				displayName: hpc.healthcareProvider.displayName,
+				languages: hpc.healthcareProvider.languages,
 				specialty: hpc.healthcareProvider.specialty,
+				professionalCategory: hpc.healthcareProvider.professionalCategory,
 				professionalId: hpc.healthcareProvider.professionalId,
+				licenseCouncil: hpc.healthcareProvider.licenseCouncil,
+				licenseState: hpc.healthcareProvider.licenseState,
+				verificationStatus: hpc.healthcareProvider.verificationStatus,
 				bio: hpc.healthcareProvider.bio,
+				serviceModalities: hpc.healthcareProvider.serviceModalities,
+				clinicAddress: hpc.healthcareProvider.clinicAddress,
 				nextAvailableAt:
 					nextAvailableByProviderId?.get(hpc.healthcareProvider.id) ?? null,
+				startingPriceCents: getStartingPriceCents(hpc.healthcareProvider),
 				averageRating:
 					ratingSummariesByProviderId?.get(hpc.healthcareProvider.id)
 						?.averageRating ?? 0,

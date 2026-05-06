@@ -14985,16 +14985,52 @@ export namespace Prisma {
 
   export type AggregateHealthcare_provider = {
     _count: Healthcare_providerCountAggregateOutputType | null
+    _avg: Healthcare_providerAvgAggregateOutputType | null
+    _sum: Healthcare_providerSumAggregateOutputType | null
     _min: Healthcare_providerMinAggregateOutputType | null
     _max: Healthcare_providerMaxAggregateOutputType | null
+  }
+
+  export type Healthcare_providerAvgAggregateOutputType = {
+    licenseDocumentSize: number | null
+    yearsOfExperience: number | null
+    homeCareRadiusKm: number | null
+  }
+
+  export type Healthcare_providerSumAggregateOutputType = {
+    licenseDocumentSize: number | null
+    yearsOfExperience: number | null
+    homeCareRadiusKm: number | null
   }
 
   export type Healthcare_providerMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    displayName: string | null
+    document: string | null
+    birthDate: Date | null
+    gender: string | null
     specialty: string | null
+    professionalCategory: string | null
     professionalId: string | null
+    licenseCouncil: string | null
+    licenseState: string | null
+    licenseDocumentKey: string | null
+    licenseDocumentFileName: string | null
+    licenseDocumentMimeType: string | null
+    licenseDocumentSize: number | null
+    licenseDocumentSha256: string | null
+    licenseDocumentUploadedAt: Date | null
+    verificationStatus: string | null
+    verifiedAt: Date | null
     bio: string | null
+    approach: string | null
+    education: string | null
+    certifications: string | null
+    yearsOfExperience: number | null
+    clinicAddress: string | null
+    homeCareRadiusKm: number | null
+    cancellationPolicy: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -15002,9 +15038,31 @@ export namespace Prisma {
   export type Healthcare_providerMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    displayName: string | null
+    document: string | null
+    birthDate: Date | null
+    gender: string | null
     specialty: string | null
+    professionalCategory: string | null
     professionalId: string | null
+    licenseCouncil: string | null
+    licenseState: string | null
+    licenseDocumentKey: string | null
+    licenseDocumentFileName: string | null
+    licenseDocumentMimeType: string | null
+    licenseDocumentSize: number | null
+    licenseDocumentSha256: string | null
+    licenseDocumentUploadedAt: Date | null
+    verificationStatus: string | null
+    verifiedAt: Date | null
     bio: string | null
+    approach: string | null
+    education: string | null
+    certifications: string | null
+    yearsOfExperience: number | null
+    clinicAddress: string | null
+    homeCareRadiusKm: number | null
+    cancellationPolicy: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -15012,21 +15070,83 @@ export namespace Prisma {
   export type Healthcare_providerCountAggregateOutputType = {
     id: number
     userId: number
+    displayName: number
+    document: number
+    birthDate: number
+    gender: number
+    languages: number
     specialty: number
+    professionalCategory: number
     professionalId: number
+    licenseCouncil: number
+    licenseState: number
+    licenseDocumentKey: number
+    licenseDocumentFileName: number
+    licenseDocumentMimeType: number
+    licenseDocumentSize: number
+    licenseDocumentSha256: number
+    licenseDocumentUploadedAt: number
+    verificationStatus: number
+    verifiedAt: number
     bio: number
+    approach: number
+    education: number
+    certifications: number
+    yearsOfExperience: number
+    targetAudiences: number
+    serviceModalities: number
+    clinicAddress: number
+    homeCareRadiusKm: number
+    acceptedInsurance: number
+    paymentMethods: number
+    cancellationPolicy: number
+    clinicPhotos: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
+  export type Healthcare_providerAvgAggregateInputType = {
+    licenseDocumentSize?: true
+    yearsOfExperience?: true
+    homeCareRadiusKm?: true
+  }
+
+  export type Healthcare_providerSumAggregateInputType = {
+    licenseDocumentSize?: true
+    yearsOfExperience?: true
+    homeCareRadiusKm?: true
+  }
+
   export type Healthcare_providerMinAggregateInputType = {
     id?: true
     userId?: true
+    displayName?: true
+    document?: true
+    birthDate?: true
+    gender?: true
     specialty?: true
+    professionalCategory?: true
     professionalId?: true
+    licenseCouncil?: true
+    licenseState?: true
+    licenseDocumentKey?: true
+    licenseDocumentFileName?: true
+    licenseDocumentMimeType?: true
+    licenseDocumentSize?: true
+    licenseDocumentSha256?: true
+    licenseDocumentUploadedAt?: true
+    verificationStatus?: true
+    verifiedAt?: true
     bio?: true
+    approach?: true
+    education?: true
+    certifications?: true
+    yearsOfExperience?: true
+    clinicAddress?: true
+    homeCareRadiusKm?: true
+    cancellationPolicy?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -15034,9 +15154,31 @@ export namespace Prisma {
   export type Healthcare_providerMaxAggregateInputType = {
     id?: true
     userId?: true
+    displayName?: true
+    document?: true
+    birthDate?: true
+    gender?: true
     specialty?: true
+    professionalCategory?: true
     professionalId?: true
+    licenseCouncil?: true
+    licenseState?: true
+    licenseDocumentKey?: true
+    licenseDocumentFileName?: true
+    licenseDocumentMimeType?: true
+    licenseDocumentSize?: true
+    licenseDocumentSha256?: true
+    licenseDocumentUploadedAt?: true
+    verificationStatus?: true
+    verifiedAt?: true
     bio?: true
+    approach?: true
+    education?: true
+    certifications?: true
+    yearsOfExperience?: true
+    clinicAddress?: true
+    homeCareRadiusKm?: true
+    cancellationPolicy?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -15044,9 +15186,37 @@ export namespace Prisma {
   export type Healthcare_providerCountAggregateInputType = {
     id?: true
     userId?: true
+    displayName?: true
+    document?: true
+    birthDate?: true
+    gender?: true
+    languages?: true
     specialty?: true
+    professionalCategory?: true
     professionalId?: true
+    licenseCouncil?: true
+    licenseState?: true
+    licenseDocumentKey?: true
+    licenseDocumentFileName?: true
+    licenseDocumentMimeType?: true
+    licenseDocumentSize?: true
+    licenseDocumentSha256?: true
+    licenseDocumentUploadedAt?: true
+    verificationStatus?: true
+    verifiedAt?: true
     bio?: true
+    approach?: true
+    education?: true
+    certifications?: true
+    yearsOfExperience?: true
+    targetAudiences?: true
+    serviceModalities?: true
+    clinicAddress?: true
+    homeCareRadiusKm?: true
+    acceptedInsurance?: true
+    paymentMethods?: true
+    cancellationPolicy?: true
+    clinicPhotos?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -15090,6 +15260,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: Healthcare_providerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Healthcare_providerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: Healthcare_providerMinAggregateInputType
@@ -15120,6 +15302,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: Healthcare_providerCountAggregateInputType | true
+    _avg?: Healthcare_providerAvgAggregateInputType
+    _sum?: Healthcare_providerSumAggregateInputType
     _min?: Healthcare_providerMinAggregateInputType
     _max?: Healthcare_providerMaxAggregateInputType
   }
@@ -15127,12 +15311,42 @@ export namespace Prisma {
   export type Healthcare_providerGroupByOutputType = {
     id: string
     userId: string
+    displayName: string | null
+    document: string | null
+    birthDate: Date | null
+    gender: string | null
+    languages: string[]
     specialty: string | null
+    professionalCategory: string | null
     professionalId: string | null
+    licenseCouncil: string | null
+    licenseState: string | null
+    licenseDocumentKey: string | null
+    licenseDocumentFileName: string | null
+    licenseDocumentMimeType: string | null
+    licenseDocumentSize: number | null
+    licenseDocumentSha256: string | null
+    licenseDocumentUploadedAt: Date | null
+    verificationStatus: string
+    verifiedAt: Date | null
     bio: string | null
+    approach: string | null
+    education: string | null
+    certifications: string | null
+    yearsOfExperience: number | null
+    targetAudiences: string[]
+    serviceModalities: string[]
+    clinicAddress: string | null
+    homeCareRadiusKm: number | null
+    acceptedInsurance: string[]
+    paymentMethods: string[]
+    cancellationPolicy: string | null
+    clinicPhotos: string[]
     createdAt: Date
     updatedAt: Date
     _count: Healthcare_providerCountAggregateOutputType | null
+    _avg: Healthcare_providerAvgAggregateOutputType | null
+    _sum: Healthcare_providerSumAggregateOutputType | null
     _min: Healthcare_providerMinAggregateOutputType | null
     _max: Healthcare_providerMaxAggregateOutputType | null
   }
@@ -15154,9 +15368,37 @@ export namespace Prisma {
   export type healthcare_providerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    displayName?: boolean
+    document?: boolean
+    birthDate?: boolean
+    gender?: boolean
+    languages?: boolean
     specialty?: boolean
+    professionalCategory?: boolean
     professionalId?: boolean
+    licenseCouncil?: boolean
+    licenseState?: boolean
+    licenseDocumentKey?: boolean
+    licenseDocumentFileName?: boolean
+    licenseDocumentMimeType?: boolean
+    licenseDocumentSize?: boolean
+    licenseDocumentSha256?: boolean
+    licenseDocumentUploadedAt?: boolean
+    verificationStatus?: boolean
+    verifiedAt?: boolean
     bio?: boolean
+    approach?: boolean
+    education?: boolean
+    certifications?: boolean
+    yearsOfExperience?: boolean
+    targetAudiences?: boolean
+    serviceModalities?: boolean
+    clinicAddress?: boolean
+    homeCareRadiusKm?: boolean
+    acceptedInsurance?: boolean
+    paymentMethods?: boolean
+    cancellationPolicy?: boolean
+    clinicPhotos?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -15174,9 +15416,37 @@ export namespace Prisma {
   export type healthcare_providerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    displayName?: boolean
+    document?: boolean
+    birthDate?: boolean
+    gender?: boolean
+    languages?: boolean
     specialty?: boolean
+    professionalCategory?: boolean
     professionalId?: boolean
+    licenseCouncil?: boolean
+    licenseState?: boolean
+    licenseDocumentKey?: boolean
+    licenseDocumentFileName?: boolean
+    licenseDocumentMimeType?: boolean
+    licenseDocumentSize?: boolean
+    licenseDocumentSha256?: boolean
+    licenseDocumentUploadedAt?: boolean
+    verificationStatus?: boolean
+    verifiedAt?: boolean
     bio?: boolean
+    approach?: boolean
+    education?: boolean
+    certifications?: boolean
+    yearsOfExperience?: boolean
+    targetAudiences?: boolean
+    serviceModalities?: boolean
+    clinicAddress?: boolean
+    homeCareRadiusKm?: boolean
+    acceptedInsurance?: boolean
+    paymentMethods?: boolean
+    cancellationPolicy?: boolean
+    clinicPhotos?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -15185,9 +15455,37 @@ export namespace Prisma {
   export type healthcare_providerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    displayName?: boolean
+    document?: boolean
+    birthDate?: boolean
+    gender?: boolean
+    languages?: boolean
     specialty?: boolean
+    professionalCategory?: boolean
     professionalId?: boolean
+    licenseCouncil?: boolean
+    licenseState?: boolean
+    licenseDocumentKey?: boolean
+    licenseDocumentFileName?: boolean
+    licenseDocumentMimeType?: boolean
+    licenseDocumentSize?: boolean
+    licenseDocumentSha256?: boolean
+    licenseDocumentUploadedAt?: boolean
+    verificationStatus?: boolean
+    verifiedAt?: boolean
     bio?: boolean
+    approach?: boolean
+    education?: boolean
+    certifications?: boolean
+    yearsOfExperience?: boolean
+    targetAudiences?: boolean
+    serviceModalities?: boolean
+    clinicAddress?: boolean
+    homeCareRadiusKm?: boolean
+    acceptedInsurance?: boolean
+    paymentMethods?: boolean
+    cancellationPolicy?: boolean
+    clinicPhotos?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -15196,14 +15494,42 @@ export namespace Prisma {
   export type healthcare_providerSelectScalar = {
     id?: boolean
     userId?: boolean
+    displayName?: boolean
+    document?: boolean
+    birthDate?: boolean
+    gender?: boolean
+    languages?: boolean
     specialty?: boolean
+    professionalCategory?: boolean
     professionalId?: boolean
+    licenseCouncil?: boolean
+    licenseState?: boolean
+    licenseDocumentKey?: boolean
+    licenseDocumentFileName?: boolean
+    licenseDocumentMimeType?: boolean
+    licenseDocumentSize?: boolean
+    licenseDocumentSha256?: boolean
+    licenseDocumentUploadedAt?: boolean
+    verificationStatus?: boolean
+    verifiedAt?: boolean
     bio?: boolean
+    approach?: boolean
+    education?: boolean
+    certifications?: boolean
+    yearsOfExperience?: boolean
+    targetAudiences?: boolean
+    serviceModalities?: boolean
+    clinicAddress?: boolean
+    homeCareRadiusKm?: boolean
+    acceptedInsurance?: boolean
+    paymentMethods?: boolean
+    cancellationPolicy?: boolean
+    clinicPhotos?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type healthcare_providerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "specialty" | "professionalId" | "bio" | "createdAt" | "updatedAt", ExtArgs["result"]["healthcare_provider"]>
+  export type healthcare_providerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "licenseCouncil" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verifiedAt" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "clinicPhotos" | "createdAt" | "updatedAt", ExtArgs["result"]["healthcare_provider"]>
   export type healthcare_providerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | userDefaultArgs<ExtArgs>
     procedures?: boolean | healthcare_provider$proceduresArgs<ExtArgs>
@@ -15239,9 +15565,37 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
+      displayName: string | null
+      document: string | null
+      birthDate: Date | null
+      gender: string | null
+      languages: string[]
       specialty: string | null
+      professionalCategory: string | null
       professionalId: string | null
+      licenseCouncil: string | null
+      licenseState: string | null
+      licenseDocumentKey: string | null
+      licenseDocumentFileName: string | null
+      licenseDocumentMimeType: string | null
+      licenseDocumentSize: number | null
+      licenseDocumentSha256: string | null
+      licenseDocumentUploadedAt: Date | null
+      verificationStatus: string
+      verifiedAt: Date | null
       bio: string | null
+      approach: string | null
+      education: string | null
+      certifications: string | null
+      yearsOfExperience: number | null
+      targetAudiences: string[]
+      serviceModalities: string[]
+      clinicAddress: string | null
+      homeCareRadiusKm: number | null
+      acceptedInsurance: string[]
+      paymentMethods: string[]
+      cancellationPolicy: string | null
+      clinicPhotos: string[]
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["healthcare_provider"]>
@@ -15678,9 +16032,37 @@ export namespace Prisma {
   interface healthcare_providerFieldRefs {
     readonly id: FieldRef<"healthcare_provider", 'String'>
     readonly userId: FieldRef<"healthcare_provider", 'String'>
+    readonly displayName: FieldRef<"healthcare_provider", 'String'>
+    readonly document: FieldRef<"healthcare_provider", 'String'>
+    readonly birthDate: FieldRef<"healthcare_provider", 'DateTime'>
+    readonly gender: FieldRef<"healthcare_provider", 'String'>
+    readonly languages: FieldRef<"healthcare_provider", 'String[]'>
     readonly specialty: FieldRef<"healthcare_provider", 'String'>
+    readonly professionalCategory: FieldRef<"healthcare_provider", 'String'>
     readonly professionalId: FieldRef<"healthcare_provider", 'String'>
+    readonly licenseCouncil: FieldRef<"healthcare_provider", 'String'>
+    readonly licenseState: FieldRef<"healthcare_provider", 'String'>
+    readonly licenseDocumentKey: FieldRef<"healthcare_provider", 'String'>
+    readonly licenseDocumentFileName: FieldRef<"healthcare_provider", 'String'>
+    readonly licenseDocumentMimeType: FieldRef<"healthcare_provider", 'String'>
+    readonly licenseDocumentSize: FieldRef<"healthcare_provider", 'Int'>
+    readonly licenseDocumentSha256: FieldRef<"healthcare_provider", 'String'>
+    readonly licenseDocumentUploadedAt: FieldRef<"healthcare_provider", 'DateTime'>
+    readonly verificationStatus: FieldRef<"healthcare_provider", 'String'>
+    readonly verifiedAt: FieldRef<"healthcare_provider", 'DateTime'>
     readonly bio: FieldRef<"healthcare_provider", 'String'>
+    readonly approach: FieldRef<"healthcare_provider", 'String'>
+    readonly education: FieldRef<"healthcare_provider", 'String'>
+    readonly certifications: FieldRef<"healthcare_provider", 'String'>
+    readonly yearsOfExperience: FieldRef<"healthcare_provider", 'Int'>
+    readonly targetAudiences: FieldRef<"healthcare_provider", 'String[]'>
+    readonly serviceModalities: FieldRef<"healthcare_provider", 'String[]'>
+    readonly clinicAddress: FieldRef<"healthcare_provider", 'String'>
+    readonly homeCareRadiusKm: FieldRef<"healthcare_provider", 'Int'>
+    readonly acceptedInsurance: FieldRef<"healthcare_provider", 'String[]'>
+    readonly paymentMethods: FieldRef<"healthcare_provider", 'String[]'>
+    readonly cancellationPolicy: FieldRef<"healthcare_provider", 'String'>
+    readonly clinicPhotos: FieldRef<"healthcare_provider", 'String[]'>
     readonly createdAt: FieldRef<"healthcare_provider", 'DateTime'>
     readonly updatedAt: FieldRef<"healthcare_provider", 'DateTime'>
   }
@@ -17436,7 +17818,7 @@ export namespace Prisma {
     messageType: $Enums.MessageType | null
     content: string | null
     relatedAppointmentId: string | null
-    fileUrl: string | null
+    fileKey: string | null
     fileName: string | null
     fileSize: number | null
     fileMimeType: string | null
@@ -17452,7 +17834,7 @@ export namespace Prisma {
     messageType: $Enums.MessageType | null
     content: string | null
     relatedAppointmentId: string | null
-    fileUrl: string | null
+    fileKey: string | null
     fileName: string | null
     fileSize: number | null
     fileMimeType: string | null
@@ -17468,7 +17850,7 @@ export namespace Prisma {
     messageType: number
     content: number
     relatedAppointmentId: number
-    fileUrl: number
+    fileKey: number
     fileName: number
     fileSize: number
     fileMimeType: number
@@ -17494,7 +17876,7 @@ export namespace Prisma {
     messageType?: true
     content?: true
     relatedAppointmentId?: true
-    fileUrl?: true
+    fileKey?: true
     fileName?: true
     fileSize?: true
     fileMimeType?: true
@@ -17510,7 +17892,7 @@ export namespace Prisma {
     messageType?: true
     content?: true
     relatedAppointmentId?: true
-    fileUrl?: true
+    fileKey?: true
     fileName?: true
     fileSize?: true
     fileMimeType?: true
@@ -17526,7 +17908,7 @@ export namespace Prisma {
     messageType?: true
     content?: true
     relatedAppointmentId?: true
-    fileUrl?: true
+    fileKey?: true
     fileName?: true
     fileSize?: true
     fileMimeType?: true
@@ -17629,7 +18011,7 @@ export namespace Prisma {
     messageType: $Enums.MessageType
     content: string | null
     relatedAppointmentId: string | null
-    fileUrl: string | null
+    fileKey: string | null
     fileName: string | null
     fileSize: number | null
     fileMimeType: string | null
@@ -17664,7 +18046,7 @@ export namespace Prisma {
     messageType?: boolean
     content?: boolean
     relatedAppointmentId?: boolean
-    fileUrl?: boolean
+    fileKey?: boolean
     fileName?: boolean
     fileSize?: boolean
     fileMimeType?: boolean
@@ -17683,7 +18065,7 @@ export namespace Prisma {
     messageType?: boolean
     content?: boolean
     relatedAppointmentId?: boolean
-    fileUrl?: boolean
+    fileKey?: boolean
     fileName?: boolean
     fileSize?: boolean
     fileMimeType?: boolean
@@ -17702,7 +18084,7 @@ export namespace Prisma {
     messageType?: boolean
     content?: boolean
     relatedAppointmentId?: boolean
-    fileUrl?: boolean
+    fileKey?: boolean
     fileName?: boolean
     fileSize?: boolean
     fileMimeType?: boolean
@@ -17721,7 +18103,7 @@ export namespace Prisma {
     messageType?: boolean
     content?: boolean
     relatedAppointmentId?: boolean
-    fileUrl?: boolean
+    fileKey?: boolean
     fileName?: boolean
     fileSize?: boolean
     fileMimeType?: boolean
@@ -17729,7 +18111,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type conversation_messageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "conversationId" | "senderId" | "senderType" | "messageType" | "content" | "relatedAppointmentId" | "fileUrl" | "fileName" | "fileSize" | "fileMimeType" | "createdAt" | "updatedAt", ExtArgs["result"]["conversation_message"]>
+  export type conversation_messageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "conversationId" | "senderId" | "senderType" | "messageType" | "content" | "relatedAppointmentId" | "fileKey" | "fileName" | "fileSize" | "fileMimeType" | "createdAt" | "updatedAt", ExtArgs["result"]["conversation_message"]>
   export type conversation_messageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     conversation?: boolean | conversationDefaultArgs<ExtArgs>
     sender?: boolean | userDefaultArgs<ExtArgs>
@@ -17761,7 +18143,7 @@ export namespace Prisma {
       messageType: $Enums.MessageType
       content: string | null
       relatedAppointmentId: string | null
-      fileUrl: string | null
+      fileKey: string | null
       fileName: string | null
       fileSize: number | null
       fileMimeType: string | null
@@ -18200,7 +18582,7 @@ export namespace Prisma {
     readonly messageType: FieldRef<"conversation_message", 'MessageType'>
     readonly content: FieldRef<"conversation_message", 'String'>
     readonly relatedAppointmentId: FieldRef<"conversation_message", 'String'>
-    readonly fileUrl: FieldRef<"conversation_message", 'String'>
+    readonly fileKey: FieldRef<"conversation_message", 'String'>
     readonly fileName: FieldRef<"conversation_message", 'String'>
     readonly fileSize: FieldRef<"conversation_message", 'Int'>
     readonly fileMimeType: FieldRef<"conversation_message", 'String'>
@@ -30526,9 +30908,37 @@ export namespace Prisma {
   export const Healthcare_providerScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    displayName: 'displayName',
+    document: 'document',
+    birthDate: 'birthDate',
+    gender: 'gender',
+    languages: 'languages',
     specialty: 'specialty',
+    professionalCategory: 'professionalCategory',
     professionalId: 'professionalId',
+    licenseCouncil: 'licenseCouncil',
+    licenseState: 'licenseState',
+    licenseDocumentKey: 'licenseDocumentKey',
+    licenseDocumentFileName: 'licenseDocumentFileName',
+    licenseDocumentMimeType: 'licenseDocumentMimeType',
+    licenseDocumentSize: 'licenseDocumentSize',
+    licenseDocumentSha256: 'licenseDocumentSha256',
+    licenseDocumentUploadedAt: 'licenseDocumentUploadedAt',
+    verificationStatus: 'verificationStatus',
+    verifiedAt: 'verifiedAt',
     bio: 'bio',
+    approach: 'approach',
+    education: 'education',
+    certifications: 'certifications',
+    yearsOfExperience: 'yearsOfExperience',
+    targetAudiences: 'targetAudiences',
+    serviceModalities: 'serviceModalities',
+    clinicAddress: 'clinicAddress',
+    homeCareRadiusKm: 'homeCareRadiusKm',
+    acceptedInsurance: 'acceptedInsurance',
+    paymentMethods: 'paymentMethods',
+    cancellationPolicy: 'cancellationPolicy',
+    clinicPhotos: 'clinicPhotos',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -30556,7 +30966,7 @@ export namespace Prisma {
     messageType: 'messageType',
     content: 'content',
     relatedAppointmentId: 'relatedAppointmentId',
-    fileUrl: 'fileUrl',
+    fileKey: 'fileKey',
     fileName: 'fileName',
     fileSize: 'fileSize',
     fileMimeType: 'fileMimeType',
@@ -31722,9 +32132,37 @@ export namespace Prisma {
     NOT?: healthcare_providerWhereInput | healthcare_providerWhereInput[]
     id?: StringFilter<"healthcare_provider"> | string
     userId?: StringFilter<"healthcare_provider"> | string
+    displayName?: StringNullableFilter<"healthcare_provider"> | string | null
+    document?: StringNullableFilter<"healthcare_provider"> | string | null
+    birthDate?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
+    gender?: StringNullableFilter<"healthcare_provider"> | string | null
+    languages?: StringNullableListFilter<"healthcare_provider">
     specialty?: StringNullableFilter<"healthcare_provider"> | string | null
+    professionalCategory?: StringNullableFilter<"healthcare_provider"> | string | null
     professionalId?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseCouncil?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseState?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentKey?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentFileName?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentMimeType?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentSize?: IntNullableFilter<"healthcare_provider"> | number | null
+    licenseDocumentSha256?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentUploadedAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
+    verificationStatus?: StringFilter<"healthcare_provider"> | string
+    verifiedAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
     bio?: StringNullableFilter<"healthcare_provider"> | string | null
+    approach?: StringNullableFilter<"healthcare_provider"> | string | null
+    education?: StringNullableFilter<"healthcare_provider"> | string | null
+    certifications?: StringNullableFilter<"healthcare_provider"> | string | null
+    yearsOfExperience?: IntNullableFilter<"healthcare_provider"> | number | null
+    targetAudiences?: StringNullableListFilter<"healthcare_provider">
+    serviceModalities?: StringNullableListFilter<"healthcare_provider">
+    clinicAddress?: StringNullableFilter<"healthcare_provider"> | string | null
+    homeCareRadiusKm?: IntNullableFilter<"healthcare_provider"> | number | null
+    acceptedInsurance?: StringNullableListFilter<"healthcare_provider">
+    paymentMethods?: StringNullableListFilter<"healthcare_provider">
+    cancellationPolicy?: StringNullableFilter<"healthcare_provider"> | string | null
+    clinicPhotos?: StringNullableListFilter<"healthcare_provider">
     createdAt?: DateTimeFilter<"healthcare_provider"> | Date | string
     updatedAt?: DateTimeFilter<"healthcare_provider"> | Date | string
     user?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -31741,9 +32179,37 @@ export namespace Prisma {
   export type healthcare_providerOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    displayName?: SortOrderInput | SortOrder
+    document?: SortOrderInput | SortOrder
+    birthDate?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    languages?: SortOrder
     specialty?: SortOrderInput | SortOrder
+    professionalCategory?: SortOrderInput | SortOrder
     professionalId?: SortOrderInput | SortOrder
+    licenseCouncil?: SortOrderInput | SortOrder
+    licenseState?: SortOrderInput | SortOrder
+    licenseDocumentKey?: SortOrderInput | SortOrder
+    licenseDocumentFileName?: SortOrderInput | SortOrder
+    licenseDocumentMimeType?: SortOrderInput | SortOrder
+    licenseDocumentSize?: SortOrderInput | SortOrder
+    licenseDocumentSha256?: SortOrderInput | SortOrder
+    licenseDocumentUploadedAt?: SortOrderInput | SortOrder
+    verificationStatus?: SortOrder
+    verifiedAt?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
+    approach?: SortOrderInput | SortOrder
+    education?: SortOrderInput | SortOrder
+    certifications?: SortOrderInput | SortOrder
+    yearsOfExperience?: SortOrderInput | SortOrder
+    targetAudiences?: SortOrder
+    serviceModalities?: SortOrder
+    clinicAddress?: SortOrderInput | SortOrder
+    homeCareRadiusKm?: SortOrderInput | SortOrder
+    acceptedInsurance?: SortOrder
+    paymentMethods?: SortOrder
+    cancellationPolicy?: SortOrderInput | SortOrder
+    clinicPhotos?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: userOrderByWithRelationInput
@@ -31763,9 +32229,37 @@ export namespace Prisma {
     AND?: healthcare_providerWhereInput | healthcare_providerWhereInput[]
     OR?: healthcare_providerWhereInput[]
     NOT?: healthcare_providerWhereInput | healthcare_providerWhereInput[]
+    displayName?: StringNullableFilter<"healthcare_provider"> | string | null
+    document?: StringNullableFilter<"healthcare_provider"> | string | null
+    birthDate?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
+    gender?: StringNullableFilter<"healthcare_provider"> | string | null
+    languages?: StringNullableListFilter<"healthcare_provider">
     specialty?: StringNullableFilter<"healthcare_provider"> | string | null
+    professionalCategory?: StringNullableFilter<"healthcare_provider"> | string | null
     professionalId?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseCouncil?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseState?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentKey?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentFileName?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentMimeType?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentSize?: IntNullableFilter<"healthcare_provider"> | number | null
+    licenseDocumentSha256?: StringNullableFilter<"healthcare_provider"> | string | null
+    licenseDocumentUploadedAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
+    verificationStatus?: StringFilter<"healthcare_provider"> | string
+    verifiedAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
     bio?: StringNullableFilter<"healthcare_provider"> | string | null
+    approach?: StringNullableFilter<"healthcare_provider"> | string | null
+    education?: StringNullableFilter<"healthcare_provider"> | string | null
+    certifications?: StringNullableFilter<"healthcare_provider"> | string | null
+    yearsOfExperience?: IntNullableFilter<"healthcare_provider"> | number | null
+    targetAudiences?: StringNullableListFilter<"healthcare_provider">
+    serviceModalities?: StringNullableListFilter<"healthcare_provider">
+    clinicAddress?: StringNullableFilter<"healthcare_provider"> | string | null
+    homeCareRadiusKm?: IntNullableFilter<"healthcare_provider"> | number | null
+    acceptedInsurance?: StringNullableListFilter<"healthcare_provider">
+    paymentMethods?: StringNullableListFilter<"healthcare_provider">
+    cancellationPolicy?: StringNullableFilter<"healthcare_provider"> | string | null
+    clinicPhotos?: StringNullableListFilter<"healthcare_provider">
     createdAt?: DateTimeFilter<"healthcare_provider"> | Date | string
     updatedAt?: DateTimeFilter<"healthcare_provider"> | Date | string
     user?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -31782,14 +32276,44 @@ export namespace Prisma {
   export type healthcare_providerOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    displayName?: SortOrderInput | SortOrder
+    document?: SortOrderInput | SortOrder
+    birthDate?: SortOrderInput | SortOrder
+    gender?: SortOrderInput | SortOrder
+    languages?: SortOrder
     specialty?: SortOrderInput | SortOrder
+    professionalCategory?: SortOrderInput | SortOrder
     professionalId?: SortOrderInput | SortOrder
+    licenseCouncil?: SortOrderInput | SortOrder
+    licenseState?: SortOrderInput | SortOrder
+    licenseDocumentKey?: SortOrderInput | SortOrder
+    licenseDocumentFileName?: SortOrderInput | SortOrder
+    licenseDocumentMimeType?: SortOrderInput | SortOrder
+    licenseDocumentSize?: SortOrderInput | SortOrder
+    licenseDocumentSha256?: SortOrderInput | SortOrder
+    licenseDocumentUploadedAt?: SortOrderInput | SortOrder
+    verificationStatus?: SortOrder
+    verifiedAt?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
+    approach?: SortOrderInput | SortOrder
+    education?: SortOrderInput | SortOrder
+    certifications?: SortOrderInput | SortOrder
+    yearsOfExperience?: SortOrderInput | SortOrder
+    targetAudiences?: SortOrder
+    serviceModalities?: SortOrder
+    clinicAddress?: SortOrderInput | SortOrder
+    homeCareRadiusKm?: SortOrderInput | SortOrder
+    acceptedInsurance?: SortOrder
+    paymentMethods?: SortOrder
+    cancellationPolicy?: SortOrderInput | SortOrder
+    clinicPhotos?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: healthcare_providerCountOrderByAggregateInput
+    _avg?: healthcare_providerAvgOrderByAggregateInput
     _max?: healthcare_providerMaxOrderByAggregateInput
     _min?: healthcare_providerMinOrderByAggregateInput
+    _sum?: healthcare_providerSumOrderByAggregateInput
   }
 
   export type healthcare_providerScalarWhereWithAggregatesInput = {
@@ -31798,9 +32322,37 @@ export namespace Prisma {
     NOT?: healthcare_providerScalarWhereWithAggregatesInput | healthcare_providerScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"healthcare_provider"> | string
     userId?: StringWithAggregatesFilter<"healthcare_provider"> | string
+    displayName?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    document?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    birthDate?: DateTimeNullableWithAggregatesFilter<"healthcare_provider"> | Date | string | null
+    gender?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    languages?: StringNullableListFilter<"healthcare_provider">
     specialty?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    professionalCategory?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
     professionalId?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    licenseCouncil?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    licenseState?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    licenseDocumentKey?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    licenseDocumentFileName?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    licenseDocumentMimeType?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    licenseDocumentSize?: IntNullableWithAggregatesFilter<"healthcare_provider"> | number | null
+    licenseDocumentSha256?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    licenseDocumentUploadedAt?: DateTimeNullableWithAggregatesFilter<"healthcare_provider"> | Date | string | null
+    verificationStatus?: StringWithAggregatesFilter<"healthcare_provider"> | string
+    verifiedAt?: DateTimeNullableWithAggregatesFilter<"healthcare_provider"> | Date | string | null
     bio?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    approach?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    education?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    certifications?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    yearsOfExperience?: IntNullableWithAggregatesFilter<"healthcare_provider"> | number | null
+    targetAudiences?: StringNullableListFilter<"healthcare_provider">
+    serviceModalities?: StringNullableListFilter<"healthcare_provider">
+    clinicAddress?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    homeCareRadiusKm?: IntNullableWithAggregatesFilter<"healthcare_provider"> | number | null
+    acceptedInsurance?: StringNullableListFilter<"healthcare_provider">
+    paymentMethods?: StringNullableListFilter<"healthcare_provider">
+    cancellationPolicy?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
+    clinicPhotos?: StringNullableListFilter<"healthcare_provider">
     createdAt?: DateTimeWithAggregatesFilter<"healthcare_provider"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"healthcare_provider"> | Date | string
   }
@@ -31883,7 +32435,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeFilter<"conversation_message"> | $Enums.MessageType
     content?: StringNullableFilter<"conversation_message"> | string | null
     relatedAppointmentId?: StringNullableFilter<"conversation_message"> | string | null
-    fileUrl?: StringNullableFilter<"conversation_message"> | string | null
+    fileKey?: StringNullableFilter<"conversation_message"> | string | null
     fileName?: StringNullableFilter<"conversation_message"> | string | null
     fileSize?: IntNullableFilter<"conversation_message"> | number | null
     fileMimeType?: StringNullableFilter<"conversation_message"> | string | null
@@ -31902,7 +32454,7 @@ export namespace Prisma {
     messageType?: SortOrder
     content?: SortOrderInput | SortOrder
     relatedAppointmentId?: SortOrderInput | SortOrder
-    fileUrl?: SortOrderInput | SortOrder
+    fileKey?: SortOrderInput | SortOrder
     fileName?: SortOrderInput | SortOrder
     fileSize?: SortOrderInput | SortOrder
     fileMimeType?: SortOrderInput | SortOrder
@@ -31924,7 +32476,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeFilter<"conversation_message"> | $Enums.MessageType
     content?: StringNullableFilter<"conversation_message"> | string | null
     relatedAppointmentId?: StringNullableFilter<"conversation_message"> | string | null
-    fileUrl?: StringNullableFilter<"conversation_message"> | string | null
+    fileKey?: StringNullableFilter<"conversation_message"> | string | null
     fileName?: StringNullableFilter<"conversation_message"> | string | null
     fileSize?: IntNullableFilter<"conversation_message"> | number | null
     fileMimeType?: StringNullableFilter<"conversation_message"> | string | null
@@ -31943,7 +32495,7 @@ export namespace Prisma {
     messageType?: SortOrder
     content?: SortOrderInput | SortOrder
     relatedAppointmentId?: SortOrderInput | SortOrder
-    fileUrl?: SortOrderInput | SortOrder
+    fileKey?: SortOrderInput | SortOrder
     fileName?: SortOrderInput | SortOrder
     fileSize?: SortOrderInput | SortOrder
     fileMimeType?: SortOrderInput | SortOrder
@@ -31967,7 +32519,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeWithAggregatesFilter<"conversation_message"> | $Enums.MessageType
     content?: StringNullableWithAggregatesFilter<"conversation_message"> | string | null
     relatedAppointmentId?: StringNullableWithAggregatesFilter<"conversation_message"> | string | null
-    fileUrl?: StringNullableWithAggregatesFilter<"conversation_message"> | string | null
+    fileKey?: StringNullableWithAggregatesFilter<"conversation_message"> | string | null
     fileName?: StringNullableWithAggregatesFilter<"conversation_message"> | string | null
     fileSize?: IntNullableWithAggregatesFilter<"conversation_message"> | number | null
     fileMimeType?: StringNullableWithAggregatesFilter<"conversation_message"> | string | null
@@ -33631,9 +34183,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -33650,9 +34230,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedCreateInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -33667,9 +34275,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -33686,9 +34322,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -33704,18 +34368,74 @@ export namespace Prisma {
   export type healthcare_providerCreateManyInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type healthcare_providerUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -33723,9 +34443,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -33800,7 +34548,7 @@ export namespace Prisma {
     senderType: $Enums.MessageSenderType
     messageType: $Enums.MessageType
     content?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -33819,7 +34567,7 @@ export namespace Prisma {
     messageType: $Enums.MessageType
     content?: string | null
     relatedAppointmentId?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -33832,7 +34580,7 @@ export namespace Prisma {
     senderType?: EnumMessageSenderTypeFieldUpdateOperationsInput | $Enums.MessageSenderType
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33851,7 +34599,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
     relatedAppointmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33867,7 +34615,7 @@ export namespace Prisma {
     messageType: $Enums.MessageType
     content?: string | null
     relatedAppointmentId?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -33880,7 +34628,7 @@ export namespace Prisma {
     senderType?: EnumMessageSenderTypeFieldUpdateOperationsInput | $Enums.MessageSenderType
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33896,7 +34644,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
     relatedAppointmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35597,6 +36345,25 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type ProcedureListRelationFilter = {
     every?: procedureWhereInput
     some?: procedureWhereInput
@@ -35620,19 +36387,75 @@ export namespace Prisma {
   export type healthcare_providerCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    displayName?: SortOrder
+    document?: SortOrder
+    birthDate?: SortOrder
+    gender?: SortOrder
+    languages?: SortOrder
     specialty?: SortOrder
+    professionalCategory?: SortOrder
     professionalId?: SortOrder
+    licenseCouncil?: SortOrder
+    licenseState?: SortOrder
+    licenseDocumentKey?: SortOrder
+    licenseDocumentFileName?: SortOrder
+    licenseDocumentMimeType?: SortOrder
+    licenseDocumentSize?: SortOrder
+    licenseDocumentSha256?: SortOrder
+    licenseDocumentUploadedAt?: SortOrder
+    verificationStatus?: SortOrder
+    verifiedAt?: SortOrder
     bio?: SortOrder
+    approach?: SortOrder
+    education?: SortOrder
+    certifications?: SortOrder
+    yearsOfExperience?: SortOrder
+    targetAudiences?: SortOrder
+    serviceModalities?: SortOrder
+    clinicAddress?: SortOrder
+    homeCareRadiusKm?: SortOrder
+    acceptedInsurance?: SortOrder
+    paymentMethods?: SortOrder
+    cancellationPolicy?: SortOrder
+    clinicPhotos?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type healthcare_providerAvgOrderByAggregateInput = {
+    licenseDocumentSize?: SortOrder
+    yearsOfExperience?: SortOrder
+    homeCareRadiusKm?: SortOrder
   }
 
   export type healthcare_providerMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    displayName?: SortOrder
+    document?: SortOrder
+    birthDate?: SortOrder
+    gender?: SortOrder
     specialty?: SortOrder
+    professionalCategory?: SortOrder
     professionalId?: SortOrder
+    licenseCouncil?: SortOrder
+    licenseState?: SortOrder
+    licenseDocumentKey?: SortOrder
+    licenseDocumentFileName?: SortOrder
+    licenseDocumentMimeType?: SortOrder
+    licenseDocumentSize?: SortOrder
+    licenseDocumentSha256?: SortOrder
+    licenseDocumentUploadedAt?: SortOrder
+    verificationStatus?: SortOrder
+    verifiedAt?: SortOrder
     bio?: SortOrder
+    approach?: SortOrder
+    education?: SortOrder
+    certifications?: SortOrder
+    yearsOfExperience?: SortOrder
+    clinicAddress?: SortOrder
+    homeCareRadiusKm?: SortOrder
+    cancellationPolicy?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -35640,11 +36463,55 @@ export namespace Prisma {
   export type healthcare_providerMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    displayName?: SortOrder
+    document?: SortOrder
+    birthDate?: SortOrder
+    gender?: SortOrder
     specialty?: SortOrder
+    professionalCategory?: SortOrder
     professionalId?: SortOrder
+    licenseCouncil?: SortOrder
+    licenseState?: SortOrder
+    licenseDocumentKey?: SortOrder
+    licenseDocumentFileName?: SortOrder
+    licenseDocumentMimeType?: SortOrder
+    licenseDocumentSize?: SortOrder
+    licenseDocumentSha256?: SortOrder
+    licenseDocumentUploadedAt?: SortOrder
+    verificationStatus?: SortOrder
+    verifiedAt?: SortOrder
     bio?: SortOrder
+    approach?: SortOrder
+    education?: SortOrder
+    certifications?: SortOrder
+    yearsOfExperience?: SortOrder
+    clinicAddress?: SortOrder
+    homeCareRadiusKm?: SortOrder
+    cancellationPolicy?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type healthcare_providerSumOrderByAggregateInput = {
+    licenseDocumentSize?: SortOrder
+    yearsOfExperience?: SortOrder
+    homeCareRadiusKm?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type conversationCustomerIdHealthcareProviderIdCompoundUniqueInput = {
@@ -35693,17 +36560,6 @@ export namespace Prisma {
     not?: NestedEnumMessageTypeFilter<$PrismaModel> | $Enums.MessageType
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type ConversationScalarRelationFilter = {
     is?: conversationWhereInput
     isNot?: conversationWhereInput
@@ -35722,7 +36578,7 @@ export namespace Prisma {
     messageType?: SortOrder
     content?: SortOrder
     relatedAppointmentId?: SortOrder
-    fileUrl?: SortOrder
+    fileKey?: SortOrder
     fileName?: SortOrder
     fileSize?: SortOrder
     fileMimeType?: SortOrder
@@ -35742,7 +36598,7 @@ export namespace Prisma {
     messageType?: SortOrder
     content?: SortOrder
     relatedAppointmentId?: SortOrder
-    fileUrl?: SortOrder
+    fileKey?: SortOrder
     fileName?: SortOrder
     fileSize?: SortOrder
     fileMimeType?: SortOrder
@@ -35758,7 +36614,7 @@ export namespace Prisma {
     messageType?: SortOrder
     content?: SortOrder
     relatedAppointmentId?: SortOrder
-    fileUrl?: SortOrder
+    fileKey?: SortOrder
     fileName?: SortOrder
     fileSize?: SortOrder
     fileMimeType?: SortOrder
@@ -35788,22 +36644,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumMessageTypeFilter<$PrismaModel>
     _max?: NestedEnumMessageTypeFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type EnumPushPlatformFilter<$PrismaModel = never> = {
@@ -37092,6 +37932,30 @@ export namespace Prisma {
     update?: XOR<XOR<healthcare_providerUpdateToOneWithWhereWithoutSchedulesInput, healthcare_providerUpdateWithoutSchedulesInput>, healthcare_providerUncheckedUpdateWithoutSchedulesInput>
   }
 
+  export type healthcare_providerCreatelanguagesInput = {
+    set: string[]
+  }
+
+  export type healthcare_providerCreatetargetAudiencesInput = {
+    set: string[]
+  }
+
+  export type healthcare_providerCreateserviceModalitiesInput = {
+    set: string[]
+  }
+
+  export type healthcare_providerCreateacceptedInsuranceInput = {
+    set: string[]
+  }
+
+  export type healthcare_providerCreatepaymentMethodsInput = {
+    set: string[]
+  }
+
+  export type healthcare_providerCreateclinicPhotosInput = {
+    set: string[]
+  }
+
   export type userCreateNestedOneWithoutHealthcareProviderInput = {
     create?: XOR<userCreateWithoutHealthcareProviderInput, userUncheckedCreateWithoutHealthcareProviderInput>
     connectOrCreate?: userCreateOrConnectWithoutHealthcareProviderInput
@@ -37208,6 +38072,44 @@ export namespace Prisma {
     connectOrCreate?: patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput | patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput[]
     createMany?: patient_profileCreateManyCreatedByHealthcareProviderInputEnvelope
     connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+  }
+
+  export type healthcare_providerUpdatelanguagesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type healthcare_providerUpdatetargetAudiencesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type healthcare_providerUpdateserviceModalitiesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type healthcare_providerUpdateacceptedInsuranceInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type healthcare_providerUpdatepaymentMethodsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type healthcare_providerUpdateclinicPhotosInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type userUpdateOneRequiredWithoutHealthcareProviderNestedInput = {
@@ -37536,14 +38438,6 @@ export namespace Prisma {
 
   export type EnumMessageTypeFieldUpdateOperationsInput = {
     set?: $Enums.MessageType
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type conversationUpdateOneRequiredWithoutMessagesNestedInput = {
@@ -38502,6 +39396,33 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedEnumMessageSenderTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.MessageSenderType | EnumMessageSenderTypeFieldRefInput<$PrismaModel>
     in?: $Enums.MessageSenderType[] | ListEnumMessageSenderTypeFieldRefInput<$PrismaModel>
@@ -38534,33 +39455,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumMessageTypeFilter<$PrismaModel>
     _max?: NestedEnumMessageTypeFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedEnumPushPlatformFilter<$PrismaModel = never> = {
@@ -39013,9 +39907,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateWithoutAppointmentsInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -39031,9 +39953,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedCreateWithoutAppointmentsInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -39077,7 +40027,7 @@ export namespace Prisma {
     senderType: $Enums.MessageSenderType
     messageType: $Enums.MessageType
     content?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -39094,7 +40044,7 @@ export namespace Prisma {
     senderType: $Enums.MessageSenderType
     messageType: $Enums.MessageType
     content?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -39265,9 +40215,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateWithoutAppointmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -39283,9 +40261,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateWithoutAppointmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -39350,7 +40356,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeFilter<"conversation_message"> | $Enums.MessageType
     content?: StringNullableFilter<"conversation_message"> | string | null
     relatedAppointmentId?: StringNullableFilter<"conversation_message"> | string | null
-    fileUrl?: StringNullableFilter<"conversation_message"> | string | null
+    fileKey?: StringNullableFilter<"conversation_message"> | string | null
     fileName?: StringNullableFilter<"conversation_message"> | string | null
     fileSize?: IntNullableFilter<"conversation_message"> | number | null
     fileMimeType?: StringNullableFilter<"conversation_message"> | string | null
@@ -39440,9 +40446,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateWithoutCategoriesInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -39458,9 +40492,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedCreateWithoutCategoriesInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -39511,9 +40573,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateWithoutCategoriesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -39529,9 +40619,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateWithoutCategoriesInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -39805,9 +40923,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateWithoutFavoritedByInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -39823,9 +40969,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedCreateWithoutFavoritedByInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -39896,9 +41070,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateWithoutFavoritedByInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -39914,9 +41116,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateWithoutFavoritedByInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -40541,9 +41771,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateWithoutSchedulesInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -40559,9 +41817,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedCreateWithoutSchedulesInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -40591,9 +41877,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateWithoutSchedulesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -40609,9 +41923,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateWithoutSchedulesInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -41194,9 +42536,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateWithoutConversationsInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -41212,9 +42582,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedCreateWithoutConversationsInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -41236,7 +42634,7 @@ export namespace Prisma {
     senderType: $Enums.MessageSenderType
     messageType: $Enums.MessageType
     content?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -41253,7 +42651,7 @@ export namespace Prisma {
     messageType: $Enums.MessageType
     content?: string | null
     relatedAppointmentId?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -41325,9 +42723,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateWithoutConversationsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -41343,9 +42769,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateWithoutConversationsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -42070,9 +43524,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateWithoutCreatedPatientProfilesInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -42088,9 +43570,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedCreateWithoutCreatedPatientProfilesInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -42203,9 +43713,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateWithoutCreatedPatientProfilesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -42221,9 +43759,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateWithoutCreatedPatientProfilesInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -42253,9 +43819,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateWithoutProceduresInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -42271,9 +43865,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedCreateWithoutProceduresInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     appointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -42325,9 +43947,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateWithoutProceduresInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -42343,9 +43993,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateWithoutProceduresInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -42410,9 +44088,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateWithoutRatingsInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -42428,9 +44134,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedCreateWithoutRatingsInput = {
     id?: string
     userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -42501,9 +44235,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateWithoutRatingsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -42519,9 +44281,37 @@ export namespace Prisma {
   export type healthcare_providerUncheckedUpdateWithoutRatingsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -42900,9 +44690,37 @@ export namespace Prisma {
 
   export type healthcare_providerCreateWithoutUserInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
@@ -42917,9 +44735,37 @@ export namespace Prisma {
 
   export type healthcare_providerUncheckedCreateWithoutUserInput = {
     id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
     specialty?: string | null
+    professionalCategory?: string | null
     professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
     bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -42977,7 +44823,7 @@ export namespace Prisma {
     senderType: $Enums.MessageSenderType
     messageType: $Enums.MessageType
     content?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -42994,7 +44840,7 @@ export namespace Prisma {
     messageType: $Enums.MessageType
     content?: string | null
     relatedAppointmentId?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -43269,9 +45115,37 @@ export namespace Prisma {
 
   export type healthcare_providerUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
@@ -43286,9 +45160,37 @@ export namespace Prisma {
 
   export type healthcare_providerUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -43480,7 +45382,7 @@ export namespace Prisma {
     senderType: $Enums.MessageSenderType
     messageType: $Enums.MessageType
     content?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -43523,7 +45425,7 @@ export namespace Prisma {
     senderType?: EnumMessageSenderTypeFieldUpdateOperationsInput | $Enums.MessageSenderType
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43540,7 +45442,7 @@ export namespace Prisma {
     senderType?: EnumMessageSenderTypeFieldUpdateOperationsInput | $Enums.MessageSenderType
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43555,7 +45457,7 @@ export namespace Prisma {
     senderType?: EnumMessageSenderTypeFieldUpdateOperationsInput | $Enums.MessageSenderType
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44306,7 +46208,7 @@ export namespace Prisma {
     messageType: $Enums.MessageType
     content?: string | null
     relatedAppointmentId?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -44319,7 +46221,7 @@ export namespace Prisma {
     senderType?: EnumMessageSenderTypeFieldUpdateOperationsInput | $Enums.MessageSenderType
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44336,7 +46238,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
     relatedAppointmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44351,7 +46253,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
     relatedAppointmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44486,7 +46388,7 @@ export namespace Prisma {
     messageType: $Enums.MessageType
     content?: string | null
     relatedAppointmentId?: string | null
-    fileUrl?: string | null
+    fileKey?: string | null
     fileName?: string | null
     fileSize?: number | null
     fileMimeType?: string | null
@@ -44702,7 +46604,7 @@ export namespace Prisma {
     senderType?: EnumMessageSenderTypeFieldUpdateOperationsInput | $Enums.MessageSenderType
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44719,7 +46621,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
     relatedAppointmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44734,7 +46636,7 @@ export namespace Prisma {
     messageType?: EnumMessageTypeFieldUpdateOperationsInput | $Enums.MessageType
     content?: NullableStringFieldUpdateOperationsInput | string | null
     relatedAppointmentId?: NullableStringFieldUpdateOperationsInput | string | null
-    fileUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    fileKey?: NullableStringFieldUpdateOperationsInput | string | null
     fileName?: NullableStringFieldUpdateOperationsInput | string | null
     fileSize?: NullableIntFieldUpdateOperationsInput | number | null
     fileMimeType?: NullableStringFieldUpdateOperationsInput | string | null

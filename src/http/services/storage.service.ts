@@ -4,10 +4,10 @@ import { env } from "../../env";
 export interface UploadFileParams {
 	file: File;
 	folder?: string;
+	fileName?: string;
 }
 
 export interface UploadFileResult {
-	url: string;
 	key: string;
 	fileName: string;
 	fileSize: number;
@@ -32,21 +32,21 @@ export class StorageService {
 	async uploadFile({
 		file,
 		folder = "messages",
+		fileName,
 	}: UploadFileParams): Promise<UploadFileResult> {
 		const timestamp = Date.now();
 		const randomString = Math.random().toString(36).substring(2, 15);
-		const sanitizedFileName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
+		const sanitizedFileName = (fileName ?? file.name).replace(
+			/[^a-zA-Z0-9.-]/g,
+			"_",
+		);
 		const key = `${folder}/${timestamp}-${randomString}-${sanitizedFileName}`;
 
 		await this.s3Client.write(key, file, {
 			type: file.type,
 		});
 
-		// Use presigned URL with 7 days expiration (604800 seconds)
-		const url = this.presignUrl(key, 604800);
-
 		return {
-			url,
 			key,
 			fileName: file.name,
 			fileSize: file.size,
@@ -59,7 +59,7 @@ export class StorageService {
 	}
 
 	presignUrl(key: string, expiresIn = 3600): string {
-		return this.s3Client.file(key).presign({
+		return this.s3Client.file(this.normalizeStoredKey(key)).presign({
 			expiresIn,
 		});
 	}
@@ -72,6 +72,22 @@ export class StorageService {
 		} catch {
 			return null;
 		}
+	}
+
+	normalizeStoredKey(value: string): string {
+		if (!value.startsWith("http")) {
+			return value;
+		}
+
+		const extractedKey = this.extractKeyFromUrl(value);
+		if (!extractedKey) {
+			return value;
+		}
+
+		const bucketPrefix = `${env.R2_BUCKET_NAME}/`;
+		return extractedKey.startsWith(bucketPrefix)
+			? extractedKey.slice(bucketPrefix.length)
+			: extractedKey;
 	}
 }
 

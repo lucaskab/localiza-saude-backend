@@ -29,7 +29,7 @@ type ConversationWithParticipants = {
 		id: string;
 		messageType: string;
 		content: string | null;
-		fileUrl: string | null;
+		fileKey: string | null;
 		fileName: string | null;
 		createdAt: Date;
 	}>;
@@ -42,7 +42,7 @@ type MessageWithSender = {
 	senderType: string;
 	messageType: string;
 	content: string | null;
-	fileUrl: string | null;
+	fileKey: string | null;
 	fileName: string | null;
 	fileSize: number | null;
 	fileMimeType: string | null;
@@ -98,7 +98,7 @@ export const conversationPresenter = {
 							id: conversation.messages[0].id,
 							messageType: conversation.messages[0].messageType,
 							content: conversation.messages[0].content,
-							fileUrl: conversation.messages[0].fileUrl,
+							fileUrl: null,
 							fileName: conversation.messages[0].fileName,
 							createdAt: conversation.messages[0].createdAt,
 						}
@@ -120,7 +120,7 @@ export const messagePresenter = {
 			senderType: message.senderType,
 			messageType: message.messageType,
 			content: message.content,
-			fileUrl: message.fileUrl,
+			fileUrl: null,
 			fileName: message.fileName,
 			fileSize: message.fileSize,
 			fileMimeType: message.fileMimeType,

@@ -9,10 +9,12 @@ export const deleteMessageController = {
 	) {
 		const { messageId } = request.params;
 
-		// Verify user is authenticated
-		await request.getCurrentUserId();
+		const currentUserId = await request.getCurrentUserId();
 
-		const result = await deleteMessageUseCase.execute(messageId);
+		const result = await deleteMessageUseCase.execute({
+			messageId,
+			currentUserId,
+		});
 
 		return reply.status(200).send(result);
 	},

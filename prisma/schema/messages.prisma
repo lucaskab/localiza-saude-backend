@@ -28,7 +28,7 @@ model conversation_message {
   content              String?
   relatedAppointmentId String?           @map("related_appointment_id")
   relatedAppointment   appointment?      @relation(fields: [relatedAppointmentId], references: [id], onDelete: SetNull)
-  fileUrl              String?           @map("file_url")
+  fileKey              String?           @map("file_key")
   fileName             String?           @map("file_name")
   fileSize             Int?              @map("file_size")
   fileMimeType         String?           @map("file_mime_type")

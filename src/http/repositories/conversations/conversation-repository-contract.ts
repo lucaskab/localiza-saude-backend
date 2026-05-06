@@ -27,7 +27,7 @@ export interface CreateMessageParams {
 	messageType: MessageType;
 	content?: string;
 	relatedAppointmentId?: string;
-	fileUrl?: string;
+	fileKey?: string;
 	fileName?: string;
 	fileSize?: number;
 	fileMimeType?: string;

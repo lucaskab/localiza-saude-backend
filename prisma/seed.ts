@@ -1042,8 +1042,7 @@ async function main() {
 			senderType: "CUSTOMER",
 			messageType: "FILE",
 			content: "Segue o exame que você pediu",
-			fileUrl:
-				"https://pub-demo.r2.dev/messages/1705324800000-abc123-exame-sangue.pdf",
+			fileKey: "messages/1705324800000-abc123-exame-sangue.pdf",
 			fileName: "exame-sangue.pdf",
 			fileSize: 524288,
 			fileMimeType: "application/pdf",
@@ -1106,8 +1105,7 @@ async function main() {
 			senderType: "HEALTHCARE_PROVIDER",
 			messageType: "FILE",
 			content: "Confirmo! Vou enviar a nova receita médica",
-			fileUrl:
-				"https://pub-demo.r2.dev/messages/1705410900000-def456-receita-medica.pdf",
+			fileKey: "messages/1705410900000-def456-receita-medica.pdf",
 			fileName: "receita-medica.pdf",
 			fileSize: 245760,
 			fileMimeType: "application/pdf",

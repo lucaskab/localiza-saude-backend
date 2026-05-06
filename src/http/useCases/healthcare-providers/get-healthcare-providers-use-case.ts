@@ -5,9 +5,20 @@ import { getNextAvailableSlotsByProviderIds } from "./get-next-available-slots";
 
 type HealthcareProviderWithNextAvailability = HealthcareProviderWithRelations & {
 	nextAvailableAt: Date | null;
+	startingPriceCents: number | null;
 	averageRating: number;
 	totalRatings: number;
 };
+
+function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
+	if (provider.procedures.length === 0) {
+		return null;
+	}
+
+	return Math.min(
+		...provider.procedures.map((procedure) => procedure.priceInCents),
+	);
+}
 
 export const getHealthcareProvidersUseCase = {
 	async execute(): Promise<{
@@ -29,6 +40,7 @@ export const getHealthcareProvidersUseCase = {
 				return {
 					...provider,
 					nextAvailableAt: nextAvailableByProviderId.get(provider.id) ?? null,
+					startingPriceCents: getStartingPriceCents(provider),
 					averageRating: ratingSummary?.averageRating ?? 0,
 					totalRatings: ratingSummary?.totalRatings ?? 0,
 				};

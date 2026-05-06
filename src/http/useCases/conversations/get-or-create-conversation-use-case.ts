@@ -109,7 +109,7 @@ export const getOrCreateConversationUseCase = {
 						id: true,
 						messageType: true,
 						content: true,
-						fileUrl: true,
+						fileKey: true,
 						fileName: true,
 						createdAt: true,
 					},

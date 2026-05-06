@@ -4,9 +4,20 @@ import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { getProviderRatingSummariesByProviderIds } from "@/http/useCases/ratings/get-provider-rating-summaries";
 
 type HealthcareProviderWithRatingSummary = HealthcareProviderWithRelations & {
+	startingPriceCents: number | null;
 	averageRating: number;
 	totalRatings: number;
 };
+
+function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
+	if (provider.procedures.length === 0) {
+		return null;
+	}
+
+	return Math.min(
+		...provider.procedures.map((procedure) => procedure.priceInCents),
+	);
+}
 
 export const getHealthcareProviderByIdUseCase = {
 	async execute(
@@ -26,6 +37,7 @@ export const getHealthcareProviderByIdUseCase = {
 		return {
 			healthcareProvider: {
 				...healthcareProvider,
+				startingPriceCents: getStartingPriceCents(healthcareProvider),
 				averageRating: ratingSummary?.averageRating ?? 0,
 				totalRatings: ratingSummary?.totalRatings ?? 0,
 			},

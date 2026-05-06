@@ -20,11 +20,11 @@ export const getConversationMessagesController = {
 		const { conversationId } = request.params;
 		const { limit, offset, relatedAppointmentId } = request.query;
 
-		// Verify user is authenticated
-		await request.getCurrentUserId();
+		const currentUserId = await request.getCurrentUserId();
 
 		const result = await getConversationMessagesUseCase.execute({
 			conversationId,
+			currentUserId,
 			limit,
 			offset,
 			relatedAppointmentId,

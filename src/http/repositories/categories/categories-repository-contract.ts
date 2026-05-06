@@ -2,6 +2,7 @@ import type {
 	category,
 	healthcare_provider,
 	healthcare_provider_category,
+	procedure,
 	user,
 } from "../../../../prisma/generated/prisma/client";
 
@@ -9,6 +10,7 @@ export type CategoryWithProviders = category & {
 	healthcareProviderCategories: (healthcare_provider_category & {
 		healthcareProvider: healthcare_provider & {
 			user: user;
+			procedures: procedure[];
 		};
 	})[];
 };
