@@ -31,6 +31,9 @@ export const updateHealthcareProviderBodySchema = z.object({
 	paymentMethods: z.array(z.string().trim().min(1)).optional(),
 	cancellationPolicy: z.string().trim().nullable().optional(),
 	clinicPhotos: z.array(z.string().trim().min(1)).optional(),
+	termsAcceptedAt: z.coerce.date().nullable().optional(),
+	lgpdConsentAt: z.coerce.date().nullable().optional(),
+	professionalResponsibilityAcceptedAt: z.coerce.date().nullable().optional(),
 });
 
 export const updateHealthcareProviderResponseSchema = z.object({

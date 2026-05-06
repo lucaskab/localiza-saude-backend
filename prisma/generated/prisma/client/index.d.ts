@@ -15031,6 +15031,9 @@ export namespace Prisma {
     clinicAddress: string | null
     homeCareRadiusKm: number | null
     cancellationPolicy: string | null
+    termsAcceptedAt: Date | null
+    lgpdConsentAt: Date | null
+    professionalResponsibilityAcceptedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -15063,6 +15066,9 @@ export namespace Prisma {
     clinicAddress: string | null
     homeCareRadiusKm: number | null
     cancellationPolicy: string | null
+    termsAcceptedAt: Date | null
+    lgpdConsentAt: Date | null
+    professionalResponsibilityAcceptedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -15101,6 +15107,9 @@ export namespace Prisma {
     paymentMethods: number
     cancellationPolicy: number
     clinicPhotos: number
+    termsAcceptedAt: number
+    lgpdConsentAt: number
+    professionalResponsibilityAcceptedAt: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -15147,6 +15156,9 @@ export namespace Prisma {
     clinicAddress?: true
     homeCareRadiusKm?: true
     cancellationPolicy?: true
+    termsAcceptedAt?: true
+    lgpdConsentAt?: true
+    professionalResponsibilityAcceptedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -15179,6 +15191,9 @@ export namespace Prisma {
     clinicAddress?: true
     homeCareRadiusKm?: true
     cancellationPolicy?: true
+    termsAcceptedAt?: true
+    lgpdConsentAt?: true
+    professionalResponsibilityAcceptedAt?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -15217,6 +15232,9 @@ export namespace Prisma {
     paymentMethods?: true
     cancellationPolicy?: true
     clinicPhotos?: true
+    termsAcceptedAt?: true
+    lgpdConsentAt?: true
+    professionalResponsibilityAcceptedAt?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -15342,6 +15360,9 @@ export namespace Prisma {
     paymentMethods: string[]
     cancellationPolicy: string | null
     clinicPhotos: string[]
+    termsAcceptedAt: Date | null
+    lgpdConsentAt: Date | null
+    professionalResponsibilityAcceptedAt: Date | null
     createdAt: Date
     updatedAt: Date
     _count: Healthcare_providerCountAggregateOutputType | null
@@ -15399,6 +15420,9 @@ export namespace Prisma {
     paymentMethods?: boolean
     cancellationPolicy?: boolean
     clinicPhotos?: boolean
+    termsAcceptedAt?: boolean
+    lgpdConsentAt?: boolean
+    professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -15447,6 +15471,9 @@ export namespace Prisma {
     paymentMethods?: boolean
     cancellationPolicy?: boolean
     clinicPhotos?: boolean
+    termsAcceptedAt?: boolean
+    lgpdConsentAt?: boolean
+    professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -15486,6 +15513,9 @@ export namespace Prisma {
     paymentMethods?: boolean
     cancellationPolicy?: boolean
     clinicPhotos?: boolean
+    termsAcceptedAt?: boolean
+    lgpdConsentAt?: boolean
+    professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -15525,11 +15555,14 @@ export namespace Prisma {
     paymentMethods?: boolean
     cancellationPolicy?: boolean
     clinicPhotos?: boolean
+    termsAcceptedAt?: boolean
+    lgpdConsentAt?: boolean
+    professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type healthcare_providerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "licenseCouncil" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verifiedAt" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "clinicPhotos" | "createdAt" | "updatedAt", ExtArgs["result"]["healthcare_provider"]>
+  export type healthcare_providerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "licenseCouncil" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verifiedAt" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["healthcare_provider"]>
   export type healthcare_providerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | userDefaultArgs<ExtArgs>
     procedures?: boolean | healthcare_provider$proceduresArgs<ExtArgs>
@@ -15596,6 +15629,9 @@ export namespace Prisma {
       paymentMethods: string[]
       cancellationPolicy: string | null
       clinicPhotos: string[]
+      termsAcceptedAt: Date | null
+      lgpdConsentAt: Date | null
+      professionalResponsibilityAcceptedAt: Date | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["healthcare_provider"]>
@@ -16063,6 +16099,9 @@ export namespace Prisma {
     readonly paymentMethods: FieldRef<"healthcare_provider", 'String[]'>
     readonly cancellationPolicy: FieldRef<"healthcare_provider", 'String'>
     readonly clinicPhotos: FieldRef<"healthcare_provider", 'String[]'>
+    readonly termsAcceptedAt: FieldRef<"healthcare_provider", 'DateTime'>
+    readonly lgpdConsentAt: FieldRef<"healthcare_provider", 'DateTime'>
+    readonly professionalResponsibilityAcceptedAt: FieldRef<"healthcare_provider", 'DateTime'>
     readonly createdAt: FieldRef<"healthcare_provider", 'DateTime'>
     readonly updatedAt: FieldRef<"healthcare_provider", 'DateTime'>
   }
@@ -30939,6 +30978,9 @@ export namespace Prisma {
     paymentMethods: 'paymentMethods',
     cancellationPolicy: 'cancellationPolicy',
     clinicPhotos: 'clinicPhotos',
+    termsAcceptedAt: 'termsAcceptedAt',
+    lgpdConsentAt: 'lgpdConsentAt',
+    professionalResponsibilityAcceptedAt: 'professionalResponsibilityAcceptedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -32163,6 +32205,9 @@ export namespace Prisma {
     paymentMethods?: StringNullableListFilter<"healthcare_provider">
     cancellationPolicy?: StringNullableFilter<"healthcare_provider"> | string | null
     clinicPhotos?: StringNullableListFilter<"healthcare_provider">
+    termsAcceptedAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
+    lgpdConsentAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
+    professionalResponsibilityAcceptedAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
     createdAt?: DateTimeFilter<"healthcare_provider"> | Date | string
     updatedAt?: DateTimeFilter<"healthcare_provider"> | Date | string
     user?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -32210,6 +32255,9 @@ export namespace Prisma {
     paymentMethods?: SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     clinicPhotos?: SortOrder
+    termsAcceptedAt?: SortOrderInput | SortOrder
+    lgpdConsentAt?: SortOrderInput | SortOrder
+    professionalResponsibilityAcceptedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: userOrderByWithRelationInput
@@ -32260,6 +32308,9 @@ export namespace Prisma {
     paymentMethods?: StringNullableListFilter<"healthcare_provider">
     cancellationPolicy?: StringNullableFilter<"healthcare_provider"> | string | null
     clinicPhotos?: StringNullableListFilter<"healthcare_provider">
+    termsAcceptedAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
+    lgpdConsentAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
+    professionalResponsibilityAcceptedAt?: DateTimeNullableFilter<"healthcare_provider"> | Date | string | null
     createdAt?: DateTimeFilter<"healthcare_provider"> | Date | string
     updatedAt?: DateTimeFilter<"healthcare_provider"> | Date | string
     user?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -32307,6 +32358,9 @@ export namespace Prisma {
     paymentMethods?: SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     clinicPhotos?: SortOrder
+    termsAcceptedAt?: SortOrderInput | SortOrder
+    lgpdConsentAt?: SortOrderInput | SortOrder
+    professionalResponsibilityAcceptedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: healthcare_providerCountOrderByAggregateInput
@@ -32353,6 +32407,9 @@ export namespace Prisma {
     paymentMethods?: StringNullableListFilter<"healthcare_provider">
     cancellationPolicy?: StringNullableWithAggregatesFilter<"healthcare_provider"> | string | null
     clinicPhotos?: StringNullableListFilter<"healthcare_provider">
+    termsAcceptedAt?: DateTimeNullableWithAggregatesFilter<"healthcare_provider"> | Date | string | null
+    lgpdConsentAt?: DateTimeNullableWithAggregatesFilter<"healthcare_provider"> | Date | string | null
+    professionalResponsibilityAcceptedAt?: DateTimeNullableWithAggregatesFilter<"healthcare_provider"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"healthcare_provider"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"healthcare_provider"> | Date | string
   }
@@ -34214,6 +34271,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -34261,6 +34321,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -34306,6 +34369,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -34353,6 +34419,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -34399,6 +34468,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -34436,6 +34508,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -34474,6 +34549,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -36418,6 +36496,9 @@ export namespace Prisma {
     paymentMethods?: SortOrder
     cancellationPolicy?: SortOrder
     clinicPhotos?: SortOrder
+    termsAcceptedAt?: SortOrder
+    lgpdConsentAt?: SortOrder
+    professionalResponsibilityAcceptedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -36456,6 +36537,9 @@ export namespace Prisma {
     clinicAddress?: SortOrder
     homeCareRadiusKm?: SortOrder
     cancellationPolicy?: SortOrder
+    termsAcceptedAt?: SortOrder
+    lgpdConsentAt?: SortOrder
+    professionalResponsibilityAcceptedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -36488,6 +36572,9 @@ export namespace Prisma {
     clinicAddress?: SortOrder
     homeCareRadiusKm?: SortOrder
     cancellationPolicy?: SortOrder
+    termsAcceptedAt?: SortOrder
+    lgpdConsentAt?: SortOrder
+    professionalResponsibilityAcceptedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -39938,6 +40025,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -39984,6 +40074,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -40246,6 +40339,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -40292,6 +40388,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -40477,6 +40576,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -40523,6 +40625,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -40604,6 +40709,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -40650,6 +40758,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -40954,6 +41065,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -41000,6 +41114,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -41101,6 +41218,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -41147,6 +41267,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -41802,6 +41925,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -41848,6 +41974,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -41908,6 +42037,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -41954,6 +42086,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -42567,6 +42702,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -42613,6 +42751,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -42754,6 +42895,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -42800,6 +42944,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -43555,6 +43702,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -43601,6 +43751,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -43744,6 +43897,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -43790,6 +43946,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -43850,6 +44009,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -43896,6 +44058,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     appointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -43978,6 +44143,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -44024,6 +44192,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -44119,6 +44290,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutHealthcareProviderInput
@@ -44165,6 +44339,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -44266,6 +44443,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
@@ -44312,6 +44492,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -44721,6 +44904,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
@@ -44766,6 +44952,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
     cancellationPolicy?: string | null
     clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -45146,6 +45335,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
@@ -45191,6 +45383,9 @@ export namespace Prisma {
     paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput

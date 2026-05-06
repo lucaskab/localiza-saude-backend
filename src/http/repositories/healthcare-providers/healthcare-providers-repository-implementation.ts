@@ -120,6 +120,10 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					paymentMethods: data.paymentMethods,
 					cancellationPolicy: data.cancellationPolicy,
 					clinicPhotos: data.clinicPhotos,
+					termsAcceptedAt: data.termsAcceptedAt,
+					lgpdConsentAt: data.lgpdConsentAt,
+					professionalResponsibilityAcceptedAt:
+						data.professionalResponsibilityAcceptedAt,
 				},
 				include: {
 					user: {
@@ -217,6 +221,16 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					}),
 					...(data.clinicPhotos !== undefined && {
 						clinicPhotos: data.clinicPhotos,
+					}),
+					...(data.termsAcceptedAt !== undefined && {
+						termsAcceptedAt: data.termsAcceptedAt,
+					}),
+					...(data.lgpdConsentAt !== undefined && {
+						lgpdConsentAt: data.lgpdConsentAt,
+					}),
+					...(data.professionalResponsibilityAcceptedAt !== undefined && {
+						professionalResponsibilityAcceptedAt:
+							data.professionalResponsibilityAcceptedAt,
 					}),
 				},
 				include: {

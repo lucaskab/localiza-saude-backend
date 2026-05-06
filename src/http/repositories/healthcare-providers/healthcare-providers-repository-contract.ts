@@ -37,6 +37,9 @@ export type CreateHealthcareProviderData = {
 	paymentMethods?: string[];
 	cancellationPolicy?: string | null;
 	clinicPhotos?: string[];
+	termsAcceptedAt?: Date | null;
+	lgpdConsentAt?: Date | null;
+	professionalResponsibilityAcceptedAt?: Date | null;
 };
 
 export type UpdateHealthcareProviderData = {
@@ -71,6 +74,9 @@ export type UpdateHealthcareProviderData = {
 	paymentMethods?: string[];
 	cancellationPolicy?: string | null;
 	clinicPhotos?: string[];
+	termsAcceptedAt?: Date | null;
+	lgpdConsentAt?: Date | null;
+	professionalResponsibilityAcceptedAt?: Date | null;
 };
 
 export type HealthcareProviderWithRelations = healthcare_provider & {

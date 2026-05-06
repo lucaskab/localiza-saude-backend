@@ -264,6 +264,9 @@ exports.Prisma.Healthcare_providerScalarFieldEnum = {
   paymentMethods: 'paymentMethods',
   cancellationPolicy: 'cancellationPolicy',
   clinicPhotos: 'clinicPhotos',
+  termsAcceptedAt: 'termsAcceptedAt',
+  lgpdConsentAt: 'lgpdConsentAt',
+  professionalResponsibilityAcceptedAt: 'professionalResponsibilityAcceptedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
