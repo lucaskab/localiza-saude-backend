@@ -1,15 +1,91 @@
 import { prisma } from "@/database/prisma";
+import type { Prisma } from "../../../../prisma/generated/prisma/client";
 import type {
 	CreateHealthcareProviderData,
+	FindAllHealthcareProviderFilters,
 	HealthcareProviderRepository,
 	HealthcareProviderWithRelations,
 	UpdateHealthcareProviderData,
 } from "./healthcare-providers-repository-contract";
 
+function createFindAllWhere(filters?: FindAllHealthcareProviderFilters) {
+	if (!filters) {
+		return undefined;
+	}
+
+	const search = filters.search?.trim();
+	const specialty = filters.specialty?.trim();
+	const conditions: Prisma.healthcare_providerWhereInput[] = [];
+
+	if (search) {
+		conditions.push({
+			OR: [
+				{ displayName: { contains: search, mode: "insensitive" } },
+				{ specialty: { contains: search, mode: "insensitive" } },
+				{
+					professionalCategory: {
+						contains: search,
+						mode: "insensitive",
+					},
+				},
+				{ bio: { contains: search, mode: "insensitive" } },
+				{ approach: { contains: search, mode: "insensitive" } },
+				{ clinicAddress: { contains: search, mode: "insensitive" } },
+				{ user: { name: { contains: search, mode: "insensitive" } } },
+			],
+		});
+	}
+
+	if (specialty) {
+		conditions.push({
+			OR: [
+				{ specialty: { contains: specialty, mode: "insensitive" } },
+				{
+					professionalCategory: {
+						contains: specialty,
+						mode: "insensitive",
+					},
+				},
+			],
+		});
+	}
+
+	if (filters.serviceModality) {
+		conditions.push({ serviceModalities: { has: filters.serviceModality } });
+	}
+
+	if (filters.language) {
+		conditions.push({ languages: { has: filters.language } });
+	}
+
+	if (filters.insurance) {
+		conditions.push({ acceptedInsurance: { has: filters.insurance } });
+	}
+
+	if (filters.verified) {
+		conditions.push({ verificationStatus: "VERIFIED" });
+	}
+
+	if (typeof filters.maxPriceCents === "number") {
+		conditions.push({
+			procedures: {
+				some: {
+					priceInCents: {
+						lte: filters.maxPriceCents,
+					},
+				},
+			},
+		});
+	}
+
+	return conditions.length > 0 ? { AND: conditions } : undefined;
+}
+
 export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 	{
-		async findAll() {
+		async findAll(filters) {
 			const providers = await prisma.healthcare_provider.findMany({
+				where: createFindAllWhere(filters),
 				include: {
 					user: {
 						select: {
@@ -24,6 +100,11 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					procedures: {
 						orderBy: {
 							createdAt: "desc",
+						},
+					},
+					faqs: {
+						orderBy: {
+							position: "asc",
 						},
 					},
 				},
@@ -54,6 +135,11 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 							createdAt: "desc",
 						},
 					},
+					faqs: {
+						orderBy: {
+							position: "asc",
+						},
+					},
 				},
 			});
 
@@ -77,6 +163,11 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					procedures: {
 						orderBy: {
 							createdAt: "desc",
+						},
+					},
+					faqs: {
+						orderBy: {
+							position: "asc",
 						},
 					},
 				},
@@ -124,6 +215,15 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					lgpdConsentAt: data.lgpdConsentAt,
 					professionalResponsibilityAcceptedAt:
 						data.professionalResponsibilityAcceptedAt,
+					faqs: data.faqs
+						? {
+								create: data.faqs.map((faq, index) => ({
+									question: faq.question,
+									answer: faq.answer,
+									position: index,
+								})),
+							}
+						: undefined,
 				},
 				include: {
 					user: {
@@ -137,6 +237,11 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 						},
 					},
 					procedures: true,
+					faqs: {
+						orderBy: {
+							position: "asc",
+						},
+					},
 				},
 			});
 
@@ -144,112 +249,142 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 		},
 
 		async update(id: string, data: UpdateHealthcareProviderData) {
-			const provider = await prisma.healthcare_provider.update({
-				where: { id },
-				data: {
-					...(data.displayName !== undefined && {
-						displayName: data.displayName,
-					}),
-					...(data.document !== undefined && { document: data.document }),
-					...(data.birthDate !== undefined && { birthDate: data.birthDate }),
-					...(data.gender !== undefined && { gender: data.gender }),
-					...(data.languages !== undefined && { languages: data.languages }),
-					...(data.specialty !== undefined && { specialty: data.specialty }),
-					...(data.professionalCategory !== undefined && {
-						professionalCategory: data.professionalCategory,
-					}),
-					...(data.professionalId !== undefined && {
-						professionalId: data.professionalId,
-					}),
-					...(data.licenseCouncil !== undefined && {
-						licenseCouncil: data.licenseCouncil,
-					}),
-					...(data.licenseState !== undefined && {
-						licenseState: data.licenseState,
-					}),
-					...(data.licenseDocumentKey !== undefined && {
-						licenseDocumentKey: data.licenseDocumentKey,
-					}),
-					...(data.licenseDocumentFileName !== undefined && {
-						licenseDocumentFileName: data.licenseDocumentFileName,
-					}),
-					...(data.licenseDocumentMimeType !== undefined && {
-						licenseDocumentMimeType: data.licenseDocumentMimeType,
-					}),
-					...(data.licenseDocumentSize !== undefined && {
-						licenseDocumentSize: data.licenseDocumentSize,
-					}),
-					...(data.licenseDocumentSha256 !== undefined && {
-						licenseDocumentSha256: data.licenseDocumentSha256,
-					}),
-					...(data.licenseDocumentUploadedAt !== undefined && {
-						licenseDocumentUploadedAt: data.licenseDocumentUploadedAt,
-					}),
-					...(data.verificationStatus !== undefined && {
-						verificationStatus: data.verificationStatus,
-					}),
-					...(data.verifiedAt !== undefined && { verifiedAt: data.verifiedAt }),
-					...(data.bio !== undefined && { bio: data.bio }),
-					...(data.approach !== undefined && { approach: data.approach }),
-					...(data.education !== undefined && { education: data.education }),
-					...(data.certifications !== undefined && {
-						certifications: data.certifications,
-					}),
-					...(data.yearsOfExperience !== undefined && {
-						yearsOfExperience: data.yearsOfExperience,
-					}),
-					...(data.targetAudiences !== undefined && {
-						targetAudiences: data.targetAudiences,
-					}),
-					...(data.serviceModalities !== undefined && {
-						serviceModalities: data.serviceModalities,
-					}),
-					...(data.clinicAddress !== undefined && {
-						clinicAddress: data.clinicAddress,
-					}),
-					...(data.homeCareRadiusKm !== undefined && {
-						homeCareRadiusKm: data.homeCareRadiusKm,
-					}),
-					...(data.acceptedInsurance !== undefined && {
-						acceptedInsurance: data.acceptedInsurance,
-					}),
-					...(data.paymentMethods !== undefined && {
-						paymentMethods: data.paymentMethods,
-					}),
-					...(data.cancellationPolicy !== undefined && {
-						cancellationPolicy: data.cancellationPolicy,
-					}),
-					...(data.clinicPhotos !== undefined && {
-						clinicPhotos: data.clinicPhotos,
-					}),
-					...(data.termsAcceptedAt !== undefined && {
-						termsAcceptedAt: data.termsAcceptedAt,
-					}),
-					...(data.lgpdConsentAt !== undefined && {
-						lgpdConsentAt: data.lgpdConsentAt,
-					}),
-					...(data.professionalResponsibilityAcceptedAt !== undefined && {
-						professionalResponsibilityAcceptedAt:
-							data.professionalResponsibilityAcceptedAt,
-					}),
-				},
-				include: {
-					user: {
-						select: {
-							id: true,
-							name: true,
-							email: true,
-							phone: true,
-							image: true,
-							role: true,
+			const provider = await prisma.$transaction(async (tx) => {
+				const updatedProvider = await tx.healthcare_provider.update({
+					where: { id },
+					data: {
+						...(data.displayName !== undefined && {
+							displayName: data.displayName,
+						}),
+						...(data.document !== undefined && { document: data.document }),
+						...(data.birthDate !== undefined && { birthDate: data.birthDate }),
+						...(data.gender !== undefined && { gender: data.gender }),
+						...(data.languages !== undefined && { languages: data.languages }),
+						...(data.specialty !== undefined && { specialty: data.specialty }),
+						...(data.professionalCategory !== undefined && {
+							professionalCategory: data.professionalCategory,
+						}),
+						...(data.professionalId !== undefined && {
+							professionalId: data.professionalId,
+						}),
+						...(data.licenseCouncil !== undefined && {
+							licenseCouncil: data.licenseCouncil,
+						}),
+						...(data.licenseState !== undefined && {
+							licenseState: data.licenseState,
+						}),
+						...(data.licenseDocumentKey !== undefined && {
+							licenseDocumentKey: data.licenseDocumentKey,
+						}),
+						...(data.licenseDocumentFileName !== undefined && {
+							licenseDocumentFileName: data.licenseDocumentFileName,
+						}),
+						...(data.licenseDocumentMimeType !== undefined && {
+							licenseDocumentMimeType: data.licenseDocumentMimeType,
+						}),
+						...(data.licenseDocumentSize !== undefined && {
+							licenseDocumentSize: data.licenseDocumentSize,
+						}),
+						...(data.licenseDocumentSha256 !== undefined && {
+							licenseDocumentSha256: data.licenseDocumentSha256,
+						}),
+						...(data.licenseDocumentUploadedAt !== undefined && {
+							licenseDocumentUploadedAt: data.licenseDocumentUploadedAt,
+						}),
+						...(data.verificationStatus !== undefined && {
+							verificationStatus: data.verificationStatus,
+						}),
+						...(data.verifiedAt !== undefined && {
+							verifiedAt: data.verifiedAt,
+						}),
+						...(data.bio !== undefined && { bio: data.bio }),
+						...(data.approach !== undefined && { approach: data.approach }),
+						...(data.education !== undefined && { education: data.education }),
+						...(data.certifications !== undefined && {
+							certifications: data.certifications,
+						}),
+						...(data.yearsOfExperience !== undefined && {
+							yearsOfExperience: data.yearsOfExperience,
+						}),
+						...(data.targetAudiences !== undefined && {
+							targetAudiences: data.targetAudiences,
+						}),
+						...(data.serviceModalities !== undefined && {
+							serviceModalities: data.serviceModalities,
+						}),
+						...(data.clinicAddress !== undefined && {
+							clinicAddress: data.clinicAddress,
+						}),
+						...(data.homeCareRadiusKm !== undefined && {
+							homeCareRadiusKm: data.homeCareRadiusKm,
+						}),
+						...(data.acceptedInsurance !== undefined && {
+							acceptedInsurance: data.acceptedInsurance,
+						}),
+						...(data.paymentMethods !== undefined && {
+							paymentMethods: data.paymentMethods,
+						}),
+						...(data.cancellationPolicy !== undefined && {
+							cancellationPolicy: data.cancellationPolicy,
+						}),
+						...(data.clinicPhotos !== undefined && {
+							clinicPhotos: data.clinicPhotos,
+						}),
+						...(data.termsAcceptedAt !== undefined && {
+							termsAcceptedAt: data.termsAcceptedAt,
+						}),
+						...(data.lgpdConsentAt !== undefined && {
+							lgpdConsentAt: data.lgpdConsentAt,
+						}),
+						...(data.professionalResponsibilityAcceptedAt !== undefined && {
+							professionalResponsibilityAcceptedAt:
+								data.professionalResponsibilityAcceptedAt,
+						}),
+					},
+				});
+
+				if (data.faqs !== undefined) {
+					await tx.healthcare_provider_faq.deleteMany({
+						where: { healthcareProviderId: id },
+					});
+
+					if (data.faqs.length > 0) {
+						await tx.healthcare_provider_faq.createMany({
+							data: data.faqs.map((faq, index) => ({
+								healthcareProviderId: id,
+								question: faq.question,
+								answer: faq.answer,
+								position: index,
+							})),
+						});
+					}
+				}
+
+				return tx.healthcare_provider.findUniqueOrThrow({
+					where: { id: updatedProvider.id },
+					include: {
+						user: {
+							select: {
+								id: true,
+								name: true,
+								email: true,
+								phone: true,
+								image: true,
+								role: true,
+							},
+						},
+						procedures: {
+							orderBy: {
+								createdAt: "desc",
+							},
+						},
+						faqs: {
+							orderBy: {
+								position: "asc",
+							},
 						},
 					},
-					procedures: {
-						orderBy: {
-							createdAt: "desc",
-						},
-					},
-				},
+				});
 			});
 
 			return provider as HealthcareProviderWithRelations;

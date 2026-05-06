@@ -239,8 +239,23 @@ model healthcare_provider {
   conversations          conversation[]
   favoritedBy            customer_favorite_provider[]
   createdPatientProfiles patient_profile[]              @relation("ProviderCreatedPatientProfiles")
+  faqs                   healthcare_provider_faq[]
 
   @@map("healthcare_providers")
+}
+
+model healthcare_provider_faq {
+  id                   String              @id @default(cuid())
+  healthcareProviderId String              @map("healthcare_provider_id")
+  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  question             String
+  answer               String
+  position             Int                 @default(0)
+  createdAt            DateTime            @default(now()) @map("created_at")
+  updatedAt            DateTime            @updatedAt @map("updated_at")
+
+  @@index([healthcareProviderId])
+  @@map("healthcare_provider_faqs")
 }
 
 model conversation {

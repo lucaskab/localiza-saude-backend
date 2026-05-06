@@ -271,6 +271,16 @@ exports.Prisma.Healthcare_providerScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.Healthcare_provider_faqScalarFieldEnum = {
+  id: 'id',
+  healthcareProviderId: 'healthcareProviderId',
+  question: 'question',
+  answer: 'answer',
+  position: 'position',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.ConversationScalarFieldEnum = {
   id: 'id',
   customerId: 'customerId',
@@ -521,6 +531,7 @@ exports.Prisma.ModelName = {
   customer: 'customer',
   healthcare_provider_schedule: 'healthcare_provider_schedule',
   healthcare_provider: 'healthcare_provider',
+  healthcare_provider_faq: 'healthcare_provider_faq',
   conversation: 'conversation',
   conversation_message: 'conversation_message',
   push_token: 'push_token',

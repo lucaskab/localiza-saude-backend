@@ -1,8 +1,14 @@
 import type {
 	healthcare_provider,
+	healthcare_provider_faq,
 	procedure,
 	user,
 } from "../../../../prisma/generated/prisma/client";
+
+export type HealthcareProviderFaqData = {
+	question: string;
+	answer: string;
+};
 
 export type CreateHealthcareProviderData = {
 	userId: string;
@@ -40,6 +46,7 @@ export type CreateHealthcareProviderData = {
 	termsAcceptedAt?: Date | null;
 	lgpdConsentAt?: Date | null;
 	professionalResponsibilityAcceptedAt?: Date | null;
+	faqs?: HealthcareProviderFaqData[];
 };
 
 export type UpdateHealthcareProviderData = {
@@ -77,15 +84,29 @@ export type UpdateHealthcareProviderData = {
 	termsAcceptedAt?: Date | null;
 	lgpdConsentAt?: Date | null;
 	professionalResponsibilityAcceptedAt?: Date | null;
+	faqs?: HealthcareProviderFaqData[];
 };
 
 export type HealthcareProviderWithRelations = healthcare_provider & {
 	user: user;
 	procedures: procedure[];
+	faqs: healthcare_provider_faq[];
+};
+
+export type FindAllHealthcareProviderFilters = {
+	search?: string;
+	specialty?: string;
+	serviceModality?: string;
+	language?: string;
+	insurance?: string;
+	verified?: boolean;
+	maxPriceCents?: number;
 };
 
 export type HealthcareProviderRepository = {
-	findAll: () => Promise<HealthcareProviderWithRelations[]>;
+	findAll: (
+		filters?: FindAllHealthcareProviderFilters,
+	) => Promise<HealthcareProviderWithRelations[]>;
 	findById: (id: string) => Promise<HealthcareProviderWithRelations | null>;
 	findByUserId: (
 		userId: string,

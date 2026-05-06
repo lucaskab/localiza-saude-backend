@@ -1,6 +1,11 @@
 import { z } from "zod";
 import { healthcareProviderSchema } from "./get-healthcare-providers";
 
+const healthcareProviderFaqInputSchema = z.object({
+	question: z.string().trim().min(3).max(300),
+	answer: z.string().trim().min(3).max(1200),
+});
+
 export const createHealthcareProviderBodySchema = z.object({
 	userId: z.cuid(),
 	displayName: z.string().trim().nullable().optional(),
@@ -27,10 +32,10 @@ export const createHealthcareProviderBodySchema = z.object({
 	acceptedInsurance: z.array(z.string().trim().min(1)).optional(),
 	paymentMethods: z.array(z.string().trim().min(1)).optional(),
 	cancellationPolicy: z.string().trim().nullable().optional(),
-	clinicPhotos: z.array(z.string().trim().min(1)).optional(),
 	termsAcceptedAt: z.coerce.date().nullable().optional(),
 	lgpdConsentAt: z.coerce.date().nullable().optional(),
 	professionalResponsibilityAcceptedAt: z.coerce.date().nullable().optional(),
+	faqs: z.array(healthcareProviderFaqInputSchema).max(20).optional(),
 });
 
 export const createHealthcareProviderResponseSchema = z.object({

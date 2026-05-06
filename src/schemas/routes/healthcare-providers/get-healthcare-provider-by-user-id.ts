@@ -20,6 +20,16 @@ const procedureSchema = z.object({
 	updatedAt: z.date(),
 });
 
+const healthcareProviderFaqSchema = z.object({
+	id: z.cuid(),
+	healthcareProviderId: z.cuid(),
+	question: z.string(),
+	answer: z.string(),
+	position: z.number().int(),
+	createdAt: z.date(),
+	updatedAt: z.date(),
+});
+
 const healthcareProviderSchema = z.object({
 	id: z.cuid(),
 	userId: z.string(),
@@ -60,6 +70,7 @@ const healthcareProviderSchema = z.object({
 	updatedAt: z.date(),
 	user: userSchema,
 	procedures: z.array(procedureSchema),
+	faqs: z.array(healthcareProviderFaqSchema).optional(),
 });
 
 export const getHealthcareProviderByUserIdParamsSchema = z.object({

@@ -1,6 +1,7 @@
 import type { HealthcareProviderWithRelations } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-contract";
 import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
+import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
 
 export const getHealthcareProviderByUserIdUseCase = {
 	async execute(
@@ -13,6 +14,6 @@ export const getHealthcareProviderByUserIdUseCase = {
 			throw new BadRequestError("Healthcare provider not found");
 		}
 
-		return { healthcareProvider };
+		return { healthcareProvider: signClinicPhotoUrls(healthcareProvider) };
 	},
 };

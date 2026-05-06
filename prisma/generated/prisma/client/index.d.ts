@@ -69,6 +69,11 @@ export type healthcare_provider_schedule = $Result.DefaultSelection<Prisma.$heal
  */
 export type healthcare_provider = $Result.DefaultSelection<Prisma.$healthcare_providerPayload>
 /**
+ * Model healthcare_provider_faq
+ * 
+ */
+export type healthcare_provider_faq = $Result.DefaultSelection<Prisma.$healthcare_provider_faqPayload>
+/**
  * Model conversation
  * 
  */
@@ -502,6 +507,16 @@ export class PrismaClient<
     * ```
     */
   get healthcare_provider(): Prisma.healthcare_providerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.healthcare_provider_faq`: Exposes CRUD operations for the **healthcare_provider_faq** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Healthcare_provider_faqs
+    * const healthcare_provider_faqs = await prisma.healthcare_provider_faq.findMany()
+    * ```
+    */
+  get healthcare_provider_faq(): Prisma.healthcare_provider_faqDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.conversation`: Exposes CRUD operations for the **conversation** model.
@@ -1067,6 +1082,7 @@ export namespace Prisma {
     customer: 'customer',
     healthcare_provider_schedule: 'healthcare_provider_schedule',
     healthcare_provider: 'healthcare_provider',
+    healthcare_provider_faq: 'healthcare_provider_faq',
     conversation: 'conversation',
     conversation_message: 'conversation_message',
     push_token: 'push_token',
@@ -1094,7 +1110,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "appointment_procedure" | "appointment" | "category" | "healthcare_provider_category" | "clinic" | "customer_favorite_provider" | "customer_medical_record" | "customer" | "healthcare_provider_schedule" | "healthcare_provider" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "rating" | "session" | "support_request" | "user" | "verification"
+      modelProps: "account" | "appointment_procedure" | "appointment" | "category" | "healthcare_provider_category" | "clinic" | "customer_favorite_provider" | "customer_medical_record" | "customer" | "healthcare_provider_schedule" | "healthcare_provider" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "rating" | "session" | "support_request" | "user" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1909,6 +1925,80 @@ export namespace Prisma {
           count: {
             args: Prisma.healthcare_providerCountArgs<ExtArgs>
             result: $Utils.Optional<Healthcare_providerCountAggregateOutputType> | number
+          }
+        }
+      }
+      healthcare_provider_faq: {
+        payload: Prisma.$healthcare_provider_faqPayload<ExtArgs>
+        fields: Prisma.healthcare_provider_faqFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.healthcare_provider_faqFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.healthcare_provider_faqFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload>
+          }
+          findFirst: {
+            args: Prisma.healthcare_provider_faqFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.healthcare_provider_faqFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload>
+          }
+          findMany: {
+            args: Prisma.healthcare_provider_faqFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload>[]
+          }
+          create: {
+            args: Prisma.healthcare_provider_faqCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload>
+          }
+          createMany: {
+            args: Prisma.healthcare_provider_faqCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.healthcare_provider_faqCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload>[]
+          }
+          delete: {
+            args: Prisma.healthcare_provider_faqDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload>
+          }
+          update: {
+            args: Prisma.healthcare_provider_faqUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload>
+          }
+          deleteMany: {
+            args: Prisma.healthcare_provider_faqDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.healthcare_provider_faqUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.healthcare_provider_faqUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload>[]
+          }
+          upsert: {
+            args: Prisma.healthcare_provider_faqUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_faqPayload>
+          }
+          aggregate: {
+            args: Prisma.Healthcare_provider_faqAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHealthcare_provider_faq>
+          }
+          groupBy: {
+            args: Prisma.healthcare_provider_faqGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Healthcare_provider_faqGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.healthcare_provider_faqCountArgs<ExtArgs>
+            result: $Utils.Optional<Healthcare_provider_faqCountAggregateOutputType> | number
           }
         }
       }
@@ -2919,6 +3009,7 @@ export namespace Prisma {
     customer?: customerOmit
     healthcare_provider_schedule?: healthcare_provider_scheduleOmit
     healthcare_provider?: healthcare_providerOmit
+    healthcare_provider_faq?: healthcare_provider_faqOmit
     conversation?: conversationOmit
     conversation_message?: conversation_messageOmit
     push_token?: push_tokenOmit
@@ -3197,6 +3288,7 @@ export namespace Prisma {
     conversations: number
     favoritedBy: number
     createdPatientProfiles: number
+    faqs: number
   }
 
   export type Healthcare_providerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3208,6 +3300,7 @@ export namespace Prisma {
     conversations?: boolean | Healthcare_providerCountOutputTypeCountConversationsArgs
     favoritedBy?: boolean | Healthcare_providerCountOutputTypeCountFavoritedByArgs
     createdPatientProfiles?: boolean | Healthcare_providerCountOutputTypeCountCreatedPatientProfilesArgs
+    faqs?: boolean | Healthcare_providerCountOutputTypeCountFaqsArgs
   }
 
   // Custom InputTypes
@@ -3275,6 +3368,13 @@ export namespace Prisma {
    */
   export type Healthcare_providerCountOutputTypeCountCreatedPatientProfilesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: patient_profileWhereInput
+  }
+
+  /**
+   * Healthcare_providerCountOutputType without action
+   */
+  export type Healthcare_providerCountOutputTypeCountFaqsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: healthcare_provider_faqWhereInput
   }
 
 
@@ -15434,6 +15534,7 @@ export namespace Prisma {
     conversations?: boolean | healthcare_provider$conversationsArgs<ExtArgs>
     favoritedBy?: boolean | healthcare_provider$favoritedByArgs<ExtArgs>
     createdPatientProfiles?: boolean | healthcare_provider$createdPatientProfilesArgs<ExtArgs>
+    faqs?: boolean | healthcare_provider$faqsArgs<ExtArgs>
     _count?: boolean | Healthcare_providerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["healthcare_provider"]>
 
@@ -15573,6 +15674,7 @@ export namespace Prisma {
     conversations?: boolean | healthcare_provider$conversationsArgs<ExtArgs>
     favoritedBy?: boolean | healthcare_provider$favoritedByArgs<ExtArgs>
     createdPatientProfiles?: boolean | healthcare_provider$createdPatientProfilesArgs<ExtArgs>
+    faqs?: boolean | healthcare_provider$faqsArgs<ExtArgs>
     _count?: boolean | Healthcare_providerCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type healthcare_providerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15594,6 +15696,7 @@ export namespace Prisma {
       conversations: Prisma.$conversationPayload<ExtArgs>[]
       favoritedBy: Prisma.$customer_favorite_providerPayload<ExtArgs>[]
       createdPatientProfiles: Prisma.$patient_profilePayload<ExtArgs>[]
+      faqs: Prisma.$healthcare_provider_faqPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -16037,6 +16140,7 @@ export namespace Prisma {
     conversations<T extends healthcare_provider$conversationsArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_provider$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$conversationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     favoritedBy<T extends healthcare_provider$favoritedByArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_provider$favoritedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$customer_favorite_providerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     createdPatientProfiles<T extends healthcare_provider$createdPatientProfilesArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_provider$createdPatientProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    faqs<T extends healthcare_provider$faqsArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_provider$faqsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16697,6 +16801,30 @@ export namespace Prisma {
   }
 
   /**
+   * healthcare_provider.faqs
+   */
+  export type healthcare_provider$faqsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    where?: healthcare_provider_faqWhereInput
+    orderBy?: healthcare_provider_faqOrderByWithRelationInput | healthcare_provider_faqOrderByWithRelationInput[]
+    cursor?: healthcare_provider_faqWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Healthcare_provider_faqScalarFieldEnum | Healthcare_provider_faqScalarFieldEnum[]
+  }
+
+  /**
    * healthcare_provider without action
    */
   export type healthcare_providerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16712,6 +16840,1129 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: healthcare_providerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model healthcare_provider_faq
+   */
+
+  export type AggregateHealthcare_provider_faq = {
+    _count: Healthcare_provider_faqCountAggregateOutputType | null
+    _avg: Healthcare_provider_faqAvgAggregateOutputType | null
+    _sum: Healthcare_provider_faqSumAggregateOutputType | null
+    _min: Healthcare_provider_faqMinAggregateOutputType | null
+    _max: Healthcare_provider_faqMaxAggregateOutputType | null
+  }
+
+  export type Healthcare_provider_faqAvgAggregateOutputType = {
+    position: number | null
+  }
+
+  export type Healthcare_provider_faqSumAggregateOutputType = {
+    position: number | null
+  }
+
+  export type Healthcare_provider_faqMinAggregateOutputType = {
+    id: string | null
+    healthcareProviderId: string | null
+    question: string | null
+    answer: string | null
+    position: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Healthcare_provider_faqMaxAggregateOutputType = {
+    id: string | null
+    healthcareProviderId: string | null
+    question: string | null
+    answer: string | null
+    position: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Healthcare_provider_faqCountAggregateOutputType = {
+    id: number
+    healthcareProviderId: number
+    question: number
+    answer: number
+    position: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Healthcare_provider_faqAvgAggregateInputType = {
+    position?: true
+  }
+
+  export type Healthcare_provider_faqSumAggregateInputType = {
+    position?: true
+  }
+
+  export type Healthcare_provider_faqMinAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    question?: true
+    answer?: true
+    position?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Healthcare_provider_faqMaxAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    question?: true
+    answer?: true
+    position?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Healthcare_provider_faqCountAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    question?: true
+    answer?: true
+    position?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Healthcare_provider_faqAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which healthcare_provider_faq to aggregate.
+     */
+    where?: healthcare_provider_faqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of healthcare_provider_faqs to fetch.
+     */
+    orderBy?: healthcare_provider_faqOrderByWithRelationInput | healthcare_provider_faqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: healthcare_provider_faqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` healthcare_provider_faqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` healthcare_provider_faqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned healthcare_provider_faqs
+    **/
+    _count?: true | Healthcare_provider_faqCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Healthcare_provider_faqAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Healthcare_provider_faqSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Healthcare_provider_faqMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Healthcare_provider_faqMaxAggregateInputType
+  }
+
+  export type GetHealthcare_provider_faqAggregateType<T extends Healthcare_provider_faqAggregateArgs> = {
+        [P in keyof T & keyof AggregateHealthcare_provider_faq]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHealthcare_provider_faq[P]>
+      : GetScalarType<T[P], AggregateHealthcare_provider_faq[P]>
+  }
+
+
+
+
+  export type healthcare_provider_faqGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: healthcare_provider_faqWhereInput
+    orderBy?: healthcare_provider_faqOrderByWithAggregationInput | healthcare_provider_faqOrderByWithAggregationInput[]
+    by: Healthcare_provider_faqScalarFieldEnum[] | Healthcare_provider_faqScalarFieldEnum
+    having?: healthcare_provider_faqScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Healthcare_provider_faqCountAggregateInputType | true
+    _avg?: Healthcare_provider_faqAvgAggregateInputType
+    _sum?: Healthcare_provider_faqSumAggregateInputType
+    _min?: Healthcare_provider_faqMinAggregateInputType
+    _max?: Healthcare_provider_faqMaxAggregateInputType
+  }
+
+  export type Healthcare_provider_faqGroupByOutputType = {
+    id: string
+    healthcareProviderId: string
+    question: string
+    answer: string
+    position: number
+    createdAt: Date
+    updatedAt: Date
+    _count: Healthcare_provider_faqCountAggregateOutputType | null
+    _avg: Healthcare_provider_faqAvgAggregateOutputType | null
+    _sum: Healthcare_provider_faqSumAggregateOutputType | null
+    _min: Healthcare_provider_faqMinAggregateOutputType | null
+    _max: Healthcare_provider_faqMaxAggregateOutputType | null
+  }
+
+  type GetHealthcare_provider_faqGroupByPayload<T extends healthcare_provider_faqGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Healthcare_provider_faqGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Healthcare_provider_faqGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Healthcare_provider_faqGroupByOutputType[P]>
+            : GetScalarType<T[P], Healthcare_provider_faqGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type healthcare_provider_faqSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    question?: boolean
+    answer?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["healthcare_provider_faq"]>
+
+  export type healthcare_provider_faqSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    question?: boolean
+    answer?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["healthcare_provider_faq"]>
+
+  export type healthcare_provider_faqSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    question?: boolean
+    answer?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["healthcare_provider_faq"]>
+
+  export type healthcare_provider_faqSelectScalar = {
+    id?: boolean
+    healthcareProviderId?: boolean
+    question?: boolean
+    answer?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type healthcare_provider_faqOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "healthcareProviderId" | "question" | "answer" | "position" | "createdAt" | "updatedAt", ExtArgs["result"]["healthcare_provider_faq"]>
+  export type healthcare_provider_faqInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
+  }
+  export type healthcare_provider_faqIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
+  }
+  export type healthcare_provider_faqIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | healthcare_providerDefaultArgs<ExtArgs>
+  }
+
+  export type $healthcare_provider_faqPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "healthcare_provider_faq"
+    objects: {
+      healthcareProvider: Prisma.$healthcare_providerPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      healthcareProviderId: string
+      question: string
+      answer: string
+      position: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["healthcare_provider_faq"]>
+    composites: {}
+  }
+
+  type healthcare_provider_faqGetPayload<S extends boolean | null | undefined | healthcare_provider_faqDefaultArgs> = $Result.GetResult<Prisma.$healthcare_provider_faqPayload, S>
+
+  type healthcare_provider_faqCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<healthcare_provider_faqFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Healthcare_provider_faqCountAggregateInputType | true
+    }
+
+  export interface healthcare_provider_faqDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['healthcare_provider_faq'], meta: { name: 'healthcare_provider_faq' } }
+    /**
+     * Find zero or one Healthcare_provider_faq that matches the filter.
+     * @param {healthcare_provider_faqFindUniqueArgs} args - Arguments to find a Healthcare_provider_faq
+     * @example
+     * // Get one Healthcare_provider_faq
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends healthcare_provider_faqFindUniqueArgs>(args: SelectSubset<T, healthcare_provider_faqFindUniqueArgs<ExtArgs>>): Prisma__healthcare_provider_faqClient<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Healthcare_provider_faq that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {healthcare_provider_faqFindUniqueOrThrowArgs} args - Arguments to find a Healthcare_provider_faq
+     * @example
+     * // Get one Healthcare_provider_faq
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends healthcare_provider_faqFindUniqueOrThrowArgs>(args: SelectSubset<T, healthcare_provider_faqFindUniqueOrThrowArgs<ExtArgs>>): Prisma__healthcare_provider_faqClient<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Healthcare_provider_faq that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_faqFindFirstArgs} args - Arguments to find a Healthcare_provider_faq
+     * @example
+     * // Get one Healthcare_provider_faq
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends healthcare_provider_faqFindFirstArgs>(args?: SelectSubset<T, healthcare_provider_faqFindFirstArgs<ExtArgs>>): Prisma__healthcare_provider_faqClient<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Healthcare_provider_faq that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_faqFindFirstOrThrowArgs} args - Arguments to find a Healthcare_provider_faq
+     * @example
+     * // Get one Healthcare_provider_faq
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends healthcare_provider_faqFindFirstOrThrowArgs>(args?: SelectSubset<T, healthcare_provider_faqFindFirstOrThrowArgs<ExtArgs>>): Prisma__healthcare_provider_faqClient<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Healthcare_provider_faqs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_faqFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Healthcare_provider_faqs
+     * const healthcare_provider_faqs = await prisma.healthcare_provider_faq.findMany()
+     * 
+     * // Get first 10 Healthcare_provider_faqs
+     * const healthcare_provider_faqs = await prisma.healthcare_provider_faq.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const healthcare_provider_faqWithIdOnly = await prisma.healthcare_provider_faq.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends healthcare_provider_faqFindManyArgs>(args?: SelectSubset<T, healthcare_provider_faqFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Healthcare_provider_faq.
+     * @param {healthcare_provider_faqCreateArgs} args - Arguments to create a Healthcare_provider_faq.
+     * @example
+     * // Create one Healthcare_provider_faq
+     * const Healthcare_provider_faq = await prisma.healthcare_provider_faq.create({
+     *   data: {
+     *     // ... data to create a Healthcare_provider_faq
+     *   }
+     * })
+     * 
+     */
+    create<T extends healthcare_provider_faqCreateArgs>(args: SelectSubset<T, healthcare_provider_faqCreateArgs<ExtArgs>>): Prisma__healthcare_provider_faqClient<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Healthcare_provider_faqs.
+     * @param {healthcare_provider_faqCreateManyArgs} args - Arguments to create many Healthcare_provider_faqs.
+     * @example
+     * // Create many Healthcare_provider_faqs
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends healthcare_provider_faqCreateManyArgs>(args?: SelectSubset<T, healthcare_provider_faqCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Healthcare_provider_faqs and returns the data saved in the database.
+     * @param {healthcare_provider_faqCreateManyAndReturnArgs} args - Arguments to create many Healthcare_provider_faqs.
+     * @example
+     * // Create many Healthcare_provider_faqs
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Healthcare_provider_faqs and only return the `id`
+     * const healthcare_provider_faqWithIdOnly = await prisma.healthcare_provider_faq.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends healthcare_provider_faqCreateManyAndReturnArgs>(args?: SelectSubset<T, healthcare_provider_faqCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Healthcare_provider_faq.
+     * @param {healthcare_provider_faqDeleteArgs} args - Arguments to delete one Healthcare_provider_faq.
+     * @example
+     * // Delete one Healthcare_provider_faq
+     * const Healthcare_provider_faq = await prisma.healthcare_provider_faq.delete({
+     *   where: {
+     *     // ... filter to delete one Healthcare_provider_faq
+     *   }
+     * })
+     * 
+     */
+    delete<T extends healthcare_provider_faqDeleteArgs>(args: SelectSubset<T, healthcare_provider_faqDeleteArgs<ExtArgs>>): Prisma__healthcare_provider_faqClient<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Healthcare_provider_faq.
+     * @param {healthcare_provider_faqUpdateArgs} args - Arguments to update one Healthcare_provider_faq.
+     * @example
+     * // Update one Healthcare_provider_faq
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends healthcare_provider_faqUpdateArgs>(args: SelectSubset<T, healthcare_provider_faqUpdateArgs<ExtArgs>>): Prisma__healthcare_provider_faqClient<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Healthcare_provider_faqs.
+     * @param {healthcare_provider_faqDeleteManyArgs} args - Arguments to filter Healthcare_provider_faqs to delete.
+     * @example
+     * // Delete a few Healthcare_provider_faqs
+     * const { count } = await prisma.healthcare_provider_faq.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends healthcare_provider_faqDeleteManyArgs>(args?: SelectSubset<T, healthcare_provider_faqDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Healthcare_provider_faqs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_faqUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Healthcare_provider_faqs
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends healthcare_provider_faqUpdateManyArgs>(args: SelectSubset<T, healthcare_provider_faqUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Healthcare_provider_faqs and returns the data updated in the database.
+     * @param {healthcare_provider_faqUpdateManyAndReturnArgs} args - Arguments to update many Healthcare_provider_faqs.
+     * @example
+     * // Update many Healthcare_provider_faqs
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Healthcare_provider_faqs and only return the `id`
+     * const healthcare_provider_faqWithIdOnly = await prisma.healthcare_provider_faq.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends healthcare_provider_faqUpdateManyAndReturnArgs>(args: SelectSubset<T, healthcare_provider_faqUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Healthcare_provider_faq.
+     * @param {healthcare_provider_faqUpsertArgs} args - Arguments to update or create a Healthcare_provider_faq.
+     * @example
+     * // Update or create a Healthcare_provider_faq
+     * const healthcare_provider_faq = await prisma.healthcare_provider_faq.upsert({
+     *   create: {
+     *     // ... data to create a Healthcare_provider_faq
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Healthcare_provider_faq we want to update
+     *   }
+     * })
+     */
+    upsert<T extends healthcare_provider_faqUpsertArgs>(args: SelectSubset<T, healthcare_provider_faqUpsertArgs<ExtArgs>>): Prisma__healthcare_provider_faqClient<$Result.GetResult<Prisma.$healthcare_provider_faqPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Healthcare_provider_faqs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_faqCountArgs} args - Arguments to filter Healthcare_provider_faqs to count.
+     * @example
+     * // Count the number of Healthcare_provider_faqs
+     * const count = await prisma.healthcare_provider_faq.count({
+     *   where: {
+     *     // ... the filter for the Healthcare_provider_faqs we want to count
+     *   }
+     * })
+    **/
+    count<T extends healthcare_provider_faqCountArgs>(
+      args?: Subset<T, healthcare_provider_faqCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Healthcare_provider_faqCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Healthcare_provider_faq.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Healthcare_provider_faqAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Healthcare_provider_faqAggregateArgs>(args: Subset<T, Healthcare_provider_faqAggregateArgs>): Prisma.PrismaPromise<GetHealthcare_provider_faqAggregateType<T>>
+
+    /**
+     * Group by Healthcare_provider_faq.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_faqGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends healthcare_provider_faqGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: healthcare_provider_faqGroupByArgs['orderBy'] }
+        : { orderBy?: healthcare_provider_faqGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, healthcare_provider_faqGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHealthcare_provider_faqGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the healthcare_provider_faq model
+   */
+  readonly fields: healthcare_provider_faqFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for healthcare_provider_faq.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__healthcare_provider_faqClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    healthcareProvider<T extends healthcare_providerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, healthcare_providerDefaultArgs<ExtArgs>>): Prisma__healthcare_providerClient<$Result.GetResult<Prisma.$healthcare_providerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the healthcare_provider_faq model
+   */
+  interface healthcare_provider_faqFieldRefs {
+    readonly id: FieldRef<"healthcare_provider_faq", 'String'>
+    readonly healthcareProviderId: FieldRef<"healthcare_provider_faq", 'String'>
+    readonly question: FieldRef<"healthcare_provider_faq", 'String'>
+    readonly answer: FieldRef<"healthcare_provider_faq", 'String'>
+    readonly position: FieldRef<"healthcare_provider_faq", 'Int'>
+    readonly createdAt: FieldRef<"healthcare_provider_faq", 'DateTime'>
+    readonly updatedAt: FieldRef<"healthcare_provider_faq", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * healthcare_provider_faq findUnique
+   */
+  export type healthcare_provider_faqFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_faq to fetch.
+     */
+    where: healthcare_provider_faqWhereUniqueInput
+  }
+
+  /**
+   * healthcare_provider_faq findUniqueOrThrow
+   */
+  export type healthcare_provider_faqFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_faq to fetch.
+     */
+    where: healthcare_provider_faqWhereUniqueInput
+  }
+
+  /**
+   * healthcare_provider_faq findFirst
+   */
+  export type healthcare_provider_faqFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_faq to fetch.
+     */
+    where?: healthcare_provider_faqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of healthcare_provider_faqs to fetch.
+     */
+    orderBy?: healthcare_provider_faqOrderByWithRelationInput | healthcare_provider_faqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for healthcare_provider_faqs.
+     */
+    cursor?: healthcare_provider_faqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` healthcare_provider_faqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` healthcare_provider_faqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of healthcare_provider_faqs.
+     */
+    distinct?: Healthcare_provider_faqScalarFieldEnum | Healthcare_provider_faqScalarFieldEnum[]
+  }
+
+  /**
+   * healthcare_provider_faq findFirstOrThrow
+   */
+  export type healthcare_provider_faqFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_faq to fetch.
+     */
+    where?: healthcare_provider_faqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of healthcare_provider_faqs to fetch.
+     */
+    orderBy?: healthcare_provider_faqOrderByWithRelationInput | healthcare_provider_faqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for healthcare_provider_faqs.
+     */
+    cursor?: healthcare_provider_faqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` healthcare_provider_faqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` healthcare_provider_faqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of healthcare_provider_faqs.
+     */
+    distinct?: Healthcare_provider_faqScalarFieldEnum | Healthcare_provider_faqScalarFieldEnum[]
+  }
+
+  /**
+   * healthcare_provider_faq findMany
+   */
+  export type healthcare_provider_faqFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_faqs to fetch.
+     */
+    where?: healthcare_provider_faqWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of healthcare_provider_faqs to fetch.
+     */
+    orderBy?: healthcare_provider_faqOrderByWithRelationInput | healthcare_provider_faqOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing healthcare_provider_faqs.
+     */
+    cursor?: healthcare_provider_faqWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` healthcare_provider_faqs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` healthcare_provider_faqs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of healthcare_provider_faqs.
+     */
+    distinct?: Healthcare_provider_faqScalarFieldEnum | Healthcare_provider_faqScalarFieldEnum[]
+  }
+
+  /**
+   * healthcare_provider_faq create
+   */
+  export type healthcare_provider_faqCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    /**
+     * The data needed to create a healthcare_provider_faq.
+     */
+    data: XOR<healthcare_provider_faqCreateInput, healthcare_provider_faqUncheckedCreateInput>
+  }
+
+  /**
+   * healthcare_provider_faq createMany
+   */
+  export type healthcare_provider_faqCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many healthcare_provider_faqs.
+     */
+    data: healthcare_provider_faqCreateManyInput | healthcare_provider_faqCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * healthcare_provider_faq createManyAndReturn
+   */
+  export type healthcare_provider_faqCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * The data used to create many healthcare_provider_faqs.
+     */
+    data: healthcare_provider_faqCreateManyInput | healthcare_provider_faqCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * healthcare_provider_faq update
+   */
+  export type healthcare_provider_faqUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    /**
+     * The data needed to update a healthcare_provider_faq.
+     */
+    data: XOR<healthcare_provider_faqUpdateInput, healthcare_provider_faqUncheckedUpdateInput>
+    /**
+     * Choose, which healthcare_provider_faq to update.
+     */
+    where: healthcare_provider_faqWhereUniqueInput
+  }
+
+  /**
+   * healthcare_provider_faq updateMany
+   */
+  export type healthcare_provider_faqUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update healthcare_provider_faqs.
+     */
+    data: XOR<healthcare_provider_faqUpdateManyMutationInput, healthcare_provider_faqUncheckedUpdateManyInput>
+    /**
+     * Filter which healthcare_provider_faqs to update
+     */
+    where?: healthcare_provider_faqWhereInput
+    /**
+     * Limit how many healthcare_provider_faqs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * healthcare_provider_faq updateManyAndReturn
+   */
+  export type healthcare_provider_faqUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * The data used to update healthcare_provider_faqs.
+     */
+    data: XOR<healthcare_provider_faqUpdateManyMutationInput, healthcare_provider_faqUncheckedUpdateManyInput>
+    /**
+     * Filter which healthcare_provider_faqs to update
+     */
+    where?: healthcare_provider_faqWhereInput
+    /**
+     * Limit how many healthcare_provider_faqs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * healthcare_provider_faq upsert
+   */
+  export type healthcare_provider_faqUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    /**
+     * The filter to search for the healthcare_provider_faq to update in case it exists.
+     */
+    where: healthcare_provider_faqWhereUniqueInput
+    /**
+     * In case the healthcare_provider_faq found by the `where` argument doesn't exist, create a new healthcare_provider_faq with this data.
+     */
+    create: XOR<healthcare_provider_faqCreateInput, healthcare_provider_faqUncheckedCreateInput>
+    /**
+     * In case the healthcare_provider_faq was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<healthcare_provider_faqUpdateInput, healthcare_provider_faqUncheckedUpdateInput>
+  }
+
+  /**
+   * healthcare_provider_faq delete
+   */
+  export type healthcare_provider_faqDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
+    /**
+     * Filter which healthcare_provider_faq to delete.
+     */
+    where: healthcare_provider_faqWhereUniqueInput
+  }
+
+  /**
+   * healthcare_provider_faq deleteMany
+   */
+  export type healthcare_provider_faqDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which healthcare_provider_faqs to delete
+     */
+    where?: healthcare_provider_faqWhereInput
+    /**
+     * Limit how many healthcare_provider_faqs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * healthcare_provider_faq without action
+   */
+  export type healthcare_provider_faqDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_faq
+     */
+    select?: healthcare_provider_faqSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_faq
+     */
+    omit?: healthcare_provider_faqOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_faqInclude<ExtArgs> | null
   }
 
 
@@ -30988,6 +32239,19 @@ export namespace Prisma {
   export type Healthcare_providerScalarFieldEnum = (typeof Healthcare_providerScalarFieldEnum)[keyof typeof Healthcare_providerScalarFieldEnum]
 
 
+  export const Healthcare_provider_faqScalarFieldEnum: {
+    id: 'id',
+    healthcareProviderId: 'healthcareProviderId',
+    question: 'question',
+    answer: 'answer',
+    position: 'position',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Healthcare_provider_faqScalarFieldEnum = (typeof Healthcare_provider_faqScalarFieldEnum)[keyof typeof Healthcare_provider_faqScalarFieldEnum]
+
+
   export const ConversationScalarFieldEnum: {
     id: 'id',
     customerId: 'customerId',
@@ -32219,6 +33483,7 @@ export namespace Prisma {
     conversations?: ConversationListRelationFilter
     favoritedBy?: Customer_favorite_providerListRelationFilter
     createdPatientProfiles?: Patient_profileListRelationFilter
+    faqs?: Healthcare_provider_faqListRelationFilter
   }
 
   export type healthcare_providerOrderByWithRelationInput = {
@@ -32269,6 +33534,7 @@ export namespace Prisma {
     conversations?: conversationOrderByRelationAggregateInput
     favoritedBy?: customer_favorite_providerOrderByRelationAggregateInput
     createdPatientProfiles?: patient_profileOrderByRelationAggregateInput
+    faqs?: healthcare_provider_faqOrderByRelationAggregateInput
   }
 
   export type healthcare_providerWhereUniqueInput = Prisma.AtLeast<{
@@ -32322,6 +33588,7 @@ export namespace Prisma {
     conversations?: ConversationListRelationFilter
     favoritedBy?: Customer_favorite_providerListRelationFilter
     createdPatientProfiles?: Patient_profileListRelationFilter
+    faqs?: Healthcare_provider_faqListRelationFilter
   }, "id" | "userId">
 
   export type healthcare_providerOrderByWithAggregationInput = {
@@ -32412,6 +33679,73 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: DateTimeNullableWithAggregatesFilter<"healthcare_provider"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"healthcare_provider"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"healthcare_provider"> | Date | string
+  }
+
+  export type healthcare_provider_faqWhereInput = {
+    AND?: healthcare_provider_faqWhereInput | healthcare_provider_faqWhereInput[]
+    OR?: healthcare_provider_faqWhereInput[]
+    NOT?: healthcare_provider_faqWhereInput | healthcare_provider_faqWhereInput[]
+    id?: StringFilter<"healthcare_provider_faq"> | string
+    healthcareProviderId?: StringFilter<"healthcare_provider_faq"> | string
+    question?: StringFilter<"healthcare_provider_faq"> | string
+    answer?: StringFilter<"healthcare_provider_faq"> | string
+    position?: IntFilter<"healthcare_provider_faq"> | number
+    createdAt?: DateTimeFilter<"healthcare_provider_faq"> | Date | string
+    updatedAt?: DateTimeFilter<"healthcare_provider_faq"> | Date | string
+    healthcareProvider?: XOR<Healthcare_providerScalarRelationFilter, healthcare_providerWhereInput>
+  }
+
+  export type healthcare_provider_faqOrderByWithRelationInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    healthcareProvider?: healthcare_providerOrderByWithRelationInput
+  }
+
+  export type healthcare_provider_faqWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: healthcare_provider_faqWhereInput | healthcare_provider_faqWhereInput[]
+    OR?: healthcare_provider_faqWhereInput[]
+    NOT?: healthcare_provider_faqWhereInput | healthcare_provider_faqWhereInput[]
+    healthcareProviderId?: StringFilter<"healthcare_provider_faq"> | string
+    question?: StringFilter<"healthcare_provider_faq"> | string
+    answer?: StringFilter<"healthcare_provider_faq"> | string
+    position?: IntFilter<"healthcare_provider_faq"> | number
+    createdAt?: DateTimeFilter<"healthcare_provider_faq"> | Date | string
+    updatedAt?: DateTimeFilter<"healthcare_provider_faq"> | Date | string
+    healthcareProvider?: XOR<Healthcare_providerScalarRelationFilter, healthcare_providerWhereInput>
+  }, "id">
+
+  export type healthcare_provider_faqOrderByWithAggregationInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: healthcare_provider_faqCountOrderByAggregateInput
+    _avg?: healthcare_provider_faqAvgOrderByAggregateInput
+    _max?: healthcare_provider_faqMaxOrderByAggregateInput
+    _min?: healthcare_provider_faqMinOrderByAggregateInput
+    _sum?: healthcare_provider_faqSumOrderByAggregateInput
+  }
+
+  export type healthcare_provider_faqScalarWhereWithAggregatesInput = {
+    AND?: healthcare_provider_faqScalarWhereWithAggregatesInput | healthcare_provider_faqScalarWhereWithAggregatesInput[]
+    OR?: healthcare_provider_faqScalarWhereWithAggregatesInput[]
+    NOT?: healthcare_provider_faqScalarWhereWithAggregatesInput | healthcare_provider_faqScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"healthcare_provider_faq"> | string
+    healthcareProviderId?: StringWithAggregatesFilter<"healthcare_provider_faq"> | string
+    question?: StringWithAggregatesFilter<"healthcare_provider_faq"> | string
+    answer?: StringWithAggregatesFilter<"healthcare_provider_faq"> | string
+    position?: IntWithAggregatesFilter<"healthcare_provider_faq"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"healthcare_provider_faq"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"healthcare_provider_faq"> | Date | string
   }
 
   export type conversationWhereInput = {
@@ -34285,6 +35619,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateInput = {
@@ -34334,6 +35669,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUpdateInput = {
@@ -34383,6 +35719,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateInput = {
@@ -34432,6 +35769,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerCreateManyInput = {
@@ -34552,6 +35890,75 @@ export namespace Prisma {
     termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_faqCreateInput = {
+    id?: string
+    question: string
+    answer: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    healthcareProvider: healthcare_providerCreateNestedOneWithoutFaqsInput
+  }
+
+  export type healthcare_provider_faqUncheckedCreateInput = {
+    id?: string
+    healthcareProviderId: string
+    question: string
+    answer: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type healthcare_provider_faqUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    answer?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProvider?: healthcare_providerUpdateOneRequiredWithoutFaqsNestedInput
+  }
+
+  export type healthcare_provider_faqUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    answer?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_faqCreateManyInput = {
+    id?: string
+    healthcareProviderId: string
+    question: string
+    answer: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type healthcare_provider_faqUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    answer?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_faqUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    answer?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -36454,11 +37861,21 @@ export namespace Prisma {
     none?: healthcare_provider_scheduleWhereInput
   }
 
+  export type Healthcare_provider_faqListRelationFilter = {
+    every?: healthcare_provider_faqWhereInput
+    some?: healthcare_provider_faqWhereInput
+    none?: healthcare_provider_faqWhereInput
+  }
+
   export type procedureOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type healthcare_provider_scheduleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type healthcare_provider_faqOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -36599,6 +38016,44 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type healthcare_provider_faqCountOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type healthcare_provider_faqAvgOrderByAggregateInput = {
+    position?: SortOrder
+  }
+
+  export type healthcare_provider_faqMaxOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type healthcare_provider_faqMinOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    question?: SortOrder
+    answer?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type healthcare_provider_faqSumOrderByAggregateInput = {
+    position?: SortOrder
   }
 
   export type conversationCustomerIdHealthcareProviderIdCompoundUniqueInput = {
@@ -38105,6 +39560,13 @@ export namespace Prisma {
     connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
   }
 
+  export type healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<healthcare_provider_faqCreateWithoutHealthcareProviderInput, healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput> | healthcare_provider_faqCreateWithoutHealthcareProviderInput[] | healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: healthcare_provider_faqCreateOrConnectWithoutHealthcareProviderInput | healthcare_provider_faqCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: healthcare_provider_faqCreateManyHealthcareProviderInputEnvelope
+    connect?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
+  }
+
   export type procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput = {
     create?: XOR<procedureCreateWithoutHealthcareProviderInput, procedureUncheckedCreateWithoutHealthcareProviderInput> | procedureCreateWithoutHealthcareProviderInput[] | procedureUncheckedCreateWithoutHealthcareProviderInput[]
     connectOrCreate?: procedureCreateOrConnectWithoutHealthcareProviderInput | procedureCreateOrConnectWithoutHealthcareProviderInput[]
@@ -38159,6 +39621,13 @@ export namespace Prisma {
     connectOrCreate?: patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput | patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput[]
     createMany?: patient_profileCreateManyCreatedByHealthcareProviderInputEnvelope
     connect?: patient_profileWhereUniqueInput | patient_profileWhereUniqueInput[]
+  }
+
+  export type healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<healthcare_provider_faqCreateWithoutHealthcareProviderInput, healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput> | healthcare_provider_faqCreateWithoutHealthcareProviderInput[] | healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: healthcare_provider_faqCreateOrConnectWithoutHealthcareProviderInput | healthcare_provider_faqCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: healthcare_provider_faqCreateManyHealthcareProviderInputEnvelope
+    connect?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
   }
 
   export type healthcare_providerUpdatelanguagesInput = {
@@ -38319,6 +39788,20 @@ export namespace Prisma {
     deleteMany?: patient_profileScalarWhereInput | patient_profileScalarWhereInput[]
   }
 
+  export type healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<healthcare_provider_faqCreateWithoutHealthcareProviderInput, healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput> | healthcare_provider_faqCreateWithoutHealthcareProviderInput[] | healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: healthcare_provider_faqCreateOrConnectWithoutHealthcareProviderInput | healthcare_provider_faqCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: healthcare_provider_faqUpsertWithWhereUniqueWithoutHealthcareProviderInput | healthcare_provider_faqUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: healthcare_provider_faqCreateManyHealthcareProviderInputEnvelope
+    set?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
+    disconnect?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
+    delete?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
+    connect?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
+    update?: healthcare_provider_faqUpdateWithWhereUniqueWithoutHealthcareProviderInput | healthcare_provider_faqUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: healthcare_provider_faqUpdateManyWithWhereWithoutHealthcareProviderInput | healthcare_provider_faqUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: healthcare_provider_faqScalarWhereInput | healthcare_provider_faqScalarWhereInput[]
+  }
+
   export type procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput = {
     create?: XOR<procedureCreateWithoutHealthcareProviderInput, procedureUncheckedCreateWithoutHealthcareProviderInput> | procedureCreateWithoutHealthcareProviderInput[] | procedureUncheckedCreateWithoutHealthcareProviderInput[]
     connectOrCreate?: procedureCreateOrConnectWithoutHealthcareProviderInput | procedureCreateOrConnectWithoutHealthcareProviderInput[]
@@ -38429,6 +39912,34 @@ export namespace Prisma {
     update?: patient_profileUpdateWithWhereUniqueWithoutCreatedByHealthcareProviderInput | patient_profileUpdateWithWhereUniqueWithoutCreatedByHealthcareProviderInput[]
     updateMany?: patient_profileUpdateManyWithWhereWithoutCreatedByHealthcareProviderInput | patient_profileUpdateManyWithWhereWithoutCreatedByHealthcareProviderInput[]
     deleteMany?: patient_profileScalarWhereInput | patient_profileScalarWhereInput[]
+  }
+
+  export type healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<healthcare_provider_faqCreateWithoutHealthcareProviderInput, healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput> | healthcare_provider_faqCreateWithoutHealthcareProviderInput[] | healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: healthcare_provider_faqCreateOrConnectWithoutHealthcareProviderInput | healthcare_provider_faqCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: healthcare_provider_faqUpsertWithWhereUniqueWithoutHealthcareProviderInput | healthcare_provider_faqUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: healthcare_provider_faqCreateManyHealthcareProviderInputEnvelope
+    set?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
+    disconnect?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
+    delete?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
+    connect?: healthcare_provider_faqWhereUniqueInput | healthcare_provider_faqWhereUniqueInput[]
+    update?: healthcare_provider_faqUpdateWithWhereUniqueWithoutHealthcareProviderInput | healthcare_provider_faqUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: healthcare_provider_faqUpdateManyWithWhereWithoutHealthcareProviderInput | healthcare_provider_faqUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: healthcare_provider_faqScalarWhereInput | healthcare_provider_faqScalarWhereInput[]
+  }
+
+  export type healthcare_providerCreateNestedOneWithoutFaqsInput = {
+    create?: XOR<healthcare_providerCreateWithoutFaqsInput, healthcare_providerUncheckedCreateWithoutFaqsInput>
+    connectOrCreate?: healthcare_providerCreateOrConnectWithoutFaqsInput
+    connect?: healthcare_providerWhereUniqueInput
+  }
+
+  export type healthcare_providerUpdateOneRequiredWithoutFaqsNestedInput = {
+    create?: XOR<healthcare_providerCreateWithoutFaqsInput, healthcare_providerUncheckedCreateWithoutFaqsInput>
+    connectOrCreate?: healthcare_providerCreateOrConnectWithoutFaqsInput
+    upsert?: healthcare_providerUpsertWithoutFaqsInput
+    connect?: healthcare_providerWhereUniqueInput
+    update?: XOR<XOR<healthcare_providerUpdateToOneWithWhereWithoutFaqsInput, healthcare_providerUpdateWithoutFaqsInput>, healthcare_providerUncheckedUpdateWithoutFaqsInput>
   }
 
   export type customerCreateNestedOneWithoutConversationsInput = {
@@ -40038,6 +41549,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutAppointmentsInput = {
@@ -40086,6 +41598,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutAppointmentsInput = {
@@ -40352,6 +41865,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutAppointmentsInput = {
@@ -40400,6 +41914,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type appointment_procedureUpsertWithWhereUniqueWithoutAppointmentInput = {
@@ -40589,6 +42104,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutCategoriesInput = {
@@ -40637,6 +42153,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutCategoriesInput = {
@@ -40722,6 +42239,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutCategoriesInput = {
@@ -40770,6 +42288,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type categoryUpsertWithoutHealthcareProviderCategoriesInput = {
@@ -41078,6 +42597,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutFavoritedByInput = {
@@ -41126,6 +42646,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutFavoritedByInput = {
@@ -41231,6 +42752,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutFavoritedByInput = {
@@ -41279,6 +42801,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type customerCreateWithoutMedicalRecordInput = {
@@ -41938,6 +43461,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutSchedulesInput = {
@@ -41986,6 +43510,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutSchedulesInput = {
@@ -42050,6 +43575,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutSchedulesInput = {
@@ -42098,6 +43624,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type userCreateWithoutHealthcareProviderInput = {
@@ -42419,6 +43946,34 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type healthcare_provider_faqCreateWithoutHealthcareProviderInput = {
+    id?: string
+    question: string
+    answer: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput = {
+    id?: string
+    question: string
+    answer: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type healthcare_provider_faqCreateOrConnectWithoutHealthcareProviderInput = {
+    where: healthcare_provider_faqWhereUniqueInput
+    create: XOR<healthcare_provider_faqCreateWithoutHealthcareProviderInput, healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type healthcare_provider_faqCreateManyHealthcareProviderInputEnvelope = {
+    data: healthcare_provider_faqCreateManyHealthcareProviderInput | healthcare_provider_faqCreateManyHealthcareProviderInput[]
+    skipDuplicates?: boolean
+  }
+
   export type userUpsertWithoutHealthcareProviderInput = {
     update: XOR<userUpdateWithoutHealthcareProviderInput, userUncheckedUpdateWithoutHealthcareProviderInput>
     create: XOR<userCreateWithoutHealthcareProviderInput, userUncheckedCreateWithoutHealthcareProviderInput>
@@ -42634,6 +44189,247 @@ export namespace Prisma {
     data: XOR<patient_profileUpdateManyMutationInput, patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderInput>
   }
 
+  export type healthcare_provider_faqUpsertWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: healthcare_provider_faqWhereUniqueInput
+    update: XOR<healthcare_provider_faqUpdateWithoutHealthcareProviderInput, healthcare_provider_faqUncheckedUpdateWithoutHealthcareProviderInput>
+    create: XOR<healthcare_provider_faqCreateWithoutHealthcareProviderInput, healthcare_provider_faqUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type healthcare_provider_faqUpdateWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: healthcare_provider_faqWhereUniqueInput
+    data: XOR<healthcare_provider_faqUpdateWithoutHealthcareProviderInput, healthcare_provider_faqUncheckedUpdateWithoutHealthcareProviderInput>
+  }
+
+  export type healthcare_provider_faqUpdateManyWithWhereWithoutHealthcareProviderInput = {
+    where: healthcare_provider_faqScalarWhereInput
+    data: XOR<healthcare_provider_faqUpdateManyMutationInput, healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderInput>
+  }
+
+  export type healthcare_provider_faqScalarWhereInput = {
+    AND?: healthcare_provider_faqScalarWhereInput | healthcare_provider_faqScalarWhereInput[]
+    OR?: healthcare_provider_faqScalarWhereInput[]
+    NOT?: healthcare_provider_faqScalarWhereInput | healthcare_provider_faqScalarWhereInput[]
+    id?: StringFilter<"healthcare_provider_faq"> | string
+    healthcareProviderId?: StringFilter<"healthcare_provider_faq"> | string
+    question?: StringFilter<"healthcare_provider_faq"> | string
+    answer?: StringFilter<"healthcare_provider_faq"> | string
+    position?: IntFilter<"healthcare_provider_faq"> | number
+    createdAt?: DateTimeFilter<"healthcare_provider_faq"> | Date | string
+    updatedAt?: DateTimeFilter<"healthcare_provider_faq"> | Date | string
+  }
+
+  export type healthcare_providerCreateWithoutFaqsInput = {
+    id?: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: userCreateNestedOneWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    appointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    categories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+  }
+
+  export type healthcare_providerUncheckedCreateWithoutFaqsInput = {
+    id?: string
+    userId: string
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: healthcare_providerCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: healthcare_providerCreatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: healthcare_providerCreateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: healthcare_providerCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    appointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    categories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+  }
+
+  export type healthcare_providerCreateOrConnectWithoutFaqsInput = {
+    where: healthcare_providerWhereUniqueInput
+    create: XOR<healthcare_providerCreateWithoutFaqsInput, healthcare_providerUncheckedCreateWithoutFaqsInput>
+  }
+
+  export type healthcare_providerUpsertWithoutFaqsInput = {
+    update: XOR<healthcare_providerUpdateWithoutFaqsInput, healthcare_providerUncheckedUpdateWithoutFaqsInput>
+    create: XOR<healthcare_providerCreateWithoutFaqsInput, healthcare_providerUncheckedCreateWithoutFaqsInput>
+    where?: healthcare_providerWhereInput
+  }
+
+  export type healthcare_providerUpdateToOneWithWhereWithoutFaqsInput = {
+    where?: healthcare_providerWhereInput
+    data: XOR<healthcare_providerUpdateWithoutFaqsInput, healthcare_providerUncheckedUpdateWithoutFaqsInput>
+  }
+
+  export type healthcare_providerUpdateWithoutFaqsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: userUpdateOneRequiredWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    appointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    categories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+  }
+
+  export type healthcare_providerUncheckedUpdateWithoutFaqsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: healthcare_providerUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: healthcare_providerUpdatetargetAudiencesInput | string[]
+    serviceModalities?: healthcare_providerUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: healthcare_providerUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: healthcare_providerUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: healthcare_providerUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    appointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    categories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+  }
+
   export type customerCreateWithoutConversationsInput = {
     id?: string
     cpf?: string | null
@@ -42715,6 +44511,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutConversationsInput = {
@@ -42763,6 +44560,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutConversationsInput = {
@@ -42908,6 +44706,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutConversationsInput = {
@@ -42956,6 +44755,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type conversation_messageUpsertWithWhereUniqueWithoutConversationInput = {
@@ -43715,6 +45515,7 @@ export namespace Prisma {
     ratings?: ratingCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutCreatedPatientProfilesInput = {
@@ -43763,6 +45564,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutCreatedPatientProfilesInput = {
@@ -43910,6 +45712,7 @@ export namespace Prisma {
     ratings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutCreatedPatientProfilesInput = {
@@ -43958,6 +45761,7 @@ export namespace Prisma {
     ratings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type appointmentUpsertWithWhereUniqueWithoutPatientProfileInput = {
@@ -44022,6 +45826,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutProceduresInput = {
@@ -44070,6 +45875,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutProceduresInput = {
@@ -44156,6 +45962,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutProceduresInput = {
@@ -44204,6 +46011,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type appointment_procedureUpsertWithWhereUniqueWithoutProcedureInput = {
@@ -44303,6 +46111,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutRatingsInput = {
@@ -44351,6 +46160,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutRatingsInput = {
@@ -44456,6 +46266,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutRatingsInput = {
@@ -44504,6 +46315,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type userCreateWithoutSessionsInput = {
@@ -44917,6 +46729,7 @@ export namespace Prisma {
     conversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerUncheckedCreateWithoutUserInput = {
@@ -44965,6 +46778,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
     favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
     createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
   }
 
   export type healthcare_providerCreateOrConnectWithoutUserInput = {
@@ -45348,6 +47162,7 @@ export namespace Prisma {
     conversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type healthcare_providerUncheckedUpdateWithoutUserInput = {
@@ -45396,6 +47211,7 @@ export namespace Prisma {
     conversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
   }
 
   export type customerUpsertWithoutUserInput = {
@@ -46123,6 +47939,15 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type healthcare_provider_faqCreateManyHealthcareProviderInput = {
+    id?: string
+    question: string
+    answer: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type procedureUpdateWithoutHealthcareProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -46392,6 +48217,33 @@ export namespace Prisma {
     lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_faqUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    answer?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_faqUncheckedUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    answer?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    question?: StringFieldUpdateOperationsInput | string
+    answer?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -1,12 +1,17 @@
 import type { HealthcareProviderWithRelations } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-contract";
 import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
+import { getProviderMarketplaceMetricsByProviderIds } from "@/http/useCases/healthcare-providers/get-provider-marketplace-metrics";
+import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
 import { getProviderRatingSummariesByProviderIds } from "@/http/useCases/ratings/get-provider-rating-summaries";
 
 type HealthcareProviderWithRatingSummary = HealthcareProviderWithRelations & {
 	startingPriceCents: number | null;
 	averageRating: number;
 	totalRatings: number;
+	completedAppointments: number;
+	confirmationRate: number;
+	isSuperProfessional: boolean;
 };
 
 function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
@@ -33,14 +38,25 @@ export const getHealthcareProviderByIdUseCase = {
 			healthcareProvider.id,
 		]);
 		const ratingSummary = ratingSummaries.get(healthcareProvider.id);
+		const marketplaceMetrics = (
+			await getProviderMarketplaceMetricsByProviderIds(
+				[healthcareProvider.id],
+				ratingSummaries,
+			)
+		).get(healthcareProvider.id);
 
 		return {
-			healthcareProvider: {
+			healthcareProvider: signClinicPhotoUrls({
 				...healthcareProvider,
 				startingPriceCents: getStartingPriceCents(healthcareProvider),
 				averageRating: ratingSummary?.averageRating ?? 0,
 				totalRatings: ratingSummary?.totalRatings ?? 0,
-			},
+				completedAppointments:
+					marketplaceMetrics?.completedAppointments ?? 0,
+				confirmationRate: marketplaceMetrics?.confirmationRate ?? 0,
+				isSuperProfessional:
+					marketplaceMetrics?.isSuperProfessional ?? false,
+			}),
 		};
 	},
 };

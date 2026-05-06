@@ -5,6 +5,7 @@ import type {
 import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
+import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
 import type { user } from "../../../../prisma/generated/prisma/client";
 
 export const updateHealthcareProviderUseCase = {
@@ -31,6 +32,6 @@ export const updateHealthcareProviderUseCase = {
 			data,
 		);
 
-		return { healthcareProvider };
+		return { healthcareProvider: signClinicPhotoUrls(healthcareProvider) };
 	},
 };
