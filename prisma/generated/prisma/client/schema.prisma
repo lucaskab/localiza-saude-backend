@@ -517,17 +517,18 @@ enum SupportRequestStatus {
 }
 
 model user {
-  id            String   @id @default(cuid())
-  name          String
-  firstName     String?  @map("first_name")
-  lastName      String?  @map("last_name")
-  phone         String?
-  email         String   @unique
-  emailVerified Boolean  @default(false) @map("email_verified")
-  image         String?
-  role          UserRole @default(CUSTOMER)
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @updatedAt @map("updated_at")
+  id                  String   @id @default(cuid())
+  name                String
+  firstName           String?  @map("first_name")
+  lastName            String?  @map("last_name")
+  phone               String?
+  email               String   @unique
+  emailVerified       Boolean  @default(false) @map("email_verified")
+  image               String?
+  role                UserRole @default(CUSTOMER)
+  onboardingCompleted Boolean  @default(true) @map("onboarding_completed")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
 
   sessions     session[]
   accounts     account[]

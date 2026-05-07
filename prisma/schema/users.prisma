@@ -8,6 +8,7 @@ model user {
   emailVerified Boolean    @default(false) @map("email_verified")
   image         String?
   role          UserRole   @default(CUSTOMER)
+  onboardingCompleted Boolean @default(true) @map("onboarding_completed")
   createdAt     DateTime   @default(now()) @map("created_at")
   updatedAt     DateTime   @updatedAt @map("updated_at")
 

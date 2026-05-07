@@ -74,6 +74,11 @@ export const auth = betterAuth({
 				required: true,
 				defaultValue: "CUSTOMER",
 			},
+			onboardingCompleted: {
+				type: "boolean",
+				required: true,
+				defaultValue: true,
+			},
 			firstName: {
 				type: "string",
 				required: false,
@@ -117,25 +122,10 @@ export const auth = betterAuth({
 							...user,
 							firstName,
 							lastName,
-							role: "CUSTOMER", // Default role for all new users
+							role: "CUSTOMER",
+							onboardingCompleted: false,
 						},
 					};
-				},
-				after: async (user) => {
-					// Auto-create customer record for new users
-					try {
-						await prisma.customer.create({
-							data: {
-								userId: user.id,
-							},
-						});
-						console.log(`✅ Created customer record for user: ${user.email}`);
-					} catch (error) {
-						console.error(
-							`❌ Failed to create customer for user ${user.email}:`,
-							error,
-						);
-					}
 				},
 			},
 		},
