@@ -1,4 +1,4 @@
-import type { customer } from "../../../../prisma/generated/prisma/client";
+import type { user } from "../../../../prisma/generated/prisma/client";
 
 export type CreateCustomerData = {
 	userId: string;
@@ -14,10 +14,10 @@ export type UpdateCustomerData = {
 };
 
 export type CustomerRepository = {
-	findAll: () => Promise<customer[]>;
-	findById: (id: string) => Promise<customer | null>;
-	findByUserId: (userId: string) => Promise<customer | null>;
-	create: (data: CreateCustomerData) => Promise<customer>;
-	update: (id: string, data: UpdateCustomerData) => Promise<customer>;
+	findAll: () => Promise<user[]>;
+	findById: (id: string) => Promise<user | null>;
+	findByUserId: (userId: string) => Promise<user | null>;
+	create: (data: CreateCustomerData) => Promise<user>;
+	update: (id: string, data: UpdateCustomerData) => Promise<user>;
 	delete: (id: string) => Promise<void>;
 };

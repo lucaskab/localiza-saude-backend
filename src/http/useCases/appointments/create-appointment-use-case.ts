@@ -12,8 +12,6 @@ import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
 import { sendAppointmentEventNotificationUseCase } from "@/http/useCases/notifications/send-appointment-event-notification-use-case";
 import type { CreateAppointmentBodySchema } from "@/schemas/routes/appointments/create-appointment";
 import type {
-	customer,
-	healthcare_provider,
 	patient_profile,
 	user,
 } from "../../../../prisma/generated/prisma/client";
@@ -38,19 +36,19 @@ async function assertExistingPatientProfileAccess({
 	healthcareProvider,
 }: {
 	patientProfile: patient_profile;
-	customer: customer | null;
-	healthcareProvider: healthcare_provider | null;
+	customer: user | null;
+	healthcareProvider: user | null;
 }) {
 	if (customer) {
 		if (patientProfile.customerOwnerId !== customer.id) {
-			throw new UnauthorizedError("You cannot use this patient profile");
+			throw new UnauthorizedError("You cannot use this customer profile");
 		}
 
 		return;
 	}
 
 	if (!healthcareProvider) {
-		throw new UnauthorizedError("You cannot use this patient profile");
+		throw new UnauthorizedError("You cannot use this customer profile");
 	}
 
 	if (
@@ -60,13 +58,13 @@ async function assertExistingPatientProfileAccess({
 	}
 
 	const hasPreviousAppointment =
-		await prismaAppointmentRepository.existsByPatientProfileAndProvider(
+		await prismaAppointmentRepository.existsByPatientProfileAndHealthcareProvider(
 			patientProfile.id,
 			healthcareProvider.id,
 		);
 
 	if (!hasPreviousAppointment) {
-		throw new UnauthorizedError("You cannot use this patient profile");
+		throw new UnauthorizedError("You cannot use this customer profile");
 	}
 }
 
@@ -78,16 +76,16 @@ async function resolvePatient({
 }: {
 	currentUser: user;
 	data: CreateAppointmentBodySchema;
-	customer: customer | null;
-	healthcareProvider: healthcare_provider | null;
+	customer: user | null;
+	healthcareProvider: user | null;
 }): Promise<ResolvedPatient> {
-	const patient = data.patient ?? { type: "SELF" as const };
+	const requestedCustomer = data.customer ?? { type: "SELF" as const };
 	const isProviderActor = currentUser.role === "HEALTHCARE_PROVIDER";
 
-	if (patient.type === "SELF") {
+	if (requestedCustomer.type === "SELF") {
 		if (isProviderActor || !customer) {
 			throw new BadRequestError(
-				"Select or create a patient profile for this appointment",
+				"Select or create a customer profile for this appointment",
 			);
 		}
 
@@ -97,13 +95,13 @@ async function resolvePatient({
 		};
 	}
 
-	if (patient.type === "EXISTING_PROFILE") {
+	if (requestedCustomer.type === "EXISTING_PROFILE") {
 		const patientProfile = await prismaPatientProfileRepository.findById(
-			patient.patientProfileId,
+			requestedCustomer.patientProfileId,
 		);
 
 		if (!patientProfile) {
-			throw new BadRequestError("Patient profile not found");
+			throw new BadRequestError("Customer profile not found");
 		}
 
 		await assertExistingPatientProfileAccess({
@@ -121,7 +119,7 @@ async function resolvePatient({
 	}
 
 	const patientProfile = await prismaPatientProfileRepository.create({
-		...patient.profile,
+		...requestedCustomer.profile,
 		customerOwnerId: isProviderActor ? null : customer?.id ?? null,
 		createdByHealthcareProviderId: isProviderActor
 			? healthcareProvider?.id
@@ -215,7 +213,7 @@ export const createAppointmentUseCase = {
 		endOfDay.setUTCHours(23, 59, 59, 999);
 
 		const existingAppointments =
-			await prismaAppointmentRepository.findByProviderAndDateRange(
+			await prismaAppointmentRepository.findByProfessionalAndDateRange(
 				healthcareProvider.id,
 				{
 					startDate: startOfDay,
@@ -244,7 +242,7 @@ export const createAppointmentUseCase = {
 			);
 		}
 
-		const patient = await resolvePatient({
+		const resolvedPatient = await resolvePatient({
 			currentUser,
 			data,
 			customer,
@@ -252,8 +250,8 @@ export const createAppointmentUseCase = {
 		});
 
 		const appointmentData: CreateAppointmentData = {
-			customerId: patient.customerId,
-			patientProfileId: patient.patientProfileId,
+			customerId: resolvedPatient.customerId,
+			patientProfileId: resolvedPatient.patientProfileId,
 			healthcareProviderId: healthcareProvider.id,
 			scheduledAt: data.scheduledAt,
 			procedureIds: data.procedureIds,

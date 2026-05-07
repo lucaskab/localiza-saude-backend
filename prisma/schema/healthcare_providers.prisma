@@ -1,66 +1,12 @@
-model healthcare_provider {
-  id                  String    @id @default(cuid())
-  userId              String    @unique @map("user_id")
-  user                user      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  displayName         String?   @map("display_name")
-  document            String?
-  birthDate           DateTime? @map("birth_date")
-  gender              String?
-  languages           String[]  @default([])
-  specialty           String?
-  professionalCategory String?  @map("professional_category")
-  professionalId      String?   @map("professional_id")
-  licenseCouncil      String?   @map("license_council")
-  licenseState        String?   @map("license_state")
-  licenseDocumentKey  String?   @map("license_document_key")
-  licenseDocumentFileName String? @map("license_document_file_name")
-  licenseDocumentMimeType String? @map("license_document_mime_type")
-  licenseDocumentSize Int? @map("license_document_size")
-  licenseDocumentSha256 String? @map("license_document_sha256")
-  licenseDocumentUploadedAt DateTime? @map("license_document_uploaded_at")
-  verificationStatus  String    @default("PENDING") @map("verification_status")
-  verifiedAt          DateTime? @map("verified_at")
-  bio                 String?
-  approach            String?
-  education           String?
-  certifications      String?
-  yearsOfExperience   Int?      @map("years_of_experience")
-  targetAudiences     String[]  @default([]) @map("target_audiences")
-  serviceModalities   String[]  @default([]) @map("service_modalities")
-  clinicAddress       String?   @map("clinic_address")
-  homeCareRadiusKm    Int?      @map("home_care_radius_km")
-  acceptedInsurance   String[]  @default([]) @map("accepted_insurance")
-  paymentMethods      String[]  @default([]) @map("payment_methods")
-  cancellationPolicy  String?   @map("cancellation_policy")
-  clinicPhotos        String[]  @default([]) @map("clinic_photos")
-  termsAcceptedAt     DateTime? @map("terms_accepted_at")
-  lgpdConsentAt       DateTime? @map("lgpd_consent_at")
-  professionalResponsibilityAcceptedAt DateTime? @map("professional_responsibility_accepted_at")
-  createdAt           DateTime  @default(now()) @map("created_at")
-  updatedAt           DateTime  @updatedAt @map("updated_at")
-
-  procedures   procedure[]
-  appointments appointment[]
-  schedules    healthcare_provider_schedule[]
-  categories   healthcare_provider_category[]
-  ratings      rating[]
-  conversations conversation[]
-  favoritedBy  customer_favorite_provider[]
-  createdPatientProfiles patient_profile[] @relation("ProviderCreatedPatientProfiles")
-  faqs healthcare_provider_faq[]
-
-  @@map("healthcare_providers")
-}
-
 model healthcare_provider_faq {
-  id                   String              @id @default(cuid())
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
-  question             String
-  answer               String
-  position             Int                 @default(0)
-  createdAt            DateTime            @default(now()) @map("created_at")
-  updatedAt            DateTime            @updatedAt @map("updated_at")
+  id                 String   @id @default(cuid())
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider       user     @relation("ProviderFaqs", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  question           String
+  answer             String
+  position           Int      @default(0)
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
 
   @@index([healthcareProviderId])
   @@map("healthcare_provider_faqs")

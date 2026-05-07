@@ -7,21 +7,6 @@ import type {
 const includeHealthcareProviderRelations = {
 	healthcareProvider: {
 		include: {
-			user: {
-				select: {
-					id: true,
-					name: true,
-					firstName: true,
-					lastName: true,
-					email: true,
-					emailVerified: true,
-					phone: true,
-					image: true,
-					role: true,
-					createdAt: true,
-					updatedAt: true,
-				},
-			},
 			procedures: {
 				orderBy: {
 					createdAt: "desc" as const,
@@ -32,9 +17,9 @@ const includeHealthcareProviderRelations = {
 };
 
 export const prismaFavoriteRepository: FavoriteRepository = {
-	async findByCustomerId(customerId: string) {
+	async findByUserId(userId: string) {
 		const favorites = await prisma.customer_favorite_provider.findMany({
-			where: { customerId },
+			where: { customerId: userId },
 			include: includeHealthcareProviderRelations,
 			orderBy: {
 				createdAt: "desc",
@@ -44,16 +29,16 @@ export const prismaFavoriteRepository: FavoriteRepository = {
 		return favorites as FavoriteProviderWithRelations[];
 	},
 
-	async add(customerId: string, healthcareProviderId: string) {
+	async add(userId: string, healthcareProviderId: string) {
 		const favorite = await prisma.customer_favorite_provider.upsert({
 			where: {
 				customerId_healthcareProviderId: {
-					customerId,
+					customerId: userId,
 					healthcareProviderId,
 				},
 			},
 			create: {
-				customerId,
+				customerId: userId,
 				healthcareProviderId,
 			},
 			update: {},
@@ -62,10 +47,10 @@ export const prismaFavoriteRepository: FavoriteRepository = {
 		return favorite;
 	},
 
-	async remove(customerId: string, healthcareProviderId: string) {
+	async remove(userId: string, healthcareProviderId: string) {
 		await prisma.customer_favorite_provider.deleteMany({
 			where: {
-				customerId,
+				customerId: userId,
 				healthcareProviderId,
 			},
 		});

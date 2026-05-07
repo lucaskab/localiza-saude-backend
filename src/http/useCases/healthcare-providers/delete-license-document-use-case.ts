@@ -14,7 +14,7 @@ export const deleteLicenseDocumentUseCase = {
 			throw new BadRequestError("Healthcare provider not found");
 		}
 
-		if (provider.userId !== params.currentUser.id) {
+		if (provider.id !== params.currentUser.id) {
 			throw new UnauthorizedError(
 				"You can only delete your own healthcare provider documents",
 			);

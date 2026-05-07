@@ -7,7 +7,8 @@ import type {
 
 export const prismaCustomerRepository: CustomerRepository = {
 	async findAll() {
-		const customers = await prisma.customer.findMany({
+		const customers = await prisma.user.findMany({
+			where: { role: "CUSTOMER" },
 			orderBy: {
 				createdAt: "desc",
 			},
@@ -17,25 +18,26 @@ export const prismaCustomerRepository: CustomerRepository = {
 	},
 
 	async findById(id: string) {
-		const customer = await prisma.customer.findUnique({
-			where: { id },
+		const customer = await prisma.user.findUnique({
+			where: { id, role: "CUSTOMER" },
 		});
 
 		return customer;
 	},
 
 	async findByUserId(userId: string) {
-		const customer = await prisma.customer.findUnique({
-			where: { userId },
+		const customer = await prisma.user.findUnique({
+			where: { id: userId, role: "CUSTOMER" },
 		});
 
 		return customer;
 	},
 
 	async create(data: CreateCustomerData) {
-		const customer = await prisma.customer.create({
+		const customer = await prisma.user.update({
+			where: { id: data.userId },
 			data: {
-				userId: data.userId,
+				role: "CUSTOMER",
 				cpf: data.cpf,
 				dateOfBirth: data.dateOfBirth,
 				address: data.address,
@@ -46,7 +48,7 @@ export const prismaCustomerRepository: CustomerRepository = {
 	},
 
 	async update(id: string, data: UpdateCustomerData) {
-		const customer = await prisma.customer.update({
+		const customer = await prisma.user.update({
 			where: { id },
 			data: {
 				...(data.cpf !== undefined && { cpf: data.cpf }),
@@ -61,7 +63,7 @@ export const prismaCustomerRepository: CustomerRepository = {
 	},
 
 	async delete(id: string) {
-		await prisma.customer.delete({
+		await prisma.user.delete({
 			where: { id },
 		});
 	},

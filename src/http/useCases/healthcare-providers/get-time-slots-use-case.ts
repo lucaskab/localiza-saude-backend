@@ -60,7 +60,7 @@ export const getTimeSlotsUseCase = {
 		const { healthcareProviderId, date, procedureIds } = params;
 
 		// Validate healthcare provider exists
-		const provider = await prisma.healthcare_provider.findUnique({
+		const provider = await prisma.user.findUnique({
 			where: { id: healthcareProviderId },
 		});
 
@@ -148,7 +148,7 @@ export const getTimeSlotsUseCase = {
 		endOfDay.setUTCHours(23, 59, 59, 999);
 
 		const existingAppointments =
-			await prismaAppointmentRepository.findByProviderAndDateRange(
+			await prismaAppointmentRepository.findByProfessionalAndDateRange(
 				healthcareProviderId,
 				{
 					startDate: startOfDay,

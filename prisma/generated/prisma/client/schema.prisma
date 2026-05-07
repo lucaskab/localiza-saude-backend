@@ -32,20 +32,20 @@ model appointment_procedure {
 }
 
 model appointment {
-  id                   String              @id @default(cuid())
-  customerId           String?             @map("customer_id")
-  customer             customer?           @relation(fields: [customerId], references: [id])
-  patientProfileId     String?             @map("patient_profile_id")
-  patientProfile       patient_profile?    @relation(fields: [patientProfileId], references: [id])
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id])
-  scheduledAt          DateTime            @map("scheduled_at")
-  status               AppointmentStatus   @default(SCHEDULED)
-  totalDurationMinutes Int                 @map("total_duration_minutes")
-  totalPriceCents      Int                 @map("total_price_cents")
+  id                   String            @id @default(cuid())
+  customerId           String?           @map("customer_id")
+  customer             user?             @relation("CustomerAppointments", fields: [customerId], references: [id])
+  patientProfileId     String?           @map("patient_profile_id")
+  patientProfile       patient_profile?  @relation(fields: [patientProfileId], references: [id])
+  healthcareProviderId String            @map("healthcare_provider_id")
+  healthcareProvider   user              @relation("ProviderAppointments", fields: [healthcareProviderId], references: [id])
+  scheduledAt          DateTime          @map("scheduled_at")
+  status               AppointmentStatus @default(SCHEDULED)
+  totalDurationMinutes Int               @map("total_duration_minutes")
+  totalPriceCents      Int               @map("total_price_cents")
   notes                String?
-  createdAt            DateTime            @default(now()) @map("created_at")
-  updatedAt            DateTime            @updatedAt @map("updated_at")
+  createdAt            DateTime          @default(now()) @map("created_at")
+  updatedAt            DateTime          @updatedAt @map("updated_at")
 
   appointmentProcedures  appointment_procedure[]
   relatedMessages        conversation_message[]
@@ -80,12 +80,12 @@ model category {
 }
 
 model healthcare_provider_category {
-  id                   String              @id @default(cuid())
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
-  categoryId           String              @map("category_id")
-  category             category            @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  createdAt            DateTime            @default(now()) @map("created_at")
+  id                   String   @id @default(cuid())
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider   user     @relation("ProviderCategories", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  categoryId           String   @map("category_id")
+  category             category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt            DateTime @default(now()) @map("created_at")
 
   @@unique([healthcareProviderId, categoryId])
   @@index([healthcareProviderId])
@@ -122,11 +122,11 @@ enum ClinicType {
 }
 
 model customer_favorite_provider {
-  customerId           String              @map("customer_id")
-  customer             customer            @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
-  createdAt            DateTime            @default(now()) @map("created_at")
+  customerId           String   @map("customer_id")
+  customer             user     @relation("CustomerFavoriteProviders", fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider   user     @relation("ProviderFavoritedByCustomers", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  createdAt            DateTime @default(now()) @map("created_at")
 
   @@id([customerId, healthcareProviderId])
   @@index([customerId])
@@ -137,7 +137,7 @@ model customer_favorite_provider {
 model customer_medical_record {
   id                    String   @id @default(cuid())
   customerId            String   @unique @map("customer_id")
-  customer              customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customer              user     @relation(fields: [customerId], references: [id], onDelete: Cascade)
   bloodType             String?  @map("blood_type")
   medications           String?
   chronicPain           String?  @map("chronic_pain")
@@ -155,118 +155,44 @@ model customer_medical_record {
   @@map("customer_medical_records")
 }
 
-model customer {
-  id          String    @id @default(cuid())
-  userId      String    @unique @map("user_id")
-  user        user      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  cpf         String?
-  dateOfBirth DateTime? @map("date_of_birth")
-  address     String?
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
-
-  appointments      appointment[]
-  ratings           rating[]
-  conversations     conversation[]
-  favoriteProviders customer_favorite_provider[]
-  medicalRecord     customer_medical_record?
-  patientProfiles   patient_profile[]            @relation("CustomerPatientProfiles")
-
-  @@map("customers")
-}
-
 model healthcare_provider_schedule {
-  id                   String              @id @default(cuid())
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
-  dayOfWeek            Int                 @map("day_of_week")
-  startTime            String              @map("start_time")
-  endTime              String              @map("end_time")
-  isActive             Boolean             @default(true) @map("is_active")
-  createdAt            DateTime            @default(now()) @map("created_at")
-  updatedAt            DateTime            @updatedAt @map("updated_at")
+  id                   String   @id @default(cuid())
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider   user     @relation("ProviderSchedules", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  dayOfWeek            Int      @map("day_of_week")
+  startTime            String   @map("start_time")
+  endTime              String   @map("end_time")
+  isActive             Boolean  @default(true) @map("is_active")
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
 
   @@index([healthcareProviderId])
   @@map("healthcare_provider_schedules")
 }
 
-model healthcare_provider {
-  id                                   String    @id @default(cuid())
-  userId                               String    @unique @map("user_id")
-  user                                 user      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  displayName                          String?   @map("display_name")
-  document                             String?
-  birthDate                            DateTime? @map("birth_date")
-  gender                               String?
-  languages                            String[]  @default([])
-  specialty                            String?
-  professionalCategory                 String?   @map("professional_category")
-  professionalId                       String?   @map("professional_id")
-  licenseCouncil                       String?   @map("license_council")
-  licenseState                         String?   @map("license_state")
-  licenseDocumentKey                   String?   @map("license_document_key")
-  licenseDocumentFileName              String?   @map("license_document_file_name")
-  licenseDocumentMimeType              String?   @map("license_document_mime_type")
-  licenseDocumentSize                  Int?      @map("license_document_size")
-  licenseDocumentSha256                String?   @map("license_document_sha256")
-  licenseDocumentUploadedAt            DateTime? @map("license_document_uploaded_at")
-  verificationStatus                   String    @default("PENDING") @map("verification_status")
-  verifiedAt                           DateTime? @map("verified_at")
-  bio                                  String?
-  approach                             String?
-  education                            String?
-  certifications                       String?
-  yearsOfExperience                    Int?      @map("years_of_experience")
-  targetAudiences                      String[]  @default([]) @map("target_audiences")
-  serviceModalities                    String[]  @default([]) @map("service_modalities")
-  clinicAddress                        String?   @map("clinic_address")
-  homeCareRadiusKm                     Int?      @map("home_care_radius_km")
-  acceptedInsurance                    String[]  @default([]) @map("accepted_insurance")
-  paymentMethods                       String[]  @default([]) @map("payment_methods")
-  cancellationPolicy                   String?   @map("cancellation_policy")
-  clinicPhotos                         String[]  @default([]) @map("clinic_photos")
-  termsAcceptedAt                      DateTime? @map("terms_accepted_at")
-  lgpdConsentAt                        DateTime? @map("lgpd_consent_at")
-  professionalResponsibilityAcceptedAt DateTime? @map("professional_responsibility_accepted_at")
-  createdAt                            DateTime  @default(now()) @map("created_at")
-  updatedAt                            DateTime  @updatedAt @map("updated_at")
-
-  procedures             procedure[]
-  appointments           appointment[]
-  schedules              healthcare_provider_schedule[]
-  categories             healthcare_provider_category[]
-  ratings                rating[]
-  conversations          conversation[]
-  favoritedBy            customer_favorite_provider[]
-  createdPatientProfiles patient_profile[]              @relation("ProviderCreatedPatientProfiles")
-  faqs                   healthcare_provider_faq[]
-
-  @@map("healthcare_providers")
-}
-
 model healthcare_provider_faq {
-  id                   String              @id @default(cuid())
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  id                   String   @id @default(cuid())
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider   user     @relation("ProviderFaqs", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
   question             String
   answer               String
-  position             Int                 @default(0)
-  createdAt            DateTime            @default(now()) @map("created_at")
-  updatedAt            DateTime            @updatedAt @map("updated_at")
+  position             Int      @default(0)
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
 
   @@index([healthcareProviderId])
   @@map("healthcare_provider_faqs")
 }
 
 model conversation {
-  id                   String              @id @default(cuid())
-  customerId           String              @map("customer_id")
-  customer             customer            @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
-  lastMessageAt        DateTime?           @map("last_message_at")
-  createdAt            DateTime            @default(now()) @map("created_at")
-  updatedAt            DateTime            @updatedAt @map("updated_at")
+  id                   String    @id @default(cuid())
+  customerId           String    @map("customer_id")
+  customer             user      @relation("CustomerConversations", fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String    @map("healthcare_provider_id")
+  healthcareProvider   user      @relation("ProviderConversations", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  lastMessageAt        DateTime? @map("last_message_at")
+  createdAt            DateTime  @default(now()) @map("created_at")
+  updatedAt            DateTime  @updatedAt @map("updated_at")
 
   messages conversation_message[]
 
@@ -383,32 +309,32 @@ enum NotificationDeliveryStatus {
 }
 
 model patient_profile {
-  id                            String               @id @default(cuid())
-  fullName                      String               @map("full_name")
-  dateOfBirth                   DateTime?            @map("date_of_birth")
+  id                            String    @id @default(cuid())
+  fullName                      String    @map("full_name")
+  dateOfBirth                   DateTime? @map("date_of_birth")
   cpf                           String?
   phone                         String?
   email                         String?
   address                       String?
   gender                        String?
-  relationshipToCustomer        String?              @map("relationship_to_customer")
+  relationshipToCustomer        String?   @map("relationship_to_customer")
   notes                         String?
-  customerOwnerId               String?              @map("customer_owner_id")
-  customerOwner                 customer?            @relation("CustomerPatientProfiles", fields: [customerOwnerId], references: [id], onDelete: SetNull)
-  createdByHealthcareProviderId String?              @map("created_by_healthcare_provider_id")
-  createdByHealthcareProvider   healthcare_provider? @relation("ProviderCreatedPatientProfiles", fields: [createdByHealthcareProviderId], references: [id], onDelete: SetNull)
-  bloodType                     String?              @map("blood_type")
+  customerOwnerId               String?   @map("customer_owner_id")
+  customerOwner                 user?     @relation("CustomerPatientProfiles", fields: [customerOwnerId], references: [id], onDelete: SetNull)
+  createdByHealthcareProviderId String?   @map("created_by_healthcare_provider_id")
+  createdByHealthcareProvider   user?     @relation("ProviderCreatedPatientProfiles", fields: [createdByHealthcareProviderId], references: [id], onDelete: SetNull)
+  bloodType                     String?   @map("blood_type")
   medications                   String?
-  chronicPain                   String?              @map("chronic_pain")
-  preExistingConditions         String?              @map("pre_existing_conditions")
+  chronicPain                   String?   @map("chronic_pain")
+  preExistingConditions         String?   @map("pre_existing_conditions")
   allergies                     String?
   surgeries                     String?
-  familyHistory                 String?              @map("family_history")
-  lifestyleNotes                String?              @map("lifestyle_notes")
-  emergencyContactName          String?              @map("emergency_contact_name")
-  emergencyContactPhone         String?              @map("emergency_contact_phone")
-  createdAt                     DateTime             @default(now()) @map("created_at")
-  updatedAt                     DateTime             @updatedAt @map("updated_at")
+  familyHistory                 String?   @map("family_history")
+  lifestyleNotes                String?   @map("lifestyle_notes")
+  emergencyContactName          String?   @map("emergency_contact_name")
+  emergencyContactPhone         String?   @map("emergency_contact_phone")
+  createdAt                     DateTime  @default(now()) @map("created_at")
+  updatedAt                     DateTime  @updatedAt @map("updated_at")
 
   appointments appointment[]
 
@@ -421,15 +347,15 @@ model patient_profile {
 }
 
 model procedure {
-  id                   String              @id @default(cuid())
+  id                   String   @id @default(cuid())
   name                 String
   description          String?
-  priceInCents         Int                 @map("price_in_cents")
-  durationInMinutes    Int                 @map("duration_in_minutes")
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
-  createdAt            DateTime            @default(now()) @map("created_at")
-  updatedAt            DateTime            @updatedAt @map("updated_at")
+  priceInCents         Int      @map("price_in_cents")
+  durationInMinutes    Int      @map("duration_in_minutes")
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider   user     @relation("ProviderProcedures", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
 
   appointmentProcedures appointment_procedure[]
 
@@ -438,15 +364,15 @@ model procedure {
 }
 
 model rating {
-  id                   String              @id @default(cuid())
-  customerId           String              @map("customer_id")
-  customer             customer            @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  id                   String   @id @default(cuid())
+  customerId           String   @map("customer_id")
+  customer             user     @relation("CustomerRatings", fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider   user     @relation("ProviderRatings", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
   rating               Int
   comment              String?
-  createdAt            DateTime            @default(now()) @map("created_at")
-  updatedAt            DateTime            @updatedAt @map("updated_at")
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
 
   @@unique([customerId, healthcareProviderId])
   @@index([customerId])
@@ -517,31 +443,81 @@ enum SupportRequestStatus {
 }
 
 model user {
-  id                  String   @id @default(cuid())
-  name                String
-  firstName           String?  @map("first_name")
-  lastName            String?  @map("last_name")
-  phone               String?
-  email               String   @unique
-  emailVerified       Boolean  @default(false) @map("email_verified")
-  image               String?
-  role                UserRole @default(CUSTOMER)
-  onboardingCompleted Boolean  @default(true) @map("onboarding_completed")
-  createdAt           DateTime @default(now()) @map("created_at")
-  updatedAt           DateTime @updatedAt @map("updated_at")
+  id                                   String    @id @default(cuid())
+  name                                 String
+  firstName                            String?   @map("first_name")
+  lastName                             String?   @map("last_name")
+  phone                                String?
+  email                                String    @unique
+  emailVerified                        Boolean   @default(false) @map("email_verified")
+  image                                String?
+  role                                 UserRole  @default(CUSTOMER)
+  onboardingCompleted                  Boolean   @default(true) @map("onboarding_completed")
+  cpf                                  String?
+  dateOfBirth                          DateTime? @map("date_of_birth")
+  address                              String?
+  displayName                          String?   @map("display_name")
+  document                             String?
+  birthDate                            DateTime? @map("birth_date")
+  gender                               String?
+  languages                            String[]  @default([])
+  specialty                            String?
+  professionalCategory                 String?   @map("healthcare_provider_category")
+  professionalId                       String?   @map("professional_id")
+  licenseCouncil                       String?   @map("license_council")
+  licenseState                         String?   @map("license_state")
+  licenseDocumentKey                   String?   @map("license_document_key")
+  licenseDocumentFileName              String?   @map("license_document_file_name")
+  licenseDocumentMimeType              String?   @map("license_document_mime_type")
+  licenseDocumentSize                  Int?      @map("license_document_size")
+  licenseDocumentSha256                String?   @map("license_document_sha256")
+  licenseDocumentUploadedAt            DateTime? @map("license_document_uploaded_at")
+  verificationStatus                   String    @default("PENDING") @map("verification_status")
+  verifiedAt                           DateTime? @map("verified_at")
+  bio                                  String?
+  approach                             String?
+  education                            String?
+  certifications                       String?
+  yearsOfExperience                    Int?      @map("years_of_experience")
+  targetAudiences                      String[]  @default([]) @map("target_audiences")
+  serviceModalities                    String[]  @default([]) @map("service_modalities")
+  clinicAddress                        String?   @map("clinic_address")
+  homeCareRadiusKm                     Int?      @map("home_care_radius_km")
+  acceptedInsurance                    String[]  @default([]) @map("accepted_insurance")
+  paymentMethods                       String[]  @default([]) @map("payment_methods")
+  cancellationPolicy                   String?   @map("cancellation_policy")
+  clinicPhotos                         String[]  @default([]) @map("clinic_photos")
+  termsAcceptedAt                      DateTime? @map("terms_accepted_at")
+  lgpdConsentAt                        DateTime? @map("lgpd_consent_at")
+  professionalResponsibilityAcceptedAt DateTime? @map("professional_responsibility_accepted_at")
+  createdAt                            DateTime  @default(now()) @map("created_at")
+  updatedAt                            DateTime  @updatedAt @map("updated_at")
 
   sessions     session[]
   accounts     account[]
   ownedClinics clinic[]  @relation("ClinicOwner")
   clinics      clinic[]  @relation("ClinicEmployees")
 
-  healthcareProvider      healthcare_provider?
-  customer                customer?
-  conversationMessages    conversation_message[]
-  pushTokens              push_token[]
-  notificationPreferences notification_preference[]
-  notificationDeliveries  notification_delivery[]
-  supportRequests         support_request[]
+  customerAppointments           appointment[]                  @relation("CustomerAppointments")
+  healthcareProviderAppointments appointment[]                  @relation("ProviderAppointments")
+  procedures                     procedure[]                    @relation("ProviderProcedures")
+  schedules                      healthcare_provider_schedule[] @relation("ProviderSchedules")
+  healthcareProviderCategories   healthcare_provider_category[] @relation("ProviderCategories")
+  favoriteProviders              customer_favorite_provider[]   @relation("CustomerFavoriteProviders")
+  favoritedBy                    customer_favorite_provider[]   @relation("ProviderFavoritedByCustomers")
+  medicalRecord                  customer_medical_record?
+  ratings                        rating[]                       @relation("CustomerRatings")
+  receivedRatings                rating[]                       @relation("ProviderRatings")
+  customerConversations          conversation[]                 @relation("CustomerConversations")
+  providerConversations          conversation[]                 @relation("ProviderConversations")
+  patientProfiles                patient_profile[]              @relation("CustomerPatientProfiles")
+  createdPatientProfiles         patient_profile[]              @relation("ProviderCreatedPatientProfiles")
+  faqs                           healthcare_provider_faq[]      @relation("ProviderFaqs")
+  conversationMessages           conversation_message[]
+  pushTokens                     push_token[]
+  notificationPreferences        notification_preference[]
+  notificationDeliveries         notification_delivery[]
+  supportRequests                support_request[]
 
   @@map("users")
 }

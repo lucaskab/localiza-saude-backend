@@ -8,17 +8,9 @@ import type {
 } from "./notifications-repository-contract";
 
 const appointmentNotificationInclude = {
-	customer: {
-		include: {
-			user: true,
-		},
-	},
+	customer: true,
 	patientProfile: true,
-	healthcareProvider: {
-		include: {
-			user: true,
-		},
-	},
+	healthcareProvider: true,
 };
 
 export const prismaNotificationsRepository: NotificationsRepository = {

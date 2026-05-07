@@ -33,7 +33,7 @@ curl -X GET http://localhost:3333/appointments/clxxx... \
 ### 3. Get Appointments by Customer
 
 ```bash
-curl -X GET http://localhost:3333/customers/clxxx.../appointments \
+curl -X GET http://localhost:3333/patients/clxxx.../appointments \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 
@@ -41,13 +41,13 @@ curl -X GET http://localhost:3333/customers/clxxx.../appointments \
 
 **Without procedures (30-minute default slots):**
 ```bash
-curl -X GET "http://localhost:3333/healthcare-providers/clxxx.../availability?date=2024-03-15" \
+curl -X GET "http://localhost:3333/users/clxxx.../availability?date=2024-03-15" \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 
 **With specific procedures:**
 ```bash
-curl -X GET "http://localhost:3333/healthcare-providers/clxxx.../availability?date=2024-03-15&procedureIds=clxxx1,clxxx2" \
+curl -X GET "http://localhost:3333/users/clxxx.../availability?date=2024-03-15&procedureIds=clxxx1,clxxx2" \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 
@@ -62,7 +62,7 @@ curl -X POST http://localhost:3333/appointments \
     "healthcareProviderId": "clxxx...",
     "scheduledAt": "2024-03-15T14:00:00.000Z",
     "procedureIds": ["clxxx1", "clxxx2"],
-    "notes": "Patient needs follow-up"
+    "notes": "Customer needs follow-up"
   }'
 ```
 
@@ -124,7 +124,7 @@ curl -X DELETE http://localhost:3333/appointments/clxxx... \
 1. **Check provider availability:**
    ```bash
    # Get available slots for March 15th
-   curl -X GET "http://localhost:3333/healthcare-providers/PROVIDER_ID/availability?date=2024-03-15&procedureIds=PROCEDURE_ID" \
+   curl -X GET "http://localhost:3333/users/PROVIDER_ID/availability?date=2024-03-15&procedureIds=PROCEDURE_ID" \
      -H "Authorization: Bearer YOUR_TOKEN"
    ```
 
@@ -175,7 +175,7 @@ curl -X PATCH http://localhost:3333/appointments/APPOINTMENT_ID \
   -H "Content-Type: application/json" \
   -d '{
     "status": "CANCELLED",
-    "notes": "Patient requested cancellation"
+    "notes": "Customer requested cancellation"
   }'
 ```
 
@@ -186,7 +186,7 @@ curl -X PATCH http://localhost:3333/appointments/APPOINTMENT_ID \
   -H "Content-Type: application/json" \
   -d '{
     "status": "NO_SHOW",
-    "notes": "Patient did not arrive"
+    "notes": "Customer did not arrive"
   }'
 ```
 
@@ -197,7 +197,7 @@ curl -X PATCH http://localhost:3333/appointments/APPOINTMENT_ID \
   -H "Content-Type: application/json" \
   -d '{
     "scheduledAt": "2024-03-20T10:00:00.000Z",
-    "notes": "Rescheduled by patient request"
+    "notes": "Rescheduled by customer request"
   }'
 ```
 
@@ -209,7 +209,7 @@ Valid status values for updates:
 - `IN_PROGRESS` - Currently happening
 - `COMPLETED` - Finished successfully
 - `CANCELLED` - Cancelled by either party
-- `NO_SHOW` - Patient didn't show up
+- `NO_SHOW` - Customer didn't show up
 
 ## Tips
 
@@ -224,16 +224,16 @@ Valid status values for updates:
 To get valid IDs for testing:
 
 ```bash
-# Get customers
-curl -X GET http://localhost:3333/customers \
+# Get patients
+curl -X GET http://localhost:3333/patients \
   -H "Authorization: Bearer YOUR_TOKEN"
 
 # Get healthcare providers
-curl -X GET http://localhost:3333/healthcare-providers \
+curl -X GET http://localhost:3333/users \
   -H "Authorization: Bearer YOUR_TOKEN"
 
 # Get procedures for a provider
-curl -X GET http://localhost:3333/healthcare-providers/PROVIDER_ID/procedures \
+curl -X GET http://localhost:3333/users/PROVIDER_ID/procedures \
   -H "Authorization: Bearer YOUR_TOKEN"
 ```
 

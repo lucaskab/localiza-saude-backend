@@ -8,6 +8,35 @@ import type {
 	UpdateHealthcareProviderData,
 } from "./healthcare-providers-repository-contract";
 
+const healthcareProviderInclude = {
+	procedures: {
+		orderBy: {
+			createdAt: "desc",
+		},
+	},
+	faqs: {
+		orderBy: {
+			position: "asc",
+		},
+	},
+} satisfies Prisma.userInclude;
+
+type HealthcareProviderQueryResult = Prisma.userGetPayload<{
+	include: typeof healthcareProviderInclude;
+}>;
+
+function toHealthcareProvider(
+	user: HealthcareProviderQueryResult,
+): HealthcareProviderWithRelations {
+	const { procedures, faqs, ...profile } = user;
+
+	return {
+		...profile,
+		procedures: procedures,
+		faqs: faqs,
+	};
+}
+
 function createFindAllWhere(filters?: FindAllHealthcareProviderFilters) {
 	if (!filters) {
 		return undefined;
@@ -15,7 +44,7 @@ function createFindAllWhere(filters?: FindAllHealthcareProviderFilters) {
 
 	const search = filters.search?.trim();
 	const specialty = filters.specialty?.trim();
-	const conditions: Prisma.healthcare_providerWhereInput[] = [];
+	const conditions: Prisma.userWhereInput[] = [];
 
 	if (search) {
 		conditions.push({
@@ -31,7 +60,7 @@ function createFindAllWhere(filters?: FindAllHealthcareProviderFilters) {
 				{ bio: { contains: search, mode: "insensitive" } },
 				{ approach: { contains: search, mode: "insensitive" } },
 				{ clinicAddress: { contains: search, mode: "insensitive" } },
-				{ user: { name: { contains: search, mode: "insensitive" } } },
+				{ name: { contains: search, mode: "insensitive" } },
 			],
 		});
 	}
@@ -84,102 +113,44 @@ function createFindAllWhere(filters?: FindAllHealthcareProviderFilters) {
 export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 	{
 		async findAll(filters) {
-			const providers = await prisma.healthcare_provider.findMany({
-				where: createFindAllWhere(filters),
-				include: {
-					user: {
-						select: {
-							id: true,
-							name: true,
-							email: true,
-							phone: true,
-							image: true,
-							role: true,
-						},
-					},
-					procedures: {
-						orderBy: {
-							createdAt: "desc",
-						},
-					},
-					faqs: {
-						orderBy: {
-							position: "asc",
-						},
-					},
+			const where = createFindAllWhere(filters);
+			const healthcareProviders = await prisma.user.findMany({
+				where: {
+					role: "HEALTHCARE_PROVIDER",
+					...(where ? { AND: [where] } : {}),
 				},
+				include: healthcareProviderInclude,
 				orderBy: {
 					createdAt: "desc",
 				},
 			});
 
-			return providers as HealthcareProviderWithRelations[];
+			return healthcareProviders.map(toHealthcareProvider);
 		},
 
 		async findById(id: string) {
-			const provider = await prisma.healthcare_provider.findUnique({
-				where: { id },
-				include: {
-					user: {
-						select: {
-							id: true,
-							name: true,
-							email: true,
-							phone: true,
-							image: true,
-							role: true,
-						},
-					},
-					procedures: {
-						orderBy: {
-							createdAt: "desc",
-						},
-					},
-					faqs: {
-						orderBy: {
-							position: "asc",
-						},
-					},
-				},
+			const healthcareProvider = await prisma.user.findUnique({
+				where: { id, role: "HEALTHCARE_PROVIDER" },
+				include: healthcareProviderInclude,
 			});
 
-			return provider as HealthcareProviderWithRelations | null;
+			return healthcareProvider ? toHealthcareProvider(healthcareProvider) : null;
 		},
 
 		async findByUserId(userId: string) {
-			const provider = await prisma.healthcare_provider.findUnique({
-				where: { userId },
-				include: {
-					user: {
-						select: {
-							id: true,
-							name: true,
-							email: true,
-							phone: true,
-							image: true,
-							role: true,
-						},
-					},
-					procedures: {
-						orderBy: {
-							createdAt: "desc",
-						},
-					},
-					faqs: {
-						orderBy: {
-							position: "asc",
-						},
-					},
-				},
+			const healthcareProvider = await prisma.user.findUnique({
+				where: { id: userId, role: "HEALTHCARE_PROVIDER" },
+				include: healthcareProviderInclude,
 			});
 
-			return provider as HealthcareProviderWithRelations | null;
+			return healthcareProvider ? toHealthcareProvider(healthcareProvider) : null;
 		},
 
 		async create(data: CreateHealthcareProviderData) {
-			const provider = await prisma.healthcare_provider.create({
+			const healthcareProvider = await prisma.user.update({
+				where: { id: data.userId },
 				data: {
-					userId: data.userId,
+					role: "HEALTHCARE_PROVIDER",
 					displayName: data.displayName,
 					document: data.document,
 					birthDate: data.birthDate,
@@ -225,32 +196,15 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 							}
 						: undefined,
 				},
-				include: {
-					user: {
-						select: {
-							id: true,
-							name: true,
-							email: true,
-							phone: true,
-							image: true,
-							role: true,
-						},
-					},
-					procedures: true,
-					faqs: {
-						orderBy: {
-							position: "asc",
-						},
-					},
-				},
+				include: healthcareProviderInclude,
 			});
 
-			return provider as HealthcareProviderWithRelations;
+			return toHealthcareProvider(healthcareProvider);
 		},
 
 		async update(id: string, data: UpdateHealthcareProviderData) {
-			const provider = await prisma.$transaction(async (tx) => {
-				const updatedProvider = await tx.healthcare_provider.update({
+			const healthcareProvider = await prisma.$transaction(async (tx) => {
+				const updatedProfessional = await tx.user.update({
 					where: { id },
 					data: {
 						...(data.displayName !== undefined && {
@@ -360,38 +314,17 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					}
 				}
 
-				return tx.healthcare_provider.findUniqueOrThrow({
-					where: { id: updatedProvider.id },
-					include: {
-						user: {
-							select: {
-								id: true,
-								name: true,
-								email: true,
-								phone: true,
-								image: true,
-								role: true,
-							},
-						},
-						procedures: {
-							orderBy: {
-								createdAt: "desc",
-							},
-						},
-						faqs: {
-							orderBy: {
-								position: "asc",
-							},
-						},
-					},
+				return tx.user.findUniqueOrThrow({
+					where: { id: updatedProfessional.id },
+					include: healthcareProviderInclude,
 				});
 			});
 
-			return provider as HealthcareProviderWithRelations;
+			return toHealthcareProvider(healthcareProvider);
 		},
 
 		async delete(id: string) {
-			await prisma.healthcare_provider.delete({
+			await prisma.user.delete({
 				where: { id },
 			});
 		},

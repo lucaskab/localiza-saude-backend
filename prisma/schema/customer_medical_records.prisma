@@ -1,7 +1,7 @@
 model customer_medical_record {
   id                    String   @id @default(cuid())
   customerId            String   @unique @map("customer_id")
-  customer              customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  customer              user     @relation(fields: [customerId], references: [id], onDelete: Cascade)
   bloodType             String?  @map("blood_type")
   medications           String?
   chronicPain           String?  @map("chronic_pain")

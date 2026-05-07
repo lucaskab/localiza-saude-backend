@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, mock, test } from "bun:test";
 
 const mockPrisma: any = {
-	healthcare_provider: {
+	user: {
 		findUnique: mock(() => Promise.resolve({ id: "provider-1" })),
 	},
 	procedure: {
@@ -13,7 +13,7 @@ const mockPrisma: any = {
 };
 
 const mockAppointmentRepository: any = {
-	findByProviderAndDateRange: mock(() => Promise.resolve([])),
+	findByProfessionalAndDateRange: mock(() => Promise.resolve([])),
 };
 
 mock.module("@/database/prisma", () => ({
@@ -41,7 +41,7 @@ const shortestProcedure = {
 
 describe("Get Time Slots Use Case", () => {
 	beforeEach(() => {
-		mockPrisma.healthcare_provider.findUnique.mockResolvedValue({
+		mockPrisma.user.findUnique.mockResolvedValue({
 			id: "provider-1",
 		});
 		mockPrisma.procedure.findMany.mockImplementation((args: any) => {
@@ -57,11 +57,11 @@ describe("Get Time Slots Use Case", () => {
 			endTime: "12:00",
 			isActive: true,
 		});
-		mockAppointmentRepository.findByProviderAndDateRange.mockResolvedValue([]);
+		mockAppointmentRepository.findByProfessionalAndDateRange.mockResolvedValue([]);
 	});
 
 	test("marks slots unavailable when the requested appointment duration overlaps an existing appointment", async () => {
-		mockAppointmentRepository.findByProviderAndDateRange.mockResolvedValue([
+		mockAppointmentRepository.findByProfessionalAndDateRange.mockResolvedValue([
 			{
 				scheduledAt: new Date("2026-04-20T09:30:00.000Z"),
 				totalDurationMinutes: 30,
@@ -106,7 +106,7 @@ describe("Get Time Slots Use Case", () => {
 			},
 		});
 		expect(
-			mockAppointmentRepository.findByProviderAndDateRange,
+			mockAppointmentRepository.findByProfessionalAndDateRange,
 		).toHaveBeenCalledWith("provider-1", {
 			startDate: new Date("2026-04-20T00:00:00.000Z"),
 			endDate: new Date("2026-04-20T23:59:59.999Z"),

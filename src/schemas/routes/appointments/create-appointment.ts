@@ -23,7 +23,7 @@ export const createAppointmentBodySchema = z.object({
 	scheduledAt: z.string().datetime().transform((val) => new Date(val)),
 	procedureIds: z.array(z.cuid()).min(1),
 	notes: z.string().nullable().optional(),
-	patient: appointmentPatientSchema,
+	customer: appointmentPatientSchema,
 });
 
 export const createAppointmentResponseSchema = z.object({

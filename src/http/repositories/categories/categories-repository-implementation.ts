@@ -16,7 +16,6 @@ export const prismaCategoryRepository: CategoryRepository = {
 					include: {
 						healthcareProvider: {
 							include: {
-								user: true,
 								procedures: true,
 							},
 						},
@@ -36,7 +35,6 @@ export const prismaCategoryRepository: CategoryRepository = {
 					include: {
 						healthcareProvider: {
 							include: {
-								user: true,
 								procedures: true,
 							},
 						},
@@ -67,7 +65,6 @@ export const prismaCategoryRepository: CategoryRepository = {
 					include: {
 						healthcareProvider: {
 							include: {
-								user: true,
 								procedures: true,
 							},
 						},
@@ -93,7 +90,6 @@ export const prismaCategoryRepository: CategoryRepository = {
 					include: {
 						healthcareProvider: {
 							include: {
-								user: true,
 								procedures: true,
 							},
 						},

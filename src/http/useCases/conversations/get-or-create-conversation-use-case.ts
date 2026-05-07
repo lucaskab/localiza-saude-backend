@@ -18,46 +18,44 @@ export const getOrCreateConversationUseCase = {
 		let customerId: string;
 		let healthcareProviderId: string;
 
-		// If user is a CUSTOMER, they need a customer profile and participant needs a provider profile
 		if (userType === "CUSTOMER") {
-			const customerProfile = await prisma.customer.findUnique({
-				where: { userId },
+			const customer = await prisma.user.findUnique({
+				where: { id: userId, role: "CUSTOMER" },
 			});
 
-			if (!customerProfile) {
-				throw new BadRequestError("Customer profile not found");
+			if (!customer) {
+				throw new BadRequestError("Customer user not found");
 			}
 
-			const providerProfile = await prisma.healthcare_provider.findUnique({
-				where: { userId: participantId },
+			const healthcareProvider = await prisma.user.findUnique({
+				where: { id: participantId, role: "HEALTHCARE_PROVIDER" },
 			});
 
-			if (!providerProfile) {
-				throw new BadRequestError("Healthcare provider not found");
+			if (!healthcareProvider) {
+				throw new BadRequestError("HealthcareProvider user not found");
 			}
 
-			customerId = customerProfile.id;
-			healthcareProviderId = providerProfile.id;
+			customerId = customer.id;
+			healthcareProviderId = healthcareProvider.id;
 		} else {
-			// User is a HEALTHCARE_PROVIDER
-			const providerProfile = await prisma.healthcare_provider.findUnique({
-				where: { userId },
+			const healthcareProvider = await prisma.user.findUnique({
+				where: { id: userId, role: "HEALTHCARE_PROVIDER" },
 			});
 
-			if (!providerProfile) {
-				throw new BadRequestError("Healthcare provider profile not found");
+			if (!healthcareProvider) {
+				throw new BadRequestError("HealthcareProvider user not found");
 			}
 
-			const customerProfile = await prisma.customer.findUnique({
-				where: { userId: participantId },
+			const customer = await prisma.user.findUnique({
+				where: { id: participantId, role: "CUSTOMER" },
 			});
 
-			if (!customerProfile) {
-				throw new BadRequestError("Customer not found");
+			if (!customer) {
+				throw new BadRequestError("Customer user not found");
 			}
 
-			customerId = customerProfile.id;
-			healthcareProviderId = providerProfile.id;
+			customerId = customer.id;
+			healthcareProviderId = healthcareProvider.id;
 		}
 
 		const baseConversation =
@@ -75,29 +73,19 @@ export const getOrCreateConversationUseCase = {
 				customer: {
 					select: {
 						id: true,
-						user: {
-							select: {
-								id: true,
-								name: true,
-								firstName: true,
-								lastName: true,
-								image: true,
-							},
-						},
+						name: true,
+						firstName: true,
+						lastName: true,
+						image: true,
 					},
 				},
 				healthcareProvider: {
 					select: {
 						id: true,
-						user: {
-							select: {
-								id: true,
-								name: true,
-								firstName: true,
-								lastName: true,
-								image: true,
-							},
-						},
+						name: true,
+						firstName: true,
+						lastName: true,
+						image: true,
 					},
 				},
 				messages: {

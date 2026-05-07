@@ -3,7 +3,7 @@ import { prismaFavoriteRepository } from "@/http/repositories/favorites/favorite
 import { getNextAvailableSlotsByProviderIds } from "@/http/useCases/healthcare-providers/get-next-available-slots";
 import { getProviderRatingSummariesByProviderIds } from "@/http/useCases/ratings/get-provider-rating-summaries";
 
-type FavoriteHealthcareProvider = HealthcareProviderWithRelations & {
+type FavoriteProviderUser = HealthcareProviderWithRelations & {
 	nextAvailableAt: Date | null;
 	averageRating: number;
 	totalRatings: number;
@@ -11,9 +11,9 @@ type FavoriteHealthcareProvider = HealthcareProviderWithRelations & {
 
 export const getFavoritesUseCase = {
 	async execute(customerId: string): Promise<{
-		favorites: FavoriteHealthcareProvider[];
+		favorites: FavoriteProviderUser[];
 	}> {
-		const favorites = await prismaFavoriteRepository.findByCustomerId(customerId);
+		const favorites = await prismaFavoriteRepository.findByUserId(customerId);
 		const providerIds = favorites.map((favorite) => favorite.healthcareProviderId);
 
 		if (providerIds.length === 0) {

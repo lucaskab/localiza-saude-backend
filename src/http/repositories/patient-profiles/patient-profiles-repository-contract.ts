@@ -26,7 +26,7 @@ export type PatientProfileData = {
 
 export type PatientProfileRepository = {
 	findById: (id: string) => Promise<patient_profile | null>;
-	findByCustomerOwnerId: (customerId: string) => Promise<patient_profile[]>;
+	findByOwnerUserId: (userId: string) => Promise<patient_profile[]>;
 	findByHealthcareProviderId: (
 		healthcareProviderId: string,
 	) => Promise<patient_profile[]>;

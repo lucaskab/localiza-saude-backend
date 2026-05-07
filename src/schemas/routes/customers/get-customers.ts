@@ -1,13 +1,10 @@
 import { z } from "zod";
+import { customerUserSchema } from "../users/user";
 
-export const customerSchema = z.object({
-	id: z.cuid(),
-	userId: z.string(),
+export const customerSchema = customerUserSchema.extend({
 	cpf: z.string().nullable(),
 	dateOfBirth: z.date().nullable(),
 	address: z.string().nullable(),
-	createdAt: z.date(),
-	updatedAt: z.date(),
 });
 
 export const getCustomersResponseSchema = z.object({
@@ -21,7 +18,7 @@ export type GetCustomersResponseSchema = z.infer<
 export const getCustomersRouteOptions = {
 	schema: {
 		tags: ["Customers"],
-		summary: "Get all customers",
+		summary: "Get all patients",
 		security: [{ bearerAuth: [] }],
 		response: {
 			200: getCustomersResponseSchema,

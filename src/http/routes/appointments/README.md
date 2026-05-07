@@ -55,7 +55,7 @@ Returns a list of all appointments in the system with full relations.
       "status": "SCHEDULED",
       "totalDurationMinutes": 60,
       "totalPriceCents": 30000,
-      "notes": "Patient needs follow-up",
+      "notes": "Customer needs follow-up",
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z",
       "appointmentProcedures": [
@@ -106,7 +106,7 @@ Returns a single appointment by its ID.
     "status": "SCHEDULED",
     "totalDurationMinutes": 60,
     "totalPriceCents": 30000,
-    "notes": "Patient needs follow-up",
+    "notes": "Customer needs follow-up",
     "createdAt": "2024-01-01T00:00:00.000Z",
     "updatedAt": "2024-01-01T00:00:00.000Z",
     "appointmentProcedures": [ /* ... */ ]
@@ -117,7 +117,7 @@ Returns a single appointment by its ID.
 ---
 
 ### 3. Get Appointments by Customer
-**GET** `/customers/:customerId/appointments`
+**GET** `/patients/:customerId/appointments`
 
 Returns all appointments for a specific customer.
 
@@ -136,7 +136,7 @@ Returns all appointments for a specific customer.
 ---
 
 ### 4. Get Healthcare Provider Availability
-**GET** `/healthcare-providers/:healthcareProviderId/availability`
+**GET** `/users/:healthcareProviderId/availability`
 
 Returns available time slots for a healthcare provider on a specific date.
 
@@ -151,7 +151,7 @@ Returns available time slots for a healthcare provider on a specific date.
 
 **Example Request:**
 ```
-GET /healthcare-providers/clxxx.../availability?date=2024-03-15&procedureIds=clxxx1,clxxx2
+GET /users/clxxx.../availability?date=2024-03-15&procedureIds=clxxx1,clxxx2
 ```
 
 **Response (200):**
@@ -201,7 +201,7 @@ Creates a new appointment.
   "healthcareProviderId": "clxxx...",
   "scheduledAt": "2024-03-15T14:00:00.000Z",
   "procedureIds": ["clxxx1", "clxxx2"],
-  "notes": "Patient has specific requirements"
+  "notes": "Customer has specific requirements"
 }
 ```
 
@@ -225,7 +225,7 @@ Creates a new appointment.
     "status": "SCHEDULED",
     "totalDurationMinutes": 90,
     "totalPriceCents": 50000,
-    "notes": "Patient has specific requirements",
+    "notes": "Customer has specific requirements",
     "createdAt": "2024-01-01T00:00:00.000Z",
     "updatedAt": "2024-01-01T00:00:00.000Z",
     "appointmentProcedures": [ /* ... */ ]

@@ -1,5 +1,4 @@
 import type {
-	healthcare_provider,
 	healthcare_provider_schedule,
 	user,
 } from "../../../../prisma/generated/prisma/client";
@@ -19,15 +18,13 @@ export type UpdateScheduleData = {
 };
 
 export type ScheduleWithProvider = healthcare_provider_schedule & {
-	healthcareProvider: healthcare_provider & {
-		user: user;
-	};
+	healthcareProvider: user;
 };
 
 export type HealthcareProviderScheduleRepository = {
 	findAll: () => Promise<ScheduleWithProvider[]>;
 	findById: (id: string) => Promise<ScheduleWithProvider | null>;
-	findByProviderId: (
+	findByHealthcareProviderId: (
 		healthcareProviderId: string,
 	) => Promise<ScheduleWithProvider[]>;
 	create: (data: CreateScheduleData) => Promise<ScheduleWithProvider>;

@@ -21,7 +21,7 @@ export const updateHealthcareProviderUseCase = {
 			throw new BadRequestError("Healthcare provider not found");
 		}
 
-		if (existingProvider.userId !== currentUser.id) {
+		if (existingProvider.id !== currentUser.id) {
 			throw new UnauthorizedError(
 				"You can only update your own healthcare provider profile",
 			);

@@ -19,7 +19,7 @@ export const deleteClinicPhotoUseCase = {
 			throw new BadRequestError("Healthcare provider not found");
 		}
 
-		if (provider.userId !== params.currentUser.id) {
+		if (provider.id !== params.currentUser.id) {
 			throw new UnauthorizedError(
 				"You can only delete clinic photos from your own healthcare provider profile",
 			);

@@ -14,7 +14,7 @@ export const getAppointmentMedicalRecordRouteOptions = {
 		tags: ["Medical Records"],
 		summary: "Get the medical record for a confirmed appointment",
 		description:
-			"Healthcare providers can read a patient's medical record only for confirmed appointments they own, and only when the patient has filled at least one medical record field.",
+			"Healthcare providers can read a customer's medical record only for confirmed appointments they own, and only when the customer has filled at least one medical record field.",
 		security: [{ bearerAuth: [] }],
 		params: getAppointmentMedicalRecordParamsSchema,
 		response: {

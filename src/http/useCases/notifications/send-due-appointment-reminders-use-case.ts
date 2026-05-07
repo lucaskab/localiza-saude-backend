@@ -21,7 +21,7 @@ const getPatientName = (
 	>[number],
 ) =>
 	appointment.patientProfile?.fullName ||
-	appointment.customer?.user.name ||
+	appointment.customer?.name ||
 	"paciente";
 
 export const sendDueAppointmentRemindersUseCase = {
@@ -41,18 +41,18 @@ export const sendDueAppointmentRemindersUseCase = {
 		};
 
 		for (const appointment of appointments) {
-			const customerUserId = appointment.customer?.userId;
+			const customerId = appointment.customer?.id;
 
-			if (!customerUserId) {
+			if (!customerId) {
 				summary.skipped += 1;
 				continue;
 			}
 
 			const result = await pushNotificationsService.sendToUser({
-				userId: customerUserId,
+				userId: customerId,
 				type: "APPOINTMENT_REMINDER",
 				title: "Confirme sua consulta",
-				body: `${getPatientName(appointment)}, sua consulta com ${appointment.healthcareProvider.user.name} esta marcada para ${formatAppointmentDate(appointment.scheduledAt)}.`,
+				body: `${getPatientName(appointment)}, sua consulta com ${appointment.healthcareProvider.name} esta marcada para ${formatAppointmentDate(appointment.scheduledAt)}.`,
 				appointmentId: appointment.id,
 				recordDelivery: true,
 				data: {

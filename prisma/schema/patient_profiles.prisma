@@ -10,9 +10,9 @@ model patient_profile {
   relationshipToCustomer        String?              @map("relationship_to_customer")
   notes                         String?
   customerOwnerId               String?              @map("customer_owner_id")
-  customerOwner                 customer?            @relation("CustomerPatientProfiles", fields: [customerOwnerId], references: [id], onDelete: SetNull)
+  customerOwner                 user?                @relation("CustomerPatientProfiles", fields: [customerOwnerId], references: [id], onDelete: SetNull)
   createdByHealthcareProviderId String?              @map("created_by_healthcare_provider_id")
-  createdByHealthcareProvider   healthcare_provider? @relation("ProviderCreatedPatientProfiles", fields: [createdByHealthcareProviderId], references: [id], onDelete: SetNull)
+  createdByHealthcareProvider   user?                @relation("ProviderCreatedPatientProfiles", fields: [createdByHealthcareProviderId], references: [id], onDelete: SetNull)
   bloodType                     String?              @map("blood_type")
   medications                   String?
   chronicPain                   String?              @map("chronic_pain")

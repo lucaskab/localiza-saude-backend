@@ -41,7 +41,7 @@ function sanitizeOriginalFileName(fileName: string) {
 		.trim()
 		.slice(0, 120);
 
-	return sanitizedFileName || "professional-document";
+	return sanitizedFileName || "healthcareProvider-document";
 }
 
 function hasSuspiciousTextPayload(buffer: Buffer) {

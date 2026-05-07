@@ -21,7 +21,7 @@ export const uploadLicenseDocumentUseCase = {
 			throw new BadRequestError("Healthcare provider not found");
 		}
 
-		if (provider.userId !== params.currentUser.id) {
+		if (provider.id !== params.currentUser.id) {
 			throw new UnauthorizedError(
 				"You can only upload documents for your own healthcare provider profile",
 			);

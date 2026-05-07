@@ -10,35 +10,9 @@ import type {
 } from "./appointments-repository-contract";
 
 const includeRelations = {
-	customer: {
-		include: {
-			user: {
-				select: {
-					id: true,
-					name: true,
-					email: true,
-					phone: true,
-					image: true,
-					role: true,
-				},
-			},
-		},
-	},
+	customer: true,
 	patientProfile: true,
-	healthcareProvider: {
-		include: {
-			user: {
-				select: {
-					id: true,
-					name: true,
-					email: true,
-					phone: true,
-					image: true,
-					role: true,
-				},
-			},
-		},
-	},
+	healthcareProvider: true,
 	appointmentProcedures: {
 		include: {
 			procedure: true,
@@ -79,21 +53,17 @@ function buildWhereClause(filters?: FindAppointmentsFilters) {
 		whereClause.OR = [
 			{
 				customer: {
-					user: {
-						name: {
-							contains: search,
-							mode: "insensitive",
-						},
+					name: {
+						contains: search,
+						mode: "insensitive",
 					},
 				},
 			},
 			{
 				healthcareProvider: {
-					user: {
-						name: {
-							contains: search,
-							mode: "insensitive",
-						},
+					name: {
+						contains: search,
+						mode: "insensitive",
 					},
 				},
 			},
@@ -160,7 +130,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 		return appointment as AppointmentWithRelations | null;
 	},
 
-	async findByCustomerId(customerId: string) {
+	async findByUserId(customerId: string) {
 		const appointments = await prisma.appointment.findMany({
 			where: { customerId },
 			include: includeRelations,
@@ -201,7 +171,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 		return appointments as AppointmentWithRelations[];
 	},
 
-	async findByProviderAndDateRange(
+	async findByProfessionalAndDateRange(
 		healthcareProviderId: string,
 		params: DateRangeParams,
 	) {
@@ -225,7 +195,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 		return appointments as AppointmentWithRelations[];
 	},
 
-	async existsByCustomerAndProvider(customerId: string, healthcareProviderId: string) {
+	async existsByCustomerAndProfessional(customerId: string, healthcareProviderId: string) {
 		const appointment = await prisma.appointment.findFirst({
 			where: {
 				customerId,
@@ -237,7 +207,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 		return Boolean(appointment);
 	},
 
-	async existsConfirmedByCustomerAndProvider(
+	async existsConfirmedByCustomerAndProfessional(
 		customerId: string,
 		healthcareProviderId: string,
 	) {
@@ -253,7 +223,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 		return Boolean(appointment);
 	},
 
-	async existsByPatientProfileAndProvider(
+	async existsByPatientProfileAndHealthcareProvider(
 		patientProfileId: string,
 		healthcareProviderId: string,
 	) {

@@ -10,12 +10,12 @@ Healthcare provider schedules define when providers are available for appointmen
 
 | Method | Endpoint | Auth Required | Description |
 |--------|----------|---------------|-------------|
-| GET | `/healthcare-provider-schedules` | ❌ | List all schedules |
-| GET | `/healthcare-provider-schedules/:id` | ❌ | Get schedule by ID |
-| GET | `/healthcare-providers/:healthcareProviderId/schedules` | ❌ | Get schedules by provider |
-| POST | `/healthcare-provider-schedules` | ✅ | Create new schedule |
-| PATCH | `/healthcare-provider-schedules/:id` | ✅ | Update schedule |
-| DELETE | `/healthcare-provider-schedules/:id` | ✅ | Delete schedule |
+| GET | `/healthcareProvider-schedules` | ❌ | List all schedules |
+| GET | `/healthcareProvider-schedules/:id` | ❌ | Get schedule by ID |
+| GET | `/users/:healthcareProviderId/schedules` | ❌ | Get schedules by provider |
+| POST | `/healthcareProvider-schedules` | ✅ | Create new schedule |
+| PATCH | `/healthcareProvider-schedules/:id` | ✅ | Update schedule |
+| DELETE | `/healthcareProvider-schedules/:id` | ✅ | Delete schedule |
 
 ## Common Use Cases
 
@@ -23,7 +23,7 @@ Healthcare provider schedules define when providers are available for appointmen
 
 ```bash
 curl -X GET \
-  http://localhost:3333/healthcare-providers/clxx123/schedules
+  http://localhost:3333/users/clxx123/schedules
 ```
 
 **Response:**
@@ -49,7 +49,7 @@ Create a provider's Monday schedule:
 
 ```bash
 curl -X POST \
-  http://localhost:3333/healthcare-provider-schedules \
+  http://localhost:3333/healthcareProvider-schedules \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -64,7 +64,7 @@ curl -X POST \
 
 ```bash
 curl -X PATCH \
-  http://localhost:3333/healthcare-provider-schedules/clxx456 \
+  http://localhost:3333/healthcareProvider-schedules/clxx456 \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -77,7 +77,7 @@ curl -X PATCH \
 
 ```bash
 curl -X PATCH \
-  http://localhost:3333/healthcare-provider-schedules/clxx456 \
+  http://localhost:3333/healthcareProvider-schedules/clxx456 \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -89,7 +89,7 @@ curl -X PATCH \
 
 ```bash
 curl -X DELETE \
-  http://localhost:3333/healthcare-provider-schedules/clxx456 \
+  http://localhost:3333/healthcareProvider-schedules/clxx456 \
   -H 'Authorization: Bearer YOUR_TOKEN'
 ```
 
@@ -131,7 +131,7 @@ const providerSchedule = [
 
 // Create all schedules
 for (const schedule of providerSchedule) {
-  await fetch('http://localhost:3333/healthcare-provider-schedules', {
+  await fetch('http://localhost:3333/healthcareProvider-schedules', {
     method: 'POST',
     headers: {
       'Authorization': 'Bearer YOUR_TOKEN',
@@ -164,7 +164,7 @@ function ProviderSchedule({ providerId }: { providerId: string }) {
   const [schedules, setSchedules] = useState<Schedule[]>([]);
 
   useEffect(() => {
-    fetch(`/healthcare-providers/${providerId}/schedules`)
+    fetch(`/users/${providerId}/schedules`)
       .then(res => res.json())
       .then(data => setSchedules(data.schedules));
   }, [providerId]);
@@ -201,7 +201,7 @@ function CreateScheduleForm({ providerId }: { providerId: string }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const response = await fetch('/healthcare-provider-schedules', {
+    const response = await fetch('/healthcareProvider-schedules', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -279,7 +279,7 @@ function CreateScheduleForm({ providerId }: { providerId: string }) {
 TOKEN="your-auth-token-here"
 
 # Create a Monday morning schedule
-curl -X POST http://localhost:3333/healthcare-provider-schedules \
+curl -X POST http://localhost:3333/healthcareProvider-schedules \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
@@ -293,7 +293,7 @@ curl -X POST http://localhost:3333/healthcare-provider-schedules \
 ### Verify Creation
 ```bash
 # Get all schedules for the provider
-curl http://localhost:3333/healthcare-providers/clxx123/schedules
+curl http://localhost:3333/users/clxx123/schedules
 ```
 
 ## Need More Details?

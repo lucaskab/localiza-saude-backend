@@ -10,34 +10,31 @@ export const createRatingUseCase = {
 	async execute(
 		data: CreateRatingData,
 	): Promise<{ rating: RatingWithRelations }> {
-		// Validate customer exists
-		const customer = await prisma.customer.findUnique({
-			where: { id: data.customerId },
+		const customer = await prisma.user.findUnique({
+			where: { id: data.customerId, role: "CUSTOMER" },
 		});
 
 		if (!customer) {
-			throw new BadRequestError("Customer not found");
+			throw new BadRequestError("Reviewer user not found");
 		}
 
-		// Validate healthcare provider exists
-		const provider = await prisma.healthcare_provider.findUnique({
-			where: { id: data.healthcareProviderId },
+		const healthcareProvider = await prisma.user.findUnique({
+			where: { id: data.healthcareProviderId, role: "HEALTHCARE_PROVIDER" },
 		});
 
-		if (!provider) {
-			throw new BadRequestError("Healthcare provider not found");
+		if (!healthcareProvider) {
+			throw new BadRequestError("HealthcareProvider user not found");
 		}
 
-		// Check if customer already rated this provider
 		const existingRating =
-			await prismaRatingRepository.findByCustomerAndProvider(
+			await prismaRatingRepository.findByCustomerAndHealthcareProvider(
 				data.customerId,
 				data.healthcareProviderId,
 			);
 
 		if (existingRating) {
 			throw new BadRequestError(
-				"Customer has already rated this healthcare provider. Use update instead.",
+				"Reviewer has already rated this healthcareProvider. Use update instead.",
 			);
 		}
 

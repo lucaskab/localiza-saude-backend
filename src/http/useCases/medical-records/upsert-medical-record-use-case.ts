@@ -15,7 +15,7 @@ export const upsertMyMedicalRecordUseCase = {
 			throw new BadRequestError("User is not registered as a customer");
 		}
 
-		const medicalRecord = await prismaMedicalRecordRepository.upsertByCustomerId(
+		const medicalRecord = await prismaMedicalRecordRepository.upsertByUserId(
 			customer.id,
 			data,
 		);

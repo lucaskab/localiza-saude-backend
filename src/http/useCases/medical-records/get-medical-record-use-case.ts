@@ -87,7 +87,7 @@ export const getMyMedicalRecordUseCase = {
 			throw new BadRequestError("User is not registered as a customer");
 		}
 
-		const medicalRecord = await prismaMedicalRecordRepository.findByCustomerId(
+		const medicalRecord = await prismaMedicalRecordRepository.findByUserId(
 			customer.id,
 		);
 
@@ -106,8 +106,8 @@ export const getCustomerMedicalRecordUseCase = {
 			throw new BadRequestError("Customer not found");
 		}
 
-		if (customer.userId === currentUser.id) {
-			const medicalRecord = await prismaMedicalRecordRepository.findByCustomerId(
+		if (customer.id === currentUser.id) {
+			const medicalRecord = await prismaMedicalRecordRepository.findByUserId(
 				customer.id,
 			);
 
@@ -123,7 +123,7 @@ export const getCustomerMedicalRecordUseCase = {
 		}
 
 		const relatedAppointment =
-			await prismaAppointmentRepository.existsConfirmedByCustomerAndProvider(
+			await prismaAppointmentRepository.existsConfirmedByCustomerAndProfessional(
 				customer.id,
 				provider.id,
 			);
@@ -132,7 +132,7 @@ export const getCustomerMedicalRecordUseCase = {
 			throw new UnauthorizedError("You cannot access this medical record");
 		}
 
-		const medicalRecord = await prismaMedicalRecordRepository.findByCustomerId(
+		const medicalRecord = await prismaMedicalRecordRepository.findByUserId(
 			customer.id,
 		);
 
@@ -187,7 +187,7 @@ export const getAppointmentMedicalRecordUseCase = {
 			return { medicalRecord: null };
 		}
 
-		const medicalRecord = await prismaMedicalRecordRepository.findByCustomerId(
+		const medicalRecord = await prismaMedicalRecordRepository.findByUserId(
 			appointment.customerId,
 		);
 

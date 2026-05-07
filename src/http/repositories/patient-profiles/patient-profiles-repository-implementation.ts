@@ -13,9 +13,9 @@ export const prismaPatientProfileRepository: PatientProfileRepository = {
 		return patientProfile;
 	},
 
-	async findByCustomerOwnerId(customerId: string) {
+	async findByOwnerUserId(userId: string) {
 		const patientProfiles = await prisma.patient_profile.findMany({
-			where: { customerOwnerId: customerId },
+			where: { customerOwnerId: userId },
 			orderBy: { updatedAt: "desc" },
 		});
 

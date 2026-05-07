@@ -1,14 +1,10 @@
 import { prismaCustomerRepository } from "@/http/repositories/customers/customers-repository-implementation";
 import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
-import type {
-	customer,
-	healthcare_provider,
-	user,
-} from "../../../../prisma/generated/prisma/client";
+import type { user } from "../../../../prisma/generated/prisma/client";
 
 export type PatientProfileActor = {
-	customer: customer | null;
-	healthcareProvider: healthcare_provider | null;
+	customer: user | null;
+	healthcareProvider: user | null;
 };
 
 export async function getPatientProfileActor(

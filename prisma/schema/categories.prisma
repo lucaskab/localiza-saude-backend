@@ -11,12 +11,12 @@ model category {
 }
 
 model healthcare_provider_category {
-  id                   String              @id @default(cuid())
-  healthcareProviderId String              @map("healthcare_provider_id")
-  healthcareProvider   healthcare_provider @relation(fields: [healthcareProviderId], references: [id], onDelete: Cascade)
-  categoryId           String              @map("category_id")
-  category             category            @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  createdAt            DateTime            @default(now()) @map("created_at")
+  id                 String   @id @default(cuid())
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider       user     @relation("ProviderCategories", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  categoryId         String   @map("category_id")
+  category           category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt          DateTime @default(now()) @map("created_at")
 
   @@unique([healthcareProviderId, categoryId])
   @@index([healthcareProviderId])

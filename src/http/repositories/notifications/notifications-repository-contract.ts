@@ -3,8 +3,6 @@ import type {
 	NotificationType,
 	PushPlatform,
 	appointment,
-	customer,
-	healthcare_provider,
 	notification_delivery,
 	notification_preference,
 	patient_profile,
@@ -25,15 +23,9 @@ export type NotificationPreferenceInput = {
 };
 
 export type AppointmentForNotification = appointment & {
-	customer:
-		| (customer & {
-				user: user;
-		  })
-		| null;
+	customer: user | null;
 	patientProfile: patient_profile | null;
-	healthcareProvider: healthcare_provider & {
-		user: user;
-	};
+	healthcareProvider: user;
 };
 
 export type CreateDeliveryData = {

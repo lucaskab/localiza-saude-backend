@@ -26,42 +26,12 @@ export const completeOnboardingUseCase = {
 				data: {
 					role: data.role,
 					onboardingCompleted: true,
-				},
-			});
-
-			if (data.role === "CUSTOMER") {
-				const customer = await tx.customer.upsert({
-					where: {
-						userId,
-					},
-					update: {},
-					create: {
-						userId,
-					},
-					include: {
-						user: true,
-					},
-				});
-
-				return {
-					user,
-					customer,
-					healthcareProvider: null,
-				};
-			}
-
-			const healthcareProvider = await tx.healthcare_provider.upsert({
-				where: {
-					userId,
-				},
-				update: {},
-				create: {
-					userId,
-					displayName: existingUser.name,
-					verificationStatus: "PENDING",
+					...(data.role === "HEALTHCARE_PROVIDER" && {
+						displayName: existingUser.name,
+						verificationStatus: "PENDING",
+					}),
 				},
 				include: {
-					user: true,
 					procedures: {
 						orderBy: {
 							createdAt: "desc",
@@ -75,11 +45,7 @@ export const completeOnboardingUseCase = {
 				},
 			});
 
-			return {
-				user,
-				customer: null,
-				healthcareProvider,
-			};
+			return { user };
 		});
 	},
 };

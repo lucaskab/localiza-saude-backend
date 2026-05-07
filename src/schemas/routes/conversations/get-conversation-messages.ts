@@ -15,14 +15,8 @@ const conversationSchema = z.object({
 	lastMessageAt: z.date().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
-	customer: z.object({
-		id: z.string(),
-		user: userSchema,
-	}),
-	healthcareProvider: z.object({
-		id: z.string(),
-		user: userSchema,
-	}),
+	customer: userSchema,
+	healthcareProvider: userSchema,
 	lastMessage: z
 		.object({
 			id: z.string(),

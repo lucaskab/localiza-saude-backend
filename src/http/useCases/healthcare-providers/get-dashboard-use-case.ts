@@ -5,7 +5,7 @@ type RecentRating = {
 	id: string;
 	rating: number;
 	comment: string | null;
-	customerName: string;
+	patientName: string;
 	createdAt: Date;
 };
 
@@ -141,32 +141,28 @@ export const getDashboardUseCase = {
 			orderBy: {
 				createdAt: "desc",
 			},
-			take: 5,
-			include: {
-				customer: {
-					include: {
-						user: {
-							select: {
-								name: true,
-							},
+				take: 5,
+				include: {
+					customer: {
+						select: {
+							name: true,
 						},
 					},
 				},
-			},
 		});
 
 		const recentRatingsFormatted: RecentRating[] = recentRatings.map(
 			(r: {
 				id: string;
-				rating: number;
-				comment: string | null;
-				createdAt: Date;
-				customer: { user: { name: string } };
-			}) => ({
+					rating: number;
+					comment: string | null;
+					createdAt: Date;
+					customer: { name: string };
+				}) => ({
 				id: r.id,
 				rating: r.rating,
 				comment: r.comment,
-				customerName: r.customer.user.name,
+				patientName: r.customer.name,
 				createdAt: r.createdAt,
 			}),
 		);
@@ -255,7 +251,7 @@ export const getDashboardUseCase = {
 			patientProfileId: string | null;
 		}) => {
 			if (appointment.patientProfileId) {
-				return `patient-profile:${appointment.patientProfileId}`;
+				return `customer-profile:${appointment.patientProfileId}`;
 			}
 
 			if (appointment.customerId) {

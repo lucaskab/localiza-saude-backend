@@ -1,33 +1,35 @@
 import type {
 	category,
-	healthcare_provider,
+	user,
 	healthcare_provider_category,
 	procedure,
-	user,
 } from "../../../prisma/generated/prisma/client";
 
-type CategoryWithProviders = category & {
+type CategoryWithHealthcareProviders = category & {
 	healthcareProviderCategories: (healthcare_provider_category & {
-		healthcareProvider: healthcare_provider & {
-			user: user;
-			procedures: procedure[];
-		};
+		healthcareProvider: user & { procedures: procedure[] };
 	})[];
 };
 
-function getStartingPriceCents(provider: healthcare_provider & { procedures: procedure[] }) {
-	if (provider.procedures.length === 0) {
+function getStartingPriceCents(
+	healthcareProvider: user & { procedures: procedure[] },
+) {
+	if (healthcareProvider.procedures.length === 0) {
 		return null;
 	}
 
-	return Math.min(...provider.procedures.map((procedure) => procedure.priceInCents));
+	return Math.min(
+		...healthcareProvider.procedures.map(
+			(procedure) => procedure.priceInCents,
+		),
+	);
 }
 
 export const categoryPresenter = {
 	toHTTP(
-		category: CategoryWithProviders,
-		nextAvailableByProviderId?: Map<string, Date | null>,
-		ratingSummariesByProviderId?: Map<
+		category: CategoryWithHealthcareProviders,
+		nextAvailableByHealthcareProviderId?: Map<string, Date | null>,
+		ratingSummariesByHealthcareProviderId?: Map<
 			string,
 			{ averageRating: number; totalRatings: number }
 		>,
@@ -40,7 +42,6 @@ export const categoryPresenter = {
 			updatedAt: category.updatedAt,
 			healthcareProviders: category.healthcareProviderCategories.map((hpc) => ({
 				id: hpc.healthcareProvider.id,
-				userId: hpc.healthcareProvider.userId,
 				displayName: hpc.healthcareProvider.displayName,
 				languages: hpc.healthcareProvider.languages,
 				specialty: hpc.healthcareProvider.specialty,
@@ -53,31 +54,28 @@ export const categoryPresenter = {
 				serviceModalities: hpc.healthcareProvider.serviceModalities,
 				clinicAddress: hpc.healthcareProvider.clinicAddress,
 				nextAvailableAt:
-					nextAvailableByProviderId?.get(hpc.healthcareProvider.id) ?? null,
+					nextAvailableByHealthcareProviderId?.get(hpc.healthcareProvider.id) ?? null,
 				startingPriceCents: getStartingPriceCents(hpc.healthcareProvider),
 				averageRating:
-					ratingSummariesByProviderId?.get(hpc.healthcareProvider.id)
+					ratingSummariesByHealthcareProviderId?.get(hpc.healthcareProvider.id)
 						?.averageRating ?? 0,
 				totalRatings:
-					ratingSummariesByProviderId?.get(hpc.healthcareProvider.id)
+					ratingSummariesByHealthcareProviderId?.get(hpc.healthcareProvider.id)
 						?.totalRatings ?? 0,
-				user: {
-					id: hpc.healthcareProvider.user.id,
-					name: hpc.healthcareProvider.user.name,
-					firstName: hpc.healthcareProvider.user.firstName,
-					lastName: hpc.healthcareProvider.user.lastName,
-					email: hpc.healthcareProvider.user.email,
-					phone: hpc.healthcareProvider.user.phone,
-					image: hpc.healthcareProvider.user.image,
-				},
+				name: hpc.healthcareProvider.name,
+				firstName: hpc.healthcareProvider.firstName,
+				lastName: hpc.healthcareProvider.lastName,
+				email: hpc.healthcareProvider.email,
+				phone: hpc.healthcareProvider.phone,
+				image: hpc.healthcareProvider.image,
 			})),
 		};
 	},
 
 	toHTTPMany(
-		categories: CategoryWithProviders[],
-		nextAvailableByProviderId?: Map<string, Date | null>,
-		ratingSummariesByProviderId?: Map<
+		categories: CategoryWithHealthcareProviders[],
+		nextAvailableByHealthcareProviderId?: Map<string, Date | null>,
+		ratingSummariesByHealthcareProviderId?: Map<
 			string,
 			{ averageRating: number; totalRatings: number }
 		>,
@@ -85,8 +83,8 @@ export const categoryPresenter = {
 		return categories.map((category) =>
 			this.toHTTP(
 				category,
-				nextAvailableByProviderId,
-				ratingSummariesByProviderId,
+				nextAvailableByHealthcareProviderId,
+				ratingSummariesByHealthcareProviderId,
 			),
 		);
 	},

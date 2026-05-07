@@ -12,7 +12,7 @@ const formatAppointmentDate = (date: Date) =>
 
 const getPatientName = (appointment: AppointmentWithRelations) =>
 	appointment.patientProfile?.fullName ||
-	appointment.customer?.user.name ||
+	appointment.customer?.name ||
 	"Paciente";
 
 const getProcedureNames = (appointment: AppointmentWithRelations) =>
@@ -22,7 +22,7 @@ const getProcedureNames = (appointment: AppointmentWithRelations) =>
 
 export const sendAppointmentEventNotificationUseCase = {
 	async sendNewAppointmentRequestToProvider(appointment: AppointmentWithRelations) {
-		const providerUserId = appointment.healthcareProvider.userId;
+		const providerUserId = appointment.healthcareProvider.id;
 
 		await pushNotificationsService.sendToUser({
 			userId: providerUserId,
@@ -41,9 +41,9 @@ export const sendAppointmentEventNotificationUseCase = {
 	async sendAppointmentStatusUpdateToCustomer(
 		appointment: AppointmentWithRelations,
 	) {
-		const customerUserId = appointment.customer?.userId;
+		const customerId = appointment.customer?.id;
 
-		if (!customerUserId) {
+		if (!customerId) {
 			return;
 		}
 
@@ -57,10 +57,10 @@ export const sendAppointmentEventNotificationUseCase = {
 		}[appointment.status];
 
 		await pushNotificationsService.sendToUser({
-			userId: customerUserId,
+			userId: customerId,
 			type: "APPOINTMENT_STATUS_UPDATE",
 			title: "Atualizacao da consulta",
-			body: `Sua consulta com ${appointment.healthcareProvider.user.name} foi ${statusLabel}.`,
+			body: `Sua consulta com ${appointment.healthcareProvider.name} foi ${statusLabel}.`,
 			appointmentId: appointment.id,
 			data: {
 				screen: "appointment",

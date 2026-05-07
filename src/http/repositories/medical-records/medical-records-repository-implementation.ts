@@ -5,19 +5,19 @@ import type {
 } from "./medical-records-repository-contract";
 
 export const prismaMedicalRecordRepository: MedicalRecordRepository = {
-	async findByCustomerId(customerId: string) {
+	async findByUserId(userId: string) {
 		const medicalRecord = await prisma.customer_medical_record.findUnique({
-			where: { customerId },
+			where: { customerId: userId },
 		});
 
 		return medicalRecord;
 	},
 
-	async upsertByCustomerId(customerId: string, data: MedicalRecordInput) {
+	async upsertByUserId(userId: string, data: MedicalRecordInput) {
 		const medicalRecord = await prisma.customer_medical_record.upsert({
-			where: { customerId },
+			where: { customerId: userId },
 			create: {
-				customerId,
+				customerId: userId,
 				bloodType: data.bloodType,
 				medications: data.medications,
 				chronicPain: data.chronicPain,

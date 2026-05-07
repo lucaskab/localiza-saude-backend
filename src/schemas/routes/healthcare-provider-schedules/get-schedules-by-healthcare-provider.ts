@@ -1,28 +1,28 @@
 import { z } from "zod";
 import { healthcareProviderScheduleSchema } from "./get-healthcare-provider-schedules";
 
-export const getSchedulesByProviderParamsSchema = z.object({
+export const getSchedulesByProfessionalParamsSchema = z.object({
 	healthcareProviderId: z.cuid(),
 });
 
-export const getSchedulesByProviderResponseSchema = z.object({
+export const getSchedulesByProfessionalResponseSchema = z.object({
 	schedules: z.array(healthcareProviderScheduleSchema),
 });
 
 export type GetSchedulesByProviderParamsSchema = z.infer<
-	typeof getSchedulesByProviderParamsSchema
+	typeof getSchedulesByProfessionalParamsSchema
 >;
 export type GetSchedulesByProviderResponseSchema = z.infer<
-	typeof getSchedulesByProviderResponseSchema
+	typeof getSchedulesByProfessionalResponseSchema
 >;
 
-export const getSchedulesByProviderRouteOptions = {
+export const getSchedulesByProfessionalRouteOptions = {
 	schema: {
 		tags: ["Healthcare Provider Schedules"],
 		summary: "Get schedules by healthcare provider",
-		params: getSchedulesByProviderParamsSchema,
+		params: getSchedulesByProfessionalParamsSchema,
 		response: {
-			200: getSchedulesByProviderResponseSchema,
+			200: getSchedulesByProfessionalResponseSchema,
 		},
 	},
 };

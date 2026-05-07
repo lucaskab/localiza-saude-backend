@@ -1,5 +1,4 @@
 import type {
-	healthcare_provider,
 	healthcare_provider_faq,
 	procedure,
 	user,
@@ -87,8 +86,7 @@ export type UpdateHealthcareProviderData = {
 	faqs?: HealthcareProviderFaqData[];
 };
 
-export type HealthcareProviderWithRelations = healthcare_provider & {
-	user: user;
+export type HealthcareProviderWithRelations = user & {
 	procedures: procedure[];
 	faqs: healthcare_provider_faq[];
 };

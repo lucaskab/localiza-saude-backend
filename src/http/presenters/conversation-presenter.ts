@@ -7,23 +7,17 @@ type ConversationWithParticipants = {
 	updatedAt: Date;
 	customer: {
 		id: string;
-		user: {
-			id: string;
-			name: string;
-			firstName: string | null;
-			lastName: string | null;
-			image: string | null;
-		};
+		name: string;
+		firstName: string | null;
+		lastName: string | null;
+		image: string | null;
 	};
 	healthcareProvider: {
 		id: string;
-		user: {
-			id: string;
-			name: string;
-			firstName: string | null;
-			lastName: string | null;
-			image: string | null;
-		};
+		name: string;
+		firstName: string | null;
+		lastName: string | null;
+		image: string | null;
 	};
 	messages?: Array<{
 		id: string;
@@ -74,23 +68,17 @@ export const conversationPresenter = {
 			updatedAt: conversation.updatedAt,
 			customer: {
 				id: conversation.customer.id,
-				user: {
-					id: conversation.customer.user.id,
-					name: conversation.customer.user.name,
-					firstName: conversation.customer.user.firstName,
-					lastName: conversation.customer.user.lastName,
-					image: conversation.customer.user.image,
-				},
+				name: conversation.customer.name,
+				firstName: conversation.customer.firstName,
+				lastName: conversation.customer.lastName,
+				image: conversation.customer.image,
 			},
 			healthcareProvider: {
 				id: conversation.healthcareProvider.id,
-				user: {
-					id: conversation.healthcareProvider.user.id,
-					name: conversation.healthcareProvider.user.name,
-					firstName: conversation.healthcareProvider.user.firstName,
-					lastName: conversation.healthcareProvider.user.lastName,
-					image: conversation.healthcareProvider.user.image,
-				},
+				name: conversation.healthcareProvider.name,
+				firstName: conversation.healthcareProvider.firstName,
+				lastName: conversation.healthcareProvider.lastName,
+				image: conversation.healthcareProvider.image,
 			},
 			lastMessage:
 				conversation.messages && conversation.messages[0]

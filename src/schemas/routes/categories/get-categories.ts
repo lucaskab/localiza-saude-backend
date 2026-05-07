@@ -1,35 +1,5 @@
 import { z } from "zod";
-
-const userSchema = z.object({
-	id: z.cuid(),
-	name: z.string(),
-	firstName: z.string().nullable(),
-	lastName: z.string().nullable(),
-	email: z.string().email(),
-	phone: z.string().nullable(),
-	image: z.string().nullable(),
-});
-
-const healthcareProviderSchema = z.object({
-	id: z.cuid(),
-	userId: z.string(),
-	displayName: z.string().nullable().optional(),
-	languages: z.array(z.string()).optional(),
-	specialty: z.string().nullable(),
-	professionalCategory: z.string().nullable().optional(),
-	professionalId: z.string().nullable(),
-	licenseCouncil: z.string().nullable().optional(),
-	licenseState: z.string().nullable().optional(),
-	verificationStatus: z.enum(["PENDING", "VERIFIED", "REJECTED"]).optional(),
-	bio: z.string().nullable(),
-	serviceModalities: z.array(z.string()).optional(),
-	clinicAddress: z.string().nullable().optional(),
-	nextAvailableAt: z.date().nullable().optional(),
-	startingPriceCents: z.number().int().nullable().optional(),
-	averageRating: z.number().optional(),
-	totalRatings: z.number().int().optional(),
-	user: userSchema,
-});
+import { healthcareProviderUserSchema } from "../users/user";
 
 export const categorySchema = z.object({
 	id: z.cuid(),
@@ -37,7 +7,7 @@ export const categorySchema = z.object({
 	description: z.string().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
-	healthcareProviders: z.array(healthcareProviderSchema),
+	healthcareProviders: z.array(healthcareProviderUserSchema),
 });
 
 export const getCategoriesResponseSchema = z.object({

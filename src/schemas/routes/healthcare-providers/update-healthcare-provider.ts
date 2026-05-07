@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { healthcareProviderSchema } from "./get-healthcare-providers";
 
-const healthcareProviderFaqInputSchema = z.object({
+const professionalFaqInputSchema = z.object({
 	question: z.string().trim().min(3).max(300),
 	answer: z.string().trim().min(3).max(1200),
 });
@@ -21,8 +21,6 @@ export const updateHealthcareProviderBodySchema = z.object({
 	professionalId: z.string().trim().nullable().optional(),
 	licenseCouncil: z.string().trim().nullable().optional(),
 	licenseState: z.string().trim().nullable().optional(),
-	verificationStatus: z.enum(["PENDING", "VERIFIED", "REJECTED"]).optional(),
-	verifiedAt: z.coerce.date().nullable().optional(),
 	bio: z.string().trim().nullable().optional(),
 	approach: z.string().trim().nullable().optional(),
 	education: z.string().trim().nullable().optional(),
@@ -38,7 +36,7 @@ export const updateHealthcareProviderBodySchema = z.object({
 	termsAcceptedAt: z.coerce.date().nullable().optional(),
 	lgpdConsentAt: z.coerce.date().nullable().optional(),
 	professionalResponsibilityAcceptedAt: z.coerce.date().nullable().optional(),
-	faqs: z.array(healthcareProviderFaqInputSchema).max(20).optional(),
+	faqs: z.array(professionalFaqInputSchema).max(20).optional(),
 });
 
 export const updateHealthcareProviderResponseSchema = z.object({

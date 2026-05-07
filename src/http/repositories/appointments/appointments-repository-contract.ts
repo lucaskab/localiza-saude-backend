@@ -1,11 +1,9 @@
 import type {
 	AppointmentStatus,
 	appointment,
-	customer,
-	healthcare_provider,
+	user,
 	patient_profile,
 	procedure,
-	user,
 } from "../../../../prisma/generated/prisma/client";
 
 export type CreateAppointmentData = {
@@ -33,13 +31,9 @@ export type AppointmentProcedure = {
 };
 
 export type AppointmentWithRelations = appointment & {
-	customer: (customer & {
-		user: user;
-	}) | null;
+	customer: user | null;
 	patientProfile: patient_profile | null;
-	healthcareProvider: healthcare_provider & {
-		user: user;
-	};
+	healthcareProvider: user;
 	appointmentProcedures: AppointmentProcedure[];
 };
 
@@ -70,26 +64,26 @@ export type FindAppointmentsResult = {
 export type AppointmentRepository = {
 	findAll: (filters?: FindAppointmentsFilters) => Promise<FindAppointmentsResult>;
 	findById: (id: string) => Promise<AppointmentWithRelations | null>;
-	findByCustomerId: (customerId: string) => Promise<AppointmentWithRelations[]>;
+	findByUserId: (customerId: string) => Promise<AppointmentWithRelations[]>;
 	findByHealthcareProviderId: (
 		healthcareProviderId: string,
 	) => Promise<AppointmentWithRelations[]>;
 	findByDateRange: (
 		params: DateRangeParams,
 	) => Promise<AppointmentWithRelations[]>;
-	findByProviderAndDateRange: (
+	findByProfessionalAndDateRange: (
 		healthcareProviderId: string,
 		params: DateRangeParams,
 	) => Promise<AppointmentWithRelations[]>;
-	existsByCustomerAndProvider: (
+	existsByCustomerAndProfessional: (
 		customerId: string,
 		healthcareProviderId: string,
 	) => Promise<boolean>;
-	existsConfirmedByCustomerAndProvider: (
+	existsConfirmedByCustomerAndProfessional: (
 		customerId: string,
 		healthcareProviderId: string,
 	) => Promise<boolean>;
-	existsByPatientProfileAndProvider: (
+	existsByPatientProfileAndHealthcareProvider: (
 		patientProfileId: string,
 		healthcareProviderId: string,
 	) => Promise<boolean>;

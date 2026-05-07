@@ -50,23 +50,17 @@ export interface GetConversationsParams {
 export interface ConversationWithParticipants extends conversation {
 	customer: {
 		id: string;
-		user: {
-			id: string;
-			name: string;
-			firstName: string | null;
-			lastName: string | null;
-			image: string | null;
-		};
+		name: string;
+		firstName: string | null;
+		lastName: string | null;
+		image: string | null;
 	};
 	healthcareProvider: {
 		id: string;
-		user: {
-			id: string;
-			name: string;
-			firstName: string | null;
-			lastName: string | null;
-			image: string | null;
-		};
+		name: string;
+		firstName: string | null;
+		lastName: string | null;
+		image: string | null;
 	};
 	messages: conversation_message[];
 }

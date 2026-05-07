@@ -1,4 +1,8 @@
 import { z } from "zod";
+import {
+	customerUserSchema,
+	healthcareProviderUserSchema,
+} from "../users/user";
 
 export const appointmentStatusSchema = z.enum([
 	"SCHEDULED",
@@ -8,23 +12,6 @@ export const appointmentStatusSchema = z.enum([
 	"CANCELLED",
 	"NO_SHOW",
 ]);
-
-const userSchema = z.object({
-	id: z.cuid(),
-	name: z.string(),
-	email: z.string().email(),
-	phone: z.string().nullable(),
-	image: z.string().nullable(),
-	role: z.string(),
-});
-
-const customerSchema = z.object({
-	id: z.cuid(),
-	userId: z.cuid(),
-	user: userSchema,
-	createdAt: z.date(),
-	updatedAt: z.date(),
-});
 
 export const patientProfileSchema = z.object({
 	id: z.cuid(),
@@ -53,16 +40,6 @@ export const patientProfileSchema = z.object({
 	updatedAt: z.date(),
 });
 
-const healthcareProviderSchema = z.object({
-	id: z.cuid(),
-	userId: z.cuid(),
-	specialty: z.string().nullable(),
-	professionalId: z.string().nullable(),
-	user: userSchema,
-	createdAt: z.date(),
-	updatedAt: z.date(),
-});
-
 const procedureSchema = z.object({
 	id: z.cuid(),
 	name: z.string(),
@@ -85,11 +62,11 @@ const appointmentProcedureSchema = z.object({
 export const appointmentSchema = z.object({
 	id: z.cuid(),
 	customerId: z.cuid().nullable(),
-	customer: customerSchema.nullable(),
+	customer: customerUserSchema.nullable(),
 	patientProfileId: z.cuid().nullable(),
 	patientProfile: patientProfileSchema.nullable(),
 	healthcareProviderId: z.cuid(),
-	healthcareProvider: healthcareProviderSchema,
+	healthcareProvider: healthcareProviderUserSchema,
 	scheduledAt: z.date(),
 	status: appointmentStatusSchema,
 	totalDurationMinutes: z.number().int(),

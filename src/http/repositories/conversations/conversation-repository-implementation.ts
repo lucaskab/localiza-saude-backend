@@ -55,29 +55,21 @@ export const prismaConversationRepository: ConversationRepository = {
 			},
 			include: {
 				customer: {
-					include: {
-						user: {
-							select: {
-								id: true,
-								name: true,
-								firstName: true,
-								lastName: true,
-								image: true,
-							},
-						},
+					select: {
+						id: true,
+						name: true,
+						firstName: true,
+						lastName: true,
+						image: true,
 					},
 				},
 				healthcareProvider: {
-					include: {
-						user: {
-							select: {
-								id: true,
-								name: true,
-								firstName: true,
-								lastName: true,
-								image: true,
-							},
-						},
+					select: {
+						id: true,
+						name: true,
+						firstName: true,
+						lastName: true,
+						image: true,
 					},
 				},
 				messages: {
@@ -175,16 +167,8 @@ export const prismaConversationRepository: ConversationRepository = {
 	): Promise<ConversationWithParticipants[]> {
 		const where =
 			params.userType === "CUSTOMER"
-				? {
-						customer: {
-							userId: params.userId,
-						},
-					}
-				: {
-						healthcareProvider: {
-							userId: params.userId,
-						},
-					};
+				? { customerId: params.userId }
+				: { healthcareProviderId: params.userId };
 
 		const conversations = await prisma.conversation.findMany({
 			where,
@@ -197,29 +181,19 @@ export const prismaConversationRepository: ConversationRepository = {
 				customer: {
 					select: {
 						id: true,
-						user: {
-							select: {
-								id: true,
-								name: true,
-								firstName: true,
-								lastName: true,
-								image: true,
-							},
-						},
+						name: true,
+						firstName: true,
+						lastName: true,
+						image: true,
 					},
 				},
 				healthcareProvider: {
 					select: {
 						id: true,
-						user: {
-							select: {
-								id: true,
-								name: true,
-								firstName: true,
-								lastName: true,
-								image: true,
-							},
-						},
+						name: true,
+						firstName: true,
+						lastName: true,
+						image: true,
 					},
 				},
 				messages: {

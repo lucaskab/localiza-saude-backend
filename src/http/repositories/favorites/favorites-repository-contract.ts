@@ -8,15 +8,15 @@ export type FavoriteProviderWithRelations = customer_favorite_provider & {
 };
 
 export type FavoriteRepository = {
-	findByCustomerId: (
-		customerId: string,
+	findByUserId: (
+		userId: string,
 	) => Promise<FavoriteProviderWithRelations[]>;
 	add: (
-		customerId: string,
+		userId: string,
 		healthcareProviderId: string,
 	) => Promise<customer_favorite_provider>;
 	remove: (
-		customerId: string,
+		userId: string,
 		healthcareProviderId: string,
 	) => Promise<void>;
 };

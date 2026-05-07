@@ -9,6 +9,43 @@ model user {
   image         String?
   role          UserRole   @default(CUSTOMER)
   onboardingCompleted Boolean @default(true) @map("onboarding_completed")
+  cpf           String?
+  dateOfBirth   DateTime?  @map("date_of_birth")
+  address       String?
+  displayName   String?    @map("display_name")
+  document      String?
+  birthDate     DateTime?  @map("birth_date")
+  gender        String?
+  languages     String[]   @default([])
+  specialty     String?
+  professionalCategory String? @map("healthcare_provider_category")
+  professionalId String?   @map("professional_id")
+  licenseCouncil String?   @map("license_council")
+  licenseState  String?    @map("license_state")
+  licenseDocumentKey String? @map("license_document_key")
+  licenseDocumentFileName String? @map("license_document_file_name")
+  licenseDocumentMimeType String? @map("license_document_mime_type")
+  licenseDocumentSize Int? @map("license_document_size")
+  licenseDocumentSha256 String? @map("license_document_sha256")
+  licenseDocumentUploadedAt DateTime? @map("license_document_uploaded_at")
+  verificationStatus String @default("PENDING") @map("verification_status")
+  verifiedAt    DateTime?  @map("verified_at")
+  bio           String?
+  approach      String?
+  education     String?
+  certifications String?
+  yearsOfExperience Int?   @map("years_of_experience")
+  targetAudiences String[] @default([]) @map("target_audiences")
+  serviceModalities String[] @default([]) @map("service_modalities")
+  clinicAddress String?    @map("clinic_address")
+  homeCareRadiusKm Int?    @map("home_care_radius_km")
+  acceptedInsurance String[] @default([]) @map("accepted_insurance")
+  paymentMethods String[]  @default([]) @map("payment_methods")
+  cancellationPolicy String? @map("cancellation_policy")
+  clinicPhotos String[]    @default([]) @map("clinic_photos")
+  termsAcceptedAt DateTime? @map("terms_accepted_at")
+  lgpdConsentAt DateTime? @map("lgpd_consent_at")
+  professionalResponsibilityAcceptedAt DateTime? @map("professional_responsibility_accepted_at")
   createdAt     DateTime   @default(now()) @map("created_at")
   updatedAt     DateTime   @updatedAt @map("updated_at")
 
@@ -17,8 +54,21 @@ model user {
   ownedClinics  clinic[]   @relation("ClinicOwner")
   clinics       clinic[]   @relation("ClinicEmployees")
 
-  healthcareProvider healthcare_provider?
-  customer           customer?
+  customerAppointments appointment[] @relation("CustomerAppointments")
+  healthcareProviderAppointments appointment[] @relation("ProviderAppointments")
+  procedures procedure[] @relation("ProviderProcedures")
+  schedules healthcare_provider_schedule[] @relation("ProviderSchedules")
+  healthcareProviderCategories healthcare_provider_category[] @relation("ProviderCategories")
+  favoriteProviders customer_favorite_provider[] @relation("CustomerFavoriteProviders")
+  favoritedBy customer_favorite_provider[] @relation("ProviderFavoritedByCustomers")
+  medicalRecord customer_medical_record?
+  ratings rating[] @relation("CustomerRatings")
+  receivedRatings rating[] @relation("ProviderRatings")
+  customerConversations conversation[] @relation("CustomerConversations")
+  providerConversations conversation[] @relation("ProviderConversations")
+  patientProfiles patient_profile[] @relation("CustomerPatientProfiles")
+  createdPatientProfiles patient_profile[] @relation("ProviderCreatedPatientProfiles")
+  faqs healthcare_provider_faq[] @relation("ProviderFaqs")
   conversationMessages conversation_message[]
   pushTokens push_token[]
   notificationPreferences notification_preference[]

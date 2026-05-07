@@ -8,34 +8,8 @@ import type {
 } from "./ratings-repository-contract";
 
 const includeRelations = {
-	customer: {
-		include: {
-			user: {
-				select: {
-					id: true,
-					name: true,
-					email: true,
-					phone: true,
-					image: true,
-					role: true,
-				},
-			},
-		},
-	},
-	healthcareProvider: {
-		include: {
-			user: {
-				select: {
-					id: true,
-					name: true,
-					email: true,
-					phone: true,
-					image: true,
-					role: true,
-				},
-			},
-		},
-	},
+	customer: true,
+	healthcareProvider: true,
 };
 
 export const prismaRatingRepository: RatingRepository = {
@@ -59,7 +33,7 @@ export const prismaRatingRepository: RatingRepository = {
 		return rating as RatingWithRelations | null;
 	},
 
-	async findByCustomerId(customerId: string) {
+	async findByUserId(customerId: string) {
 		const ratings = await prisma.rating.findMany({
 			where: { customerId },
 			include: includeRelations,
@@ -83,7 +57,7 @@ export const prismaRatingRepository: RatingRepository = {
 		return ratings as RatingWithRelations[];
 	},
 
-	async findByCustomerAndProvider(
+	async findByCustomerAndHealthcareProvider(
 		customerId: string,
 		healthcareProviderId: string,
 	) {

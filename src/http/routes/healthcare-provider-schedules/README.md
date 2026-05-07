@@ -9,7 +9,7 @@ Healthcare provider schedules define when a healthcare provider is available to 
 ## Endpoints
 
 ### 1. List All Schedules
-**GET** `/healthcare-provider-schedules`
+**GET** `/healthcareProvider-schedules`
 
 Get all healthcare provider schedules in the system.
 
@@ -34,7 +34,7 @@ Get all healthcare provider schedules in the system.
           "email": "john@example.com",
           "phone": "+5511999999999",
           "image": "https://...",
-          "role": "healthcare_provider"
+          "role": "user"
         },
         "createdAt": "2024-01-01T00:00:00.000Z",
         "updatedAt": "2024-01-01T00:00:00.000Z"
@@ -53,7 +53,7 @@ Get all healthcare provider schedules in the system.
 ---
 
 ### 2. Get Schedule by ID
-**GET** `/healthcare-provider-schedules/:id`
+**GET** `/healthcareProvider-schedules/:id`
 
 Get a specific healthcare provider schedule by its ID.
 
@@ -80,7 +80,7 @@ Get a specific healthcare provider schedule by its ID.
         "email": "john@example.com",
         "phone": "+5511999999999",
         "image": "https://...",
-        "role": "healthcare_provider"
+        "role": "user"
       },
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z"
@@ -98,7 +98,7 @@ Get a specific healthcare provider schedule by its ID.
 ---
 
 ### 3. Get Schedules by Provider
-**GET** `/healthcare-providers/:healthcareProviderId/schedules`
+**GET** `/users/:healthcareProviderId/schedules`
 
 Get all schedules for a specific healthcare provider.
 
@@ -126,7 +126,7 @@ Get all schedules for a specific healthcare provider.
           "email": "john@example.com",
           "phone": "+5511999999999",
           "image": "https://...",
-          "role": "healthcare_provider"
+          "role": "user"
         },
         "createdAt": "2024-01-01T00:00:00.000Z",
         "updatedAt": "2024-01-01T00:00:00.000Z"
@@ -145,7 +145,7 @@ Get all schedules for a specific healthcare provider.
 ---
 
 ### 4. Create Schedule
-**POST** `/healthcare-provider-schedules`
+**POST** `/healthcareProvider-schedules`
 
 Create a new healthcare provider schedule.
 
@@ -185,7 +185,7 @@ Create a new healthcare provider schedule.
         "email": "john@example.com",
         "phone": "+5511999999999",
         "image": "https://...",
-        "role": "healthcare_provider"
+        "role": "user"
       },
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z"
@@ -203,7 +203,7 @@ Create a new healthcare provider schedule.
 ---
 
 ### 5. Update Schedule
-**PATCH** `/healthcare-provider-schedules/:id`
+**PATCH** `/healthcareProvider-schedules/:id`
 
 Update an existing healthcare provider schedule.
 
@@ -247,7 +247,7 @@ All fields are optional:
         "email": "john@example.com",
         "phone": "+5511999999999",
         "image": "https://...",
-        "role": "healthcare_provider"
+        "role": "user"
       },
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z"
@@ -265,7 +265,7 @@ All fields are optional:
 ---
 
 ### 6. Delete Schedule
-**DELETE** `/healthcare-provider-schedules/:id`
+**DELETE** `/healthcareProvider-schedules/:id`
 
 Delete a healthcare provider schedule.
 
@@ -299,7 +299,7 @@ Times must be in 24-hour format: `HH:mm`
 1. **Display Provider Availability**: Use GET endpoints to show when a provider is available
 2. **Manage Weekly Schedule**: Use POST/PATCH to set up recurring weekly availability
 3. **Temporarily Disable**: Use PATCH with `isActive: false` to temporarily disable a schedule without deleting it
-4. **Filter by Provider**: Use the `/healthcare-providers/:healthcareProviderId/schedules` endpoint to get all schedules for a specific provider
+4. **Filter by Provider**: Use the `/users/:healthcareProviderId/schedules` endpoint to get all schedules for a specific provider
 
 ## Notes
 

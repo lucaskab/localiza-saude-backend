@@ -1,17 +1,13 @@
 import type {
 	category,
-	healthcare_provider,
+	user,
 	healthcare_provider_category,
 	procedure,
-	user,
 } from "../../../../prisma/generated/prisma/client";
 
-export type CategoryWithProviders = category & {
+export type CategoryWithProfessionals = category & {
 	healthcareProviderCategories: (healthcare_provider_category & {
-		healthcareProvider: healthcare_provider & {
-			user: user;
-			procedures: procedure[];
-		};
+		healthcareProvider: user & { procedures: procedure[] };
 	})[];
 };
 
@@ -26,13 +22,13 @@ export type UpdateCategoryData = {
 };
 
 export type CategoryRepository = {
-	findAll: () => Promise<CategoryWithProviders[]>;
-	findById: (id: string) => Promise<CategoryWithProviders | null>;
+	findAll: () => Promise<CategoryWithProfessionals[]>;
+	findById: (id: string) => Promise<CategoryWithProfessionals | null>;
 	findByName: (name: string) => Promise<category | null>;
-	create: (data: CreateCategoryData) => Promise<CategoryWithProviders>;
+	create: (data: CreateCategoryData) => Promise<CategoryWithProfessionals>;
 	update: (
 		id: string,
 		data: UpdateCategoryData,
-	) => Promise<CategoryWithProviders>;
+	) => Promise<CategoryWithProfessionals>;
 	delete: (id: string) => Promise<void>;
 };

@@ -14,11 +14,11 @@ export type MedicalRecordInput = {
 };
 
 export type MedicalRecordRepository = {
-	findByCustomerId: (
-		customerId: string,
+	findByUserId: (
+		userId: string,
 	) => Promise<customer_medical_record | null>;
-	upsertByCustomerId: (
-		customerId: string,
+	upsertByUserId: (
+		userId: string,
 		data: MedicalRecordInput,
 	) => Promise<customer_medical_record>;
 };

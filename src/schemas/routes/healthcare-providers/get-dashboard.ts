@@ -20,7 +20,7 @@ const recentRatingSchema = z.object({
 	id: z.cuid(),
 	rating: z.number().int(),
 	comment: z.string().nullable(),
-	customerName: z.string(),
+	patientName: z.string(),
 	createdAt: z.date(),
 });
 
@@ -69,7 +69,7 @@ export const getDashboardRouteOptions = {
 		tags: ["Healthcare Providers"],
 		summary: "Get dashboard metrics for a healthcare provider",
 		description:
-			"Returns comprehensive dashboard data including today's appointments, revenue metrics, ratings, patient statistics, popular procedures, and trends.",
+			"Returns comprehensive dashboard data including today's appointments, revenue metrics, ratings, customer statistics, popular procedures, and trends.",
 		security: [{ bearerAuth: [] }],
 		params: getDashboardParamsSchema,
 		response: {

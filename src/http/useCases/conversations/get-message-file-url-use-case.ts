@@ -27,8 +27,8 @@ export const getMessageFileUrlUseCase = {
 		}
 
 		const canAccessFile =
-			conversation.customer.user.id === params.currentUserId ||
-			conversation.healthcareProvider.user.id === params.currentUserId;
+			conversation.customer.id === params.currentUserId ||
+			conversation.healthcareProvider.id === params.currentUserId;
 
 		if (!canAccessFile) {
 			throw new UnauthorizedError();

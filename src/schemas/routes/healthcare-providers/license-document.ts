@@ -36,7 +36,7 @@ export type LicenseDocumentParamsSchema = z.infer<
 export const uploadLicenseDocumentRouteOptions = {
 	schema: {
 		tags: ["Healthcare Providers"],
-		summary: "Upload a private professional license document",
+		summary: "Upload a private healthcareProvider license document",
 		security: [{ bearerAuth: [] }],
 		params: licenseDocumentParamsSchema,
 		response: {
@@ -48,7 +48,7 @@ export const uploadLicenseDocumentRouteOptions = {
 export const getLicenseDocumentUrlRouteOptions = {
 	schema: {
 		tags: ["Healthcare Providers"],
-		summary: "Create a temporary URL for the professional license document",
+		summary: "Create a temporary URL for the healthcareProvider license document",
 		security: [{ bearerAuth: [] }],
 		params: licenseDocumentParamsSchema,
 		response: {
@@ -60,7 +60,7 @@ export const getLicenseDocumentUrlRouteOptions = {
 export const deleteLicenseDocumentRouteOptions = {
 	schema: {
 		tags: ["Healthcare Providers"],
-		summary: "Delete a private professional license document",
+		summary: "Delete a private healthcareProvider license document",
 		security: [{ bearerAuth: [] }],
 		params: licenseDocumentParamsSchema,
 		response: {

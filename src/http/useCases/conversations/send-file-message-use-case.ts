@@ -40,47 +40,43 @@ export const sendFileMessageUseCase = {
 		let healthcareProviderId: string;
 
 		if (senderType === "CUSTOMER") {
-			// Sender is customer, recipient is provider
-			const customerProfile = await prisma.customer.findUnique({
-				where: { userId: senderId },
+			const customer = await prisma.user.findUnique({
+				where: { id: senderId, role: "CUSTOMER" },
 			});
 
-			if (!customerProfile) {
-				throw new BadRequestError("Customer profile not found");
+			if (!customer) {
+				throw new BadRequestError("Customer user not found");
 			}
 
-			// recipientId is already the healthcareProvider.id (CUID)
-			const providerProfile = await prisma.healthcare_provider.findUnique({
-				where: { id: recipientId },
+			const healthcareProvider = await prisma.user.findUnique({
+				where: { id: recipientId, role: "HEALTHCARE_PROVIDER" },
 			});
 
-			if (!providerProfile) {
-				throw new BadRequestError("Healthcare provider not found");
+			if (!healthcareProvider) {
+				throw new BadRequestError("HealthcareProvider user not found");
 			}
 
-			customerId = customerProfile.id;
+			customerId = customer.id;
 			healthcareProviderId = recipientId;
 		} else {
-			// Sender is provider, recipient is customer
-			const providerProfile = await prisma.healthcare_provider.findUnique({
-				where: { userId: senderId },
+			const healthcareProvider = await prisma.user.findUnique({
+				where: { id: senderId, role: "HEALTHCARE_PROVIDER" },
 			});
 
-			if (!providerProfile) {
-				throw new BadRequestError("Healthcare provider profile not found");
+			if (!healthcareProvider) {
+				throw new BadRequestError("HealthcareProvider user not found");
 			}
 
-			// recipientId is already the customer.id (CUID)
-			const customerProfile = await prisma.customer.findUnique({
-				where: { id: recipientId },
+			const customer = await prisma.user.findUnique({
+				where: { id: recipientId, role: "CUSTOMER" },
 			});
 
-			if (!customerProfile) {
-				throw new BadRequestError("Customer not found");
+			if (!customer) {
+				throw new BadRequestError("Customer user not found");
 			}
 
 			customerId = recipientId;
-			healthcareProviderId = providerProfile.id;
+			healthcareProviderId = healthcareProvider.id;
 		}
 
 		// Get or create conversation if conversationId is not provided

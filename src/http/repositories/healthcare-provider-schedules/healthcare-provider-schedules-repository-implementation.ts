@@ -6,26 +6,24 @@ import type {
 	UpdateScheduleData,
 } from "./healthcare-provider-schedules-repository-contract";
 
+const scheduleInclude = {
+	healthcareProvider: {
+		select: {
+			id: true,
+			name: true,
+			email: true,
+			phone: true,
+			image: true,
+			role: true,
+		},
+	},
+};
+
 export const prismaHealthcareProviderScheduleRepository: HealthcareProviderScheduleRepository =
 	{
 		async findAll() {
 			const schedules = await prisma.healthcare_provider_schedule.findMany({
-				include: {
-					healthcareProvider: {
-						include: {
-							user: {
-								select: {
-									id: true,
-									name: true,
-									email: true,
-									phone: true,
-									image: true,
-									role: true,
-								},
-							},
-						},
-					},
-				},
+				include: scheduleInclude,
 				orderBy: [
 					{
 						dayOfWeek: "asc",
@@ -42,48 +40,18 @@ export const prismaHealthcareProviderScheduleRepository: HealthcareProviderSched
 		async findById(id: string) {
 			const schedule = await prisma.healthcare_provider_schedule.findUnique({
 				where: { id },
-				include: {
-					healthcareProvider: {
-						include: {
-							user: {
-								select: {
-									id: true,
-									name: true,
-									email: true,
-									phone: true,
-									image: true,
-									role: true,
-								},
-							},
-						},
-					},
-				},
+				include: scheduleInclude,
 			});
 
 			return schedule as ScheduleWithProvider | null;
 		},
 
-		async findByProviderId(healthcareProviderId: string) {
+		async findByHealthcareProviderId(healthcareProviderId: string) {
 			const schedules = await prisma.healthcare_provider_schedule.findMany({
 				where: {
 					healthcareProviderId,
 				},
-				include: {
-					healthcareProvider: {
-						include: {
-							user: {
-								select: {
-									id: true,
-									name: true,
-									email: true,
-									phone: true,
-									image: true,
-									role: true,
-								},
-							},
-						},
-					},
-				},
+				include: scheduleInclude,
 				orderBy: [
 					{
 						dayOfWeek: "asc",
@@ -105,22 +73,7 @@ export const prismaHealthcareProviderScheduleRepository: HealthcareProviderSched
 					startTime: data.startTime,
 					endTime: data.endTime,
 				},
-				include: {
-					healthcareProvider: {
-						include: {
-							user: {
-								select: {
-									id: true,
-									name: true,
-									email: true,
-									phone: true,
-									image: true,
-									role: true,
-								},
-							},
-						},
-					},
-				},
+				include: scheduleInclude,
 			});
 
 			return schedule as ScheduleWithProvider;
@@ -135,22 +88,7 @@ export const prismaHealthcareProviderScheduleRepository: HealthcareProviderSched
 					...(data.endTime !== undefined && { endTime: data.endTime }),
 					...(data.isActive !== undefined && { isActive: data.isActive }),
 				},
-				include: {
-					healthcareProvider: {
-						include: {
-							user: {
-								select: {
-									id: true,
-									name: true,
-									email: true,
-									phone: true,
-									image: true,
-									role: true,
-								},
-							},
-						},
-					},
-				},
+				include: scheduleInclude,
 			});
 
 			return schedule as ScheduleWithProvider;

@@ -30,7 +30,7 @@ export const getPatientProfilesUseCase = {
 		}
 
 		const patientProfiles =
-			await prismaPatientProfileRepository.findByCustomerOwnerId(customer.id);
+			await prismaPatientProfileRepository.findByOwnerUserId(customer.id);
 
 		return { patientProfiles };
 	},

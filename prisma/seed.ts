@@ -20,8 +20,6 @@ async function main() {
 	await prisma.procedure.deleteMany({});
 	await prisma.healthcare_provider_category.deleteMany({});
 	await prisma.category.deleteMany({});
-	await prisma.healthcare_provider.deleteMany({});
-	await prisma.customer.deleteMany({});
 	await prisma.clinic.deleteMany({});
 	await prisma.user.deleteMany({});
 
@@ -117,45 +115,45 @@ async function main() {
 	// Create Healthcare Providers
 	console.log("🩺 Creating healthcare providers...");
 
-	const provider1 = await prisma.healthcare_provider.create({
+	const provider1 = await prisma.user.update({
+		where: { id: owner1.id },
 		data: {
-			userId: owner1.id,
 			specialty: "Clínico Geral",
 			professionalId: "CRM-SP 123456",
 			bio: "Médica com mais de 15 anos de experiência em clínica geral e medicina preventiva.",
 		},
 	});
 
-	const provider2 = await prisma.healthcare_provider.create({
+	const provider2 = await prisma.user.update({
+		where: { id: owner2.id },
 		data: {
-			userId: owner2.id,
 			specialty: "Odontologia",
 			professionalId: "CRO-RJ 45678",
 			bio: "Dentista especializado em estética dental e implantes.",
 		},
 	});
 
-	const provider3 = await prisma.healthcare_provider.create({
+	const provider3 = await prisma.user.update({
+		where: { id: owner3.id },
 		data: {
-			userId: owner3.id,
 			specialty: "Oftalmologia",
 			professionalId: "CRM-SP 789012",
 			bio: "Oftalmologista com especialização em cirurgia refrativa e catarata.",
 		},
 	});
 
-	const provider4 = await prisma.healthcare_provider.create({
+	const provider4 = await prisma.user.update({
+		where: { id: owner4.id },
 		data: {
-			userId: owner4.id,
 			specialty: "Dermatologia",
 			professionalId: "CRM-RJ 345678",
 			bio: "Dermatologista focado em tratamentos estéticos e saúde da pele.",
 		},
 	});
 
-	const provider5 = await prisma.healthcare_provider.create({
+	const provider5 = await prisma.user.update({
+		where: { id: owner5.id },
 		data: {
-			userId: owner5.id,
 			specialty: "Cardiologia",
 			professionalId: "CRM-SP 901234",
 			bio: "Cardiologista com experiência em prevenção e tratamento de doenças cardiovasculares.",
@@ -358,18 +356,18 @@ async function main() {
 	// Create Customers
 	console.log("👤 Creating customers...");
 
-	const customerProfile1 = await prisma.customer.create({
+	const patientProfile1 = await prisma.user.update({
+		where: { id: customer1.id },
 		data: {
-			userId: customer1.id,
 			cpf: "123.456.789-00",
 			dateOfBirth: new Date("1990-05-15"),
 			address: "Rua das Flores, 123 - São Paulo, SP",
 		},
 	});
 
-	const customerProfile2 = await prisma.customer.create({
+	const patientProfile2 = await prisma.user.update({
+		where: { id: customer2.id },
 		data: {
-			userId: customer2.id,
 			cpf: "987.654.321-00",
 			dateOfBirth: new Date("1985-08-22"),
 			address: "Av. Atlântica, 456 - Rio de Janeiro, RJ",
@@ -809,7 +807,7 @@ async function main() {
 	// Appointment 1: SCHEDULED - Future appointment for customer 1 with provider 1
 	const appointment1 = await prisma.appointment.create({
 		data: {
-			customerId: customerProfile1.id,
+			customerId: patientProfile1.id,
 			healthcareProviderId: provider1.id,
 			scheduledAt: new Date("2024-12-20T10:00:00"),
 			status: "SCHEDULED",
@@ -829,7 +827,7 @@ async function main() {
 	// Appointment 2: CONFIRMED - Future appointment for customer 2 with provider 2
 	const appointment2 = await prisma.appointment.create({
 		data: {
-			customerId: customerProfile2.id,
+			customerId: patientProfile2.id,
 			healthcareProviderId: provider2.id,
 			scheduledAt: new Date("2024-12-18T14:00:00"),
 			status: "CONFIRMED",
@@ -845,7 +843,7 @@ async function main() {
 	// Appointment 3: COMPLETED - Past appointment for customer 1 with provider 3
 	await prisma.appointment.create({
 		data: {
-			customerId: customerProfile1.id,
+			customerId: patientProfile1.id,
 			healthcareProviderId: provider3.id,
 			scheduledAt: new Date("2024-11-15T11:00:00"),
 			status: "COMPLETED",
@@ -865,7 +863,7 @@ async function main() {
 	// Appointment 4: COMPLETED - Past appointment for customer 2 with provider 4
 	await prisma.appointment.create({
 		data: {
-			customerId: customerProfile2.id,
+			customerId: patientProfile2.id,
 			healthcareProviderId: provider4.id,
 			scheduledAt: new Date("2024-10-20T09:30:00"),
 			status: "COMPLETED",
@@ -891,7 +889,7 @@ async function main() {
 	// Appointment 5: SCHEDULED - Future appointment for customer 1 with provider 5
 	await prisma.appointment.create({
 		data: {
-			customerId: customerProfile1.id,
+			customerId: patientProfile1.id,
 			healthcareProviderId: provider5.id,
 			scheduledAt: new Date("2024-12-22T08:00:00"),
 			status: "SCHEDULED",
@@ -911,7 +909,7 @@ async function main() {
 	// Appointment 6: CONFIRMED - Future appointment for customer 2 with provider 1
 	await prisma.appointment.create({
 		data: {
-			customerId: customerProfile2.id,
+			customerId: patientProfile2.id,
 			healthcareProviderId: provider1.id,
 			scheduledAt: new Date("2024-12-19T15:00:00"),
 			status: "CONFIRMED",
@@ -927,7 +925,7 @@ async function main() {
 	// Appointment 7: COMPLETED - Past appointment for customer 1 with provider 2
 	await prisma.appointment.create({
 		data: {
-			customerId: customerProfile1.id,
+			customerId: patientProfile1.id,
 			healthcareProviderId: provider2.id,
 			scheduledAt: new Date("2024-09-10T10:00:00"),
 			status: "COMPLETED",
@@ -947,7 +945,7 @@ async function main() {
 	// Appointment 8: SCHEDULED - Future appointment for customer 2 with provider 3
 	await prisma.appointment.create({
 		data: {
-			customerId: customerProfile2.id,
+			customerId: patientProfile2.id,
 			healthcareProviderId: provider3.id,
 			scheduledAt: new Date("2024-12-21T13:00:00"),
 			status: "SCHEDULED",
@@ -968,7 +966,7 @@ async function main() {
 	// Conversation 1: Between customer1 and provider1
 	const conversation1 = await prisma.conversation.create({
 		data: {
-			customerId: customerProfile1.id,
+			customerId: patientProfile1.id,
 			healthcareProviderId: provider1.id,
 			lastMessageAt: new Date("2024-01-15T14:30:00"),
 		},
@@ -977,7 +975,7 @@ async function main() {
 	// Conversation 2: Between customer2 and provider1
 	const conversation2 = await prisma.conversation.create({
 		data: {
-			customerId: customerProfile2.id,
+			customerId: patientProfile2.id,
 			healthcareProviderId: provider1.id,
 			lastMessageAt: new Date("2024-01-16T10:15:00"),
 		},
@@ -1171,8 +1169,8 @@ async function main() {
 	console.log(`  SAMPLE_HC_PROVIDER_ID_5=${provider5.id}`);
 
 	console.log("\nCustomer Profile IDs:");
-	console.log(`  SAMPLE_CUSTOMER_PROFILE_ID_1=${customerProfile1.id}`);
-	console.log(`  SAMPLE_CUSTOMER_PROFILE_ID_2=${customerProfile2.id}`);
+	console.log(`  SAMPLE_CUSTOMER_PROFILE_ID_1=${patientProfile1.id}`);
+	console.log(`  SAMPLE_CUSTOMER_PROFILE_ID_2=${patientProfile2.id}`);
 
 	console.log("\nProcedure IDs (for testing):");
 	console.log(`  SAMPLE_PROCEDURE_ID_1=${procedure1.id} (${procedure1.name})`);

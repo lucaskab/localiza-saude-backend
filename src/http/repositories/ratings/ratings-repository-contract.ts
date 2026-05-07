@@ -1,6 +1,4 @@
 import type {
-	customer,
-	healthcare_provider,
 	rating,
 	user,
 } from "../../../../prisma/generated/prisma/client";
@@ -18,12 +16,8 @@ export type UpdateRatingData = {
 };
 
 export type RatingWithRelations = rating & {
-	customer: customer & {
-		user: user;
-	};
-	healthcareProvider: healthcare_provider & {
-		user: user;
-	};
+	customer: user;
+	healthcareProvider: user;
 };
 
 export type RatingStats = {
@@ -34,11 +28,11 @@ export type RatingStats = {
 export type RatingRepository = {
 	findAll: () => Promise<RatingWithRelations[]>;
 	findById: (id: string) => Promise<RatingWithRelations | null>;
-	findByCustomerId: (customerId: string) => Promise<RatingWithRelations[]>;
+	findByUserId: (customerId: string) => Promise<RatingWithRelations[]>;
 	findByHealthcareProviderId: (
 		healthcareProviderId: string,
 	) => Promise<RatingWithRelations[]>;
-	findByCustomerAndProvider: (
+	findByCustomerAndHealthcareProvider: (
 		customerId: string,
 		healthcareProviderId: string,
 	) => Promise<RatingWithRelations | null>;

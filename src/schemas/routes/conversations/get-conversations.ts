@@ -13,11 +13,6 @@ export const conversationParticipantUserSchema = z.object({
 	image: z.string().nullable(),
 });
 
-export const conversationParticipantSchema = z.object({
-	id: z.string(),
-	user: conversationParticipantUserSchema,
-});
-
 export const conversationWithParticipantsSchema = z.object({
 	id: z.string(),
 	customerId: z.string(),
@@ -25,8 +20,8 @@ export const conversationWithParticipantsSchema = z.object({
 	lastMessageAt: z.date().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
-	customer: conversationParticipantSchema,
-	healthcareProvider: conversationParticipantSchema,
+	customer: conversationParticipantUserSchema,
+	healthcareProvider: conversationParticipantUserSchema,
 	lastMessage: z
 		.object({
 			id: z.string(),

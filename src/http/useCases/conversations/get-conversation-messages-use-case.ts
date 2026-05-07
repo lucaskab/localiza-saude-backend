@@ -37,8 +37,8 @@ export const getConversationMessagesUseCase = {
 		}
 
 		const canAccessConversation =
-			conversation.customer.user.id === currentUserId ||
-			conversation.healthcareProvider.user.id === currentUserId;
+			conversation.customer.id === currentUserId ||
+			conversation.healthcareProvider.id === currentUserId;
 
 		if (!canAccessConversation) {
 			throw new UnauthorizedError();
