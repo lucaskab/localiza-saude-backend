@@ -5606,6 +5606,11 @@ export namespace Prisma {
     healthcareProviderId: string | null
     scheduledAt: Date | null
     status: $Enums.AppointmentStatus | null
+    serviceModality: string | null
+    onlineMeetingUrl: string | null
+    onlineMeetingProvider: string | null
+    onlineMeetingExternalId: string | null
+    onlineMeetingCreatedAt: Date | null
     totalDurationMinutes: number | null
     totalPriceCents: number | null
     notes: string | null
@@ -5620,6 +5625,11 @@ export namespace Prisma {
     healthcareProviderId: string | null
     scheduledAt: Date | null
     status: $Enums.AppointmentStatus | null
+    serviceModality: string | null
+    onlineMeetingUrl: string | null
+    onlineMeetingProvider: string | null
+    onlineMeetingExternalId: string | null
+    onlineMeetingCreatedAt: Date | null
     totalDurationMinutes: number | null
     totalPriceCents: number | null
     notes: string | null
@@ -5634,6 +5644,11 @@ export namespace Prisma {
     healthcareProviderId: number
     scheduledAt: number
     status: number
+    serviceModality: number
+    onlineMeetingUrl: number
+    onlineMeetingProvider: number
+    onlineMeetingExternalId: number
+    onlineMeetingCreatedAt: number
     totalDurationMinutes: number
     totalPriceCents: number
     notes: number
@@ -5660,6 +5675,11 @@ export namespace Prisma {
     healthcareProviderId?: true
     scheduledAt?: true
     status?: true
+    serviceModality?: true
+    onlineMeetingUrl?: true
+    onlineMeetingProvider?: true
+    onlineMeetingExternalId?: true
+    onlineMeetingCreatedAt?: true
     totalDurationMinutes?: true
     totalPriceCents?: true
     notes?: true
@@ -5674,6 +5694,11 @@ export namespace Prisma {
     healthcareProviderId?: true
     scheduledAt?: true
     status?: true
+    serviceModality?: true
+    onlineMeetingUrl?: true
+    onlineMeetingProvider?: true
+    onlineMeetingExternalId?: true
+    onlineMeetingCreatedAt?: true
     totalDurationMinutes?: true
     totalPriceCents?: true
     notes?: true
@@ -5688,6 +5713,11 @@ export namespace Prisma {
     healthcareProviderId?: true
     scheduledAt?: true
     status?: true
+    serviceModality?: true
+    onlineMeetingUrl?: true
+    onlineMeetingProvider?: true
+    onlineMeetingExternalId?: true
+    onlineMeetingCreatedAt?: true
     totalDurationMinutes?: true
     totalPriceCents?: true
     notes?: true
@@ -5789,6 +5819,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date
     status: $Enums.AppointmentStatus
+    serviceModality: string
+    onlineMeetingUrl: string | null
+    onlineMeetingProvider: string | null
+    onlineMeetingExternalId: string | null
+    onlineMeetingCreatedAt: Date | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes: string | null
@@ -5822,6 +5857,11 @@ export namespace Prisma {
     healthcareProviderId?: boolean
     scheduledAt?: boolean
     status?: boolean
+    serviceModality?: boolean
+    onlineMeetingUrl?: boolean
+    onlineMeetingProvider?: boolean
+    onlineMeetingExternalId?: boolean
+    onlineMeetingCreatedAt?: boolean
     totalDurationMinutes?: boolean
     totalPriceCents?: boolean
     notes?: boolean
@@ -5843,6 +5883,11 @@ export namespace Prisma {
     healthcareProviderId?: boolean
     scheduledAt?: boolean
     status?: boolean
+    serviceModality?: boolean
+    onlineMeetingUrl?: boolean
+    onlineMeetingProvider?: boolean
+    onlineMeetingExternalId?: boolean
+    onlineMeetingCreatedAt?: boolean
     totalDurationMinutes?: boolean
     totalPriceCents?: boolean
     notes?: boolean
@@ -5860,6 +5905,11 @@ export namespace Prisma {
     healthcareProviderId?: boolean
     scheduledAt?: boolean
     status?: boolean
+    serviceModality?: boolean
+    onlineMeetingUrl?: boolean
+    onlineMeetingProvider?: boolean
+    onlineMeetingExternalId?: boolean
+    onlineMeetingCreatedAt?: boolean
     totalDurationMinutes?: boolean
     totalPriceCents?: boolean
     notes?: boolean
@@ -5877,6 +5927,11 @@ export namespace Prisma {
     healthcareProviderId?: boolean
     scheduledAt?: boolean
     status?: boolean
+    serviceModality?: boolean
+    onlineMeetingUrl?: boolean
+    onlineMeetingProvider?: boolean
+    onlineMeetingExternalId?: boolean
+    onlineMeetingCreatedAt?: boolean
     totalDurationMinutes?: boolean
     totalPriceCents?: boolean
     notes?: boolean
@@ -5884,7 +5939,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type appointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "patientProfileId" | "healthcareProviderId" | "scheduledAt" | "status" | "totalDurationMinutes" | "totalPriceCents" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment"]>
+  export type appointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "patientProfileId" | "healthcareProviderId" | "scheduledAt" | "status" | "serviceModality" | "onlineMeetingUrl" | "onlineMeetingProvider" | "onlineMeetingExternalId" | "onlineMeetingCreatedAt" | "totalDurationMinutes" | "totalPriceCents" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment"]>
   export type appointmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | appointment$customerArgs<ExtArgs>
     patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
@@ -5922,6 +5977,11 @@ export namespace Prisma {
       healthcareProviderId: string
       scheduledAt: Date
       status: $Enums.AppointmentStatus
+      serviceModality: string
+      onlineMeetingUrl: string | null
+      onlineMeetingProvider: string | null
+      onlineMeetingExternalId: string | null
+      onlineMeetingCreatedAt: Date | null
       totalDurationMinutes: number
       totalPriceCents: number
       notes: string | null
@@ -6362,6 +6422,11 @@ export namespace Prisma {
     readonly healthcareProviderId: FieldRef<"appointment", 'String'>
     readonly scheduledAt: FieldRef<"appointment", 'DateTime'>
     readonly status: FieldRef<"appointment", 'AppointmentStatus'>
+    readonly serviceModality: FieldRef<"appointment", 'String'>
+    readonly onlineMeetingUrl: FieldRef<"appointment", 'String'>
+    readonly onlineMeetingProvider: FieldRef<"appointment", 'String'>
+    readonly onlineMeetingExternalId: FieldRef<"appointment", 'String'>
+    readonly onlineMeetingCreatedAt: FieldRef<"appointment", 'DateTime'>
     readonly totalDurationMinutes: FieldRef<"appointment", 'Int'>
     readonly totalPriceCents: FieldRef<"appointment", 'Int'>
     readonly notes: FieldRef<"appointment", 'String'>
@@ -29728,6 +29793,11 @@ export namespace Prisma {
     healthcareProviderId: 'healthcareProviderId',
     scheduledAt: 'scheduledAt',
     status: 'status',
+    serviceModality: 'serviceModality',
+    onlineMeetingUrl: 'onlineMeetingUrl',
+    onlineMeetingProvider: 'onlineMeetingProvider',
+    onlineMeetingExternalId: 'onlineMeetingExternalId',
+    onlineMeetingCreatedAt: 'onlineMeetingCreatedAt',
     totalDurationMinutes: 'totalDurationMinutes',
     totalPriceCents: 'totalPriceCents',
     notes: 'notes',
@@ -30455,6 +30525,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFilter<"appointment"> | string
     scheduledAt?: DateTimeFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
+    serviceModality?: StringFilter<"appointment"> | string
+    onlineMeetingUrl?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingProvider?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingExternalId?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingCreatedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
     totalDurationMinutes?: IntFilter<"appointment"> | number
     totalPriceCents?: IntFilter<"appointment"> | number
     notes?: StringNullableFilter<"appointment"> | string | null
@@ -30475,6 +30550,11 @@ export namespace Prisma {
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
+    serviceModality?: SortOrder
+    onlineMeetingUrl?: SortOrderInput | SortOrder
+    onlineMeetingProvider?: SortOrderInput | SortOrder
+    onlineMeetingExternalId?: SortOrderInput | SortOrder
+    onlineMeetingCreatedAt?: SortOrderInput | SortOrder
     totalDurationMinutes?: SortOrder
     totalPriceCents?: SortOrder
     notes?: SortOrderInput | SortOrder
@@ -30498,6 +30578,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFilter<"appointment"> | string
     scheduledAt?: DateTimeFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
+    serviceModality?: StringFilter<"appointment"> | string
+    onlineMeetingUrl?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingProvider?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingExternalId?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingCreatedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
     totalDurationMinutes?: IntFilter<"appointment"> | number
     totalPriceCents?: IntFilter<"appointment"> | number
     notes?: StringNullableFilter<"appointment"> | string | null
@@ -30518,6 +30603,11 @@ export namespace Prisma {
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
+    serviceModality?: SortOrder
+    onlineMeetingUrl?: SortOrderInput | SortOrder
+    onlineMeetingProvider?: SortOrderInput | SortOrder
+    onlineMeetingExternalId?: SortOrderInput | SortOrder
+    onlineMeetingCreatedAt?: SortOrderInput | SortOrder
     totalDurationMinutes?: SortOrder
     totalPriceCents?: SortOrder
     notes?: SortOrderInput | SortOrder
@@ -30540,6 +30630,11 @@ export namespace Prisma {
     healthcareProviderId?: StringWithAggregatesFilter<"appointment"> | string
     scheduledAt?: DateTimeWithAggregatesFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusWithAggregatesFilter<"appointment"> | $Enums.AppointmentStatus
+    serviceModality?: StringWithAggregatesFilter<"appointment"> | string
+    onlineMeetingUrl?: StringNullableWithAggregatesFilter<"appointment"> | string | null
+    onlineMeetingProvider?: StringNullableWithAggregatesFilter<"appointment"> | string | null
+    onlineMeetingExternalId?: StringNullableWithAggregatesFilter<"appointment"> | string | null
+    onlineMeetingCreatedAt?: DateTimeNullableWithAggregatesFilter<"appointment"> | Date | string | null
     totalDurationMinutes?: IntWithAggregatesFilter<"appointment"> | number
     totalPriceCents?: IntWithAggregatesFilter<"appointment"> | number
     notes?: StringNullableWithAggregatesFilter<"appointment"> | string | null
@@ -32451,6 +32546,11 @@ export namespace Prisma {
     id?: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -32471,6 +32571,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -32485,6 +32590,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32505,6 +32615,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32522,6 +32637,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -32533,6 +32653,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -32547,6 +32672,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34785,6 +34915,11 @@ export namespace Prisma {
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
+    serviceModality?: SortOrder
+    onlineMeetingUrl?: SortOrder
+    onlineMeetingProvider?: SortOrder
+    onlineMeetingExternalId?: SortOrder
+    onlineMeetingCreatedAt?: SortOrder
     totalDurationMinutes?: SortOrder
     totalPriceCents?: SortOrder
     notes?: SortOrder
@@ -34804,6 +34939,11 @@ export namespace Prisma {
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
+    serviceModality?: SortOrder
+    onlineMeetingUrl?: SortOrder
+    onlineMeetingProvider?: SortOrder
+    onlineMeetingExternalId?: SortOrder
+    onlineMeetingCreatedAt?: SortOrder
     totalDurationMinutes?: SortOrder
     totalPriceCents?: SortOrder
     notes?: SortOrder
@@ -34818,6 +34958,11 @@ export namespace Prisma {
     healthcareProviderId?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
+    serviceModality?: SortOrder
+    onlineMeetingUrl?: SortOrder
+    onlineMeetingProvider?: SortOrder
+    onlineMeetingExternalId?: SortOrder
+    onlineMeetingCreatedAt?: SortOrder
     totalDurationMinutes?: SortOrder
     totalPriceCents?: SortOrder
     notes?: SortOrder
@@ -38751,6 +38896,11 @@ export namespace Prisma {
     id?: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -38770,6 +38920,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -38826,6 +38981,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -38845,6 +39005,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43236,6 +43401,11 @@ export namespace Prisma {
     id?: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -43255,6 +43425,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -43474,6 +43649,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43493,6 +43673,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44293,6 +44478,11 @@ export namespace Prisma {
     id?: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -44312,6 +44502,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -44502,6 +44697,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44521,6 +44721,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44844,6 +45049,11 @@ export namespace Prisma {
     id?: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -44862,6 +45072,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -45230,6 +45445,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFilter<"appointment"> | string
     scheduledAt?: DateTimeFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
+    serviceModality?: StringFilter<"appointment"> | string
+    onlineMeetingUrl?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingProvider?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingExternalId?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingCreatedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
     totalDurationMinutes?: IntFilter<"appointment"> | number
     totalPriceCents?: IntFilter<"appointment"> | number
     notes?: StringNullableFilter<"appointment"> | string | null
@@ -47000,6 +47220,11 @@ export namespace Prisma {
     id?: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -47018,6 +47243,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -47042,6 +47272,11 @@ export namespace Prisma {
     id?: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -47060,6 +47295,11 @@ export namespace Prisma {
     patientProfileId?: string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -48714,6 +48954,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -48725,6 +48970,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48743,6 +48993,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48759,6 +49014,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48834,6 +49094,11 @@ export namespace Prisma {
     healthcareProviderId: string
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -48847,6 +49112,11 @@ export namespace Prisma {
     patientProfileId?: string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
     totalDurationMinutes: number
     totalPriceCents: number
     notes?: string | null
@@ -49207,6 +49477,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49225,6 +49500,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49241,6 +49521,11 @@ export namespace Prisma {
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49252,6 +49537,11 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49270,6 +49560,11 @@ export namespace Prisma {
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49286,6 +49581,11 @@ export namespace Prisma {
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null

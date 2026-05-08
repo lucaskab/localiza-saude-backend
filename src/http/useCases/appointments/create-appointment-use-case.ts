@@ -9,8 +9,10 @@ import { prismaPatientProfileRepository } from "@/http/repositories/patient-prof
 import { prismaProcedureRepository } from "@/http/repositories/procedures/procedures-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
+import { googleMeetService } from "@/http/services/google-meet-service";
 import { sendAppointmentEventNotificationUseCase } from "@/http/useCases/notifications/send-appointment-event-notification-use-case";
 import type { CreateAppointmentBodySchema } from "@/schemas/routes/appointments/create-appointment";
+import { isServiceModality } from "@/schemas/service-modalities";
 import type {
 	patient_profile,
 	user,
@@ -179,6 +181,24 @@ export const createAppointmentUseCase = {
 			throw new BadRequestError("Healthcare provider not found");
 		}
 
+		const availableServiceModalities =
+			healthcareProvider.serviceModalities.filter(isServiceModality);
+		const serviceModality =
+			data.serviceModality ??
+			(isProviderActor ? availableServiceModalities[0] : undefined);
+
+		if (!serviceModality) {
+			throw new BadRequestError(
+				"Healthcare provider has not configured appointment modalities",
+			);
+		}
+
+		if (!availableServiceModalities.includes(serviceModality)) {
+			throw new BadRequestError(
+				"Selected appointment modality is not offered by this provider",
+			);
+		}
+
 		const providerProcedures =
 			await prismaProcedureRepository.findByHealthcareProviderId(
 				healthcareProvider.id,
@@ -255,13 +275,23 @@ export const createAppointmentUseCase = {
 			healthcareProviderId: healthcareProvider.id,
 			scheduledAt: data.scheduledAt,
 			procedureIds: data.procedureIds,
+			serviceModality,
 			notes: data.notes,
 			status: isProviderActor ? "CONFIRMED" : "SCHEDULED",
 		};
 
-		const appointment = await prismaAppointmentRepository.create(
+		let appointment = await prismaAppointmentRepository.create(
 			appointmentData,
 		);
+
+		if (appointment.status === "CONFIRMED") {
+			appointment = await googleMeetService
+				.ensureOnlineMeeting(appointment)
+				.catch((error) => {
+					console.error("Failed to create Google Meet link:", error);
+					return appointment;
+				});
+		}
 
 		if (isProviderActor) {
 			await sendAppointmentEventNotificationUseCase

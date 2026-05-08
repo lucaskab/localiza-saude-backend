@@ -7,7 +7,7 @@ import {
 	validatorCompiler,
 	type ZodTypeProvider,
 } from "fastify-type-provider-zod";
-import { auth } from "@/auth";
+import { GOOGLE_CALENDAR_SCOPES, auth } from "@/auth";
 import { prisma } from "@/database/prisma";
 import { env } from "@/env";
 import { errorHandler } from "@/http/error-handler";
@@ -114,6 +114,7 @@ fastify.get("/auth/google", async (request, reply) => {
 				body: JSON.stringify({
 					provider: "google",
 					callbackURL: callbackURL.toString(),
+					scopes: [...GOOGLE_CALENDAR_SCOPES],
 				}),
 			}),
 		);

@@ -20,6 +20,10 @@ const webOrigins = [
 	"https://localiza-saude-web.onrender.com",
 ];
 
+export const GOOGLE_CALENDAR_SCOPES = [
+	"https://www.googleapis.com/auth/calendar.events",
+] as const;
+
 export const auth = betterAuth({
 	baseURL: env.BETTER_AUTH_URL,
 	basePath: "/api/auth",
@@ -97,6 +101,9 @@ export const auth = betterAuth({
 		google: {
 			clientId: env.GOOGLE_CLIENT_ID,
 			clientSecret: env.GOOGLE_CLIENT_SECRET,
+			accessType: "offline",
+			prompt: "select_account consent",
+			scope: [...GOOGLE_CALENDAR_SCOPES],
 		},
 		apple: {
 			clientId: env.APPLE_CLIENT_ID ?? appleBundleIdentifiers[0] ?? "",

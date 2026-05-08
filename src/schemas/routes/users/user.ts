@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { procedureSchema } from "../procedures/get-procedures";
 
 export const userRoleSchema = z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER"]);
@@ -60,7 +61,7 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	certifications: z.string().nullable().optional(),
 	yearsOfExperience: z.number().int().nullable().optional(),
 	targetAudiences: z.array(z.string()).optional(),
-	serviceModalities: z.array(z.string()).optional(),
+	serviceModalities: z.array(serviceModalitySchema).optional(),
 	clinicAddress: z.string().nullable().optional(),
 	homeCareRadiusKm: z.number().int().nullable().optional(),
 	acceptedInsurance: z.array(z.string()).optional(),

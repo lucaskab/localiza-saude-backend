@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { patientProfileBodySchema } from "@/schemas/routes/patient-profiles/patient-profile";
+import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { appointmentSchema } from "./get-appointments";
 
 export const appointmentPatientSchema = z
@@ -22,6 +23,7 @@ export const createAppointmentBodySchema = z.object({
 	healthcareProviderId: z.cuid().optional(),
 	scheduledAt: z.string().datetime().transform((val) => new Date(val)),
 	procedureIds: z.array(z.cuid()).min(1),
+	serviceModality: serviceModalitySchema.optional(),
 	notes: z.string().nullable().optional(),
 	customer: appointmentPatientSchema,
 });

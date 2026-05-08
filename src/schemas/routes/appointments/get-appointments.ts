@@ -3,6 +3,7 @@ import {
 	customerUserSchema,
 	healthcareProviderUserSchema,
 } from "../users/user";
+import { serviceModalitySchema } from "@/schemas/service-modalities";
 
 export const appointmentStatusSchema = z.enum([
 	"SCHEDULED",
@@ -69,6 +70,11 @@ export const appointmentSchema = z.object({
 	healthcareProvider: healthcareProviderUserSchema,
 	scheduledAt: z.date(),
 	status: appointmentStatusSchema,
+	serviceModality: serviceModalitySchema,
+	onlineMeetingUrl: z.string().nullable(),
+	onlineMeetingProvider: z.string().nullable(),
+	onlineMeetingExternalId: z.string().nullable(),
+	onlineMeetingCreatedAt: z.date().nullable(),
 	totalDurationMinutes: z.number().int(),
 	totalPriceCents: z.number().int(),
 	notes: z.string().nullable(),

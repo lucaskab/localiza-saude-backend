@@ -5,6 +5,7 @@ import type {
 	patient_profile,
 	procedure,
 } from "../../../../prisma/generated/prisma/client";
+import type { ServiceModality } from "@/schemas/service-modalities";
 
 export type CreateAppointmentData = {
 	customerId?: string | null;
@@ -13,6 +14,7 @@ export type CreateAppointmentData = {
 	scheduledAt: Date;
 	status?: AppointmentStatus;
 	procedureIds: string[];
+	serviceModality: ServiceModality;
 	notes?: string | null;
 };
 
@@ -20,6 +22,10 @@ export type UpdateAppointmentData = {
 	scheduledAt?: Date;
 	status?: AppointmentStatus;
 	notes?: string | null;
+	onlineMeetingUrl?: string | null;
+	onlineMeetingProvider?: string | null;
+	onlineMeetingExternalId?: string | null;
+	onlineMeetingCreatedAt?: Date | null;
 };
 
 export type AppointmentProcedure = {

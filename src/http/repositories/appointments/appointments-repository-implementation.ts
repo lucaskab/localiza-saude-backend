@@ -262,6 +262,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 				patientProfileId: data.patientProfileId,
 				healthcareProviderId: data.healthcareProviderId,
 				scheduledAt: data.scheduledAt,
+				serviceModality: data.serviceModality,
 				notes: data.notes,
 				totalDurationMinutes,
 				totalPriceCents,
@@ -287,6 +288,18 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 				}),
 				...(data.status !== undefined && { status: data.status }),
 				...(data.notes !== undefined && { notes: data.notes }),
+				...(data.onlineMeetingUrl !== undefined && {
+					onlineMeetingUrl: data.onlineMeetingUrl,
+				}),
+				...(data.onlineMeetingProvider !== undefined && {
+					onlineMeetingProvider: data.onlineMeetingProvider,
+				}),
+				...(data.onlineMeetingExternalId !== undefined && {
+					onlineMeetingExternalId: data.onlineMeetingExternalId,
+				}),
+				...(data.onlineMeetingCreatedAt !== undefined && {
+					onlineMeetingCreatedAt: data.onlineMeetingCreatedAt,
+				}),
 			},
 			include: includeRelations,
 		});

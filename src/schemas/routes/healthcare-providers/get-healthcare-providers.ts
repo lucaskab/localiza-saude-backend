@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { healthcareProviderUserSchema } from "../users/user";
 import { procedureSchema } from "../procedures/get-procedures";
 
@@ -9,7 +10,7 @@ const booleanQuerySchema = z
 export const getHealthcareProvidersQuerySchema = z.object({
 	search: z.string().trim().optional(),
 	specialty: z.string().trim().optional(),
-	serviceModality: z.string().trim().optional(),
+	serviceModality: serviceModalitySchema.optional(),
 	language: z.string().trim().optional(),
 	insurance: z.string().trim().optional(),
 	verified: booleanQuerySchema.optional(),

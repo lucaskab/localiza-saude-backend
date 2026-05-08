@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { healthcareProviderSchema } from "./get-healthcare-providers";
 
 const professionalFaqInputSchema = z.object({
@@ -27,7 +28,7 @@ export const updateHealthcareProviderBodySchema = z.object({
 	certifications: z.string().trim().nullable().optional(),
 	yearsOfExperience: z.number().int().min(0).nullable().optional(),
 	targetAudiences: z.array(z.string().trim().min(1)).optional(),
-	serviceModalities: z.array(z.string().trim().min(1)).optional(),
+	serviceModalities: z.array(serviceModalitySchema).optional(),
 	clinicAddress: z.string().trim().nullable().optional(),
 	homeCareRadiusKm: z.number().int().min(0).nullable().optional(),
 	acceptedInsurance: z.array(z.string().trim().min(1)).optional(),

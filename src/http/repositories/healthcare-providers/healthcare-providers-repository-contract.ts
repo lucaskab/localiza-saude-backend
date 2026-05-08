@@ -3,6 +3,7 @@ import type {
 	procedure,
 	user,
 } from "../../../../prisma/generated/prisma/client";
+import type { ServiceModality } from "@/schemas/service-modalities";
 
 export type HealthcareProviderFaqData = {
 	question: string;
@@ -35,7 +36,7 @@ export type CreateHealthcareProviderData = {
 	certifications?: string | null;
 	yearsOfExperience?: number | null;
 	targetAudiences?: string[];
-	serviceModalities?: string[];
+	serviceModalities?: ServiceModality[];
 	clinicAddress?: string | null;
 	homeCareRadiusKm?: number | null;
 	acceptedInsurance?: string[];
@@ -73,7 +74,7 @@ export type UpdateHealthcareProviderData = {
 	certifications?: string | null;
 	yearsOfExperience?: number | null;
 	targetAudiences?: string[];
-	serviceModalities?: string[];
+	serviceModalities?: ServiceModality[];
 	clinicAddress?: string | null;
 	homeCareRadiusKm?: number | null;
 	acceptedInsurance?: string[];
@@ -94,7 +95,7 @@ export type HealthcareProviderWithRelations = user & {
 export type FindAllHealthcareProviderFilters = {
 	search?: string;
 	specialty?: string;
-	serviceModality?: string;
+	serviceModality?: ServiceModality;
 	language?: string;
 	insurance?: string;
 	verified?: boolean;
