@@ -124,6 +124,16 @@ export type support_request = $Result.DefaultSelection<Prisma.$support_requestPa
  */
 export type user = $Result.DefaultSelection<Prisma.$userPayload>
 /**
+ * Model provider_verification_review
+ * 
+ */
+export type provider_verification_review = $Result.DefaultSelection<Prisma.$provider_verification_reviewPayload>
+/**
+ * Model provider_verification_document_access_log
+ * 
+ */
+export type provider_verification_document_access_log = $Result.DefaultSelection<Prisma.$provider_verification_document_access_logPayload>
+/**
  * Model verification
  * 
  */
@@ -235,10 +245,19 @@ export type SupportRequestStatus = (typeof SupportRequestStatus)[keyof typeof Su
 
 export const UserRole: {
   HEALTHCARE_PROVIDER: 'HEALTHCARE_PROVIDER',
-  CUSTOMER: 'CUSTOMER'
+  CUSTOMER: 'CUSTOMER',
+  ADMIN: 'ADMIN'
 };
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
+export const ProviderVerificationReviewStatus: {
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type ProviderVerificationReviewStatus = (typeof ProviderVerificationReviewStatus)[keyof typeof ProviderVerificationReviewStatus]
 
 }
 
@@ -285,6 +304,10 @@ export const SupportRequestStatus: typeof $Enums.SupportRequestStatus
 export type UserRole = $Enums.UserRole
 
 export const UserRole: typeof $Enums.UserRole
+
+export type ProviderVerificationReviewStatus = $Enums.ProviderVerificationReviewStatus
+
+export const ProviderVerificationReviewStatus: typeof $Enums.ProviderVerificationReviewStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -626,6 +649,26 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.userDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.provider_verification_review`: Exposes CRUD operations for the **provider_verification_review** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Provider_verification_reviews
+    * const provider_verification_reviews = await prisma.provider_verification_review.findMany()
+    * ```
+    */
+  get provider_verification_review(): Prisma.provider_verification_reviewDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.provider_verification_document_access_log`: Exposes CRUD operations for the **provider_verification_document_access_log** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Provider_verification_document_access_logs
+    * const provider_verification_document_access_logs = await prisma.provider_verification_document_access_log.findMany()
+    * ```
+    */
+  get provider_verification_document_access_log(): Prisma.provider_verification_document_access_logDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.verification`: Exposes CRUD operations for the **verification** model.
@@ -1092,6 +1135,8 @@ export namespace Prisma {
     session: 'session',
     support_request: 'support_request',
     user: 'user',
+    provider_verification_review: 'provider_verification_review',
+    provider_verification_document_access_log: 'provider_verification_document_access_log',
     verification: 'verification'
   };
 
@@ -1108,7 +1153,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "category" | "healthcare_provider_category" | "clinic" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "rating" | "session" | "support_request" | "user" | "verification"
+      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "category" | "healthcare_provider_category" | "clinic" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "rating" | "session" | "support_request" | "user" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2740,6 +2785,154 @@ export namespace Prisma {
           }
         }
       }
+      provider_verification_review: {
+        payload: Prisma.$provider_verification_reviewPayload<ExtArgs>
+        fields: Prisma.provider_verification_reviewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.provider_verification_reviewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.provider_verification_reviewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload>
+          }
+          findFirst: {
+            args: Prisma.provider_verification_reviewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.provider_verification_reviewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload>
+          }
+          findMany: {
+            args: Prisma.provider_verification_reviewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload>[]
+          }
+          create: {
+            args: Prisma.provider_verification_reviewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload>
+          }
+          createMany: {
+            args: Prisma.provider_verification_reviewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.provider_verification_reviewCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload>[]
+          }
+          delete: {
+            args: Prisma.provider_verification_reviewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload>
+          }
+          update: {
+            args: Prisma.provider_verification_reviewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload>
+          }
+          deleteMany: {
+            args: Prisma.provider_verification_reviewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.provider_verification_reviewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.provider_verification_reviewUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload>[]
+          }
+          upsert: {
+            args: Prisma.provider_verification_reviewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_reviewPayload>
+          }
+          aggregate: {
+            args: Prisma.Provider_verification_reviewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProvider_verification_review>
+          }
+          groupBy: {
+            args: Prisma.provider_verification_reviewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Provider_verification_reviewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.provider_verification_reviewCountArgs<ExtArgs>
+            result: $Utils.Optional<Provider_verification_reviewCountAggregateOutputType> | number
+          }
+        }
+      }
+      provider_verification_document_access_log: {
+        payload: Prisma.$provider_verification_document_access_logPayload<ExtArgs>
+        fields: Prisma.provider_verification_document_access_logFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.provider_verification_document_access_logFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.provider_verification_document_access_logFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload>
+          }
+          findFirst: {
+            args: Prisma.provider_verification_document_access_logFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.provider_verification_document_access_logFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload>
+          }
+          findMany: {
+            args: Prisma.provider_verification_document_access_logFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload>[]
+          }
+          create: {
+            args: Prisma.provider_verification_document_access_logCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload>
+          }
+          createMany: {
+            args: Prisma.provider_verification_document_access_logCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.provider_verification_document_access_logCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload>[]
+          }
+          delete: {
+            args: Prisma.provider_verification_document_access_logDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload>
+          }
+          update: {
+            args: Prisma.provider_verification_document_access_logUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload>
+          }
+          deleteMany: {
+            args: Prisma.provider_verification_document_access_logDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.provider_verification_document_access_logUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.provider_verification_document_access_logUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload>[]
+          }
+          upsert: {
+            args: Prisma.provider_verification_document_access_logUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$provider_verification_document_access_logPayload>
+          }
+          aggregate: {
+            args: Prisma.Provider_verification_document_access_logAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProvider_verification_document_access_log>
+          }
+          groupBy: {
+            args: Prisma.provider_verification_document_access_logGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Provider_verification_document_access_logGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.provider_verification_document_access_logCountArgs<ExtArgs>
+            result: $Utils.Optional<Provider_verification_document_access_logCountAggregateOutputType> | number
+          }
+        }
+      }
       verification: {
         payload: Prisma.$verificationPayload<ExtArgs>
         fields: Prisma.verificationFieldRefs
@@ -2944,6 +3137,8 @@ export namespace Prisma {
     session?: sessionOmit
     support_request?: support_requestOmit
     user?: userOmit
+    provider_verification_review?: provider_verification_reviewOmit
+    provider_verification_document_access_log?: provider_verification_document_access_logOmit
     verification?: verificationOmit
   }
 
@@ -3262,6 +3457,11 @@ export namespace Prisma {
     notificationDeliveries: number
     supportRequests: number
     appointmentRescheduleRequests: number
+    verifiedProviders: number
+    providerVerificationReviews: number
+    adminProviderVerificationReviews: number
+    providerVerificationDocumentAccessLogs: number
+    adminProviderVerificationDocumentAccessLogs: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3289,6 +3489,11 @@ export namespace Prisma {
     notificationDeliveries?: boolean | UserCountOutputTypeCountNotificationDeliveriesArgs
     supportRequests?: boolean | UserCountOutputTypeCountSupportRequestsArgs
     appointmentRescheduleRequests?: boolean | UserCountOutputTypeCountAppointmentRescheduleRequestsArgs
+    verifiedProviders?: boolean | UserCountOutputTypeCountVerifiedProvidersArgs
+    providerVerificationReviews?: boolean | UserCountOutputTypeCountProviderVerificationReviewsArgs
+    adminProviderVerificationReviews?: boolean | UserCountOutputTypeCountAdminProviderVerificationReviewsArgs
+    providerVerificationDocumentAccessLogs?: boolean | UserCountOutputTypeCountProviderVerificationDocumentAccessLogsArgs
+    adminProviderVerificationDocumentAccessLogs?: boolean | UserCountOutputTypeCountAdminProviderVerificationDocumentAccessLogsArgs
   }
 
   // Custom InputTypes
@@ -3468,6 +3673,41 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAppointmentRescheduleRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: appointment_reschedule_requestWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountVerifiedProvidersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: userWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProviderVerificationReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: provider_verification_reviewWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAdminProviderVerificationReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: provider_verification_reviewWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProviderVerificationDocumentAccessLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: provider_verification_document_access_logWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAdminProviderVerificationDocumentAccessLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: provider_verification_document_access_logWhereInput
   }
 
 
@@ -27754,7 +27994,9 @@ export namespace Prisma {
     licenseDocumentSha256: string | null
     licenseDocumentUploadedAt: Date | null
     verificationStatus: string | null
+    verificationRejectionReason: string | null
     verifiedAt: Date | null
+    verifiedByUserId: string | null
     bio: string | null
     approach: string | null
     education: string | null
@@ -27800,7 +28042,9 @@ export namespace Prisma {
     licenseDocumentSha256: string | null
     licenseDocumentUploadedAt: Date | null
     verificationStatus: string | null
+    verificationRejectionReason: string | null
     verifiedAt: Date | null
+    verifiedByUserId: string | null
     bio: string | null
     approach: string | null
     education: string | null
@@ -27847,7 +28091,9 @@ export namespace Prisma {
     licenseDocumentSha256: number
     licenseDocumentUploadedAt: number
     verificationStatus: number
+    verificationRejectionReason: number
     verifiedAt: number
+    verifiedByUserId: number
     bio: number
     approach: number
     education: number
@@ -27912,7 +28158,9 @@ export namespace Prisma {
     licenseDocumentSha256?: true
     licenseDocumentUploadedAt?: true
     verificationStatus?: true
+    verificationRejectionReason?: true
     verifiedAt?: true
+    verifiedByUserId?: true
     bio?: true
     approach?: true
     education?: true
@@ -27958,7 +28206,9 @@ export namespace Prisma {
     licenseDocumentSha256?: true
     licenseDocumentUploadedAt?: true
     verificationStatus?: true
+    verificationRejectionReason?: true
     verifiedAt?: true
+    verifiedByUserId?: true
     bio?: true
     approach?: true
     education?: true
@@ -28005,7 +28255,9 @@ export namespace Prisma {
     licenseDocumentSha256?: true
     licenseDocumentUploadedAt?: true
     verificationStatus?: true
+    verificationRejectionReason?: true
     verifiedAt?: true
+    verifiedByUserId?: true
     bio?: true
     approach?: true
     education?: true
@@ -28144,7 +28396,9 @@ export namespace Prisma {
     licenseDocumentSha256: string | null
     licenseDocumentUploadedAt: Date | null
     verificationStatus: string
+    verificationRejectionReason: string | null
     verifiedAt: Date | null
+    verifiedByUserId: string | null
     bio: string | null
     approach: string | null
     education: string | null
@@ -28215,7 +28469,9 @@ export namespace Prisma {
     licenseDocumentSha256?: boolean
     licenseDocumentUploadedAt?: boolean
     verificationStatus?: boolean
+    verificationRejectionReason?: boolean
     verifiedAt?: boolean
+    verifiedByUserId?: boolean
     bio?: boolean
     approach?: boolean
     education?: boolean
@@ -28234,6 +28490,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
     sessions?: boolean | user$sessionsArgs<ExtArgs>
     accounts?: boolean | user$accountsArgs<ExtArgs>
     ownedClinics?: boolean | user$ownedClinicsArgs<ExtArgs>
@@ -28259,6 +28516,11 @@ export namespace Prisma {
     notificationDeliveries?: boolean | user$notificationDeliveriesArgs<ExtArgs>
     supportRequests?: boolean | user$supportRequestsArgs<ExtArgs>
     appointmentRescheduleRequests?: boolean | user$appointmentRescheduleRequestsArgs<ExtArgs>
+    verifiedProviders?: boolean | user$verifiedProvidersArgs<ExtArgs>
+    providerVerificationReviews?: boolean | user$providerVerificationReviewsArgs<ExtArgs>
+    adminProviderVerificationReviews?: boolean | user$adminProviderVerificationReviewsArgs<ExtArgs>
+    providerVerificationDocumentAccessLogs?: boolean | user$providerVerificationDocumentAccessLogsArgs<ExtArgs>
+    adminProviderVerificationDocumentAccessLogs?: boolean | user$adminProviderVerificationDocumentAccessLogsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -28293,7 +28555,9 @@ export namespace Prisma {
     licenseDocumentSha256?: boolean
     licenseDocumentUploadedAt?: boolean
     verificationStatus?: boolean
+    verificationRejectionReason?: boolean
     verifiedAt?: boolean
+    verifiedByUserId?: boolean
     bio?: boolean
     approach?: boolean
     education?: boolean
@@ -28312,6 +28576,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type userSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -28345,7 +28610,9 @@ export namespace Prisma {
     licenseDocumentSha256?: boolean
     licenseDocumentUploadedAt?: boolean
     verificationStatus?: boolean
+    verificationRejectionReason?: boolean
     verifiedAt?: boolean
+    verifiedByUserId?: boolean
     bio?: boolean
     approach?: boolean
     education?: boolean
@@ -28364,6 +28631,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type userSelectScalar = {
@@ -28397,7 +28665,9 @@ export namespace Prisma {
     licenseDocumentSha256?: boolean
     licenseDocumentUploadedAt?: boolean
     verificationStatus?: boolean
+    verificationRejectionReason?: boolean
     verifiedAt?: boolean
+    verifiedByUserId?: boolean
     bio?: boolean
     approach?: boolean
     education?: boolean
@@ -28418,8 +28688,9 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "licenseCouncil" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verifiedAt" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "licenseCouncil" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
     sessions?: boolean | user$sessionsArgs<ExtArgs>
     accounts?: boolean | user$accountsArgs<ExtArgs>
     ownedClinics?: boolean | user$ownedClinicsArgs<ExtArgs>
@@ -28445,14 +28716,24 @@ export namespace Prisma {
     notificationDeliveries?: boolean | user$notificationDeliveriesArgs<ExtArgs>
     supportRequests?: boolean | user$supportRequestsArgs<ExtArgs>
     appointmentRescheduleRequests?: boolean | user$appointmentRescheduleRequestsArgs<ExtArgs>
+    verifiedProviders?: boolean | user$verifiedProvidersArgs<ExtArgs>
+    providerVerificationReviews?: boolean | user$providerVerificationReviewsArgs<ExtArgs>
+    adminProviderVerificationReviews?: boolean | user$adminProviderVerificationReviewsArgs<ExtArgs>
+    providerVerificationDocumentAccessLogs?: boolean | user$providerVerificationDocumentAccessLogsArgs<ExtArgs>
+    adminProviderVerificationDocumentAccessLogs?: boolean | user$adminProviderVerificationDocumentAccessLogsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type userIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type userIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type userIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
+  }
+  export type userIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
+  }
 
   export type $userPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user"
     objects: {
+      verifiedByUser: Prisma.$userPayload<ExtArgs> | null
       sessions: Prisma.$sessionPayload<ExtArgs>[]
       accounts: Prisma.$accountPayload<ExtArgs>[]
       ownedClinics: Prisma.$clinicPayload<ExtArgs>[]
@@ -28478,6 +28759,11 @@ export namespace Prisma {
       notificationDeliveries: Prisma.$notification_deliveryPayload<ExtArgs>[]
       supportRequests: Prisma.$support_requestPayload<ExtArgs>[]
       appointmentRescheduleRequests: Prisma.$appointment_reschedule_requestPayload<ExtArgs>[]
+      verifiedProviders: Prisma.$userPayload<ExtArgs>[]
+      providerVerificationReviews: Prisma.$provider_verification_reviewPayload<ExtArgs>[]
+      adminProviderVerificationReviews: Prisma.$provider_verification_reviewPayload<ExtArgs>[]
+      providerVerificationDocumentAccessLogs: Prisma.$provider_verification_document_access_logPayload<ExtArgs>[]
+      adminProviderVerificationDocumentAccessLogs: Prisma.$provider_verification_document_access_logPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -28510,7 +28796,9 @@ export namespace Prisma {
       licenseDocumentSha256: string | null
       licenseDocumentUploadedAt: Date | null
       verificationStatus: string
+      verificationRejectionReason: string | null
       verifiedAt: Date | null
+      verifiedByUserId: string | null
       bio: string | null
       approach: string | null
       education: string | null
@@ -28923,6 +29211,7 @@ export namespace Prisma {
    */
   export interface Prisma__userClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    verifiedByUser<T extends user$verifiedByUserArgs<ExtArgs> = {}>(args?: Subset<T, user$verifiedByUserArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     sessions<T extends user$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, user$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends user$accountsArgs<ExtArgs> = {}>(args?: Subset<T, user$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$accountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     ownedClinics<T extends user$ownedClinicsArgs<ExtArgs> = {}>(args?: Subset<T, user$ownedClinicsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clinicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -28948,6 +29237,11 @@ export namespace Prisma {
     notificationDeliveries<T extends user$notificationDeliveriesArgs<ExtArgs> = {}>(args?: Subset<T, user$notificationDeliveriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notification_deliveryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     supportRequests<T extends user$supportRequestsArgs<ExtArgs> = {}>(args?: Subset<T, user$supportRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$support_requestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     appointmentRescheduleRequests<T extends user$appointmentRescheduleRequestsArgs<ExtArgs> = {}>(args?: Subset<T, user$appointmentRescheduleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    verifiedProviders<T extends user$verifiedProvidersArgs<ExtArgs> = {}>(args?: Subset<T, user$verifiedProvidersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    providerVerificationReviews<T extends user$providerVerificationReviewsArgs<ExtArgs> = {}>(args?: Subset<T, user$providerVerificationReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    adminProviderVerificationReviews<T extends user$adminProviderVerificationReviewsArgs<ExtArgs> = {}>(args?: Subset<T, user$adminProviderVerificationReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    providerVerificationDocumentAccessLogs<T extends user$providerVerificationDocumentAccessLogsArgs<ExtArgs> = {}>(args?: Subset<T, user$providerVerificationDocumentAccessLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    adminProviderVerificationDocumentAccessLogs<T extends user$adminProviderVerificationDocumentAccessLogsArgs<ExtArgs> = {}>(args?: Subset<T, user$adminProviderVerificationDocumentAccessLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -29007,7 +29301,9 @@ export namespace Prisma {
     readonly licenseDocumentSha256: FieldRef<"user", 'String'>
     readonly licenseDocumentUploadedAt: FieldRef<"user", 'DateTime'>
     readonly verificationStatus: FieldRef<"user", 'String'>
+    readonly verificationRejectionReason: FieldRef<"user", 'String'>
     readonly verifiedAt: FieldRef<"user", 'DateTime'>
+    readonly verifiedByUserId: FieldRef<"user", 'String'>
     readonly bio: FieldRef<"user", 'String'>
     readonly approach: FieldRef<"user", 'String'>
     readonly education: FieldRef<"user", 'String'>
@@ -29280,6 +29576,10 @@ export namespace Prisma {
      */
     data: userCreateManyInput | userCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -29350,6 +29650,10 @@ export namespace Prisma {
      * Limit how many users to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -29416,6 +29720,25 @@ export namespace Prisma {
      * Limit how many users to delete.
      */
     limit?: number
+  }
+
+  /**
+   * user.verifiedByUser
+   */
+  export type user$verifiedByUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user
+     */
+    select?: userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user
+     */
+    omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    where?: userWhereInput
   }
 
   /**
@@ -30014,6 +30337,126 @@ export namespace Prisma {
   }
 
   /**
+   * user.verifiedProviders
+   */
+  export type user$verifiedProvidersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user
+     */
+    select?: userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user
+     */
+    omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    where?: userWhereInput
+    orderBy?: userOrderByWithRelationInput | userOrderByWithRelationInput[]
+    cursor?: userWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * user.providerVerificationReviews
+   */
+  export type user$providerVerificationReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    where?: provider_verification_reviewWhereInput
+    orderBy?: provider_verification_reviewOrderByWithRelationInput | provider_verification_reviewOrderByWithRelationInput[]
+    cursor?: provider_verification_reviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Provider_verification_reviewScalarFieldEnum | Provider_verification_reviewScalarFieldEnum[]
+  }
+
+  /**
+   * user.adminProviderVerificationReviews
+   */
+  export type user$adminProviderVerificationReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    where?: provider_verification_reviewWhereInput
+    orderBy?: provider_verification_reviewOrderByWithRelationInput | provider_verification_reviewOrderByWithRelationInput[]
+    cursor?: provider_verification_reviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Provider_verification_reviewScalarFieldEnum | Provider_verification_reviewScalarFieldEnum[]
+  }
+
+  /**
+   * user.providerVerificationDocumentAccessLogs
+   */
+  export type user$providerVerificationDocumentAccessLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    where?: provider_verification_document_access_logWhereInput
+    orderBy?: provider_verification_document_access_logOrderByWithRelationInput | provider_verification_document_access_logOrderByWithRelationInput[]
+    cursor?: provider_verification_document_access_logWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Provider_verification_document_access_logScalarFieldEnum | Provider_verification_document_access_logScalarFieldEnum[]
+  }
+
+  /**
+   * user.adminProviderVerificationDocumentAccessLogs
+   */
+  export type user$adminProviderVerificationDocumentAccessLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    where?: provider_verification_document_access_logWhereInput
+    orderBy?: provider_verification_document_access_logOrderByWithRelationInput | provider_verification_document_access_logOrderByWithRelationInput[]
+    cursor?: provider_verification_document_access_logWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Provider_verification_document_access_logScalarFieldEnum | Provider_verification_document_access_logScalarFieldEnum[]
+  }
+
+  /**
    * user without action
    */
   export type userDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -30029,6 +30472,2226 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: userInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model provider_verification_review
+   */
+
+  export type AggregateProvider_verification_review = {
+    _count: Provider_verification_reviewCountAggregateOutputType | null
+    _min: Provider_verification_reviewMinAggregateOutputType | null
+    _max: Provider_verification_reviewMaxAggregateOutputType | null
+  }
+
+  export type Provider_verification_reviewMinAggregateOutputType = {
+    id: string | null
+    healthcareProviderId: string | null
+    reviewerUserId: string | null
+    status: $Enums.ProviderVerificationReviewStatus | null
+    reason: string | null
+    internalNotes: string | null
+    documentKey: string | null
+    documentSha256: string | null
+    createdAt: Date | null
+  }
+
+  export type Provider_verification_reviewMaxAggregateOutputType = {
+    id: string | null
+    healthcareProviderId: string | null
+    reviewerUserId: string | null
+    status: $Enums.ProviderVerificationReviewStatus | null
+    reason: string | null
+    internalNotes: string | null
+    documentKey: string | null
+    documentSha256: string | null
+    createdAt: Date | null
+  }
+
+  export type Provider_verification_reviewCountAggregateOutputType = {
+    id: number
+    healthcareProviderId: number
+    reviewerUserId: number
+    status: number
+    reason: number
+    internalNotes: number
+    documentKey: number
+    documentSha256: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type Provider_verification_reviewMinAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    reviewerUserId?: true
+    status?: true
+    reason?: true
+    internalNotes?: true
+    documentKey?: true
+    documentSha256?: true
+    createdAt?: true
+  }
+
+  export type Provider_verification_reviewMaxAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    reviewerUserId?: true
+    status?: true
+    reason?: true
+    internalNotes?: true
+    documentKey?: true
+    documentSha256?: true
+    createdAt?: true
+  }
+
+  export type Provider_verification_reviewCountAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    reviewerUserId?: true
+    status?: true
+    reason?: true
+    internalNotes?: true
+    documentKey?: true
+    documentSha256?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type Provider_verification_reviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which provider_verification_review to aggregate.
+     */
+    where?: provider_verification_reviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_verification_reviews to fetch.
+     */
+    orderBy?: provider_verification_reviewOrderByWithRelationInput | provider_verification_reviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: provider_verification_reviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_verification_reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_verification_reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned provider_verification_reviews
+    **/
+    _count?: true | Provider_verification_reviewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Provider_verification_reviewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Provider_verification_reviewMaxAggregateInputType
+  }
+
+  export type GetProvider_verification_reviewAggregateType<T extends Provider_verification_reviewAggregateArgs> = {
+        [P in keyof T & keyof AggregateProvider_verification_review]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProvider_verification_review[P]>
+      : GetScalarType<T[P], AggregateProvider_verification_review[P]>
+  }
+
+
+
+
+  export type provider_verification_reviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: provider_verification_reviewWhereInput
+    orderBy?: provider_verification_reviewOrderByWithAggregationInput | provider_verification_reviewOrderByWithAggregationInput[]
+    by: Provider_verification_reviewScalarFieldEnum[] | Provider_verification_reviewScalarFieldEnum
+    having?: provider_verification_reviewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Provider_verification_reviewCountAggregateInputType | true
+    _min?: Provider_verification_reviewMinAggregateInputType
+    _max?: Provider_verification_reviewMaxAggregateInputType
+  }
+
+  export type Provider_verification_reviewGroupByOutputType = {
+    id: string
+    healthcareProviderId: string
+    reviewerUserId: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason: string | null
+    internalNotes: string | null
+    documentKey: string | null
+    documentSha256: string | null
+    createdAt: Date
+    _count: Provider_verification_reviewCountAggregateOutputType | null
+    _min: Provider_verification_reviewMinAggregateOutputType | null
+    _max: Provider_verification_reviewMaxAggregateOutputType | null
+  }
+
+  type GetProvider_verification_reviewGroupByPayload<T extends provider_verification_reviewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Provider_verification_reviewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Provider_verification_reviewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Provider_verification_reviewGroupByOutputType[P]>
+            : GetScalarType<T[P], Provider_verification_reviewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type provider_verification_reviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    reviewerUserId?: boolean
+    status?: boolean
+    reason?: boolean
+    internalNotes?: boolean
+    documentKey?: boolean
+    documentSha256?: boolean
+    createdAt?: boolean
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    reviewerUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provider_verification_review"]>
+
+  export type provider_verification_reviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    reviewerUserId?: boolean
+    status?: boolean
+    reason?: boolean
+    internalNotes?: boolean
+    documentKey?: boolean
+    documentSha256?: boolean
+    createdAt?: boolean
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    reviewerUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provider_verification_review"]>
+
+  export type provider_verification_reviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    reviewerUserId?: boolean
+    status?: boolean
+    reason?: boolean
+    internalNotes?: boolean
+    documentKey?: boolean
+    documentSha256?: boolean
+    createdAt?: boolean
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    reviewerUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provider_verification_review"]>
+
+  export type provider_verification_reviewSelectScalar = {
+    id?: boolean
+    healthcareProviderId?: boolean
+    reviewerUserId?: boolean
+    status?: boolean
+    reason?: boolean
+    internalNotes?: boolean
+    documentKey?: boolean
+    documentSha256?: boolean
+    createdAt?: boolean
+  }
+
+  export type provider_verification_reviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "healthcareProviderId" | "reviewerUserId" | "status" | "reason" | "internalNotes" | "documentKey" | "documentSha256" | "createdAt", ExtArgs["result"]["provider_verification_review"]>
+  export type provider_verification_reviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    reviewerUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type provider_verification_reviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    reviewerUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type provider_verification_reviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    reviewerUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+
+  export type $provider_verification_reviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "provider_verification_review"
+    objects: {
+      healthcareProvider: Prisma.$userPayload<ExtArgs>
+      reviewerUser: Prisma.$userPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      healthcareProviderId: string
+      reviewerUserId: string
+      status: $Enums.ProviderVerificationReviewStatus
+      reason: string | null
+      internalNotes: string | null
+      documentKey: string | null
+      documentSha256: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["provider_verification_review"]>
+    composites: {}
+  }
+
+  type provider_verification_reviewGetPayload<S extends boolean | null | undefined | provider_verification_reviewDefaultArgs> = $Result.GetResult<Prisma.$provider_verification_reviewPayload, S>
+
+  type provider_verification_reviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<provider_verification_reviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Provider_verification_reviewCountAggregateInputType | true
+    }
+
+  export interface provider_verification_reviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['provider_verification_review'], meta: { name: 'provider_verification_review' } }
+    /**
+     * Find zero or one Provider_verification_review that matches the filter.
+     * @param {provider_verification_reviewFindUniqueArgs} args - Arguments to find a Provider_verification_review
+     * @example
+     * // Get one Provider_verification_review
+     * const provider_verification_review = await prisma.provider_verification_review.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends provider_verification_reviewFindUniqueArgs>(args: SelectSubset<T, provider_verification_reviewFindUniqueArgs<ExtArgs>>): Prisma__provider_verification_reviewClient<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Provider_verification_review that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {provider_verification_reviewFindUniqueOrThrowArgs} args - Arguments to find a Provider_verification_review
+     * @example
+     * // Get one Provider_verification_review
+     * const provider_verification_review = await prisma.provider_verification_review.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends provider_verification_reviewFindUniqueOrThrowArgs>(args: SelectSubset<T, provider_verification_reviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__provider_verification_reviewClient<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Provider_verification_review that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_reviewFindFirstArgs} args - Arguments to find a Provider_verification_review
+     * @example
+     * // Get one Provider_verification_review
+     * const provider_verification_review = await prisma.provider_verification_review.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends provider_verification_reviewFindFirstArgs>(args?: SelectSubset<T, provider_verification_reviewFindFirstArgs<ExtArgs>>): Prisma__provider_verification_reviewClient<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Provider_verification_review that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_reviewFindFirstOrThrowArgs} args - Arguments to find a Provider_verification_review
+     * @example
+     * // Get one Provider_verification_review
+     * const provider_verification_review = await prisma.provider_verification_review.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends provider_verification_reviewFindFirstOrThrowArgs>(args?: SelectSubset<T, provider_verification_reviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__provider_verification_reviewClient<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Provider_verification_reviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_reviewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Provider_verification_reviews
+     * const provider_verification_reviews = await prisma.provider_verification_review.findMany()
+     * 
+     * // Get first 10 Provider_verification_reviews
+     * const provider_verification_reviews = await prisma.provider_verification_review.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const provider_verification_reviewWithIdOnly = await prisma.provider_verification_review.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends provider_verification_reviewFindManyArgs>(args?: SelectSubset<T, provider_verification_reviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Provider_verification_review.
+     * @param {provider_verification_reviewCreateArgs} args - Arguments to create a Provider_verification_review.
+     * @example
+     * // Create one Provider_verification_review
+     * const Provider_verification_review = await prisma.provider_verification_review.create({
+     *   data: {
+     *     // ... data to create a Provider_verification_review
+     *   }
+     * })
+     * 
+     */
+    create<T extends provider_verification_reviewCreateArgs>(args: SelectSubset<T, provider_verification_reviewCreateArgs<ExtArgs>>): Prisma__provider_verification_reviewClient<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Provider_verification_reviews.
+     * @param {provider_verification_reviewCreateManyArgs} args - Arguments to create many Provider_verification_reviews.
+     * @example
+     * // Create many Provider_verification_reviews
+     * const provider_verification_review = await prisma.provider_verification_review.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends provider_verification_reviewCreateManyArgs>(args?: SelectSubset<T, provider_verification_reviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Provider_verification_reviews and returns the data saved in the database.
+     * @param {provider_verification_reviewCreateManyAndReturnArgs} args - Arguments to create many Provider_verification_reviews.
+     * @example
+     * // Create many Provider_verification_reviews
+     * const provider_verification_review = await prisma.provider_verification_review.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Provider_verification_reviews and only return the `id`
+     * const provider_verification_reviewWithIdOnly = await prisma.provider_verification_review.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends provider_verification_reviewCreateManyAndReturnArgs>(args?: SelectSubset<T, provider_verification_reviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Provider_verification_review.
+     * @param {provider_verification_reviewDeleteArgs} args - Arguments to delete one Provider_verification_review.
+     * @example
+     * // Delete one Provider_verification_review
+     * const Provider_verification_review = await prisma.provider_verification_review.delete({
+     *   where: {
+     *     // ... filter to delete one Provider_verification_review
+     *   }
+     * })
+     * 
+     */
+    delete<T extends provider_verification_reviewDeleteArgs>(args: SelectSubset<T, provider_verification_reviewDeleteArgs<ExtArgs>>): Prisma__provider_verification_reviewClient<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Provider_verification_review.
+     * @param {provider_verification_reviewUpdateArgs} args - Arguments to update one Provider_verification_review.
+     * @example
+     * // Update one Provider_verification_review
+     * const provider_verification_review = await prisma.provider_verification_review.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends provider_verification_reviewUpdateArgs>(args: SelectSubset<T, provider_verification_reviewUpdateArgs<ExtArgs>>): Prisma__provider_verification_reviewClient<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Provider_verification_reviews.
+     * @param {provider_verification_reviewDeleteManyArgs} args - Arguments to filter Provider_verification_reviews to delete.
+     * @example
+     * // Delete a few Provider_verification_reviews
+     * const { count } = await prisma.provider_verification_review.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends provider_verification_reviewDeleteManyArgs>(args?: SelectSubset<T, provider_verification_reviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provider_verification_reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_reviewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Provider_verification_reviews
+     * const provider_verification_review = await prisma.provider_verification_review.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends provider_verification_reviewUpdateManyArgs>(args: SelectSubset<T, provider_verification_reviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provider_verification_reviews and returns the data updated in the database.
+     * @param {provider_verification_reviewUpdateManyAndReturnArgs} args - Arguments to update many Provider_verification_reviews.
+     * @example
+     * // Update many Provider_verification_reviews
+     * const provider_verification_review = await prisma.provider_verification_review.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Provider_verification_reviews and only return the `id`
+     * const provider_verification_reviewWithIdOnly = await prisma.provider_verification_review.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends provider_verification_reviewUpdateManyAndReturnArgs>(args: SelectSubset<T, provider_verification_reviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Provider_verification_review.
+     * @param {provider_verification_reviewUpsertArgs} args - Arguments to update or create a Provider_verification_review.
+     * @example
+     * // Update or create a Provider_verification_review
+     * const provider_verification_review = await prisma.provider_verification_review.upsert({
+     *   create: {
+     *     // ... data to create a Provider_verification_review
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Provider_verification_review we want to update
+     *   }
+     * })
+     */
+    upsert<T extends provider_verification_reviewUpsertArgs>(args: SelectSubset<T, provider_verification_reviewUpsertArgs<ExtArgs>>): Prisma__provider_verification_reviewClient<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Provider_verification_reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_reviewCountArgs} args - Arguments to filter Provider_verification_reviews to count.
+     * @example
+     * // Count the number of Provider_verification_reviews
+     * const count = await prisma.provider_verification_review.count({
+     *   where: {
+     *     // ... the filter for the Provider_verification_reviews we want to count
+     *   }
+     * })
+    **/
+    count<T extends provider_verification_reviewCountArgs>(
+      args?: Subset<T, provider_verification_reviewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Provider_verification_reviewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Provider_verification_review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Provider_verification_reviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Provider_verification_reviewAggregateArgs>(args: Subset<T, Provider_verification_reviewAggregateArgs>): Prisma.PrismaPromise<GetProvider_verification_reviewAggregateType<T>>
+
+    /**
+     * Group by Provider_verification_review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_reviewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends provider_verification_reviewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: provider_verification_reviewGroupByArgs['orderBy'] }
+        : { orderBy?: provider_verification_reviewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, provider_verification_reviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProvider_verification_reviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the provider_verification_review model
+   */
+  readonly fields: provider_verification_reviewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for provider_verification_review.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__provider_verification_reviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    healthcareProvider<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    reviewerUser<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the provider_verification_review model
+   */
+  interface provider_verification_reviewFieldRefs {
+    readonly id: FieldRef<"provider_verification_review", 'String'>
+    readonly healthcareProviderId: FieldRef<"provider_verification_review", 'String'>
+    readonly reviewerUserId: FieldRef<"provider_verification_review", 'String'>
+    readonly status: FieldRef<"provider_verification_review", 'ProviderVerificationReviewStatus'>
+    readonly reason: FieldRef<"provider_verification_review", 'String'>
+    readonly internalNotes: FieldRef<"provider_verification_review", 'String'>
+    readonly documentKey: FieldRef<"provider_verification_review", 'String'>
+    readonly documentSha256: FieldRef<"provider_verification_review", 'String'>
+    readonly createdAt: FieldRef<"provider_verification_review", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * provider_verification_review findUnique
+   */
+  export type provider_verification_reviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_review to fetch.
+     */
+    where: provider_verification_reviewWhereUniqueInput
+  }
+
+  /**
+   * provider_verification_review findUniqueOrThrow
+   */
+  export type provider_verification_reviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_review to fetch.
+     */
+    where: provider_verification_reviewWhereUniqueInput
+  }
+
+  /**
+   * provider_verification_review findFirst
+   */
+  export type provider_verification_reviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_review to fetch.
+     */
+    where?: provider_verification_reviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_verification_reviews to fetch.
+     */
+    orderBy?: provider_verification_reviewOrderByWithRelationInput | provider_verification_reviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for provider_verification_reviews.
+     */
+    cursor?: provider_verification_reviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_verification_reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_verification_reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of provider_verification_reviews.
+     */
+    distinct?: Provider_verification_reviewScalarFieldEnum | Provider_verification_reviewScalarFieldEnum[]
+  }
+
+  /**
+   * provider_verification_review findFirstOrThrow
+   */
+  export type provider_verification_reviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_review to fetch.
+     */
+    where?: provider_verification_reviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_verification_reviews to fetch.
+     */
+    orderBy?: provider_verification_reviewOrderByWithRelationInput | provider_verification_reviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for provider_verification_reviews.
+     */
+    cursor?: provider_verification_reviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_verification_reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_verification_reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of provider_verification_reviews.
+     */
+    distinct?: Provider_verification_reviewScalarFieldEnum | Provider_verification_reviewScalarFieldEnum[]
+  }
+
+  /**
+   * provider_verification_review findMany
+   */
+  export type provider_verification_reviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_reviews to fetch.
+     */
+    where?: provider_verification_reviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_verification_reviews to fetch.
+     */
+    orderBy?: provider_verification_reviewOrderByWithRelationInput | provider_verification_reviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing provider_verification_reviews.
+     */
+    cursor?: provider_verification_reviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_verification_reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_verification_reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of provider_verification_reviews.
+     */
+    distinct?: Provider_verification_reviewScalarFieldEnum | Provider_verification_reviewScalarFieldEnum[]
+  }
+
+  /**
+   * provider_verification_review create
+   */
+  export type provider_verification_reviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    /**
+     * The data needed to create a provider_verification_review.
+     */
+    data: XOR<provider_verification_reviewCreateInput, provider_verification_reviewUncheckedCreateInput>
+  }
+
+  /**
+   * provider_verification_review createMany
+   */
+  export type provider_verification_reviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many provider_verification_reviews.
+     */
+    data: provider_verification_reviewCreateManyInput | provider_verification_reviewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * provider_verification_review createManyAndReturn
+   */
+  export type provider_verification_reviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * The data used to create many provider_verification_reviews.
+     */
+    data: provider_verification_reviewCreateManyInput | provider_verification_reviewCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * provider_verification_review update
+   */
+  export type provider_verification_reviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    /**
+     * The data needed to update a provider_verification_review.
+     */
+    data: XOR<provider_verification_reviewUpdateInput, provider_verification_reviewUncheckedUpdateInput>
+    /**
+     * Choose, which provider_verification_review to update.
+     */
+    where: provider_verification_reviewWhereUniqueInput
+  }
+
+  /**
+   * provider_verification_review updateMany
+   */
+  export type provider_verification_reviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update provider_verification_reviews.
+     */
+    data: XOR<provider_verification_reviewUpdateManyMutationInput, provider_verification_reviewUncheckedUpdateManyInput>
+    /**
+     * Filter which provider_verification_reviews to update
+     */
+    where?: provider_verification_reviewWhereInput
+    /**
+     * Limit how many provider_verification_reviews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * provider_verification_review updateManyAndReturn
+   */
+  export type provider_verification_reviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * The data used to update provider_verification_reviews.
+     */
+    data: XOR<provider_verification_reviewUpdateManyMutationInput, provider_verification_reviewUncheckedUpdateManyInput>
+    /**
+     * Filter which provider_verification_reviews to update
+     */
+    where?: provider_verification_reviewWhereInput
+    /**
+     * Limit how many provider_verification_reviews to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * provider_verification_review upsert
+   */
+  export type provider_verification_reviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    /**
+     * The filter to search for the provider_verification_review to update in case it exists.
+     */
+    where: provider_verification_reviewWhereUniqueInput
+    /**
+     * In case the provider_verification_review found by the `where` argument doesn't exist, create a new provider_verification_review with this data.
+     */
+    create: XOR<provider_verification_reviewCreateInput, provider_verification_reviewUncheckedCreateInput>
+    /**
+     * In case the provider_verification_review was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<provider_verification_reviewUpdateInput, provider_verification_reviewUncheckedUpdateInput>
+  }
+
+  /**
+   * provider_verification_review delete
+   */
+  export type provider_verification_reviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+    /**
+     * Filter which provider_verification_review to delete.
+     */
+    where: provider_verification_reviewWhereUniqueInput
+  }
+
+  /**
+   * provider_verification_review deleteMany
+   */
+  export type provider_verification_reviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which provider_verification_reviews to delete
+     */
+    where?: provider_verification_reviewWhereInput
+    /**
+     * Limit how many provider_verification_reviews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * provider_verification_review without action
+   */
+  export type provider_verification_reviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_review
+     */
+    select?: provider_verification_reviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_review
+     */
+    omit?: provider_verification_reviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_reviewInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model provider_verification_document_access_log
+   */
+
+  export type AggregateProvider_verification_document_access_log = {
+    _count: Provider_verification_document_access_logCountAggregateOutputType | null
+    _min: Provider_verification_document_access_logMinAggregateOutputType | null
+    _max: Provider_verification_document_access_logMaxAggregateOutputType | null
+  }
+
+  export type Provider_verification_document_access_logMinAggregateOutputType = {
+    id: string | null
+    healthcareProviderId: string | null
+    adminUserId: string | null
+    documentKey: string | null
+    ipAddress: string | null
+    userAgent: string | null
+    createdAt: Date | null
+  }
+
+  export type Provider_verification_document_access_logMaxAggregateOutputType = {
+    id: string | null
+    healthcareProviderId: string | null
+    adminUserId: string | null
+    documentKey: string | null
+    ipAddress: string | null
+    userAgent: string | null
+    createdAt: Date | null
+  }
+
+  export type Provider_verification_document_access_logCountAggregateOutputType = {
+    id: number
+    healthcareProviderId: number
+    adminUserId: number
+    documentKey: number
+    ipAddress: number
+    userAgent: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type Provider_verification_document_access_logMinAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    adminUserId?: true
+    documentKey?: true
+    ipAddress?: true
+    userAgent?: true
+    createdAt?: true
+  }
+
+  export type Provider_verification_document_access_logMaxAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    adminUserId?: true
+    documentKey?: true
+    ipAddress?: true
+    userAgent?: true
+    createdAt?: true
+  }
+
+  export type Provider_verification_document_access_logCountAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    adminUserId?: true
+    documentKey?: true
+    ipAddress?: true
+    userAgent?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type Provider_verification_document_access_logAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which provider_verification_document_access_log to aggregate.
+     */
+    where?: provider_verification_document_access_logWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_verification_document_access_logs to fetch.
+     */
+    orderBy?: provider_verification_document_access_logOrderByWithRelationInput | provider_verification_document_access_logOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: provider_verification_document_access_logWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_verification_document_access_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_verification_document_access_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned provider_verification_document_access_logs
+    **/
+    _count?: true | Provider_verification_document_access_logCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Provider_verification_document_access_logMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Provider_verification_document_access_logMaxAggregateInputType
+  }
+
+  export type GetProvider_verification_document_access_logAggregateType<T extends Provider_verification_document_access_logAggregateArgs> = {
+        [P in keyof T & keyof AggregateProvider_verification_document_access_log]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProvider_verification_document_access_log[P]>
+      : GetScalarType<T[P], AggregateProvider_verification_document_access_log[P]>
+  }
+
+
+
+
+  export type provider_verification_document_access_logGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: provider_verification_document_access_logWhereInput
+    orderBy?: provider_verification_document_access_logOrderByWithAggregationInput | provider_verification_document_access_logOrderByWithAggregationInput[]
+    by: Provider_verification_document_access_logScalarFieldEnum[] | Provider_verification_document_access_logScalarFieldEnum
+    having?: provider_verification_document_access_logScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Provider_verification_document_access_logCountAggregateInputType | true
+    _min?: Provider_verification_document_access_logMinAggregateInputType
+    _max?: Provider_verification_document_access_logMaxAggregateInputType
+  }
+
+  export type Provider_verification_document_access_logGroupByOutputType = {
+    id: string
+    healthcareProviderId: string
+    adminUserId: string
+    documentKey: string
+    ipAddress: string | null
+    userAgent: string | null
+    createdAt: Date
+    _count: Provider_verification_document_access_logCountAggregateOutputType | null
+    _min: Provider_verification_document_access_logMinAggregateOutputType | null
+    _max: Provider_verification_document_access_logMaxAggregateOutputType | null
+  }
+
+  type GetProvider_verification_document_access_logGroupByPayload<T extends provider_verification_document_access_logGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Provider_verification_document_access_logGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Provider_verification_document_access_logGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Provider_verification_document_access_logGroupByOutputType[P]>
+            : GetScalarType<T[P], Provider_verification_document_access_logGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type provider_verification_document_access_logSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    adminUserId?: boolean
+    documentKey?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    createdAt?: boolean
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    adminUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provider_verification_document_access_log"]>
+
+  export type provider_verification_document_access_logSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    adminUserId?: boolean
+    documentKey?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    createdAt?: boolean
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    adminUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provider_verification_document_access_log"]>
+
+  export type provider_verification_document_access_logSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    adminUserId?: boolean
+    documentKey?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    createdAt?: boolean
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    adminUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["provider_verification_document_access_log"]>
+
+  export type provider_verification_document_access_logSelectScalar = {
+    id?: boolean
+    healthcareProviderId?: boolean
+    adminUserId?: boolean
+    documentKey?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    createdAt?: boolean
+  }
+
+  export type provider_verification_document_access_logOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "healthcareProviderId" | "adminUserId" | "documentKey" | "ipAddress" | "userAgent" | "createdAt", ExtArgs["result"]["provider_verification_document_access_log"]>
+  export type provider_verification_document_access_logInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    adminUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type provider_verification_document_access_logIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    adminUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type provider_verification_document_access_logIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    adminUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+
+  export type $provider_verification_document_access_logPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "provider_verification_document_access_log"
+    objects: {
+      healthcareProvider: Prisma.$userPayload<ExtArgs>
+      adminUser: Prisma.$userPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      healthcareProviderId: string
+      adminUserId: string
+      documentKey: string
+      ipAddress: string | null
+      userAgent: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["provider_verification_document_access_log"]>
+    composites: {}
+  }
+
+  type provider_verification_document_access_logGetPayload<S extends boolean | null | undefined | provider_verification_document_access_logDefaultArgs> = $Result.GetResult<Prisma.$provider_verification_document_access_logPayload, S>
+
+  type provider_verification_document_access_logCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<provider_verification_document_access_logFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Provider_verification_document_access_logCountAggregateInputType | true
+    }
+
+  export interface provider_verification_document_access_logDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['provider_verification_document_access_log'], meta: { name: 'provider_verification_document_access_log' } }
+    /**
+     * Find zero or one Provider_verification_document_access_log that matches the filter.
+     * @param {provider_verification_document_access_logFindUniqueArgs} args - Arguments to find a Provider_verification_document_access_log
+     * @example
+     * // Get one Provider_verification_document_access_log
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends provider_verification_document_access_logFindUniqueArgs>(args: SelectSubset<T, provider_verification_document_access_logFindUniqueArgs<ExtArgs>>): Prisma__provider_verification_document_access_logClient<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Provider_verification_document_access_log that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {provider_verification_document_access_logFindUniqueOrThrowArgs} args - Arguments to find a Provider_verification_document_access_log
+     * @example
+     * // Get one Provider_verification_document_access_log
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends provider_verification_document_access_logFindUniqueOrThrowArgs>(args: SelectSubset<T, provider_verification_document_access_logFindUniqueOrThrowArgs<ExtArgs>>): Prisma__provider_verification_document_access_logClient<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Provider_verification_document_access_log that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_document_access_logFindFirstArgs} args - Arguments to find a Provider_verification_document_access_log
+     * @example
+     * // Get one Provider_verification_document_access_log
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends provider_verification_document_access_logFindFirstArgs>(args?: SelectSubset<T, provider_verification_document_access_logFindFirstArgs<ExtArgs>>): Prisma__provider_verification_document_access_logClient<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Provider_verification_document_access_log that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_document_access_logFindFirstOrThrowArgs} args - Arguments to find a Provider_verification_document_access_log
+     * @example
+     * // Get one Provider_verification_document_access_log
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends provider_verification_document_access_logFindFirstOrThrowArgs>(args?: SelectSubset<T, provider_verification_document_access_logFindFirstOrThrowArgs<ExtArgs>>): Prisma__provider_verification_document_access_logClient<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Provider_verification_document_access_logs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_document_access_logFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Provider_verification_document_access_logs
+     * const provider_verification_document_access_logs = await prisma.provider_verification_document_access_log.findMany()
+     * 
+     * // Get first 10 Provider_verification_document_access_logs
+     * const provider_verification_document_access_logs = await prisma.provider_verification_document_access_log.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const provider_verification_document_access_logWithIdOnly = await prisma.provider_verification_document_access_log.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends provider_verification_document_access_logFindManyArgs>(args?: SelectSubset<T, provider_verification_document_access_logFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Provider_verification_document_access_log.
+     * @param {provider_verification_document_access_logCreateArgs} args - Arguments to create a Provider_verification_document_access_log.
+     * @example
+     * // Create one Provider_verification_document_access_log
+     * const Provider_verification_document_access_log = await prisma.provider_verification_document_access_log.create({
+     *   data: {
+     *     // ... data to create a Provider_verification_document_access_log
+     *   }
+     * })
+     * 
+     */
+    create<T extends provider_verification_document_access_logCreateArgs>(args: SelectSubset<T, provider_verification_document_access_logCreateArgs<ExtArgs>>): Prisma__provider_verification_document_access_logClient<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Provider_verification_document_access_logs.
+     * @param {provider_verification_document_access_logCreateManyArgs} args - Arguments to create many Provider_verification_document_access_logs.
+     * @example
+     * // Create many Provider_verification_document_access_logs
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends provider_verification_document_access_logCreateManyArgs>(args?: SelectSubset<T, provider_verification_document_access_logCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Provider_verification_document_access_logs and returns the data saved in the database.
+     * @param {provider_verification_document_access_logCreateManyAndReturnArgs} args - Arguments to create many Provider_verification_document_access_logs.
+     * @example
+     * // Create many Provider_verification_document_access_logs
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Provider_verification_document_access_logs and only return the `id`
+     * const provider_verification_document_access_logWithIdOnly = await prisma.provider_verification_document_access_log.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends provider_verification_document_access_logCreateManyAndReturnArgs>(args?: SelectSubset<T, provider_verification_document_access_logCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Provider_verification_document_access_log.
+     * @param {provider_verification_document_access_logDeleteArgs} args - Arguments to delete one Provider_verification_document_access_log.
+     * @example
+     * // Delete one Provider_verification_document_access_log
+     * const Provider_verification_document_access_log = await prisma.provider_verification_document_access_log.delete({
+     *   where: {
+     *     // ... filter to delete one Provider_verification_document_access_log
+     *   }
+     * })
+     * 
+     */
+    delete<T extends provider_verification_document_access_logDeleteArgs>(args: SelectSubset<T, provider_verification_document_access_logDeleteArgs<ExtArgs>>): Prisma__provider_verification_document_access_logClient<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Provider_verification_document_access_log.
+     * @param {provider_verification_document_access_logUpdateArgs} args - Arguments to update one Provider_verification_document_access_log.
+     * @example
+     * // Update one Provider_verification_document_access_log
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends provider_verification_document_access_logUpdateArgs>(args: SelectSubset<T, provider_verification_document_access_logUpdateArgs<ExtArgs>>): Prisma__provider_verification_document_access_logClient<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Provider_verification_document_access_logs.
+     * @param {provider_verification_document_access_logDeleteManyArgs} args - Arguments to filter Provider_verification_document_access_logs to delete.
+     * @example
+     * // Delete a few Provider_verification_document_access_logs
+     * const { count } = await prisma.provider_verification_document_access_log.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends provider_verification_document_access_logDeleteManyArgs>(args?: SelectSubset<T, provider_verification_document_access_logDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provider_verification_document_access_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_document_access_logUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Provider_verification_document_access_logs
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends provider_verification_document_access_logUpdateManyArgs>(args: SelectSubset<T, provider_verification_document_access_logUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Provider_verification_document_access_logs and returns the data updated in the database.
+     * @param {provider_verification_document_access_logUpdateManyAndReturnArgs} args - Arguments to update many Provider_verification_document_access_logs.
+     * @example
+     * // Update many Provider_verification_document_access_logs
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Provider_verification_document_access_logs and only return the `id`
+     * const provider_verification_document_access_logWithIdOnly = await prisma.provider_verification_document_access_log.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends provider_verification_document_access_logUpdateManyAndReturnArgs>(args: SelectSubset<T, provider_verification_document_access_logUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Provider_verification_document_access_log.
+     * @param {provider_verification_document_access_logUpsertArgs} args - Arguments to update or create a Provider_verification_document_access_log.
+     * @example
+     * // Update or create a Provider_verification_document_access_log
+     * const provider_verification_document_access_log = await prisma.provider_verification_document_access_log.upsert({
+     *   create: {
+     *     // ... data to create a Provider_verification_document_access_log
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Provider_verification_document_access_log we want to update
+     *   }
+     * })
+     */
+    upsert<T extends provider_verification_document_access_logUpsertArgs>(args: SelectSubset<T, provider_verification_document_access_logUpsertArgs<ExtArgs>>): Prisma__provider_verification_document_access_logClient<$Result.GetResult<Prisma.$provider_verification_document_access_logPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Provider_verification_document_access_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_document_access_logCountArgs} args - Arguments to filter Provider_verification_document_access_logs to count.
+     * @example
+     * // Count the number of Provider_verification_document_access_logs
+     * const count = await prisma.provider_verification_document_access_log.count({
+     *   where: {
+     *     // ... the filter for the Provider_verification_document_access_logs we want to count
+     *   }
+     * })
+    **/
+    count<T extends provider_verification_document_access_logCountArgs>(
+      args?: Subset<T, provider_verification_document_access_logCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Provider_verification_document_access_logCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Provider_verification_document_access_log.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Provider_verification_document_access_logAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Provider_verification_document_access_logAggregateArgs>(args: Subset<T, Provider_verification_document_access_logAggregateArgs>): Prisma.PrismaPromise<GetProvider_verification_document_access_logAggregateType<T>>
+
+    /**
+     * Group by Provider_verification_document_access_log.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {provider_verification_document_access_logGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends provider_verification_document_access_logGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: provider_verification_document_access_logGroupByArgs['orderBy'] }
+        : { orderBy?: provider_verification_document_access_logGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, provider_verification_document_access_logGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProvider_verification_document_access_logGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the provider_verification_document_access_log model
+   */
+  readonly fields: provider_verification_document_access_logFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for provider_verification_document_access_log.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__provider_verification_document_access_logClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    healthcareProvider<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    adminUser<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the provider_verification_document_access_log model
+   */
+  interface provider_verification_document_access_logFieldRefs {
+    readonly id: FieldRef<"provider_verification_document_access_log", 'String'>
+    readonly healthcareProviderId: FieldRef<"provider_verification_document_access_log", 'String'>
+    readonly adminUserId: FieldRef<"provider_verification_document_access_log", 'String'>
+    readonly documentKey: FieldRef<"provider_verification_document_access_log", 'String'>
+    readonly ipAddress: FieldRef<"provider_verification_document_access_log", 'String'>
+    readonly userAgent: FieldRef<"provider_verification_document_access_log", 'String'>
+    readonly createdAt: FieldRef<"provider_verification_document_access_log", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * provider_verification_document_access_log findUnique
+   */
+  export type provider_verification_document_access_logFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_document_access_log to fetch.
+     */
+    where: provider_verification_document_access_logWhereUniqueInput
+  }
+
+  /**
+   * provider_verification_document_access_log findUniqueOrThrow
+   */
+  export type provider_verification_document_access_logFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_document_access_log to fetch.
+     */
+    where: provider_verification_document_access_logWhereUniqueInput
+  }
+
+  /**
+   * provider_verification_document_access_log findFirst
+   */
+  export type provider_verification_document_access_logFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_document_access_log to fetch.
+     */
+    where?: provider_verification_document_access_logWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_verification_document_access_logs to fetch.
+     */
+    orderBy?: provider_verification_document_access_logOrderByWithRelationInput | provider_verification_document_access_logOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for provider_verification_document_access_logs.
+     */
+    cursor?: provider_verification_document_access_logWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_verification_document_access_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_verification_document_access_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of provider_verification_document_access_logs.
+     */
+    distinct?: Provider_verification_document_access_logScalarFieldEnum | Provider_verification_document_access_logScalarFieldEnum[]
+  }
+
+  /**
+   * provider_verification_document_access_log findFirstOrThrow
+   */
+  export type provider_verification_document_access_logFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_document_access_log to fetch.
+     */
+    where?: provider_verification_document_access_logWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_verification_document_access_logs to fetch.
+     */
+    orderBy?: provider_verification_document_access_logOrderByWithRelationInput | provider_verification_document_access_logOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for provider_verification_document_access_logs.
+     */
+    cursor?: provider_verification_document_access_logWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_verification_document_access_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_verification_document_access_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of provider_verification_document_access_logs.
+     */
+    distinct?: Provider_verification_document_access_logScalarFieldEnum | Provider_verification_document_access_logScalarFieldEnum[]
+  }
+
+  /**
+   * provider_verification_document_access_log findMany
+   */
+  export type provider_verification_document_access_logFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    /**
+     * Filter, which provider_verification_document_access_logs to fetch.
+     */
+    where?: provider_verification_document_access_logWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of provider_verification_document_access_logs to fetch.
+     */
+    orderBy?: provider_verification_document_access_logOrderByWithRelationInput | provider_verification_document_access_logOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing provider_verification_document_access_logs.
+     */
+    cursor?: provider_verification_document_access_logWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` provider_verification_document_access_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` provider_verification_document_access_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of provider_verification_document_access_logs.
+     */
+    distinct?: Provider_verification_document_access_logScalarFieldEnum | Provider_verification_document_access_logScalarFieldEnum[]
+  }
+
+  /**
+   * provider_verification_document_access_log create
+   */
+  export type provider_verification_document_access_logCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    /**
+     * The data needed to create a provider_verification_document_access_log.
+     */
+    data: XOR<provider_verification_document_access_logCreateInput, provider_verification_document_access_logUncheckedCreateInput>
+  }
+
+  /**
+   * provider_verification_document_access_log createMany
+   */
+  export type provider_verification_document_access_logCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many provider_verification_document_access_logs.
+     */
+    data: provider_verification_document_access_logCreateManyInput | provider_verification_document_access_logCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * provider_verification_document_access_log createManyAndReturn
+   */
+  export type provider_verification_document_access_logCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * The data used to create many provider_verification_document_access_logs.
+     */
+    data: provider_verification_document_access_logCreateManyInput | provider_verification_document_access_logCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * provider_verification_document_access_log update
+   */
+  export type provider_verification_document_access_logUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    /**
+     * The data needed to update a provider_verification_document_access_log.
+     */
+    data: XOR<provider_verification_document_access_logUpdateInput, provider_verification_document_access_logUncheckedUpdateInput>
+    /**
+     * Choose, which provider_verification_document_access_log to update.
+     */
+    where: provider_verification_document_access_logWhereUniqueInput
+  }
+
+  /**
+   * provider_verification_document_access_log updateMany
+   */
+  export type provider_verification_document_access_logUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update provider_verification_document_access_logs.
+     */
+    data: XOR<provider_verification_document_access_logUpdateManyMutationInput, provider_verification_document_access_logUncheckedUpdateManyInput>
+    /**
+     * Filter which provider_verification_document_access_logs to update
+     */
+    where?: provider_verification_document_access_logWhereInput
+    /**
+     * Limit how many provider_verification_document_access_logs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * provider_verification_document_access_log updateManyAndReturn
+   */
+  export type provider_verification_document_access_logUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * The data used to update provider_verification_document_access_logs.
+     */
+    data: XOR<provider_verification_document_access_logUpdateManyMutationInput, provider_verification_document_access_logUncheckedUpdateManyInput>
+    /**
+     * Filter which provider_verification_document_access_logs to update
+     */
+    where?: provider_verification_document_access_logWhereInput
+    /**
+     * Limit how many provider_verification_document_access_logs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * provider_verification_document_access_log upsert
+   */
+  export type provider_verification_document_access_logUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    /**
+     * The filter to search for the provider_verification_document_access_log to update in case it exists.
+     */
+    where: provider_verification_document_access_logWhereUniqueInput
+    /**
+     * In case the provider_verification_document_access_log found by the `where` argument doesn't exist, create a new provider_verification_document_access_log with this data.
+     */
+    create: XOR<provider_verification_document_access_logCreateInput, provider_verification_document_access_logUncheckedCreateInput>
+    /**
+     * In case the provider_verification_document_access_log was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<provider_verification_document_access_logUpdateInput, provider_verification_document_access_logUncheckedUpdateInput>
+  }
+
+  /**
+   * provider_verification_document_access_log delete
+   */
+  export type provider_verification_document_access_logDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
+    /**
+     * Filter which provider_verification_document_access_log to delete.
+     */
+    where: provider_verification_document_access_logWhereUniqueInput
+  }
+
+  /**
+   * provider_verification_document_access_log deleteMany
+   */
+  export type provider_verification_document_access_logDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which provider_verification_document_access_logs to delete
+     */
+    where?: provider_verification_document_access_logWhereInput
+    /**
+     * Limit how many provider_verification_document_access_logs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * provider_verification_document_access_log without action
+   */
+  export type provider_verification_document_access_logDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the provider_verification_document_access_log
+     */
+    select?: provider_verification_document_access_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the provider_verification_document_access_log
+     */
+    omit?: provider_verification_document_access_logOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: provider_verification_document_access_logInclude<ExtArgs> | null
   }
 
 
@@ -31413,7 +34076,9 @@ export namespace Prisma {
     licenseDocumentSha256: 'licenseDocumentSha256',
     licenseDocumentUploadedAt: 'licenseDocumentUploadedAt',
     verificationStatus: 'verificationStatus',
+    verificationRejectionReason: 'verificationRejectionReason',
     verifiedAt: 'verifiedAt',
+    verifiedByUserId: 'verifiedByUserId',
     bio: 'bio',
     approach: 'approach',
     education: 'education',
@@ -31435,6 +34100,34 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const Provider_verification_reviewScalarFieldEnum: {
+    id: 'id',
+    healthcareProviderId: 'healthcareProviderId',
+    reviewerUserId: 'reviewerUserId',
+    status: 'status',
+    reason: 'reason',
+    internalNotes: 'internalNotes',
+    documentKey: 'documentKey',
+    documentSha256: 'documentSha256',
+    createdAt: 'createdAt'
+  };
+
+  export type Provider_verification_reviewScalarFieldEnum = (typeof Provider_verification_reviewScalarFieldEnum)[keyof typeof Provider_verification_reviewScalarFieldEnum]
+
+
+  export const Provider_verification_document_access_logScalarFieldEnum: {
+    id: 'id',
+    healthcareProviderId: 'healthcareProviderId',
+    adminUserId: 'adminUserId',
+    documentKey: 'documentKey',
+    ipAddress: 'ipAddress',
+    userAgent: 'userAgent',
+    createdAt: 'createdAt'
+  };
+
+  export type Provider_verification_document_access_logScalarFieldEnum = (typeof Provider_verification_document_access_logScalarFieldEnum)[keyof typeof Provider_verification_document_access_logScalarFieldEnum]
 
 
   export const VerificationScalarFieldEnum: {
@@ -31692,6 +34385,20 @@ export namespace Prisma {
    * Reference to a field of type 'UserRole[]'
    */
   export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProviderVerificationReviewStatus'
+   */
+  export type EnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProviderVerificationReviewStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProviderVerificationReviewStatus[]'
+   */
+  export type ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProviderVerificationReviewStatus[]'>
     
   /**
    * Deep Input Types
@@ -33427,7 +36134,9 @@ export namespace Prisma {
     licenseDocumentSha256?: StringNullableFilter<"user"> | string | null
     licenseDocumentUploadedAt?: DateTimeNullableFilter<"user"> | Date | string | null
     verificationStatus?: StringFilter<"user"> | string
+    verificationRejectionReason?: StringNullableFilter<"user"> | string | null
     verifiedAt?: DateTimeNullableFilter<"user"> | Date | string | null
+    verifiedByUserId?: StringNullableFilter<"user"> | string | null
     bio?: StringNullableFilter<"user"> | string | null
     approach?: StringNullableFilter<"user"> | string | null
     education?: StringNullableFilter<"user"> | string | null
@@ -33446,6 +36155,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: DateTimeNullableFilter<"user"> | Date | string | null
     createdAt?: DateTimeFilter<"user"> | Date | string
     updatedAt?: DateTimeFilter<"user"> | Date | string
+    verifiedByUser?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
     ownedClinics?: ClinicListRelationFilter
@@ -33471,6 +36181,11 @@ export namespace Prisma {
     notificationDeliveries?: Notification_deliveryListRelationFilter
     supportRequests?: Support_requestListRelationFilter
     appointmentRescheduleRequests?: Appointment_reschedule_requestListRelationFilter
+    verifiedProviders?: UserListRelationFilter
+    providerVerificationReviews?: Provider_verification_reviewListRelationFilter
+    adminProviderVerificationReviews?: Provider_verification_reviewListRelationFilter
+    providerVerificationDocumentAccessLogs?: Provider_verification_document_access_logListRelationFilter
+    adminProviderVerificationDocumentAccessLogs?: Provider_verification_document_access_logListRelationFilter
   }
 
   export type userOrderByWithRelationInput = {
@@ -33504,7 +36219,9 @@ export namespace Prisma {
     licenseDocumentSha256?: SortOrderInput | SortOrder
     licenseDocumentUploadedAt?: SortOrderInput | SortOrder
     verificationStatus?: SortOrder
+    verificationRejectionReason?: SortOrderInput | SortOrder
     verifiedAt?: SortOrderInput | SortOrder
+    verifiedByUserId?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
     approach?: SortOrderInput | SortOrder
     education?: SortOrderInput | SortOrder
@@ -33523,6 +36240,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    verifiedByUser?: userOrderByWithRelationInput
     sessions?: sessionOrderByRelationAggregateInput
     accounts?: accountOrderByRelationAggregateInput
     ownedClinics?: clinicOrderByRelationAggregateInput
@@ -33548,6 +36266,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryOrderByRelationAggregateInput
     supportRequests?: support_requestOrderByRelationAggregateInput
     appointmentRescheduleRequests?: appointment_reschedule_requestOrderByRelationAggregateInput
+    verifiedProviders?: userOrderByRelationAggregateInput
+    providerVerificationReviews?: provider_verification_reviewOrderByRelationAggregateInput
+    adminProviderVerificationReviews?: provider_verification_reviewOrderByRelationAggregateInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logOrderByRelationAggregateInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logOrderByRelationAggregateInput
   }
 
   export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -33584,7 +36307,9 @@ export namespace Prisma {
     licenseDocumentSha256?: StringNullableFilter<"user"> | string | null
     licenseDocumentUploadedAt?: DateTimeNullableFilter<"user"> | Date | string | null
     verificationStatus?: StringFilter<"user"> | string
+    verificationRejectionReason?: StringNullableFilter<"user"> | string | null
     verifiedAt?: DateTimeNullableFilter<"user"> | Date | string | null
+    verifiedByUserId?: StringNullableFilter<"user"> | string | null
     bio?: StringNullableFilter<"user"> | string | null
     approach?: StringNullableFilter<"user"> | string | null
     education?: StringNullableFilter<"user"> | string | null
@@ -33603,6 +36328,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: DateTimeNullableFilter<"user"> | Date | string | null
     createdAt?: DateTimeFilter<"user"> | Date | string
     updatedAt?: DateTimeFilter<"user"> | Date | string
+    verifiedByUser?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
     ownedClinics?: ClinicListRelationFilter
@@ -33628,6 +36354,11 @@ export namespace Prisma {
     notificationDeliveries?: Notification_deliveryListRelationFilter
     supportRequests?: Support_requestListRelationFilter
     appointmentRescheduleRequests?: Appointment_reschedule_requestListRelationFilter
+    verifiedProviders?: UserListRelationFilter
+    providerVerificationReviews?: Provider_verification_reviewListRelationFilter
+    adminProviderVerificationReviews?: Provider_verification_reviewListRelationFilter
+    providerVerificationDocumentAccessLogs?: Provider_verification_document_access_logListRelationFilter
+    adminProviderVerificationDocumentAccessLogs?: Provider_verification_document_access_logListRelationFilter
   }, "id" | "email">
 
   export type userOrderByWithAggregationInput = {
@@ -33661,7 +36392,9 @@ export namespace Prisma {
     licenseDocumentSha256?: SortOrderInput | SortOrder
     licenseDocumentUploadedAt?: SortOrderInput | SortOrder
     verificationStatus?: SortOrder
+    verificationRejectionReason?: SortOrderInput | SortOrder
     verifiedAt?: SortOrderInput | SortOrder
+    verifiedByUserId?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
     approach?: SortOrderInput | SortOrder
     education?: SortOrderInput | SortOrder
@@ -33721,7 +36454,9 @@ export namespace Prisma {
     licenseDocumentSha256?: StringNullableWithAggregatesFilter<"user"> | string | null
     licenseDocumentUploadedAt?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
     verificationStatus?: StringWithAggregatesFilter<"user"> | string
+    verificationRejectionReason?: StringNullableWithAggregatesFilter<"user"> | string | null
     verifiedAt?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
+    verifiedByUserId?: StringNullableWithAggregatesFilter<"user"> | string | null
     bio?: StringNullableWithAggregatesFilter<"user"> | string | null
     approach?: StringNullableWithAggregatesFilter<"user"> | string | null
     education?: StringNullableWithAggregatesFilter<"user"> | string | null
@@ -33740,6 +36475,152 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"user"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"user"> | Date | string
+  }
+
+  export type provider_verification_reviewWhereInput = {
+    AND?: provider_verification_reviewWhereInput | provider_verification_reviewWhereInput[]
+    OR?: provider_verification_reviewWhereInput[]
+    NOT?: provider_verification_reviewWhereInput | provider_verification_reviewWhereInput[]
+    id?: StringFilter<"provider_verification_review"> | string
+    healthcareProviderId?: StringFilter<"provider_verification_review"> | string
+    reviewerUserId?: StringFilter<"provider_verification_review"> | string
+    status?: EnumProviderVerificationReviewStatusFilter<"provider_verification_review"> | $Enums.ProviderVerificationReviewStatus
+    reason?: StringNullableFilter<"provider_verification_review"> | string | null
+    internalNotes?: StringNullableFilter<"provider_verification_review"> | string | null
+    documentKey?: StringNullableFilter<"provider_verification_review"> | string | null
+    documentSha256?: StringNullableFilter<"provider_verification_review"> | string | null
+    createdAt?: DateTimeFilter<"provider_verification_review"> | Date | string
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    reviewerUser?: XOR<UserScalarRelationFilter, userWhereInput>
+  }
+
+  export type provider_verification_reviewOrderByWithRelationInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    reviewerUserId?: SortOrder
+    status?: SortOrder
+    reason?: SortOrderInput | SortOrder
+    internalNotes?: SortOrderInput | SortOrder
+    documentKey?: SortOrderInput | SortOrder
+    documentSha256?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    healthcareProvider?: userOrderByWithRelationInput
+    reviewerUser?: userOrderByWithRelationInput
+  }
+
+  export type provider_verification_reviewWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: provider_verification_reviewWhereInput | provider_verification_reviewWhereInput[]
+    OR?: provider_verification_reviewWhereInput[]
+    NOT?: provider_verification_reviewWhereInput | provider_verification_reviewWhereInput[]
+    healthcareProviderId?: StringFilter<"provider_verification_review"> | string
+    reviewerUserId?: StringFilter<"provider_verification_review"> | string
+    status?: EnumProviderVerificationReviewStatusFilter<"provider_verification_review"> | $Enums.ProviderVerificationReviewStatus
+    reason?: StringNullableFilter<"provider_verification_review"> | string | null
+    internalNotes?: StringNullableFilter<"provider_verification_review"> | string | null
+    documentKey?: StringNullableFilter<"provider_verification_review"> | string | null
+    documentSha256?: StringNullableFilter<"provider_verification_review"> | string | null
+    createdAt?: DateTimeFilter<"provider_verification_review"> | Date | string
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    reviewerUser?: XOR<UserScalarRelationFilter, userWhereInput>
+  }, "id">
+
+  export type provider_verification_reviewOrderByWithAggregationInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    reviewerUserId?: SortOrder
+    status?: SortOrder
+    reason?: SortOrderInput | SortOrder
+    internalNotes?: SortOrderInput | SortOrder
+    documentKey?: SortOrderInput | SortOrder
+    documentSha256?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: provider_verification_reviewCountOrderByAggregateInput
+    _max?: provider_verification_reviewMaxOrderByAggregateInput
+    _min?: provider_verification_reviewMinOrderByAggregateInput
+  }
+
+  export type provider_verification_reviewScalarWhereWithAggregatesInput = {
+    AND?: provider_verification_reviewScalarWhereWithAggregatesInput | provider_verification_reviewScalarWhereWithAggregatesInput[]
+    OR?: provider_verification_reviewScalarWhereWithAggregatesInput[]
+    NOT?: provider_verification_reviewScalarWhereWithAggregatesInput | provider_verification_reviewScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"provider_verification_review"> | string
+    healthcareProviderId?: StringWithAggregatesFilter<"provider_verification_review"> | string
+    reviewerUserId?: StringWithAggregatesFilter<"provider_verification_review"> | string
+    status?: EnumProviderVerificationReviewStatusWithAggregatesFilter<"provider_verification_review"> | $Enums.ProviderVerificationReviewStatus
+    reason?: StringNullableWithAggregatesFilter<"provider_verification_review"> | string | null
+    internalNotes?: StringNullableWithAggregatesFilter<"provider_verification_review"> | string | null
+    documentKey?: StringNullableWithAggregatesFilter<"provider_verification_review"> | string | null
+    documentSha256?: StringNullableWithAggregatesFilter<"provider_verification_review"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"provider_verification_review"> | Date | string
+  }
+
+  export type provider_verification_document_access_logWhereInput = {
+    AND?: provider_verification_document_access_logWhereInput | provider_verification_document_access_logWhereInput[]
+    OR?: provider_verification_document_access_logWhereInput[]
+    NOT?: provider_verification_document_access_logWhereInput | provider_verification_document_access_logWhereInput[]
+    id?: StringFilter<"provider_verification_document_access_log"> | string
+    healthcareProviderId?: StringFilter<"provider_verification_document_access_log"> | string
+    adminUserId?: StringFilter<"provider_verification_document_access_log"> | string
+    documentKey?: StringFilter<"provider_verification_document_access_log"> | string
+    ipAddress?: StringNullableFilter<"provider_verification_document_access_log"> | string | null
+    userAgent?: StringNullableFilter<"provider_verification_document_access_log"> | string | null
+    createdAt?: DateTimeFilter<"provider_verification_document_access_log"> | Date | string
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    adminUser?: XOR<UserScalarRelationFilter, userWhereInput>
+  }
+
+  export type provider_verification_document_access_logOrderByWithRelationInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    adminUserId?: SortOrder
+    documentKey?: SortOrder
+    ipAddress?: SortOrderInput | SortOrder
+    userAgent?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    healthcareProvider?: userOrderByWithRelationInput
+    adminUser?: userOrderByWithRelationInput
+  }
+
+  export type provider_verification_document_access_logWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: provider_verification_document_access_logWhereInput | provider_verification_document_access_logWhereInput[]
+    OR?: provider_verification_document_access_logWhereInput[]
+    NOT?: provider_verification_document_access_logWhereInput | provider_verification_document_access_logWhereInput[]
+    healthcareProviderId?: StringFilter<"provider_verification_document_access_log"> | string
+    adminUserId?: StringFilter<"provider_verification_document_access_log"> | string
+    documentKey?: StringFilter<"provider_verification_document_access_log"> | string
+    ipAddress?: StringNullableFilter<"provider_verification_document_access_log"> | string | null
+    userAgent?: StringNullableFilter<"provider_verification_document_access_log"> | string | null
+    createdAt?: DateTimeFilter<"provider_verification_document_access_log"> | Date | string
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    adminUser?: XOR<UserScalarRelationFilter, userWhereInput>
+  }, "id">
+
+  export type provider_verification_document_access_logOrderByWithAggregationInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    adminUserId?: SortOrder
+    documentKey?: SortOrder
+    ipAddress?: SortOrderInput | SortOrder
+    userAgent?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: provider_verification_document_access_logCountOrderByAggregateInput
+    _max?: provider_verification_document_access_logMaxOrderByAggregateInput
+    _min?: provider_verification_document_access_logMinOrderByAggregateInput
+  }
+
+  export type provider_verification_document_access_logScalarWhereWithAggregatesInput = {
+    AND?: provider_verification_document_access_logScalarWhereWithAggregatesInput | provider_verification_document_access_logScalarWhereWithAggregatesInput[]
+    OR?: provider_verification_document_access_logScalarWhereWithAggregatesInput[]
+    NOT?: provider_verification_document_access_logScalarWhereWithAggregatesInput | provider_verification_document_access_logScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"provider_verification_document_access_log"> | string
+    healthcareProviderId?: StringWithAggregatesFilter<"provider_verification_document_access_log"> | string
+    adminUserId?: StringWithAggregatesFilter<"provider_verification_document_access_log"> | string
+    documentKey?: StringWithAggregatesFilter<"provider_verification_document_access_log"> | string
+    ipAddress?: StringNullableWithAggregatesFilter<"provider_verification_document_access_log"> | string | null
+    userAgent?: StringNullableWithAggregatesFilter<"provider_verification_document_access_log"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"provider_verification_document_access_log"> | Date | string
   }
 
   export type verificationWhereInput = {
@@ -35654,6 +38535,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -35673,6 +38555,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -35698,6 +38581,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateInput = {
@@ -35731,7 +38619,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -35775,6 +38665,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUpdateInput = {
@@ -35808,6 +38703,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35827,6 +38723,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -35852,6 +38749,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateInput = {
@@ -35885,7 +38787,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -35929,6 +38833,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userCreateManyInput = {
@@ -35962,7 +38871,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -36014,6 +38925,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -36066,7 +38978,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -36085,6 +38999,156 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_reviewCreateInput = {
+    id?: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason?: string | null
+    internalNotes?: string | null
+    documentKey?: string | null
+    documentSha256?: string | null
+    createdAt?: Date | string
+    healthcareProvider: userCreateNestedOneWithoutProviderVerificationReviewsInput
+    reviewerUser: userCreateNestedOneWithoutAdminProviderVerificationReviewsInput
+  }
+
+  export type provider_verification_reviewUncheckedCreateInput = {
+    id?: string
+    healthcareProviderId: string
+    reviewerUserId: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason?: string | null
+    internalNotes?: string | null
+    documentKey?: string | null
+    documentSha256?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_reviewUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderVerificationReviewsNestedInput
+    reviewerUser?: userUpdateOneRequiredWithoutAdminProviderVerificationReviewsNestedInput
+  }
+
+  export type provider_verification_reviewUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    reviewerUserId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_reviewCreateManyInput = {
+    id?: string
+    healthcareProviderId: string
+    reviewerUserId: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason?: string | null
+    internalNotes?: string | null
+    documentKey?: string | null
+    documentSha256?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_reviewUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_reviewUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    reviewerUserId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_document_access_logCreateInput = {
+    id?: string
+    documentKey: string
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+    healthcareProvider: userCreateNestedOneWithoutProviderVerificationDocumentAccessLogsInput
+    adminUser: userCreateNestedOneWithoutAdminProviderVerificationDocumentAccessLogsInput
+  }
+
+  export type provider_verification_document_access_logUncheckedCreateInput = {
+    id?: string
+    healthcareProviderId: string
+    adminUserId: string
+    documentKey: string
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_document_access_logUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderVerificationDocumentAccessLogsNestedInput
+    adminUser?: userUpdateOneRequiredWithoutAdminProviderVerificationDocumentAccessLogsNestedInput
+  }
+
+  export type provider_verification_document_access_logUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    adminUserId?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_document_access_logCreateManyInput = {
+    id?: string
+    healthcareProviderId: string
+    adminUserId: string
+    documentKey: string
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_document_access_logUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_document_access_logUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    adminUserId?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type verificationCreateInput = {
@@ -37616,6 +40680,18 @@ export namespace Prisma {
     none?: support_requestWhereInput
   }
 
+  export type Provider_verification_reviewListRelationFilter = {
+    every?: provider_verification_reviewWhereInput
+    some?: provider_verification_reviewWhereInput
+    none?: provider_verification_reviewWhereInput
+  }
+
+  export type Provider_verification_document_access_logListRelationFilter = {
+    every?: provider_verification_document_access_logWhereInput
+    some?: provider_verification_document_access_logWhereInput
+    none?: provider_verification_document_access_logWhereInput
+  }
+
   export type sessionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -37668,6 +40744,14 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type provider_verification_reviewOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type provider_verification_document_access_logOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type userCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -37699,7 +40783,9 @@ export namespace Prisma {
     licenseDocumentSha256?: SortOrder
     licenseDocumentUploadedAt?: SortOrder
     verificationStatus?: SortOrder
+    verificationRejectionReason?: SortOrder
     verifiedAt?: SortOrder
+    verifiedByUserId?: SortOrder
     bio?: SortOrder
     approach?: SortOrder
     education?: SortOrder
@@ -37756,7 +40842,9 @@ export namespace Prisma {
     licenseDocumentSha256?: SortOrder
     licenseDocumentUploadedAt?: SortOrder
     verificationStatus?: SortOrder
+    verificationRejectionReason?: SortOrder
     verifiedAt?: SortOrder
+    verifiedByUserId?: SortOrder
     bio?: SortOrder
     approach?: SortOrder
     education?: SortOrder
@@ -37802,7 +40890,9 @@ export namespace Prisma {
     licenseDocumentSha256?: SortOrder
     licenseDocumentUploadedAt?: SortOrder
     verificationStatus?: SortOrder
+    verificationRejectionReason?: SortOrder
     verifiedAt?: SortOrder
+    verifiedByUserId?: SortOrder
     bio?: SortOrder
     approach?: SortOrder
     education?: SortOrder
@@ -37832,6 +40922,89 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserRoleFilter<$PrismaModel>
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
+  export type EnumProviderVerificationReviewStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProviderVerificationReviewStatus | EnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProviderVerificationReviewStatus[] | ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProviderVerificationReviewStatus[] | ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProviderVerificationReviewStatusFilter<$PrismaModel> | $Enums.ProviderVerificationReviewStatus
+  }
+
+  export type provider_verification_reviewCountOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    reviewerUserId?: SortOrder
+    status?: SortOrder
+    reason?: SortOrder
+    internalNotes?: SortOrder
+    documentKey?: SortOrder
+    documentSha256?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type provider_verification_reviewMaxOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    reviewerUserId?: SortOrder
+    status?: SortOrder
+    reason?: SortOrder
+    internalNotes?: SortOrder
+    documentKey?: SortOrder
+    documentSha256?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type provider_verification_reviewMinOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    reviewerUserId?: SortOrder
+    status?: SortOrder
+    reason?: SortOrder
+    internalNotes?: SortOrder
+    documentKey?: SortOrder
+    documentSha256?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnumProviderVerificationReviewStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProviderVerificationReviewStatus | EnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProviderVerificationReviewStatus[] | ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProviderVerificationReviewStatus[] | ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProviderVerificationReviewStatusWithAggregatesFilter<$PrismaModel> | $Enums.ProviderVerificationReviewStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProviderVerificationReviewStatusFilter<$PrismaModel>
+    _max?: NestedEnumProviderVerificationReviewStatusFilter<$PrismaModel>
+  }
+
+  export type provider_verification_document_access_logCountOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    adminUserId?: SortOrder
+    documentKey?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type provider_verification_document_access_logMaxOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    adminUserId?: SortOrder
+    documentKey?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type provider_verification_document_access_logMinOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    adminUserId?: SortOrder
+    documentKey?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type verificationCountOrderByAggregateInput = {
@@ -38803,6 +41976,12 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type userCreateNestedOneWithoutVerifiedProvidersInput = {
+    create?: XOR<userCreateWithoutVerifiedProvidersInput, userUncheckedCreateWithoutVerifiedProvidersInput>
+    connectOrCreate?: userCreateOrConnectWithoutVerifiedProvidersInput
+    connect?: userWhereUniqueInput
+  }
+
   export type sessionCreateNestedManyWithoutUserInput = {
     create?: XOR<sessionCreateWithoutUserInput, sessionUncheckedCreateWithoutUserInput> | sessionCreateWithoutUserInput[] | sessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: sessionCreateOrConnectWithoutUserInput | sessionCreateOrConnectWithoutUserInput[]
@@ -38974,6 +42153,41 @@ export namespace Prisma {
     connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput | appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput[]
     createMany?: appointment_reschedule_requestCreateManyRequestedByUserInputEnvelope
     connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+  }
+
+  export type userCreateNestedManyWithoutVerifiedByUserInput = {
+    create?: XOR<userCreateWithoutVerifiedByUserInput, userUncheckedCreateWithoutVerifiedByUserInput> | userCreateWithoutVerifiedByUserInput[] | userUncheckedCreateWithoutVerifiedByUserInput[]
+    connectOrCreate?: userCreateOrConnectWithoutVerifiedByUserInput | userCreateOrConnectWithoutVerifiedByUserInput[]
+    createMany?: userCreateManyVerifiedByUserInputEnvelope
+    connect?: userWhereUniqueInput | userWhereUniqueInput[]
+  }
+
+  export type provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<provider_verification_reviewCreateWithoutHealthcareProviderInput, provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput> | provider_verification_reviewCreateWithoutHealthcareProviderInput[] | provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: provider_verification_reviewCreateOrConnectWithoutHealthcareProviderInput | provider_verification_reviewCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: provider_verification_reviewCreateManyHealthcareProviderInputEnvelope
+    connect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+  }
+
+  export type provider_verification_reviewCreateNestedManyWithoutReviewerUserInput = {
+    create?: XOR<provider_verification_reviewCreateWithoutReviewerUserInput, provider_verification_reviewUncheckedCreateWithoutReviewerUserInput> | provider_verification_reviewCreateWithoutReviewerUserInput[] | provider_verification_reviewUncheckedCreateWithoutReviewerUserInput[]
+    connectOrCreate?: provider_verification_reviewCreateOrConnectWithoutReviewerUserInput | provider_verification_reviewCreateOrConnectWithoutReviewerUserInput[]
+    createMany?: provider_verification_reviewCreateManyReviewerUserInputEnvelope
+    connect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+  }
+
+  export type provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<provider_verification_document_access_logCreateWithoutHealthcareProviderInput, provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput> | provider_verification_document_access_logCreateWithoutHealthcareProviderInput[] | provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: provider_verification_document_access_logCreateOrConnectWithoutHealthcareProviderInput | provider_verification_document_access_logCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: provider_verification_document_access_logCreateManyHealthcareProviderInputEnvelope
+    connect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+  }
+
+  export type provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput = {
+    create?: XOR<provider_verification_document_access_logCreateWithoutAdminUserInput, provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput> | provider_verification_document_access_logCreateWithoutAdminUserInput[] | provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput[]
+    connectOrCreate?: provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput | provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput[]
+    createMany?: provider_verification_document_access_logCreateManyAdminUserInputEnvelope
+    connect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
   }
 
   export type sessionUncheckedCreateNestedManyWithoutUserInput = {
@@ -39149,6 +42363,41 @@ export namespace Prisma {
     connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
   }
 
+  export type userUncheckedCreateNestedManyWithoutVerifiedByUserInput = {
+    create?: XOR<userCreateWithoutVerifiedByUserInput, userUncheckedCreateWithoutVerifiedByUserInput> | userCreateWithoutVerifiedByUserInput[] | userUncheckedCreateWithoutVerifiedByUserInput[]
+    connectOrCreate?: userCreateOrConnectWithoutVerifiedByUserInput | userCreateOrConnectWithoutVerifiedByUserInput[]
+    createMany?: userCreateManyVerifiedByUserInputEnvelope
+    connect?: userWhereUniqueInput | userWhereUniqueInput[]
+  }
+
+  export type provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<provider_verification_reviewCreateWithoutHealthcareProviderInput, provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput> | provider_verification_reviewCreateWithoutHealthcareProviderInput[] | provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: provider_verification_reviewCreateOrConnectWithoutHealthcareProviderInput | provider_verification_reviewCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: provider_verification_reviewCreateManyHealthcareProviderInputEnvelope
+    connect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+  }
+
+  export type provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput = {
+    create?: XOR<provider_verification_reviewCreateWithoutReviewerUserInput, provider_verification_reviewUncheckedCreateWithoutReviewerUserInput> | provider_verification_reviewCreateWithoutReviewerUserInput[] | provider_verification_reviewUncheckedCreateWithoutReviewerUserInput[]
+    connectOrCreate?: provider_verification_reviewCreateOrConnectWithoutReviewerUserInput | provider_verification_reviewCreateOrConnectWithoutReviewerUserInput[]
+    createMany?: provider_verification_reviewCreateManyReviewerUserInputEnvelope
+    connect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+  }
+
+  export type provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<provider_verification_document_access_logCreateWithoutHealthcareProviderInput, provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput> | provider_verification_document_access_logCreateWithoutHealthcareProviderInput[] | provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: provider_verification_document_access_logCreateOrConnectWithoutHealthcareProviderInput | provider_verification_document_access_logCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: provider_verification_document_access_logCreateManyHealthcareProviderInputEnvelope
+    connect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+  }
+
+  export type provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput = {
+    create?: XOR<provider_verification_document_access_logCreateWithoutAdminUserInput, provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput> | provider_verification_document_access_logCreateWithoutAdminUserInput[] | provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput[]
+    connectOrCreate?: provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput | provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput[]
+    createMany?: provider_verification_document_access_logCreateManyAdminUserInputEnvelope
+    connect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+  }
+
   export type EnumUserRoleFieldUpdateOperationsInput = {
     set?: $Enums.UserRole
   }
@@ -39181,6 +42430,16 @@ export namespace Prisma {
   export type userUpdateclinicPhotosInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type userUpdateOneWithoutVerifiedProvidersNestedInput = {
+    create?: XOR<userCreateWithoutVerifiedProvidersInput, userUncheckedCreateWithoutVerifiedProvidersInput>
+    connectOrCreate?: userCreateOrConnectWithoutVerifiedProvidersInput
+    upsert?: userUpsertWithoutVerifiedProvidersInput
+    disconnect?: userWhereInput | boolean
+    delete?: userWhereInput | boolean
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutVerifiedProvidersInput, userUpdateWithoutVerifiedProvidersInput>, userUncheckedUpdateWithoutVerifiedProvidersInput>
   }
 
   export type sessionUpdateManyWithoutUserNestedInput = {
@@ -39528,6 +42787,76 @@ export namespace Prisma {
     deleteMany?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
   }
 
+  export type userUpdateManyWithoutVerifiedByUserNestedInput = {
+    create?: XOR<userCreateWithoutVerifiedByUserInput, userUncheckedCreateWithoutVerifiedByUserInput> | userCreateWithoutVerifiedByUserInput[] | userUncheckedCreateWithoutVerifiedByUserInput[]
+    connectOrCreate?: userCreateOrConnectWithoutVerifiedByUserInput | userCreateOrConnectWithoutVerifiedByUserInput[]
+    upsert?: userUpsertWithWhereUniqueWithoutVerifiedByUserInput | userUpsertWithWhereUniqueWithoutVerifiedByUserInput[]
+    createMany?: userCreateManyVerifiedByUserInputEnvelope
+    set?: userWhereUniqueInput | userWhereUniqueInput[]
+    disconnect?: userWhereUniqueInput | userWhereUniqueInput[]
+    delete?: userWhereUniqueInput | userWhereUniqueInput[]
+    connect?: userWhereUniqueInput | userWhereUniqueInput[]
+    update?: userUpdateWithWhereUniqueWithoutVerifiedByUserInput | userUpdateWithWhereUniqueWithoutVerifiedByUserInput[]
+    updateMany?: userUpdateManyWithWhereWithoutVerifiedByUserInput | userUpdateManyWithWhereWithoutVerifiedByUserInput[]
+    deleteMany?: userScalarWhereInput | userScalarWhereInput[]
+  }
+
+  export type provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<provider_verification_reviewCreateWithoutHealthcareProviderInput, provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput> | provider_verification_reviewCreateWithoutHealthcareProviderInput[] | provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: provider_verification_reviewCreateOrConnectWithoutHealthcareProviderInput | provider_verification_reviewCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: provider_verification_reviewUpsertWithWhereUniqueWithoutHealthcareProviderInput | provider_verification_reviewUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: provider_verification_reviewCreateManyHealthcareProviderInputEnvelope
+    set?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    disconnect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    delete?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    connect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    update?: provider_verification_reviewUpdateWithWhereUniqueWithoutHealthcareProviderInput | provider_verification_reviewUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: provider_verification_reviewUpdateManyWithWhereWithoutHealthcareProviderInput | provider_verification_reviewUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: provider_verification_reviewScalarWhereInput | provider_verification_reviewScalarWhereInput[]
+  }
+
+  export type provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput = {
+    create?: XOR<provider_verification_reviewCreateWithoutReviewerUserInput, provider_verification_reviewUncheckedCreateWithoutReviewerUserInput> | provider_verification_reviewCreateWithoutReviewerUserInput[] | provider_verification_reviewUncheckedCreateWithoutReviewerUserInput[]
+    connectOrCreate?: provider_verification_reviewCreateOrConnectWithoutReviewerUserInput | provider_verification_reviewCreateOrConnectWithoutReviewerUserInput[]
+    upsert?: provider_verification_reviewUpsertWithWhereUniqueWithoutReviewerUserInput | provider_verification_reviewUpsertWithWhereUniqueWithoutReviewerUserInput[]
+    createMany?: provider_verification_reviewCreateManyReviewerUserInputEnvelope
+    set?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    disconnect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    delete?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    connect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    update?: provider_verification_reviewUpdateWithWhereUniqueWithoutReviewerUserInput | provider_verification_reviewUpdateWithWhereUniqueWithoutReviewerUserInput[]
+    updateMany?: provider_verification_reviewUpdateManyWithWhereWithoutReviewerUserInput | provider_verification_reviewUpdateManyWithWhereWithoutReviewerUserInput[]
+    deleteMany?: provider_verification_reviewScalarWhereInput | provider_verification_reviewScalarWhereInput[]
+  }
+
+  export type provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<provider_verification_document_access_logCreateWithoutHealthcareProviderInput, provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput> | provider_verification_document_access_logCreateWithoutHealthcareProviderInput[] | provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: provider_verification_document_access_logCreateOrConnectWithoutHealthcareProviderInput | provider_verification_document_access_logCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: provider_verification_document_access_logUpsertWithWhereUniqueWithoutHealthcareProviderInput | provider_verification_document_access_logUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: provider_verification_document_access_logCreateManyHealthcareProviderInputEnvelope
+    set?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    disconnect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    delete?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    connect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    update?: provider_verification_document_access_logUpdateWithWhereUniqueWithoutHealthcareProviderInput | provider_verification_document_access_logUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: provider_verification_document_access_logUpdateManyWithWhereWithoutHealthcareProviderInput | provider_verification_document_access_logUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: provider_verification_document_access_logScalarWhereInput | provider_verification_document_access_logScalarWhereInput[]
+  }
+
+  export type provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput = {
+    create?: XOR<provider_verification_document_access_logCreateWithoutAdminUserInput, provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput> | provider_verification_document_access_logCreateWithoutAdminUserInput[] | provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput[]
+    connectOrCreate?: provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput | provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput[]
+    upsert?: provider_verification_document_access_logUpsertWithWhereUniqueWithoutAdminUserInput | provider_verification_document_access_logUpsertWithWhereUniqueWithoutAdminUserInput[]
+    createMany?: provider_verification_document_access_logCreateManyAdminUserInputEnvelope
+    set?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    disconnect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    delete?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    connect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    update?: provider_verification_document_access_logUpdateWithWhereUniqueWithoutAdminUserInput | provider_verification_document_access_logUpdateWithWhereUniqueWithoutAdminUserInput[]
+    updateMany?: provider_verification_document_access_logUpdateManyWithWhereWithoutAdminUserInput | provider_verification_document_access_logUpdateManyWithWhereWithoutAdminUserInput[]
+    deleteMany?: provider_verification_document_access_logScalarWhereInput | provider_verification_document_access_logScalarWhereInput[]
+  }
+
   export type sessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<sessionCreateWithoutUserInput, sessionUncheckedCreateWithoutUserInput> | sessionCreateWithoutUserInput[] | sessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: sessionCreateOrConnectWithoutUserInput | sessionCreateOrConnectWithoutUserInput[]
@@ -39871,6 +43200,136 @@ export namespace Prisma {
     update?: appointment_reschedule_requestUpdateWithWhereUniqueWithoutRequestedByUserInput | appointment_reschedule_requestUpdateWithWhereUniqueWithoutRequestedByUserInput[]
     updateMany?: appointment_reschedule_requestUpdateManyWithWhereWithoutRequestedByUserInput | appointment_reschedule_requestUpdateManyWithWhereWithoutRequestedByUserInput[]
     deleteMany?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
+  }
+
+  export type userUncheckedUpdateManyWithoutVerifiedByUserNestedInput = {
+    create?: XOR<userCreateWithoutVerifiedByUserInput, userUncheckedCreateWithoutVerifiedByUserInput> | userCreateWithoutVerifiedByUserInput[] | userUncheckedCreateWithoutVerifiedByUserInput[]
+    connectOrCreate?: userCreateOrConnectWithoutVerifiedByUserInput | userCreateOrConnectWithoutVerifiedByUserInput[]
+    upsert?: userUpsertWithWhereUniqueWithoutVerifiedByUserInput | userUpsertWithWhereUniqueWithoutVerifiedByUserInput[]
+    createMany?: userCreateManyVerifiedByUserInputEnvelope
+    set?: userWhereUniqueInput | userWhereUniqueInput[]
+    disconnect?: userWhereUniqueInput | userWhereUniqueInput[]
+    delete?: userWhereUniqueInput | userWhereUniqueInput[]
+    connect?: userWhereUniqueInput | userWhereUniqueInput[]
+    update?: userUpdateWithWhereUniqueWithoutVerifiedByUserInput | userUpdateWithWhereUniqueWithoutVerifiedByUserInput[]
+    updateMany?: userUpdateManyWithWhereWithoutVerifiedByUserInput | userUpdateManyWithWhereWithoutVerifiedByUserInput[]
+    deleteMany?: userScalarWhereInput | userScalarWhereInput[]
+  }
+
+  export type provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<provider_verification_reviewCreateWithoutHealthcareProviderInput, provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput> | provider_verification_reviewCreateWithoutHealthcareProviderInput[] | provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: provider_verification_reviewCreateOrConnectWithoutHealthcareProviderInput | provider_verification_reviewCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: provider_verification_reviewUpsertWithWhereUniqueWithoutHealthcareProviderInput | provider_verification_reviewUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: provider_verification_reviewCreateManyHealthcareProviderInputEnvelope
+    set?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    disconnect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    delete?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    connect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    update?: provider_verification_reviewUpdateWithWhereUniqueWithoutHealthcareProviderInput | provider_verification_reviewUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: provider_verification_reviewUpdateManyWithWhereWithoutHealthcareProviderInput | provider_verification_reviewUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: provider_verification_reviewScalarWhereInput | provider_verification_reviewScalarWhereInput[]
+  }
+
+  export type provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput = {
+    create?: XOR<provider_verification_reviewCreateWithoutReviewerUserInput, provider_verification_reviewUncheckedCreateWithoutReviewerUserInput> | provider_verification_reviewCreateWithoutReviewerUserInput[] | provider_verification_reviewUncheckedCreateWithoutReviewerUserInput[]
+    connectOrCreate?: provider_verification_reviewCreateOrConnectWithoutReviewerUserInput | provider_verification_reviewCreateOrConnectWithoutReviewerUserInput[]
+    upsert?: provider_verification_reviewUpsertWithWhereUniqueWithoutReviewerUserInput | provider_verification_reviewUpsertWithWhereUniqueWithoutReviewerUserInput[]
+    createMany?: provider_verification_reviewCreateManyReviewerUserInputEnvelope
+    set?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    disconnect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    delete?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    connect?: provider_verification_reviewWhereUniqueInput | provider_verification_reviewWhereUniqueInput[]
+    update?: provider_verification_reviewUpdateWithWhereUniqueWithoutReviewerUserInput | provider_verification_reviewUpdateWithWhereUniqueWithoutReviewerUserInput[]
+    updateMany?: provider_verification_reviewUpdateManyWithWhereWithoutReviewerUserInput | provider_verification_reviewUpdateManyWithWhereWithoutReviewerUserInput[]
+    deleteMany?: provider_verification_reviewScalarWhereInput | provider_verification_reviewScalarWhereInput[]
+  }
+
+  export type provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<provider_verification_document_access_logCreateWithoutHealthcareProviderInput, provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput> | provider_verification_document_access_logCreateWithoutHealthcareProviderInput[] | provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: provider_verification_document_access_logCreateOrConnectWithoutHealthcareProviderInput | provider_verification_document_access_logCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: provider_verification_document_access_logUpsertWithWhereUniqueWithoutHealthcareProviderInput | provider_verification_document_access_logUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: provider_verification_document_access_logCreateManyHealthcareProviderInputEnvelope
+    set?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    disconnect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    delete?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    connect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    update?: provider_verification_document_access_logUpdateWithWhereUniqueWithoutHealthcareProviderInput | provider_verification_document_access_logUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: provider_verification_document_access_logUpdateManyWithWhereWithoutHealthcareProviderInput | provider_verification_document_access_logUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: provider_verification_document_access_logScalarWhereInput | provider_verification_document_access_logScalarWhereInput[]
+  }
+
+  export type provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput = {
+    create?: XOR<provider_verification_document_access_logCreateWithoutAdminUserInput, provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput> | provider_verification_document_access_logCreateWithoutAdminUserInput[] | provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput[]
+    connectOrCreate?: provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput | provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput[]
+    upsert?: provider_verification_document_access_logUpsertWithWhereUniqueWithoutAdminUserInput | provider_verification_document_access_logUpsertWithWhereUniqueWithoutAdminUserInput[]
+    createMany?: provider_verification_document_access_logCreateManyAdminUserInputEnvelope
+    set?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    disconnect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    delete?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    connect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+    update?: provider_verification_document_access_logUpdateWithWhereUniqueWithoutAdminUserInput | provider_verification_document_access_logUpdateWithWhereUniqueWithoutAdminUserInput[]
+    updateMany?: provider_verification_document_access_logUpdateManyWithWhereWithoutAdminUserInput | provider_verification_document_access_logUpdateManyWithWhereWithoutAdminUserInput[]
+    deleteMany?: provider_verification_document_access_logScalarWhereInput | provider_verification_document_access_logScalarWhereInput[]
+  }
+
+  export type userCreateNestedOneWithoutProviderVerificationReviewsInput = {
+    create?: XOR<userCreateWithoutProviderVerificationReviewsInput, userUncheckedCreateWithoutProviderVerificationReviewsInput>
+    connectOrCreate?: userCreateOrConnectWithoutProviderVerificationReviewsInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type userCreateNestedOneWithoutAdminProviderVerificationReviewsInput = {
+    create?: XOR<userCreateWithoutAdminProviderVerificationReviewsInput, userUncheckedCreateWithoutAdminProviderVerificationReviewsInput>
+    connectOrCreate?: userCreateOrConnectWithoutAdminProviderVerificationReviewsInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type EnumProviderVerificationReviewStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ProviderVerificationReviewStatus
+  }
+
+  export type userUpdateOneRequiredWithoutProviderVerificationReviewsNestedInput = {
+    create?: XOR<userCreateWithoutProviderVerificationReviewsInput, userUncheckedCreateWithoutProviderVerificationReviewsInput>
+    connectOrCreate?: userCreateOrConnectWithoutProviderVerificationReviewsInput
+    upsert?: userUpsertWithoutProviderVerificationReviewsInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutProviderVerificationReviewsInput, userUpdateWithoutProviderVerificationReviewsInput>, userUncheckedUpdateWithoutProviderVerificationReviewsInput>
+  }
+
+  export type userUpdateOneRequiredWithoutAdminProviderVerificationReviewsNestedInput = {
+    create?: XOR<userCreateWithoutAdminProviderVerificationReviewsInput, userUncheckedCreateWithoutAdminProviderVerificationReviewsInput>
+    connectOrCreate?: userCreateOrConnectWithoutAdminProviderVerificationReviewsInput
+    upsert?: userUpsertWithoutAdminProviderVerificationReviewsInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutAdminProviderVerificationReviewsInput, userUpdateWithoutAdminProviderVerificationReviewsInput>, userUncheckedUpdateWithoutAdminProviderVerificationReviewsInput>
+  }
+
+  export type userCreateNestedOneWithoutProviderVerificationDocumentAccessLogsInput = {
+    create?: XOR<userCreateWithoutProviderVerificationDocumentAccessLogsInput, userUncheckedCreateWithoutProviderVerificationDocumentAccessLogsInput>
+    connectOrCreate?: userCreateOrConnectWithoutProviderVerificationDocumentAccessLogsInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type userCreateNestedOneWithoutAdminProviderVerificationDocumentAccessLogsInput = {
+    create?: XOR<userCreateWithoutAdminProviderVerificationDocumentAccessLogsInput, userUncheckedCreateWithoutAdminProviderVerificationDocumentAccessLogsInput>
+    connectOrCreate?: userCreateOrConnectWithoutAdminProviderVerificationDocumentAccessLogsInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type userUpdateOneRequiredWithoutProviderVerificationDocumentAccessLogsNestedInput = {
+    create?: XOR<userCreateWithoutProviderVerificationDocumentAccessLogsInput, userUncheckedCreateWithoutProviderVerificationDocumentAccessLogsInput>
+    connectOrCreate?: userCreateOrConnectWithoutProviderVerificationDocumentAccessLogsInput
+    upsert?: userUpsertWithoutProviderVerificationDocumentAccessLogsInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutProviderVerificationDocumentAccessLogsInput, userUpdateWithoutProviderVerificationDocumentAccessLogsInput>, userUncheckedUpdateWithoutProviderVerificationDocumentAccessLogsInput>
+  }
+
+  export type userUpdateOneRequiredWithoutAdminProviderVerificationDocumentAccessLogsNestedInput = {
+    create?: XOR<userCreateWithoutAdminProviderVerificationDocumentAccessLogsInput, userUncheckedCreateWithoutAdminProviderVerificationDocumentAccessLogsInput>
+    connectOrCreate?: userCreateOrConnectWithoutAdminProviderVerificationDocumentAccessLogsInput
+    upsert?: userUpsertWithoutAdminProviderVerificationDocumentAccessLogsInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutAdminProviderVerificationDocumentAccessLogsInput, userUpdateWithoutAdminProviderVerificationDocumentAccessLogsInput>, userUncheckedUpdateWithoutAdminProviderVerificationDocumentAccessLogsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -40277,6 +43736,23 @@ export namespace Prisma {
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
   }
 
+  export type NestedEnumProviderVerificationReviewStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProviderVerificationReviewStatus | EnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProviderVerificationReviewStatus[] | ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProviderVerificationReviewStatus[] | ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProviderVerificationReviewStatusFilter<$PrismaModel> | $Enums.ProviderVerificationReviewStatus
+  }
+
+  export type NestedEnumProviderVerificationReviewStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProviderVerificationReviewStatus | EnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ProviderVerificationReviewStatus[] | ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProviderVerificationReviewStatus[] | ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumProviderVerificationReviewStatusWithAggregatesFilter<$PrismaModel> | $Enums.ProviderVerificationReviewStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProviderVerificationReviewStatusFilter<$PrismaModel>
+    _max?: NestedEnumProviderVerificationReviewStatusFilter<$PrismaModel>
+  }
+
   export type userCreateWithoutAccountsInput = {
     id?: string
     name: string
@@ -40308,6 +43784,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -40327,6 +43804,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
     clinics?: clinicCreateNestedManyWithoutEmployeesInput
@@ -40351,6 +43829,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutAccountsInput = {
@@ -40384,7 +43867,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -40427,6 +43912,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutAccountsInput = {
@@ -40476,6 +43966,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40495,6 +43986,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
     clinics?: clinicUpdateManyWithoutEmployeesNestedInput
@@ -40519,6 +44011,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutAccountsInput = {
@@ -40552,7 +44049,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -40595,6 +44094,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type appointmentCreateWithoutAppointmentProceduresInput = {
@@ -40792,6 +44296,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -40811,6 +44316,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -40835,6 +44341,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutCustomerAppointmentsInput = {
@@ -40868,7 +44379,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -40911,6 +44424,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutCustomerAppointmentsInput = {
@@ -41008,6 +44526,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -41027,6 +44546,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -41051,6 +44571,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutHealthcareProviderAppointmentsInput = {
@@ -41084,7 +44609,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -41127,6 +44654,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutHealthcareProviderAppointmentsInput = {
@@ -41304,6 +44836,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41323,6 +44856,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -41347,6 +44881,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutCustomerAppointmentsInput = {
@@ -41380,7 +44919,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41423,6 +44964,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type patient_profileUpsertWithoutAppointmentsInput = {
@@ -41532,6 +45078,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41551,6 +45098,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -41575,6 +45123,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutHealthcareProviderAppointmentsInput = {
@@ -41608,7 +45161,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -41651,6 +45206,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type appointment_procedureUpsertWithWhereUniqueWithoutAppointmentInput = {
@@ -41857,6 +45417,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -41876,6 +45437,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -41900,6 +45462,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutAppointmentRescheduleRequestsInput = {
@@ -41933,7 +45500,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -41976,6 +45545,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutAppointmentRescheduleRequestsInput = {
@@ -42080,6 +45654,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42099,6 +45674,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -42123,6 +45699,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutAppointmentRescheduleRequestsInput = {
@@ -42156,7 +45737,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42199,6 +45782,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type healthcare_provider_categoryCreateWithoutCategoryInput = {
@@ -42280,6 +45868,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -42299,6 +45888,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -42323,6 +45913,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutHealthcareProviderCategoriesInput = {
@@ -42356,7 +45951,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -42399,6 +45996,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutHealthcareProviderCategoriesInput = {
@@ -42469,6 +46071,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42488,6 +46091,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -42512,6 +46116,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutHealthcareProviderCategoriesInput = {
@@ -42545,7 +46154,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42588,6 +46199,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type categoryUpsertWithoutHealthcareProviderCategoriesInput = {
@@ -42648,6 +46264,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -42667,6 +46284,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     clinics?: clinicCreateNestedManyWithoutEmployeesInput
@@ -42691,6 +46309,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutOwnedClinicsInput = {
@@ -42724,7 +46347,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -42767,6 +46392,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutOwnedClinicsInput = {
@@ -42805,6 +46435,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -42824,6 +46455,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -42848,6 +46480,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutClinicsInput = {
@@ -42881,7 +46518,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -42924,6 +46563,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutClinicsInput = {
@@ -42973,6 +46617,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42992,6 +46637,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     clinics?: clinicUpdateManyWithoutEmployeesNestedInput
@@ -43016,6 +46662,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutOwnedClinicsInput = {
@@ -43049,7 +46700,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43092,6 +46745,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUpsertWithWhereUniqueWithoutClinicsInput = {
@@ -43144,7 +46802,9 @@ export namespace Prisma {
     licenseDocumentSha256?: StringNullableFilter<"user"> | string | null
     licenseDocumentUploadedAt?: DateTimeNullableFilter<"user"> | Date | string | null
     verificationStatus?: StringFilter<"user"> | string
+    verificationRejectionReason?: StringNullableFilter<"user"> | string | null
     verifiedAt?: DateTimeNullableFilter<"user"> | Date | string | null
+    verifiedByUserId?: StringNullableFilter<"user"> | string | null
     bio?: StringNullableFilter<"user"> | string | null
     approach?: StringNullableFilter<"user"> | string | null
     education?: StringNullableFilter<"user"> | string | null
@@ -43196,6 +46856,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -43215,6 +46876,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -43239,6 +46901,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutFavoriteProvidersInput = {
@@ -43272,7 +46939,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -43315,6 +46984,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutFavoriteProvidersInput = {
@@ -43353,6 +47027,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -43372,6 +47047,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -43396,6 +47072,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutFavoritedByInput = {
@@ -43429,7 +47110,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -43472,6 +47155,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutFavoritedByInput = {
@@ -43521,6 +47209,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43540,6 +47229,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -43564,6 +47254,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutFavoriteProvidersInput = {
@@ -43597,7 +47292,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43640,6 +47337,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUpsertWithoutFavoritedByInput = {
@@ -43684,6 +47386,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43703,6 +47406,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -43727,6 +47431,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutFavoritedByInput = {
@@ -43760,7 +47469,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -43803,6 +47514,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userCreateWithoutMedicalRecordInput = {
@@ -43836,6 +47552,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -43855,6 +47572,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -43879,6 +47597,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutMedicalRecordInput = {
@@ -43912,7 +47635,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -43955,6 +47680,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutMedicalRecordInput = {
@@ -44004,6 +47734,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44023,6 +47754,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -44047,6 +47779,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutMedicalRecordInput = {
@@ -44080,7 +47817,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44123,6 +47862,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userCreateWithoutSchedulesInput = {
@@ -44156,6 +47900,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -44175,6 +47920,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -44199,6 +47945,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutSchedulesInput = {
@@ -44232,7 +47983,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -44275,6 +48028,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutSchedulesInput = {
@@ -44324,6 +48082,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44343,6 +48102,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -44367,6 +48127,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutSchedulesInput = {
@@ -44400,7 +48165,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44443,6 +48210,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userCreateWithoutFaqsInput = {
@@ -44476,6 +48248,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -44495,6 +48268,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -44519,6 +48293,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutFaqsInput = {
@@ -44552,7 +48331,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -44595,6 +48376,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutFaqsInput = {
@@ -44644,6 +48430,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44663,6 +48450,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -44687,6 +48475,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutFaqsInput = {
@@ -44720,7 +48513,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -44763,6 +48558,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userCreateWithoutCustomerConversationsInput = {
@@ -44796,6 +48596,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -44815,6 +48616,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -44839,6 +48641,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutCustomerConversationsInput = {
@@ -44872,7 +48679,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -44915,6 +48724,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutCustomerConversationsInput = {
@@ -44953,6 +48767,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -44972,6 +48787,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -44996,6 +48812,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutProviderConversationsInput = {
@@ -45029,7 +48850,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -45072,6 +48895,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutProviderConversationsInput = {
@@ -45161,6 +48989,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45180,6 +49009,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -45204,6 +49034,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutCustomerConversationsInput = {
@@ -45237,7 +49072,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45280,6 +49117,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUpsertWithoutProviderConversationsInput = {
@@ -45324,6 +49166,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45343,6 +49186,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -45367,6 +49211,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutProviderConversationsInput = {
@@ -45400,7 +49249,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45443,6 +49294,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type conversation_messageUpsertWithWhereUniqueWithoutConversationInput = {
@@ -45515,6 +49371,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -45534,6 +49391,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -45558,6 +49416,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutConversationMessagesInput = {
@@ -45591,7 +49454,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -45634,6 +49499,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutConversationMessagesInput = {
@@ -45761,6 +49631,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45780,6 +49651,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -45804,6 +49676,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutConversationMessagesInput = {
@@ -45837,7 +49714,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -45880,6 +49759,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type appointmentUpsertWithoutRelatedMessagesInput = {
@@ -45968,6 +49852,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -45987,6 +49872,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -46011,6 +49897,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutPushTokensInput = {
@@ -46044,7 +49935,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -46087,6 +49980,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutPushTokensInput = {
@@ -46136,6 +50034,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46155,6 +50054,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -46179,6 +50079,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutPushTokensInput = {
@@ -46212,7 +50117,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46255,6 +50162,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userCreateWithoutNotificationPreferencesInput = {
@@ -46288,6 +50200,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -46307,6 +50220,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -46331,6 +50245,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutNotificationPreferencesInput = {
@@ -46364,7 +50283,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -46407,6 +50328,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutNotificationPreferencesInput = {
@@ -46456,6 +50382,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46475,6 +50402,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -46499,6 +50427,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutNotificationPreferencesInput = {
@@ -46532,7 +50465,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46575,6 +50510,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userCreateWithoutNotificationDeliveriesInput = {
@@ -46608,6 +50548,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -46627,6 +50568,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -46651,6 +50593,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutNotificationDeliveriesInput = {
@@ -46684,7 +50631,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -46727,6 +50676,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutNotificationDeliveriesInput = {
@@ -46825,6 +50779,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46844,6 +50799,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -46868,6 +50824,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutNotificationDeliveriesInput = {
@@ -46901,7 +50862,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46944,6 +50907,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type appointmentUpsertWithoutNotificationDeliveriesInput = {
@@ -47032,6 +51000,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -47051,6 +51020,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -47075,6 +51045,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutPatientProfilesInput = {
@@ -47108,7 +51083,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -47151,6 +51128,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutPatientProfilesInput = {
@@ -47189,6 +51171,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -47208,6 +51191,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -47232,6 +51216,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutCreatedPatientProfilesInput = {
@@ -47265,7 +51254,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -47308,6 +51299,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutCreatedPatientProfilesInput = {
@@ -47411,6 +51407,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47430,6 +51427,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -47454,6 +51452,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutPatientProfilesInput = {
@@ -47487,7 +51490,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47530,6 +51535,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUpsertWithoutCreatedPatientProfilesInput = {
@@ -47574,6 +51584,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47593,6 +51604,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -47617,6 +51629,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutCreatedPatientProfilesInput = {
@@ -47650,7 +51667,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47693,6 +51712,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type appointmentUpsertWithWhereUniqueWithoutPatientProfileInput = {
@@ -47764,6 +51788,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -47783,6 +51808,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -47807,6 +51833,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutProceduresInput = {
@@ -47840,7 +51871,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -47883,6 +51916,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutProceduresInput = {
@@ -47954,6 +51992,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -47973,6 +52012,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -47997,6 +52037,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutProceduresInput = {
@@ -48030,7 +52075,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48073,6 +52120,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type appointment_procedureUpsertWithWhereUniqueWithoutProcedureInput = {
@@ -48122,6 +52174,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -48141,6 +52194,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -48165,6 +52219,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutRatingsInput = {
@@ -48198,7 +52257,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -48241,6 +52302,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutRatingsInput = {
@@ -48279,6 +52345,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -48298,6 +52365,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -48322,6 +52390,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutReceivedRatingsInput = {
@@ -48355,7 +52428,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -48398,6 +52473,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutReceivedRatingsInput = {
@@ -48447,6 +52527,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48466,6 +52547,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -48490,6 +52572,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutRatingsInput = {
@@ -48523,7 +52610,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48566,6 +52655,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUpsertWithoutReceivedRatingsInput = {
@@ -48610,6 +52704,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48629,6 +52724,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -48653,6 +52749,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutReceivedRatingsInput = {
@@ -48686,7 +52787,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48729,6 +52832,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userCreateWithoutSessionsInput = {
@@ -48762,6 +52870,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -48781,6 +52890,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
     clinics?: clinicCreateNestedManyWithoutEmployeesInput
@@ -48805,6 +52915,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutSessionsInput = {
@@ -48838,7 +52953,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -48881,6 +52998,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutSessionsInput = {
@@ -48930,6 +53052,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48949,6 +53072,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
     clinics?: clinicUpdateManyWithoutEmployeesNestedInput
@@ -48973,6 +53097,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutSessionsInput = {
@@ -49006,7 +53135,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49049,6 +53180,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userCreateWithoutSupportRequestsInput = {
@@ -49082,6 +53218,7 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
     bio?: string | null
     approach?: string | null
@@ -49101,6 +53238,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -49125,6 +53263,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
   }
 
   export type userUncheckedCreateWithoutSupportRequestsInput = {
@@ -49158,7 +53301,9 @@ export namespace Prisma {
     licenseDocumentSha256?: string | null
     licenseDocumentUploadedAt?: Date | string | null
     verificationStatus?: string
+    verificationRejectionReason?: string | null
     verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
     bio?: string | null
     approach?: string | null
     education?: string | null
@@ -49201,6 +53346,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
   }
 
   export type userCreateOrConnectWithoutSupportRequestsInput = {
@@ -49250,6 +53400,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49269,6 +53420,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -49293,6 +53445,11 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutSupportRequestsInput = {
@@ -49326,7 +53483,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49369,6 +53528,182 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userCreateWithoutVerifiedProvidersInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinics?: clinicCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutVerifiedProvidersInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinics?: clinicUncheckedCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutVerifiedProvidersInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutVerifiedProvidersInput, userUncheckedCreateWithoutVerifiedProvidersInput>
   }
 
   export type sessionCreateWithoutUserInput = {
@@ -50251,6 +54586,479 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type userCreateWithoutVerifiedByUserInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinics?: clinicCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutVerifiedByUserInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinics?: clinicUncheckedCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutVerifiedByUserInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutVerifiedByUserInput, userUncheckedCreateWithoutVerifiedByUserInput>
+  }
+
+  export type userCreateManyVerifiedByUserInputEnvelope = {
+    data: userCreateManyVerifiedByUserInput | userCreateManyVerifiedByUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type provider_verification_reviewCreateWithoutHealthcareProviderInput = {
+    id?: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason?: string | null
+    internalNotes?: string | null
+    documentKey?: string | null
+    documentSha256?: string | null
+    createdAt?: Date | string
+    reviewerUser: userCreateNestedOneWithoutAdminProviderVerificationReviewsInput
+  }
+
+  export type provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput = {
+    id?: string
+    reviewerUserId: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason?: string | null
+    internalNotes?: string | null
+    documentKey?: string | null
+    documentSha256?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_reviewCreateOrConnectWithoutHealthcareProviderInput = {
+    where: provider_verification_reviewWhereUniqueInput
+    create: XOR<provider_verification_reviewCreateWithoutHealthcareProviderInput, provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type provider_verification_reviewCreateManyHealthcareProviderInputEnvelope = {
+    data: provider_verification_reviewCreateManyHealthcareProviderInput | provider_verification_reviewCreateManyHealthcareProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type provider_verification_reviewCreateWithoutReviewerUserInput = {
+    id?: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason?: string | null
+    internalNotes?: string | null
+    documentKey?: string | null
+    documentSha256?: string | null
+    createdAt?: Date | string
+    healthcareProvider: userCreateNestedOneWithoutProviderVerificationReviewsInput
+  }
+
+  export type provider_verification_reviewUncheckedCreateWithoutReviewerUserInput = {
+    id?: string
+    healthcareProviderId: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason?: string | null
+    internalNotes?: string | null
+    documentKey?: string | null
+    documentSha256?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_reviewCreateOrConnectWithoutReviewerUserInput = {
+    where: provider_verification_reviewWhereUniqueInput
+    create: XOR<provider_verification_reviewCreateWithoutReviewerUserInput, provider_verification_reviewUncheckedCreateWithoutReviewerUserInput>
+  }
+
+  export type provider_verification_reviewCreateManyReviewerUserInputEnvelope = {
+    data: provider_verification_reviewCreateManyReviewerUserInput | provider_verification_reviewCreateManyReviewerUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type provider_verification_document_access_logCreateWithoutHealthcareProviderInput = {
+    id?: string
+    documentKey: string
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+    adminUser: userCreateNestedOneWithoutAdminProviderVerificationDocumentAccessLogsInput
+  }
+
+  export type provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput = {
+    id?: string
+    adminUserId: string
+    documentKey: string
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_document_access_logCreateOrConnectWithoutHealthcareProviderInput = {
+    where: provider_verification_document_access_logWhereUniqueInput
+    create: XOR<provider_verification_document_access_logCreateWithoutHealthcareProviderInput, provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type provider_verification_document_access_logCreateManyHealthcareProviderInputEnvelope = {
+    data: provider_verification_document_access_logCreateManyHealthcareProviderInput | provider_verification_document_access_logCreateManyHealthcareProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type provider_verification_document_access_logCreateWithoutAdminUserInput = {
+    id?: string
+    documentKey: string
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+    healthcareProvider: userCreateNestedOneWithoutProviderVerificationDocumentAccessLogsInput
+  }
+
+  export type provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput = {
+    id?: string
+    healthcareProviderId: string
+    documentKey: string
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput = {
+    where: provider_verification_document_access_logWhereUniqueInput
+    create: XOR<provider_verification_document_access_logCreateWithoutAdminUserInput, provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput>
+  }
+
+  export type provider_verification_document_access_logCreateManyAdminUserInputEnvelope = {
+    data: provider_verification_document_access_logCreateManyAdminUserInput | provider_verification_document_access_logCreateManyAdminUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type userUpsertWithoutVerifiedProvidersInput = {
+    update: XOR<userUpdateWithoutVerifiedProvidersInput, userUncheckedUpdateWithoutVerifiedProvidersInput>
+    create: XOR<userCreateWithoutVerifiedProvidersInput, userUncheckedCreateWithoutVerifiedProvidersInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutVerifiedProvidersInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutVerifiedProvidersInput, userUncheckedUpdateWithoutVerifiedProvidersInput>
+  }
+
+  export type userUpdateWithoutVerifiedProvidersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutVerifiedProvidersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUncheckedUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
   export type sessionUpsertWithWhereUniqueWithoutUserInput = {
     where: sessionWhereUniqueInput
     update: XOR<sessionUpdateWithoutUserInput, sessionUncheckedUpdateWithoutUserInput>
@@ -50878,6 +55686,1506 @@ export namespace Prisma {
     data: XOR<appointment_reschedule_requestUpdateManyMutationInput, appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserInput>
   }
 
+  export type userUpsertWithWhereUniqueWithoutVerifiedByUserInput = {
+    where: userWhereUniqueInput
+    update: XOR<userUpdateWithoutVerifiedByUserInput, userUncheckedUpdateWithoutVerifiedByUserInput>
+    create: XOR<userCreateWithoutVerifiedByUserInput, userUncheckedCreateWithoutVerifiedByUserInput>
+  }
+
+  export type userUpdateWithWhereUniqueWithoutVerifiedByUserInput = {
+    where: userWhereUniqueInput
+    data: XOR<userUpdateWithoutVerifiedByUserInput, userUncheckedUpdateWithoutVerifiedByUserInput>
+  }
+
+  export type userUpdateManyWithWhereWithoutVerifiedByUserInput = {
+    where: userScalarWhereInput
+    data: XOR<userUpdateManyMutationInput, userUncheckedUpdateManyWithoutVerifiedByUserInput>
+  }
+
+  export type provider_verification_reviewUpsertWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: provider_verification_reviewWhereUniqueInput
+    update: XOR<provider_verification_reviewUpdateWithoutHealthcareProviderInput, provider_verification_reviewUncheckedUpdateWithoutHealthcareProviderInput>
+    create: XOR<provider_verification_reviewCreateWithoutHealthcareProviderInput, provider_verification_reviewUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type provider_verification_reviewUpdateWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: provider_verification_reviewWhereUniqueInput
+    data: XOR<provider_verification_reviewUpdateWithoutHealthcareProviderInput, provider_verification_reviewUncheckedUpdateWithoutHealthcareProviderInput>
+  }
+
+  export type provider_verification_reviewUpdateManyWithWhereWithoutHealthcareProviderInput = {
+    where: provider_verification_reviewScalarWhereInput
+    data: XOR<provider_verification_reviewUpdateManyMutationInput, provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderInput>
+  }
+
+  export type provider_verification_reviewScalarWhereInput = {
+    AND?: provider_verification_reviewScalarWhereInput | provider_verification_reviewScalarWhereInput[]
+    OR?: provider_verification_reviewScalarWhereInput[]
+    NOT?: provider_verification_reviewScalarWhereInput | provider_verification_reviewScalarWhereInput[]
+    id?: StringFilter<"provider_verification_review"> | string
+    healthcareProviderId?: StringFilter<"provider_verification_review"> | string
+    reviewerUserId?: StringFilter<"provider_verification_review"> | string
+    status?: EnumProviderVerificationReviewStatusFilter<"provider_verification_review"> | $Enums.ProviderVerificationReviewStatus
+    reason?: StringNullableFilter<"provider_verification_review"> | string | null
+    internalNotes?: StringNullableFilter<"provider_verification_review"> | string | null
+    documentKey?: StringNullableFilter<"provider_verification_review"> | string | null
+    documentSha256?: StringNullableFilter<"provider_verification_review"> | string | null
+    createdAt?: DateTimeFilter<"provider_verification_review"> | Date | string
+  }
+
+  export type provider_verification_reviewUpsertWithWhereUniqueWithoutReviewerUserInput = {
+    where: provider_verification_reviewWhereUniqueInput
+    update: XOR<provider_verification_reviewUpdateWithoutReviewerUserInput, provider_verification_reviewUncheckedUpdateWithoutReviewerUserInput>
+    create: XOR<provider_verification_reviewCreateWithoutReviewerUserInput, provider_verification_reviewUncheckedCreateWithoutReviewerUserInput>
+  }
+
+  export type provider_verification_reviewUpdateWithWhereUniqueWithoutReviewerUserInput = {
+    where: provider_verification_reviewWhereUniqueInput
+    data: XOR<provider_verification_reviewUpdateWithoutReviewerUserInput, provider_verification_reviewUncheckedUpdateWithoutReviewerUserInput>
+  }
+
+  export type provider_verification_reviewUpdateManyWithWhereWithoutReviewerUserInput = {
+    where: provider_verification_reviewScalarWhereInput
+    data: XOR<provider_verification_reviewUpdateManyMutationInput, provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserInput>
+  }
+
+  export type provider_verification_document_access_logUpsertWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: provider_verification_document_access_logWhereUniqueInput
+    update: XOR<provider_verification_document_access_logUpdateWithoutHealthcareProviderInput, provider_verification_document_access_logUncheckedUpdateWithoutHealthcareProviderInput>
+    create: XOR<provider_verification_document_access_logCreateWithoutHealthcareProviderInput, provider_verification_document_access_logUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type provider_verification_document_access_logUpdateWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: provider_verification_document_access_logWhereUniqueInput
+    data: XOR<provider_verification_document_access_logUpdateWithoutHealthcareProviderInput, provider_verification_document_access_logUncheckedUpdateWithoutHealthcareProviderInput>
+  }
+
+  export type provider_verification_document_access_logUpdateManyWithWhereWithoutHealthcareProviderInput = {
+    where: provider_verification_document_access_logScalarWhereInput
+    data: XOR<provider_verification_document_access_logUpdateManyMutationInput, provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderInput>
+  }
+
+  export type provider_verification_document_access_logScalarWhereInput = {
+    AND?: provider_verification_document_access_logScalarWhereInput | provider_verification_document_access_logScalarWhereInput[]
+    OR?: provider_verification_document_access_logScalarWhereInput[]
+    NOT?: provider_verification_document_access_logScalarWhereInput | provider_verification_document_access_logScalarWhereInput[]
+    id?: StringFilter<"provider_verification_document_access_log"> | string
+    healthcareProviderId?: StringFilter<"provider_verification_document_access_log"> | string
+    adminUserId?: StringFilter<"provider_verification_document_access_log"> | string
+    documentKey?: StringFilter<"provider_verification_document_access_log"> | string
+    ipAddress?: StringNullableFilter<"provider_verification_document_access_log"> | string | null
+    userAgent?: StringNullableFilter<"provider_verification_document_access_log"> | string | null
+    createdAt?: DateTimeFilter<"provider_verification_document_access_log"> | Date | string
+  }
+
+  export type provider_verification_document_access_logUpsertWithWhereUniqueWithoutAdminUserInput = {
+    where: provider_verification_document_access_logWhereUniqueInput
+    update: XOR<provider_verification_document_access_logUpdateWithoutAdminUserInput, provider_verification_document_access_logUncheckedUpdateWithoutAdminUserInput>
+    create: XOR<provider_verification_document_access_logCreateWithoutAdminUserInput, provider_verification_document_access_logUncheckedCreateWithoutAdminUserInput>
+  }
+
+  export type provider_verification_document_access_logUpdateWithWhereUniqueWithoutAdminUserInput = {
+    where: provider_verification_document_access_logWhereUniqueInput
+    data: XOR<provider_verification_document_access_logUpdateWithoutAdminUserInput, provider_verification_document_access_logUncheckedUpdateWithoutAdminUserInput>
+  }
+
+  export type provider_verification_document_access_logUpdateManyWithWhereWithoutAdminUserInput = {
+    where: provider_verification_document_access_logScalarWhereInput
+    data: XOR<provider_verification_document_access_logUpdateManyMutationInput, provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserInput>
+  }
+
+  export type userCreateWithoutProviderVerificationReviewsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinics?: clinicCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutProviderVerificationReviewsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinics?: clinicUncheckedCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutProviderVerificationReviewsInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutProviderVerificationReviewsInput, userUncheckedCreateWithoutProviderVerificationReviewsInput>
+  }
+
+  export type userCreateWithoutAdminProviderVerificationReviewsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinics?: clinicCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutAdminProviderVerificationReviewsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinics?: clinicUncheckedCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutAdminProviderVerificationReviewsInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutAdminProviderVerificationReviewsInput, userUncheckedCreateWithoutAdminProviderVerificationReviewsInput>
+  }
+
+  export type userUpsertWithoutProviderVerificationReviewsInput = {
+    update: XOR<userUpdateWithoutProviderVerificationReviewsInput, userUncheckedUpdateWithoutProviderVerificationReviewsInput>
+    create: XOR<userCreateWithoutProviderVerificationReviewsInput, userUncheckedCreateWithoutProviderVerificationReviewsInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutProviderVerificationReviewsInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutProviderVerificationReviewsInput, userUncheckedUpdateWithoutProviderVerificationReviewsInput>
+  }
+
+  export type userUpdateWithoutProviderVerificationReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutProviderVerificationReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUncheckedUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUpsertWithoutAdminProviderVerificationReviewsInput = {
+    update: XOR<userUpdateWithoutAdminProviderVerificationReviewsInput, userUncheckedUpdateWithoutAdminProviderVerificationReviewsInput>
+    create: XOR<userCreateWithoutAdminProviderVerificationReviewsInput, userUncheckedCreateWithoutAdminProviderVerificationReviewsInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutAdminProviderVerificationReviewsInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutAdminProviderVerificationReviewsInput, userUncheckedUpdateWithoutAdminProviderVerificationReviewsInput>
+  }
+
+  export type userUpdateWithoutAdminProviderVerificationReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutAdminProviderVerificationReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUncheckedUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userCreateWithoutProviderVerificationDocumentAccessLogsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinics?: clinicCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutProviderVerificationDocumentAccessLogsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinics?: clinicUncheckedCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutProviderVerificationDocumentAccessLogsInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutProviderVerificationDocumentAccessLogsInput, userUncheckedCreateWithoutProviderVerificationDocumentAccessLogsInput>
+  }
+
+  export type userCreateWithoutAdminProviderVerificationDocumentAccessLogsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinics?: clinicCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+  }
+
+  export type userUncheckedCreateWithoutAdminProviderVerificationDocumentAccessLogsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinics?: clinicUncheckedCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+  }
+
+  export type userCreateOrConnectWithoutAdminProviderVerificationDocumentAccessLogsInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutAdminProviderVerificationDocumentAccessLogsInput, userUncheckedCreateWithoutAdminProviderVerificationDocumentAccessLogsInput>
+  }
+
+  export type userUpsertWithoutProviderVerificationDocumentAccessLogsInput = {
+    update: XOR<userUpdateWithoutProviderVerificationDocumentAccessLogsInput, userUncheckedUpdateWithoutProviderVerificationDocumentAccessLogsInput>
+    create: XOR<userCreateWithoutProviderVerificationDocumentAccessLogsInput, userUncheckedCreateWithoutProviderVerificationDocumentAccessLogsInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutProviderVerificationDocumentAccessLogsInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutProviderVerificationDocumentAccessLogsInput, userUncheckedUpdateWithoutProviderVerificationDocumentAccessLogsInput>
+  }
+
+  export type userUpdateWithoutProviderVerificationDocumentAccessLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutProviderVerificationDocumentAccessLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUncheckedUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUpsertWithoutAdminProviderVerificationDocumentAccessLogsInput = {
+    update: XOR<userUpdateWithoutAdminProviderVerificationDocumentAccessLogsInput, userUncheckedUpdateWithoutAdminProviderVerificationDocumentAccessLogsInput>
+    create: XOR<userCreateWithoutAdminProviderVerificationDocumentAccessLogsInput, userUncheckedCreateWithoutAdminProviderVerificationDocumentAccessLogsInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutAdminProviderVerificationDocumentAccessLogsInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutAdminProviderVerificationDocumentAccessLogsInput, userUncheckedUpdateWithoutAdminProviderVerificationDocumentAccessLogsInput>
+  }
+
+  export type userUpdateWithoutAdminProviderVerificationDocumentAccessLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutAdminProviderVerificationDocumentAccessLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUncheckedUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+  }
+
   export type appointment_procedureCreateManyAppointmentInput = {
     id?: string
     procedureId: string
@@ -51109,6 +57417,7 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51128,6 +57437,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -51152,6 +57462,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutClinicsInput = {
@@ -51185,7 +57500,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51228,6 +57545,11 @@ export namespace Prisma {
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
   export type userUncheckedUpdateManyWithoutClinicsInput = {
@@ -51261,7 +57583,9 @@ export namespace Prisma {
     licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     approach?: NullableStringFieldUpdateOperationsInput | string | null
     education?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51720,6 +58044,99 @@ export namespace Prisma {
     respondedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type userCreateManyVerifiedByUserInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type provider_verification_reviewCreateManyHealthcareProviderInput = {
+    id?: string
+    reviewerUserId: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason?: string | null
+    internalNotes?: string | null
+    documentKey?: string | null
+    documentSha256?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_reviewCreateManyReviewerUserInput = {
+    id?: string
+    healthcareProviderId: string
+    status: $Enums.ProviderVerificationReviewStatus
+    reason?: string | null
+    internalNotes?: string | null
+    documentKey?: string | null
+    documentSha256?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_document_access_logCreateManyHealthcareProviderInput = {
+    id?: string
+    adminUserId: string
+    documentKey: string
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+  }
+
+  export type provider_verification_document_access_logCreateManyAdminUserInput = {
+    id?: string
+    healthcareProviderId: string
+    documentKey: string
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
   }
 
   export type sessionUpdateWithoutUserInput = {
@@ -52618,6 +59035,345 @@ export namespace Prisma {
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type userUpdateWithoutVerifiedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutVerifiedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUncheckedUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateManyWithoutVerifiedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_reviewUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviewerUser?: userUpdateOneRequiredWithoutAdminProviderVerificationReviewsNestedInput
+  }
+
+  export type provider_verification_reviewUncheckedUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reviewerUserId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reviewerUserId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_reviewUpdateWithoutReviewerUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderVerificationReviewsNestedInput
+  }
+
+  export type provider_verification_reviewUncheckedUpdateWithoutReviewerUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    status?: EnumProviderVerificationReviewStatusFieldUpdateOperationsInput | $Enums.ProviderVerificationReviewStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    documentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    documentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_document_access_logUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    adminUser?: userUpdateOneRequiredWithoutAdminProviderVerificationDocumentAccessLogsNestedInput
+  }
+
+  export type provider_verification_document_access_logUncheckedUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminUserId?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminUserId?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_document_access_logUpdateWithoutAdminUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderVerificationDocumentAccessLogsNestedInput
+  }
+
+  export type provider_verification_document_access_logUncheckedUpdateWithoutAdminUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    documentKey?: StringFieldUpdateOperationsInput | string
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

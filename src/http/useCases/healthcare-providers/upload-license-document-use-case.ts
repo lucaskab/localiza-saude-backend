@@ -52,7 +52,9 @@ export const uploadLicenseDocumentUseCase = {
 				licenseDocumentSha256: document.sha256,
 				licenseDocumentUploadedAt: new Date(),
 				verificationStatus: "PENDING",
+				verificationRejectionReason: null,
 				verifiedAt: null,
+				verifiedByUserId: null,
 			},
 		);
 

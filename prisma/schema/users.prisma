@@ -29,7 +29,10 @@ model user {
   licenseDocumentSha256 String? @map("license_document_sha256")
   licenseDocumentUploadedAt DateTime? @map("license_document_uploaded_at")
   verificationStatus String @default("PENDING") @map("verification_status")
+  verificationRejectionReason String? @map("verification_rejection_reason")
   verifiedAt    DateTime?  @map("verified_at")
+  verifiedByUserId String?  @map("verified_by_user_id")
+  verifiedByUser user?      @relation("VerifiedProviders", fields: [verifiedByUserId], references: [id], onDelete: SetNull)
   bio           String?
   approach      String?
   education     String?
@@ -75,11 +78,58 @@ model user {
   notificationDeliveries notification_delivery[]
   supportRequests support_request[]
   appointmentRescheduleRequests appointment_reschedule_request[] @relation("UserAppointmentRescheduleRequests")
+  verifiedProviders user[] @relation("VerifiedProviders")
+  providerVerificationReviews provider_verification_review[] @relation("ProviderVerificationReviews")
+  adminProviderVerificationReviews provider_verification_review[] @relation("AdminProviderVerificationReviews")
+  providerVerificationDocumentAccessLogs provider_verification_document_access_log[] @relation("ProviderVerificationDocumentAccessLogs")
+  adminProviderVerificationDocumentAccessLogs provider_verification_document_access_log[] @relation("AdminProviderVerificationDocumentAccessLogs")
 
+  @@index([verifiedByUserId])
   @@map("users")
 }
 
 enum UserRole {
   HEALTHCARE_PROVIDER
   CUSTOMER
+  ADMIN
+}
+
+enum ProviderVerificationReviewStatus {
+  APPROVED
+  REJECTED
+}
+
+model provider_verification_review {
+  id                   String   @id @default(cuid())
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider   user     @relation("ProviderVerificationReviews", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  reviewerUserId       String   @map("reviewer_user_id")
+  reviewerUser         user     @relation("AdminProviderVerificationReviews", fields: [reviewerUserId], references: [id], onDelete: Cascade)
+  status               ProviderVerificationReviewStatus
+  reason               String?
+  internalNotes        String?  @map("internal_notes")
+  documentKey          String?  @map("document_key")
+  documentSha256       String?  @map("document_sha256")
+  createdAt            DateTime @default(now()) @map("created_at")
+
+  @@index([healthcareProviderId])
+  @@index([reviewerUserId])
+  @@index([status])
+  @@map("provider_verification_reviews")
+}
+
+model provider_verification_document_access_log {
+  id                   String   @id @default(cuid())
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider   user     @relation("ProviderVerificationDocumentAccessLogs", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  adminUserId          String   @map("admin_user_id")
+  adminUser            user     @relation("AdminProviderVerificationDocumentAccessLogs", fields: [adminUserId], references: [id], onDelete: Cascade)
+  documentKey          String   @map("document_key")
+  ipAddress            String?  @map("ip_address")
+  userAgent            String?  @map("user_agent")
+  createdAt            DateTime @default(now()) @map("created_at")
+
+  @@index([healthcareProviderId])
+  @@index([adminUserId])
+  @@map("provider_verification_document_access_logs")
 }

@@ -29,7 +29,9 @@ export type CreateHealthcareProviderData = {
 	licenseDocumentSha256?: string | null;
 	licenseDocumentUploadedAt?: Date | null;
 	verificationStatus?: string;
+	verificationRejectionReason?: string | null;
 	verifiedAt?: Date | null;
+	verifiedByUserId?: string | null;
 	bio?: string | null;
 	approach?: string | null;
 	education?: string | null;
@@ -67,7 +69,9 @@ export type UpdateHealthcareProviderData = {
 	licenseDocumentSha256?: string | null;
 	licenseDocumentUploadedAt?: Date | null;
 	verificationStatus?: string;
+	verificationRejectionReason?: string | null;
 	verifiedAt?: Date | null;
+	verifiedByUserId?: string | null;
 	bio?: string | null;
 	approach?: string | null;
 	education?: string | null;

@@ -32,7 +32,9 @@ export const deleteLicenseDocumentUseCase = {
 				licenseDocumentSha256: null,
 				licenseDocumentUploadedAt: null,
 				verificationStatus: "PENDING",
+				verificationRejectionReason: null,
 				verifiedAt: null,
+				verifiedByUserId: null,
 			},
 		);
 

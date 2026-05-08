@@ -168,7 +168,9 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					licenseDocumentSha256: data.licenseDocumentSha256,
 					licenseDocumentUploadedAt: data.licenseDocumentUploadedAt,
 					verificationStatus: data.verificationStatus,
+					verificationRejectionReason: data.verificationRejectionReason,
 					verifiedAt: data.verifiedAt,
+					verifiedByUserId: data.verifiedByUserId,
 					bio: data.bio,
 					approach: data.approach,
 					education: data.education,
@@ -248,8 +250,15 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 						...(data.verificationStatus !== undefined && {
 							verificationStatus: data.verificationStatus,
 						}),
+						...(data.verificationRejectionReason !== undefined && {
+							verificationRejectionReason:
+								data.verificationRejectionReason,
+						}),
 						...(data.verifiedAt !== undefined && {
 							verifiedAt: data.verifiedAt,
+						}),
+						...(data.verifiedByUserId !== undefined && {
+							verifiedByUserId: data.verifiedByUserId,
 						}),
 						...(data.bio !== undefined && { bio: data.bio }),
 						...(data.approach !== undefined && { approach: data.approach }),

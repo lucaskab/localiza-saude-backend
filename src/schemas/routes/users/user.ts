@@ -2,7 +2,7 @@ import { z } from "zod";
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { procedureSchema } from "../procedures/get-procedures";
 
-export const userRoleSchema = z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER"]);
+export const userRoleSchema = z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER", "ADMIN"]);
 
 export const publicUserSchema = z.object({
 	id: z.cuid(),
@@ -54,7 +54,9 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	licenseDocumentSha256: z.string().nullable().optional(),
 	licenseDocumentUploadedAt: z.date().nullable().optional(),
 	verificationStatus: z.enum(["PENDING", "VERIFIED", "REJECTED"]).optional(),
+	verificationRejectionReason: z.string().nullable().optional(),
 	verifiedAt: z.date().nullable().optional(),
+	verifiedByUserId: z.string().nullable().optional(),
 	bio: z.string().nullable().optional(),
 	approach: z.string().nullable().optional(),
 	education: z.string().nullable().optional(),

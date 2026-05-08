@@ -411,7 +411,9 @@ exports.Prisma.UserScalarFieldEnum = {
   licenseDocumentSha256: 'licenseDocumentSha256',
   licenseDocumentUploadedAt: 'licenseDocumentUploadedAt',
   verificationStatus: 'verificationStatus',
+  verificationRejectionReason: 'verificationRejectionReason',
   verifiedAt: 'verifiedAt',
+  verifiedByUserId: 'verifiedByUserId',
   bio: 'bio',
   approach: 'approach',
   education: 'education',
@@ -430,6 +432,28 @@ exports.Prisma.UserScalarFieldEnum = {
   professionalResponsibilityAcceptedAt: 'professionalResponsibilityAcceptedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Provider_verification_reviewScalarFieldEnum = {
+  id: 'id',
+  healthcareProviderId: 'healthcareProviderId',
+  reviewerUserId: 'reviewerUserId',
+  status: 'status',
+  reason: 'reason',
+  internalNotes: 'internalNotes',
+  documentKey: 'documentKey',
+  documentSha256: 'documentSha256',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.Provider_verification_document_access_logScalarFieldEnum = {
+  id: 'id',
+  healthcareProviderId: 'healthcareProviderId',
+  adminUserId: 'adminUserId',
+  documentKey: 'documentKey',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.VerificationScalarFieldEnum = {
@@ -527,7 +551,13 @@ exports.SupportRequestStatus = exports.$Enums.SupportRequestStatus = {
 
 exports.UserRole = exports.$Enums.UserRole = {
   HEALTHCARE_PROVIDER: 'HEALTHCARE_PROVIDER',
-  CUSTOMER: 'CUSTOMER'
+  CUSTOMER: 'CUSTOMER',
+  ADMIN: 'ADMIN'
+};
+
+exports.ProviderVerificationReviewStatus = exports.$Enums.ProviderVerificationReviewStatus = {
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
 };
 
 exports.Prisma.ModelName = {
@@ -553,6 +583,8 @@ exports.Prisma.ModelName = {
   session: 'session',
   support_request: 'support_request',
   user: 'user',
+  provider_verification_review: 'provider_verification_review',
+  provider_verification_document_access_log: 'provider_verification_document_access_log',
   verification: 'verification'
 };
 
