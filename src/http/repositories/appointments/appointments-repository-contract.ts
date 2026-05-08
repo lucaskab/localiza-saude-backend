@@ -1,6 +1,7 @@
 import type {
 	AppointmentStatus,
 	appointment,
+	appointment_reschedule_request,
 	user,
 	patient_profile,
 	procedure,
@@ -41,6 +42,7 @@ export type AppointmentWithRelations = appointment & {
 	patientProfile: patient_profile | null;
 	healthcareProvider: user;
 	appointmentProcedures: AppointmentProcedure[];
+	rescheduleRequests: appointment_reschedule_request[];
 };
 
 export type DateRangeParams = {

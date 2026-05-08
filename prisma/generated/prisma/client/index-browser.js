@@ -162,6 +162,18 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.Appointment_reschedule_requestScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  requestedByUserId: 'requestedByUserId',
+  proposedScheduledAt: 'proposedScheduledAt',
+  status: 'status',
+  reason: 'reason',
+  respondedAt: 'respondedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -452,6 +464,13 @@ exports.AppointmentStatus = exports.$Enums.AppointmentStatus = {
   NO_SHOW: 'NO_SHOW'
 };
 
+exports.AppointmentRescheduleRequestStatus = exports.$Enums.AppointmentRescheduleRequestStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED',
+  CANCELLED: 'CANCELLED'
+};
+
 exports.ClinicType = exports.$Enums.ClinicType = {
   MEDICAL: 'MEDICAL',
   HEALTH: 'HEALTH',
@@ -515,6 +534,7 @@ exports.Prisma.ModelName = {
   account: 'account',
   appointment_procedure: 'appointment_procedure',
   appointment: 'appointment',
+  appointment_reschedule_request: 'appointment_reschedule_request',
   category: 'category',
   healthcare_provider_category: 'healthcare_provider_category',
   clinic: 'clinic',

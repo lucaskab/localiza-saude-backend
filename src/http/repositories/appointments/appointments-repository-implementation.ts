@@ -21,6 +21,11 @@ const includeRelations = {
 			createdAt: "desc" as const,
 		},
 	},
+	rescheduleRequests: {
+		orderBy: {
+			createdAt: "desc" as const,
+		},
+	},
 };
 
 function buildWhereClause(filters?: FindAppointmentsFilters) {

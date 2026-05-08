@@ -29,6 +29,11 @@ export type appointment_procedure = $Result.DefaultSelection<Prisma.$appointment
  */
 export type appointment = $Result.DefaultSelection<Prisma.$appointmentPayload>
 /**
+ * Model appointment_reschedule_request
+ * 
+ */
+export type appointment_reschedule_request = $Result.DefaultSelection<Prisma.$appointment_reschedule_requestPayload>
+/**
  * Model category
  * 
  */
@@ -140,6 +145,16 @@ export namespace $Enums {
 export type AppointmentStatus = (typeof AppointmentStatus)[keyof typeof AppointmentStatus]
 
 
+export const AppointmentRescheduleRequestStatus: {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED',
+  CANCELLED: 'CANCELLED'
+};
+
+export type AppointmentRescheduleRequestStatus = (typeof AppointmentRescheduleRequestStatus)[keyof typeof AppointmentRescheduleRequestStatus]
+
+
 export const ClinicType: {
   MEDICAL: 'MEDICAL',
   HEALTH: 'HEALTH',
@@ -230,6 +245,10 @@ export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 export type AppointmentStatus = $Enums.AppointmentStatus
 
 export const AppointmentStatus: typeof $Enums.AppointmentStatus
+
+export type AppointmentRescheduleRequestStatus = $Enums.AppointmentRescheduleRequestStatus
+
+export const AppointmentRescheduleRequestStatus: typeof $Enums.AppointmentRescheduleRequestStatus
 
 export type ClinicType = $Enums.ClinicType
 
@@ -417,6 +436,16 @@ export class PrismaClient<
     * ```
     */
   get appointment(): Prisma.appointmentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.appointment_reschedule_request`: Exposes CRUD operations for the **appointment_reschedule_request** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Appointment_reschedule_requests
+    * const appointment_reschedule_requests = await prisma.appointment_reschedule_request.findMany()
+    * ```
+    */
+  get appointment_reschedule_request(): Prisma.appointment_reschedule_requestDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.category`: Exposes CRUD operations for the **category** model.
@@ -1044,6 +1073,7 @@ export namespace Prisma {
     account: 'account',
     appointment_procedure: 'appointment_procedure',
     appointment: 'appointment',
+    appointment_reschedule_request: 'appointment_reschedule_request',
     category: 'category',
     healthcare_provider_category: 'healthcare_provider_category',
     clinic: 'clinic',
@@ -1078,7 +1108,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "appointment_procedure" | "appointment" | "category" | "healthcare_provider_category" | "clinic" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "rating" | "session" | "support_request" | "user" | "verification"
+      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "category" | "healthcare_provider_category" | "clinic" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "rating" | "session" | "support_request" | "user" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1301,6 +1331,80 @@ export namespace Prisma {
           count: {
             args: Prisma.appointmentCountArgs<ExtArgs>
             result: $Utils.Optional<AppointmentCountAggregateOutputType> | number
+          }
+        }
+      }
+      appointment_reschedule_request: {
+        payload: Prisma.$appointment_reschedule_requestPayload<ExtArgs>
+        fields: Prisma.appointment_reschedule_requestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.appointment_reschedule_requestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.appointment_reschedule_requestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload>
+          }
+          findFirst: {
+            args: Prisma.appointment_reschedule_requestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.appointment_reschedule_requestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload>
+          }
+          findMany: {
+            args: Prisma.appointment_reschedule_requestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload>[]
+          }
+          create: {
+            args: Prisma.appointment_reschedule_requestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload>
+          }
+          createMany: {
+            args: Prisma.appointment_reschedule_requestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.appointment_reschedule_requestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload>[]
+          }
+          delete: {
+            args: Prisma.appointment_reschedule_requestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload>
+          }
+          update: {
+            args: Prisma.appointment_reschedule_requestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload>
+          }
+          deleteMany: {
+            args: Prisma.appointment_reschedule_requestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.appointment_reschedule_requestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.appointment_reschedule_requestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload>[]
+          }
+          upsert: {
+            args: Prisma.appointment_reschedule_requestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_reschedule_requestPayload>
+          }
+          aggregate: {
+            args: Prisma.Appointment_reschedule_requestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAppointment_reschedule_request>
+          }
+          groupBy: {
+            args: Prisma.appointment_reschedule_requestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_reschedule_requestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.appointment_reschedule_requestCountArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_reschedule_requestCountAggregateOutputType> | number
           }
         }
       }
@@ -2821,6 +2925,7 @@ export namespace Prisma {
     account?: accountOmit
     appointment_procedure?: appointment_procedureOmit
     appointment?: appointmentOmit
+    appointment_reschedule_request?: appointment_reschedule_requestOmit
     category?: categoryOmit
     healthcare_provider_category?: healthcare_provider_categoryOmit
     clinic?: clinicOmit
@@ -2923,12 +3028,14 @@ export namespace Prisma {
     appointmentProcedures: number
     relatedMessages: number
     notificationDeliveries: number
+    rescheduleRequests: number
   }
 
   export type AppointmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     appointmentProcedures?: boolean | AppointmentCountOutputTypeCountAppointmentProceduresArgs
     relatedMessages?: boolean | AppointmentCountOutputTypeCountRelatedMessagesArgs
     notificationDeliveries?: boolean | AppointmentCountOutputTypeCountNotificationDeliveriesArgs
+    rescheduleRequests?: boolean | AppointmentCountOutputTypeCountRescheduleRequestsArgs
   }
 
   // Custom InputTypes
@@ -2961,6 +3068,13 @@ export namespace Prisma {
    */
   export type AppointmentCountOutputTypeCountNotificationDeliveriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: notification_deliveryWhereInput
+  }
+
+  /**
+   * AppointmentCountOutputType without action
+   */
+  export type AppointmentCountOutputTypeCountRescheduleRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_reschedule_requestWhereInput
   }
 
 
@@ -3147,6 +3261,7 @@ export namespace Prisma {
     notificationPreferences: number
     notificationDeliveries: number
     supportRequests: number
+    appointmentRescheduleRequests: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3173,6 +3288,7 @@ export namespace Prisma {
     notificationPreferences?: boolean | UserCountOutputTypeCountNotificationPreferencesArgs
     notificationDeliveries?: boolean | UserCountOutputTypeCountNotificationDeliveriesArgs
     supportRequests?: boolean | UserCountOutputTypeCountSupportRequestsArgs
+    appointmentRescheduleRequests?: boolean | UserCountOutputTypeCountAppointmentRescheduleRequestsArgs
   }
 
   // Custom InputTypes
@@ -3345,6 +3461,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountSupportRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: support_requestWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAppointmentRescheduleRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_reschedule_requestWhereInput
   }
 
 
@@ -5873,6 +5996,7 @@ export namespace Prisma {
     appointmentProcedures?: boolean | appointment$appointmentProceduresArgs<ExtArgs>
     relatedMessages?: boolean | appointment$relatedMessagesArgs<ExtArgs>
     notificationDeliveries?: boolean | appointment$notificationDeliveriesArgs<ExtArgs>
+    rescheduleRequests?: boolean | appointment$rescheduleRequestsArgs<ExtArgs>
     _count?: boolean | AppointmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["appointment"]>
 
@@ -5947,6 +6071,7 @@ export namespace Prisma {
     appointmentProcedures?: boolean | appointment$appointmentProceduresArgs<ExtArgs>
     relatedMessages?: boolean | appointment$relatedMessagesArgs<ExtArgs>
     notificationDeliveries?: boolean | appointment$notificationDeliveriesArgs<ExtArgs>
+    rescheduleRequests?: boolean | appointment$rescheduleRequestsArgs<ExtArgs>
     _count?: boolean | AppointmentCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type appointmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5969,6 +6094,7 @@ export namespace Prisma {
       appointmentProcedures: Prisma.$appointment_procedurePayload<ExtArgs>[]
       relatedMessages: Prisma.$conversation_messagePayload<ExtArgs>[]
       notificationDeliveries: Prisma.$notification_deliveryPayload<ExtArgs>[]
+      rescheduleRequests: Prisma.$appointment_reschedule_requestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6387,6 +6513,7 @@ export namespace Prisma {
     appointmentProcedures<T extends appointment$appointmentProceduresArgs<ExtArgs> = {}>(args?: Subset<T, appointment$appointmentProceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     relatedMessages<T extends appointment$relatedMessagesArgs<ExtArgs> = {}>(args?: Subset<T, appointment$relatedMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$conversation_messagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notificationDeliveries<T extends appointment$notificationDeliveriesArgs<ExtArgs> = {}>(args?: Subset<T, appointment$notificationDeliveriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notification_deliveryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    rescheduleRequests<T extends appointment$rescheduleRequestsArgs<ExtArgs> = {}>(args?: Subset<T, appointment$rescheduleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6943,6 +7070,30 @@ export namespace Prisma {
   }
 
   /**
+   * appointment.rescheduleRequests
+   */
+  export type appointment$rescheduleRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    where?: appointment_reschedule_requestWhereInput
+    orderBy?: appointment_reschedule_requestOrderByWithRelationInput | appointment_reschedule_requestOrderByWithRelationInput[]
+    cursor?: appointment_reschedule_requestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_reschedule_requestScalarFieldEnum | Appointment_reschedule_requestScalarFieldEnum[]
+  }
+
+  /**
    * appointment without action
    */
   export type appointmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6958,6 +7109,1129 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: appointmentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model appointment_reschedule_request
+   */
+
+  export type AggregateAppointment_reschedule_request = {
+    _count: Appointment_reschedule_requestCountAggregateOutputType | null
+    _min: Appointment_reschedule_requestMinAggregateOutputType | null
+    _max: Appointment_reschedule_requestMaxAggregateOutputType | null
+  }
+
+  export type Appointment_reschedule_requestMinAggregateOutputType = {
+    id: string | null
+    appointmentId: string | null
+    requestedByUserId: string | null
+    proposedScheduledAt: Date | null
+    status: $Enums.AppointmentRescheduleRequestStatus | null
+    reason: string | null
+    respondedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Appointment_reschedule_requestMaxAggregateOutputType = {
+    id: string | null
+    appointmentId: string | null
+    requestedByUserId: string | null
+    proposedScheduledAt: Date | null
+    status: $Enums.AppointmentRescheduleRequestStatus | null
+    reason: string | null
+    respondedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Appointment_reschedule_requestCountAggregateOutputType = {
+    id: number
+    appointmentId: number
+    requestedByUserId: number
+    proposedScheduledAt: number
+    status: number
+    reason: number
+    respondedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Appointment_reschedule_requestMinAggregateInputType = {
+    id?: true
+    appointmentId?: true
+    requestedByUserId?: true
+    proposedScheduledAt?: true
+    status?: true
+    reason?: true
+    respondedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Appointment_reschedule_requestMaxAggregateInputType = {
+    id?: true
+    appointmentId?: true
+    requestedByUserId?: true
+    proposedScheduledAt?: true
+    status?: true
+    reason?: true
+    respondedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Appointment_reschedule_requestCountAggregateInputType = {
+    id?: true
+    appointmentId?: true
+    requestedByUserId?: true
+    proposedScheduledAt?: true
+    status?: true
+    reason?: true
+    respondedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Appointment_reschedule_requestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_reschedule_request to aggregate.
+     */
+    where?: appointment_reschedule_requestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_reschedule_requests to fetch.
+     */
+    orderBy?: appointment_reschedule_requestOrderByWithRelationInput | appointment_reschedule_requestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: appointment_reschedule_requestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_reschedule_requests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_reschedule_requests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned appointment_reschedule_requests
+    **/
+    _count?: true | Appointment_reschedule_requestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Appointment_reschedule_requestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Appointment_reschedule_requestMaxAggregateInputType
+  }
+
+  export type GetAppointment_reschedule_requestAggregateType<T extends Appointment_reschedule_requestAggregateArgs> = {
+        [P in keyof T & keyof AggregateAppointment_reschedule_request]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAppointment_reschedule_request[P]>
+      : GetScalarType<T[P], AggregateAppointment_reschedule_request[P]>
+  }
+
+
+
+
+  export type appointment_reschedule_requestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_reschedule_requestWhereInput
+    orderBy?: appointment_reschedule_requestOrderByWithAggregationInput | appointment_reschedule_requestOrderByWithAggregationInput[]
+    by: Appointment_reschedule_requestScalarFieldEnum[] | Appointment_reschedule_requestScalarFieldEnum
+    having?: appointment_reschedule_requestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Appointment_reschedule_requestCountAggregateInputType | true
+    _min?: Appointment_reschedule_requestMinAggregateInputType
+    _max?: Appointment_reschedule_requestMaxAggregateInputType
+  }
+
+  export type Appointment_reschedule_requestGroupByOutputType = {
+    id: string
+    appointmentId: string
+    requestedByUserId: string
+    proposedScheduledAt: Date
+    status: $Enums.AppointmentRescheduleRequestStatus
+    reason: string | null
+    respondedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: Appointment_reschedule_requestCountAggregateOutputType | null
+    _min: Appointment_reschedule_requestMinAggregateOutputType | null
+    _max: Appointment_reschedule_requestMaxAggregateOutputType | null
+  }
+
+  type GetAppointment_reschedule_requestGroupByPayload<T extends appointment_reschedule_requestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Appointment_reschedule_requestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Appointment_reschedule_requestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Appointment_reschedule_requestGroupByOutputType[P]>
+            : GetScalarType<T[P], Appointment_reschedule_requestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type appointment_reschedule_requestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    appointmentId?: boolean
+    requestedByUserId?: boolean
+    proposedScheduledAt?: boolean
+    status?: boolean
+    reason?: boolean
+    respondedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    requestedByUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_reschedule_request"]>
+
+  export type appointment_reschedule_requestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    appointmentId?: boolean
+    requestedByUserId?: boolean
+    proposedScheduledAt?: boolean
+    status?: boolean
+    reason?: boolean
+    respondedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    requestedByUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_reschedule_request"]>
+
+  export type appointment_reschedule_requestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    appointmentId?: boolean
+    requestedByUserId?: boolean
+    proposedScheduledAt?: boolean
+    status?: boolean
+    reason?: boolean
+    respondedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    requestedByUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_reschedule_request"]>
+
+  export type appointment_reschedule_requestSelectScalar = {
+    id?: boolean
+    appointmentId?: boolean
+    requestedByUserId?: boolean
+    proposedScheduledAt?: boolean
+    status?: boolean
+    reason?: boolean
+    respondedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type appointment_reschedule_requestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "appointmentId" | "requestedByUserId" | "proposedScheduledAt" | "status" | "reason" | "respondedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment_reschedule_request"]>
+  export type appointment_reschedule_requestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    requestedByUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type appointment_reschedule_requestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    requestedByUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type appointment_reschedule_requestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    requestedByUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+
+  export type $appointment_reschedule_requestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "appointment_reschedule_request"
+    objects: {
+      appointment: Prisma.$appointmentPayload<ExtArgs>
+      requestedByUser: Prisma.$userPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      appointmentId: string
+      requestedByUserId: string
+      proposedScheduledAt: Date
+      status: $Enums.AppointmentRescheduleRequestStatus
+      reason: string | null
+      respondedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["appointment_reschedule_request"]>
+    composites: {}
+  }
+
+  type appointment_reschedule_requestGetPayload<S extends boolean | null | undefined | appointment_reschedule_requestDefaultArgs> = $Result.GetResult<Prisma.$appointment_reschedule_requestPayload, S>
+
+  type appointment_reschedule_requestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<appointment_reschedule_requestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Appointment_reschedule_requestCountAggregateInputType | true
+    }
+
+  export interface appointment_reschedule_requestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['appointment_reschedule_request'], meta: { name: 'appointment_reschedule_request' } }
+    /**
+     * Find zero or one Appointment_reschedule_request that matches the filter.
+     * @param {appointment_reschedule_requestFindUniqueArgs} args - Arguments to find a Appointment_reschedule_request
+     * @example
+     * // Get one Appointment_reschedule_request
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends appointment_reschedule_requestFindUniqueArgs>(args: SelectSubset<T, appointment_reschedule_requestFindUniqueArgs<ExtArgs>>): Prisma__appointment_reschedule_requestClient<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Appointment_reschedule_request that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {appointment_reschedule_requestFindUniqueOrThrowArgs} args - Arguments to find a Appointment_reschedule_request
+     * @example
+     * // Get one Appointment_reschedule_request
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends appointment_reschedule_requestFindUniqueOrThrowArgs>(args: SelectSubset<T, appointment_reschedule_requestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__appointment_reschedule_requestClient<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_reschedule_request that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_reschedule_requestFindFirstArgs} args - Arguments to find a Appointment_reschedule_request
+     * @example
+     * // Get one Appointment_reschedule_request
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends appointment_reschedule_requestFindFirstArgs>(args?: SelectSubset<T, appointment_reschedule_requestFindFirstArgs<ExtArgs>>): Prisma__appointment_reschedule_requestClient<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_reschedule_request that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_reschedule_requestFindFirstOrThrowArgs} args - Arguments to find a Appointment_reschedule_request
+     * @example
+     * // Get one Appointment_reschedule_request
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends appointment_reschedule_requestFindFirstOrThrowArgs>(args?: SelectSubset<T, appointment_reschedule_requestFindFirstOrThrowArgs<ExtArgs>>): Prisma__appointment_reschedule_requestClient<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Appointment_reschedule_requests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_reschedule_requestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Appointment_reschedule_requests
+     * const appointment_reschedule_requests = await prisma.appointment_reschedule_request.findMany()
+     * 
+     * // Get first 10 Appointment_reschedule_requests
+     * const appointment_reschedule_requests = await prisma.appointment_reschedule_request.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const appointment_reschedule_requestWithIdOnly = await prisma.appointment_reschedule_request.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends appointment_reschedule_requestFindManyArgs>(args?: SelectSubset<T, appointment_reschedule_requestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Appointment_reschedule_request.
+     * @param {appointment_reschedule_requestCreateArgs} args - Arguments to create a Appointment_reschedule_request.
+     * @example
+     * // Create one Appointment_reschedule_request
+     * const Appointment_reschedule_request = await prisma.appointment_reschedule_request.create({
+     *   data: {
+     *     // ... data to create a Appointment_reschedule_request
+     *   }
+     * })
+     * 
+     */
+    create<T extends appointment_reschedule_requestCreateArgs>(args: SelectSubset<T, appointment_reschedule_requestCreateArgs<ExtArgs>>): Prisma__appointment_reschedule_requestClient<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Appointment_reschedule_requests.
+     * @param {appointment_reschedule_requestCreateManyArgs} args - Arguments to create many Appointment_reschedule_requests.
+     * @example
+     * // Create many Appointment_reschedule_requests
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends appointment_reschedule_requestCreateManyArgs>(args?: SelectSubset<T, appointment_reschedule_requestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Appointment_reschedule_requests and returns the data saved in the database.
+     * @param {appointment_reschedule_requestCreateManyAndReturnArgs} args - Arguments to create many Appointment_reschedule_requests.
+     * @example
+     * // Create many Appointment_reschedule_requests
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Appointment_reschedule_requests and only return the `id`
+     * const appointment_reschedule_requestWithIdOnly = await prisma.appointment_reschedule_request.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends appointment_reschedule_requestCreateManyAndReturnArgs>(args?: SelectSubset<T, appointment_reschedule_requestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Appointment_reschedule_request.
+     * @param {appointment_reschedule_requestDeleteArgs} args - Arguments to delete one Appointment_reschedule_request.
+     * @example
+     * // Delete one Appointment_reschedule_request
+     * const Appointment_reschedule_request = await prisma.appointment_reschedule_request.delete({
+     *   where: {
+     *     // ... filter to delete one Appointment_reschedule_request
+     *   }
+     * })
+     * 
+     */
+    delete<T extends appointment_reschedule_requestDeleteArgs>(args: SelectSubset<T, appointment_reschedule_requestDeleteArgs<ExtArgs>>): Prisma__appointment_reschedule_requestClient<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Appointment_reschedule_request.
+     * @param {appointment_reschedule_requestUpdateArgs} args - Arguments to update one Appointment_reschedule_request.
+     * @example
+     * // Update one Appointment_reschedule_request
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends appointment_reschedule_requestUpdateArgs>(args: SelectSubset<T, appointment_reschedule_requestUpdateArgs<ExtArgs>>): Prisma__appointment_reschedule_requestClient<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Appointment_reschedule_requests.
+     * @param {appointment_reschedule_requestDeleteManyArgs} args - Arguments to filter Appointment_reschedule_requests to delete.
+     * @example
+     * // Delete a few Appointment_reschedule_requests
+     * const { count } = await prisma.appointment_reschedule_request.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends appointment_reschedule_requestDeleteManyArgs>(args?: SelectSubset<T, appointment_reschedule_requestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_reschedule_requests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_reschedule_requestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Appointment_reschedule_requests
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends appointment_reschedule_requestUpdateManyArgs>(args: SelectSubset<T, appointment_reschedule_requestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_reschedule_requests and returns the data updated in the database.
+     * @param {appointment_reschedule_requestUpdateManyAndReturnArgs} args - Arguments to update many Appointment_reschedule_requests.
+     * @example
+     * // Update many Appointment_reschedule_requests
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Appointment_reschedule_requests and only return the `id`
+     * const appointment_reschedule_requestWithIdOnly = await prisma.appointment_reschedule_request.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends appointment_reschedule_requestUpdateManyAndReturnArgs>(args: SelectSubset<T, appointment_reschedule_requestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Appointment_reschedule_request.
+     * @param {appointment_reschedule_requestUpsertArgs} args - Arguments to update or create a Appointment_reschedule_request.
+     * @example
+     * // Update or create a Appointment_reschedule_request
+     * const appointment_reschedule_request = await prisma.appointment_reschedule_request.upsert({
+     *   create: {
+     *     // ... data to create a Appointment_reschedule_request
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Appointment_reschedule_request we want to update
+     *   }
+     * })
+     */
+    upsert<T extends appointment_reschedule_requestUpsertArgs>(args: SelectSubset<T, appointment_reschedule_requestUpsertArgs<ExtArgs>>): Prisma__appointment_reschedule_requestClient<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Appointment_reschedule_requests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_reschedule_requestCountArgs} args - Arguments to filter Appointment_reschedule_requests to count.
+     * @example
+     * // Count the number of Appointment_reschedule_requests
+     * const count = await prisma.appointment_reschedule_request.count({
+     *   where: {
+     *     // ... the filter for the Appointment_reschedule_requests we want to count
+     *   }
+     * })
+    **/
+    count<T extends appointment_reschedule_requestCountArgs>(
+      args?: Subset<T, appointment_reschedule_requestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Appointment_reschedule_requestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Appointment_reschedule_request.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Appointment_reschedule_requestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Appointment_reschedule_requestAggregateArgs>(args: Subset<T, Appointment_reschedule_requestAggregateArgs>): Prisma.PrismaPromise<GetAppointment_reschedule_requestAggregateType<T>>
+
+    /**
+     * Group by Appointment_reschedule_request.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_reschedule_requestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends appointment_reschedule_requestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: appointment_reschedule_requestGroupByArgs['orderBy'] }
+        : { orderBy?: appointment_reschedule_requestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, appointment_reschedule_requestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAppointment_reschedule_requestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the appointment_reschedule_request model
+   */
+  readonly fields: appointment_reschedule_requestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for appointment_reschedule_request.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__appointment_reschedule_requestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    appointment<T extends appointmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, appointmentDefaultArgs<ExtArgs>>): Prisma__appointmentClient<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    requestedByUser<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the appointment_reschedule_request model
+   */
+  interface appointment_reschedule_requestFieldRefs {
+    readonly id: FieldRef<"appointment_reschedule_request", 'String'>
+    readonly appointmentId: FieldRef<"appointment_reschedule_request", 'String'>
+    readonly requestedByUserId: FieldRef<"appointment_reschedule_request", 'String'>
+    readonly proposedScheduledAt: FieldRef<"appointment_reschedule_request", 'DateTime'>
+    readonly status: FieldRef<"appointment_reschedule_request", 'AppointmentRescheduleRequestStatus'>
+    readonly reason: FieldRef<"appointment_reschedule_request", 'String'>
+    readonly respondedAt: FieldRef<"appointment_reschedule_request", 'DateTime'>
+    readonly createdAt: FieldRef<"appointment_reschedule_request", 'DateTime'>
+    readonly updatedAt: FieldRef<"appointment_reschedule_request", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * appointment_reschedule_request findUnique
+   */
+  export type appointment_reschedule_requestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_reschedule_request to fetch.
+     */
+    where: appointment_reschedule_requestWhereUniqueInput
+  }
+
+  /**
+   * appointment_reschedule_request findUniqueOrThrow
+   */
+  export type appointment_reschedule_requestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_reschedule_request to fetch.
+     */
+    where: appointment_reschedule_requestWhereUniqueInput
+  }
+
+  /**
+   * appointment_reschedule_request findFirst
+   */
+  export type appointment_reschedule_requestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_reschedule_request to fetch.
+     */
+    where?: appointment_reschedule_requestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_reschedule_requests to fetch.
+     */
+    orderBy?: appointment_reschedule_requestOrderByWithRelationInput | appointment_reschedule_requestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_reschedule_requests.
+     */
+    cursor?: appointment_reschedule_requestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_reschedule_requests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_reschedule_requests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_reschedule_requests.
+     */
+    distinct?: Appointment_reschedule_requestScalarFieldEnum | Appointment_reschedule_requestScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_reschedule_request findFirstOrThrow
+   */
+  export type appointment_reschedule_requestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_reschedule_request to fetch.
+     */
+    where?: appointment_reschedule_requestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_reschedule_requests to fetch.
+     */
+    orderBy?: appointment_reschedule_requestOrderByWithRelationInput | appointment_reschedule_requestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_reschedule_requests.
+     */
+    cursor?: appointment_reschedule_requestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_reschedule_requests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_reschedule_requests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_reschedule_requests.
+     */
+    distinct?: Appointment_reschedule_requestScalarFieldEnum | Appointment_reschedule_requestScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_reschedule_request findMany
+   */
+  export type appointment_reschedule_requestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_reschedule_requests to fetch.
+     */
+    where?: appointment_reschedule_requestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_reschedule_requests to fetch.
+     */
+    orderBy?: appointment_reschedule_requestOrderByWithRelationInput | appointment_reschedule_requestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing appointment_reschedule_requests.
+     */
+    cursor?: appointment_reschedule_requestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_reschedule_requests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_reschedule_requests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_reschedule_requests.
+     */
+    distinct?: Appointment_reschedule_requestScalarFieldEnum | Appointment_reschedule_requestScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_reschedule_request create
+   */
+  export type appointment_reschedule_requestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a appointment_reschedule_request.
+     */
+    data: XOR<appointment_reschedule_requestCreateInput, appointment_reschedule_requestUncheckedCreateInput>
+  }
+
+  /**
+   * appointment_reschedule_request createMany
+   */
+  export type appointment_reschedule_requestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many appointment_reschedule_requests.
+     */
+    data: appointment_reschedule_requestCreateManyInput | appointment_reschedule_requestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * appointment_reschedule_request createManyAndReturn
+   */
+  export type appointment_reschedule_requestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * The data used to create many appointment_reschedule_requests.
+     */
+    data: appointment_reschedule_requestCreateManyInput | appointment_reschedule_requestCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_reschedule_request update
+   */
+  export type appointment_reschedule_requestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a appointment_reschedule_request.
+     */
+    data: XOR<appointment_reschedule_requestUpdateInput, appointment_reschedule_requestUncheckedUpdateInput>
+    /**
+     * Choose, which appointment_reschedule_request to update.
+     */
+    where: appointment_reschedule_requestWhereUniqueInput
+  }
+
+  /**
+   * appointment_reschedule_request updateMany
+   */
+  export type appointment_reschedule_requestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update appointment_reschedule_requests.
+     */
+    data: XOR<appointment_reschedule_requestUpdateManyMutationInput, appointment_reschedule_requestUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_reschedule_requests to update
+     */
+    where?: appointment_reschedule_requestWhereInput
+    /**
+     * Limit how many appointment_reschedule_requests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_reschedule_request updateManyAndReturn
+   */
+  export type appointment_reschedule_requestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * The data used to update appointment_reschedule_requests.
+     */
+    data: XOR<appointment_reschedule_requestUpdateManyMutationInput, appointment_reschedule_requestUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_reschedule_requests to update
+     */
+    where?: appointment_reschedule_requestWhereInput
+    /**
+     * Limit how many appointment_reschedule_requests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_reschedule_request upsert
+   */
+  export type appointment_reschedule_requestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the appointment_reschedule_request to update in case it exists.
+     */
+    where: appointment_reschedule_requestWhereUniqueInput
+    /**
+     * In case the appointment_reschedule_request found by the `where` argument doesn't exist, create a new appointment_reschedule_request with this data.
+     */
+    create: XOR<appointment_reschedule_requestCreateInput, appointment_reschedule_requestUncheckedCreateInput>
+    /**
+     * In case the appointment_reschedule_request was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<appointment_reschedule_requestUpdateInput, appointment_reschedule_requestUncheckedUpdateInput>
+  }
+
+  /**
+   * appointment_reschedule_request delete
+   */
+  export type appointment_reschedule_requestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    /**
+     * Filter which appointment_reschedule_request to delete.
+     */
+    where: appointment_reschedule_requestWhereUniqueInput
+  }
+
+  /**
+   * appointment_reschedule_request deleteMany
+   */
+  export type appointment_reschedule_requestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_reschedule_requests to delete
+     */
+    where?: appointment_reschedule_requestWhereInput
+    /**
+     * Limit how many appointment_reschedule_requests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_reschedule_request without action
+   */
+  export type appointment_reschedule_requestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
   }
 
 
@@ -26984,6 +28258,7 @@ export namespace Prisma {
     notificationPreferences?: boolean | user$notificationPreferencesArgs<ExtArgs>
     notificationDeliveries?: boolean | user$notificationDeliveriesArgs<ExtArgs>
     supportRequests?: boolean | user$supportRequestsArgs<ExtArgs>
+    appointmentRescheduleRequests?: boolean | user$appointmentRescheduleRequestsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -27169,6 +28444,7 @@ export namespace Prisma {
     notificationPreferences?: boolean | user$notificationPreferencesArgs<ExtArgs>
     notificationDeliveries?: boolean | user$notificationDeliveriesArgs<ExtArgs>
     supportRequests?: boolean | user$supportRequestsArgs<ExtArgs>
+    appointmentRescheduleRequests?: boolean | user$appointmentRescheduleRequestsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type userIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -27201,6 +28477,7 @@ export namespace Prisma {
       notificationPreferences: Prisma.$notification_preferencePayload<ExtArgs>[]
       notificationDeliveries: Prisma.$notification_deliveryPayload<ExtArgs>[]
       supportRequests: Prisma.$support_requestPayload<ExtArgs>[]
+      appointmentRescheduleRequests: Prisma.$appointment_reschedule_requestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -27670,6 +28947,7 @@ export namespace Prisma {
     notificationPreferences<T extends user$notificationPreferencesArgs<ExtArgs> = {}>(args?: Subset<T, user$notificationPreferencesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notification_preferencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notificationDeliveries<T extends user$notificationDeliveriesArgs<ExtArgs> = {}>(args?: Subset<T, user$notificationDeliveriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notification_deliveryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     supportRequests<T extends user$supportRequestsArgs<ExtArgs> = {}>(args?: Subset<T, user$supportRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$support_requestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    appointmentRescheduleRequests<T extends user$appointmentRescheduleRequestsArgs<ExtArgs> = {}>(args?: Subset<T, user$appointmentRescheduleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -28709,6 +29987,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Support_requestScalarFieldEnum | Support_requestScalarFieldEnum[]
+  }
+
+  /**
+   * user.appointmentRescheduleRequests
+   */
+  export type user$appointmentRescheduleRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_reschedule_request
+     */
+    select?: appointment_reschedule_requestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_reschedule_request
+     */
+    omit?: appointment_reschedule_requestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_reschedule_requestInclude<ExtArgs> | null
+    where?: appointment_reschedule_requestWhereInput
+    orderBy?: appointment_reschedule_requestOrderByWithRelationInput | appointment_reschedule_requestOrderByWithRelationInput[]
+    cursor?: appointment_reschedule_requestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_reschedule_requestScalarFieldEnum | Appointment_reschedule_requestScalarFieldEnum[]
   }
 
   /**
@@ -29808,6 +31110,21 @@ export namespace Prisma {
   export type AppointmentScalarFieldEnum = (typeof AppointmentScalarFieldEnum)[keyof typeof AppointmentScalarFieldEnum]
 
 
+  export const Appointment_reschedule_requestScalarFieldEnum: {
+    id: 'id',
+    appointmentId: 'appointmentId',
+    requestedByUserId: 'requestedByUserId',
+    proposedScheduledAt: 'proposedScheduledAt',
+    status: 'status',
+    reason: 'reason',
+    respondedAt: 'respondedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Appointment_reschedule_requestScalarFieldEnum = (typeof Appointment_reschedule_requestScalarFieldEnum)[keyof typeof Appointment_reschedule_requestScalarFieldEnum]
+
+
   export const CategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -30218,6 +31535,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'AppointmentRescheduleRequestStatus'
+   */
+  export type EnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppointmentRescheduleRequestStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'AppointmentRescheduleRequestStatus[]'
+   */
+  export type ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppointmentRescheduleRequestStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'ClinicType'
    */
   export type EnumClinicTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ClinicType'>
@@ -30541,6 +31872,7 @@ export namespace Prisma {
     appointmentProcedures?: Appointment_procedureListRelationFilter
     relatedMessages?: Conversation_messageListRelationFilter
     notificationDeliveries?: Notification_deliveryListRelationFilter
+    rescheduleRequests?: Appointment_reschedule_requestListRelationFilter
   }
 
   export type appointmentOrderByWithRelationInput = {
@@ -30566,6 +31898,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureOrderByRelationAggregateInput
     relatedMessages?: conversation_messageOrderByRelationAggregateInput
     notificationDeliveries?: notification_deliveryOrderByRelationAggregateInput
+    rescheduleRequests?: appointment_reschedule_requestOrderByRelationAggregateInput
   }
 
   export type appointmentWhereUniqueInput = Prisma.AtLeast<{
@@ -30594,6 +31927,7 @@ export namespace Prisma {
     appointmentProcedures?: Appointment_procedureListRelationFilter
     relatedMessages?: Conversation_messageListRelationFilter
     notificationDeliveries?: Notification_deliveryListRelationFilter
+    rescheduleRequests?: Appointment_reschedule_requestListRelationFilter
   }, "id">
 
   export type appointmentOrderByWithAggregationInput = {
@@ -30640,6 +31974,84 @@ export namespace Prisma {
     notes?: StringNullableWithAggregatesFilter<"appointment"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"appointment"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"appointment"> | Date | string
+  }
+
+  export type appointment_reschedule_requestWhereInput = {
+    AND?: appointment_reschedule_requestWhereInput | appointment_reschedule_requestWhereInput[]
+    OR?: appointment_reschedule_requestWhereInput[]
+    NOT?: appointment_reschedule_requestWhereInput | appointment_reschedule_requestWhereInput[]
+    id?: StringFilter<"appointment_reschedule_request"> | string
+    appointmentId?: StringFilter<"appointment_reschedule_request"> | string
+    requestedByUserId?: StringFilter<"appointment_reschedule_request"> | string
+    proposedScheduledAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFilter<"appointment_reschedule_request"> | $Enums.AppointmentRescheduleRequestStatus
+    reason?: StringNullableFilter<"appointment_reschedule_request"> | string | null
+    respondedAt?: DateTimeNullableFilter<"appointment_reschedule_request"> | Date | string | null
+    createdAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
+    appointment?: XOR<AppointmentScalarRelationFilter, appointmentWhereInput>
+    requestedByUser?: XOR<UserScalarRelationFilter, userWhereInput>
+  }
+
+  export type appointment_reschedule_requestOrderByWithRelationInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    requestedByUserId?: SortOrder
+    proposedScheduledAt?: SortOrder
+    status?: SortOrder
+    reason?: SortOrderInput | SortOrder
+    respondedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    appointment?: appointmentOrderByWithRelationInput
+    requestedByUser?: userOrderByWithRelationInput
+  }
+
+  export type appointment_reschedule_requestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: appointment_reschedule_requestWhereInput | appointment_reschedule_requestWhereInput[]
+    OR?: appointment_reschedule_requestWhereInput[]
+    NOT?: appointment_reschedule_requestWhereInput | appointment_reschedule_requestWhereInput[]
+    appointmentId?: StringFilter<"appointment_reschedule_request"> | string
+    requestedByUserId?: StringFilter<"appointment_reschedule_request"> | string
+    proposedScheduledAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFilter<"appointment_reschedule_request"> | $Enums.AppointmentRescheduleRequestStatus
+    reason?: StringNullableFilter<"appointment_reschedule_request"> | string | null
+    respondedAt?: DateTimeNullableFilter<"appointment_reschedule_request"> | Date | string | null
+    createdAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
+    appointment?: XOR<AppointmentScalarRelationFilter, appointmentWhereInput>
+    requestedByUser?: XOR<UserScalarRelationFilter, userWhereInput>
+  }, "id">
+
+  export type appointment_reschedule_requestOrderByWithAggregationInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    requestedByUserId?: SortOrder
+    proposedScheduledAt?: SortOrder
+    status?: SortOrder
+    reason?: SortOrderInput | SortOrder
+    respondedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: appointment_reschedule_requestCountOrderByAggregateInput
+    _max?: appointment_reschedule_requestMaxOrderByAggregateInput
+    _min?: appointment_reschedule_requestMinOrderByAggregateInput
+  }
+
+  export type appointment_reschedule_requestScalarWhereWithAggregatesInput = {
+    AND?: appointment_reschedule_requestScalarWhereWithAggregatesInput | appointment_reschedule_requestScalarWhereWithAggregatesInput[]
+    OR?: appointment_reschedule_requestScalarWhereWithAggregatesInput[]
+    NOT?: appointment_reschedule_requestScalarWhereWithAggregatesInput | appointment_reschedule_requestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"appointment_reschedule_request"> | string
+    appointmentId?: StringWithAggregatesFilter<"appointment_reschedule_request"> | string
+    requestedByUserId?: StringWithAggregatesFilter<"appointment_reschedule_request"> | string
+    proposedScheduledAt?: DateTimeWithAggregatesFilter<"appointment_reschedule_request"> | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusWithAggregatesFilter<"appointment_reschedule_request"> | $Enums.AppointmentRescheduleRequestStatus
+    reason?: StringNullableWithAggregatesFilter<"appointment_reschedule_request"> | string | null
+    respondedAt?: DateTimeNullableWithAggregatesFilter<"appointment_reschedule_request"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"appointment_reschedule_request"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"appointment_reschedule_request"> | Date | string
   }
 
   export type categoryWhereInput = {
@@ -32058,6 +33470,7 @@ export namespace Prisma {
     notificationPreferences?: Notification_preferenceListRelationFilter
     notificationDeliveries?: Notification_deliveryListRelationFilter
     supportRequests?: Support_requestListRelationFilter
+    appointmentRescheduleRequests?: Appointment_reschedule_requestListRelationFilter
   }
 
   export type userOrderByWithRelationInput = {
@@ -32134,6 +33547,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceOrderByRelationAggregateInput
     notificationDeliveries?: notification_deliveryOrderByRelationAggregateInput
     supportRequests?: support_requestOrderByRelationAggregateInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestOrderByRelationAggregateInput
   }
 
   export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -32213,6 +33627,7 @@ export namespace Prisma {
     notificationPreferences?: Notification_preferenceListRelationFilter
     notificationDeliveries?: Notification_deliveryListRelationFilter
     supportRequests?: Support_requestListRelationFilter
+    appointmentRescheduleRequests?: Appointment_reschedule_requestListRelationFilter
   }, "id" | "email">
 
   export type userOrderByWithAggregationInput = {
@@ -32562,6 +33977,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateInput = {
@@ -32584,6 +34000,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentUpdateInput = {
@@ -32606,6 +34023,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateInput = {
@@ -32628,6 +34046,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentCreateManyInput = {
@@ -32680,6 +34099,88 @@ export namespace Prisma {
     totalDurationMinutes?: IntFieldUpdateOperationsInput | number
     totalPriceCents?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_reschedule_requestCreateInput = {
+    id?: string
+    proposedScheduledAt: Date | string
+    status?: $Enums.AppointmentRescheduleRequestStatus
+    reason?: string | null
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointment: appointmentCreateNestedOneWithoutRescheduleRequestsInput
+    requestedByUser: userCreateNestedOneWithoutAppointmentRescheduleRequestsInput
+  }
+
+  export type appointment_reschedule_requestUncheckedCreateInput = {
+    id?: string
+    appointmentId: string
+    requestedByUserId: string
+    proposedScheduledAt: Date | string
+    status?: $Enums.AppointmentRescheduleRequestStatus
+    reason?: string | null
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_reschedule_requestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointment?: appointmentUpdateOneRequiredWithoutRescheduleRequestsNestedInput
+    requestedByUser?: userUpdateOneRequiredWithoutAppointmentRescheduleRequestsNestedInput
+  }
+
+  export type appointment_reschedule_requestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    requestedByUserId?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_reschedule_requestCreateManyInput = {
+    id?: string
+    appointmentId: string
+    requestedByUserId: string
+    proposedScheduledAt: Date | string
+    status?: $Enums.AppointmentRescheduleRequestStatus
+    reason?: string | null
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_reschedule_requestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_reschedule_requestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    requestedByUserId?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -34196,6 +35697,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateInput = {
@@ -34272,6 +35774,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUpdateInput = {
@@ -34348,6 +35851,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateInput = {
@@ -34424,6 +35928,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userCreateManyInput = {
@@ -34896,6 +36401,12 @@ export namespace Prisma {
     none?: notification_deliveryWhereInput
   }
 
+  export type Appointment_reschedule_requestListRelationFilter = {
+    every?: appointment_reschedule_requestWhereInput
+    some?: appointment_reschedule_requestWhereInput
+    none?: appointment_reschedule_requestWhereInput
+  }
+
   export type appointment_procedureOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -34905,6 +36416,10 @@ export namespace Prisma {
   }
 
   export type notification_deliveryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type appointment_reschedule_requestOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -34999,6 +36514,59 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type EnumAppointmentRescheduleRequestStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AppointmentRescheduleRequestStatus | EnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AppointmentRescheduleRequestStatus[] | ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AppointmentRescheduleRequestStatus[] | ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel> | $Enums.AppointmentRescheduleRequestStatus
+  }
+
+  export type appointment_reschedule_requestCountOrderByAggregateInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    requestedByUserId?: SortOrder
+    proposedScheduledAt?: SortOrder
+    status?: SortOrder
+    reason?: SortOrder
+    respondedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_reschedule_requestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    requestedByUserId?: SortOrder
+    proposedScheduledAt?: SortOrder
+    status?: SortOrder
+    reason?: SortOrder
+    respondedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_reschedule_requestMinOrderByAggregateInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    requestedByUserId?: SortOrder
+    proposedScheduledAt?: SortOrder
+    status?: SortOrder
+    reason?: SortOrder
+    respondedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumAppointmentRescheduleRequestStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AppointmentRescheduleRequestStatus | EnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AppointmentRescheduleRequestStatus[] | ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AppointmentRescheduleRequestStatus[] | ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAppointmentRescheduleRequestStatusWithAggregatesFilter<$PrismaModel> | $Enums.AppointmentRescheduleRequestStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel>
+    _max?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel>
   }
 
   export type Healthcare_provider_categoryListRelationFilter = {
@@ -36390,6 +37958,13 @@ export namespace Prisma {
     connect?: notification_deliveryWhereUniqueInput | notification_deliveryWhereUniqueInput[]
   }
 
+  export type appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput = {
+    create?: XOR<appointment_reschedule_requestCreateWithoutAppointmentInput, appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput> | appointment_reschedule_requestCreateWithoutAppointmentInput[] | appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput[]
+    connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput | appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput[]
+    createMany?: appointment_reschedule_requestCreateManyAppointmentInputEnvelope
+    connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+  }
+
   export type appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput = {
     create?: XOR<appointment_procedureCreateWithoutAppointmentInput, appointment_procedureUncheckedCreateWithoutAppointmentInput> | appointment_procedureCreateWithoutAppointmentInput[] | appointment_procedureUncheckedCreateWithoutAppointmentInput[]
     connectOrCreate?: appointment_procedureCreateOrConnectWithoutAppointmentInput | appointment_procedureCreateOrConnectWithoutAppointmentInput[]
@@ -36409,6 +37984,13 @@ export namespace Prisma {
     connectOrCreate?: notification_deliveryCreateOrConnectWithoutAppointmentInput | notification_deliveryCreateOrConnectWithoutAppointmentInput[]
     createMany?: notification_deliveryCreateManyAppointmentInputEnvelope
     connect?: notification_deliveryWhereUniqueInput | notification_deliveryWhereUniqueInput[]
+  }
+
+  export type appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput = {
+    create?: XOR<appointment_reschedule_requestCreateWithoutAppointmentInput, appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput> | appointment_reschedule_requestCreateWithoutAppointmentInput[] | appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput[]
+    connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput | appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput[]
+    createMany?: appointment_reschedule_requestCreateManyAppointmentInputEnvelope
+    connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
   }
 
   export type EnumAppointmentStatusFieldUpdateOperationsInput = {
@@ -36493,6 +38075,20 @@ export namespace Prisma {
     deleteMany?: notification_deliveryScalarWhereInput | notification_deliveryScalarWhereInput[]
   }
 
+  export type appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput = {
+    create?: XOR<appointment_reschedule_requestCreateWithoutAppointmentInput, appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput> | appointment_reschedule_requestCreateWithoutAppointmentInput[] | appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput[]
+    connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput | appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput[]
+    upsert?: appointment_reschedule_requestUpsertWithWhereUniqueWithoutAppointmentInput | appointment_reschedule_requestUpsertWithWhereUniqueWithoutAppointmentInput[]
+    createMany?: appointment_reschedule_requestCreateManyAppointmentInputEnvelope
+    set?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    disconnect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    delete?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    update?: appointment_reschedule_requestUpdateWithWhereUniqueWithoutAppointmentInput | appointment_reschedule_requestUpdateWithWhereUniqueWithoutAppointmentInput[]
+    updateMany?: appointment_reschedule_requestUpdateManyWithWhereWithoutAppointmentInput | appointment_reschedule_requestUpdateManyWithWhereWithoutAppointmentInput[]
+    deleteMany?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
+  }
+
   export type appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput = {
     create?: XOR<appointment_procedureCreateWithoutAppointmentInput, appointment_procedureUncheckedCreateWithoutAppointmentInput> | appointment_procedureCreateWithoutAppointmentInput[] | appointment_procedureUncheckedCreateWithoutAppointmentInput[]
     connectOrCreate?: appointment_procedureCreateOrConnectWithoutAppointmentInput | appointment_procedureCreateOrConnectWithoutAppointmentInput[]
@@ -36533,6 +38129,52 @@ export namespace Prisma {
     update?: notification_deliveryUpdateWithWhereUniqueWithoutAppointmentInput | notification_deliveryUpdateWithWhereUniqueWithoutAppointmentInput[]
     updateMany?: notification_deliveryUpdateManyWithWhereWithoutAppointmentInput | notification_deliveryUpdateManyWithWhereWithoutAppointmentInput[]
     deleteMany?: notification_deliveryScalarWhereInput | notification_deliveryScalarWhereInput[]
+  }
+
+  export type appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput = {
+    create?: XOR<appointment_reschedule_requestCreateWithoutAppointmentInput, appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput> | appointment_reschedule_requestCreateWithoutAppointmentInput[] | appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput[]
+    connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput | appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput[]
+    upsert?: appointment_reschedule_requestUpsertWithWhereUniqueWithoutAppointmentInput | appointment_reschedule_requestUpsertWithWhereUniqueWithoutAppointmentInput[]
+    createMany?: appointment_reschedule_requestCreateManyAppointmentInputEnvelope
+    set?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    disconnect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    delete?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    update?: appointment_reschedule_requestUpdateWithWhereUniqueWithoutAppointmentInput | appointment_reschedule_requestUpdateWithWhereUniqueWithoutAppointmentInput[]
+    updateMany?: appointment_reschedule_requestUpdateManyWithWhereWithoutAppointmentInput | appointment_reschedule_requestUpdateManyWithWhereWithoutAppointmentInput[]
+    deleteMany?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
+  }
+
+  export type appointmentCreateNestedOneWithoutRescheduleRequestsInput = {
+    create?: XOR<appointmentCreateWithoutRescheduleRequestsInput, appointmentUncheckedCreateWithoutRescheduleRequestsInput>
+    connectOrCreate?: appointmentCreateOrConnectWithoutRescheduleRequestsInput
+    connect?: appointmentWhereUniqueInput
+  }
+
+  export type userCreateNestedOneWithoutAppointmentRescheduleRequestsInput = {
+    create?: XOR<userCreateWithoutAppointmentRescheduleRequestsInput, userUncheckedCreateWithoutAppointmentRescheduleRequestsInput>
+    connectOrCreate?: userCreateOrConnectWithoutAppointmentRescheduleRequestsInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput = {
+    set?: $Enums.AppointmentRescheduleRequestStatus
+  }
+
+  export type appointmentUpdateOneRequiredWithoutRescheduleRequestsNestedInput = {
+    create?: XOR<appointmentCreateWithoutRescheduleRequestsInput, appointmentUncheckedCreateWithoutRescheduleRequestsInput>
+    connectOrCreate?: appointmentCreateOrConnectWithoutRescheduleRequestsInput
+    upsert?: appointmentUpsertWithoutRescheduleRequestsInput
+    connect?: appointmentWhereUniqueInput
+    update?: XOR<XOR<appointmentUpdateToOneWithWhereWithoutRescheduleRequestsInput, appointmentUpdateWithoutRescheduleRequestsInput>, appointmentUncheckedUpdateWithoutRescheduleRequestsInput>
+  }
+
+  export type userUpdateOneRequiredWithoutAppointmentRescheduleRequestsNestedInput = {
+    create?: XOR<userCreateWithoutAppointmentRescheduleRequestsInput, userUncheckedCreateWithoutAppointmentRescheduleRequestsInput>
+    connectOrCreate?: userCreateOrConnectWithoutAppointmentRescheduleRequestsInput
+    upsert?: userUpsertWithoutAppointmentRescheduleRequestsInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutAppointmentRescheduleRequestsInput, userUpdateWithoutAppointmentRescheduleRequestsInput>, userUncheckedUpdateWithoutAppointmentRescheduleRequestsInput>
   }
 
   export type healthcare_provider_categoryCreateNestedManyWithoutCategoryInput = {
@@ -37327,6 +38969,13 @@ export namespace Prisma {
     connect?: support_requestWhereUniqueInput | support_requestWhereUniqueInput[]
   }
 
+  export type appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput = {
+    create?: XOR<appointment_reschedule_requestCreateWithoutRequestedByUserInput, appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput> | appointment_reschedule_requestCreateWithoutRequestedByUserInput[] | appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput[]
+    connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput | appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput[]
+    createMany?: appointment_reschedule_requestCreateManyRequestedByUserInputEnvelope
+    connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+  }
+
   export type sessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<sessionCreateWithoutUserInput, sessionUncheckedCreateWithoutUserInput> | sessionCreateWithoutUserInput[] | sessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: sessionCreateOrConnectWithoutUserInput | sessionCreateOrConnectWithoutUserInput[]
@@ -37491,6 +39140,13 @@ export namespace Prisma {
     connectOrCreate?: support_requestCreateOrConnectWithoutUserInput | support_requestCreateOrConnectWithoutUserInput[]
     createMany?: support_requestCreateManyUserInputEnvelope
     connect?: support_requestWhereUniqueInput | support_requestWhereUniqueInput[]
+  }
+
+  export type appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput = {
+    create?: XOR<appointment_reschedule_requestCreateWithoutRequestedByUserInput, appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput> | appointment_reschedule_requestCreateWithoutRequestedByUserInput[] | appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput[]
+    connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput | appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput[]
+    createMany?: appointment_reschedule_requestCreateManyRequestedByUserInputEnvelope
+    connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
   }
 
   export type EnumUserRoleFieldUpdateOperationsInput = {
@@ -37858,6 +39514,20 @@ export namespace Prisma {
     deleteMany?: support_requestScalarWhereInput | support_requestScalarWhereInput[]
   }
 
+  export type appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput = {
+    create?: XOR<appointment_reschedule_requestCreateWithoutRequestedByUserInput, appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput> | appointment_reschedule_requestCreateWithoutRequestedByUserInput[] | appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput[]
+    connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput | appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput[]
+    upsert?: appointment_reschedule_requestUpsertWithWhereUniqueWithoutRequestedByUserInput | appointment_reschedule_requestUpsertWithWhereUniqueWithoutRequestedByUserInput[]
+    createMany?: appointment_reschedule_requestCreateManyRequestedByUserInputEnvelope
+    set?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    disconnect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    delete?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    update?: appointment_reschedule_requestUpdateWithWhereUniqueWithoutRequestedByUserInput | appointment_reschedule_requestUpdateWithWhereUniqueWithoutRequestedByUserInput[]
+    updateMany?: appointment_reschedule_requestUpdateManyWithWhereWithoutRequestedByUserInput | appointment_reschedule_requestUpdateManyWithWhereWithoutRequestedByUserInput[]
+    deleteMany?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
+  }
+
   export type sessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<sessionCreateWithoutUserInput, sessionUncheckedCreateWithoutUserInput> | sessionCreateWithoutUserInput[] | sessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: sessionCreateOrConnectWithoutUserInput | sessionCreateOrConnectWithoutUserInput[]
@@ -38189,6 +39859,20 @@ export namespace Prisma {
     deleteMany?: support_requestScalarWhereInput | support_requestScalarWhereInput[]
   }
 
+  export type appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput = {
+    create?: XOR<appointment_reschedule_requestCreateWithoutRequestedByUserInput, appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput> | appointment_reschedule_requestCreateWithoutRequestedByUserInput[] | appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput[]
+    connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput | appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput[]
+    upsert?: appointment_reschedule_requestUpsertWithWhereUniqueWithoutRequestedByUserInput | appointment_reschedule_requestUpsertWithWhereUniqueWithoutRequestedByUserInput[]
+    createMany?: appointment_reschedule_requestCreateManyRequestedByUserInputEnvelope
+    set?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    disconnect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    delete?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+    update?: appointment_reschedule_requestUpdateWithWhereUniqueWithoutRequestedByUserInput | appointment_reschedule_requestUpdateWithWhereUniqueWithoutRequestedByUserInput[]
+    updateMany?: appointment_reschedule_requestUpdateManyWithWhereWithoutRequestedByUserInput | appointment_reschedule_requestUpdateManyWithWhereWithoutRequestedByUserInput[]
+    deleteMany?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -38365,6 +40049,23 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AppointmentRescheduleRequestStatus | EnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AppointmentRescheduleRequestStatus[] | ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AppointmentRescheduleRequestStatus[] | ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel> | $Enums.AppointmentRescheduleRequestStatus
+  }
+
+  export type NestedEnumAppointmentRescheduleRequestStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AppointmentRescheduleRequestStatus | EnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AppointmentRescheduleRequestStatus[] | ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AppointmentRescheduleRequestStatus[] | ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAppointmentRescheduleRequestStatusWithAggregatesFilter<$PrismaModel> | $Enums.AppointmentRescheduleRequestStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel>
+    _max?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel>
   }
 
   export type NestedEnumClinicTypeFilter<$PrismaModel = never> = {
@@ -38649,6 +40350,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutAccountsInput = {
@@ -38724,6 +40426,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutAccountsInput = {
@@ -38815,6 +40518,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutAccountsInput = {
@@ -38890,6 +40594,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type appointmentCreateWithoutAppointmentProceduresInput = {
@@ -38911,6 +40616,7 @@ export namespace Prisma {
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutAppointmentProceduresInput = {
@@ -38932,6 +40638,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutAppointmentProceduresInput = {
@@ -38996,6 +40703,7 @@ export namespace Prisma {
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutAppointmentProceduresInput = {
@@ -39017,6 +40725,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
   }
 
   export type procedureUpsertWithoutAppointmentProceduresInput = {
@@ -39125,6 +40834,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutCustomerAppointmentsInput = {
@@ -39200,6 +40910,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutCustomerAppointmentsInput = {
@@ -39339,6 +41050,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutHealthcareProviderAppointmentsInput = {
@@ -39414,6 +41126,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutHealthcareProviderAppointmentsInput = {
@@ -39517,6 +41230,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type appointment_reschedule_requestCreateWithoutAppointmentInput = {
+    id?: string
+    proposedScheduledAt: Date | string
+    status?: $Enums.AppointmentRescheduleRequestStatus
+    reason?: string | null
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    requestedByUser: userCreateNestedOneWithoutAppointmentRescheduleRequestsInput
+  }
+
+  export type appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput = {
+    id?: string
+    requestedByUserId: string
+    proposedScheduledAt: Date | string
+    status?: $Enums.AppointmentRescheduleRequestStatus
+    reason?: string | null
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput = {
+    where: appointment_reschedule_requestWhereUniqueInput
+    create: XOR<appointment_reschedule_requestCreateWithoutAppointmentInput, appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput>
+  }
+
+  export type appointment_reschedule_requestCreateManyAppointmentInputEnvelope = {
+    data: appointment_reschedule_requestCreateManyAppointmentInput | appointment_reschedule_requestCreateManyAppointmentInput[]
+    skipDuplicates?: boolean
+  }
+
   export type userUpsertWithoutCustomerAppointmentsInput = {
     update: XOR<userUpdateWithoutCustomerAppointmentsInput, userUncheckedUpdateWithoutCustomerAppointmentsInput>
     create: XOR<userCreateWithoutCustomerAppointmentsInput, userUncheckedCreateWithoutCustomerAppointmentsInput>
@@ -39601,6 +41346,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutCustomerAppointmentsInput = {
@@ -39676,6 +41422,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type patient_profileUpsertWithoutAppointmentsInput = {
@@ -39827,6 +41574,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutHealthcareProviderAppointmentsInput = {
@@ -39902,6 +41650,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type appointment_procedureUpsertWithWhereUniqueWithoutAppointmentInput = {
@@ -39995,6 +41744,461 @@ export namespace Prisma {
     sentAt?: DateTimeNullableFilter<"notification_delivery"> | Date | string | null
     createdAt?: DateTimeFilter<"notification_delivery"> | Date | string
     updatedAt?: DateTimeFilter<"notification_delivery"> | Date | string
+  }
+
+  export type appointment_reschedule_requestUpsertWithWhereUniqueWithoutAppointmentInput = {
+    where: appointment_reschedule_requestWhereUniqueInput
+    update: XOR<appointment_reschedule_requestUpdateWithoutAppointmentInput, appointment_reschedule_requestUncheckedUpdateWithoutAppointmentInput>
+    create: XOR<appointment_reschedule_requestCreateWithoutAppointmentInput, appointment_reschedule_requestUncheckedCreateWithoutAppointmentInput>
+  }
+
+  export type appointment_reschedule_requestUpdateWithWhereUniqueWithoutAppointmentInput = {
+    where: appointment_reschedule_requestWhereUniqueInput
+    data: XOR<appointment_reschedule_requestUpdateWithoutAppointmentInput, appointment_reschedule_requestUncheckedUpdateWithoutAppointmentInput>
+  }
+
+  export type appointment_reschedule_requestUpdateManyWithWhereWithoutAppointmentInput = {
+    where: appointment_reschedule_requestScalarWhereInput
+    data: XOR<appointment_reschedule_requestUpdateManyMutationInput, appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentInput>
+  }
+
+  export type appointment_reschedule_requestScalarWhereInput = {
+    AND?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
+    OR?: appointment_reschedule_requestScalarWhereInput[]
+    NOT?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
+    id?: StringFilter<"appointment_reschedule_request"> | string
+    appointmentId?: StringFilter<"appointment_reschedule_request"> | string
+    requestedByUserId?: StringFilter<"appointment_reschedule_request"> | string
+    proposedScheduledAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFilter<"appointment_reschedule_request"> | $Enums.AppointmentRescheduleRequestStatus
+    reason?: StringNullableFilter<"appointment_reschedule_request"> | string | null
+    respondedAt?: DateTimeNullableFilter<"appointment_reschedule_request"> | Date | string | null
+    createdAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
+  }
+
+  export type appointmentCreateWithoutRescheduleRequestsInput = {
+    id?: string
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
+    patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
+    healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+  }
+
+  export type appointmentUncheckedCreateWithoutRescheduleRequestsInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+  }
+
+  export type appointmentCreateOrConnectWithoutRescheduleRequestsInput = {
+    where: appointmentWhereUniqueInput
+    create: XOR<appointmentCreateWithoutRescheduleRequestsInput, appointmentUncheckedCreateWithoutRescheduleRequestsInput>
+  }
+
+  export type userCreateWithoutAppointmentRescheduleRequestsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinics?: clinicCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+  }
+
+  export type userUncheckedCreateWithoutAppointmentRescheduleRequestsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseCouncil?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinics?: clinicUncheckedCreateNestedManyWithoutEmployeesInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type userCreateOrConnectWithoutAppointmentRescheduleRequestsInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutAppointmentRescheduleRequestsInput, userUncheckedCreateWithoutAppointmentRescheduleRequestsInput>
+  }
+
+  export type appointmentUpsertWithoutRescheduleRequestsInput = {
+    update: XOR<appointmentUpdateWithoutRescheduleRequestsInput, appointmentUncheckedUpdateWithoutRescheduleRequestsInput>
+    create: XOR<appointmentCreateWithoutRescheduleRequestsInput, appointmentUncheckedCreateWithoutRescheduleRequestsInput>
+    where?: appointmentWhereInput
+  }
+
+  export type appointmentUpdateToOneWithWhereWithoutRescheduleRequestsInput = {
+    where?: appointmentWhereInput
+    data: XOR<appointmentUpdateWithoutRescheduleRequestsInput, appointmentUncheckedUpdateWithoutRescheduleRequestsInput>
+  }
+
+  export type appointmentUpdateWithoutRescheduleRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+  }
+
+  export type appointmentUncheckedUpdateWithoutRescheduleRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+  }
+
+  export type userUpsertWithoutAppointmentRescheduleRequestsInput = {
+    update: XOR<userUpdateWithoutAppointmentRescheduleRequestsInput, userUncheckedUpdateWithoutAppointmentRescheduleRequestsInput>
+    create: XOR<userCreateWithoutAppointmentRescheduleRequestsInput, userUncheckedCreateWithoutAppointmentRescheduleRequestsInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutAppointmentRescheduleRequestsInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutAppointmentRescheduleRequestsInput, userUncheckedUpdateWithoutAppointmentRescheduleRequestsInput>
+  }
+
+  export type userUpdateWithoutAppointmentRescheduleRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutAppointmentRescheduleRequestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinics?: clinicUncheckedUpdateManyWithoutEmployeesNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type healthcare_provider_categoryCreateWithoutCategoryInput = {
@@ -40118,6 +42322,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutHealthcareProviderCategoriesInput = {
@@ -40193,6 +42398,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutHealthcareProviderCategoriesInput = {
@@ -40305,6 +42511,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutHealthcareProviderCategoriesInput = {
@@ -40380,6 +42587,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type categoryUpsertWithoutHealthcareProviderCategoriesInput = {
@@ -40482,6 +42690,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutOwnedClinicsInput = {
@@ -40557,6 +42766,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutOwnedClinicsInput = {
@@ -40637,6 +42847,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutClinicsInput = {
@@ -40712,6 +42923,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutClinicsInput = {
@@ -40803,6 +43015,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutOwnedClinicsInput = {
@@ -40878,6 +43091,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUpsertWithWhereUniqueWithoutClinicsInput = {
@@ -41024,6 +43238,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutFavoriteProvidersInput = {
@@ -41099,6 +43314,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutFavoriteProvidersInput = {
@@ -41179,6 +43395,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutFavoritedByInput = {
@@ -41254,6 +43471,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutFavoritedByInput = {
@@ -41345,6 +43563,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutFavoriteProvidersInput = {
@@ -41420,6 +43639,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUpsertWithoutFavoritedByInput = {
@@ -41506,6 +43726,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutFavoritedByInput = {
@@ -41581,6 +43802,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userCreateWithoutMedicalRecordInput = {
@@ -41656,6 +43878,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutMedicalRecordInput = {
@@ -41731,6 +43954,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutMedicalRecordInput = {
@@ -41822,6 +44046,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutMedicalRecordInput = {
@@ -41897,6 +44122,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userCreateWithoutSchedulesInput = {
@@ -41972,6 +44198,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutSchedulesInput = {
@@ -42047,6 +44274,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutSchedulesInput = {
@@ -42138,6 +44366,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutSchedulesInput = {
@@ -42213,6 +44442,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userCreateWithoutFaqsInput = {
@@ -42288,6 +44518,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutFaqsInput = {
@@ -42363,6 +44594,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutFaqsInput = {
@@ -42454,6 +44686,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutFaqsInput = {
@@ -42529,6 +44762,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userCreateWithoutCustomerConversationsInput = {
@@ -42604,6 +44838,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutCustomerConversationsInput = {
@@ -42679,6 +44914,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutCustomerConversationsInput = {
@@ -42759,6 +44995,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutProviderConversationsInput = {
@@ -42834,6 +45071,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutProviderConversationsInput = {
@@ -42965,6 +45203,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutCustomerConversationsInput = {
@@ -43040,6 +45279,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUpsertWithoutProviderConversationsInput = {
@@ -43126,6 +45366,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutProviderConversationsInput = {
@@ -43201,6 +45442,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type conversation_messageUpsertWithWhereUniqueWithoutConversationInput = {
@@ -43315,6 +45557,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutConversationMessagesInput = {
@@ -43390,6 +45633,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutConversationMessagesInput = {
@@ -43416,6 +45660,7 @@ export namespace Prisma {
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutRelatedMessagesInput = {
@@ -43437,6 +45682,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutRelatedMessagesInput = {
@@ -43557,6 +45803,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutConversationMessagesInput = {
@@ -43632,6 +45879,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type appointmentUpsertWithoutRelatedMessagesInput = {
@@ -43664,6 +45912,7 @@ export namespace Prisma {
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutRelatedMessagesInput = {
@@ -43685,6 +45934,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
   }
 
   export type userCreateWithoutPushTokensInput = {
@@ -43760,6 +46010,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutPushTokensInput = {
@@ -43835,6 +46086,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutPushTokensInput = {
@@ -43926,6 +46178,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutPushTokensInput = {
@@ -44001,6 +46254,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userCreateWithoutNotificationPreferencesInput = {
@@ -44076,6 +46330,7 @@ export namespace Prisma {
     pushTokens?: push_tokenCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutNotificationPreferencesInput = {
@@ -44151,6 +46406,7 @@ export namespace Prisma {
     pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutNotificationPreferencesInput = {
@@ -44242,6 +46498,7 @@ export namespace Prisma {
     pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutNotificationPreferencesInput = {
@@ -44317,6 +46574,7 @@ export namespace Prisma {
     pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userCreateWithoutNotificationDeliveriesInput = {
@@ -44392,6 +46650,7 @@ export namespace Prisma {
     pushTokens?: push_tokenCreateNestedManyWithoutUserInput
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutNotificationDeliveriesInput = {
@@ -44467,6 +46726,7 @@ export namespace Prisma {
     pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutNotificationDeliveriesInput = {
@@ -44493,6 +46753,7 @@ export namespace Prisma {
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutNotificationDeliveriesInput = {
@@ -44514,6 +46775,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutNotificationDeliveriesInput = {
@@ -44605,6 +46867,7 @@ export namespace Prisma {
     pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutNotificationDeliveriesInput = {
@@ -44680,6 +46943,7 @@ export namespace Prisma {
     pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type appointmentUpsertWithoutNotificationDeliveriesInput = {
@@ -44712,6 +46976,7 @@ export namespace Prisma {
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutNotificationDeliveriesInput = {
@@ -44733,6 +46998,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
   }
 
   export type userCreateWithoutPatientProfilesInput = {
@@ -44808,6 +47074,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutPatientProfilesInput = {
@@ -44883,6 +47150,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutPatientProfilesInput = {
@@ -44963,6 +47231,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutCreatedPatientProfilesInput = {
@@ -45038,6 +47307,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutCreatedPatientProfilesInput = {
@@ -45064,6 +47334,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutPatientProfileInput = {
@@ -45085,6 +47356,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutPatientProfileInput = {
@@ -45181,6 +47453,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutPatientProfilesInput = {
@@ -45256,6 +47529,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUpsertWithoutCreatedPatientProfilesInput = {
@@ -45342,6 +47616,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutCreatedPatientProfilesInput = {
@@ -45417,6 +47692,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type appointmentUpsertWithWhereUniqueWithoutPatientProfileInput = {
@@ -45530,6 +47806,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutProceduresInput = {
@@ -45605,6 +47882,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutProceduresInput = {
@@ -45718,6 +47996,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutProceduresInput = {
@@ -45793,6 +48072,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type appointment_procedureUpsertWithWhereUniqueWithoutProcedureInput = {
@@ -45884,6 +48164,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutRatingsInput = {
@@ -45959,6 +48240,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutRatingsInput = {
@@ -46039,6 +48321,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutReceivedRatingsInput = {
@@ -46114,6 +48397,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutReceivedRatingsInput = {
@@ -46205,6 +48489,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutRatingsInput = {
@@ -46280,6 +48565,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUpsertWithoutReceivedRatingsInput = {
@@ -46366,6 +48652,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutReceivedRatingsInput = {
@@ -46441,6 +48728,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userCreateWithoutSessionsInput = {
@@ -46516,6 +48804,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutSessionsInput = {
@@ -46591,6 +48880,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutSessionsInput = {
@@ -46682,6 +48972,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutSessionsInput = {
@@ -46757,6 +49048,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userCreateWithoutSupportRequestsInput = {
@@ -46832,6 +49124,7 @@ export namespace Prisma {
     pushTokens?: push_tokenCreateNestedManyWithoutUserInput
     notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userUncheckedCreateWithoutSupportRequestsInput = {
@@ -46907,6 +49200,7 @@ export namespace Prisma {
     pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
     notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
   }
 
   export type userCreateOrConnectWithoutSupportRequestsInput = {
@@ -46998,6 +49292,7 @@ export namespace Prisma {
     pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutSupportRequestsInput = {
@@ -47073,6 +49368,7 @@ export namespace Prisma {
     pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type sessionCreateWithoutUserInput = {
@@ -47235,6 +49531,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutCustomerInput = {
@@ -47256,6 +49553,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutCustomerInput = {
@@ -47287,6 +49585,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutHealthcareProviderInput = {
@@ -47308,6 +49607,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutHealthcareProviderInput = {
@@ -47916,6 +50216,38 @@ export namespace Prisma {
 
   export type support_requestCreateManyUserInputEnvelope = {
     data: support_requestCreateManyUserInput | support_requestCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_reschedule_requestCreateWithoutRequestedByUserInput = {
+    id?: string
+    proposedScheduledAt: Date | string
+    status?: $Enums.AppointmentRescheduleRequestStatus
+    reason?: string | null
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointment: appointmentCreateNestedOneWithoutRescheduleRequestsInput
+  }
+
+  export type appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput = {
+    id?: string
+    appointmentId: string
+    proposedScheduledAt: Date | string
+    status?: $Enums.AppointmentRescheduleRequestStatus
+    reason?: string | null
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_reschedule_requestCreateOrConnectWithoutRequestedByUserInput = {
+    where: appointment_reschedule_requestWhereUniqueInput
+    create: XOR<appointment_reschedule_requestCreateWithoutRequestedByUserInput, appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput>
+  }
+
+  export type appointment_reschedule_requestCreateManyRequestedByUserInputEnvelope = {
+    data: appointment_reschedule_requestCreateManyRequestedByUserInput | appointment_reschedule_requestCreateManyRequestedByUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -48530,6 +50862,22 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"support_request"> | Date | string
   }
 
+  export type appointment_reschedule_requestUpsertWithWhereUniqueWithoutRequestedByUserInput = {
+    where: appointment_reschedule_requestWhereUniqueInput
+    update: XOR<appointment_reschedule_requestUpdateWithoutRequestedByUserInput, appointment_reschedule_requestUncheckedUpdateWithoutRequestedByUserInput>
+    create: XOR<appointment_reschedule_requestCreateWithoutRequestedByUserInput, appointment_reschedule_requestUncheckedCreateWithoutRequestedByUserInput>
+  }
+
+  export type appointment_reschedule_requestUpdateWithWhereUniqueWithoutRequestedByUserInput = {
+    where: appointment_reschedule_requestWhereUniqueInput
+    data: XOR<appointment_reschedule_requestUpdateWithoutRequestedByUserInput, appointment_reschedule_requestUncheckedUpdateWithoutRequestedByUserInput>
+  }
+
+  export type appointment_reschedule_requestUpdateManyWithWhereWithoutRequestedByUserInput = {
+    where: appointment_reschedule_requestScalarWhereInput
+    data: XOR<appointment_reschedule_requestUpdateManyMutationInput, appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserInput>
+  }
+
   export type appointment_procedureCreateManyAppointmentInput = {
     id?: string
     procedureId: string
@@ -48559,6 +50907,17 @@ export namespace Prisma {
     expoTicketId?: string | null
     errorMessage?: string | null
     sentAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_reschedule_requestCreateManyAppointmentInput = {
+    id?: string
+    requestedByUserId: string
+    proposedScheduledAt: Date | string
+    status?: $Enums.AppointmentRescheduleRequestStatus
+    reason?: string | null
+    respondedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -48662,6 +51021,39 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type appointment_reschedule_requestUpdateWithoutAppointmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    requestedByUser?: userUpdateOneRequiredWithoutAppointmentRescheduleRequestsNestedInput
+  }
+
+  export type appointment_reschedule_requestUncheckedUpdateWithoutAppointmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestedByUserId?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestedByUserId?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type healthcare_provider_categoryCreateManyCategoryInput = {
     id?: string
     healthcareProviderId: string
@@ -48759,6 +51151,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutClinicsInput = {
@@ -48834,6 +51227,7 @@ export namespace Prisma {
     notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
   }
 
   export type userUncheckedUpdateManyWithoutClinicsInput = {
@@ -48985,6 +51379,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutPatientProfileInput = {
@@ -49006,6 +51401,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateManyWithoutPatientProfileInput = {
@@ -49315,6 +51711,17 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type appointment_reschedule_requestCreateManyRequestedByUserInput = {
+    id?: string
+    appointmentId: string
+    proposedScheduledAt: Date | string
+    status?: $Enums.AppointmentRescheduleRequestStatus
+    reason?: string | null
+    respondedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type sessionUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -49492,6 +51899,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutCustomerInput = {
@@ -49513,6 +51921,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateManyWithoutCustomerInput = {
@@ -49552,6 +51961,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutHealthcareProviderInput = {
@@ -49573,6 +51983,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateManyWithoutHealthcareProviderInput = {
@@ -50172,6 +52583,39 @@ export namespace Prisma {
     platform?: NullableStringFieldUpdateOperationsInput | string | null
     environment?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumSupportRequestStatusFieldUpdateOperationsInput | $Enums.SupportRequestStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_reschedule_requestUpdateWithoutRequestedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointment?: appointmentUpdateOneRequiredWithoutRescheduleRequestsNestedInput
+  }
+
+  export type appointment_reschedule_requestUncheckedUpdateWithoutRequestedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    proposedScheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentRescheduleRequestStatusFieldUpdateOperationsInput | $Enums.AppointmentRescheduleRequestStatus
+    reason?: NullableStringFieldUpdateOperationsInput | string | null
+    respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

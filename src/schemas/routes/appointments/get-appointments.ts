@@ -60,6 +60,25 @@ const appointmentProcedureSchema = z.object({
 	createdAt: z.date(),
 });
 
+export const appointmentRescheduleRequestStatusSchema = z.enum([
+	"PENDING",
+	"ACCEPTED",
+	"DECLINED",
+	"CANCELLED",
+]);
+
+const appointmentRescheduleRequestSchema = z.object({
+	id: z.cuid(),
+	appointmentId: z.cuid(),
+	requestedByUserId: z.cuid(),
+	proposedScheduledAt: z.date(),
+	status: appointmentRescheduleRequestStatusSchema,
+	reason: z.string().nullable(),
+	respondedAt: z.date().nullable(),
+	createdAt: z.date(),
+	updatedAt: z.date(),
+});
+
 export const appointmentSchema = z.object({
 	id: z.cuid(),
 	customerId: z.cuid().nullable(),
@@ -81,6 +100,7 @@ export const appointmentSchema = z.object({
 	createdAt: z.date(),
 	updatedAt: z.date(),
 	appointmentProcedures: z.array(appointmentProcedureSchema),
+	rescheduleRequests: z.array(appointmentRescheduleRequestSchema),
 });
 
 export const getAppointmentsQuerySchema = z.object({

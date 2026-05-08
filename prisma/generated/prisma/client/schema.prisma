@@ -55,6 +55,7 @@ model appointment {
   appointmentProcedures  appointment_procedure[]
   relatedMessages        conversation_message[]
   notificationDeliveries notification_delivery[]
+  rescheduleRequests     appointment_reschedule_request[]
 
   @@index([customerId])
   @@index([patientProfileId])
@@ -70,6 +71,32 @@ enum AppointmentStatus {
   COMPLETED
   CANCELLED
   NO_SHOW
+}
+
+model appointment_reschedule_request {
+  id                  String                             @id @default(cuid())
+  appointmentId       String                             @map("appointment_id")
+  appointment         appointment                        @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  requestedByUserId   String                             @map("requested_by_user_id")
+  requestedByUser     user                               @relation("UserAppointmentRescheduleRequests", fields: [requestedByUserId], references: [id], onDelete: Cascade)
+  proposedScheduledAt DateTime                           @map("proposed_scheduled_at")
+  status              AppointmentRescheduleRequestStatus @default(PENDING)
+  reason              String?
+  respondedAt         DateTime?                          @map("responded_at")
+  createdAt           DateTime                           @default(now()) @map("created_at")
+  updatedAt           DateTime                           @updatedAt @map("updated_at")
+
+  @@index([appointmentId])
+  @@index([requestedByUserId])
+  @@index([status])
+  @@map("appointment_reschedule_requests")
+}
+
+enum AppointmentRescheduleRequestStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  CANCELLED
 }
 
 model category {
@@ -503,26 +530,27 @@ model user {
   ownedClinics clinic[]  @relation("ClinicOwner")
   clinics      clinic[]  @relation("ClinicEmployees")
 
-  customerAppointments           appointment[]                  @relation("CustomerAppointments")
-  healthcareProviderAppointments appointment[]                  @relation("ProviderAppointments")
-  procedures                     procedure[]                    @relation("ProviderProcedures")
-  schedules                      healthcare_provider_schedule[] @relation("ProviderSchedules")
-  healthcareProviderCategories   healthcare_provider_category[] @relation("ProviderCategories")
-  favoriteProviders              customer_favorite_provider[]   @relation("CustomerFavoriteProviders")
-  favoritedBy                    customer_favorite_provider[]   @relation("ProviderFavoritedByCustomers")
+  customerAppointments           appointment[]                    @relation("CustomerAppointments")
+  healthcareProviderAppointments appointment[]                    @relation("ProviderAppointments")
+  procedures                     procedure[]                      @relation("ProviderProcedures")
+  schedules                      healthcare_provider_schedule[]   @relation("ProviderSchedules")
+  healthcareProviderCategories   healthcare_provider_category[]   @relation("ProviderCategories")
+  favoriteProviders              customer_favorite_provider[]     @relation("CustomerFavoriteProviders")
+  favoritedBy                    customer_favorite_provider[]     @relation("ProviderFavoritedByCustomers")
   medicalRecord                  customer_medical_record?
-  ratings                        rating[]                       @relation("CustomerRatings")
-  receivedRatings                rating[]                       @relation("ProviderRatings")
-  customerConversations          conversation[]                 @relation("CustomerConversations")
-  providerConversations          conversation[]                 @relation("ProviderConversations")
-  patientProfiles                patient_profile[]              @relation("CustomerPatientProfiles")
-  createdPatientProfiles         patient_profile[]              @relation("ProviderCreatedPatientProfiles")
-  faqs                           healthcare_provider_faq[]      @relation("ProviderFaqs")
+  ratings                        rating[]                         @relation("CustomerRatings")
+  receivedRatings                rating[]                         @relation("ProviderRatings")
+  customerConversations          conversation[]                   @relation("CustomerConversations")
+  providerConversations          conversation[]                   @relation("ProviderConversations")
+  patientProfiles                patient_profile[]                @relation("CustomerPatientProfiles")
+  createdPatientProfiles         patient_profile[]                @relation("ProviderCreatedPatientProfiles")
+  faqs                           healthcare_provider_faq[]        @relation("ProviderFaqs")
   conversationMessages           conversation_message[]
   pushTokens                     push_token[]
   notificationPreferences        notification_preference[]
   notificationDeliveries         notification_delivery[]
   supportRequests                support_request[]
+  appointmentRescheduleRequests  appointment_reschedule_request[] @relation("UserAppointmentRescheduleRequests")
 
   @@map("users")
 }

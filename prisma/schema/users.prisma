@@ -74,6 +74,7 @@ model user {
   notificationPreferences notification_preference[]
   notificationDeliveries notification_delivery[]
   supportRequests support_request[]
+  appointmentRescheduleRequests appointment_reschedule_request[] @relation("UserAppointmentRescheduleRequests")
 
   @@map("users")
 }
