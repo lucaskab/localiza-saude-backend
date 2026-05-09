@@ -27955,12 +27955,16 @@ export namespace Prisma {
   export type UserAvgAggregateOutputType = {
     licenseDocumentSize: number | null
     yearsOfExperience: number | null
+    clinicLatitude: number | null
+    clinicLongitude: number | null
     homeCareRadiusKm: number | null
   }
 
   export type UserSumAggregateOutputType = {
     licenseDocumentSize: number | null
     yearsOfExperience: number | null
+    clinicLatitude: number | null
+    clinicLongitude: number | null
     homeCareRadiusKm: number | null
   }
 
@@ -28003,6 +28007,11 @@ export namespace Prisma {
     certifications: string | null
     yearsOfExperience: number | null
     clinicAddress: string | null
+    clinicLatitude: number | null
+    clinicLongitude: number | null
+    clinicNeighborhood: string | null
+    clinicCity: string | null
+    clinicState: string | null
     homeCareRadiusKm: number | null
     cancellationPolicy: string | null
     termsAcceptedAt: Date | null
@@ -28051,6 +28060,11 @@ export namespace Prisma {
     certifications: string | null
     yearsOfExperience: number | null
     clinicAddress: string | null
+    clinicLatitude: number | null
+    clinicLongitude: number | null
+    clinicNeighborhood: string | null
+    clinicCity: string | null
+    clinicState: string | null
     homeCareRadiusKm: number | null
     cancellationPolicy: string | null
     termsAcceptedAt: Date | null
@@ -28102,6 +28116,11 @@ export namespace Prisma {
     targetAudiences: number
     serviceModalities: number
     clinicAddress: number
+    clinicLatitude: number
+    clinicLongitude: number
+    clinicNeighborhood: number
+    clinicCity: number
+    clinicState: number
     homeCareRadiusKm: number
     acceptedInsurance: number
     paymentMethods: number
@@ -28119,12 +28138,16 @@ export namespace Prisma {
   export type UserAvgAggregateInputType = {
     licenseDocumentSize?: true
     yearsOfExperience?: true
+    clinicLatitude?: true
+    clinicLongitude?: true
     homeCareRadiusKm?: true
   }
 
   export type UserSumAggregateInputType = {
     licenseDocumentSize?: true
     yearsOfExperience?: true
+    clinicLatitude?: true
+    clinicLongitude?: true
     homeCareRadiusKm?: true
   }
 
@@ -28167,6 +28190,11 @@ export namespace Prisma {
     certifications?: true
     yearsOfExperience?: true
     clinicAddress?: true
+    clinicLatitude?: true
+    clinicLongitude?: true
+    clinicNeighborhood?: true
+    clinicCity?: true
+    clinicState?: true
     homeCareRadiusKm?: true
     cancellationPolicy?: true
     termsAcceptedAt?: true
@@ -28215,6 +28243,11 @@ export namespace Prisma {
     certifications?: true
     yearsOfExperience?: true
     clinicAddress?: true
+    clinicLatitude?: true
+    clinicLongitude?: true
+    clinicNeighborhood?: true
+    clinicCity?: true
+    clinicState?: true
     homeCareRadiusKm?: true
     cancellationPolicy?: true
     termsAcceptedAt?: true
@@ -28266,6 +28299,11 @@ export namespace Prisma {
     targetAudiences?: true
     serviceModalities?: true
     clinicAddress?: true
+    clinicLatitude?: true
+    clinicLongitude?: true
+    clinicNeighborhood?: true
+    clinicCity?: true
+    clinicState?: true
     homeCareRadiusKm?: true
     acceptedInsurance?: true
     paymentMethods?: true
@@ -28407,6 +28445,11 @@ export namespace Prisma {
     targetAudiences: string[]
     serviceModalities: string[]
     clinicAddress: string | null
+    clinicLatitude: number | null
+    clinicLongitude: number | null
+    clinicNeighborhood: string | null
+    clinicCity: string | null
+    clinicState: string | null
     homeCareRadiusKm: number | null
     acceptedInsurance: string[]
     paymentMethods: string[]
@@ -28480,6 +28523,11 @@ export namespace Prisma {
     targetAudiences?: boolean
     serviceModalities?: boolean
     clinicAddress?: boolean
+    clinicLatitude?: boolean
+    clinicLongitude?: boolean
+    clinicNeighborhood?: boolean
+    clinicCity?: boolean
+    clinicState?: boolean
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
@@ -28566,6 +28614,11 @@ export namespace Prisma {
     targetAudiences?: boolean
     serviceModalities?: boolean
     clinicAddress?: boolean
+    clinicLatitude?: boolean
+    clinicLongitude?: boolean
+    clinicNeighborhood?: boolean
+    clinicCity?: boolean
+    clinicState?: boolean
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
@@ -28621,6 +28674,11 @@ export namespace Prisma {
     targetAudiences?: boolean
     serviceModalities?: boolean
     clinicAddress?: boolean
+    clinicLatitude?: boolean
+    clinicLongitude?: boolean
+    clinicNeighborhood?: boolean
+    clinicCity?: boolean
+    clinicState?: boolean
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
@@ -28676,6 +28734,11 @@ export namespace Prisma {
     targetAudiences?: boolean
     serviceModalities?: boolean
     clinicAddress?: boolean
+    clinicLatitude?: boolean
+    clinicLongitude?: boolean
+    clinicNeighborhood?: boolean
+    clinicCity?: boolean
+    clinicState?: boolean
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
@@ -28688,7 +28751,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "licenseCouncil" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "licenseCouncil" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
     sessions?: boolean | user$sessionsArgs<ExtArgs>
@@ -28807,6 +28870,11 @@ export namespace Prisma {
       targetAudiences: string[]
       serviceModalities: string[]
       clinicAddress: string | null
+      clinicLatitude: number | null
+      clinicLongitude: number | null
+      clinicNeighborhood: string | null
+      clinicCity: string | null
+      clinicState: string | null
       homeCareRadiusKm: number | null
       acceptedInsurance: string[]
       paymentMethods: string[]
@@ -29312,6 +29380,11 @@ export namespace Prisma {
     readonly targetAudiences: FieldRef<"user", 'String[]'>
     readonly serviceModalities: FieldRef<"user", 'String[]'>
     readonly clinicAddress: FieldRef<"user", 'String'>
+    readonly clinicLatitude: FieldRef<"user", 'Float'>
+    readonly clinicLongitude: FieldRef<"user", 'Float'>
+    readonly clinicNeighborhood: FieldRef<"user", 'String'>
+    readonly clinicCity: FieldRef<"user", 'String'>
+    readonly clinicState: FieldRef<"user", 'String'>
     readonly homeCareRadiusKm: FieldRef<"user", 'Int'>
     readonly acceptedInsurance: FieldRef<"user", 'String[]'>
     readonly paymentMethods: FieldRef<"user", 'String[]'>
@@ -34087,6 +34160,11 @@ export namespace Prisma {
     targetAudiences: 'targetAudiences',
     serviceModalities: 'serviceModalities',
     clinicAddress: 'clinicAddress',
+    clinicLatitude: 'clinicLatitude',
+    clinicLongitude: 'clinicLongitude',
+    clinicNeighborhood: 'clinicNeighborhood',
+    clinicCity: 'clinicCity',
+    clinicState: 'clinicState',
     homeCareRadiusKm: 'homeCareRadiusKm',
     acceptedInsurance: 'acceptedInsurance',
     paymentMethods: 'paymentMethods',
@@ -36145,6 +36223,11 @@ export namespace Prisma {
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
     clinicAddress?: StringNullableFilter<"user"> | string | null
+    clinicLatitude?: FloatNullableFilter<"user"> | number | null
+    clinicLongitude?: FloatNullableFilter<"user"> | number | null
+    clinicNeighborhood?: StringNullableFilter<"user"> | string | null
+    clinicCity?: StringNullableFilter<"user"> | string | null
+    clinicState?: StringNullableFilter<"user"> | string | null
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
@@ -36230,6 +36313,11 @@ export namespace Prisma {
     targetAudiences?: SortOrder
     serviceModalities?: SortOrder
     clinicAddress?: SortOrderInput | SortOrder
+    clinicLatitude?: SortOrderInput | SortOrder
+    clinicLongitude?: SortOrderInput | SortOrder
+    clinicNeighborhood?: SortOrderInput | SortOrder
+    clinicCity?: SortOrderInput | SortOrder
+    clinicState?: SortOrderInput | SortOrder
     homeCareRadiusKm?: SortOrderInput | SortOrder
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
@@ -36318,6 +36406,11 @@ export namespace Prisma {
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
     clinicAddress?: StringNullableFilter<"user"> | string | null
+    clinicLatitude?: FloatNullableFilter<"user"> | number | null
+    clinicLongitude?: FloatNullableFilter<"user"> | number | null
+    clinicNeighborhood?: StringNullableFilter<"user"> | string | null
+    clinicCity?: StringNullableFilter<"user"> | string | null
+    clinicState?: StringNullableFilter<"user"> | string | null
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
@@ -36403,6 +36496,11 @@ export namespace Prisma {
     targetAudiences?: SortOrder
     serviceModalities?: SortOrder
     clinicAddress?: SortOrderInput | SortOrder
+    clinicLatitude?: SortOrderInput | SortOrder
+    clinicLongitude?: SortOrderInput | SortOrder
+    clinicNeighborhood?: SortOrderInput | SortOrder
+    clinicCity?: SortOrderInput | SortOrder
+    clinicState?: SortOrderInput | SortOrder
     homeCareRadiusKm?: SortOrderInput | SortOrder
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
@@ -36465,6 +36563,11 @@ export namespace Prisma {
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
     clinicAddress?: StringNullableWithAggregatesFilter<"user"> | string | null
+    clinicLatitude?: FloatNullableWithAggregatesFilter<"user"> | number | null
+    clinicLongitude?: FloatNullableWithAggregatesFilter<"user"> | number | null
+    clinicNeighborhood?: StringNullableWithAggregatesFilter<"user"> | string | null
+    clinicCity?: StringNullableWithAggregatesFilter<"user"> | string | null
+    clinicState?: StringNullableWithAggregatesFilter<"user"> | string | null
     homeCareRadiusKm?: IntNullableWithAggregatesFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
@@ -38545,6 +38648,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -38630,6 +38738,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -38713,6 +38826,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -38798,6 +38916,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -38882,6 +39005,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -38935,6 +39063,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -38989,6 +39122,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -40597,6 +40735,17 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type SessionListRelationFilter = {
     every?: sessionWhereInput
     some?: sessionWhereInput
@@ -40794,6 +40943,11 @@ export namespace Prisma {
     targetAudiences?: SortOrder
     serviceModalities?: SortOrder
     clinicAddress?: SortOrder
+    clinicLatitude?: SortOrder
+    clinicLongitude?: SortOrder
+    clinicNeighborhood?: SortOrder
+    clinicCity?: SortOrder
+    clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
@@ -40809,6 +40963,8 @@ export namespace Prisma {
   export type userAvgOrderByAggregateInput = {
     licenseDocumentSize?: SortOrder
     yearsOfExperience?: SortOrder
+    clinicLatitude?: SortOrder
+    clinicLongitude?: SortOrder
     homeCareRadiusKm?: SortOrder
   }
 
@@ -40851,6 +41007,11 @@ export namespace Prisma {
     certifications?: SortOrder
     yearsOfExperience?: SortOrder
     clinicAddress?: SortOrder
+    clinicLatitude?: SortOrder
+    clinicLongitude?: SortOrder
+    clinicNeighborhood?: SortOrder
+    clinicCity?: SortOrder
+    clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     cancellationPolicy?: SortOrder
     termsAcceptedAt?: SortOrder
@@ -40899,6 +41060,11 @@ export namespace Prisma {
     certifications?: SortOrder
     yearsOfExperience?: SortOrder
     clinicAddress?: SortOrder
+    clinicLatitude?: SortOrder
+    clinicLongitude?: SortOrder
+    clinicNeighborhood?: SortOrder
+    clinicCity?: SortOrder
+    clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     cancellationPolicy?: SortOrder
     termsAcceptedAt?: SortOrder
@@ -40911,6 +41077,8 @@ export namespace Prisma {
   export type userSumOrderByAggregateInput = {
     licenseDocumentSize?: SortOrder
     yearsOfExperience?: SortOrder
+    clinicLatitude?: SortOrder
+    clinicLongitude?: SortOrder
     homeCareRadiusKm?: SortOrder
   }
 
@@ -40922,6 +41090,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserRoleFilter<$PrismaModel>
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type EnumProviderVerificationReviewStatusFilter<$PrismaModel = never> = {
@@ -42417,6 +42601,14 @@ export namespace Prisma {
     push?: string | string[]
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type userUpdateacceptedInsuranceInput = {
     set?: string[]
     push?: string | string[]
@@ -43736,6 +43928,22 @@ export namespace Prisma {
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
   }
 
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumProviderVerificationReviewStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.ProviderVerificationReviewStatus | EnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
     in?: $Enums.ProviderVerificationReviewStatus[] | ListEnumProviderVerificationReviewStatusFieldRefInput<$PrismaModel>
@@ -43794,6 +44002,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -43878,6 +44091,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -43976,6 +44194,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -44060,6 +44283,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -44306,6 +44534,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -44390,6 +44623,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -44536,6 +44774,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -44620,6 +44863,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -44846,6 +45094,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -44930,6 +45183,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -45088,6 +45346,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -45172,6 +45435,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -45427,6 +45695,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -45511,6 +45784,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -45664,6 +45942,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -45748,6 +46031,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -45878,6 +46166,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -45962,6 +46255,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -46081,6 +46379,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -46165,6 +46468,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -46274,6 +46582,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -46358,6 +46671,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -46445,6 +46763,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -46529,6 +46852,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -46627,6 +46955,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -46711,6 +47044,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -46813,6 +47151,11 @@ export namespace Prisma {
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
     clinicAddress?: StringNullableFilter<"user"> | string | null
+    clinicLatitude?: FloatNullableFilter<"user"> | number | null
+    clinicLongitude?: FloatNullableFilter<"user"> | number | null
+    clinicNeighborhood?: StringNullableFilter<"user"> | string | null
+    clinicCity?: StringNullableFilter<"user"> | string | null
+    clinicState?: StringNullableFilter<"user"> | string | null
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
@@ -46866,6 +47209,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -46950,6 +47298,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -47037,6 +47390,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -47121,6 +47479,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -47219,6 +47582,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -47303,6 +47671,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -47396,6 +47769,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -47480,6 +47858,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -47562,6 +47945,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -47646,6 +48034,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -47744,6 +48137,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -47828,6 +48226,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -47910,6 +48313,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -47994,6 +48402,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -48092,6 +48505,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -48176,6 +48594,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -48258,6 +48681,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -48342,6 +48770,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -48440,6 +48873,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -48524,6 +48962,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -48606,6 +49049,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -48690,6 +49138,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -48777,6 +49230,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -48861,6 +49319,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -48999,6 +49462,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -49083,6 +49551,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -49176,6 +49649,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -49260,6 +49738,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -49381,6 +49864,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -49465,6 +49953,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -49641,6 +50134,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -49725,6 +50223,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -49862,6 +50365,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -49946,6 +50454,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -50044,6 +50557,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -50128,6 +50646,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -50210,6 +50733,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -50294,6 +50822,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -50392,6 +50925,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -50476,6 +51014,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -50558,6 +51101,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -50642,6 +51190,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -50789,6 +51342,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -50873,6 +51431,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -51010,6 +51573,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -51094,6 +51662,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -51181,6 +51754,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -51265,6 +51843,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -51417,6 +52000,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -51501,6 +52089,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -51594,6 +52187,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -51678,6 +52276,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -51798,6 +52401,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -51882,6 +52490,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -52002,6 +52615,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -52086,6 +52704,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -52184,6 +52807,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -52268,6 +52896,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -52355,6 +52988,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -52439,6 +53077,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -52537,6 +53180,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -52621,6 +53269,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -52714,6 +53367,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -52798,6 +53456,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -52880,6 +53543,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -52964,6 +53632,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -53062,6 +53735,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -53146,6 +53824,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -53228,6 +53911,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -53312,6 +54000,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -53410,6 +54103,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -53494,6 +54192,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -53576,6 +54279,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -53660,6 +54368,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -54627,6 +55340,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -54710,6 +55428,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -54934,6 +55657,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -55018,6 +55746,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -55835,6 +56568,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -55919,6 +56657,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -56006,6 +56749,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -56090,6 +56838,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -56188,6 +56941,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -56272,6 +57030,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -56365,6 +57128,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -56449,6 +57217,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -56531,6 +57304,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -56615,6 +57393,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -56702,6 +57485,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -56786,6 +57574,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -56884,6 +57677,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -56968,6 +57766,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -57061,6 +57864,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -57145,6 +57953,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -57427,6 +58240,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -57511,6 +58329,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -57594,6 +58417,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -58087,6 +58915,11 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -59078,6 +59911,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -59161,6 +59999,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -59244,6 +60087,11 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]

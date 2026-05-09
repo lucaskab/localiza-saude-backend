@@ -40,6 +40,11 @@ export type CreateHealthcareProviderData = {
 	targetAudiences?: string[];
 	serviceModalities?: ServiceModality[];
 	clinicAddress?: string | null;
+	clinicLatitude?: number | null;
+	clinicLongitude?: number | null;
+	clinicNeighborhood?: string | null;
+	clinicCity?: string | null;
+	clinicState?: string | null;
 	homeCareRadiusKm?: number | null;
 	acceptedInsurance?: string[];
 	paymentMethods?: string[];
@@ -80,6 +85,11 @@ export type UpdateHealthcareProviderData = {
 	targetAudiences?: string[];
 	serviceModalities?: ServiceModality[];
 	clinicAddress?: string | null;
+	clinicLatitude?: number | null;
+	clinicLongitude?: number | null;
+	clinicNeighborhood?: string | null;
+	clinicCity?: string | null;
+	clinicState?: string | null;
 	homeCareRadiusKm?: number | null;
 	acceptedInsurance?: string[];
 	paymentMethods?: string[];
@@ -94,6 +104,7 @@ export type UpdateHealthcareProviderData = {
 export type HealthcareProviderWithRelations = user & {
 	procedures: procedure[];
 	faqs: healthcare_provider_faq[];
+	distanceInKm?: number | null;
 };
 
 export type FindAllHealthcareProviderFilters = {
@@ -104,6 +115,11 @@ export type FindAllHealthcareProviderFilters = {
 	insurance?: string;
 	verified?: boolean;
 	maxPriceCents?: number;
+	city?: string;
+	neighborhood?: string;
+	latitude?: number;
+	longitude?: number;
+	radiusInKm?: number;
 };
 
 export type HealthcareProviderRepository = {

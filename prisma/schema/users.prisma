@@ -41,6 +41,11 @@ model user {
   targetAudiences String[] @default([]) @map("target_audiences")
   serviceModalities String[] @default([]) @map("service_modalities")
   clinicAddress String?    @map("clinic_address")
+  clinicLatitude Float?    @map("clinic_latitude")
+  clinicLongitude Float?   @map("clinic_longitude")
+  clinicNeighborhood String? @map("clinic_neighborhood")
+  clinicCity String?       @map("clinic_city")
+  clinicState String?      @map("clinic_state")
   homeCareRadiusKm Int?    @map("home_care_radius_km")
   acceptedInsurance String[] @default([]) @map("accepted_insurance")
   paymentMethods String[]  @default([]) @map("payment_methods")
@@ -85,6 +90,9 @@ model user {
   adminProviderVerificationDocumentAccessLogs provider_verification_document_access_log[] @relation("AdminProviderVerificationDocumentAccessLogs")
 
   @@index([verifiedByUserId])
+  @@index([clinicCity])
+  @@index([clinicNeighborhood])
+  @@index([clinicLatitude, clinicLongitude])
   @@map("users")
 }
 

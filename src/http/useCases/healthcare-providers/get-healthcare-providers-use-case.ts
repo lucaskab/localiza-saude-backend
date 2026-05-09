@@ -13,6 +13,7 @@ type HealthcareProviderWithNextAvailability = HealthcareProviderWithRelations & 
 	totalRatings: number;
 	completedAppointments: number;
 	confirmationRate: number;
+	distanceInKm?: number | null;
 	isSuperProfessional: boolean;
 };
 
@@ -67,6 +68,11 @@ export const getHealthcareProvidersUseCase = {
 				serviceModality: filters.serviceModality,
 				language: filters.language,
 				insurance: filters.insurance,
+				city: filters.city,
+				neighborhood: filters.neighborhood,
+				latitude: filters.latitude,
+				longitude: filters.longitude,
+				radiusInKm: filters.radiusInKm,
 				verified: filters.verified,
 				maxPriceCents: filters.maxPriceCents,
 			});

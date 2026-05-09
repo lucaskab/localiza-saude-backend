@@ -37,6 +37,51 @@ function toHealthcareProvider(
 	};
 }
 
+function calculateDistanceInKm(params: {
+	fromLatitude: number;
+	fromLongitude: number;
+	toLatitude: number;
+	toLongitude: number;
+}) {
+	const earthRadiusInKm = 6371;
+	const latitudeDistance =
+		((params.toLatitude - params.fromLatitude) * Math.PI) / 180;
+	const longitudeDistance =
+		((params.toLongitude - params.fromLongitude) * Math.PI) / 180;
+	const fromLatitudeRadians = (params.fromLatitude * Math.PI) / 180;
+	const toLatitudeRadians = (params.toLatitude * Math.PI) / 180;
+	const haversine =
+		Math.sin(latitudeDistance / 2) * Math.sin(latitudeDistance / 2) +
+		Math.cos(fromLatitudeRadians) *
+			Math.cos(toLatitudeRadians) *
+			Math.sin(longitudeDistance / 2) *
+			Math.sin(longitudeDistance / 2);
+
+	return (
+		earthRadiusInKm *
+		2 *
+		Math.atan2(Math.sqrt(haversine), Math.sqrt(1 - haversine))
+	);
+}
+
+function calculateCoordinateBounds(params: {
+	latitude: number;
+	longitude: number;
+	radiusInKm: number;
+}) {
+	const latitudeDelta = params.radiusInKm / 111;
+	const latitudeRadians = (params.latitude * Math.PI) / 180;
+	const longitudeDelta =
+		params.radiusInKm / (111 * Math.max(Math.cos(latitudeRadians), 0.01));
+
+	return {
+		minLatitude: Math.max(params.latitude - latitudeDelta, -90),
+		maxLatitude: Math.min(params.latitude + latitudeDelta, 90),
+		minLongitude: Math.max(params.longitude - longitudeDelta, -180),
+		maxLongitude: Math.min(params.longitude + longitudeDelta, 180),
+	};
+}
+
 function createFindAllWhere(filters?: FindAllHealthcareProviderFilters) {
 	if (!filters) {
 		return undefined;
@@ -91,6 +136,43 @@ function createFindAllWhere(filters?: FindAllHealthcareProviderFilters) {
 		conditions.push({ acceptedInsurance: { has: filters.insurance } });
 	}
 
+	if (filters.city) {
+		conditions.push({
+			clinicCity: { contains: filters.city, mode: "insensitive" },
+		});
+	}
+
+	if (filters.neighborhood) {
+		conditions.push({
+			clinicNeighborhood: {
+				contains: filters.neighborhood,
+				mode: "insensitive",
+			},
+		});
+	}
+
+	if (
+		typeof filters.latitude === "number" &&
+		typeof filters.longitude === "number"
+	) {
+		const bounds = calculateCoordinateBounds({
+			latitude: filters.latitude,
+			longitude: filters.longitude,
+			radiusInKm: filters.radiusInKm ?? 25,
+		});
+
+		conditions.push({
+			clinicLatitude: {
+				gte: bounds.minLatitude,
+				lte: bounds.maxLatitude,
+			},
+			clinicLongitude: {
+				gte: bounds.minLongitude,
+				lte: bounds.maxLongitude,
+			},
+		});
+	}
+
 	if (filters.verified) {
 		conditions.push({ verificationStatus: "VERIFIED" });
 	}
@@ -114,7 +196,7 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 	{
 		async findAll(filters) {
 			const where = createFindAllWhere(filters);
-			const healthcareProviders = await prisma.user.findMany({
+			const healthcareProvidersResult = await prisma.user.findMany({
 				where: {
 					role: "HEALTHCARE_PROVIDER",
 					...(where ? { AND: [where] } : {}),
@@ -124,8 +206,37 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					createdAt: "desc",
 				},
 			});
+			let healthcareProviders = healthcareProvidersResult.map(toHealthcareProvider);
 
-			return healthcareProviders.map(toHealthcareProvider);
+			if (
+				typeof filters?.latitude === "number" &&
+				typeof filters.longitude === "number"
+			) {
+				const radiusInKm = filters.radiusInKm ?? 25;
+
+				healthcareProviders = healthcareProviders
+					.map((provider) => ({
+						...provider,
+						distanceInKm:
+							typeof provider.clinicLatitude === "number" &&
+							typeof provider.clinicLongitude === "number"
+								? calculateDistanceInKm({
+										fromLatitude: filters.latitude as number,
+										fromLongitude: filters.longitude as number,
+										toLatitude: provider.clinicLatitude,
+										toLongitude: provider.clinicLongitude,
+									})
+								: null,
+					}))
+					.filter(
+						(provider) =>
+							typeof provider.distanceInKm === "number" &&
+							provider.distanceInKm <= radiusInKm,
+					)
+					.sort((a, b) => (a.distanceInKm ?? 0) - (b.distanceInKm ?? 0));
+			}
+
+			return healthcareProviders;
 		},
 
 		async findById(id: string) {
@@ -179,6 +290,11 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					targetAudiences: data.targetAudiences,
 					serviceModalities: data.serviceModalities,
 					clinicAddress: data.clinicAddress,
+					clinicLatitude: data.clinicLatitude,
+					clinicLongitude: data.clinicLongitude,
+					clinicNeighborhood: data.clinicNeighborhood,
+					clinicCity: data.clinicCity,
+					clinicState: data.clinicState,
 					homeCareRadiusKm: data.homeCareRadiusKm,
 					acceptedInsurance: data.acceptedInsurance,
 					paymentMethods: data.paymentMethods,
@@ -277,6 +393,21 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 						}),
 						...(data.clinicAddress !== undefined && {
 							clinicAddress: data.clinicAddress,
+						}),
+						...(data.clinicLatitude !== undefined && {
+							clinicLatitude: data.clinicLatitude,
+						}),
+						...(data.clinicLongitude !== undefined && {
+							clinicLongitude: data.clinicLongitude,
+						}),
+						...(data.clinicNeighborhood !== undefined && {
+							clinicNeighborhood: data.clinicNeighborhood,
+						}),
+						...(data.clinicCity !== undefined && {
+							clinicCity: data.clinicCity,
+						}),
+						...(data.clinicState !== undefined && {
+							clinicState: data.clinicState,
 						}),
 						...(data.homeCareRadiusKm !== undefined && {
 							homeCareRadiusKm: data.homeCareRadiusKm,

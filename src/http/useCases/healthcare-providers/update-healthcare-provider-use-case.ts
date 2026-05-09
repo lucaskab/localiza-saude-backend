@@ -5,6 +5,7 @@ import type {
 import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
+import { geocodingService } from "@/http/services/geocoding-service";
 import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
 import type { user } from "../../../../prisma/generated/prisma/client";
 
@@ -27,9 +28,32 @@ export const updateHealthcareProviderUseCase = {
 			);
 		}
 
+		const dataWithLocation = { ...data };
+
+		if (data.clinicAddress !== undefined) {
+			if (!data.clinicAddress?.trim()) {
+				dataWithLocation.clinicLatitude = null;
+				dataWithLocation.clinicLongitude = null;
+				dataWithLocation.clinicNeighborhood = null;
+				dataWithLocation.clinicCity = null;
+				dataWithLocation.clinicState = null;
+			} else if (
+				data.clinicLatitude === undefined ||
+				data.clinicLongitude === undefined
+			) {
+				const location = await geocodingService.geocode(data.clinicAddress);
+
+				dataWithLocation.clinicLatitude = location?.latitude ?? null;
+				dataWithLocation.clinicLongitude = location?.longitude ?? null;
+				dataWithLocation.clinicNeighborhood = location?.neighborhood ?? null;
+				dataWithLocation.clinicCity = location?.city ?? null;
+				dataWithLocation.clinicState = location?.state ?? null;
+			}
+		}
+
 		const healthcareProvider = await prismaHealthcareProviderRepository.update(
 			id,
-			data,
+			dataWithLocation,
 		);
 
 		return { healthcareProvider: signClinicPhotoUrls(healthcareProvider) };
