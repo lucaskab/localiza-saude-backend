@@ -7,9 +7,10 @@ export const deleteProcedureController = {
 		request: FastifyRequest<{ Params: DeleteProcedureParamsSchema }>,
 		reply: FastifyReply,
 	) {
+		const user = await request.getCurrentUser();
 		const { id } = request.params;
 
-		const result = await deleteProcedureUseCase.execute(id);
+		const result = await deleteProcedureUseCase.execute(user, id);
 
 		return reply.status(200).send(result);
 	},

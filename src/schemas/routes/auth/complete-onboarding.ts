@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const completeOnboardingBodySchema = z.object({
-	role: z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER"]),
+	role: z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER", "STAFF"]),
 });
 
 export const onboardingUserSchema = z.object({
@@ -13,7 +13,7 @@ export const onboardingUserSchema = z.object({
 	email: z.string().email(),
 	emailVerified: z.boolean(),
 	image: z.string().nullable(),
-	role: z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER"]),
+	role: z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER", "STAFF"]),
 	onboardingCompleted: z.boolean(),
 	createdAt: z.date(),
 	updatedAt: z.date(),

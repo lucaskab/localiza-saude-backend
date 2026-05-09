@@ -11,8 +11,9 @@ export const updateClinicBodySchema = z.object({
 	description: z.string().nullable().optional(),
 	email: z.email().optional(),
 	type: clinicTypeSchema.optional(),
-	latitude: z.number().min(-90).max(90).optional(),
-	longitude: z.number().min(-180).max(180).optional(),
+	address: z.string().trim().nullable().optional(),
+	latitude: z.number().min(-90).max(90).nullable().optional(),
+	longitude: z.number().min(-180).max(180).nullable().optional(),
 });
 
 export const updateClinicResponseSchema = z.object({

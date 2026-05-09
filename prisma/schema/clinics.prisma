@@ -5,13 +5,14 @@ model clinic {
   description String?
   email       String     @unique
   type        ClinicType @default(MEDICAL)
-  latitude    Float
-  longitude   Float
+  address     String?
+  latitude    Float?
+  longitude   Float?
   createdAt   DateTime   @default(now()) @map("created_at")
   updatedAt   DateTime   @updatedAt @map("updated_at")
   ownerId     String     @map("owner_id")
   owner        user    @relation("ClinicOwner", fields: [ownerId], references: [id])
-  employees user[] @relation("ClinicEmployees")
+  employees clinic_employee[] @relation("ClinicEmployees")
 
   @@index([ownerId])
   @@map("clinics")
@@ -24,4 +25,39 @@ enum ClinicType {
   EYE
   BEAUTY
   FREE
+}
+
+model clinic_employee {
+  id          String             @id @default(cuid())
+  clinicId    String             @map("clinic_id")
+  clinic      clinic             @relation("ClinicEmployees", fields: [clinicId], references: [id], onDelete: Cascade)
+  userId      String             @map("user_id")
+  user        user               @relation("ClinicEmployeeUser", fields: [userId], references: [id], onDelete: Cascade)
+  role        ClinicEmployeeRole
+  permissions ClinicPermission[] @default([])
+  active      Boolean            @default(true)
+  createdAt   DateTime           @default(now()) @map("created_at")
+  updatedAt   DateTime           @updatedAt @map("updated_at")
+
+  @@unique([clinicId, userId])
+  @@index([clinicId])
+  @@index([userId])
+  @@index([role])
+  @@map("clinic_employees")
+}
+
+enum ClinicEmployeeRole {
+  OWNER
+  PROVIDER
+  STAFF
+}
+
+enum ClinicPermission {
+  MANAGE_PROVIDER_PROFILE
+  MANAGE_PROVIDER_SCHEDULE
+  MANAGE_APPOINTMENTS
+  MANAGE_PROCEDURES
+  VIEW_PATIENTS
+  MANAGE_CLINIC_INFO
+  MANAGE_STAFF
 }

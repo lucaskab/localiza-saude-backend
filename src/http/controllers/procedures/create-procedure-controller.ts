@@ -7,9 +7,10 @@ export const createProcedureController = {
 		request: FastifyRequest<{ Body: CreateProcedureBodySchema }>,
 		reply: FastifyReply,
 	) {
+		const user = await request.getCurrentUser();
 		const data = request.body;
 
-		const result = await createProcedureUseCase.execute(data);
+		const result = await createProcedureUseCase.execute(user, data);
 
 		return reply.status(201).send(result);
 	},

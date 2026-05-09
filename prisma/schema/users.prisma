@@ -60,7 +60,7 @@ model user {
   sessions      session[]
   accounts      account[]
   ownedClinics  clinic[]   @relation("ClinicOwner")
-  clinics       clinic[]   @relation("ClinicEmployees")
+  clinicEmployees clinic_employee[] @relation("ClinicEmployeeUser")
 
   customerAppointments appointment[] @relation("CustomerAppointments")
   healthcareProviderAppointments appointment[] @relation("ProviderAppointments")
@@ -100,6 +100,7 @@ enum UserRole {
   HEALTHCARE_PROVIDER
   CUSTOMER
   ADMIN
+  STAFF
 }
 
 enum ProviderVerificationReviewStatus {

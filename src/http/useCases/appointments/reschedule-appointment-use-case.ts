@@ -3,6 +3,7 @@ import type { AppointmentWithRelations } from "@/http/repositories/appointments/
 import { prismaAppointmentRepository } from "@/http/repositories/appointments/appointments-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
+import { clinicRbac } from "@/http/services/clinic-rbac";
 import { googleMeetService } from "@/http/services/google-meet-service";
 import type { user } from "../../../../prisma/generated/prisma/client";
 
@@ -180,7 +181,13 @@ export const rescheduleAppointmentUseCase = {
 		assertCanChangeAppointment(appointment);
 
 		const isCustomer = isCustomerParticipant(currentUser, appointment);
-		const isProvider = isProviderParticipant(currentUser, appointment);
+		const isProvider =
+			isProviderParticipant(currentUser, appointment) ||
+			(await clinicRbac.canManageProvider(
+				currentUser,
+				appointment.healthcareProviderId,
+				"MANAGE_APPOINTMENTS",
+			));
 
 		if (!isCustomer && !isProvider) {
 			throw new UnauthorizedError("You cannot reschedule this appointment");

@@ -9,9 +9,13 @@ export const createHealthcareProviderScheduleController = {
 		}>,
 		reply: FastifyReply,
 	) {
+		const user = await request.getCurrentUser();
 		const data = request.body;
 
-		const result = await createHealthcareProviderScheduleUseCase.execute(data);
+		const result = await createHealthcareProviderScheduleUseCase.execute(
+			user,
+			data,
+		);
 
 		return reply.status(201).send(result);
 	},

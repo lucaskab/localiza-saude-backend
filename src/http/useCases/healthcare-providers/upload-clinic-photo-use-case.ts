@@ -1,6 +1,7 @@
 import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
+import { clinicRbac } from "@/http/services/clinic-rbac";
 import { validateProviderClinicPhotoFile } from "@/http/services/provider-clinic-photo-security";
 import { storageService } from "@/http/services/storage.service";
 import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
@@ -24,8 +25,17 @@ export const uploadClinicPhotoUseCase = {
 		}
 
 		if (provider.id !== params.currentUser.id) {
+			await clinicRbac.assertCanManageProvider(
+				params.currentUser,
+				provider.id,
+				"MANAGE_PROVIDER_PROFILE",
+			);
+		} else if (
+			params.currentUser.role !== "HEALTHCARE_PROVIDER" &&
+			params.currentUser.role !== "ADMIN"
+		) {
 			throw new UnauthorizedError(
-				"You can only upload clinic photos for your own healthcare provider profile",
+				"You can only upload clinic photos for providers you manage",
 			);
 		}
 

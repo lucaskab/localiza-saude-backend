@@ -13,10 +13,11 @@ export const updateProcedureController = {
 		}>,
 		reply: FastifyReply,
 	) {
+		const user = await request.getCurrentUser();
 		const { id } = request.params;
 		const data = request.body;
 
-		const result = await updateProcedureUseCase.execute(id, data);
+		const result = await updateProcedureUseCase.execute(user, id, data);
 
 		return reply.status(200).send(result);
 	},

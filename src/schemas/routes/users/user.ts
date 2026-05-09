@@ -2,7 +2,12 @@ import { z } from "zod";
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { procedureSchema } from "../procedures/get-procedures";
 
-export const userRoleSchema = z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER", "ADMIN"]);
+export const userRoleSchema = z.enum([
+	"CUSTOMER",
+	"HEALTHCARE_PROVIDER",
+	"ADMIN",
+	"STAFF",
+]);
 
 export const publicUserSchema = z.object({
 	id: z.cuid(),
@@ -24,6 +29,10 @@ export const customerUserSchema = publicUserSchema.extend({
 	cpf: z.string().nullable().optional(),
 	dateOfBirth: z.date().nullable().optional(),
 	address: z.string().nullable().optional(),
+});
+
+export const staffUserSchema = publicUserSchema.extend({
+	role: z.literal("STAFF").optional(),
 });
 
 export const professionalFaqSchema = z.object({

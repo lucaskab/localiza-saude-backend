@@ -7,9 +7,10 @@ export const deleteClinicController = {
 		request: FastifyRequest<{ Params: DeleteClinicParamsSchema }>,
 		reply: FastifyReply,
 	) {
+		const user = await request.getCurrentUser();
 		const { id } = request.params;
 
-		const result = await deleteClinicUseCase.execute(id);
+		const result = await deleteClinicUseCase.execute(user, id);
 
 		return reply.status(200).send(result);
 	},

@@ -7,9 +7,10 @@ export const createClinicController = {
 		request: FastifyRequest<{ Body: CreateClinicBodySchema }>,
 		reply: FastifyReply,
 	) {
+		const user = await request.getCurrentUser();
 		const data = request.body;
 
-		const result = await createClinicUseCase.execute(data);
+		const result = await createClinicUseCase.execute(user, data);
 
 		return reply.status(201).send(result);
 	},

@@ -41,8 +41,9 @@ export const prismaClinicRepository: ClinicRepository = {
 				description: string | null;
 				email: string;
 				type: string;
-				latitude: number;
-				longitude: number;
+				address: string | null;
+				latitude: number | null;
+				longitude: number | null;
 				created_at: Date;
 				updated_at: Date;
 				owner_id: string;
@@ -56,6 +57,7 @@ export const prismaClinicRepository: ClinicRepository = {
 				description,
 				email,
 				type,
+				address,
 				latitude,
 				longitude,
 				created_at,
@@ -67,9 +69,11 @@ export const prismaClinicRepository: ClinicRepository = {
 						cos(radians(longitude) - radians(${longitude})) +
 						sin(radians(${latitude})) * sin(radians(latitude))
 					)
-				) AS distance
+			) AS distance
 			FROM clinics
-			WHERE (
+			WHERE latitude IS NOT NULL
+			AND longitude IS NOT NULL
+			AND (
 				6371 * acos(
 					cos(radians(${latitude})) * cos(radians(latitude)) *
 					cos(radians(longitude) - radians(${longitude})) +
@@ -87,6 +91,7 @@ export const prismaClinicRepository: ClinicRepository = {
 			description: clinic.description,
 			email: clinic.email,
 			type: clinic.type as ClinicType,
+			address: clinic.address,
 			latitude: clinic.latitude,
 			longitude: clinic.longitude,
 			createdAt: clinic.created_at,
@@ -103,6 +108,7 @@ export const prismaClinicRepository: ClinicRepository = {
 				description: data.description,
 				email: data.email,
 				type: data.type,
+				address: data.address,
 				latitude: data.latitude,
 				longitude: data.longitude,
 				ownerId: data.ownerId,
@@ -123,6 +129,7 @@ export const prismaClinicRepository: ClinicRepository = {
 				}),
 				...(data.email && { email: data.email }),
 				...(data.type && { type: data.type }),
+				...(data.address !== undefined && { address: data.address }),
 				...(data.latitude !== undefined && { latitude: data.latitude }),
 				...(data.longitude !== undefined && { longitude: data.longitude }),
 			},

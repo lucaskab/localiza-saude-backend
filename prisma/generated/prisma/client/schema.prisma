@@ -126,19 +126,20 @@ model healthcare_provider_category {
 }
 
 model clinic {
-  id          String     @id @default(cuid())
+  id          String            @id @default(cuid())
   name        String
   phone       String
   description String?
-  email       String     @unique
-  type        ClinicType @default(MEDICAL)
-  latitude    Float
-  longitude   Float
-  createdAt   DateTime   @default(now()) @map("created_at")
-  updatedAt   DateTime   @updatedAt @map("updated_at")
-  ownerId     String     @map("owner_id")
-  owner       user       @relation("ClinicOwner", fields: [ownerId], references: [id])
-  employees   user[]     @relation("ClinicEmployees")
+  email       String            @unique
+  type        ClinicType        @default(MEDICAL)
+  address     String?
+  latitude    Float?
+  longitude   Float?
+  createdAt   DateTime          @default(now()) @map("created_at")
+  updatedAt   DateTime          @updatedAt @map("updated_at")
+  ownerId     String            @map("owner_id")
+  owner       user              @relation("ClinicOwner", fields: [ownerId], references: [id])
+  employees   clinic_employee[] @relation("ClinicEmployees")
 
   @@index([ownerId])
   @@map("clinics")
@@ -151,6 +152,41 @@ enum ClinicType {
   EYE
   BEAUTY
   FREE
+}
+
+model clinic_employee {
+  id          String             @id @default(cuid())
+  clinicId    String             @map("clinic_id")
+  clinic      clinic             @relation("ClinicEmployees", fields: [clinicId], references: [id], onDelete: Cascade)
+  userId      String             @map("user_id")
+  user        user               @relation("ClinicEmployeeUser", fields: [userId], references: [id], onDelete: Cascade)
+  role        ClinicEmployeeRole
+  permissions ClinicPermission[] @default([])
+  active      Boolean            @default(true)
+  createdAt   DateTime           @default(now()) @map("created_at")
+  updatedAt   DateTime           @updatedAt @map("updated_at")
+
+  @@unique([clinicId, userId])
+  @@index([clinicId])
+  @@index([userId])
+  @@index([role])
+  @@map("clinic_employees")
+}
+
+enum ClinicEmployeeRole {
+  OWNER
+  PROVIDER
+  STAFF
+}
+
+enum ClinicPermission {
+  MANAGE_PROVIDER_PROFILE
+  MANAGE_PROVIDER_SCHEDULE
+  MANAGE_APPOINTMENTS
+  MANAGE_PROCEDURES
+  VIEW_PATIENTS
+  MANAGE_CLINIC_INFO
+  MANAGE_STAFF
 }
 
 model customer_favorite_provider {
@@ -533,10 +569,10 @@ model user {
   createdAt                            DateTime  @default(now()) @map("created_at")
   updatedAt                            DateTime  @updatedAt @map("updated_at")
 
-  sessions     session[]
-  accounts     account[]
-  ownedClinics clinic[]  @relation("ClinicOwner")
-  clinics      clinic[]  @relation("ClinicEmployees")
+  sessions        session[]
+  accounts        account[]
+  ownedClinics    clinic[]          @relation("ClinicOwner")
+  clinicEmployees clinic_employee[] @relation("ClinicEmployeeUser")
 
   customerAppointments                        appointment[]                               @relation("CustomerAppointments")
   healthcareProviderAppointments              appointment[]                               @relation("ProviderAppointments")
@@ -576,6 +612,7 @@ enum UserRole {
   HEALTHCARE_PROVIDER
   CUSTOMER
   ADMIN
+  STAFF
 }
 
 enum ProviderVerificationReviewStatus {

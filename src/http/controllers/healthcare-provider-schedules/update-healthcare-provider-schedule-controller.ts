@@ -13,10 +13,12 @@ export const updateHealthcareProviderScheduleController = {
 		}>,
 		reply: FastifyReply,
 	) {
+		const user = await request.getCurrentUser();
 		const { id } = request.params;
 		const data = request.body;
 
 		const result = await updateHealthcareProviderScheduleUseCase.execute(
+			user,
 			id,
 			data,
 		);

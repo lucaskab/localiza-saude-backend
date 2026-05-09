@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { publicUserSchema } from "../users/user";
 
 export const clinicTypeSchema = z.enum([
 	"MEDICAL",
@@ -16,11 +17,40 @@ export const clinicSchema = z.object({
 	description: z.string().nullable(),
 	email: z.email(),
 	type: clinicTypeSchema,
-	latitude: z.number(),
-	longitude: z.number(),
+	address: z.string().nullable(),
+	latitude: z.number().nullable(),
+	longitude: z.number().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
 	ownerId: z.string(),
+});
+
+export const clinicEmployeeRoleSchema = z.enum(["OWNER", "PROVIDER", "STAFF"]);
+
+export const clinicPermissionSchema = z.enum([
+	"MANAGE_PROVIDER_PROFILE",
+	"MANAGE_PROVIDER_SCHEDULE",
+	"MANAGE_APPOINTMENTS",
+	"MANAGE_PROCEDURES",
+	"VIEW_PATIENTS",
+	"MANAGE_CLINIC_INFO",
+	"MANAGE_STAFF",
+]);
+
+export const clinicEmployeeSchema = z.object({
+	id: z.cuid(),
+	clinicId: z.cuid(),
+	userId: z.cuid(),
+	user: publicUserSchema.optional(),
+	role: clinicEmployeeRoleSchema,
+	permissions: z.array(clinicPermissionSchema),
+	active: z.boolean(),
+	createdAt: z.date(),
+	updatedAt: z.date(),
+});
+
+export const clinicWithEmployeesSchema = clinicSchema.extend({
+	employees: z.array(clinicEmployeeSchema).optional(),
 });
 
 export const getClinicsResponseSchema = z.object({

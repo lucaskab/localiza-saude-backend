@@ -7,9 +7,10 @@ export const createClinicBodySchema = z.object({
 	description: z.string().nullable().optional(),
 	email: z.email(),
 	type: clinicTypeSchema,
-	latitude: z.number().min(-90).max(90),
-	longitude: z.number().min(-180).max(180),
-	ownerId: z.cuid(),
+	address: z.string().trim().nullable().optional(),
+	latitude: z.number().min(-90).max(90).nullable().optional(),
+	longitude: z.number().min(-180).max(180).nullable().optional(),
+	ownerId: z.cuid().optional(),
 });
 
 export const createClinicResponseSchema = z.object({

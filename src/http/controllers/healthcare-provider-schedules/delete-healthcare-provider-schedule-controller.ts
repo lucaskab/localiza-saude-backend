@@ -9,9 +9,10 @@ export const deleteHealthcareProviderScheduleController = {
 		}>,
 		reply: FastifyReply,
 	) {
+		const user = await request.getCurrentUser();
 		const { id } = request.params;
 
-		await deleteHealthcareProviderScheduleUseCase.execute(id);
+		await deleteHealthcareProviderScheduleUseCase.execute(user, id);
 
 		return reply.status(204).send();
 	},

@@ -196,11 +196,23 @@ exports.Prisma.ClinicScalarFieldEnum = {
   description: 'description',
   email: 'email',
   type: 'type',
+  address: 'address',
   latitude: 'latitude',
   longitude: 'longitude',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   ownerId: 'ownerId'
+};
+
+exports.Prisma.Clinic_employeeScalarFieldEnum = {
+  id: 'id',
+  clinicId: 'clinicId',
+  userId: 'userId',
+  role: 'role',
+  permissions: 'permissions',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.Customer_favorite_providerScalarFieldEnum = {
@@ -509,6 +521,22 @@ exports.ClinicType = exports.$Enums.ClinicType = {
   FREE: 'FREE'
 };
 
+exports.ClinicEmployeeRole = exports.$Enums.ClinicEmployeeRole = {
+  OWNER: 'OWNER',
+  PROVIDER: 'PROVIDER',
+  STAFF: 'STAFF'
+};
+
+exports.ClinicPermission = exports.$Enums.ClinicPermission = {
+  MANAGE_PROVIDER_PROFILE: 'MANAGE_PROVIDER_PROFILE',
+  MANAGE_PROVIDER_SCHEDULE: 'MANAGE_PROVIDER_SCHEDULE',
+  MANAGE_APPOINTMENTS: 'MANAGE_APPOINTMENTS',
+  MANAGE_PROCEDURES: 'MANAGE_PROCEDURES',
+  VIEW_PATIENTS: 'VIEW_PATIENTS',
+  MANAGE_CLINIC_INFO: 'MANAGE_CLINIC_INFO',
+  MANAGE_STAFF: 'MANAGE_STAFF'
+};
+
 exports.MessageSenderType = exports.$Enums.MessageSenderType = {
   CUSTOMER: 'CUSTOMER',
   HEALTHCARE_PROVIDER: 'HEALTHCARE_PROVIDER'
@@ -557,7 +585,8 @@ exports.SupportRequestStatus = exports.$Enums.SupportRequestStatus = {
 exports.UserRole = exports.$Enums.UserRole = {
   HEALTHCARE_PROVIDER: 'HEALTHCARE_PROVIDER',
   CUSTOMER: 'CUSTOMER',
-  ADMIN: 'ADMIN'
+  ADMIN: 'ADMIN',
+  STAFF: 'STAFF'
 };
 
 exports.ProviderVerificationReviewStatus = exports.$Enums.ProviderVerificationReviewStatus = {
@@ -573,6 +602,7 @@ exports.Prisma.ModelName = {
   category: 'category',
   healthcare_provider_category: 'healthcare_provider_category',
   clinic: 'clinic',
+  clinic_employee: 'clinic_employee',
   customer_favorite_provider: 'customer_favorite_provider',
   customer_medical_record: 'customer_medical_record',
   healthcare_provider_schedule: 'healthcare_provider_schedule',

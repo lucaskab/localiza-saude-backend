@@ -13,10 +13,11 @@ export const updateAppointmentController = {
 		}>,
 		reply: FastifyReply,
 	) {
+		const user = await request.getCurrentUser();
 		const { id } = request.params;
 		const data = request.body;
 
-		const result = await updateAppointmentUseCase.execute(id, data);
+		const result = await updateAppointmentUseCase.execute(user, id, data);
 
 		return reply.status(200).send(result);
 	},

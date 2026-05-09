@@ -9,6 +9,7 @@ import { prismaPatientProfileRepository } from "@/http/repositories/patient-prof
 import { prismaProcedureRepository } from "@/http/repositories/procedures/procedures-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
+import { clinicRbac } from "@/http/services/clinic-rbac";
 import { googleMeetService } from "@/http/services/google-meet-service";
 import { sendAppointmentEventNotificationUseCase } from "@/http/useCases/notifications/send-appointment-event-notification-use-case";
 import type { CreateAppointmentBodySchema } from "@/schemas/routes/appointments/create-appointment";
@@ -82,7 +83,8 @@ async function resolvePatient({
 	healthcareProvider: user | null;
 }): Promise<ResolvedPatient> {
 	const requestedCustomer = data.customer ?? { type: "SELF" as const };
-	const isProviderActor = currentUser.role === "HEALTHCARE_PROVIDER";
+	const isProviderActor =
+		currentUser.role === "HEALTHCARE_PROVIDER" || currentUser.role === "STAFF";
 
 	if (requestedCustomer.type === "SELF") {
 		if (isProviderActor || !customer) {
@@ -145,6 +147,8 @@ export const createAppointmentUseCase = {
 		]);
 
 		const isProviderActor = currentUser.role === "HEALTHCARE_PROVIDER";
+		const isStaffActor = currentUser.role === "STAFF";
+		const isClinicActor = isProviderActor || isStaffActor;
 
 		if (isProviderActor && !actingHealthcareProvider) {
 			throw new BadRequestError(
@@ -152,7 +156,7 @@ export const createAppointmentUseCase = {
 			);
 		}
 
-		if (!isProviderActor && !customer) {
+		if (!isClinicActor && !customer) {
 			throw new BadRequestError("User is not registered as a customer");
 		}
 
@@ -181,11 +185,18 @@ export const createAppointmentUseCase = {
 			throw new BadRequestError("Healthcare provider not found");
 		}
 
+		if (isStaffActor) {
+			await clinicRbac.assertCanCreateAppointmentForProvider(
+				currentUser,
+				healthcareProvider.id,
+			);
+		}
+
 		const availableServiceModalities =
 			healthcareProvider.serviceModalities.filter(isServiceModality);
 		const serviceModality =
 			data.serviceModality ??
-			(isProviderActor ? availableServiceModalities[0] : undefined);
+			(isClinicActor ? availableServiceModalities[0] : undefined);
 
 		if (!serviceModality) {
 			throw new BadRequestError(
@@ -266,7 +277,9 @@ export const createAppointmentUseCase = {
 			currentUser,
 			data,
 			customer,
-			healthcareProvider: actingHealthcareProvider,
+			healthcareProvider: isClinicActor
+				? healthcareProvider
+				: actingHealthcareProvider,
 		});
 
 		const appointmentData: CreateAppointmentData = {
@@ -277,7 +290,7 @@ export const createAppointmentUseCase = {
 			procedureIds: data.procedureIds,
 			serviceModality,
 			notes: data.notes,
-			status: isProviderActor ? "CONFIRMED" : "SCHEDULED",
+			status: isClinicActor ? "CONFIRMED" : "SCHEDULED",
 		};
 
 		let appointment = await prismaAppointmentRepository.create(
@@ -293,7 +306,7 @@ export const createAppointmentUseCase = {
 				});
 		}
 
-		if (isProviderActor) {
+		if (isClinicActor) {
 			await sendAppointmentEventNotificationUseCase
 				.sendAppointmentStatusUpdateToCustomer(appointment)
 				.catch((error) => {
