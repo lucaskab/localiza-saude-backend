@@ -25,6 +25,21 @@ export const GOOGLE_CALENDAR_SCOPES = [
 	"https://www.googleapis.com/auth/calendar.events",
 ] as const;
 
+const sendAuthEmail = (
+	emailPromise: ReturnType<typeof emailService.send>,
+	context: string,
+) => {
+	void emailPromise
+		.then((result) => {
+			if (result.status === "failed" || result.status === "skipped") {
+				console.error(`[auth-email] ${context}: ${result.errorMessage}`);
+			}
+		})
+		.catch((error) => {
+			console.error(`[auth-email] ${context}:`, error);
+		});
+};
+
 export const auth = betterAuth({
 	baseURL: env.BETTER_AUTH_URL,
 	basePath: "/api/auth",
@@ -59,22 +74,25 @@ export const auth = betterAuth({
 		maxPasswordLength: 128,
 		revokeSessionsOnPasswordReset: true,
 		sendResetPassword: async ({ user, url, token }) => {
-			void emailService.send({
-				to: user.email,
-				subject: "Redefina sua senha da Localiza Saúde",
-				html: `
-					<p>Olá${user.name ? `, ${user.name}` : ""}.</p>
-					<p>Recebemos uma solicitação para redefinir a senha da sua conta na Localiza Saúde.</p>
-					<p>
-						<a href="${url}" style="display:inline-block;padding:12px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;">
-							Redefinir senha
-						</a>
-					</p>
-					<p>Se você não solicitou essa alteração, ignore este email.</p>
-				`,
-				text: `Redefina sua senha da Localiza Saúde: ${url}`,
-				idempotencyKey: `password-reset-${user.id}-${token}`,
-			});
+			sendAuthEmail(
+				emailService.send({
+					to: user.email,
+					subject: "Redefina sua senha da Localiza Saúde",
+					html: `
+						<p>Olá${user.name ? `, ${user.name}` : ""}.</p>
+						<p>Recebemos uma solicitação para redefinir a senha da sua conta na Localiza Saúde.</p>
+						<p>
+							<a href="${url}" style="display:inline-block;padding:12px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;">
+								Redefinir senha
+							</a>
+						</p>
+						<p>Se você não solicitou essa alteração, ignore este email.</p>
+					`,
+					text: `Redefina sua senha da Localiza Saúde: ${url}`,
+					idempotencyKey: `password-reset-${user.id}-${token}`,
+				}),
+				`password reset email for ${user.email}`,
+			);
 		},
 	},
 	emailVerification: {
@@ -83,23 +101,26 @@ export const auth = betterAuth({
 		autoSignInAfterVerification: true,
 		expiresIn: 60 * 60 * 24,
 		sendVerificationEmail: async ({ user, url, token }) => {
-			void emailService.send({
-				to: user.email,
-				subject: "Confirme seu email na Localiza Saúde",
-				html: `
-					<p>Olá${user.name ? `, ${user.name}` : ""}.</p>
-					<p>Confirme seu email para ativar sua conta na Localiza Saúde.</p>
-					<p>
-						<a href="${url}" style="display:inline-block;padding:12px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;">
-							Confirmar email
-						</a>
-					</p>
-					<p>Depois da confirmação, você poderá escolher se quer usar a plataforma como paciente ou profissional.</p>
-					<p>Se você não criou esta conta, ignore este email.</p>
-				`,
-				text: `Confirme seu email na Localiza Saúde: ${url}`,
-				idempotencyKey: `email-verification-${user.id}-${token}`,
-			});
+			sendAuthEmail(
+				emailService.send({
+					to: user.email,
+					subject: "Confirme seu email na Localiza Saúde",
+					html: `
+						<p>Olá${user.name ? `, ${user.name}` : ""}.</p>
+						<p>Confirme seu email para ativar sua conta na Localiza Saúde.</p>
+						<p>
+							<a href="${url}" style="display:inline-block;padding:12px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;">
+								Confirmar email
+							</a>
+						</p>
+						<p>Depois da confirmação, você poderá escolher se quer usar a plataforma como paciente ou profissional.</p>
+						<p>Se você não criou esta conta, ignore este email.</p>
+					`,
+					text: `Confirme seu email na Localiza Saúde: ${url}`,
+					idempotencyKey: `email-verification-${user.id}-${token}`,
+				}),
+				`verification email for ${user.email}`,
+			);
 		},
 	},
 	advanced: {

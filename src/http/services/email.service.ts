@@ -1,7 +1,7 @@
 import { env } from "@/env";
 
 const RESEND_EMAILS_API_URL = "https://api.resend.com/emails";
-const RESEND_FROM_EMAIL = "Localiza Saúde <noreply@localizasaude.com>";
+const DEFAULT_RESEND_FROM_EMAIL = "Localiza Saúde <onboarding@resend.dev>";
 
 type SendEmailData = {
 	to: string;
@@ -34,7 +34,7 @@ export const emailService = {
 				...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
 			},
 			body: JSON.stringify({
-				from: RESEND_FROM_EMAIL,
+				from: DEFAULT_RESEND_FROM_EMAIL,
 				to,
 				subject,
 				html,
