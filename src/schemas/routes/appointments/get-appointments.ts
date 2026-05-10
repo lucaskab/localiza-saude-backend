@@ -2,6 +2,7 @@ import { z } from "zod";
 import {
 	customerUserSchema,
 	healthcareProviderUserSchema,
+	publicUserSchema,
 } from "../users/user";
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 
@@ -97,6 +98,12 @@ export const appointmentSchema = z.object({
 	totalDurationMinutes: z.number().int(),
 	totalPriceCents: z.number().int(),
 	notes: z.string().nullable(),
+	cancellationReason: z.string().nullable(),
+	cancellationFeeCents: z.number().int().nullable(),
+	cancellationPolicyAppliedAt: z.date().nullable(),
+	cancelledAt: z.date().nullable(),
+	cancelledByUserId: z.cuid().nullable(),
+	cancelledByUser: publicUserSchema.nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
 	appointmentProcedures: z.array(appointmentProcedureSchema),

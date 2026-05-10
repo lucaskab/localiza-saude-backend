@@ -25,6 +25,7 @@ export const notificationTypes: NotificationType[] = [
 	"APPOINTMENT_REMINDER",
 	"APPOINTMENT_STATUS_UPDATE",
 	"NEW_APPOINTMENT_REQUEST",
+	"WAITLIST_SLOT_AVAILABLE",
 ];
 
 export const defaultNotificationPreferences = notificationTypes.map((type) => ({

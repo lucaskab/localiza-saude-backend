@@ -158,6 +158,11 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   totalDurationMinutes: 'totalDurationMinutes',
   totalPriceCents: 'totalPriceCents',
   notes: 'notes',
+  cancellationReason: 'cancellationReason',
+  cancellationFeeCents: 'cancellationFeeCents',
+  cancellationPolicyAppliedAt: 'cancellationPolicyAppliedAt',
+  cancelledAt: 'cancelledAt',
+  cancelledByUserId: 'cancelledByUserId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -172,6 +177,24 @@ exports.Prisma.Appointment_reschedule_requestScalarFieldEnum = {
   respondedAt: 'respondedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Appointment_waitlist_entryScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  healthcareProviderId: 'healthcareProviderId',
+  desiredScheduledAt: 'desiredScheduledAt',
+  status: 'status',
+  lastNotifiedAt: 'lastNotifiedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Appointment_waitlist_entry_procedureScalarFieldEnum = {
+  id: 'id',
+  waitlistEntryId: 'waitlistEntryId',
+  procedureId: 'procedureId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
@@ -244,6 +267,19 @@ exports.Prisma.Healthcare_provider_scheduleScalarFieldEnum = {
   dayOfWeek: 'dayOfWeek',
   startTime: 'startTime',
   endTime: 'endTime',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Healthcare_provider_schedule_exceptionScalarFieldEnum = {
+  id: 'id',
+  healthcareProviderId: 'healthcareProviderId',
+  date: 'date',
+  type: 'type',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  reason: 'reason',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -443,6 +479,12 @@ exports.Prisma.UserScalarFieldEnum = {
   acceptedInsurance: 'acceptedInsurance',
   paymentMethods: 'paymentMethods',
   cancellationPolicy: 'cancellationPolicy',
+  cancellationPolicyEnabled: 'cancellationPolicyEnabled',
+  cancellationPolicyHoursBefore: 'cancellationPolicyHoursBefore',
+  cancellationPolicyPenaltyType: 'cancellationPolicyPenaltyType',
+  cancellationPolicyFixedFeeCents: 'cancellationPolicyFixedFeeCents',
+  cancellationPolicyPercentage: 'cancellationPolicyPercentage',
+  cancellationPolicyRequiresJustification: 'cancellationPolicyRequiresJustification',
   clinicPhotos: 'clinicPhotos',
   termsAcceptedAt: 'termsAcceptedAt',
   lgpdConsentAt: 'lgpdConsentAt',
@@ -512,6 +554,11 @@ exports.AppointmentRescheduleRequestStatus = exports.$Enums.AppointmentReschedul
   CANCELLED: 'CANCELLED'
 };
 
+exports.AppointmentWaitlistStatus = exports.$Enums.AppointmentWaitlistStatus = {
+  ACTIVE: 'ACTIVE',
+  CANCELLED: 'CANCELLED'
+};
+
 exports.ClinicType = exports.$Enums.ClinicType = {
   MEDICAL: 'MEDICAL',
   HEALTH: 'HEALTH',
@@ -537,6 +584,13 @@ exports.ClinicPermission = exports.$Enums.ClinicPermission = {
   MANAGE_STAFF: 'MANAGE_STAFF'
 };
 
+exports.ScheduleExceptionType = exports.$Enums.ScheduleExceptionType = {
+  DAY_OFF: 'DAY_OFF',
+  TIME_BLOCK: 'TIME_BLOCK',
+  SPECIAL_HOURS: 'SPECIAL_HOURS',
+  EXTRA_SLOT: 'EXTRA_SLOT'
+};
+
 exports.MessageSenderType = exports.$Enums.MessageSenderType = {
   CUSTOMER: 'CUSTOMER',
   HEALTHCARE_PROVIDER: 'HEALTHCARE_PROVIDER'
@@ -557,7 +611,8 @@ exports.PushPlatform = exports.$Enums.PushPlatform = {
 exports.NotificationType = exports.$Enums.NotificationType = {
   APPOINTMENT_REMINDER: 'APPOINTMENT_REMINDER',
   APPOINTMENT_STATUS_UPDATE: 'APPOINTMENT_STATUS_UPDATE',
-  NEW_APPOINTMENT_REQUEST: 'NEW_APPOINTMENT_REQUEST'
+  NEW_APPOINTMENT_REQUEST: 'NEW_APPOINTMENT_REQUEST',
+  WAITLIST_SLOT_AVAILABLE: 'WAITLIST_SLOT_AVAILABLE'
 };
 
 exports.NotificationDeliveryStatus = exports.$Enums.NotificationDeliveryStatus = {
@@ -589,6 +644,11 @@ exports.UserRole = exports.$Enums.UserRole = {
   STAFF: 'STAFF'
 };
 
+exports.CancellationPenaltyType = exports.$Enums.CancellationPenaltyType = {
+  FIXED: 'FIXED',
+  PERCENTAGE: 'PERCENTAGE'
+};
+
 exports.ProviderVerificationReviewStatus = exports.$Enums.ProviderVerificationReviewStatus = {
   APPROVED: 'APPROVED',
   REJECTED: 'REJECTED'
@@ -599,6 +659,8 @@ exports.Prisma.ModelName = {
   appointment_procedure: 'appointment_procedure',
   appointment: 'appointment',
   appointment_reschedule_request: 'appointment_reschedule_request',
+  appointment_waitlist_entry: 'appointment_waitlist_entry',
+  appointment_waitlist_entry_procedure: 'appointment_waitlist_entry_procedure',
   category: 'category',
   healthcare_provider_category: 'healthcare_provider_category',
   clinic: 'clinic',
@@ -606,6 +668,7 @@ exports.Prisma.ModelName = {
   customer_favorite_provider: 'customer_favorite_provider',
   customer_medical_record: 'customer_medical_record',
   healthcare_provider_schedule: 'healthcare_provider_schedule',
+  healthcare_provider_schedule_exception: 'healthcare_provider_schedule_exception',
   healthcare_provider_faq: 'healthcare_provider_faq',
   conversation: 'conversation',
   conversation_message: 'conversation_message',

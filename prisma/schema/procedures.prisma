@@ -10,6 +10,7 @@ model procedure {
   updatedAt            DateTime            @updatedAt @map("updated_at")
 
   appointmentProcedures appointment_procedure[]
+  waitlistEntryProcedures appointment_waitlist_entry_procedure[]
 
   @@index([healthcareProviderId])
   @@map("procedures")

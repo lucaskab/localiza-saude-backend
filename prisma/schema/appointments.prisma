@@ -16,6 +16,12 @@ model appointment {
   totalDurationMinutes Int                 @map("total_duration_minutes")
   totalPriceCents      Int                 @map("total_price_cents")
   notes                String?
+  cancellationReason   String?             @map("cancellation_reason")
+  cancellationFeeCents Int?                @map("cancellation_fee_cents")
+  cancellationPolicyAppliedAt DateTime?    @map("cancellation_policy_applied_at")
+  cancelledAt          DateTime?           @map("cancelled_at")
+  cancelledByUserId    String?             @map("cancelled_by_user_id")
+  cancelledByUser      user?               @relation("AppointmentCancelledBy", fields: [cancelledByUserId], references: [id], onDelete: SetNull)
   createdAt            DateTime            @default(now()) @map("created_at")
   updatedAt            DateTime            @updatedAt @map("updated_at")
 
@@ -27,6 +33,7 @@ model appointment {
   @@index([customerId])
   @@index([patientProfileId])
   @@index([healthcareProviderId])
+  @@index([cancelledByUserId])
   @@index([scheduledAt])
   @@map("appointments")
 }
@@ -64,4 +71,42 @@ enum AppointmentRescheduleRequestStatus {
   ACCEPTED
   DECLINED
   CANCELLED
+}
+
+model appointment_waitlist_entry {
+  id                   String                    @id @default(cuid())
+  customerId           String                    @map("customer_id")
+  customer             user                      @relation("CustomerAppointmentWaitlistEntries", fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String                    @map("healthcare_provider_id")
+  healthcareProvider   user                      @relation("ProviderAppointmentWaitlistEntries", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  desiredScheduledAt   DateTime                  @map("desired_scheduled_at")
+  status               AppointmentWaitlistStatus @default(ACTIVE)
+  lastNotifiedAt       DateTime?                 @map("last_notified_at")
+  createdAt            DateTime                  @default(now()) @map("created_at")
+  updatedAt            DateTime                  @updatedAt @map("updated_at")
+
+  procedures           appointment_waitlist_entry_procedure[]
+
+  @@unique([customerId, healthcareProviderId, desiredScheduledAt])
+  @@index([customerId, status])
+  @@index([healthcareProviderId, status, desiredScheduledAt])
+  @@map("appointment_waitlist_entries")
+}
+
+enum AppointmentWaitlistStatus {
+  ACTIVE
+  CANCELLED
+}
+
+model appointment_waitlist_entry_procedure {
+  id              String                     @id @default(cuid())
+  waitlistEntryId String                     @map("waitlist_entry_id")
+  waitlistEntry   appointment_waitlist_entry @relation(fields: [waitlistEntryId], references: [id], onDelete: Cascade)
+  procedureId     String                     @map("procedure_id")
+  procedure       procedure                  @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  createdAt       DateTime                   @default(now()) @map("created_at")
+
+  @@unique([waitlistEntryId, procedureId])
+  @@index([procedureId])
+  @@map("appointment_waitlist_entry_procedures")
 }

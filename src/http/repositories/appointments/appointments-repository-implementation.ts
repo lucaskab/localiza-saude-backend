@@ -13,6 +13,7 @@ const includeRelations = {
 	customer: true,
 	patientProfile: true,
 	healthcareProvider: true,
+	cancelledByUser: true,
 	appointmentProcedures: {
 		include: {
 			procedure: true,
@@ -293,6 +294,21 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 				}),
 				...(data.status !== undefined && { status: data.status }),
 				...(data.notes !== undefined && { notes: data.notes }),
+				...(data.cancellationReason !== undefined && {
+					cancellationReason: data.cancellationReason,
+				}),
+				...(data.cancellationFeeCents !== undefined && {
+					cancellationFeeCents: data.cancellationFeeCents,
+				}),
+				...(data.cancellationPolicyAppliedAt !== undefined && {
+					cancellationPolicyAppliedAt: data.cancellationPolicyAppliedAt,
+				}),
+				...(data.cancelledAt !== undefined && {
+					cancelledAt: data.cancelledAt,
+				}),
+				...(data.cancelledByUserId !== undefined && {
+					cancelledByUserId: data.cancelledByUserId,
+				}),
 				...(data.onlineMeetingUrl !== undefined && {
 					onlineMeetingUrl: data.onlineMeetingUrl,
 				}),

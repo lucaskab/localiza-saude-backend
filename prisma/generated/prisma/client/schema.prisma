@@ -32,25 +32,31 @@ model appointment_procedure {
 }
 
 model appointment {
-  id                      String            @id @default(cuid())
-  customerId              String?           @map("customer_id")
-  customer                user?             @relation("CustomerAppointments", fields: [customerId], references: [id])
-  patientProfileId        String?           @map("patient_profile_id")
-  patientProfile          patient_profile?  @relation(fields: [patientProfileId], references: [id])
-  healthcareProviderId    String            @map("healthcare_provider_id")
-  healthcareProvider      user              @relation("ProviderAppointments", fields: [healthcareProviderId], references: [id])
-  scheduledAt             DateTime          @map("scheduled_at")
-  status                  AppointmentStatus @default(SCHEDULED)
-  serviceModality         String            @default("IN_PERSON") @map("service_modality")
-  onlineMeetingUrl        String?           @map("online_meeting_url")
-  onlineMeetingProvider   String?           @map("online_meeting_provider")
-  onlineMeetingExternalId String?           @map("online_meeting_external_id")
-  onlineMeetingCreatedAt  DateTime?         @map("online_meeting_created_at")
-  totalDurationMinutes    Int               @map("total_duration_minutes")
-  totalPriceCents         Int               @map("total_price_cents")
-  notes                   String?
-  createdAt               DateTime          @default(now()) @map("created_at")
-  updatedAt               DateTime          @updatedAt @map("updated_at")
+  id                          String            @id @default(cuid())
+  customerId                  String?           @map("customer_id")
+  customer                    user?             @relation("CustomerAppointments", fields: [customerId], references: [id])
+  patientProfileId            String?           @map("patient_profile_id")
+  patientProfile              patient_profile?  @relation(fields: [patientProfileId], references: [id])
+  healthcareProviderId        String            @map("healthcare_provider_id")
+  healthcareProvider          user              @relation("ProviderAppointments", fields: [healthcareProviderId], references: [id])
+  scheduledAt                 DateTime          @map("scheduled_at")
+  status                      AppointmentStatus @default(SCHEDULED)
+  serviceModality             String            @default("IN_PERSON") @map("service_modality")
+  onlineMeetingUrl            String?           @map("online_meeting_url")
+  onlineMeetingProvider       String?           @map("online_meeting_provider")
+  onlineMeetingExternalId     String?           @map("online_meeting_external_id")
+  onlineMeetingCreatedAt      DateTime?         @map("online_meeting_created_at")
+  totalDurationMinutes        Int               @map("total_duration_minutes")
+  totalPriceCents             Int               @map("total_price_cents")
+  notes                       String?
+  cancellationReason          String?           @map("cancellation_reason")
+  cancellationFeeCents        Int?              @map("cancellation_fee_cents")
+  cancellationPolicyAppliedAt DateTime?         @map("cancellation_policy_applied_at")
+  cancelledAt                 DateTime?         @map("cancelled_at")
+  cancelledByUserId           String?           @map("cancelled_by_user_id")
+  cancelledByUser             user?             @relation("AppointmentCancelledBy", fields: [cancelledByUserId], references: [id], onDelete: SetNull)
+  createdAt                   DateTime          @default(now()) @map("created_at")
+  updatedAt                   DateTime          @updatedAt @map("updated_at")
 
   appointmentProcedures  appointment_procedure[]
   relatedMessages        conversation_message[]
@@ -60,6 +66,7 @@ model appointment {
   @@index([customerId])
   @@index([patientProfileId])
   @@index([healthcareProviderId])
+  @@index([cancelledByUserId])
   @@index([scheduledAt])
   @@map("appointments")
 }
@@ -97,6 +104,44 @@ enum AppointmentRescheduleRequestStatus {
   ACCEPTED
   DECLINED
   CANCELLED
+}
+
+model appointment_waitlist_entry {
+  id                   String                    @id @default(cuid())
+  customerId           String                    @map("customer_id")
+  customer             user                      @relation("CustomerAppointmentWaitlistEntries", fields: [customerId], references: [id], onDelete: Cascade)
+  healthcareProviderId String                    @map("healthcare_provider_id")
+  healthcareProvider   user                      @relation("ProviderAppointmentWaitlistEntries", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  desiredScheduledAt   DateTime                  @map("desired_scheduled_at")
+  status               AppointmentWaitlistStatus @default(ACTIVE)
+  lastNotifiedAt       DateTime?                 @map("last_notified_at")
+  createdAt            DateTime                  @default(now()) @map("created_at")
+  updatedAt            DateTime                  @updatedAt @map("updated_at")
+
+  procedures appointment_waitlist_entry_procedure[]
+
+  @@unique([customerId, healthcareProviderId, desiredScheduledAt])
+  @@index([customerId, status])
+  @@index([healthcareProviderId, status, desiredScheduledAt])
+  @@map("appointment_waitlist_entries")
+}
+
+enum AppointmentWaitlistStatus {
+  ACTIVE
+  CANCELLED
+}
+
+model appointment_waitlist_entry_procedure {
+  id              String                     @id @default(cuid())
+  waitlistEntryId String                     @map("waitlist_entry_id")
+  waitlistEntry   appointment_waitlist_entry @relation(fields: [waitlistEntryId], references: [id], onDelete: Cascade)
+  procedureId     String                     @map("procedure_id")
+  procedure       procedure                  @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  createdAt       DateTime                   @default(now()) @map("created_at")
+
+  @@unique([waitlistEntryId, procedureId])
+  @@index([procedureId])
+  @@map("appointment_waitlist_entry_procedures")
 }
 
 model category {
@@ -238,6 +283,31 @@ model healthcare_provider_schedule {
   @@map("healthcare_provider_schedules")
 }
 
+model healthcare_provider_schedule_exception {
+  id                   String                @id @default(cuid())
+  healthcareProviderId String                @map("healthcare_provider_id")
+  healthcareProvider   user                  @relation("ProviderScheduleExceptions", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  date                 DateTime
+  type                 ScheduleExceptionType
+  startTime            String?               @map("start_time")
+  endTime              String?               @map("end_time")
+  reason               String?
+  isActive             Boolean               @default(true) @map("is_active")
+  createdAt            DateTime              @default(now()) @map("created_at")
+  updatedAt            DateTime              @updatedAt @map("updated_at")
+
+  @@index([healthcareProviderId, date])
+  @@index([type])
+  @@map("healthcare_provider_schedule_exceptions")
+}
+
+enum ScheduleExceptionType {
+  DAY_OFF
+  TIME_BLOCK
+  SPECIAL_HOURS
+  EXTRA_SLOT
+}
+
 model healthcare_provider_faq {
   id                   String   @id @default(cuid())
   healthcareProviderId String   @map("healthcare_provider_id")
@@ -367,6 +437,7 @@ enum NotificationType {
   APPOINTMENT_REMINDER
   APPOINTMENT_STATUS_UPDATE
   NEW_APPOINTMENT_REQUEST
+  WAITLIST_SLOT_AVAILABLE
 }
 
 enum NotificationDeliveryStatus {
@@ -425,7 +496,8 @@ model procedure {
   createdAt            DateTime @default(now()) @map("created_at")
   updatedAt            DateTime @updatedAt @map("updated_at")
 
-  appointmentProcedures appointment_procedure[]
+  appointmentProcedures   appointment_procedure[]
+  waitlistEntryProcedures appointment_waitlist_entry_procedure[]
 
   @@index([healthcareProviderId])
   @@map("procedures")
@@ -511,63 +583,69 @@ enum SupportRequestStatus {
 }
 
 model user {
-  id                                   String    @id @default(cuid())
-  name                                 String
-  firstName                            String?   @map("first_name")
-  lastName                             String?   @map("last_name")
-  phone                                String?
-  email                                String    @unique
-  emailVerified                        Boolean   @default(false) @map("email_verified")
-  image                                String?
-  role                                 UserRole  @default(CUSTOMER)
-  onboardingCompleted                  Boolean   @default(true) @map("onboarding_completed")
-  cpf                                  String?
-  dateOfBirth                          DateTime? @map("date_of_birth")
-  address                              String?
-  displayName                          String?   @map("display_name")
-  document                             String?
-  birthDate                            DateTime? @map("birth_date")
-  gender                               String?
-  languages                            String[]  @default([])
-  specialty                            String?
-  professionalCategory                 String?   @map("healthcare_provider_category")
-  professionalId                       String?   @map("professional_id")
-  licenseCouncil                       String?   @map("license_council")
-  licenseState                         String?   @map("license_state")
-  licenseDocumentKey                   String?   @map("license_document_key")
-  licenseDocumentFileName              String?   @map("license_document_file_name")
-  licenseDocumentMimeType              String?   @map("license_document_mime_type")
-  licenseDocumentSize                  Int?      @map("license_document_size")
-  licenseDocumentSha256                String?   @map("license_document_sha256")
-  licenseDocumentUploadedAt            DateTime? @map("license_document_uploaded_at")
-  verificationStatus                   String    @default("PENDING") @map("verification_status")
-  verificationRejectionReason          String?   @map("verification_rejection_reason")
-  verifiedAt                           DateTime? @map("verified_at")
-  verifiedByUserId                     String?   @map("verified_by_user_id")
-  verifiedByUser                       user?     @relation("VerifiedProviders", fields: [verifiedByUserId], references: [id], onDelete: SetNull)
-  bio                                  String?
-  approach                             String?
-  education                            String?
-  certifications                       String?
-  yearsOfExperience                    Int?      @map("years_of_experience")
-  targetAudiences                      String[]  @default([]) @map("target_audiences")
-  serviceModalities                    String[]  @default([]) @map("service_modalities")
-  clinicAddress                        String?   @map("clinic_address")
-  clinicLatitude                       Float?    @map("clinic_latitude")
-  clinicLongitude                      Float?    @map("clinic_longitude")
-  clinicNeighborhood                   String?   @map("clinic_neighborhood")
-  clinicCity                           String?   @map("clinic_city")
-  clinicState                          String?   @map("clinic_state")
-  homeCareRadiusKm                     Int?      @map("home_care_radius_km")
-  acceptedInsurance                    String[]  @default([]) @map("accepted_insurance")
-  paymentMethods                       String[]  @default([]) @map("payment_methods")
-  cancellationPolicy                   String?   @map("cancellation_policy")
-  clinicPhotos                         String[]  @default([]) @map("clinic_photos")
-  termsAcceptedAt                      DateTime? @map("terms_accepted_at")
-  lgpdConsentAt                        DateTime? @map("lgpd_consent_at")
-  professionalResponsibilityAcceptedAt DateTime? @map("professional_responsibility_accepted_at")
-  createdAt                            DateTime  @default(now()) @map("created_at")
-  updatedAt                            DateTime  @updatedAt @map("updated_at")
+  id                                      String                   @id @default(cuid())
+  name                                    String
+  firstName                               String?                  @map("first_name")
+  lastName                                String?                  @map("last_name")
+  phone                                   String?
+  email                                   String                   @unique
+  emailVerified                           Boolean                  @default(false) @map("email_verified")
+  image                                   String?
+  role                                    UserRole                 @default(CUSTOMER)
+  onboardingCompleted                     Boolean                  @default(true) @map("onboarding_completed")
+  cpf                                     String?
+  dateOfBirth                             DateTime?                @map("date_of_birth")
+  address                                 String?
+  displayName                             String?                  @map("display_name")
+  document                                String?
+  birthDate                               DateTime?                @map("birth_date")
+  gender                                  String?
+  languages                               String[]                 @default([])
+  specialty                               String?
+  professionalCategory                    String?                  @map("healthcare_provider_category")
+  professionalId                          String?                  @map("professional_id")
+  licenseCouncil                          String?                  @map("license_council")
+  licenseState                            String?                  @map("license_state")
+  licenseDocumentKey                      String?                  @map("license_document_key")
+  licenseDocumentFileName                 String?                  @map("license_document_file_name")
+  licenseDocumentMimeType                 String?                  @map("license_document_mime_type")
+  licenseDocumentSize                     Int?                     @map("license_document_size")
+  licenseDocumentSha256                   String?                  @map("license_document_sha256")
+  licenseDocumentUploadedAt               DateTime?                @map("license_document_uploaded_at")
+  verificationStatus                      String                   @default("PENDING") @map("verification_status")
+  verificationRejectionReason             String?                  @map("verification_rejection_reason")
+  verifiedAt                              DateTime?                @map("verified_at")
+  verifiedByUserId                        String?                  @map("verified_by_user_id")
+  verifiedByUser                          user?                    @relation("VerifiedProviders", fields: [verifiedByUserId], references: [id], onDelete: SetNull)
+  bio                                     String?
+  approach                                String?
+  education                               String?
+  certifications                          String?
+  yearsOfExperience                       Int?                     @map("years_of_experience")
+  targetAudiences                         String[]                 @default([]) @map("target_audiences")
+  serviceModalities                       String[]                 @default([]) @map("service_modalities")
+  clinicAddress                           String?                  @map("clinic_address")
+  clinicLatitude                          Float?                   @map("clinic_latitude")
+  clinicLongitude                         Float?                   @map("clinic_longitude")
+  clinicNeighborhood                      String?                  @map("clinic_neighborhood")
+  clinicCity                              String?                  @map("clinic_city")
+  clinicState                             String?                  @map("clinic_state")
+  homeCareRadiusKm                        Int?                     @map("home_care_radius_km")
+  acceptedInsurance                       String[]                 @default([]) @map("accepted_insurance")
+  paymentMethods                          String[]                 @default([]) @map("payment_methods")
+  cancellationPolicy                      String?                  @map("cancellation_policy")
+  cancellationPolicyEnabled               Boolean                  @default(false) @map("cancellation_policy_enabled")
+  cancellationPolicyHoursBefore           Int?                     @map("cancellation_policy_hours_before")
+  cancellationPolicyPenaltyType           CancellationPenaltyType? @map("cancellation_policy_penalty_type")
+  cancellationPolicyFixedFeeCents         Int?                     @map("cancellation_policy_fixed_fee_cents")
+  cancellationPolicyPercentage            Int?                     @map("cancellation_policy_percentage")
+  cancellationPolicyRequiresJustification Boolean                  @default(false) @map("cancellation_policy_requires_justification")
+  clinicPhotos                            String[]                 @default([]) @map("clinic_photos")
+  termsAcceptedAt                         DateTime?                @map("terms_accepted_at")
+  lgpdConsentAt                           DateTime?                @map("lgpd_consent_at")
+  professionalResponsibilityAcceptedAt    DateTime?                @map("professional_responsibility_accepted_at")
+  createdAt                               DateTime                 @default(now()) @map("created_at")
+  updatedAt                               DateTime                 @updatedAt @map("updated_at")
 
   sessions        session[]
   accounts        account[]
@@ -576,8 +654,10 @@ model user {
 
   customerAppointments                        appointment[]                               @relation("CustomerAppointments")
   healthcareProviderAppointments              appointment[]                               @relation("ProviderAppointments")
+  cancelledAppointments                       appointment[]                               @relation("AppointmentCancelledBy")
   procedures                                  procedure[]                                 @relation("ProviderProcedures")
   schedules                                   healthcare_provider_schedule[]              @relation("ProviderSchedules")
+  scheduleExceptions                          healthcare_provider_schedule_exception[]    @relation("ProviderScheduleExceptions")
   healthcareProviderCategories                healthcare_provider_category[]              @relation("ProviderCategories")
   favoriteProviders                           customer_favorite_provider[]                @relation("CustomerFavoriteProviders")
   favoritedBy                                 customer_favorite_provider[]                @relation("ProviderFavoritedByCustomers")
@@ -595,6 +675,8 @@ model user {
   notificationDeliveries                      notification_delivery[]
   supportRequests                             support_request[]
   appointmentRescheduleRequests               appointment_reschedule_request[]            @relation("UserAppointmentRescheduleRequests")
+  customerAppointmentWaitlistEntries          appointment_waitlist_entry[]                @relation("CustomerAppointmentWaitlistEntries")
+  providerAppointmentWaitlistEntries          appointment_waitlist_entry[]                @relation("ProviderAppointmentWaitlistEntries")
   verifiedProviders                           user[]                                      @relation("VerifiedProviders")
   providerVerificationReviews                 provider_verification_review[]              @relation("ProviderVerificationReviews")
   adminProviderVerificationReviews            provider_verification_review[]              @relation("AdminProviderVerificationReviews")
@@ -613,6 +695,11 @@ enum UserRole {
   CUSTOMER
   ADMIN
   STAFF
+}
+
+enum CancellationPenaltyType {
+  FIXED
+  PERCENTAGE
 }
 
 enum ProviderVerificationReviewStatus {

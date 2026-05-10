@@ -18,6 +18,7 @@ const envSchema = z.object({
 	R2_SECRET_ACCESS_KEY: z.string(),
 	R2_BUCKET_NAME: z.string(),
 	R2_PUBLIC_URL: z.url(),
+	RESEND_API_KEY: z.string().optional(),
 });
 
 export const env = envSchema.parse(process.env);

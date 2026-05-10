@@ -8,6 +8,11 @@ type TimeSlot = {
 	available: boolean;
 };
 
+type TimeRange = {
+	startTime: string;
+	endTime: string;
+};
+
 type GetTimeSlotsParams = {
 	healthcareProviderId: string;
 	date: string;
@@ -48,6 +53,31 @@ function hasTimeOverlap(
 	apptEnd: number,
 ): boolean {
 	return slotStart < apptEnd && slotEnd > apptStart;
+}
+
+function isValidRange(range: TimeRange): boolean {
+	return timeToMinutes(range.startTime) < timeToMinutes(range.endTime);
+}
+
+function getRangeBounds(ranges: TimeRange[]) {
+	if (ranges.length === 0) {
+		return {
+			startTime: "00:00",
+			endTime: "00:00",
+		};
+	}
+
+	const startMinutes = Math.min(
+		...ranges.map((range) => timeToMinutes(range.startTime)),
+	);
+	const endMinutes = Math.max(
+		...ranges.map((range) => timeToMinutes(range.endTime)),
+	);
+
+	return {
+		startTime: minutesToTime(startMinutes),
+		endTime: minutesToTime(endMinutes),
+	};
 }
 
 function parseUtcDateString(date: string): Date {
@@ -117,17 +147,35 @@ export const getTimeSlotsUseCase = {
 		const dateObj = parseUtcDateString(date);
 		const dayOfWeek = getDayOfWeek(dateObj);
 
-		// Get provider's schedule for this day
-		const schedule = await prisma.healthcare_provider_schedule.findFirst({
+		// Get provider's recurring schedule and date-specific exceptions.
+		const recurringSchedules = await prisma.healthcare_provider_schedule.findMany({
 			where: {
 				healthcareProviderId,
 				dayOfWeek,
 				isActive: true,
 			},
+			orderBy: {
+				startTime: "asc",
+			},
 		});
 
-		// If no schedule, return empty slots
-		if (!schedule) {
+		const scheduleExceptions =
+			await prisma.healthcare_provider_schedule_exception.findMany({
+				where: {
+					healthcareProviderId,
+					date: dateObj,
+					isActive: true,
+				},
+				orderBy: {
+					startTime: "asc",
+				},
+			});
+
+		const hasDayOff = scheduleExceptions.some(
+			(exception) => exception.type === "DAY_OFF",
+		);
+
+		if (hasDayOff) {
 			return {
 				date,
 				healthcareProviderId,
@@ -140,6 +188,73 @@ export const getTimeSlotsUseCase = {
 				slots: [],
 			};
 		}
+
+		const specialHourRanges = scheduleExceptions
+			.filter(
+				(exception) =>
+					exception.type === "SPECIAL_HOURS" &&
+					exception.startTime &&
+					exception.endTime,
+			)
+			.map((exception) => ({
+				startTime: exception.startTime as string,
+				endTime: exception.endTime as string,
+			}))
+			.filter(isValidRange);
+
+		const baseRanges =
+			specialHourRanges.length > 0
+				? specialHourRanges
+				: recurringSchedules
+						.map((schedule) => ({
+							startTime: schedule.startTime,
+							endTime: schedule.endTime,
+						}))
+						.filter(isValidRange);
+
+		const extraSlotRanges = scheduleExceptions
+			.filter(
+				(exception) =>
+					exception.type === "EXTRA_SLOT" &&
+					exception.startTime &&
+					exception.endTime,
+			)
+			.map((exception) => ({
+				startTime: exception.startTime as string,
+				endTime: exception.endTime as string,
+			}))
+			.filter(isValidRange);
+
+		const workingRanges = [...baseRanges, ...extraSlotRanges].sort(
+			(a, b) => timeToMinutes(a.startTime) - timeToMinutes(b.startTime),
+		);
+
+		if (workingRanges.length === 0) {
+			return {
+				date,
+				healthcareProviderId,
+				totalDurationMinutes,
+				slotIntervalMinutes,
+				workingHours: {
+					startTime: "00:00",
+					endTime: "00:00",
+				},
+				slots: [],
+			};
+		}
+
+		const blockedRanges = scheduleExceptions
+			.filter(
+				(exception) =>
+					exception.type === "TIME_BLOCK" &&
+					exception.startTime &&
+					exception.endTime,
+			)
+			.map((exception) => ({
+				startTime: exception.startTime as string,
+				endTime: exception.endTime as string,
+			}))
+			.filter(isValidRange);
 
 		// Get existing appointments for this day
 		const startOfDay = new Date(dateObj);
@@ -156,69 +271,88 @@ export const getTimeSlotsUseCase = {
 				},
 			);
 
-		// Convert working hours to minutes
-		const startMinutes = timeToMinutes(schedule.startTime);
-		const endMinutes = timeToMinutes(schedule.endTime);
-
 		// Generate ALL possible slots
-		const slots: TimeSlot[] = [];
+		const slotsByStartTime = new Map<string, TimeSlot>();
 
-		for (
-			let currentStart = startMinutes;
-			currentStart < endMinutes;
-			currentStart += slotIntervalMinutes
-		) {
-			const currentEnd = currentStart + slotIntervalMinutes;
+		for (const range of workingRanges) {
+			const startMinutes = timeToMinutes(range.startTime);
+			const endMinutes = timeToMinutes(range.endTime);
 
-			// Check if this slot can fit the total duration of selected procedures
-			const canFitProcedures =
-				currentStart + totalDurationMinutes <= endMinutes;
+			for (
+				let currentStart = startMinutes;
+				currentStart < endMinutes;
+				currentStart += slotIntervalMinutes
+			) {
+				const currentEnd = currentStart + slotIntervalMinutes;
+				const procedureEndTime = currentStart + totalDurationMinutes;
+				const canFitProcedures = procedureEndTime <= endMinutes;
 
-			if (!canFitProcedures) {
-				// Slot exists but cannot fit the procedures
-				slots.push({
+				let hasConflict = false;
+
+				if (canFitProcedures) {
+					for (const appointment of existingAppointments) {
+						const apptDate = new Date(appointment.scheduledAt);
+						const apptStart =
+							apptDate.getUTCHours() * 60 + apptDate.getUTCMinutes();
+						const apptEnd = apptStart + appointment.totalDurationMinutes;
+
+						if (
+							hasTimeOverlap(
+								currentStart,
+								procedureEndTime,
+								apptStart,
+								apptEnd,
+							)
+						) {
+							hasConflict = true;
+							break;
+						}
+					}
+				}
+
+				if (canFitProcedures && !hasConflict) {
+					for (const block of blockedRanges) {
+						const blockStart = timeToMinutes(block.startTime);
+						const blockEnd = timeToMinutes(block.endTime);
+
+						if (
+							hasTimeOverlap(
+								currentStart,
+								procedureEndTime,
+								blockStart,
+								blockEnd,
+							)
+						) {
+							hasConflict = true;
+							break;
+						}
+					}
+				}
+
+				const slot = {
 					startTime: minutesToTime(currentStart),
 					endTime: minutesToTime(currentEnd),
-					available: false,
-				});
-				continue;
-			}
+					available: canFitProcedures && !hasConflict,
+				};
+				const existingSlot = slotsByStartTime.get(slot.startTime);
 
-			// Check for conflicts with existing appointments
-			// We need to check if the entire duration (not just this slot) would conflict
-			const procedureEndTime = currentStart + totalDurationMinutes;
-			let hasConflict = false;
-
-			for (const appointment of existingAppointments) {
-				const apptDate = new Date(appointment.scheduledAt);
-				const apptStart =
-					apptDate.getUTCHours() * 60 + apptDate.getUTCMinutes();
-				const apptEnd = apptStart + appointment.totalDurationMinutes;
-
-				if (
-					hasTimeOverlap(currentStart, procedureEndTime, apptStart, apptEnd)
-				) {
-					hasConflict = true;
-					break;
+				if (!existingSlot || (!existingSlot.available && slot.available)) {
+					slotsByStartTime.set(slot.startTime, slot);
 				}
 			}
-
-			slots.push({
-				startTime: minutesToTime(currentStart),
-				endTime: minutesToTime(currentEnd),
-				available: !hasConflict,
-			});
 		}
+
+		const slots = Array.from(slotsByStartTime.values()).sort(
+			(a, b) => timeToMinutes(a.startTime) - timeToMinutes(b.startTime),
+		);
+		const workingHours = getRangeBounds(workingRanges);
 
 		return {
 			date,
 			healthcareProviderId,
 			totalDurationMinutes,
 			slotIntervalMinutes,
-			workingHours: {
-				startTime: schedule.startTime,
-				endTime: schedule.endTime,
-			},
+			workingHours,
 			slots,
 		};
 	},

@@ -23,6 +23,11 @@ export type UpdateAppointmentData = {
 	scheduledAt?: Date;
 	status?: AppointmentStatus;
 	notes?: string | null;
+	cancellationReason?: string | null;
+	cancellationFeeCents?: number | null;
+	cancellationPolicyAppliedAt?: Date | null;
+	cancelledAt?: Date | null;
+	cancelledByUserId?: string | null;
 	onlineMeetingUrl?: string | null;
 	onlineMeetingProvider?: string | null;
 	onlineMeetingExternalId?: string | null;
@@ -41,6 +46,7 @@ export type AppointmentWithRelations = appointment & {
 	customer: user | null;
 	patientProfile: patient_profile | null;
 	healthcareProvider: user;
+	cancelledByUser: user | null;
 	appointmentProcedures: AppointmentProcedure[];
 	rescheduleRequests: appointment_reschedule_request[];
 };

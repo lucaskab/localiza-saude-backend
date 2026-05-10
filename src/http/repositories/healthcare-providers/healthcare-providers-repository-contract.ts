@@ -1,4 +1,5 @@
 import type {
+	CancellationPenaltyType,
 	healthcare_provider_faq,
 	procedure,
 	user,
@@ -49,6 +50,12 @@ export type CreateHealthcareProviderData = {
 	acceptedInsurance?: string[];
 	paymentMethods?: string[];
 	cancellationPolicy?: string | null;
+	cancellationPolicyEnabled?: boolean;
+	cancellationPolicyHoursBefore?: number | null;
+	cancellationPolicyPenaltyType?: CancellationPenaltyType | null;
+	cancellationPolicyFixedFeeCents?: number | null;
+	cancellationPolicyPercentage?: number | null;
+	cancellationPolicyRequiresJustification?: boolean;
 	clinicPhotos?: string[];
 	termsAcceptedAt?: Date | null;
 	lgpdConsentAt?: Date | null;
@@ -94,6 +101,12 @@ export type UpdateHealthcareProviderData = {
 	acceptedInsurance?: string[];
 	paymentMethods?: string[];
 	cancellationPolicy?: string | null;
+	cancellationPolicyEnabled?: boolean;
+	cancellationPolicyHoursBefore?: number | null;
+	cancellationPolicyPenaltyType?: CancellationPenaltyType | null;
+	cancellationPolicyFixedFeeCents?: number | null;
+	cancellationPolicyPercentage?: number | null;
+	cancellationPolicyRequiresJustification?: boolean;
 	clinicPhotos?: string[];
 	termsAcceptedAt?: Date | null;
 	lgpdConsentAt?: Date | null;

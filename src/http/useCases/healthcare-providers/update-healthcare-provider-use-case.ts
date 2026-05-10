@@ -87,9 +87,12 @@ export const updateHealthcareProviderUseCase = {
 
 				dataWithLocation.clinicLatitude = location?.latitude ?? null;
 				dataWithLocation.clinicLongitude = location?.longitude ?? null;
-				dataWithLocation.clinicNeighborhood = location?.neighborhood ?? null;
-				dataWithLocation.clinicCity = location?.city ?? null;
-				dataWithLocation.clinicState = location?.state ?? null;
+				dataWithLocation.clinicNeighborhood =
+					editableData.clinicNeighborhood ?? location?.neighborhood ?? null;
+				dataWithLocation.clinicCity =
+					editableData.clinicCity ?? location?.city ?? null;
+				dataWithLocation.clinicState =
+					editableData.clinicState ?? location?.state ?? null;
 			}
 		}
 

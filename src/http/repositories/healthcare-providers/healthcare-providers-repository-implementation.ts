@@ -19,6 +19,17 @@ const healthcareProviderInclude = {
 			position: "asc",
 		},
 	},
+	clinicEmployees: {
+		where: {
+			active: true,
+		},
+		include: {
+			clinic: true,
+		},
+		orderBy: {
+			createdAt: "asc",
+		},
+	},
 } satisfies Prisma.userInclude;
 
 type HealthcareProviderQueryResult = Prisma.userGetPayload<{
@@ -28,10 +39,17 @@ type HealthcareProviderQueryResult = Prisma.userGetPayload<{
 function toHealthcareProvider(
 	user: HealthcareProviderQueryResult,
 ): HealthcareProviderWithRelations {
-	const { procedures, faqs, ...profile } = user;
+	const { clinicEmployees, procedures, faqs, ...profile } = user;
+	const primaryClinic =
+		clinicEmployees.find((employee) => employee.role === "OWNER")?.clinic ??
+		clinicEmployees[0]?.clinic;
 
 	return {
 		...profile,
+		clinicAddress: profile.clinicAddress ?? primaryClinic?.address ?? null,
+		clinicLatitude: profile.clinicLatitude ?? primaryClinic?.latitude ?? null,
+		clinicLongitude:
+			profile.clinicLongitude ?? primaryClinic?.longitude ?? null,
 		procedures: procedures,
 		faqs: faqs,
 	};
@@ -105,6 +123,16 @@ function createFindAllWhere(filters?: FindAllHealthcareProviderFilters) {
 				{ bio: { contains: search, mode: "insensitive" } },
 				{ approach: { contains: search, mode: "insensitive" } },
 				{ clinicAddress: { contains: search, mode: "insensitive" } },
+				{
+					clinicEmployees: {
+						some: {
+							active: true,
+							clinic: {
+								address: { contains: search, mode: "insensitive" },
+							},
+						},
+					},
+				},
 				{ name: { contains: search, mode: "insensitive" } },
 			],
 		});
@@ -162,14 +190,35 @@ function createFindAllWhere(filters?: FindAllHealthcareProviderFilters) {
 		});
 
 		conditions.push({
-			clinicLatitude: {
-				gte: bounds.minLatitude,
-				lte: bounds.maxLatitude,
-			},
-			clinicLongitude: {
-				gte: bounds.minLongitude,
-				lte: bounds.maxLongitude,
-			},
+			OR: [
+				{
+					clinicLatitude: {
+						gte: bounds.minLatitude,
+						lte: bounds.maxLatitude,
+					},
+					clinicLongitude: {
+						gte: bounds.minLongitude,
+						lte: bounds.maxLongitude,
+					},
+				},
+				{
+					clinicEmployees: {
+						some: {
+							active: true,
+							clinic: {
+								latitude: {
+									gte: bounds.minLatitude,
+									lte: bounds.maxLatitude,
+								},
+								longitude: {
+									gte: bounds.minLongitude,
+									lte: bounds.maxLongitude,
+								},
+							},
+						},
+					},
+				},
+			],
 		});
 	}
 
@@ -206,7 +255,8 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					createdAt: "desc",
 				},
 			});
-			let healthcareProviders = healthcareProvidersResult.map(toHealthcareProvider);
+			let healthcareProviders =
+				healthcareProvidersResult.map(toHealthcareProvider);
 
 			if (
 				typeof filters?.latitude === "number" &&
@@ -245,7 +295,9 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 				include: healthcareProviderInclude,
 			});
 
-			return healthcareProvider ? toHealthcareProvider(healthcareProvider) : null;
+			return healthcareProvider
+				? toHealthcareProvider(healthcareProvider)
+				: null;
 		},
 
 		async findByUserId(userId: string) {
@@ -254,7 +306,9 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 				include: healthcareProviderInclude,
 			});
 
-			return healthcareProvider ? toHealthcareProvider(healthcareProvider) : null;
+			return healthcareProvider
+				? toHealthcareProvider(healthcareProvider)
+				: null;
 		},
 
 		async create(data: CreateHealthcareProviderData) {
@@ -299,6 +353,13 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					acceptedInsurance: data.acceptedInsurance,
 					paymentMethods: data.paymentMethods,
 					cancellationPolicy: data.cancellationPolicy,
+					cancellationPolicyEnabled: data.cancellationPolicyEnabled,
+					cancellationPolicyHoursBefore: data.cancellationPolicyHoursBefore,
+					cancellationPolicyPenaltyType: data.cancellationPolicyPenaltyType,
+					cancellationPolicyFixedFeeCents: data.cancellationPolicyFixedFeeCents,
+					cancellationPolicyPercentage: data.cancellationPolicyPercentage,
+					cancellationPolicyRequiresJustification:
+						data.cancellationPolicyRequiresJustification,
 					clinicPhotos: data.clinicPhotos,
 					termsAcceptedAt: data.termsAcceptedAt,
 					lgpdConsentAt: data.lgpdConsentAt,
@@ -367,8 +428,7 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 							verificationStatus: data.verificationStatus,
 						}),
 						...(data.verificationRejectionReason !== undefined && {
-							verificationRejectionReason:
-								data.verificationRejectionReason,
+							verificationRejectionReason: data.verificationRejectionReason,
 						}),
 						...(data.verifiedAt !== undefined && {
 							verifiedAt: data.verifiedAt,
@@ -420,6 +480,30 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 						}),
 						...(data.cancellationPolicy !== undefined && {
 							cancellationPolicy: data.cancellationPolicy,
+						}),
+						...(data.cancellationPolicyEnabled !== undefined && {
+							cancellationPolicyEnabled: data.cancellationPolicyEnabled,
+						}),
+						...(data.cancellationPolicyHoursBefore !== undefined && {
+							cancellationPolicyHoursBefore:
+								data.cancellationPolicyHoursBefore,
+						}),
+						...(data.cancellationPolicyPenaltyType !== undefined && {
+							cancellationPolicyPenaltyType:
+								data.cancellationPolicyPenaltyType,
+						}),
+						...(data.cancellationPolicyFixedFeeCents !== undefined && {
+							cancellationPolicyFixedFeeCents:
+								data.cancellationPolicyFixedFeeCents,
+						}),
+						...(data.cancellationPolicyPercentage !== undefined && {
+							cancellationPolicyPercentage:
+								data.cancellationPolicyPercentage,
+						}),
+						...(data.cancellationPolicyRequiresJustification !==
+							undefined && {
+							cancellationPolicyRequiresJustification:
+								data.cancellationPolicyRequiresJustification,
 						}),
 						...(data.clinicPhotos !== undefined && {
 							clinicPhotos: data.clinicPhotos,

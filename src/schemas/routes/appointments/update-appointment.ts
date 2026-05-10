@@ -12,6 +12,7 @@ export const updateAppointmentBodySchema = z.object({
 		.optional(),
 	status: appointmentStatusSchema.optional(),
 	notes: z.string().nullable().optional(),
+	cancellationReason: z.string().trim().nullable().optional(),
 });
 
 export const updateAppointmentResponseSchema = z.object({

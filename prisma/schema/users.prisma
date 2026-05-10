@@ -50,6 +50,12 @@ model user {
   acceptedInsurance String[] @default([]) @map("accepted_insurance")
   paymentMethods String[]  @default([]) @map("payment_methods")
   cancellationPolicy String? @map("cancellation_policy")
+  cancellationPolicyEnabled Boolean @default(false) @map("cancellation_policy_enabled")
+  cancellationPolicyHoursBefore Int? @map("cancellation_policy_hours_before")
+  cancellationPolicyPenaltyType CancellationPenaltyType? @map("cancellation_policy_penalty_type")
+  cancellationPolicyFixedFeeCents Int? @map("cancellation_policy_fixed_fee_cents")
+  cancellationPolicyPercentage Int? @map("cancellation_policy_percentage")
+  cancellationPolicyRequiresJustification Boolean @default(false) @map("cancellation_policy_requires_justification")
   clinicPhotos String[]    @default([]) @map("clinic_photos")
   termsAcceptedAt DateTime? @map("terms_accepted_at")
   lgpdConsentAt DateTime? @map("lgpd_consent_at")
@@ -64,8 +70,10 @@ model user {
 
   customerAppointments appointment[] @relation("CustomerAppointments")
   healthcareProviderAppointments appointment[] @relation("ProviderAppointments")
+  cancelledAppointments appointment[] @relation("AppointmentCancelledBy")
   procedures procedure[] @relation("ProviderProcedures")
   schedules healthcare_provider_schedule[] @relation("ProviderSchedules")
+  scheduleExceptions healthcare_provider_schedule_exception[] @relation("ProviderScheduleExceptions")
   healthcareProviderCategories healthcare_provider_category[] @relation("ProviderCategories")
   favoriteProviders customer_favorite_provider[] @relation("CustomerFavoriteProviders")
   favoritedBy customer_favorite_provider[] @relation("ProviderFavoritedByCustomers")
@@ -83,6 +91,8 @@ model user {
   notificationDeliveries notification_delivery[]
   supportRequests support_request[]
   appointmentRescheduleRequests appointment_reschedule_request[] @relation("UserAppointmentRescheduleRequests")
+  customerAppointmentWaitlistEntries appointment_waitlist_entry[] @relation("CustomerAppointmentWaitlistEntries")
+  providerAppointmentWaitlistEntries appointment_waitlist_entry[] @relation("ProviderAppointmentWaitlistEntries")
   verifiedProviders user[] @relation("VerifiedProviders")
   providerVerificationReviews provider_verification_review[] @relation("ProviderVerificationReviews")
   adminProviderVerificationReviews provider_verification_review[] @relation("AdminProviderVerificationReviews")
@@ -101,6 +111,11 @@ enum UserRole {
   CUSTOMER
   ADMIN
   STAFF
+}
+
+enum CancellationPenaltyType {
+  FIXED
+  PERCENTAGE
 }
 
 enum ProviderVerificationReviewStatus {
