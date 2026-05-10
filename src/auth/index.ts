@@ -4,6 +4,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { openAPI } from "better-auth/plugins";
 import { prisma } from "@/database/prisma";
 import { env } from "@/env";
+import { emailService } from "@/http/services/email.service";
 
 const appleBundleIdentifiers =
 	env.APPLE_APP_BUNDLE_IDENTIFIERS?.split(",")
@@ -51,6 +52,30 @@ export const auth = betterAuth({
 	database: prismaAdapter(prisma, {
 		provider: "postgresql",
 	}),
+	emailAndPassword: {
+		enabled: true,
+		minPasswordLength: 8,
+		maxPasswordLength: 128,
+		revokeSessionsOnPasswordReset: true,
+		sendResetPassword: async ({ user, url, token }) => {
+			void emailService.send({
+				to: user.email,
+				subject: "Redefina sua senha da Localiza Saúde",
+				html: `
+					<p>Olá${user.name ? `, ${user.name}` : ""}.</p>
+					<p>Recebemos uma solicitação para redefinir a senha da sua conta na Localiza Saúde.</p>
+					<p>
+						<a href="${url}" style="display:inline-block;padding:12px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;">
+							Redefinir senha
+						</a>
+					</p>
+					<p>Se você não solicitou essa alteração, ignore este email.</p>
+				`,
+				text: `Redefina sua senha da Localiza Saúde: ${url}`,
+				idempotencyKey: `password-reset-${user.id}-${token}`,
+			});
+		},
+	},
 	advanced: {
 		...(process.env.NODE_ENV === "production"
 			? {
