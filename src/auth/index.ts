@@ -54,6 +54,7 @@ export const auth = betterAuth({
 	}),
 	emailAndPassword: {
 		enabled: true,
+		requireEmailVerification: true,
 		minPasswordLength: 8,
 		maxPasswordLength: 128,
 		revokeSessionsOnPasswordReset: true,
@@ -73,6 +74,31 @@ export const auth = betterAuth({
 				`,
 				text: `Redefina sua senha da Localiza Saúde: ${url}`,
 				idempotencyKey: `password-reset-${user.id}-${token}`,
+			});
+		},
+	},
+	emailVerification: {
+		sendOnSignUp: true,
+		sendOnSignIn: true,
+		autoSignInAfterVerification: true,
+		expiresIn: 60 * 60 * 24,
+		sendVerificationEmail: async ({ user, url, token }) => {
+			void emailService.send({
+				to: user.email,
+				subject: "Confirme seu email na Localiza Saúde",
+				html: `
+					<p>Olá${user.name ? `, ${user.name}` : ""}.</p>
+					<p>Confirme seu email para ativar sua conta na Localiza Saúde.</p>
+					<p>
+						<a href="${url}" style="display:inline-block;padding:12px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;">
+							Confirmar email
+						</a>
+					</p>
+					<p>Depois da confirmação, você poderá escolher se quer usar a plataforma como paciente ou profissional.</p>
+					<p>Se você não criou esta conta, ignore este email.</p>
+				`,
+				text: `Confirme seu email na Localiza Saúde: ${url}`,
+				idempotencyKey: `email-verification-${user.id}-${token}`,
 			});
 		},
 	},
