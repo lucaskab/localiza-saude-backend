@@ -1,7 +1,7 @@
 import { env } from "@/env";
 
 const RESEND_EMAILS_API_URL = "https://api.resend.com/emails";
-const DEFAULT_RESEND_FROM_EMAIL = "Localiza Saúde <onboarding@resend.dev>";
+const DEFAULT_RESEND_FROM_EMAIL = "Localiza Saúde <noreply@localizasaude.com>";
 
 type SendEmailData = {
 	to: string;
