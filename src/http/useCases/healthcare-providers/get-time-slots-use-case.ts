@@ -171,11 +171,13 @@ export const getTimeSlotsUseCase = {
 				},
 			});
 
-		const hasDayOff = scheduleExceptions.some(
-			(exception) => exception.type === "DAY_OFF",
+		const hasFullDayOff = scheduleExceptions.some(
+			(exception) =>
+				exception.type === "DAY_OFF" &&
+				(!exception.startTime || !exception.endTime),
 		);
 
-		if (hasDayOff) {
+		if (hasFullDayOff) {
 			return {
 				date,
 				healthcareProviderId,
@@ -246,7 +248,7 @@ export const getTimeSlotsUseCase = {
 		const blockedRanges = scheduleExceptions
 			.filter(
 				(exception) =>
-					exception.type === "TIME_BLOCK" &&
+					["DAY_OFF", "TIME_BLOCK"].includes(exception.type) &&
 					exception.startTime &&
 					exception.endTime,
 			)

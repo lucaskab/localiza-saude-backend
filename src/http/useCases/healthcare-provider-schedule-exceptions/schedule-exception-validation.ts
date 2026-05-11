@@ -20,6 +20,20 @@ function timeToMinutes(time: string): number {
 
 export function validateScheduleExceptionTimes(data: ScheduleExceptionData) {
 	if (data.type === "DAY_OFF") {
+		if (!data.startTime && !data.endTime) {
+			return;
+		}
+
+		if (!data.startTime || !data.endTime) {
+			throw new BadRequestError(
+				"Start time and end time must be provided together",
+			);
+		}
+
+		if (timeToMinutes(data.startTime) >= timeToMinutes(data.endTime)) {
+			throw new BadRequestError("End time must be after start time");
+		}
+
 		return;
 	}
 

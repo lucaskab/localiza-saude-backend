@@ -48,10 +48,6 @@ export const updateHealthcareProviderScheduleExceptionUseCase = {
 				...(data.date !== undefined && {
 					date: normalizeScheduleExceptionDate(data.date),
 				}),
-				...(nextType === "DAY_OFF" && {
-					startTime: null,
-					endTime: null,
-				}),
 			});
 
 		return { exception };

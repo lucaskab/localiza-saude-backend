@@ -27,8 +27,6 @@ export const createHealthcareProviderScheduleExceptionUseCase = {
 			await prismaHealthcareProviderScheduleExceptionRepository.create({
 				...data,
 				date: normalizeScheduleExceptionDate(data.date),
-				startTime: data.type === "DAY_OFF" ? null : data.startTime,
-				endTime: data.type === "DAY_OFF" ? null : data.endTime,
 			});
 
 		return { exception };
