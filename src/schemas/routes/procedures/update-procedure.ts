@@ -1,6 +1,11 @@
 import { z } from "zod";
 import { procedureSchema } from "./get-procedures";
 
+const procedureChecklistItemBodySchema = z.object({
+	text: z.string().trim().min(1),
+	position: z.number().int().min(0).optional(),
+});
+
 export const updateProcedureParamsSchema = z.object({
 	id: z.cuid(),
 });
@@ -10,6 +15,7 @@ export const updateProcedureBodySchema = z.object({
 	description: z.string().nullable().optional(),
 	priceInCents: z.number().int().min(0).optional(),
 	durationInMinutes: z.number().int().min(1).optional(),
+	checklistItems: z.array(procedureChecklistItemBodySchema).max(30).optional(),
 });
 
 export const updateProcedureResponseSchema = z.object({

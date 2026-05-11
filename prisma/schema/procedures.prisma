@@ -11,7 +11,21 @@ model procedure {
 
   appointmentProcedures appointment_procedure[]
   waitlistEntryProcedures appointment_waitlist_entry_procedure[]
+  checklistItems       procedure_checklist_item[]
 
   @@index([healthcareProviderId])
   @@map("procedures")
+}
+
+model procedure_checklist_item {
+  id          String    @id @default(cuid())
+  procedureId String    @map("procedure_id")
+  procedure   procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  text        String
+  position    Int       @default(0)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@index([procedureId])
+  @@map("procedure_checklist_items")
 }

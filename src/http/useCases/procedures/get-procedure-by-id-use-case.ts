@@ -1,9 +1,9 @@
 import { prismaProcedureRepository } from "@/http/repositories/procedures/procedures-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
-import type { procedure } from "../../../../prisma/generated/prisma/client";
+import type { ProcedureWithChecklist } from "@/http/repositories/procedures/procedures-repository-contract";
 
 export const getProcedureByIdUseCase = {
-	async execute(id: string): Promise<{ procedure: procedure }> {
+	async execute(id: string): Promise<{ procedure: ProcedureWithChecklist }> {
 		const procedure = await prismaProcedureRepository.findById(id);
 
 		if (!procedure) {

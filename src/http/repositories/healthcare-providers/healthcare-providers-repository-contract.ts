@@ -2,6 +2,7 @@ import type {
 	CancellationPenaltyType,
 	healthcare_provider_faq,
 	procedure,
+	procedure_checklist_item,
 	user,
 } from "../../../../prisma/generated/prisma/client";
 import type { ServiceModality } from "@/schemas/service-modalities";
@@ -115,7 +116,7 @@ export type UpdateHealthcareProviderData = {
 };
 
 export type HealthcareProviderWithRelations = user & {
-	procedures: procedure[];
+	procedures: (procedure & { checklistItems: procedure_checklist_item[] })[];
 	faqs: healthcare_provider_faq[];
 	distanceInKm?: number | null;
 };

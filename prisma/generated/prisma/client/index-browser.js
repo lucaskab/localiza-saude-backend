@@ -392,6 +392,15 @@ exports.Prisma.ProcedureScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.Procedure_checklist_itemScalarFieldEnum = {
+  id: 'id',
+  procedureId: 'procedureId',
+  text: 'text',
+  position: 'position',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.RatingScalarFieldEnum = {
   id: 'id',
   customerId: 'customerId',
@@ -677,6 +686,7 @@ exports.Prisma.ModelName = {
   notification_delivery: 'notification_delivery',
   patient_profile: 'patient_profile',
   procedure: 'procedure',
+  procedure_checklist_item: 'procedure_checklist_item',
   rating: 'rating',
   session: 'session',
   support_request: 'support_request',

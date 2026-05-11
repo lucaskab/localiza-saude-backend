@@ -5,6 +5,7 @@ import type {
 	user,
 	patient_profile,
 	procedure,
+	procedure_checklist_item,
 } from "../../../../prisma/generated/prisma/client";
 import type { ServiceModality } from "@/schemas/service-modalities";
 
@@ -38,7 +39,7 @@ export type AppointmentProcedure = {
 	id: string;
 	appointmentId: string;
 	procedureId: string;
-	procedure: procedure;
+	procedure: procedure & { checklistItems: procedure_checklist_item[] };
 	createdAt: Date;
 };
 

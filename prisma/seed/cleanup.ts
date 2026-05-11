@@ -42,6 +42,7 @@ export async function cleanupSeedData(prisma: SeedClient) {
 	await prisma.patient_profile.deleteMany({});
 	await prisma.healthcare_provider_schedule_exception.deleteMany({});
 	await prisma.healthcare_provider_schedule.deleteMany({});
+	await prisma.procedure_checklist_item.deleteMany({});
 	await prisma.procedure.deleteMany({});
 	await prisma.healthcare_provider_faq.deleteMany({});
 	await prisma.healthcare_provider_category.deleteMany({});

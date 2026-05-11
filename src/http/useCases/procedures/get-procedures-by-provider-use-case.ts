@@ -1,10 +1,10 @@
 import { prismaProcedureRepository } from "@/http/repositories/procedures/procedures-repository-implementation";
-import type { procedure } from "../../../../prisma/generated/prisma/client";
+import type { ProcedureWithChecklist } from "@/http/repositories/procedures/procedures-repository-contract";
 
 export const getProceduresByProviderUseCase = {
 	async execute(
 		healthcareProviderId: string,
-	): Promise<{ procedures: procedure[] }> {
+	): Promise<{ procedures: ProcedureWithChecklist[] }> {
 		const procedures =
 			await prismaProcedureRepository.findByHealthcareProviderId(
 				healthcareProviderId,

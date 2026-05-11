@@ -51,6 +51,16 @@ const procedureSchema = z.object({
 	healthcareProviderId: z.cuid(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
+	checklistItems: z.array(
+		z.object({
+			id: z.cuid(),
+			procedureId: z.cuid(),
+			text: z.string().min(1),
+			position: z.number().int(),
+			createdAt: z.date(),
+			updatedAt: z.date(),
+		}),
+	),
 });
 
 const appointmentProcedureSchema = z.object({

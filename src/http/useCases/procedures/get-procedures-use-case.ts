@@ -1,9 +1,9 @@
 import { prismaProcedureRepository } from "@/http/repositories/procedures/procedures-repository-implementation";
-import type { procedure } from "../../../../prisma/generated/prisma/client";
+import type { ProcedureWithChecklist } from "@/http/repositories/procedures/procedures-repository-contract";
 
 export const getProceduresUseCase = {
 	async execute(): Promise<{
-		procedures: procedure[];
+		procedures: ProcedureWithChecklist[];
 	}> {
 		const procedures = await prismaProcedureRepository.findAll();
 

@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+export const procedureChecklistItemSchema = z.object({
+	id: z.cuid(),
+	procedureId: z.cuid(),
+	text: z.string().min(1),
+	position: z.number().int(),
+	createdAt: z.date(),
+	updatedAt: z.date(),
+});
+
 export const procedureSchema = z.object({
 	id: z.cuid(),
 	name: z.string().min(1),
@@ -9,6 +18,7 @@ export const procedureSchema = z.object({
 	healthcareProviderId: z.cuid(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
+	checklistItems: z.array(procedureChecklistItemSchema).default([]),
 });
 
 export const getProceduresResponseSchema = z.object({

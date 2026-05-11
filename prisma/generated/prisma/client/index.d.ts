@@ -124,6 +124,11 @@ export type patient_profile = $Result.DefaultSelection<Prisma.$patient_profilePa
  */
 export type procedure = $Result.DefaultSelection<Prisma.$procedurePayload>
 /**
+ * Model procedure_checklist_item
+ * 
+ */
+export type procedure_checklist_item = $Result.DefaultSelection<Prisma.$procedure_checklist_itemPayload>
+/**
  * Model rating
  * 
  */
@@ -741,6 +746,16 @@ export class PrismaClient<
   get procedure(): Prisma.procedureDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.procedure_checklist_item`: Exposes CRUD operations for the **procedure_checklist_item** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Procedure_checklist_items
+    * const procedure_checklist_items = await prisma.procedure_checklist_item.findMany()
+    * ```
+    */
+  get procedure_checklist_item(): Prisma.procedure_checklist_itemDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.rating`: Exposes CRUD operations for the **rating** model.
     * Example usage:
     * ```ts
@@ -1265,6 +1280,7 @@ export namespace Prisma {
     notification_delivery: 'notification_delivery',
     patient_profile: 'patient_profile',
     procedure: 'procedure',
+    procedure_checklist_item: 'procedure_checklist_item',
     rating: 'rating',
     session: 'session',
     support_request: 'support_request',
@@ -1287,7 +1303,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "rating" | "session" | "support_request" | "user" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
+      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2919,6 +2935,80 @@ export namespace Prisma {
           }
         }
       }
+      procedure_checklist_item: {
+        payload: Prisma.$procedure_checklist_itemPayload<ExtArgs>
+        fields: Prisma.procedure_checklist_itemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.procedure_checklist_itemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.procedure_checklist_itemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload>
+          }
+          findFirst: {
+            args: Prisma.procedure_checklist_itemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.procedure_checklist_itemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload>
+          }
+          findMany: {
+            args: Prisma.procedure_checklist_itemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload>[]
+          }
+          create: {
+            args: Prisma.procedure_checklist_itemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload>
+          }
+          createMany: {
+            args: Prisma.procedure_checklist_itemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.procedure_checklist_itemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload>[]
+          }
+          delete: {
+            args: Prisma.procedure_checklist_itemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload>
+          }
+          update: {
+            args: Prisma.procedure_checklist_itemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload>
+          }
+          deleteMany: {
+            args: Prisma.procedure_checklist_itemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.procedure_checklist_itemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.procedure_checklist_itemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload>[]
+          }
+          upsert: {
+            args: Prisma.procedure_checklist_itemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$procedure_checklist_itemPayload>
+          }
+          aggregate: {
+            args: Prisma.Procedure_checklist_itemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProcedure_checklist_item>
+          }
+          groupBy: {
+            args: Prisma.procedure_checklist_itemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Procedure_checklist_itemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.procedure_checklist_itemCountArgs<ExtArgs>
+            result: $Utils.Optional<Procedure_checklist_itemCountAggregateOutputType> | number
+          }
+        }
+      }
       rating: {
         payload: Prisma.$ratingPayload<ExtArgs>
         fields: Prisma.ratingFieldRefs
@@ -3567,6 +3657,7 @@ export namespace Prisma {
     notification_delivery?: notification_deliveryOmit
     patient_profile?: patient_profileOmit
     procedure?: procedureOmit
+    procedure_checklist_item?: procedure_checklist_itemOmit
     rating?: ratingOmit
     session?: sessionOmit
     support_request?: support_requestOmit
@@ -3869,11 +3960,13 @@ export namespace Prisma {
   export type ProcedureCountOutputType = {
     appointmentProcedures: number
     waitlistEntryProcedures: number
+    checklistItems: number
   }
 
   export type ProcedureCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     appointmentProcedures?: boolean | ProcedureCountOutputTypeCountAppointmentProceduresArgs
     waitlistEntryProcedures?: boolean | ProcedureCountOutputTypeCountWaitlistEntryProceduresArgs
+    checklistItems?: boolean | ProcedureCountOutputTypeCountChecklistItemsArgs
   }
 
   // Custom InputTypes
@@ -3899,6 +3992,13 @@ export namespace Prisma {
    */
   export type ProcedureCountOutputTypeCountWaitlistEntryProceduresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: appointment_waitlist_entry_procedureWhereInput
+  }
+
+  /**
+   * ProcedureCountOutputType without action
+   */
+  export type ProcedureCountOutputTypeCountChecklistItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: procedure_checklist_itemWhereInput
   }
 
 
@@ -28663,6 +28763,7 @@ export namespace Prisma {
     healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
     appointmentProcedures?: boolean | procedure$appointmentProceduresArgs<ExtArgs>
     waitlistEntryProcedures?: boolean | procedure$waitlistEntryProceduresArgs<ExtArgs>
+    checklistItems?: boolean | procedure$checklistItemsArgs<ExtArgs>
     _count?: boolean | ProcedureCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["procedure"]>
 
@@ -28706,6 +28807,7 @@ export namespace Prisma {
     healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
     appointmentProcedures?: boolean | procedure$appointmentProceduresArgs<ExtArgs>
     waitlistEntryProcedures?: boolean | procedure$waitlistEntryProceduresArgs<ExtArgs>
+    checklistItems?: boolean | procedure$checklistItemsArgs<ExtArgs>
     _count?: boolean | ProcedureCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type procedureIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -28721,6 +28823,7 @@ export namespace Prisma {
       healthcareProvider: Prisma.$userPayload<ExtArgs>
       appointmentProcedures: Prisma.$appointment_procedurePayload<ExtArgs>[]
       waitlistEntryProcedures: Prisma.$appointment_waitlist_entry_procedurePayload<ExtArgs>[]
+      checklistItems: Prisma.$procedure_checklist_itemPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -29128,6 +29231,7 @@ export namespace Prisma {
     healthcareProvider<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     appointmentProcedures<T extends procedure$appointmentProceduresArgs<ExtArgs> = {}>(args?: Subset<T, procedure$appointmentProceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     waitlistEntryProcedures<T extends procedure$waitlistEntryProceduresArgs<ExtArgs> = {}>(args?: Subset<T, procedure$waitlistEntryProceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_waitlist_entry_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    checklistItems<T extends procedure$checklistItemsArgs<ExtArgs> = {}>(args?: Subset<T, procedure$checklistItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -29614,6 +29718,30 @@ export namespace Prisma {
   }
 
   /**
+   * procedure.checklistItems
+   */
+  export type procedure$checklistItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    where?: procedure_checklist_itemWhereInput
+    orderBy?: procedure_checklist_itemOrderByWithRelationInput | procedure_checklist_itemOrderByWithRelationInput[]
+    cursor?: procedure_checklist_itemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Procedure_checklist_itemScalarFieldEnum | Procedure_checklist_itemScalarFieldEnum[]
+  }
+
+  /**
    * procedure without action
    */
   export type procedureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -29629,6 +29757,1116 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: procedureInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model procedure_checklist_item
+   */
+
+  export type AggregateProcedure_checklist_item = {
+    _count: Procedure_checklist_itemCountAggregateOutputType | null
+    _avg: Procedure_checklist_itemAvgAggregateOutputType | null
+    _sum: Procedure_checklist_itemSumAggregateOutputType | null
+    _min: Procedure_checklist_itemMinAggregateOutputType | null
+    _max: Procedure_checklist_itemMaxAggregateOutputType | null
+  }
+
+  export type Procedure_checklist_itemAvgAggregateOutputType = {
+    position: number | null
+  }
+
+  export type Procedure_checklist_itemSumAggregateOutputType = {
+    position: number | null
+  }
+
+  export type Procedure_checklist_itemMinAggregateOutputType = {
+    id: string | null
+    procedureId: string | null
+    text: string | null
+    position: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Procedure_checklist_itemMaxAggregateOutputType = {
+    id: string | null
+    procedureId: string | null
+    text: string | null
+    position: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Procedure_checklist_itemCountAggregateOutputType = {
+    id: number
+    procedureId: number
+    text: number
+    position: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Procedure_checklist_itemAvgAggregateInputType = {
+    position?: true
+  }
+
+  export type Procedure_checklist_itemSumAggregateInputType = {
+    position?: true
+  }
+
+  export type Procedure_checklist_itemMinAggregateInputType = {
+    id?: true
+    procedureId?: true
+    text?: true
+    position?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Procedure_checklist_itemMaxAggregateInputType = {
+    id?: true
+    procedureId?: true
+    text?: true
+    position?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Procedure_checklist_itemCountAggregateInputType = {
+    id?: true
+    procedureId?: true
+    text?: true
+    position?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Procedure_checklist_itemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which procedure_checklist_item to aggregate.
+     */
+    where?: procedure_checklist_itemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of procedure_checklist_items to fetch.
+     */
+    orderBy?: procedure_checklist_itemOrderByWithRelationInput | procedure_checklist_itemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: procedure_checklist_itemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` procedure_checklist_items from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` procedure_checklist_items.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned procedure_checklist_items
+    **/
+    _count?: true | Procedure_checklist_itemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Procedure_checklist_itemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Procedure_checklist_itemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Procedure_checklist_itemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Procedure_checklist_itemMaxAggregateInputType
+  }
+
+  export type GetProcedure_checklist_itemAggregateType<T extends Procedure_checklist_itemAggregateArgs> = {
+        [P in keyof T & keyof AggregateProcedure_checklist_item]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProcedure_checklist_item[P]>
+      : GetScalarType<T[P], AggregateProcedure_checklist_item[P]>
+  }
+
+
+
+
+  export type procedure_checklist_itemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: procedure_checklist_itemWhereInput
+    orderBy?: procedure_checklist_itemOrderByWithAggregationInput | procedure_checklist_itemOrderByWithAggregationInput[]
+    by: Procedure_checklist_itemScalarFieldEnum[] | Procedure_checklist_itemScalarFieldEnum
+    having?: procedure_checklist_itemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Procedure_checklist_itemCountAggregateInputType | true
+    _avg?: Procedure_checklist_itemAvgAggregateInputType
+    _sum?: Procedure_checklist_itemSumAggregateInputType
+    _min?: Procedure_checklist_itemMinAggregateInputType
+    _max?: Procedure_checklist_itemMaxAggregateInputType
+  }
+
+  export type Procedure_checklist_itemGroupByOutputType = {
+    id: string
+    procedureId: string
+    text: string
+    position: number
+    createdAt: Date
+    updatedAt: Date
+    _count: Procedure_checklist_itemCountAggregateOutputType | null
+    _avg: Procedure_checklist_itemAvgAggregateOutputType | null
+    _sum: Procedure_checklist_itemSumAggregateOutputType | null
+    _min: Procedure_checklist_itemMinAggregateOutputType | null
+    _max: Procedure_checklist_itemMaxAggregateOutputType | null
+  }
+
+  type GetProcedure_checklist_itemGroupByPayload<T extends procedure_checklist_itemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Procedure_checklist_itemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Procedure_checklist_itemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Procedure_checklist_itemGroupByOutputType[P]>
+            : GetScalarType<T[P], Procedure_checklist_itemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type procedure_checklist_itemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    procedureId?: boolean
+    text?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["procedure_checklist_item"]>
+
+  export type procedure_checklist_itemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    procedureId?: boolean
+    text?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["procedure_checklist_item"]>
+
+  export type procedure_checklist_itemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    procedureId?: boolean
+    text?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["procedure_checklist_item"]>
+
+  export type procedure_checklist_itemSelectScalar = {
+    id?: boolean
+    procedureId?: boolean
+    text?: boolean
+    position?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type procedure_checklist_itemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "procedureId" | "text" | "position" | "createdAt" | "updatedAt", ExtArgs["result"]["procedure_checklist_item"]>
+  export type procedure_checklist_itemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }
+  export type procedure_checklist_itemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }
+  export type procedure_checklist_itemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }
+
+  export type $procedure_checklist_itemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "procedure_checklist_item"
+    objects: {
+      procedure: Prisma.$procedurePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      procedureId: string
+      text: string
+      position: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["procedure_checklist_item"]>
+    composites: {}
+  }
+
+  type procedure_checklist_itemGetPayload<S extends boolean | null | undefined | procedure_checklist_itemDefaultArgs> = $Result.GetResult<Prisma.$procedure_checklist_itemPayload, S>
+
+  type procedure_checklist_itemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<procedure_checklist_itemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Procedure_checklist_itemCountAggregateInputType | true
+    }
+
+  export interface procedure_checklist_itemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['procedure_checklist_item'], meta: { name: 'procedure_checklist_item' } }
+    /**
+     * Find zero or one Procedure_checklist_item that matches the filter.
+     * @param {procedure_checklist_itemFindUniqueArgs} args - Arguments to find a Procedure_checklist_item
+     * @example
+     * // Get one Procedure_checklist_item
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends procedure_checklist_itemFindUniqueArgs>(args: SelectSubset<T, procedure_checklist_itemFindUniqueArgs<ExtArgs>>): Prisma__procedure_checklist_itemClient<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Procedure_checklist_item that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {procedure_checklist_itemFindUniqueOrThrowArgs} args - Arguments to find a Procedure_checklist_item
+     * @example
+     * // Get one Procedure_checklist_item
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends procedure_checklist_itemFindUniqueOrThrowArgs>(args: SelectSubset<T, procedure_checklist_itemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__procedure_checklist_itemClient<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Procedure_checklist_item that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {procedure_checklist_itemFindFirstArgs} args - Arguments to find a Procedure_checklist_item
+     * @example
+     * // Get one Procedure_checklist_item
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends procedure_checklist_itemFindFirstArgs>(args?: SelectSubset<T, procedure_checklist_itemFindFirstArgs<ExtArgs>>): Prisma__procedure_checklist_itemClient<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Procedure_checklist_item that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {procedure_checklist_itemFindFirstOrThrowArgs} args - Arguments to find a Procedure_checklist_item
+     * @example
+     * // Get one Procedure_checklist_item
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends procedure_checklist_itemFindFirstOrThrowArgs>(args?: SelectSubset<T, procedure_checklist_itemFindFirstOrThrowArgs<ExtArgs>>): Prisma__procedure_checklist_itemClient<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Procedure_checklist_items that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {procedure_checklist_itemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Procedure_checklist_items
+     * const procedure_checklist_items = await prisma.procedure_checklist_item.findMany()
+     * 
+     * // Get first 10 Procedure_checklist_items
+     * const procedure_checklist_items = await prisma.procedure_checklist_item.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const procedure_checklist_itemWithIdOnly = await prisma.procedure_checklist_item.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends procedure_checklist_itemFindManyArgs>(args?: SelectSubset<T, procedure_checklist_itemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Procedure_checklist_item.
+     * @param {procedure_checklist_itemCreateArgs} args - Arguments to create a Procedure_checklist_item.
+     * @example
+     * // Create one Procedure_checklist_item
+     * const Procedure_checklist_item = await prisma.procedure_checklist_item.create({
+     *   data: {
+     *     // ... data to create a Procedure_checklist_item
+     *   }
+     * })
+     * 
+     */
+    create<T extends procedure_checklist_itemCreateArgs>(args: SelectSubset<T, procedure_checklist_itemCreateArgs<ExtArgs>>): Prisma__procedure_checklist_itemClient<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Procedure_checklist_items.
+     * @param {procedure_checklist_itemCreateManyArgs} args - Arguments to create many Procedure_checklist_items.
+     * @example
+     * // Create many Procedure_checklist_items
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends procedure_checklist_itemCreateManyArgs>(args?: SelectSubset<T, procedure_checklist_itemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Procedure_checklist_items and returns the data saved in the database.
+     * @param {procedure_checklist_itemCreateManyAndReturnArgs} args - Arguments to create many Procedure_checklist_items.
+     * @example
+     * // Create many Procedure_checklist_items
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Procedure_checklist_items and only return the `id`
+     * const procedure_checklist_itemWithIdOnly = await prisma.procedure_checklist_item.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends procedure_checklist_itemCreateManyAndReturnArgs>(args?: SelectSubset<T, procedure_checklist_itemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Procedure_checklist_item.
+     * @param {procedure_checklist_itemDeleteArgs} args - Arguments to delete one Procedure_checklist_item.
+     * @example
+     * // Delete one Procedure_checklist_item
+     * const Procedure_checklist_item = await prisma.procedure_checklist_item.delete({
+     *   where: {
+     *     // ... filter to delete one Procedure_checklist_item
+     *   }
+     * })
+     * 
+     */
+    delete<T extends procedure_checklist_itemDeleteArgs>(args: SelectSubset<T, procedure_checklist_itemDeleteArgs<ExtArgs>>): Prisma__procedure_checklist_itemClient<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Procedure_checklist_item.
+     * @param {procedure_checklist_itemUpdateArgs} args - Arguments to update one Procedure_checklist_item.
+     * @example
+     * // Update one Procedure_checklist_item
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends procedure_checklist_itemUpdateArgs>(args: SelectSubset<T, procedure_checklist_itemUpdateArgs<ExtArgs>>): Prisma__procedure_checklist_itemClient<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Procedure_checklist_items.
+     * @param {procedure_checklist_itemDeleteManyArgs} args - Arguments to filter Procedure_checklist_items to delete.
+     * @example
+     * // Delete a few Procedure_checklist_items
+     * const { count } = await prisma.procedure_checklist_item.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends procedure_checklist_itemDeleteManyArgs>(args?: SelectSubset<T, procedure_checklist_itemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Procedure_checklist_items.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {procedure_checklist_itemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Procedure_checklist_items
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends procedure_checklist_itemUpdateManyArgs>(args: SelectSubset<T, procedure_checklist_itemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Procedure_checklist_items and returns the data updated in the database.
+     * @param {procedure_checklist_itemUpdateManyAndReturnArgs} args - Arguments to update many Procedure_checklist_items.
+     * @example
+     * // Update many Procedure_checklist_items
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Procedure_checklist_items and only return the `id`
+     * const procedure_checklist_itemWithIdOnly = await prisma.procedure_checklist_item.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends procedure_checklist_itemUpdateManyAndReturnArgs>(args: SelectSubset<T, procedure_checklist_itemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Procedure_checklist_item.
+     * @param {procedure_checklist_itemUpsertArgs} args - Arguments to update or create a Procedure_checklist_item.
+     * @example
+     * // Update or create a Procedure_checklist_item
+     * const procedure_checklist_item = await prisma.procedure_checklist_item.upsert({
+     *   create: {
+     *     // ... data to create a Procedure_checklist_item
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Procedure_checklist_item we want to update
+     *   }
+     * })
+     */
+    upsert<T extends procedure_checklist_itemUpsertArgs>(args: SelectSubset<T, procedure_checklist_itemUpsertArgs<ExtArgs>>): Prisma__procedure_checklist_itemClient<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Procedure_checklist_items.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {procedure_checklist_itemCountArgs} args - Arguments to filter Procedure_checklist_items to count.
+     * @example
+     * // Count the number of Procedure_checklist_items
+     * const count = await prisma.procedure_checklist_item.count({
+     *   where: {
+     *     // ... the filter for the Procedure_checklist_items we want to count
+     *   }
+     * })
+    **/
+    count<T extends procedure_checklist_itemCountArgs>(
+      args?: Subset<T, procedure_checklist_itemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Procedure_checklist_itemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Procedure_checklist_item.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Procedure_checklist_itemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Procedure_checklist_itemAggregateArgs>(args: Subset<T, Procedure_checklist_itemAggregateArgs>): Prisma.PrismaPromise<GetProcedure_checklist_itemAggregateType<T>>
+
+    /**
+     * Group by Procedure_checklist_item.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {procedure_checklist_itemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends procedure_checklist_itemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: procedure_checklist_itemGroupByArgs['orderBy'] }
+        : { orderBy?: procedure_checklist_itemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, procedure_checklist_itemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProcedure_checklist_itemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the procedure_checklist_item model
+   */
+  readonly fields: procedure_checklist_itemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for procedure_checklist_item.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__procedure_checklist_itemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    procedure<T extends procedureDefaultArgs<ExtArgs> = {}>(args?: Subset<T, procedureDefaultArgs<ExtArgs>>): Prisma__procedureClient<$Result.GetResult<Prisma.$procedurePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the procedure_checklist_item model
+   */
+  interface procedure_checklist_itemFieldRefs {
+    readonly id: FieldRef<"procedure_checklist_item", 'String'>
+    readonly procedureId: FieldRef<"procedure_checklist_item", 'String'>
+    readonly text: FieldRef<"procedure_checklist_item", 'String'>
+    readonly position: FieldRef<"procedure_checklist_item", 'Int'>
+    readonly createdAt: FieldRef<"procedure_checklist_item", 'DateTime'>
+    readonly updatedAt: FieldRef<"procedure_checklist_item", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * procedure_checklist_item findUnique
+   */
+  export type procedure_checklist_itemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    /**
+     * Filter, which procedure_checklist_item to fetch.
+     */
+    where: procedure_checklist_itemWhereUniqueInput
+  }
+
+  /**
+   * procedure_checklist_item findUniqueOrThrow
+   */
+  export type procedure_checklist_itemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    /**
+     * Filter, which procedure_checklist_item to fetch.
+     */
+    where: procedure_checklist_itemWhereUniqueInput
+  }
+
+  /**
+   * procedure_checklist_item findFirst
+   */
+  export type procedure_checklist_itemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    /**
+     * Filter, which procedure_checklist_item to fetch.
+     */
+    where?: procedure_checklist_itemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of procedure_checklist_items to fetch.
+     */
+    orderBy?: procedure_checklist_itemOrderByWithRelationInput | procedure_checklist_itemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for procedure_checklist_items.
+     */
+    cursor?: procedure_checklist_itemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` procedure_checklist_items from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` procedure_checklist_items.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of procedure_checklist_items.
+     */
+    distinct?: Procedure_checklist_itemScalarFieldEnum | Procedure_checklist_itemScalarFieldEnum[]
+  }
+
+  /**
+   * procedure_checklist_item findFirstOrThrow
+   */
+  export type procedure_checklist_itemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    /**
+     * Filter, which procedure_checklist_item to fetch.
+     */
+    where?: procedure_checklist_itemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of procedure_checklist_items to fetch.
+     */
+    orderBy?: procedure_checklist_itemOrderByWithRelationInput | procedure_checklist_itemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for procedure_checklist_items.
+     */
+    cursor?: procedure_checklist_itemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` procedure_checklist_items from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` procedure_checklist_items.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of procedure_checklist_items.
+     */
+    distinct?: Procedure_checklist_itemScalarFieldEnum | Procedure_checklist_itemScalarFieldEnum[]
+  }
+
+  /**
+   * procedure_checklist_item findMany
+   */
+  export type procedure_checklist_itemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    /**
+     * Filter, which procedure_checklist_items to fetch.
+     */
+    where?: procedure_checklist_itemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of procedure_checklist_items to fetch.
+     */
+    orderBy?: procedure_checklist_itemOrderByWithRelationInput | procedure_checklist_itemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing procedure_checklist_items.
+     */
+    cursor?: procedure_checklist_itemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` procedure_checklist_items from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` procedure_checklist_items.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of procedure_checklist_items.
+     */
+    distinct?: Procedure_checklist_itemScalarFieldEnum | Procedure_checklist_itemScalarFieldEnum[]
+  }
+
+  /**
+   * procedure_checklist_item create
+   */
+  export type procedure_checklist_itemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a procedure_checklist_item.
+     */
+    data: XOR<procedure_checklist_itemCreateInput, procedure_checklist_itemUncheckedCreateInput>
+  }
+
+  /**
+   * procedure_checklist_item createMany
+   */
+  export type procedure_checklist_itemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many procedure_checklist_items.
+     */
+    data: procedure_checklist_itemCreateManyInput | procedure_checklist_itemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * procedure_checklist_item createManyAndReturn
+   */
+  export type procedure_checklist_itemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * The data used to create many procedure_checklist_items.
+     */
+    data: procedure_checklist_itemCreateManyInput | procedure_checklist_itemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * procedure_checklist_item update
+   */
+  export type procedure_checklist_itemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a procedure_checklist_item.
+     */
+    data: XOR<procedure_checklist_itemUpdateInput, procedure_checklist_itemUncheckedUpdateInput>
+    /**
+     * Choose, which procedure_checklist_item to update.
+     */
+    where: procedure_checklist_itemWhereUniqueInput
+  }
+
+  /**
+   * procedure_checklist_item updateMany
+   */
+  export type procedure_checklist_itemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update procedure_checklist_items.
+     */
+    data: XOR<procedure_checklist_itemUpdateManyMutationInput, procedure_checklist_itemUncheckedUpdateManyInput>
+    /**
+     * Filter which procedure_checklist_items to update
+     */
+    where?: procedure_checklist_itemWhereInput
+    /**
+     * Limit how many procedure_checklist_items to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * procedure_checklist_item updateManyAndReturn
+   */
+  export type procedure_checklist_itemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * The data used to update procedure_checklist_items.
+     */
+    data: XOR<procedure_checklist_itemUpdateManyMutationInput, procedure_checklist_itemUncheckedUpdateManyInput>
+    /**
+     * Filter which procedure_checklist_items to update
+     */
+    where?: procedure_checklist_itemWhereInput
+    /**
+     * Limit how many procedure_checklist_items to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * procedure_checklist_item upsert
+   */
+  export type procedure_checklist_itemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the procedure_checklist_item to update in case it exists.
+     */
+    where: procedure_checklist_itemWhereUniqueInput
+    /**
+     * In case the procedure_checklist_item found by the `where` argument doesn't exist, create a new procedure_checklist_item with this data.
+     */
+    create: XOR<procedure_checklist_itemCreateInput, procedure_checklist_itemUncheckedCreateInput>
+    /**
+     * In case the procedure_checklist_item was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<procedure_checklist_itemUpdateInput, procedure_checklist_itemUncheckedUpdateInput>
+  }
+
+  /**
+   * procedure_checklist_item delete
+   */
+  export type procedure_checklist_itemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
+    /**
+     * Filter which procedure_checklist_item to delete.
+     */
+    where: procedure_checklist_itemWhereUniqueInput
+  }
+
+  /**
+   * procedure_checklist_item deleteMany
+   */
+  export type procedure_checklist_itemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which procedure_checklist_items to delete
+     */
+    where?: procedure_checklist_itemWhereInput
+    /**
+     * Limit how many procedure_checklist_items to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * procedure_checklist_item without action
+   */
+  export type procedure_checklist_itemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the procedure_checklist_item
+     */
+    select?: procedure_checklist_itemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the procedure_checklist_item
+     */
+    omit?: procedure_checklist_itemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: procedure_checklist_itemInclude<ExtArgs> | null
   }
 
 
@@ -39414,6 +40652,18 @@ export namespace Prisma {
   export type ProcedureScalarFieldEnum = (typeof ProcedureScalarFieldEnum)[keyof typeof ProcedureScalarFieldEnum]
 
 
+  export const Procedure_checklist_itemScalarFieldEnum: {
+    id: 'id',
+    procedureId: 'procedureId',
+    text: 'text',
+    position: 'position',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Procedure_checklist_itemScalarFieldEnum = (typeof Procedure_checklist_itemScalarFieldEnum)[keyof typeof Procedure_checklist_itemScalarFieldEnum]
+
+
   export const RatingScalarFieldEnum: {
     id: 'id',
     customerId: 'customerId',
@@ -41622,6 +42872,7 @@ export namespace Prisma {
     healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
     appointmentProcedures?: Appointment_procedureListRelationFilter
     waitlistEntryProcedures?: Appointment_waitlist_entry_procedureListRelationFilter
+    checklistItems?: Procedure_checklist_itemListRelationFilter
   }
 
   export type procedureOrderByWithRelationInput = {
@@ -41636,6 +42887,7 @@ export namespace Prisma {
     healthcareProvider?: userOrderByWithRelationInput
     appointmentProcedures?: appointment_procedureOrderByRelationAggregateInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureOrderByRelationAggregateInput
+    checklistItems?: procedure_checklist_itemOrderByRelationAggregateInput
   }
 
   export type procedureWhereUniqueInput = Prisma.AtLeast<{
@@ -41653,6 +42905,7 @@ export namespace Prisma {
     healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
     appointmentProcedures?: Appointment_procedureListRelationFilter
     waitlistEntryProcedures?: Appointment_waitlist_entry_procedureListRelationFilter
+    checklistItems?: Procedure_checklist_itemListRelationFilter
   }, "id">
 
   export type procedureOrderByWithAggregationInput = {
@@ -41683,6 +42936,68 @@ export namespace Prisma {
     healthcareProviderId?: StringWithAggregatesFilter<"procedure"> | string
     createdAt?: DateTimeWithAggregatesFilter<"procedure"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"procedure"> | Date | string
+  }
+
+  export type procedure_checklist_itemWhereInput = {
+    AND?: procedure_checklist_itemWhereInput | procedure_checklist_itemWhereInput[]
+    OR?: procedure_checklist_itemWhereInput[]
+    NOT?: procedure_checklist_itemWhereInput | procedure_checklist_itemWhereInput[]
+    id?: StringFilter<"procedure_checklist_item"> | string
+    procedureId?: StringFilter<"procedure_checklist_item"> | string
+    text?: StringFilter<"procedure_checklist_item"> | string
+    position?: IntFilter<"procedure_checklist_item"> | number
+    createdAt?: DateTimeFilter<"procedure_checklist_item"> | Date | string
+    updatedAt?: DateTimeFilter<"procedure_checklist_item"> | Date | string
+    procedure?: XOR<ProcedureScalarRelationFilter, procedureWhereInput>
+  }
+
+  export type procedure_checklist_itemOrderByWithRelationInput = {
+    id?: SortOrder
+    procedureId?: SortOrder
+    text?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    procedure?: procedureOrderByWithRelationInput
+  }
+
+  export type procedure_checklist_itemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: procedure_checklist_itemWhereInput | procedure_checklist_itemWhereInput[]
+    OR?: procedure_checklist_itemWhereInput[]
+    NOT?: procedure_checklist_itemWhereInput | procedure_checklist_itemWhereInput[]
+    procedureId?: StringFilter<"procedure_checklist_item"> | string
+    text?: StringFilter<"procedure_checklist_item"> | string
+    position?: IntFilter<"procedure_checklist_item"> | number
+    createdAt?: DateTimeFilter<"procedure_checklist_item"> | Date | string
+    updatedAt?: DateTimeFilter<"procedure_checklist_item"> | Date | string
+    procedure?: XOR<ProcedureScalarRelationFilter, procedureWhereInput>
+  }, "id">
+
+  export type procedure_checklist_itemOrderByWithAggregationInput = {
+    id?: SortOrder
+    procedureId?: SortOrder
+    text?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: procedure_checklist_itemCountOrderByAggregateInput
+    _avg?: procedure_checklist_itemAvgOrderByAggregateInput
+    _max?: procedure_checklist_itemMaxOrderByAggregateInput
+    _min?: procedure_checklist_itemMinOrderByAggregateInput
+    _sum?: procedure_checklist_itemSumOrderByAggregateInput
+  }
+
+  export type procedure_checklist_itemScalarWhereWithAggregatesInput = {
+    AND?: procedure_checklist_itemScalarWhereWithAggregatesInput | procedure_checklist_itemScalarWhereWithAggregatesInput[]
+    OR?: procedure_checklist_itemScalarWhereWithAggregatesInput[]
+    NOT?: procedure_checklist_itemScalarWhereWithAggregatesInput | procedure_checklist_itemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"procedure_checklist_item"> | string
+    procedureId?: StringWithAggregatesFilter<"procedure_checklist_item"> | string
+    text?: StringWithAggregatesFilter<"procedure_checklist_item"> | string
+    position?: IntWithAggregatesFilter<"procedure_checklist_item"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"procedure_checklist_item"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"procedure_checklist_item"> | Date | string
   }
 
   export type ratingWhereInput = {
@@ -44402,6 +45717,7 @@ export namespace Prisma {
     healthcareProvider: userCreateNestedOneWithoutProceduresInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUncheckedCreateInput = {
@@ -44415,6 +45731,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUpdateInput = {
@@ -44428,6 +45745,7 @@ export namespace Prisma {
     healthcareProvider?: userUpdateOneRequiredWithoutProceduresNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateInput = {
@@ -44441,6 +45759,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureCreateManyInput = {
@@ -44471,6 +45790,68 @@ export namespace Prisma {
     priceInCents?: IntFieldUpdateOperationsInput | number
     durationInMinutes?: IntFieldUpdateOperationsInput | number
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type procedure_checklist_itemCreateInput = {
+    id?: string
+    text: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    procedure: procedureCreateNestedOneWithoutChecklistItemsInput
+  }
+
+  export type procedure_checklist_itemUncheckedCreateInput = {
+    id?: string
+    procedureId: string
+    text: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type procedure_checklist_itemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    procedure?: procedureUpdateOneRequiredWithoutChecklistItemsNestedInput
+  }
+
+  export type procedure_checklist_itemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    procedureId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type procedure_checklist_itemCreateManyInput = {
+    id?: string
+    procedureId: string
+    text: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type procedure_checklist_itemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type procedure_checklist_itemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    procedureId?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -46935,6 +48316,16 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type Procedure_checklist_itemListRelationFilter = {
+    every?: procedure_checklist_itemWhereInput
+    some?: procedure_checklist_itemWhereInput
+    none?: procedure_checklist_itemWhereInput
+  }
+
+  export type procedure_checklist_itemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type procedureCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -46976,6 +48367,41 @@ export namespace Prisma {
   export type procedureSumOrderByAggregateInput = {
     priceInCents?: SortOrder
     durationInMinutes?: SortOrder
+  }
+
+  export type procedure_checklist_itemCountOrderByAggregateInput = {
+    id?: SortOrder
+    procedureId?: SortOrder
+    text?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type procedure_checklist_itemAvgOrderByAggregateInput = {
+    position?: SortOrder
+  }
+
+  export type procedure_checklist_itemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    procedureId?: SortOrder
+    text?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type procedure_checklist_itemMinOrderByAggregateInput = {
+    id?: SortOrder
+    procedureId?: SortOrder
+    text?: SortOrder
+    position?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type procedure_checklist_itemSumOrderByAggregateInput = {
+    position?: SortOrder
   }
 
   export type ratingCustomerIdHealthcareProviderIdCompoundUniqueInput = {
@@ -48674,6 +50100,13 @@ export namespace Prisma {
     connect?: appointment_waitlist_entry_procedureWhereUniqueInput | appointment_waitlist_entry_procedureWhereUniqueInput[]
   }
 
+  export type procedure_checklist_itemCreateNestedManyWithoutProcedureInput = {
+    create?: XOR<procedure_checklist_itemCreateWithoutProcedureInput, procedure_checklist_itemUncheckedCreateWithoutProcedureInput> | procedure_checklist_itemCreateWithoutProcedureInput[] | procedure_checklist_itemUncheckedCreateWithoutProcedureInput[]
+    connectOrCreate?: procedure_checklist_itemCreateOrConnectWithoutProcedureInput | procedure_checklist_itemCreateOrConnectWithoutProcedureInput[]
+    createMany?: procedure_checklist_itemCreateManyProcedureInputEnvelope
+    connect?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+  }
+
   export type appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput = {
     create?: XOR<appointment_procedureCreateWithoutProcedureInput, appointment_procedureUncheckedCreateWithoutProcedureInput> | appointment_procedureCreateWithoutProcedureInput[] | appointment_procedureUncheckedCreateWithoutProcedureInput[]
     connectOrCreate?: appointment_procedureCreateOrConnectWithoutProcedureInput | appointment_procedureCreateOrConnectWithoutProcedureInput[]
@@ -48686,6 +50119,13 @@ export namespace Prisma {
     connectOrCreate?: appointment_waitlist_entry_procedureCreateOrConnectWithoutProcedureInput | appointment_waitlist_entry_procedureCreateOrConnectWithoutProcedureInput[]
     createMany?: appointment_waitlist_entry_procedureCreateManyProcedureInputEnvelope
     connect?: appointment_waitlist_entry_procedureWhereUniqueInput | appointment_waitlist_entry_procedureWhereUniqueInput[]
+  }
+
+  export type procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput = {
+    create?: XOR<procedure_checklist_itemCreateWithoutProcedureInput, procedure_checklist_itemUncheckedCreateWithoutProcedureInput> | procedure_checklist_itemCreateWithoutProcedureInput[] | procedure_checklist_itemUncheckedCreateWithoutProcedureInput[]
+    connectOrCreate?: procedure_checklist_itemCreateOrConnectWithoutProcedureInput | procedure_checklist_itemCreateOrConnectWithoutProcedureInput[]
+    createMany?: procedure_checklist_itemCreateManyProcedureInputEnvelope
+    connect?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
   }
 
   export type userUpdateOneRequiredWithoutProceduresNestedInput = {
@@ -48724,6 +50164,20 @@ export namespace Prisma {
     deleteMany?: appointment_waitlist_entry_procedureScalarWhereInput | appointment_waitlist_entry_procedureScalarWhereInput[]
   }
 
+  export type procedure_checklist_itemUpdateManyWithoutProcedureNestedInput = {
+    create?: XOR<procedure_checklist_itemCreateWithoutProcedureInput, procedure_checklist_itemUncheckedCreateWithoutProcedureInput> | procedure_checklist_itemCreateWithoutProcedureInput[] | procedure_checklist_itemUncheckedCreateWithoutProcedureInput[]
+    connectOrCreate?: procedure_checklist_itemCreateOrConnectWithoutProcedureInput | procedure_checklist_itemCreateOrConnectWithoutProcedureInput[]
+    upsert?: procedure_checklist_itemUpsertWithWhereUniqueWithoutProcedureInput | procedure_checklist_itemUpsertWithWhereUniqueWithoutProcedureInput[]
+    createMany?: procedure_checklist_itemCreateManyProcedureInputEnvelope
+    set?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+    disconnect?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+    delete?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+    connect?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+    update?: procedure_checklist_itemUpdateWithWhereUniqueWithoutProcedureInput | procedure_checklist_itemUpdateWithWhereUniqueWithoutProcedureInput[]
+    updateMany?: procedure_checklist_itemUpdateManyWithWhereWithoutProcedureInput | procedure_checklist_itemUpdateManyWithWhereWithoutProcedureInput[]
+    deleteMany?: procedure_checklist_itemScalarWhereInput | procedure_checklist_itemScalarWhereInput[]
+  }
+
   export type appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput = {
     create?: XOR<appointment_procedureCreateWithoutProcedureInput, appointment_procedureUncheckedCreateWithoutProcedureInput> | appointment_procedureCreateWithoutProcedureInput[] | appointment_procedureUncheckedCreateWithoutProcedureInput[]
     connectOrCreate?: appointment_procedureCreateOrConnectWithoutProcedureInput | appointment_procedureCreateOrConnectWithoutProcedureInput[]
@@ -48750,6 +50204,34 @@ export namespace Prisma {
     update?: appointment_waitlist_entry_procedureUpdateWithWhereUniqueWithoutProcedureInput | appointment_waitlist_entry_procedureUpdateWithWhereUniqueWithoutProcedureInput[]
     updateMany?: appointment_waitlist_entry_procedureUpdateManyWithWhereWithoutProcedureInput | appointment_waitlist_entry_procedureUpdateManyWithWhereWithoutProcedureInput[]
     deleteMany?: appointment_waitlist_entry_procedureScalarWhereInput | appointment_waitlist_entry_procedureScalarWhereInput[]
+  }
+
+  export type procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput = {
+    create?: XOR<procedure_checklist_itemCreateWithoutProcedureInput, procedure_checklist_itemUncheckedCreateWithoutProcedureInput> | procedure_checklist_itemCreateWithoutProcedureInput[] | procedure_checklist_itemUncheckedCreateWithoutProcedureInput[]
+    connectOrCreate?: procedure_checklist_itemCreateOrConnectWithoutProcedureInput | procedure_checklist_itemCreateOrConnectWithoutProcedureInput[]
+    upsert?: procedure_checklist_itemUpsertWithWhereUniqueWithoutProcedureInput | procedure_checklist_itemUpsertWithWhereUniqueWithoutProcedureInput[]
+    createMany?: procedure_checklist_itemCreateManyProcedureInputEnvelope
+    set?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+    disconnect?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+    delete?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+    connect?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+    update?: procedure_checklist_itemUpdateWithWhereUniqueWithoutProcedureInput | procedure_checklist_itemUpdateWithWhereUniqueWithoutProcedureInput[]
+    updateMany?: procedure_checklist_itemUpdateManyWithWhereWithoutProcedureInput | procedure_checklist_itemUpdateManyWithWhereWithoutProcedureInput[]
+    deleteMany?: procedure_checklist_itemScalarWhereInput | procedure_checklist_itemScalarWhereInput[]
+  }
+
+  export type procedureCreateNestedOneWithoutChecklistItemsInput = {
+    create?: XOR<procedureCreateWithoutChecklistItemsInput, procedureUncheckedCreateWithoutChecklistItemsInput>
+    connectOrCreate?: procedureCreateOrConnectWithoutChecklistItemsInput
+    connect?: procedureWhereUniqueInput
+  }
+
+  export type procedureUpdateOneRequiredWithoutChecklistItemsNestedInput = {
+    create?: XOR<procedureCreateWithoutChecklistItemsInput, procedureUncheckedCreateWithoutChecklistItemsInput>
+    connectOrCreate?: procedureCreateOrConnectWithoutChecklistItemsInput
+    upsert?: procedureUpsertWithoutChecklistItemsInput
+    connect?: procedureWhereUniqueInput
+    update?: XOR<XOR<procedureUpdateToOneWithWhereWithoutChecklistItemsInput, procedureUpdateWithoutChecklistItemsInput>, procedureUncheckedUpdateWithoutChecklistItemsInput>
   }
 
   export type userCreateNestedOneWithoutRatingsInput = {
@@ -51338,6 +52820,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     healthcareProvider: userCreateNestedOneWithoutProceduresInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUncheckedCreateWithoutAppointmentProceduresInput = {
@@ -51350,6 +52833,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureCreateOrConnectWithoutAppointmentProceduresInput = {
@@ -51443,6 +52927,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     healthcareProvider?: userUpdateOneRequiredWithoutProceduresNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateWithoutAppointmentProceduresInput = {
@@ -51455,6 +52940,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type userCreateWithoutCustomerAppointmentsInput = {
@@ -54490,6 +55976,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     healthcareProvider: userCreateNestedOneWithoutProceduresInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUncheckedCreateWithoutWaitlistEntryProceduresInput = {
@@ -54502,6 +55989,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureCreateOrConnectWithoutWaitlistEntryProceduresInput = {
@@ -54563,6 +56051,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     healthcareProvider?: userUpdateOneRequiredWithoutProceduresNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateWithoutWaitlistEntryProceduresInput = {
@@ -54575,6 +56064,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type healthcare_provider_categoryCreateWithoutCategoryInput = {
@@ -62453,6 +63943,32 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type procedure_checklist_itemCreateWithoutProcedureInput = {
+    id?: string
+    text: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type procedure_checklist_itemUncheckedCreateWithoutProcedureInput = {
+    id?: string
+    text: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type procedure_checklist_itemCreateOrConnectWithoutProcedureInput = {
+    where: procedure_checklist_itemWhereUniqueInput
+    create: XOR<procedure_checklist_itemCreateWithoutProcedureInput, procedure_checklist_itemUncheckedCreateWithoutProcedureInput>
+  }
+
+  export type procedure_checklist_itemCreateManyProcedureInputEnvelope = {
+    data: procedure_checklist_itemCreateManyProcedureInput | procedure_checklist_itemCreateManyProcedureInput[]
+    skipDuplicates?: boolean
+  }
+
   export type userUpsertWithoutProceduresInput = {
     update: XOR<userUpdateWithoutProceduresInput, userUncheckedUpdateWithoutProceduresInput>
     create: XOR<userCreateWithoutProceduresInput, userUncheckedCreateWithoutProceduresInput>
@@ -62690,6 +64206,102 @@ export namespace Prisma {
   export type appointment_waitlist_entry_procedureUpdateManyWithWhereWithoutProcedureInput = {
     where: appointment_waitlist_entry_procedureScalarWhereInput
     data: XOR<appointment_waitlist_entry_procedureUpdateManyMutationInput, appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureInput>
+  }
+
+  export type procedure_checklist_itemUpsertWithWhereUniqueWithoutProcedureInput = {
+    where: procedure_checklist_itemWhereUniqueInput
+    update: XOR<procedure_checklist_itemUpdateWithoutProcedureInput, procedure_checklist_itemUncheckedUpdateWithoutProcedureInput>
+    create: XOR<procedure_checklist_itemCreateWithoutProcedureInput, procedure_checklist_itemUncheckedCreateWithoutProcedureInput>
+  }
+
+  export type procedure_checklist_itemUpdateWithWhereUniqueWithoutProcedureInput = {
+    where: procedure_checklist_itemWhereUniqueInput
+    data: XOR<procedure_checklist_itemUpdateWithoutProcedureInput, procedure_checklist_itemUncheckedUpdateWithoutProcedureInput>
+  }
+
+  export type procedure_checklist_itemUpdateManyWithWhereWithoutProcedureInput = {
+    where: procedure_checklist_itemScalarWhereInput
+    data: XOR<procedure_checklist_itemUpdateManyMutationInput, procedure_checklist_itemUncheckedUpdateManyWithoutProcedureInput>
+  }
+
+  export type procedure_checklist_itemScalarWhereInput = {
+    AND?: procedure_checklist_itemScalarWhereInput | procedure_checklist_itemScalarWhereInput[]
+    OR?: procedure_checklist_itemScalarWhereInput[]
+    NOT?: procedure_checklist_itemScalarWhereInput | procedure_checklist_itemScalarWhereInput[]
+    id?: StringFilter<"procedure_checklist_item"> | string
+    procedureId?: StringFilter<"procedure_checklist_item"> | string
+    text?: StringFilter<"procedure_checklist_item"> | string
+    position?: IntFilter<"procedure_checklist_item"> | number
+    createdAt?: DateTimeFilter<"procedure_checklist_item"> | Date | string
+    updatedAt?: DateTimeFilter<"procedure_checklist_item"> | Date | string
+  }
+
+  export type procedureCreateWithoutChecklistItemsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    priceInCents: number
+    durationInMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    healthcareProvider: userCreateNestedOneWithoutProceduresInput
+    appointmentProcedures?: appointment_procedureCreateNestedManyWithoutProcedureInput
+    waitlistEntryProcedures?: appointment_waitlist_entry_procedureCreateNestedManyWithoutProcedureInput
+  }
+
+  export type procedureUncheckedCreateWithoutChecklistItemsInput = {
+    id?: string
+    name: string
+    description?: string | null
+    priceInCents: number
+    durationInMinutes: number
+    healthcareProviderId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput
+    waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedCreateNestedManyWithoutProcedureInput
+  }
+
+  export type procedureCreateOrConnectWithoutChecklistItemsInput = {
+    where: procedureWhereUniqueInput
+    create: XOR<procedureCreateWithoutChecklistItemsInput, procedureUncheckedCreateWithoutChecklistItemsInput>
+  }
+
+  export type procedureUpsertWithoutChecklistItemsInput = {
+    update: XOR<procedureUpdateWithoutChecklistItemsInput, procedureUncheckedUpdateWithoutChecklistItemsInput>
+    create: XOR<procedureCreateWithoutChecklistItemsInput, procedureUncheckedCreateWithoutChecklistItemsInput>
+    where?: procedureWhereInput
+  }
+
+  export type procedureUpdateToOneWithWhereWithoutChecklistItemsInput = {
+    where?: procedureWhereInput
+    data: XOR<procedureUpdateWithoutChecklistItemsInput, procedureUncheckedUpdateWithoutChecklistItemsInput>
+  }
+
+  export type procedureUpdateWithoutChecklistItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInCents?: IntFieldUpdateOperationsInput | number
+    durationInMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProvider?: userUpdateOneRequiredWithoutProceduresNestedInput
+    appointmentProcedures?: appointment_procedureUpdateManyWithoutProcedureNestedInput
+    waitlistEntryProcedures?: appointment_waitlist_entry_procedureUpdateManyWithoutProcedureNestedInput
+  }
+
+  export type procedureUncheckedUpdateWithoutChecklistItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInCents?: IntFieldUpdateOperationsInput | number
+    durationInMinutes?: IntFieldUpdateOperationsInput | number
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput
+    waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type userCreateWithoutRatingsInput = {
@@ -64867,6 +66479,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUncheckedCreateWithoutHealthcareProviderInput = {
@@ -64879,6 +66492,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureCreateOrConnectWithoutHealthcareProviderInput = {
@@ -69087,6 +70701,14 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type procedure_checklist_itemCreateManyProcedureInput = {
+    id?: string
+    text: string
+    position?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type appointment_procedureUpdateWithoutProcedureInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69121,6 +70743,30 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     waitlistEntryId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type procedure_checklist_itemUpdateWithoutProcedureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type procedure_checklist_itemUncheckedUpdateWithoutProcedureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type procedure_checklist_itemUncheckedUpdateManyWithoutProcedureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    text?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type sessionCreateManyUserInput = {
@@ -69969,6 +71615,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointmentProcedures?: appointment_procedureUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateWithoutHealthcareProviderInput = {
@@ -69981,6 +71628,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateManyWithoutHealthcareProviderInput = {

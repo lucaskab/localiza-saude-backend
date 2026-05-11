@@ -16,7 +16,15 @@ const includeRelations = {
 	cancelledByUser: true,
 	appointmentProcedures: {
 		include: {
-			procedure: true,
+			procedure: {
+				include: {
+					checklistItems: {
+						orderBy: {
+							position: "asc" as const,
+						},
+					},
+				},
+			},
 		},
 		orderBy: {
 			createdAt: "desc" as const,

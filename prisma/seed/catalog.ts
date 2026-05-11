@@ -43,6 +43,50 @@ const scheduleTemplates = {
 	],
 } as const;
 
+const procedureChecklistTemplates: Record<string, string[]> = {
+	"Consulta clínica geral": [
+		"Leve documentos pessoais e exames recentes, se houver.",
+		"Anote sintomas, medicamentos em uso e dúvidas principais.",
+	],
+	"Retorno clínico": [
+		"Leve os exames solicitados na consulta anterior.",
+		"Informe qualquer mudança de medicamento ou sintoma.",
+	],
+	"Check-up preventivo": [
+		"Faça jejum somente se houver orientação prévia.",
+		"Leve histórico de exames dos últimos 12 meses.",
+	],
+	"Consulta cardiológica": [
+		"Leve exames cardíacos anteriores, como ECG ou ecocardiograma.",
+		"Evite cafeína nas 4 horas anteriores se houver avaliação de pressão.",
+	],
+	"Consulta nutricional inicial": [
+		"Registre sua alimentação dos últimos 3 dias.",
+		"Leve exames laboratoriais recentes, se tiver.",
+	],
+	"Sessão de psicoterapia": [
+		"Escolha um local reservado e silencioso para atendimento online.",
+		"Entre na chamada alguns minutos antes do horário.",
+	],
+	"Avaliação fisioterapêutica": [
+		"Use roupas confortáveis que permitam avaliação de movimento.",
+		"Leve laudos, exames de imagem ou encaminhamentos.",
+	],
+	"Consulta dermatológica": [
+		"Evite maquiagem ou produtos fortes na pele no dia da consulta.",
+		"Leve lista de produtos e medicamentos em uso.",
+	],
+	"Avaliação odontológica": [
+		"Leve radiografias ou exames odontológicos recentes, se houver.",
+		"Informe alergias e medicamentos em uso.",
+	],
+};
+
+const defaultChecklistItems = [
+	"Chegue com 10 minutos de antecedência.",
+	"Leve documento com foto e informações de saúde relevantes.",
+];
+
 const procedureTemplates = {
 	lucas: [
 		[
@@ -158,6 +202,14 @@ export async function seedSchedulesAndProcedures(
 					priceInCents,
 					durationInMinutes,
 					healthcareProviderId: users.providers[providerKey].id,
+					checklistItems: {
+						create: (procedureChecklistTemplates[name] ?? defaultChecklistItems).map(
+							(text, position) => ({
+								text,
+								position,
+							}),
+						),
+					},
 				},
 			});
 		}

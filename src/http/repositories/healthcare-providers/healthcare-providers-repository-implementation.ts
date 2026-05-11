@@ -10,6 +10,13 @@ import type {
 
 const healthcareProviderInclude = {
 	procedures: {
+		include: {
+			checklistItems: {
+				orderBy: {
+					position: "asc",
+				},
+			},
+		},
 		orderBy: {
 			createdAt: "desc",
 		},
