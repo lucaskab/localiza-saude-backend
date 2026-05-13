@@ -618,7 +618,8 @@ model user {
   specialty                               String?
   professionalCategory                    String?                  @map("healthcare_provider_category")
   professionalId                          String?                  @map("professional_id")
-  licenseCouncil                          String?                  @map("license_council")
+  professionalCouncilId                   String?                  @map("professional_council_id")
+  professionalCouncil                     professional_council?    @relation(fields: [professionalCouncilId], references: [id], onDelete: SetNull)
   licenseState                            String?                  @map("license_state")
   licenseDocumentKey                      String?                  @map("license_document_key")
   licenseDocumentFileName                 String?                  @map("license_document_file_name")
@@ -698,10 +699,28 @@ model user {
   adminProviderVerificationDocumentAccessLogs provider_verification_document_access_log[] @relation("AdminProviderVerificationDocumentAccessLogs")
 
   @@index([verifiedByUserId])
+  @@index([professionalCouncilId])
   @@index([clinicCity])
   @@index([clinicNeighborhood])
   @@index([clinicLatitude, clinicLongitude])
   @@map("users")
+}
+
+model professional_council {
+  id                 String   @id @default(cuid())
+  acronym            String   @unique
+  name               String
+  profession         String
+  allowsPriceDisplay Boolean  @default(true) @map("allows_price_display")
+  priceDisplayNote   String?  @map("price_display_note")
+  active             Boolean  @default(true)
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  healthcareProviders user[]
+
+  @@index([active])
+  @@map("professional_councils")
 }
 
 enum UserRole {

@@ -8,6 +8,7 @@ import { seedConversations } from "./conversations";
 import { seedCustomerData } from "./customers";
 import { seedEngagement } from "./engagement";
 import { seedProviderFaqs, seedProviderVerification } from "./providers";
+import { seedProfessionalCouncils } from "./professional-councils";
 import { seedScheduleExceptions } from "./schedule-exceptions";
 import type { SeedClient } from "./types";
 import { seedUsers } from "./users";
@@ -20,6 +21,7 @@ export async function runSeed(prisma: SeedClient) {
 
 	await cleanupSeedData(prisma);
 
+	await seedProfessionalCouncils(prisma);
 	const users = await seedUsers(prisma);
 	await seedAuthFixtures(prisma, users);
 	const categories = await seedCategories(prisma, users);

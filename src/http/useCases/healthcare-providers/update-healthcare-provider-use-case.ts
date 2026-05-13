@@ -15,7 +15,7 @@ function removeStaffRestrictedFields(data: UpdateHealthcareProviderData) {
 
 	delete sanitized.professionalCategory;
 	delete sanitized.professionalId;
-	delete sanitized.licenseCouncil;
+	delete sanitized.professionalCouncilId;
 	delete sanitized.licenseState;
 	delete sanitized.licenseDocumentKey;
 	delete sanitized.licenseDocumentFileName;

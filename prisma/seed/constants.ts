@@ -94,7 +94,7 @@ export const PROVIDERS = {
 		specialty: "Cardiologia preventiva",
 		professionalCategory: "Médica",
 		professionalId: "123456",
-		licenseCouncil: "CRM",
+		professionalCouncilId: "professional-council-crm",
 		licenseState: "SP",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_ana_souza/crm-sp-123456.pdf",
@@ -147,7 +147,7 @@ export const PROVIDERS = {
 		specialty: "Nutrição clínica e esportiva",
 		professionalCategory: "Nutricionista",
 		professionalId: "24567",
-		licenseCouncil: "CRN",
+		professionalCouncilId: "professional-council-crn",
 		licenseState: "SP",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_carlos_lima/crn-sp-24567.pdf",
@@ -197,7 +197,7 @@ export const PROVIDERS = {
 		specialty: "Psicologia clínica",
 		professionalCategory: "Psicóloga",
 		professionalId: "99887",
-		licenseCouncil: "CRP",
+		professionalCouncilId: "professional-council-crp",
 		licenseState: "SP",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_marina_alves/crp-sp-99887.pdf",
@@ -251,7 +251,7 @@ export const PROVIDERS = {
 		specialty: "Fisioterapia ortopédica",
 		professionalCategory: "Fisioterapeuta",
 		professionalId: "112233",
-		licenseCouncil: "CREFITO",
+		professionalCouncilId: "professional-council-crefito",
 		licenseState: "RJ",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_rafael_mendes/crefito-rj-112233.pdf",
@@ -305,7 +305,7 @@ export const PROVIDERS = {
 		specialty: "Dermatologia estética",
 		professionalCategory: "Médica",
 		professionalId: "654321",
-		licenseCouncil: "CRM",
+		professionalCouncilId: "professional-council-crm",
 		licenseState: "SP",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_beatriz_nunes/crm-sp-654321.pdf",
@@ -356,7 +356,7 @@ export const PROVIDERS = {
 		specialty: "Odontologia estética",
 		professionalCategory: "Dentista",
 		professionalId: "77889",
-		licenseCouncil: "CRO",
+		professionalCouncilId: "professional-council-cro",
 		licenseState: "SP",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_pedro_rocha/cro-sp-77889.pdf",

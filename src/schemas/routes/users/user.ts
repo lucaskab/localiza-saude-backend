@@ -45,6 +45,18 @@ export const professionalFaqSchema = z.object({
 	updatedAt: z.date(),
 });
 
+export const professionalCouncilSchema = z.object({
+	id: z.string(),
+	acronym: z.string(),
+	name: z.string(),
+	profession: z.string(),
+	allowsPriceDisplay: z.boolean(),
+	priceDisplayNote: z.string().nullable().optional(),
+	active: z.boolean(),
+	createdAt: z.date(),
+	updatedAt: z.date(),
+});
+
 export const healthcareProviderUserSchema = publicUserSchema.extend({
 	role: z.literal("HEALTHCARE_PROVIDER").optional(),
 	displayName: z.string().nullable().optional(),
@@ -55,7 +67,8 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	specialty: z.string().nullable().optional(),
 	professionalCategory: z.string().nullable().optional(),
 	professionalId: z.string().nullable().optional(),
-	licenseCouncil: z.string().nullable().optional(),
+	professionalCouncilId: z.string().nullable().optional(),
+	professionalCouncil: professionalCouncilSchema.nullable().optional(),
 	licenseState: z.string().nullable().optional(),
 	licenseDocumentFileName: z.string().nullable().optional(),
 	licenseDocumentMimeType: z.string().nullable().optional(),

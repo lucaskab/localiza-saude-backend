@@ -149,6 +149,11 @@ export type support_request = $Result.DefaultSelection<Prisma.$support_requestPa
  */
 export type user = $Result.DefaultSelection<Prisma.$userPayload>
 /**
+ * Model professional_council
+ * 
+ */
+export type professional_council = $Result.DefaultSelection<Prisma.$professional_councilPayload>
+/**
  * Model provider_verification_review
  * 
  */
@@ -796,6 +801,16 @@ export class PrismaClient<
   get user(): Prisma.userDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.professional_council`: Exposes CRUD operations for the **professional_council** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Professional_councils
+    * const professional_councils = await prisma.professional_council.findMany()
+    * ```
+    */
+  get professional_council(): Prisma.professional_councilDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.provider_verification_review`: Exposes CRUD operations for the **provider_verification_review** model.
     * Example usage:
     * ```ts
@@ -1285,6 +1300,7 @@ export namespace Prisma {
     session: 'session',
     support_request: 'support_request',
     user: 'user',
+    professional_council: 'professional_council',
     provider_verification_review: 'provider_verification_review',
     provider_verification_document_access_log: 'provider_verification_document_access_log',
     verification: 'verification'
@@ -1303,7 +1319,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
+      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "professional_council" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3305,6 +3321,80 @@ export namespace Prisma {
           }
         }
       }
+      professional_council: {
+        payload: Prisma.$professional_councilPayload<ExtArgs>
+        fields: Prisma.professional_councilFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.professional_councilFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.professional_councilFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload>
+          }
+          findFirst: {
+            args: Prisma.professional_councilFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.professional_councilFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload>
+          }
+          findMany: {
+            args: Prisma.professional_councilFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload>[]
+          }
+          create: {
+            args: Prisma.professional_councilCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload>
+          }
+          createMany: {
+            args: Prisma.professional_councilCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.professional_councilCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload>[]
+          }
+          delete: {
+            args: Prisma.professional_councilDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload>
+          }
+          update: {
+            args: Prisma.professional_councilUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload>
+          }
+          deleteMany: {
+            args: Prisma.professional_councilDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.professional_councilUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.professional_councilUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload>[]
+          }
+          upsert: {
+            args: Prisma.professional_councilUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$professional_councilPayload>
+          }
+          aggregate: {
+            args: Prisma.Professional_councilAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProfessional_council>
+          }
+          groupBy: {
+            args: Prisma.professional_councilGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Professional_councilGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.professional_councilCountArgs<ExtArgs>
+            result: $Utils.Optional<Professional_councilCountAggregateOutputType> | number
+          }
+        }
+      }
       provider_verification_review: {
         payload: Prisma.$provider_verification_reviewPayload<ExtArgs>
         fields: Prisma.provider_verification_reviewFieldRefs
@@ -3662,6 +3752,7 @@ export namespace Prisma {
     session?: sessionOmit
     support_request?: support_requestOmit
     user?: userOmit
+    professional_council?: professional_councilOmit
     provider_verification_review?: provider_verification_reviewOmit
     provider_verification_document_access_log?: provider_verification_document_access_logOmit
     verification?: verificationOmit
@@ -4318,6 +4409,37 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAdminProviderVerificationDocumentAccessLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: provider_verification_document_access_logWhereInput
+  }
+
+
+  /**
+   * Count Type Professional_councilCountOutputType
+   */
+
+  export type Professional_councilCountOutputType = {
+    healthcareProviders: number
+  }
+
+  export type Professional_councilCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProviders?: boolean | Professional_councilCountOutputTypeCountHealthcareProvidersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Professional_councilCountOutputType without action
+   */
+  export type Professional_councilCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Professional_councilCountOutputType
+     */
+    select?: Professional_councilCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Professional_councilCountOutputType without action
+   */
+  export type Professional_councilCountOutputTypeCountHealthcareProvidersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: userWhereInput
   }
 
 
@@ -34312,7 +34434,7 @@ export namespace Prisma {
     specialty: string | null
     professionalCategory: string | null
     professionalId: string | null
-    licenseCouncil: string | null
+    professionalCouncilId: string | null
     licenseState: string | null
     licenseDocumentKey: string | null
     licenseDocumentFileName: string | null
@@ -34371,7 +34493,7 @@ export namespace Prisma {
     specialty: string | null
     professionalCategory: string | null
     professionalId: string | null
-    licenseCouncil: string | null
+    professionalCouncilId: string | null
     licenseState: string | null
     licenseDocumentKey: string | null
     licenseDocumentFileName: string | null
@@ -34431,7 +34553,7 @@ export namespace Prisma {
     specialty: number
     professionalCategory: number
     professionalId: number
-    licenseCouncil: number
+    professionalCouncilId: number
     licenseState: number
     licenseDocumentKey: number
     licenseDocumentFileName: number
@@ -34519,7 +34641,7 @@ export namespace Prisma {
     specialty?: true
     professionalCategory?: true
     professionalId?: true
-    licenseCouncil?: true
+    professionalCouncilId?: true
     licenseState?: true
     licenseDocumentKey?: true
     licenseDocumentFileName?: true
@@ -34578,7 +34700,7 @@ export namespace Prisma {
     specialty?: true
     professionalCategory?: true
     professionalId?: true
-    licenseCouncil?: true
+    professionalCouncilId?: true
     licenseState?: true
     licenseDocumentKey?: true
     licenseDocumentFileName?: true
@@ -34638,7 +34760,7 @@ export namespace Prisma {
     specialty?: true
     professionalCategory?: true
     professionalId?: true
-    licenseCouncil?: true
+    professionalCouncilId?: true
     licenseState?: true
     licenseDocumentKey?: true
     licenseDocumentFileName?: true
@@ -34790,7 +34912,7 @@ export namespace Prisma {
     specialty: string | null
     professionalCategory: string | null
     professionalId: string | null
-    licenseCouncil: string | null
+    professionalCouncilId: string | null
     licenseState: string | null
     licenseDocumentKey: string | null
     licenseDocumentFileName: string | null
@@ -34874,7 +34996,7 @@ export namespace Prisma {
     specialty?: boolean
     professionalCategory?: boolean
     professionalId?: boolean
-    licenseCouncil?: boolean
+    professionalCouncilId?: boolean
     licenseState?: boolean
     licenseDocumentKey?: boolean
     licenseDocumentFileName?: boolean
@@ -34915,6 +35037,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
     sessions?: boolean | user$sessionsArgs<ExtArgs>
     accounts?: boolean | user$accountsArgs<ExtArgs>
@@ -34975,7 +35098,7 @@ export namespace Prisma {
     specialty?: boolean
     professionalCategory?: boolean
     professionalId?: boolean
-    licenseCouncil?: boolean
+    professionalCouncilId?: boolean
     licenseState?: boolean
     licenseDocumentKey?: boolean
     licenseDocumentFileName?: boolean
@@ -35016,6 +35139,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -35041,7 +35165,7 @@ export namespace Prisma {
     specialty?: boolean
     professionalCategory?: boolean
     professionalId?: boolean
-    licenseCouncil?: boolean
+    professionalCouncilId?: boolean
     licenseState?: boolean
     licenseDocumentKey?: boolean
     licenseDocumentFileName?: boolean
@@ -35082,6 +35206,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -35107,7 +35232,7 @@ export namespace Prisma {
     specialty?: boolean
     professionalCategory?: boolean
     professionalId?: boolean
-    licenseCouncil?: boolean
+    professionalCouncilId?: boolean
     licenseState?: boolean
     licenseDocumentKey?: boolean
     licenseDocumentFileName?: boolean
@@ -35150,8 +35275,9 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "licenseCouncil" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
     sessions?: boolean | user$sessionsArgs<ExtArgs>
     accounts?: boolean | user$accountsArgs<ExtArgs>
@@ -35190,15 +35316,18 @@ export namespace Prisma {
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type userIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
   }
   export type userIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
   }
 
   export type $userPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user"
     objects: {
+      professionalCouncil: Prisma.$professional_councilPayload<ExtArgs> | null
       verifiedByUser: Prisma.$userPayload<ExtArgs> | null
       sessions: Prisma.$sessionPayload<ExtArgs>[]
       accounts: Prisma.$accountPayload<ExtArgs>[]
@@ -35257,7 +35386,7 @@ export namespace Prisma {
       specialty: string | null
       professionalCategory: string | null
       professionalId: string | null
-      licenseCouncil: string | null
+      professionalCouncilId: string | null
       licenseState: string | null
       licenseDocumentKey: string | null
       licenseDocumentFileName: string | null
@@ -35692,6 +35821,7 @@ export namespace Prisma {
    */
   export interface Prisma__userClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    professionalCouncil<T extends user$professionalCouncilArgs<ExtArgs> = {}>(args?: Subset<T, user$professionalCouncilArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     verifiedByUser<T extends user$verifiedByUserArgs<ExtArgs> = {}>(args?: Subset<T, user$verifiedByUserArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     sessions<T extends user$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, user$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends user$accountsArgs<ExtArgs> = {}>(args?: Subset<T, user$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$accountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -35777,7 +35907,7 @@ export namespace Prisma {
     readonly specialty: FieldRef<"user", 'String'>
     readonly professionalCategory: FieldRef<"user", 'String'>
     readonly professionalId: FieldRef<"user", 'String'>
-    readonly licenseCouncil: FieldRef<"user", 'String'>
+    readonly professionalCouncilId: FieldRef<"user", 'String'>
     readonly licenseState: FieldRef<"user", 'String'>
     readonly licenseDocumentKey: FieldRef<"user", 'String'>
     readonly licenseDocumentFileName: FieldRef<"user", 'String'>
@@ -36216,6 +36346,25 @@ export namespace Prisma {
      * Limit how many users to delete.
      */
     limit?: number
+  }
+
+  /**
+   * user.professionalCouncil
+   */
+  export type user$professionalCouncilArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    where?: professional_councilWhereInput
   }
 
   /**
@@ -37064,6 +37213,1133 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: userInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model professional_council
+   */
+
+  export type AggregateProfessional_council = {
+    _count: Professional_councilCountAggregateOutputType | null
+    _min: Professional_councilMinAggregateOutputType | null
+    _max: Professional_councilMaxAggregateOutputType | null
+  }
+
+  export type Professional_councilMinAggregateOutputType = {
+    id: string | null
+    acronym: string | null
+    name: string | null
+    profession: string | null
+    allowsPriceDisplay: boolean | null
+    priceDisplayNote: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Professional_councilMaxAggregateOutputType = {
+    id: string | null
+    acronym: string | null
+    name: string | null
+    profession: string | null
+    allowsPriceDisplay: boolean | null
+    priceDisplayNote: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Professional_councilCountAggregateOutputType = {
+    id: number
+    acronym: number
+    name: number
+    profession: number
+    allowsPriceDisplay: number
+    priceDisplayNote: number
+    active: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Professional_councilMinAggregateInputType = {
+    id?: true
+    acronym?: true
+    name?: true
+    profession?: true
+    allowsPriceDisplay?: true
+    priceDisplayNote?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Professional_councilMaxAggregateInputType = {
+    id?: true
+    acronym?: true
+    name?: true
+    profession?: true
+    allowsPriceDisplay?: true
+    priceDisplayNote?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Professional_councilCountAggregateInputType = {
+    id?: true
+    acronym?: true
+    name?: true
+    profession?: true
+    allowsPriceDisplay?: true
+    priceDisplayNote?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Professional_councilAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which professional_council to aggregate.
+     */
+    where?: professional_councilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of professional_councils to fetch.
+     */
+    orderBy?: professional_councilOrderByWithRelationInput | professional_councilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: professional_councilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` professional_councils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` professional_councils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned professional_councils
+    **/
+    _count?: true | Professional_councilCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Professional_councilMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Professional_councilMaxAggregateInputType
+  }
+
+  export type GetProfessional_councilAggregateType<T extends Professional_councilAggregateArgs> = {
+        [P in keyof T & keyof AggregateProfessional_council]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProfessional_council[P]>
+      : GetScalarType<T[P], AggregateProfessional_council[P]>
+  }
+
+
+
+
+  export type professional_councilGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: professional_councilWhereInput
+    orderBy?: professional_councilOrderByWithAggregationInput | professional_councilOrderByWithAggregationInput[]
+    by: Professional_councilScalarFieldEnum[] | Professional_councilScalarFieldEnum
+    having?: professional_councilScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Professional_councilCountAggregateInputType | true
+    _min?: Professional_councilMinAggregateInputType
+    _max?: Professional_councilMaxAggregateInputType
+  }
+
+  export type Professional_councilGroupByOutputType = {
+    id: string
+    acronym: string
+    name: string
+    profession: string
+    allowsPriceDisplay: boolean
+    priceDisplayNote: string | null
+    active: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: Professional_councilCountAggregateOutputType | null
+    _min: Professional_councilMinAggregateOutputType | null
+    _max: Professional_councilMaxAggregateOutputType | null
+  }
+
+  type GetProfessional_councilGroupByPayload<T extends professional_councilGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Professional_councilGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Professional_councilGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Professional_councilGroupByOutputType[P]>
+            : GetScalarType<T[P], Professional_councilGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type professional_councilSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    acronym?: boolean
+    name?: boolean
+    profession?: boolean
+    allowsPriceDisplay?: boolean
+    priceDisplayNote?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    healthcareProviders?: boolean | professional_council$healthcareProvidersArgs<ExtArgs>
+    _count?: boolean | Professional_councilCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["professional_council"]>
+
+  export type professional_councilSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    acronym?: boolean
+    name?: boolean
+    profession?: boolean
+    allowsPriceDisplay?: boolean
+    priceDisplayNote?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["professional_council"]>
+
+  export type professional_councilSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    acronym?: boolean
+    name?: boolean
+    profession?: boolean
+    allowsPriceDisplay?: boolean
+    priceDisplayNote?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["professional_council"]>
+
+  export type professional_councilSelectScalar = {
+    id?: boolean
+    acronym?: boolean
+    name?: boolean
+    profession?: boolean
+    allowsPriceDisplay?: boolean
+    priceDisplayNote?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type professional_councilOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "acronym" | "name" | "profession" | "allowsPriceDisplay" | "priceDisplayNote" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["professional_council"]>
+  export type professional_councilInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProviders?: boolean | professional_council$healthcareProvidersArgs<ExtArgs>
+    _count?: boolean | Professional_councilCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type professional_councilIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type professional_councilIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $professional_councilPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "professional_council"
+    objects: {
+      healthcareProviders: Prisma.$userPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      acronym: string
+      name: string
+      profession: string
+      allowsPriceDisplay: boolean
+      priceDisplayNote: string | null
+      active: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["professional_council"]>
+    composites: {}
+  }
+
+  type professional_councilGetPayload<S extends boolean | null | undefined | professional_councilDefaultArgs> = $Result.GetResult<Prisma.$professional_councilPayload, S>
+
+  type professional_councilCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<professional_councilFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Professional_councilCountAggregateInputType | true
+    }
+
+  export interface professional_councilDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['professional_council'], meta: { name: 'professional_council' } }
+    /**
+     * Find zero or one Professional_council that matches the filter.
+     * @param {professional_councilFindUniqueArgs} args - Arguments to find a Professional_council
+     * @example
+     * // Get one Professional_council
+     * const professional_council = await prisma.professional_council.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends professional_councilFindUniqueArgs>(args: SelectSubset<T, professional_councilFindUniqueArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Professional_council that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {professional_councilFindUniqueOrThrowArgs} args - Arguments to find a Professional_council
+     * @example
+     * // Get one Professional_council
+     * const professional_council = await prisma.professional_council.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends professional_councilFindUniqueOrThrowArgs>(args: SelectSubset<T, professional_councilFindUniqueOrThrowArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Professional_council that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {professional_councilFindFirstArgs} args - Arguments to find a Professional_council
+     * @example
+     * // Get one Professional_council
+     * const professional_council = await prisma.professional_council.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends professional_councilFindFirstArgs>(args?: SelectSubset<T, professional_councilFindFirstArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Professional_council that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {professional_councilFindFirstOrThrowArgs} args - Arguments to find a Professional_council
+     * @example
+     * // Get one Professional_council
+     * const professional_council = await prisma.professional_council.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends professional_councilFindFirstOrThrowArgs>(args?: SelectSubset<T, professional_councilFindFirstOrThrowArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Professional_councils that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {professional_councilFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Professional_councils
+     * const professional_councils = await prisma.professional_council.findMany()
+     * 
+     * // Get first 10 Professional_councils
+     * const professional_councils = await prisma.professional_council.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const professional_councilWithIdOnly = await prisma.professional_council.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends professional_councilFindManyArgs>(args?: SelectSubset<T, professional_councilFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Professional_council.
+     * @param {professional_councilCreateArgs} args - Arguments to create a Professional_council.
+     * @example
+     * // Create one Professional_council
+     * const Professional_council = await prisma.professional_council.create({
+     *   data: {
+     *     // ... data to create a Professional_council
+     *   }
+     * })
+     * 
+     */
+    create<T extends professional_councilCreateArgs>(args: SelectSubset<T, professional_councilCreateArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Professional_councils.
+     * @param {professional_councilCreateManyArgs} args - Arguments to create many Professional_councils.
+     * @example
+     * // Create many Professional_councils
+     * const professional_council = await prisma.professional_council.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends professional_councilCreateManyArgs>(args?: SelectSubset<T, professional_councilCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Professional_councils and returns the data saved in the database.
+     * @param {professional_councilCreateManyAndReturnArgs} args - Arguments to create many Professional_councils.
+     * @example
+     * // Create many Professional_councils
+     * const professional_council = await prisma.professional_council.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Professional_councils and only return the `id`
+     * const professional_councilWithIdOnly = await prisma.professional_council.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends professional_councilCreateManyAndReturnArgs>(args?: SelectSubset<T, professional_councilCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Professional_council.
+     * @param {professional_councilDeleteArgs} args - Arguments to delete one Professional_council.
+     * @example
+     * // Delete one Professional_council
+     * const Professional_council = await prisma.professional_council.delete({
+     *   where: {
+     *     // ... filter to delete one Professional_council
+     *   }
+     * })
+     * 
+     */
+    delete<T extends professional_councilDeleteArgs>(args: SelectSubset<T, professional_councilDeleteArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Professional_council.
+     * @param {professional_councilUpdateArgs} args - Arguments to update one Professional_council.
+     * @example
+     * // Update one Professional_council
+     * const professional_council = await prisma.professional_council.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends professional_councilUpdateArgs>(args: SelectSubset<T, professional_councilUpdateArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Professional_councils.
+     * @param {professional_councilDeleteManyArgs} args - Arguments to filter Professional_councils to delete.
+     * @example
+     * // Delete a few Professional_councils
+     * const { count } = await prisma.professional_council.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends professional_councilDeleteManyArgs>(args?: SelectSubset<T, professional_councilDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Professional_councils.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {professional_councilUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Professional_councils
+     * const professional_council = await prisma.professional_council.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends professional_councilUpdateManyArgs>(args: SelectSubset<T, professional_councilUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Professional_councils and returns the data updated in the database.
+     * @param {professional_councilUpdateManyAndReturnArgs} args - Arguments to update many Professional_councils.
+     * @example
+     * // Update many Professional_councils
+     * const professional_council = await prisma.professional_council.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Professional_councils and only return the `id`
+     * const professional_councilWithIdOnly = await prisma.professional_council.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends professional_councilUpdateManyAndReturnArgs>(args: SelectSubset<T, professional_councilUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Professional_council.
+     * @param {professional_councilUpsertArgs} args - Arguments to update or create a Professional_council.
+     * @example
+     * // Update or create a Professional_council
+     * const professional_council = await prisma.professional_council.upsert({
+     *   create: {
+     *     // ... data to create a Professional_council
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Professional_council we want to update
+     *   }
+     * })
+     */
+    upsert<T extends professional_councilUpsertArgs>(args: SelectSubset<T, professional_councilUpsertArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Professional_councils.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {professional_councilCountArgs} args - Arguments to filter Professional_councils to count.
+     * @example
+     * // Count the number of Professional_councils
+     * const count = await prisma.professional_council.count({
+     *   where: {
+     *     // ... the filter for the Professional_councils we want to count
+     *   }
+     * })
+    **/
+    count<T extends professional_councilCountArgs>(
+      args?: Subset<T, professional_councilCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Professional_councilCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Professional_council.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Professional_councilAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Professional_councilAggregateArgs>(args: Subset<T, Professional_councilAggregateArgs>): Prisma.PrismaPromise<GetProfessional_councilAggregateType<T>>
+
+    /**
+     * Group by Professional_council.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {professional_councilGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends professional_councilGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: professional_councilGroupByArgs['orderBy'] }
+        : { orderBy?: professional_councilGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, professional_councilGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProfessional_councilGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the professional_council model
+   */
+  readonly fields: professional_councilFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for professional_council.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__professional_councilClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    healthcareProviders<T extends professional_council$healthcareProvidersArgs<ExtArgs> = {}>(args?: Subset<T, professional_council$healthcareProvidersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the professional_council model
+   */
+  interface professional_councilFieldRefs {
+    readonly id: FieldRef<"professional_council", 'String'>
+    readonly acronym: FieldRef<"professional_council", 'String'>
+    readonly name: FieldRef<"professional_council", 'String'>
+    readonly profession: FieldRef<"professional_council", 'String'>
+    readonly allowsPriceDisplay: FieldRef<"professional_council", 'Boolean'>
+    readonly priceDisplayNote: FieldRef<"professional_council", 'String'>
+    readonly active: FieldRef<"professional_council", 'Boolean'>
+    readonly createdAt: FieldRef<"professional_council", 'DateTime'>
+    readonly updatedAt: FieldRef<"professional_council", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * professional_council findUnique
+   */
+  export type professional_councilFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    /**
+     * Filter, which professional_council to fetch.
+     */
+    where: professional_councilWhereUniqueInput
+  }
+
+  /**
+   * professional_council findUniqueOrThrow
+   */
+  export type professional_councilFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    /**
+     * Filter, which professional_council to fetch.
+     */
+    where: professional_councilWhereUniqueInput
+  }
+
+  /**
+   * professional_council findFirst
+   */
+  export type professional_councilFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    /**
+     * Filter, which professional_council to fetch.
+     */
+    where?: professional_councilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of professional_councils to fetch.
+     */
+    orderBy?: professional_councilOrderByWithRelationInput | professional_councilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for professional_councils.
+     */
+    cursor?: professional_councilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` professional_councils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` professional_councils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of professional_councils.
+     */
+    distinct?: Professional_councilScalarFieldEnum | Professional_councilScalarFieldEnum[]
+  }
+
+  /**
+   * professional_council findFirstOrThrow
+   */
+  export type professional_councilFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    /**
+     * Filter, which professional_council to fetch.
+     */
+    where?: professional_councilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of professional_councils to fetch.
+     */
+    orderBy?: professional_councilOrderByWithRelationInput | professional_councilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for professional_councils.
+     */
+    cursor?: professional_councilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` professional_councils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` professional_councils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of professional_councils.
+     */
+    distinct?: Professional_councilScalarFieldEnum | Professional_councilScalarFieldEnum[]
+  }
+
+  /**
+   * professional_council findMany
+   */
+  export type professional_councilFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    /**
+     * Filter, which professional_councils to fetch.
+     */
+    where?: professional_councilWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of professional_councils to fetch.
+     */
+    orderBy?: professional_councilOrderByWithRelationInput | professional_councilOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing professional_councils.
+     */
+    cursor?: professional_councilWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` professional_councils from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` professional_councils.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of professional_councils.
+     */
+    distinct?: Professional_councilScalarFieldEnum | Professional_councilScalarFieldEnum[]
+  }
+
+  /**
+   * professional_council create
+   */
+  export type professional_councilCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    /**
+     * The data needed to create a professional_council.
+     */
+    data: XOR<professional_councilCreateInput, professional_councilUncheckedCreateInput>
+  }
+
+  /**
+   * professional_council createMany
+   */
+  export type professional_councilCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many professional_councils.
+     */
+    data: professional_councilCreateManyInput | professional_councilCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * professional_council createManyAndReturn
+   */
+  export type professional_councilCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * The data used to create many professional_councils.
+     */
+    data: professional_councilCreateManyInput | professional_councilCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * professional_council update
+   */
+  export type professional_councilUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    /**
+     * The data needed to update a professional_council.
+     */
+    data: XOR<professional_councilUpdateInput, professional_councilUncheckedUpdateInput>
+    /**
+     * Choose, which professional_council to update.
+     */
+    where: professional_councilWhereUniqueInput
+  }
+
+  /**
+   * professional_council updateMany
+   */
+  export type professional_councilUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update professional_councils.
+     */
+    data: XOR<professional_councilUpdateManyMutationInput, professional_councilUncheckedUpdateManyInput>
+    /**
+     * Filter which professional_councils to update
+     */
+    where?: professional_councilWhereInput
+    /**
+     * Limit how many professional_councils to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * professional_council updateManyAndReturn
+   */
+  export type professional_councilUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * The data used to update professional_councils.
+     */
+    data: XOR<professional_councilUpdateManyMutationInput, professional_councilUncheckedUpdateManyInput>
+    /**
+     * Filter which professional_councils to update
+     */
+    where?: professional_councilWhereInput
+    /**
+     * Limit how many professional_councils to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * professional_council upsert
+   */
+  export type professional_councilUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    /**
+     * The filter to search for the professional_council to update in case it exists.
+     */
+    where: professional_councilWhereUniqueInput
+    /**
+     * In case the professional_council found by the `where` argument doesn't exist, create a new professional_council with this data.
+     */
+    create: XOR<professional_councilCreateInput, professional_councilUncheckedCreateInput>
+    /**
+     * In case the professional_council was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<professional_councilUpdateInput, professional_councilUncheckedUpdateInput>
+  }
+
+  /**
+   * professional_council delete
+   */
+  export type professional_councilDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
+    /**
+     * Filter which professional_council to delete.
+     */
+    where: professional_councilWhereUniqueInput
+  }
+
+  /**
+   * professional_council deleteMany
+   */
+  export type professional_councilDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which professional_councils to delete
+     */
+    where?: professional_councilWhereInput
+    /**
+     * Limit how many professional_councils to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * professional_council.healthcareProviders
+   */
+  export type professional_council$healthcareProvidersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user
+     */
+    select?: userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user
+     */
+    omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    where?: userWhereInput
+    orderBy?: userOrderByWithRelationInput | userOrderByWithRelationInput[]
+    cursor?: userWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserScalarFieldEnum | UserScalarFieldEnum[]
+  }
+
+  /**
+   * professional_council without action
+   */
+  export type professional_councilDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the professional_council
+     */
+    select?: professional_councilSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the professional_council
+     */
+    omit?: professional_councilOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: professional_councilInclude<ExtArgs> | null
   }
 
 
@@ -40731,7 +42007,7 @@ export namespace Prisma {
     specialty: 'specialty',
     professionalCategory: 'professionalCategory',
     professionalId: 'professionalId',
-    licenseCouncil: 'licenseCouncil',
+    professionalCouncilId: 'professionalCouncilId',
     licenseState: 'licenseState',
     licenseDocumentKey: 'licenseDocumentKey',
     licenseDocumentFileName: 'licenseDocumentFileName',
@@ -40775,6 +42051,21 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const Professional_councilScalarFieldEnum: {
+    id: 'id',
+    acronym: 'acronym',
+    name: 'name',
+    profession: 'profession',
+    allowsPriceDisplay: 'allowsPriceDisplay',
+    priceDisplayNote: 'priceDisplayNote',
+    active: 'active',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Professional_councilScalarFieldEnum = (typeof Professional_councilScalarFieldEnum)[keyof typeof Professional_councilScalarFieldEnum]
 
 
   export const Provider_verification_reviewScalarFieldEnum: {
@@ -43256,7 +44547,7 @@ export namespace Prisma {
     specialty?: StringNullableFilter<"user"> | string | null
     professionalCategory?: StringNullableFilter<"user"> | string | null
     professionalId?: StringNullableFilter<"user"> | string | null
-    licenseCouncil?: StringNullableFilter<"user"> | string | null
+    professionalCouncilId?: StringNullableFilter<"user"> | string | null
     licenseState?: StringNullableFilter<"user"> | string | null
     licenseDocumentKey?: StringNullableFilter<"user"> | string | null
     licenseDocumentFileName?: StringNullableFilter<"user"> | string | null
@@ -43297,6 +44588,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: DateTimeNullableFilter<"user"> | Date | string | null
     createdAt?: DateTimeFilter<"user"> | Date | string
     updatedAt?: DateTimeFilter<"user"> | Date | string
+    professionalCouncil?: XOR<Professional_councilNullableScalarRelationFilter, professional_councilWhereInput> | null
     verifiedByUser?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
@@ -43356,7 +44648,7 @@ export namespace Prisma {
     specialty?: SortOrderInput | SortOrder
     professionalCategory?: SortOrderInput | SortOrder
     professionalId?: SortOrderInput | SortOrder
-    licenseCouncil?: SortOrderInput | SortOrder
+    professionalCouncilId?: SortOrderInput | SortOrder
     licenseState?: SortOrderInput | SortOrder
     licenseDocumentKey?: SortOrderInput | SortOrder
     licenseDocumentFileName?: SortOrderInput | SortOrder
@@ -43397,6 +44689,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    professionalCouncil?: professional_councilOrderByWithRelationInput
     verifiedByUser?: userOrderByWithRelationInput
     sessions?: sessionOrderByRelationAggregateInput
     accounts?: accountOrderByRelationAggregateInput
@@ -43459,7 +44752,7 @@ export namespace Prisma {
     specialty?: StringNullableFilter<"user"> | string | null
     professionalCategory?: StringNullableFilter<"user"> | string | null
     professionalId?: StringNullableFilter<"user"> | string | null
-    licenseCouncil?: StringNullableFilter<"user"> | string | null
+    professionalCouncilId?: StringNullableFilter<"user"> | string | null
     licenseState?: StringNullableFilter<"user"> | string | null
     licenseDocumentKey?: StringNullableFilter<"user"> | string | null
     licenseDocumentFileName?: StringNullableFilter<"user"> | string | null
@@ -43500,6 +44793,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: DateTimeNullableFilter<"user"> | Date | string | null
     createdAt?: DateTimeFilter<"user"> | Date | string
     updatedAt?: DateTimeFilter<"user"> | Date | string
+    professionalCouncil?: XOR<Professional_councilNullableScalarRelationFilter, professional_councilWhereInput> | null
     verifiedByUser?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
@@ -43559,7 +44853,7 @@ export namespace Prisma {
     specialty?: SortOrderInput | SortOrder
     professionalCategory?: SortOrderInput | SortOrder
     professionalId?: SortOrderInput | SortOrder
-    licenseCouncil?: SortOrderInput | SortOrder
+    professionalCouncilId?: SortOrderInput | SortOrder
     licenseState?: SortOrderInput | SortOrder
     licenseDocumentKey?: SortOrderInput | SortOrder
     licenseDocumentFileName?: SortOrderInput | SortOrder
@@ -43632,7 +44926,7 @@ export namespace Prisma {
     specialty?: StringNullableWithAggregatesFilter<"user"> | string | null
     professionalCategory?: StringNullableWithAggregatesFilter<"user"> | string | null
     professionalId?: StringNullableWithAggregatesFilter<"user"> | string | null
-    licenseCouncil?: StringNullableWithAggregatesFilter<"user"> | string | null
+    professionalCouncilId?: StringNullableWithAggregatesFilter<"user"> | string | null
     licenseState?: StringNullableWithAggregatesFilter<"user"> | string | null
     licenseDocumentKey?: StringNullableWithAggregatesFilter<"user"> | string | null
     licenseDocumentFileName?: StringNullableWithAggregatesFilter<"user"> | string | null
@@ -43673,6 +44967,81 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"user"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"user"> | Date | string
+  }
+
+  export type professional_councilWhereInput = {
+    AND?: professional_councilWhereInput | professional_councilWhereInput[]
+    OR?: professional_councilWhereInput[]
+    NOT?: professional_councilWhereInput | professional_councilWhereInput[]
+    id?: StringFilter<"professional_council"> | string
+    acronym?: StringFilter<"professional_council"> | string
+    name?: StringFilter<"professional_council"> | string
+    profession?: StringFilter<"professional_council"> | string
+    allowsPriceDisplay?: BoolFilter<"professional_council"> | boolean
+    priceDisplayNote?: StringNullableFilter<"professional_council"> | string | null
+    active?: BoolFilter<"professional_council"> | boolean
+    createdAt?: DateTimeFilter<"professional_council"> | Date | string
+    updatedAt?: DateTimeFilter<"professional_council"> | Date | string
+    healthcareProviders?: UserListRelationFilter
+  }
+
+  export type professional_councilOrderByWithRelationInput = {
+    id?: SortOrder
+    acronym?: SortOrder
+    name?: SortOrder
+    profession?: SortOrder
+    allowsPriceDisplay?: SortOrder
+    priceDisplayNote?: SortOrderInput | SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    healthcareProviders?: userOrderByRelationAggregateInput
+  }
+
+  export type professional_councilWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    acronym?: string
+    AND?: professional_councilWhereInput | professional_councilWhereInput[]
+    OR?: professional_councilWhereInput[]
+    NOT?: professional_councilWhereInput | professional_councilWhereInput[]
+    name?: StringFilter<"professional_council"> | string
+    profession?: StringFilter<"professional_council"> | string
+    allowsPriceDisplay?: BoolFilter<"professional_council"> | boolean
+    priceDisplayNote?: StringNullableFilter<"professional_council"> | string | null
+    active?: BoolFilter<"professional_council"> | boolean
+    createdAt?: DateTimeFilter<"professional_council"> | Date | string
+    updatedAt?: DateTimeFilter<"professional_council"> | Date | string
+    healthcareProviders?: UserListRelationFilter
+  }, "id" | "acronym">
+
+  export type professional_councilOrderByWithAggregationInput = {
+    id?: SortOrder
+    acronym?: SortOrder
+    name?: SortOrder
+    profession?: SortOrder
+    allowsPriceDisplay?: SortOrder
+    priceDisplayNote?: SortOrderInput | SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: professional_councilCountOrderByAggregateInput
+    _max?: professional_councilMaxOrderByAggregateInput
+    _min?: professional_councilMinOrderByAggregateInput
+  }
+
+  export type professional_councilScalarWhereWithAggregatesInput = {
+    AND?: professional_councilScalarWhereWithAggregatesInput | professional_councilScalarWhereWithAggregatesInput[]
+    OR?: professional_councilScalarWhereWithAggregatesInput[]
+    NOT?: professional_councilScalarWhereWithAggregatesInput | professional_councilScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"professional_council"> | string
+    acronym?: StringWithAggregatesFilter<"professional_council"> | string
+    name?: StringWithAggregatesFilter<"professional_council"> | string
+    profession?: StringWithAggregatesFilter<"professional_council"> | string
+    allowsPriceDisplay?: BoolWithAggregatesFilter<"professional_council"> | boolean
+    priceDisplayNote?: StringNullableWithAggregatesFilter<"professional_council"> | string | null
+    active?: BoolWithAggregatesFilter<"professional_council"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"professional_council"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"professional_council"> | Date | string
   }
 
   export type provider_verification_reviewWhereInput = {
@@ -46126,7 +47495,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -46166,6 +47534,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -46225,7 +47594,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -46324,7 +47693,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46364,6 +47732,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -46423,7 +47792,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46522,7 +47891,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -46587,7 +47956,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46651,7 +48019,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -46690,6 +48058,94 @@ export namespace Prisma {
     termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type professional_councilCreateInput = {
+    id?: string
+    acronym: string
+    name: string
+    profession: string
+    allowsPriceDisplay?: boolean
+    priceDisplayNote?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    healthcareProviders?: userCreateNestedManyWithoutProfessionalCouncilInput
+  }
+
+  export type professional_councilUncheckedCreateInput = {
+    id?: string
+    acronym: string
+    name: string
+    profession: string
+    allowsPriceDisplay?: boolean
+    priceDisplayNote?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    healthcareProviders?: userUncheckedCreateNestedManyWithoutProfessionalCouncilInput
+  }
+
+  export type professional_councilUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    acronym?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    profession?: StringFieldUpdateOperationsInput | string
+    allowsPriceDisplay?: BoolFieldUpdateOperationsInput | boolean
+    priceDisplayNote?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProviders?: userUpdateManyWithoutProfessionalCouncilNestedInput
+  }
+
+  export type professional_councilUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    acronym?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    profession?: StringFieldUpdateOperationsInput | string
+    allowsPriceDisplay?: BoolFieldUpdateOperationsInput | boolean
+    priceDisplayNote?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProviders?: userUncheckedUpdateManyWithoutProfessionalCouncilNestedInput
+  }
+
+  export type professional_councilCreateManyInput = {
+    id?: string
+    acronym: string
+    name: string
+    profession: string
+    allowsPriceDisplay?: boolean
+    priceDisplayNote?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type professional_councilUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    acronym?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    profession?: StringFieldUpdateOperationsInput | string
+    allowsPriceDisplay?: BoolFieldUpdateOperationsInput | boolean
+    priceDisplayNote?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type professional_councilUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    acronym?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    profession?: StringFieldUpdateOperationsInput | string
+    allowsPriceDisplay?: BoolFieldUpdateOperationsInput | boolean
+    priceDisplayNote?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -48581,6 +50037,11 @@ export namespace Prisma {
     not?: NestedEnumCancellationPenaltyTypeNullableFilter<$PrismaModel> | $Enums.CancellationPenaltyType | null
   }
 
+  export type Professional_councilNullableScalarRelationFilter = {
+    is?: professional_councilWhereInput | null
+    isNot?: professional_councilWhereInput | null
+  }
+
   export type SessionListRelationFilter = {
     every?: sessionWhereInput
     some?: sessionWhereInput
@@ -48788,7 +50249,7 @@ export namespace Prisma {
     specialty?: SortOrder
     professionalCategory?: SortOrder
     professionalId?: SortOrder
-    licenseCouncil?: SortOrder
+    professionalCouncilId?: SortOrder
     licenseState?: SortOrder
     licenseDocumentKey?: SortOrder
     licenseDocumentFileName?: SortOrder
@@ -48863,7 +50324,7 @@ export namespace Prisma {
     specialty?: SortOrder
     professionalCategory?: SortOrder
     professionalId?: SortOrder
-    licenseCouncil?: SortOrder
+    professionalCouncilId?: SortOrder
     licenseState?: SortOrder
     licenseDocumentKey?: SortOrder
     licenseDocumentFileName?: SortOrder
@@ -48922,7 +50383,7 @@ export namespace Prisma {
     specialty?: SortOrder
     professionalCategory?: SortOrder
     professionalId?: SortOrder
-    licenseCouncil?: SortOrder
+    professionalCouncilId?: SortOrder
     licenseState?: SortOrder
     licenseDocumentKey?: SortOrder
     licenseDocumentFileName?: SortOrder
@@ -48989,6 +50450,42 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumCancellationPenaltyTypeNullableFilter<$PrismaModel>
     _max?: NestedEnumCancellationPenaltyTypeNullableFilter<$PrismaModel>
+  }
+
+  export type professional_councilCountOrderByAggregateInput = {
+    id?: SortOrder
+    acronym?: SortOrder
+    name?: SortOrder
+    profession?: SortOrder
+    allowsPriceDisplay?: SortOrder
+    priceDisplayNote?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type professional_councilMaxOrderByAggregateInput = {
+    id?: SortOrder
+    acronym?: SortOrder
+    name?: SortOrder
+    profession?: SortOrder
+    allowsPriceDisplay?: SortOrder
+    priceDisplayNote?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type professional_councilMinOrderByAggregateInput = {
+    id?: SortOrder
+    acronym?: SortOrder
+    name?: SortOrder
+    profession?: SortOrder
+    allowsPriceDisplay?: SortOrder
+    priceDisplayNote?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EnumProviderVerificationReviewStatusFilter<$PrismaModel = never> = {
@@ -50322,6 +51819,12 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type professional_councilCreateNestedOneWithoutHealthcareProvidersInput = {
+    create?: XOR<professional_councilCreateWithoutHealthcareProvidersInput, professional_councilUncheckedCreateWithoutHealthcareProvidersInput>
+    connectOrCreate?: professional_councilCreateOrConnectWithoutHealthcareProvidersInput
+    connect?: professional_councilWhereUniqueInput
+  }
+
   export type userCreateNestedOneWithoutVerifiedProvidersInput = {
     create?: XOR<userCreateWithoutVerifiedProvidersInput, userUncheckedCreateWithoutVerifiedProvidersInput>
     connectOrCreate?: userCreateOrConnectWithoutVerifiedProvidersInput
@@ -50838,6 +52341,16 @@ export namespace Prisma {
   export type userUpdateclinicPhotosInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type professional_councilUpdateOneWithoutHealthcareProvidersNestedInput = {
+    create?: XOR<professional_councilCreateWithoutHealthcareProvidersInput, professional_councilUncheckedCreateWithoutHealthcareProvidersInput>
+    connectOrCreate?: professional_councilCreateOrConnectWithoutHealthcareProvidersInput
+    upsert?: professional_councilUpsertWithoutHealthcareProvidersInput
+    disconnect?: professional_councilWhereInput | boolean
+    delete?: professional_councilWhereInput | boolean
+    connect?: professional_councilWhereUniqueInput
+    update?: XOR<XOR<professional_councilUpdateToOneWithWhereWithoutHealthcareProvidersInput, professional_councilUpdateWithoutHealthcareProvidersInput>, professional_councilUncheckedUpdateWithoutHealthcareProvidersInput>
   }
 
   export type userUpdateOneWithoutVerifiedProvidersNestedInput = {
@@ -51794,6 +53307,48 @@ export namespace Prisma {
     deleteMany?: provider_verification_document_access_logScalarWhereInput | provider_verification_document_access_logScalarWhereInput[]
   }
 
+  export type userCreateNestedManyWithoutProfessionalCouncilInput = {
+    create?: XOR<userCreateWithoutProfessionalCouncilInput, userUncheckedCreateWithoutProfessionalCouncilInput> | userCreateWithoutProfessionalCouncilInput[] | userUncheckedCreateWithoutProfessionalCouncilInput[]
+    connectOrCreate?: userCreateOrConnectWithoutProfessionalCouncilInput | userCreateOrConnectWithoutProfessionalCouncilInput[]
+    createMany?: userCreateManyProfessionalCouncilInputEnvelope
+    connect?: userWhereUniqueInput | userWhereUniqueInput[]
+  }
+
+  export type userUncheckedCreateNestedManyWithoutProfessionalCouncilInput = {
+    create?: XOR<userCreateWithoutProfessionalCouncilInput, userUncheckedCreateWithoutProfessionalCouncilInput> | userCreateWithoutProfessionalCouncilInput[] | userUncheckedCreateWithoutProfessionalCouncilInput[]
+    connectOrCreate?: userCreateOrConnectWithoutProfessionalCouncilInput | userCreateOrConnectWithoutProfessionalCouncilInput[]
+    createMany?: userCreateManyProfessionalCouncilInputEnvelope
+    connect?: userWhereUniqueInput | userWhereUniqueInput[]
+  }
+
+  export type userUpdateManyWithoutProfessionalCouncilNestedInput = {
+    create?: XOR<userCreateWithoutProfessionalCouncilInput, userUncheckedCreateWithoutProfessionalCouncilInput> | userCreateWithoutProfessionalCouncilInput[] | userUncheckedCreateWithoutProfessionalCouncilInput[]
+    connectOrCreate?: userCreateOrConnectWithoutProfessionalCouncilInput | userCreateOrConnectWithoutProfessionalCouncilInput[]
+    upsert?: userUpsertWithWhereUniqueWithoutProfessionalCouncilInput | userUpsertWithWhereUniqueWithoutProfessionalCouncilInput[]
+    createMany?: userCreateManyProfessionalCouncilInputEnvelope
+    set?: userWhereUniqueInput | userWhereUniqueInput[]
+    disconnect?: userWhereUniqueInput | userWhereUniqueInput[]
+    delete?: userWhereUniqueInput | userWhereUniqueInput[]
+    connect?: userWhereUniqueInput | userWhereUniqueInput[]
+    update?: userUpdateWithWhereUniqueWithoutProfessionalCouncilInput | userUpdateWithWhereUniqueWithoutProfessionalCouncilInput[]
+    updateMany?: userUpdateManyWithWhereWithoutProfessionalCouncilInput | userUpdateManyWithWhereWithoutProfessionalCouncilInput[]
+    deleteMany?: userScalarWhereInput | userScalarWhereInput[]
+  }
+
+  export type userUncheckedUpdateManyWithoutProfessionalCouncilNestedInput = {
+    create?: XOR<userCreateWithoutProfessionalCouncilInput, userUncheckedCreateWithoutProfessionalCouncilInput> | userCreateWithoutProfessionalCouncilInput[] | userUncheckedCreateWithoutProfessionalCouncilInput[]
+    connectOrCreate?: userCreateOrConnectWithoutProfessionalCouncilInput | userCreateOrConnectWithoutProfessionalCouncilInput[]
+    upsert?: userUpsertWithWhereUniqueWithoutProfessionalCouncilInput | userUpsertWithWhereUniqueWithoutProfessionalCouncilInput[]
+    createMany?: userCreateManyProfessionalCouncilInputEnvelope
+    set?: userWhereUniqueInput | userWhereUniqueInput[]
+    disconnect?: userWhereUniqueInput | userWhereUniqueInput[]
+    delete?: userWhereUniqueInput | userWhereUniqueInput[]
+    connect?: userWhereUniqueInput | userWhereUniqueInput[]
+    update?: userUpdateWithWhereUniqueWithoutProfessionalCouncilInput | userUpdateWithWhereUniqueWithoutProfessionalCouncilInput[]
+    updateMany?: userUpdateManyWithWhereWithoutProfessionalCouncilInput | userUpdateManyWithWhereWithoutProfessionalCouncilInput[]
+    deleteMany?: userScalarWhereInput | userScalarWhereInput[]
+  }
+
   export type userCreateNestedOneWithoutProviderVerificationReviewsInput = {
     create?: XOR<userCreateWithoutProviderVerificationReviewsInput, userUncheckedCreateWithoutProviderVerificationReviewsInput>
     connectOrCreate?: userCreateOrConnectWithoutProviderVerificationReviewsInput
@@ -52365,7 +53920,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -52405,6 +53959,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -52463,7 +54018,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -52577,7 +54132,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52617,6 +54171,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -52675,7 +54230,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52965,7 +54520,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -53005,6 +54559,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -53063,7 +54618,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -53225,7 +54780,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -53265,6 +54819,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -53323,7 +54878,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -53426,7 +54981,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -53466,6 +55020,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -53524,7 +55079,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -53766,7 +55321,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53806,6 +55360,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -53864,7 +55419,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54038,7 +55593,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54078,6 +55632,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -54136,7 +55691,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54245,7 +55800,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54285,6 +55839,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -54343,7 +55898,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54624,7 +56179,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -54664,6 +56218,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -54722,7 +56277,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -54901,7 +56456,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54941,6 +56495,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -54999,7 +56554,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -55097,7 +56652,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -55137,6 +56691,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -55195,7 +56750,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -55298,7 +56853,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -55338,6 +56892,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -55396,7 +56951,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -55532,7 +57087,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -55572,6 +57126,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -55630,7 +57185,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -55739,7 +57294,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -55779,6 +57333,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -55837,7 +57392,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56137,7 +57692,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -56177,6 +57731,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -56235,7 +57790,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -56370,7 +57925,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56410,6 +57964,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -56468,7 +58023,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56593,7 +58148,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -56633,6 +58187,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -56691,7 +58246,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -56835,7 +58390,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56875,6 +58429,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -56933,7 +58488,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57096,7 +58651,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -57136,6 +58690,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -57194,7 +58749,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -57349,7 +58904,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57389,6 +58943,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -57447,7 +59002,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57545,7 +59100,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -57585,6 +59139,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -57643,7 +59198,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -57746,7 +59301,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -57786,6 +59340,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -57844,7 +59399,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -57958,7 +59513,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57998,6 +59552,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -58056,7 +59611,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58165,7 +59720,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58205,6 +59759,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -58263,7 +59818,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58361,7 +59916,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -58401,6 +59955,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -58459,7 +60014,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -58573,7 +60128,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58613,6 +60167,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -58671,7 +60226,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58769,7 +60324,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -58809,6 +60363,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -58867,7 +60422,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -58981,7 +60536,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59021,6 +60575,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -59079,7 +60634,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59177,7 +60732,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -59217,6 +60771,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -59275,7 +60830,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -59389,7 +60944,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59429,6 +60983,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -59487,7 +61042,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59585,7 +61140,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -59625,6 +61179,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -59683,7 +61238,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -59797,7 +61352,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59837,6 +61391,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -59895,7 +61450,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -59993,7 +61548,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -60033,6 +61587,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -60091,7 +61646,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -60194,7 +61749,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -60234,6 +61788,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -60292,7 +61847,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -60446,7 +62001,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -60486,6 +62040,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -60544,7 +62099,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -60653,7 +62208,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -60693,6 +62247,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -60751,7 +62306,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -60888,7 +62443,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -60928,6 +62482,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -60986,7 +62541,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -61188,7 +62743,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61228,6 +62782,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -61286,7 +62841,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61449,7 +63004,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -61489,6 +63043,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -61547,7 +63102,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -61661,7 +63216,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61701,6 +63255,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -61759,7 +63314,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61857,7 +63412,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -61897,6 +63451,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -61955,7 +63510,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -62069,7 +63624,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -62109,6 +63663,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -62167,7 +63722,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -62265,7 +63820,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -62305,6 +63859,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -62363,7 +63918,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -62536,7 +64091,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -62576,6 +64130,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -62634,7 +64189,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -62797,7 +64352,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -62837,6 +64391,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -62895,7 +64450,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -62998,7 +64553,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -63038,6 +64592,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -63096,7 +64651,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -63274,7 +64829,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63314,6 +64868,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -63372,7 +64927,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63481,7 +65036,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63521,6 +65075,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -63579,7 +65134,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -63720,7 +65275,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -63760,6 +65314,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -63818,7 +65373,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -64002,7 +65557,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64042,6 +65596,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -64100,7 +65655,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64326,7 +65881,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -64366,6 +65920,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -64424,7 +65979,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -64527,7 +66082,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -64567,6 +66121,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -64625,7 +66180,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -64739,7 +66294,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64779,6 +66333,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -64837,7 +66392,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64946,7 +66501,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -64986,6 +66540,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -65044,7 +66599,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65142,7 +66697,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -65182,6 +66736,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -65240,7 +66795,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -65354,7 +66909,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65394,6 +66948,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -65452,7 +67007,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65550,7 +67105,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -65590,6 +67144,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -65648,7 +67203,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -65762,7 +67317,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65802,6 +67356,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -65860,7 +67415,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -65936,6 +67491,35 @@ export namespace Prisma {
     adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
   }
 
+  export type professional_councilCreateWithoutHealthcareProvidersInput = {
+    id?: string
+    acronym: string
+    name: string
+    profession: string
+    allowsPriceDisplay?: boolean
+    priceDisplayNote?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type professional_councilUncheckedCreateWithoutHealthcareProvidersInput = {
+    id?: string
+    acronym: string
+    name: string
+    profession: string
+    allowsPriceDisplay?: boolean
+    priceDisplayNote?: string | null
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type professional_councilCreateOrConnectWithoutHealthcareProvidersInput = {
+    where: professional_councilWhereUniqueInput
+    create: XOR<professional_councilCreateWithoutHealthcareProvidersInput, professional_councilUncheckedCreateWithoutHealthcareProvidersInput>
+  }
+
   export type userCreateWithoutVerifiedProvidersInput = {
     id?: string
     name: string
@@ -65958,7 +67542,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -65998,6 +67581,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -66056,7 +67640,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -67224,7 +68808,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -67264,6 +68847,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -67322,7 +68906,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -67528,6 +69112,41 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type professional_councilUpsertWithoutHealthcareProvidersInput = {
+    update: XOR<professional_councilUpdateWithoutHealthcareProvidersInput, professional_councilUncheckedUpdateWithoutHealthcareProvidersInput>
+    create: XOR<professional_councilCreateWithoutHealthcareProvidersInput, professional_councilUncheckedCreateWithoutHealthcareProvidersInput>
+    where?: professional_councilWhereInput
+  }
+
+  export type professional_councilUpdateToOneWithWhereWithoutHealthcareProvidersInput = {
+    where?: professional_councilWhereInput
+    data: XOR<professional_councilUpdateWithoutHealthcareProvidersInput, professional_councilUncheckedUpdateWithoutHealthcareProvidersInput>
+  }
+
+  export type professional_councilUpdateWithoutHealthcareProvidersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    acronym?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    profession?: StringFieldUpdateOperationsInput | string
+    allowsPriceDisplay?: BoolFieldUpdateOperationsInput | boolean
+    priceDisplayNote?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type professional_councilUncheckedUpdateWithoutHealthcareProvidersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    acronym?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    profession?: StringFieldUpdateOperationsInput | string
+    allowsPriceDisplay?: BoolFieldUpdateOperationsInput | boolean
+    priceDisplayNote?: NullableStringFieldUpdateOperationsInput | string | null
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type userUpsertWithoutVerifiedProvidersInput = {
     update: XOR<userUpdateWithoutVerifiedProvidersInput, userUncheckedUpdateWithoutVerifiedProvidersInput>
     create: XOR<userCreateWithoutVerifiedProvidersInput, userUncheckedCreateWithoutVerifiedProvidersInput>
@@ -67561,7 +69180,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -67601,6 +69219,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -67659,7 +69278,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -68498,7 +70117,7 @@ export namespace Prisma {
     specialty?: StringNullableFilter<"user"> | string | null
     professionalCategory?: StringNullableFilter<"user"> | string | null
     professionalId?: StringNullableFilter<"user"> | string | null
-    licenseCouncil?: StringNullableFilter<"user"> | string | null
+    professionalCouncilId?: StringNullableFilter<"user"> | string | null
     licenseState?: StringNullableFilter<"user"> | string | null
     licenseDocumentKey?: StringNullableFilter<"user"> | string | null
     licenseDocumentFileName?: StringNullableFilter<"user"> | string | null
@@ -68633,7 +70252,7 @@ export namespace Prisma {
     data: XOR<provider_verification_document_access_logUpdateManyMutationInput, provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserInput>
   }
 
-  export type userCreateWithoutProviderVerificationReviewsInput = {
+  export type userCreateWithoutProfessionalCouncilInput = {
     id?: string
     name: string
     firstName?: string | null
@@ -68655,7 +70274,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -68726,6 +70344,229 @@ export namespace Prisma {
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutProfessionalCouncilInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutProfessionalCouncilInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutProfessionalCouncilInput, userUncheckedCreateWithoutProfessionalCouncilInput>
+  }
+
+  export type userCreateManyProfessionalCouncilInputEnvelope = {
+    data: userCreateManyProfessionalCouncilInput | userCreateManyProfessionalCouncilInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type userUpsertWithWhereUniqueWithoutProfessionalCouncilInput = {
+    where: userWhereUniqueInput
+    update: XOR<userUpdateWithoutProfessionalCouncilInput, userUncheckedUpdateWithoutProfessionalCouncilInput>
+    create: XOR<userCreateWithoutProfessionalCouncilInput, userUncheckedCreateWithoutProfessionalCouncilInput>
+  }
+
+  export type userUpdateWithWhereUniqueWithoutProfessionalCouncilInput = {
+    where: userWhereUniqueInput
+    data: XOR<userUpdateWithoutProfessionalCouncilInput, userUncheckedUpdateWithoutProfessionalCouncilInput>
+  }
+
+  export type userUpdateManyWithWhereWithoutProfessionalCouncilInput = {
+    where: userScalarWhereInput
+    data: XOR<userUpdateManyMutationInput, userUncheckedUpdateManyWithoutProfessionalCouncilInput>
+  }
+
+  export type userCreateWithoutProviderVerificationReviewsInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
@@ -68753,7 +70594,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -68856,7 +70697,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -68896,6 +70736,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -68954,7 +70795,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -69068,7 +70909,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -69108,6 +70948,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -69166,7 +71007,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -69275,7 +71116,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -69315,6 +71155,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -69373,7 +71214,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -69471,7 +71312,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -69511,6 +71351,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -69569,7 +71410,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -69672,7 +71513,6 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -69712,6 +71552,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
@@ -69770,7 +71611,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -69884,7 +71725,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -69924,6 +71764,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -69982,7 +71823,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -70091,7 +71932,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -70131,6 +71971,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
@@ -70189,7 +72030,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -71143,7 +72984,7 @@ export namespace Prisma {
     specialty?: string | null
     professionalCategory?: string | null
     professionalId?: string | null
-    licenseCouncil?: string | null
+    professionalCouncilId?: string | null
     licenseState?: string | null
     licenseDocumentKey?: string | null
     licenseDocumentFileName?: string | null
@@ -72347,7 +74188,6 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72387,6 +74227,7 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -72445,7 +74286,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72543,7 +74384,7 @@ export namespace Prisma {
     specialty?: NullableStringFieldUpdateOperationsInput | string | null
     professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
     professionalId?: NullableStringFieldUpdateOperationsInput | string | null
-    licenseCouncil?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
     licenseState?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
     licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -72703,6 +74544,330 @@ export namespace Prisma {
     ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type userCreateManyProfessionalCouncilInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type userUpdateWithoutProfessionalCouncilInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutProfessionalCouncilInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateManyWithoutProfessionalCouncilInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

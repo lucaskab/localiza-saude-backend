@@ -13,6 +13,7 @@ import type {
 } from "@/schemas/routes/admin/provider-verifications";
 
 const providerVerificationInclude = {
+	professionalCouncil: true,
 	procedures: {
 		orderBy: {
 			createdAt: "desc",
@@ -65,7 +66,16 @@ function buildWhere(
 					},
 				},
 				{ professionalId: { contains: filters.search, mode: "insensitive" } },
-				{ licenseCouncil: { contains: filters.search, mode: "insensitive" } },
+				{
+					professionalCouncil: {
+						is: {
+							OR: [
+								{ acronym: { contains: filters.search, mode: "insensitive" } },
+								{ name: { contains: filters.search, mode: "insensitive" } },
+							],
+						},
+					},
+				},
 				{ licenseState: { contains: filters.search, mode: "insensitive" } },
 			],
 		});
@@ -101,7 +111,7 @@ function assertReadyForApproval(
 	const missingFields = [
 		["professionalCategory", healthcareProvider.professionalCategory],
 		["specialty", healthcareProvider.specialty],
-		["licenseCouncil", healthcareProvider.licenseCouncil],
+		["professionalCouncilId", healthcareProvider.professionalCouncilId],
 		["licenseState", healthcareProvider.licenseState],
 		["professionalId", healthcareProvider.professionalId],
 		["licenseDocumentKey", healthcareProvider.licenseDocumentKey],

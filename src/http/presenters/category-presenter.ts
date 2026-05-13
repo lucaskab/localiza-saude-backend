@@ -1,13 +1,17 @@
 import type {
 	category,
-	user,
 	healthcare_provider_category,
+	professional_council,
 	procedure,
+	user,
 } from "../../../prisma/generated/prisma/client";
 
 type CategoryWithHealthcareProviders = category & {
 	healthcareProviderCategories: (healthcare_provider_category & {
-		healthcareProvider: user & { procedures: procedure[] };
+		healthcareProvider: user & {
+			procedures: procedure[];
+			professionalCouncil: professional_council | null;
+		};
 	})[];
 };
 
@@ -47,7 +51,8 @@ export const categoryPresenter = {
 				specialty: hpc.healthcareProvider.specialty,
 				professionalCategory: hpc.healthcareProvider.professionalCategory,
 				professionalId: hpc.healthcareProvider.professionalId,
-				licenseCouncil: hpc.healthcareProvider.licenseCouncil,
+				professionalCouncilId: hpc.healthcareProvider.professionalCouncilId,
+				professionalCouncil: hpc.healthcareProvider.professionalCouncil,
 				licenseState: hpc.healthcareProvider.licenseState,
 				verificationStatus: hpc.healthcareProvider.verificationStatus,
 				bio: hpc.healthcareProvider.bio,

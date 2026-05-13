@@ -85,7 +85,7 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			specialty: "Clínica geral",
 			professionalCategory: "Médico",
 			professionalId: "654321",
-			licenseCouncil: "CRM",
+			professionalCouncilId: "professional-council-crm",
 			licenseState: "SP",
 			licenseDocumentKey:
 				"provider-verification/cmnuu7to60006r1scsref3kpv/crm-sp-654321.pdf",
@@ -147,7 +147,7 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			specialty: "Clínica geral",
 			professionalCategory: "Médico",
 			professionalId: "654321",
-			licenseCouncil: "CRM",
+			professionalCouncilId: "professional-council-crm",
 			licenseState: "SP",
 			licenseDocumentKey:
 				"provider-verification/cmnuu7to60006r1scsref3kpv/crm-sp-654321.pdf",

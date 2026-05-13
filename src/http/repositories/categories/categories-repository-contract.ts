@@ -1,13 +1,17 @@
 import type {
 	category,
-	user,
 	healthcare_provider_category,
+	professional_council,
 	procedure,
+	user,
 } from "../../../../prisma/generated/prisma/client";
 
 export type CategoryWithProfessionals = category & {
 	healthcareProviderCategories: (healthcare_provider_category & {
-		healthcareProvider: user & { procedures: procedure[] };
+		healthcareProvider: user & {
+			procedures: procedure[];
+			professionalCouncil: professional_council | null;
+		};
 	})[];
 };
 

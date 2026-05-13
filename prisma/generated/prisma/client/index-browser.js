@@ -459,7 +459,7 @@ exports.Prisma.UserScalarFieldEnum = {
   specialty: 'specialty',
   professionalCategory: 'professionalCategory',
   professionalId: 'professionalId',
-  licenseCouncil: 'licenseCouncil',
+  professionalCouncilId: 'professionalCouncilId',
   licenseState: 'licenseState',
   licenseDocumentKey: 'licenseDocumentKey',
   licenseDocumentFileName: 'licenseDocumentFileName',
@@ -498,6 +498,18 @@ exports.Prisma.UserScalarFieldEnum = {
   termsAcceptedAt: 'termsAcceptedAt',
   lgpdConsentAt: 'lgpdConsentAt',
   professionalResponsibilityAcceptedAt: 'professionalResponsibilityAcceptedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Professional_councilScalarFieldEnum = {
+  id: 'id',
+  acronym: 'acronym',
+  name: 'name',
+  profession: 'profession',
+  allowsPriceDisplay: 'allowsPriceDisplay',
+  priceDisplayNote: 'priceDisplayNote',
+  active: 'active',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -691,6 +703,7 @@ exports.Prisma.ModelName = {
   session: 'session',
   support_request: 'support_request',
   user: 'user',
+  professional_council: 'professional_council',
   provider_verification_review: 'provider_verification_review',
   provider_verification_document_access_log: 'provider_verification_document_access_log',
   verification: 'verification'

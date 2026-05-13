@@ -9,6 +9,7 @@ import type {
 } from "./healthcare-providers-repository-contract";
 
 const healthcareProviderInclude = {
+	professionalCouncil: true,
 	procedures: {
 		include: {
 			checklistItems: {
@@ -331,7 +332,7 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					specialty: data.specialty,
 					professionalCategory: data.professionalCategory,
 					professionalId: data.professionalId,
-					licenseCouncil: data.licenseCouncil,
+					professionalCouncilId: data.professionalCouncilId,
 					licenseState: data.licenseState,
 					licenseDocumentKey: data.licenseDocumentKey,
 					licenseDocumentFileName: data.licenseDocumentFileName,
@@ -407,8 +408,8 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 						...(data.professionalId !== undefined && {
 							professionalId: data.professionalId,
 						}),
-						...(data.licenseCouncil !== undefined && {
-							licenseCouncil: data.licenseCouncil,
+						...(data.professionalCouncilId !== undefined && {
+							professionalCouncilId: data.professionalCouncilId,
 						}),
 						...(data.licenseState !== undefined && {
 							licenseState: data.licenseState,
