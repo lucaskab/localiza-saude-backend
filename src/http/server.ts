@@ -72,6 +72,9 @@ fastify.register(fastifyCors, {
 		"http://localhost:5174",
 		"http://127.0.0.1:5173",
 		"http://127.0.0.1:5174",
+		"https://www.development.localizasaude.com",
+		"https://www.localizasaude.com",
+		"https://www.development-api.localizasaude.com",
 		...(env.WEB_APP_URL ? [env.WEB_APP_URL] : []),
 		"https://localiza-saude-web.onrender.com",
 		"https://localiza-saude-backend-development.onrender.com",
@@ -84,6 +87,22 @@ fastify.register(fastifyCors, {
 	allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
 	credentials: true,
 	maxAge: 86400,
+});
+
+fastify.get("/", async (request, reply) => {
+	const query = request.query as { error?: string };
+
+	if (query.error && env.WEB_APP_URL) {
+		const redirectURL = new URL("/login", env.WEB_APP_URL);
+		redirectURL.searchParams.set("error", query.error);
+		reply.redirect(redirectURL.toString());
+		return;
+	}
+
+	reply.send({
+		name: "Localiza Saúde API",
+		status: "ok",
+	});
 });
 
 // Register multipart for file uploads
