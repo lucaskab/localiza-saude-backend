@@ -34,6 +34,21 @@ export type appointment = $Result.DefaultSelection<Prisma.$appointmentPayload>
  */
 export type appointment_reschedule_request = $Result.DefaultSelection<Prisma.$appointment_reschedule_requestPayload>
 /**
+ * Model appointment_recurring_series
+ * 
+ */
+export type appointment_recurring_series = $Result.DefaultSelection<Prisma.$appointment_recurring_seriesPayload>
+/**
+ * Model appointment_recurring_series_rule
+ * 
+ */
+export type appointment_recurring_series_rule = $Result.DefaultSelection<Prisma.$appointment_recurring_series_rulePayload>
+/**
+ * Model appointment_recurring_series_procedure
+ * 
+ */
+export type appointment_recurring_series_procedure = $Result.DefaultSelection<Prisma.$appointment_recurring_series_procedurePayload>
+/**
  * Model appointment_waitlist_entry
  * 
  */
@@ -569,6 +584,36 @@ export class PrismaClient<
     * ```
     */
   get appointment_reschedule_request(): Prisma.appointment_reschedule_requestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.appointment_recurring_series`: Exposes CRUD operations for the **appointment_recurring_series** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Appointment_recurring_series
+    * const appointment_recurring_series = await prisma.appointment_recurring_series.findMany()
+    * ```
+    */
+  get appointment_recurring_series(): Prisma.appointment_recurring_seriesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.appointment_recurring_series_rule`: Exposes CRUD operations for the **appointment_recurring_series_rule** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Appointment_recurring_series_rules
+    * const appointment_recurring_series_rules = await prisma.appointment_recurring_series_rule.findMany()
+    * ```
+    */
+  get appointment_recurring_series_rule(): Prisma.appointment_recurring_series_ruleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.appointment_recurring_series_procedure`: Exposes CRUD operations for the **appointment_recurring_series_procedure** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Appointment_recurring_series_procedures
+    * const appointment_recurring_series_procedures = await prisma.appointment_recurring_series_procedure.findMany()
+    * ```
+    */
+  get appointment_recurring_series_procedure(): Prisma.appointment_recurring_series_procedureDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.appointment_waitlist_entry`: Exposes CRUD operations for the **appointment_waitlist_entry** model.
@@ -1277,6 +1322,9 @@ export namespace Prisma {
     appointment_procedure: 'appointment_procedure',
     appointment: 'appointment',
     appointment_reschedule_request: 'appointment_reschedule_request',
+    appointment_recurring_series: 'appointment_recurring_series',
+    appointment_recurring_series_rule: 'appointment_recurring_series_rule',
+    appointment_recurring_series_procedure: 'appointment_recurring_series_procedure',
     appointment_waitlist_entry: 'appointment_waitlist_entry',
     appointment_waitlist_entry_procedure: 'appointment_waitlist_entry_procedure',
     category: 'category',
@@ -1319,7 +1367,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "professional_council" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
+      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "appointment_recurring_series" | "appointment_recurring_series_rule" | "appointment_recurring_series_procedure" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "professional_council" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1616,6 +1664,228 @@ export namespace Prisma {
           count: {
             args: Prisma.appointment_reschedule_requestCountArgs<ExtArgs>
             result: $Utils.Optional<Appointment_reschedule_requestCountAggregateOutputType> | number
+          }
+        }
+      }
+      appointment_recurring_series: {
+        payload: Prisma.$appointment_recurring_seriesPayload<ExtArgs>
+        fields: Prisma.appointment_recurring_seriesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.appointment_recurring_seriesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.appointment_recurring_seriesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload>
+          }
+          findFirst: {
+            args: Prisma.appointment_recurring_seriesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.appointment_recurring_seriesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload>
+          }
+          findMany: {
+            args: Prisma.appointment_recurring_seriesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload>[]
+          }
+          create: {
+            args: Prisma.appointment_recurring_seriesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload>
+          }
+          createMany: {
+            args: Prisma.appointment_recurring_seriesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.appointment_recurring_seriesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload>[]
+          }
+          delete: {
+            args: Prisma.appointment_recurring_seriesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload>
+          }
+          update: {
+            args: Prisma.appointment_recurring_seriesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload>
+          }
+          deleteMany: {
+            args: Prisma.appointment_recurring_seriesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.appointment_recurring_seriesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.appointment_recurring_seriesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload>[]
+          }
+          upsert: {
+            args: Prisma.appointment_recurring_seriesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_seriesPayload>
+          }
+          aggregate: {
+            args: Prisma.Appointment_recurring_seriesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAppointment_recurring_series>
+          }
+          groupBy: {
+            args: Prisma.appointment_recurring_seriesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_recurring_seriesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.appointment_recurring_seriesCountArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_recurring_seriesCountAggregateOutputType> | number
+          }
+        }
+      }
+      appointment_recurring_series_rule: {
+        payload: Prisma.$appointment_recurring_series_rulePayload<ExtArgs>
+        fields: Prisma.appointment_recurring_series_ruleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.appointment_recurring_series_ruleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.appointment_recurring_series_ruleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload>
+          }
+          findFirst: {
+            args: Prisma.appointment_recurring_series_ruleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.appointment_recurring_series_ruleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload>
+          }
+          findMany: {
+            args: Prisma.appointment_recurring_series_ruleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload>[]
+          }
+          create: {
+            args: Prisma.appointment_recurring_series_ruleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload>
+          }
+          createMany: {
+            args: Prisma.appointment_recurring_series_ruleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.appointment_recurring_series_ruleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload>[]
+          }
+          delete: {
+            args: Prisma.appointment_recurring_series_ruleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload>
+          }
+          update: {
+            args: Prisma.appointment_recurring_series_ruleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload>
+          }
+          deleteMany: {
+            args: Prisma.appointment_recurring_series_ruleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.appointment_recurring_series_ruleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.appointment_recurring_series_ruleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload>[]
+          }
+          upsert: {
+            args: Prisma.appointment_recurring_series_ruleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_rulePayload>
+          }
+          aggregate: {
+            args: Prisma.Appointment_recurring_series_ruleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAppointment_recurring_series_rule>
+          }
+          groupBy: {
+            args: Prisma.appointment_recurring_series_ruleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_recurring_series_ruleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.appointment_recurring_series_ruleCountArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_recurring_series_ruleCountAggregateOutputType> | number
+          }
+        }
+      }
+      appointment_recurring_series_procedure: {
+        payload: Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>
+        fields: Prisma.appointment_recurring_series_procedureFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.appointment_recurring_series_procedureFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.appointment_recurring_series_procedureFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload>
+          }
+          findFirst: {
+            args: Prisma.appointment_recurring_series_procedureFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.appointment_recurring_series_procedureFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload>
+          }
+          findMany: {
+            args: Prisma.appointment_recurring_series_procedureFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload>[]
+          }
+          create: {
+            args: Prisma.appointment_recurring_series_procedureCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload>
+          }
+          createMany: {
+            args: Prisma.appointment_recurring_series_procedureCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.appointment_recurring_series_procedureCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload>[]
+          }
+          delete: {
+            args: Prisma.appointment_recurring_series_procedureDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload>
+          }
+          update: {
+            args: Prisma.appointment_recurring_series_procedureUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload>
+          }
+          deleteMany: {
+            args: Prisma.appointment_recurring_series_procedureDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.appointment_recurring_series_procedureUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.appointment_recurring_series_procedureUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload>[]
+          }
+          upsert: {
+            args: Prisma.appointment_recurring_series_procedureUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_recurring_series_procedurePayload>
+          }
+          aggregate: {
+            args: Prisma.Appointment_recurring_series_procedureAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAppointment_recurring_series_procedure>
+          }
+          groupBy: {
+            args: Prisma.appointment_recurring_series_procedureGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_recurring_series_procedureGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.appointment_recurring_series_procedureCountArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_recurring_series_procedureCountAggregateOutputType> | number
           }
         }
       }
@@ -3729,6 +3999,9 @@ export namespace Prisma {
     appointment_procedure?: appointment_procedureOmit
     appointment?: appointmentOmit
     appointment_reschedule_request?: appointment_reschedule_requestOmit
+    appointment_recurring_series?: appointment_recurring_seriesOmit
+    appointment_recurring_series_rule?: appointment_recurring_series_ruleOmit
+    appointment_recurring_series_procedure?: appointment_recurring_series_procedureOmit
     appointment_waitlist_entry?: appointment_waitlist_entryOmit
     appointment_waitlist_entry_procedure?: appointment_waitlist_entry_procedureOmit
     category?: categoryOmit
@@ -3890,6 +4163,86 @@ export namespace Prisma {
 
 
   /**
+   * Count Type Appointment_recurring_seriesCountOutputType
+   */
+
+  export type Appointment_recurring_seriesCountOutputType = {
+    appointments: number
+    rules: number
+    procedures: number
+  }
+
+  export type Appointment_recurring_seriesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    appointments?: boolean | Appointment_recurring_seriesCountOutputTypeCountAppointmentsArgs
+    rules?: boolean | Appointment_recurring_seriesCountOutputTypeCountRulesArgs
+    procedures?: boolean | Appointment_recurring_seriesCountOutputTypeCountProceduresArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Appointment_recurring_seriesCountOutputType without action
+   */
+  export type Appointment_recurring_seriesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Appointment_recurring_seriesCountOutputType
+     */
+    select?: Appointment_recurring_seriesCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Appointment_recurring_seriesCountOutputType without action
+   */
+  export type Appointment_recurring_seriesCountOutputTypeCountAppointmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointmentWhereInput
+  }
+
+  /**
+   * Appointment_recurring_seriesCountOutputType without action
+   */
+  export type Appointment_recurring_seriesCountOutputTypeCountRulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_series_ruleWhereInput
+  }
+
+  /**
+   * Appointment_recurring_seriesCountOutputType without action
+   */
+  export type Appointment_recurring_seriesCountOutputTypeCountProceduresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_series_procedureWhereInput
+  }
+
+
+  /**
+   * Count Type Appointment_recurring_series_ruleCountOutputType
+   */
+
+  export type Appointment_recurring_series_ruleCountOutputType = {
+    appointments: number
+  }
+
+  export type Appointment_recurring_series_ruleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    appointments?: boolean | Appointment_recurring_series_ruleCountOutputTypeCountAppointmentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Appointment_recurring_series_ruleCountOutputType without action
+   */
+  export type Appointment_recurring_series_ruleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Appointment_recurring_series_ruleCountOutputType
+     */
+    select?: Appointment_recurring_series_ruleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Appointment_recurring_series_ruleCountOutputType without action
+   */
+  export type Appointment_recurring_series_ruleCountOutputTypeCountAppointmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointmentWhereInput
+  }
+
+
+  /**
    * Count Type Appointment_waitlist_entryCountOutputType
    */
 
@@ -4019,10 +4372,12 @@ export namespace Prisma {
 
   export type Patient_profileCountOutputType = {
     appointments: number
+    recurringAppointmentSeries: number
   }
 
   export type Patient_profileCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     appointments?: boolean | Patient_profileCountOutputTypeCountAppointmentsArgs
+    recurringAppointmentSeries?: boolean | Patient_profileCountOutputTypeCountRecurringAppointmentSeriesArgs
   }
 
   // Custom InputTypes
@@ -4043,6 +4398,13 @@ export namespace Prisma {
     where?: appointmentWhereInput
   }
 
+  /**
+   * Patient_profileCountOutputType without action
+   */
+  export type Patient_profileCountOutputTypeCountRecurringAppointmentSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_seriesWhereInput
+  }
+
 
   /**
    * Count Type ProcedureCountOutputType
@@ -4052,12 +4414,14 @@ export namespace Prisma {
     appointmentProcedures: number
     waitlistEntryProcedures: number
     checklistItems: number
+    recurringSeriesProcedures: number
   }
 
   export type ProcedureCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     appointmentProcedures?: boolean | ProcedureCountOutputTypeCountAppointmentProceduresArgs
     waitlistEntryProcedures?: boolean | ProcedureCountOutputTypeCountWaitlistEntryProceduresArgs
     checklistItems?: boolean | ProcedureCountOutputTypeCountChecklistItemsArgs
+    recurringSeriesProcedures?: boolean | ProcedureCountOutputTypeCountRecurringSeriesProceduresArgs
   }
 
   // Custom InputTypes
@@ -4090,6 +4454,13 @@ export namespace Prisma {
    */
   export type ProcedureCountOutputTypeCountChecklistItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: procedure_checklist_itemWhereInput
+  }
+
+  /**
+   * ProcedureCountOutputType without action
+   */
+  export type ProcedureCountOutputTypeCountRecurringSeriesProceduresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_series_procedureWhereInput
   }
 
 
@@ -4126,6 +4497,9 @@ export namespace Prisma {
     appointmentRescheduleRequests: number
     customerAppointmentWaitlistEntries: number
     providerAppointmentWaitlistEntries: number
+    customerRecurringAppointmentSeries: number
+    providerRecurringAppointmentSeries: number
+    createdRecurringAppointmentSeries: number
     verifiedProviders: number
     providerVerificationReviews: number
     adminProviderVerificationReviews: number
@@ -4162,6 +4536,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: boolean | UserCountOutputTypeCountAppointmentRescheduleRequestsArgs
     customerAppointmentWaitlistEntries?: boolean | UserCountOutputTypeCountCustomerAppointmentWaitlistEntriesArgs
     providerAppointmentWaitlistEntries?: boolean | UserCountOutputTypeCountProviderAppointmentWaitlistEntriesArgs
+    customerRecurringAppointmentSeries?: boolean | UserCountOutputTypeCountCustomerRecurringAppointmentSeriesArgs
+    providerRecurringAppointmentSeries?: boolean | UserCountOutputTypeCountProviderRecurringAppointmentSeriesArgs
+    createdRecurringAppointmentSeries?: boolean | UserCountOutputTypeCountCreatedRecurringAppointmentSeriesArgs
     verifiedProviders?: boolean | UserCountOutputTypeCountVerifiedProvidersArgs
     providerVerificationReviews?: boolean | UserCountOutputTypeCountProviderVerificationReviewsArgs
     adminProviderVerificationReviews?: boolean | UserCountOutputTypeCountAdminProviderVerificationReviewsArgs
@@ -4374,6 +4751,27 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountProviderAppointmentWaitlistEntriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: appointment_waitlist_entryWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCustomerRecurringAppointmentSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_seriesWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProviderRecurringAppointmentSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_seriesWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCreatedRecurringAppointmentSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_seriesWhereInput
   }
 
   /**
@@ -6701,6 +7099,9 @@ export namespace Prisma {
     customerId: string | null
     patientProfileId: string | null
     healthcareProviderId: string | null
+    recurringSeriesId: string | null
+    recurringRuleId: string | null
+    recurringGeneratedAt: Date | null
     scheduledAt: Date | null
     status: $Enums.AppointmentStatus | null
     serviceModality: string | null
@@ -6725,6 +7126,9 @@ export namespace Prisma {
     customerId: string | null
     patientProfileId: string | null
     healthcareProviderId: string | null
+    recurringSeriesId: string | null
+    recurringRuleId: string | null
+    recurringGeneratedAt: Date | null
     scheduledAt: Date | null
     status: $Enums.AppointmentStatus | null
     serviceModality: string | null
@@ -6749,6 +7153,9 @@ export namespace Prisma {
     customerId: number
     patientProfileId: number
     healthcareProviderId: number
+    recurringSeriesId: number
+    recurringRuleId: number
+    recurringGeneratedAt: number
     scheduledAt: number
     status: number
     serviceModality: number
@@ -6787,6 +7194,9 @@ export namespace Prisma {
     customerId?: true
     patientProfileId?: true
     healthcareProviderId?: true
+    recurringSeriesId?: true
+    recurringRuleId?: true
+    recurringGeneratedAt?: true
     scheduledAt?: true
     status?: true
     serviceModality?: true
@@ -6811,6 +7221,9 @@ export namespace Prisma {
     customerId?: true
     patientProfileId?: true
     healthcareProviderId?: true
+    recurringSeriesId?: true
+    recurringRuleId?: true
+    recurringGeneratedAt?: true
     scheduledAt?: true
     status?: true
     serviceModality?: true
@@ -6835,6 +7248,9 @@ export namespace Prisma {
     customerId?: true
     patientProfileId?: true
     healthcareProviderId?: true
+    recurringSeriesId?: true
+    recurringRuleId?: true
+    recurringGeneratedAt?: true
     scheduledAt?: true
     status?: true
     serviceModality?: true
@@ -6946,6 +7362,9 @@ export namespace Prisma {
     customerId: string | null
     patientProfileId: string | null
     healthcareProviderId: string
+    recurringSeriesId: string | null
+    recurringRuleId: string | null
+    recurringGeneratedAt: Date | null
     scheduledAt: Date
     status: $Enums.AppointmentStatus
     serviceModality: string
@@ -6989,6 +7408,9 @@ export namespace Prisma {
     customerId?: boolean
     patientProfileId?: boolean
     healthcareProviderId?: boolean
+    recurringSeriesId?: boolean
+    recurringRuleId?: boolean
+    recurringGeneratedAt?: boolean
     scheduledAt?: boolean
     status?: boolean
     serviceModality?: boolean
@@ -7009,6 +7431,8 @@ export namespace Prisma {
     customer?: boolean | appointment$customerArgs<ExtArgs>
     patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    recurringSeries?: boolean | appointment$recurringSeriesArgs<ExtArgs>
+    recurringRule?: boolean | appointment$recurringRuleArgs<ExtArgs>
     cancelledByUser?: boolean | appointment$cancelledByUserArgs<ExtArgs>
     appointmentProcedures?: boolean | appointment$appointmentProceduresArgs<ExtArgs>
     relatedMessages?: boolean | appointment$relatedMessagesArgs<ExtArgs>
@@ -7022,6 +7446,9 @@ export namespace Prisma {
     customerId?: boolean
     patientProfileId?: boolean
     healthcareProviderId?: boolean
+    recurringSeriesId?: boolean
+    recurringRuleId?: boolean
+    recurringGeneratedAt?: boolean
     scheduledAt?: boolean
     status?: boolean
     serviceModality?: boolean
@@ -7042,6 +7469,8 @@ export namespace Prisma {
     customer?: boolean | appointment$customerArgs<ExtArgs>
     patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    recurringSeries?: boolean | appointment$recurringSeriesArgs<ExtArgs>
+    recurringRule?: boolean | appointment$recurringRuleArgs<ExtArgs>
     cancelledByUser?: boolean | appointment$cancelledByUserArgs<ExtArgs>
   }, ExtArgs["result"]["appointment"]>
 
@@ -7050,6 +7479,9 @@ export namespace Prisma {
     customerId?: boolean
     patientProfileId?: boolean
     healthcareProviderId?: boolean
+    recurringSeriesId?: boolean
+    recurringRuleId?: boolean
+    recurringGeneratedAt?: boolean
     scheduledAt?: boolean
     status?: boolean
     serviceModality?: boolean
@@ -7070,6 +7502,8 @@ export namespace Prisma {
     customer?: boolean | appointment$customerArgs<ExtArgs>
     patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    recurringSeries?: boolean | appointment$recurringSeriesArgs<ExtArgs>
+    recurringRule?: boolean | appointment$recurringRuleArgs<ExtArgs>
     cancelledByUser?: boolean | appointment$cancelledByUserArgs<ExtArgs>
   }, ExtArgs["result"]["appointment"]>
 
@@ -7078,6 +7512,9 @@ export namespace Prisma {
     customerId?: boolean
     patientProfileId?: boolean
     healthcareProviderId?: boolean
+    recurringSeriesId?: boolean
+    recurringRuleId?: boolean
+    recurringGeneratedAt?: boolean
     scheduledAt?: boolean
     status?: boolean
     serviceModality?: boolean
@@ -7097,11 +7534,13 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type appointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "patientProfileId" | "healthcareProviderId" | "scheduledAt" | "status" | "serviceModality" | "onlineMeetingUrl" | "onlineMeetingProvider" | "onlineMeetingExternalId" | "onlineMeetingCreatedAt" | "totalDurationMinutes" | "totalPriceCents" | "notes" | "cancellationReason" | "cancellationFeeCents" | "cancellationPolicyAppliedAt" | "cancelledAt" | "cancelledByUserId" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment"]>
+  export type appointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "patientProfileId" | "healthcareProviderId" | "recurringSeriesId" | "recurringRuleId" | "recurringGeneratedAt" | "scheduledAt" | "status" | "serviceModality" | "onlineMeetingUrl" | "onlineMeetingProvider" | "onlineMeetingExternalId" | "onlineMeetingCreatedAt" | "totalDurationMinutes" | "totalPriceCents" | "notes" | "cancellationReason" | "cancellationFeeCents" | "cancellationPolicyAppliedAt" | "cancelledAt" | "cancelledByUserId" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment"]>
   export type appointmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | appointment$customerArgs<ExtArgs>
     patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    recurringSeries?: boolean | appointment$recurringSeriesArgs<ExtArgs>
+    recurringRule?: boolean | appointment$recurringRuleArgs<ExtArgs>
     cancelledByUser?: boolean | appointment$cancelledByUserArgs<ExtArgs>
     appointmentProcedures?: boolean | appointment$appointmentProceduresArgs<ExtArgs>
     relatedMessages?: boolean | appointment$relatedMessagesArgs<ExtArgs>
@@ -7113,12 +7552,16 @@ export namespace Prisma {
     customer?: boolean | appointment$customerArgs<ExtArgs>
     patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    recurringSeries?: boolean | appointment$recurringSeriesArgs<ExtArgs>
+    recurringRule?: boolean | appointment$recurringRuleArgs<ExtArgs>
     cancelledByUser?: boolean | appointment$cancelledByUserArgs<ExtArgs>
   }
   export type appointmentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | appointment$customerArgs<ExtArgs>
     patientProfile?: boolean | appointment$patientProfileArgs<ExtArgs>
     healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    recurringSeries?: boolean | appointment$recurringSeriesArgs<ExtArgs>
+    recurringRule?: boolean | appointment$recurringRuleArgs<ExtArgs>
     cancelledByUser?: boolean | appointment$cancelledByUserArgs<ExtArgs>
   }
 
@@ -7128,6 +7571,8 @@ export namespace Prisma {
       customer: Prisma.$userPayload<ExtArgs> | null
       patientProfile: Prisma.$patient_profilePayload<ExtArgs> | null
       healthcareProvider: Prisma.$userPayload<ExtArgs>
+      recurringSeries: Prisma.$appointment_recurring_seriesPayload<ExtArgs> | null
+      recurringRule: Prisma.$appointment_recurring_series_rulePayload<ExtArgs> | null
       cancelledByUser: Prisma.$userPayload<ExtArgs> | null
       appointmentProcedures: Prisma.$appointment_procedurePayload<ExtArgs>[]
       relatedMessages: Prisma.$conversation_messagePayload<ExtArgs>[]
@@ -7139,6 +7584,9 @@ export namespace Prisma {
       customerId: string | null
       patientProfileId: string | null
       healthcareProviderId: string
+      recurringSeriesId: string | null
+      recurringRuleId: string | null
+      recurringGeneratedAt: Date | null
       scheduledAt: Date
       status: $Enums.AppointmentStatus
       serviceModality: string
@@ -7553,6 +8001,8 @@ export namespace Prisma {
     customer<T extends appointment$customerArgs<ExtArgs> = {}>(args?: Subset<T, appointment$customerArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     patientProfile<T extends appointment$patientProfileArgs<ExtArgs> = {}>(args?: Subset<T, appointment$patientProfileArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     healthcareProvider<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    recurringSeries<T extends appointment$recurringSeriesArgs<ExtArgs> = {}>(args?: Subset<T, appointment$recurringSeriesArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    recurringRule<T extends appointment$recurringRuleArgs<ExtArgs> = {}>(args?: Subset<T, appointment$recurringRuleArgs<ExtArgs>>): Prisma__appointment_recurring_series_ruleClient<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     cancelledByUser<T extends appointment$cancelledByUserArgs<ExtArgs> = {}>(args?: Subset<T, appointment$cancelledByUserArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     appointmentProcedures<T extends appointment$appointmentProceduresArgs<ExtArgs> = {}>(args?: Subset<T, appointment$appointmentProceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     relatedMessages<T extends appointment$relatedMessagesArgs<ExtArgs> = {}>(args?: Subset<T, appointment$relatedMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$conversation_messagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -7591,6 +8041,9 @@ export namespace Prisma {
     readonly customerId: FieldRef<"appointment", 'String'>
     readonly patientProfileId: FieldRef<"appointment", 'String'>
     readonly healthcareProviderId: FieldRef<"appointment", 'String'>
+    readonly recurringSeriesId: FieldRef<"appointment", 'String'>
+    readonly recurringRuleId: FieldRef<"appointment", 'String'>
+    readonly recurringGeneratedAt: FieldRef<"appointment", 'DateTime'>
     readonly scheduledAt: FieldRef<"appointment", 'DateTime'>
     readonly status: FieldRef<"appointment", 'AppointmentStatus'>
     readonly serviceModality: FieldRef<"appointment", 'String'>
@@ -8044,6 +8497,44 @@ export namespace Prisma {
      */
     include?: patient_profileInclude<ExtArgs> | null
     where?: patient_profileWhereInput
+  }
+
+  /**
+   * appointment.recurringSeries
+   */
+  export type appointment$recurringSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    where?: appointment_recurring_seriesWhereInput
+  }
+
+  /**
+   * appointment.recurringRule
+   */
+  export type appointment$recurringRuleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    where?: appointment_recurring_series_ruleWhereInput
   }
 
   /**
@@ -9300,6 +9791,3545 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: appointment_reschedule_requestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model appointment_recurring_series
+   */
+
+  export type AggregateAppointment_recurring_series = {
+    _count: Appointment_recurring_seriesCountAggregateOutputType | null
+    _min: Appointment_recurring_seriesMinAggregateOutputType | null
+    _max: Appointment_recurring_seriesMaxAggregateOutputType | null
+  }
+
+  export type Appointment_recurring_seriesMinAggregateOutputType = {
+    id: string | null
+    customerId: string | null
+    patientProfileId: string | null
+    healthcareProviderId: string | null
+    createdByUserId: string | null
+    serviceModality: string | null
+    notes: string | null
+    startsOn: Date | null
+    endsOn: Date | null
+    isIndefinite: boolean | null
+    isActive: boolean | null
+    generatedUntil: Date | null
+    cancelledAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Appointment_recurring_seriesMaxAggregateOutputType = {
+    id: string | null
+    customerId: string | null
+    patientProfileId: string | null
+    healthcareProviderId: string | null
+    createdByUserId: string | null
+    serviceModality: string | null
+    notes: string | null
+    startsOn: Date | null
+    endsOn: Date | null
+    isIndefinite: boolean | null
+    isActive: boolean | null
+    generatedUntil: Date | null
+    cancelledAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Appointment_recurring_seriesCountAggregateOutputType = {
+    id: number
+    customerId: number
+    patientProfileId: number
+    healthcareProviderId: number
+    createdByUserId: number
+    serviceModality: number
+    notes: number
+    startsOn: number
+    endsOn: number
+    isIndefinite: number
+    isActive: number
+    generatedUntil: number
+    cancelledAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Appointment_recurring_seriesMinAggregateInputType = {
+    id?: true
+    customerId?: true
+    patientProfileId?: true
+    healthcareProviderId?: true
+    createdByUserId?: true
+    serviceModality?: true
+    notes?: true
+    startsOn?: true
+    endsOn?: true
+    isIndefinite?: true
+    isActive?: true
+    generatedUntil?: true
+    cancelledAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Appointment_recurring_seriesMaxAggregateInputType = {
+    id?: true
+    customerId?: true
+    patientProfileId?: true
+    healthcareProviderId?: true
+    createdByUserId?: true
+    serviceModality?: true
+    notes?: true
+    startsOn?: true
+    endsOn?: true
+    isIndefinite?: true
+    isActive?: true
+    generatedUntil?: true
+    cancelledAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Appointment_recurring_seriesCountAggregateInputType = {
+    id?: true
+    customerId?: true
+    patientProfileId?: true
+    healthcareProviderId?: true
+    createdByUserId?: true
+    serviceModality?: true
+    notes?: true
+    startsOn?: true
+    endsOn?: true
+    isIndefinite?: true
+    isActive?: true
+    generatedUntil?: true
+    cancelledAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Appointment_recurring_seriesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_recurring_series to aggregate.
+     */
+    where?: appointment_recurring_seriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series to fetch.
+     */
+    orderBy?: appointment_recurring_seriesOrderByWithRelationInput | appointment_recurring_seriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: appointment_recurring_seriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned appointment_recurring_series
+    **/
+    _count?: true | Appointment_recurring_seriesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Appointment_recurring_seriesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Appointment_recurring_seriesMaxAggregateInputType
+  }
+
+  export type GetAppointment_recurring_seriesAggregateType<T extends Appointment_recurring_seriesAggregateArgs> = {
+        [P in keyof T & keyof AggregateAppointment_recurring_series]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAppointment_recurring_series[P]>
+      : GetScalarType<T[P], AggregateAppointment_recurring_series[P]>
+  }
+
+
+
+
+  export type appointment_recurring_seriesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_seriesWhereInput
+    orderBy?: appointment_recurring_seriesOrderByWithAggregationInput | appointment_recurring_seriesOrderByWithAggregationInput[]
+    by: Appointment_recurring_seriesScalarFieldEnum[] | Appointment_recurring_seriesScalarFieldEnum
+    having?: appointment_recurring_seriesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Appointment_recurring_seriesCountAggregateInputType | true
+    _min?: Appointment_recurring_seriesMinAggregateInputType
+    _max?: Appointment_recurring_seriesMaxAggregateInputType
+  }
+
+  export type Appointment_recurring_seriesGroupByOutputType = {
+    id: string
+    customerId: string | null
+    patientProfileId: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality: string
+    notes: string | null
+    startsOn: Date
+    endsOn: Date | null
+    isIndefinite: boolean
+    isActive: boolean
+    generatedUntil: Date | null
+    cancelledAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: Appointment_recurring_seriesCountAggregateOutputType | null
+    _min: Appointment_recurring_seriesMinAggregateOutputType | null
+    _max: Appointment_recurring_seriesMaxAggregateOutputType | null
+  }
+
+  type GetAppointment_recurring_seriesGroupByPayload<T extends appointment_recurring_seriesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Appointment_recurring_seriesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Appointment_recurring_seriesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Appointment_recurring_seriesGroupByOutputType[P]>
+            : GetScalarType<T[P], Appointment_recurring_seriesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type appointment_recurring_seriesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    customerId?: boolean
+    patientProfileId?: boolean
+    healthcareProviderId?: boolean
+    createdByUserId?: boolean
+    serviceModality?: boolean
+    notes?: boolean
+    startsOn?: boolean
+    endsOn?: boolean
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: boolean
+    cancelledAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    customer?: boolean | appointment_recurring_series$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_recurring_series$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    createdByUser?: boolean | userDefaultArgs<ExtArgs>
+    appointments?: boolean | appointment_recurring_series$appointmentsArgs<ExtArgs>
+    rules?: boolean | appointment_recurring_series$rulesArgs<ExtArgs>
+    procedures?: boolean | appointment_recurring_series$proceduresArgs<ExtArgs>
+    _count?: boolean | Appointment_recurring_seriesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_recurring_series"]>
+
+  export type appointment_recurring_seriesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    customerId?: boolean
+    patientProfileId?: boolean
+    healthcareProviderId?: boolean
+    createdByUserId?: boolean
+    serviceModality?: boolean
+    notes?: boolean
+    startsOn?: boolean
+    endsOn?: boolean
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: boolean
+    cancelledAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    customer?: boolean | appointment_recurring_series$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_recurring_series$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    createdByUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_recurring_series"]>
+
+  export type appointment_recurring_seriesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    customerId?: boolean
+    patientProfileId?: boolean
+    healthcareProviderId?: boolean
+    createdByUserId?: boolean
+    serviceModality?: boolean
+    notes?: boolean
+    startsOn?: boolean
+    endsOn?: boolean
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: boolean
+    cancelledAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    customer?: boolean | appointment_recurring_series$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_recurring_series$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    createdByUser?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_recurring_series"]>
+
+  export type appointment_recurring_seriesSelectScalar = {
+    id?: boolean
+    customerId?: boolean
+    patientProfileId?: boolean
+    healthcareProviderId?: boolean
+    createdByUserId?: boolean
+    serviceModality?: boolean
+    notes?: boolean
+    startsOn?: boolean
+    endsOn?: boolean
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: boolean
+    cancelledAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type appointment_recurring_seriesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "patientProfileId" | "healthcareProviderId" | "createdByUserId" | "serviceModality" | "notes" | "startsOn" | "endsOn" | "isIndefinite" | "isActive" | "generatedUntil" | "cancelledAt" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment_recurring_series"]>
+  export type appointment_recurring_seriesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | appointment_recurring_series$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_recurring_series$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    createdByUser?: boolean | userDefaultArgs<ExtArgs>
+    appointments?: boolean | appointment_recurring_series$appointmentsArgs<ExtArgs>
+    rules?: boolean | appointment_recurring_series$rulesArgs<ExtArgs>
+    procedures?: boolean | appointment_recurring_series$proceduresArgs<ExtArgs>
+    _count?: boolean | Appointment_recurring_seriesCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type appointment_recurring_seriesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | appointment_recurring_series$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_recurring_series$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    createdByUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type appointment_recurring_seriesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | appointment_recurring_series$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_recurring_series$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    createdByUser?: boolean | userDefaultArgs<ExtArgs>
+  }
+
+  export type $appointment_recurring_seriesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "appointment_recurring_series"
+    objects: {
+      customer: Prisma.$userPayload<ExtArgs> | null
+      patientProfile: Prisma.$patient_profilePayload<ExtArgs> | null
+      healthcareProvider: Prisma.$userPayload<ExtArgs>
+      createdByUser: Prisma.$userPayload<ExtArgs>
+      appointments: Prisma.$appointmentPayload<ExtArgs>[]
+      rules: Prisma.$appointment_recurring_series_rulePayload<ExtArgs>[]
+      procedures: Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      customerId: string | null
+      patientProfileId: string | null
+      healthcareProviderId: string
+      createdByUserId: string
+      serviceModality: string
+      notes: string | null
+      startsOn: Date
+      endsOn: Date | null
+      isIndefinite: boolean
+      isActive: boolean
+      generatedUntil: Date | null
+      cancelledAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["appointment_recurring_series"]>
+    composites: {}
+  }
+
+  type appointment_recurring_seriesGetPayload<S extends boolean | null | undefined | appointment_recurring_seriesDefaultArgs> = $Result.GetResult<Prisma.$appointment_recurring_seriesPayload, S>
+
+  type appointment_recurring_seriesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<appointment_recurring_seriesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Appointment_recurring_seriesCountAggregateInputType | true
+    }
+
+  export interface appointment_recurring_seriesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['appointment_recurring_series'], meta: { name: 'appointment_recurring_series' } }
+    /**
+     * Find zero or one Appointment_recurring_series that matches the filter.
+     * @param {appointment_recurring_seriesFindUniqueArgs} args - Arguments to find a Appointment_recurring_series
+     * @example
+     * // Get one Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends appointment_recurring_seriesFindUniqueArgs>(args: SelectSubset<T, appointment_recurring_seriesFindUniqueArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Appointment_recurring_series that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {appointment_recurring_seriesFindUniqueOrThrowArgs} args - Arguments to find a Appointment_recurring_series
+     * @example
+     * // Get one Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends appointment_recurring_seriesFindUniqueOrThrowArgs>(args: SelectSubset<T, appointment_recurring_seriesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_recurring_series that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_seriesFindFirstArgs} args - Arguments to find a Appointment_recurring_series
+     * @example
+     * // Get one Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends appointment_recurring_seriesFindFirstArgs>(args?: SelectSubset<T, appointment_recurring_seriesFindFirstArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_recurring_series that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_seriesFindFirstOrThrowArgs} args - Arguments to find a Appointment_recurring_series
+     * @example
+     * // Get one Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends appointment_recurring_seriesFindFirstOrThrowArgs>(args?: SelectSubset<T, appointment_recurring_seriesFindFirstOrThrowArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Appointment_recurring_series that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_seriesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.findMany()
+     * 
+     * // Get first 10 Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const appointment_recurring_seriesWithIdOnly = await prisma.appointment_recurring_series.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends appointment_recurring_seriesFindManyArgs>(args?: SelectSubset<T, appointment_recurring_seriesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Appointment_recurring_series.
+     * @param {appointment_recurring_seriesCreateArgs} args - Arguments to create a Appointment_recurring_series.
+     * @example
+     * // Create one Appointment_recurring_series
+     * const Appointment_recurring_series = await prisma.appointment_recurring_series.create({
+     *   data: {
+     *     // ... data to create a Appointment_recurring_series
+     *   }
+     * })
+     * 
+     */
+    create<T extends appointment_recurring_seriesCreateArgs>(args: SelectSubset<T, appointment_recurring_seriesCreateArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Appointment_recurring_series.
+     * @param {appointment_recurring_seriesCreateManyArgs} args - Arguments to create many Appointment_recurring_series.
+     * @example
+     * // Create many Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends appointment_recurring_seriesCreateManyArgs>(args?: SelectSubset<T, appointment_recurring_seriesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Appointment_recurring_series and returns the data saved in the database.
+     * @param {appointment_recurring_seriesCreateManyAndReturnArgs} args - Arguments to create many Appointment_recurring_series.
+     * @example
+     * // Create many Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Appointment_recurring_series and only return the `id`
+     * const appointment_recurring_seriesWithIdOnly = await prisma.appointment_recurring_series.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends appointment_recurring_seriesCreateManyAndReturnArgs>(args?: SelectSubset<T, appointment_recurring_seriesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Appointment_recurring_series.
+     * @param {appointment_recurring_seriesDeleteArgs} args - Arguments to delete one Appointment_recurring_series.
+     * @example
+     * // Delete one Appointment_recurring_series
+     * const Appointment_recurring_series = await prisma.appointment_recurring_series.delete({
+     *   where: {
+     *     // ... filter to delete one Appointment_recurring_series
+     *   }
+     * })
+     * 
+     */
+    delete<T extends appointment_recurring_seriesDeleteArgs>(args: SelectSubset<T, appointment_recurring_seriesDeleteArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Appointment_recurring_series.
+     * @param {appointment_recurring_seriesUpdateArgs} args - Arguments to update one Appointment_recurring_series.
+     * @example
+     * // Update one Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends appointment_recurring_seriesUpdateArgs>(args: SelectSubset<T, appointment_recurring_seriesUpdateArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Appointment_recurring_series.
+     * @param {appointment_recurring_seriesDeleteManyArgs} args - Arguments to filter Appointment_recurring_series to delete.
+     * @example
+     * // Delete a few Appointment_recurring_series
+     * const { count } = await prisma.appointment_recurring_series.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends appointment_recurring_seriesDeleteManyArgs>(args?: SelectSubset<T, appointment_recurring_seriesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_recurring_series.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_seriesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends appointment_recurring_seriesUpdateManyArgs>(args: SelectSubset<T, appointment_recurring_seriesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_recurring_series and returns the data updated in the database.
+     * @param {appointment_recurring_seriesUpdateManyAndReturnArgs} args - Arguments to update many Appointment_recurring_series.
+     * @example
+     * // Update many Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Appointment_recurring_series and only return the `id`
+     * const appointment_recurring_seriesWithIdOnly = await prisma.appointment_recurring_series.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends appointment_recurring_seriesUpdateManyAndReturnArgs>(args: SelectSubset<T, appointment_recurring_seriesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Appointment_recurring_series.
+     * @param {appointment_recurring_seriesUpsertArgs} args - Arguments to update or create a Appointment_recurring_series.
+     * @example
+     * // Update or create a Appointment_recurring_series
+     * const appointment_recurring_series = await prisma.appointment_recurring_series.upsert({
+     *   create: {
+     *     // ... data to create a Appointment_recurring_series
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Appointment_recurring_series we want to update
+     *   }
+     * })
+     */
+    upsert<T extends appointment_recurring_seriesUpsertArgs>(args: SelectSubset<T, appointment_recurring_seriesUpsertArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Appointment_recurring_series.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_seriesCountArgs} args - Arguments to filter Appointment_recurring_series to count.
+     * @example
+     * // Count the number of Appointment_recurring_series
+     * const count = await prisma.appointment_recurring_series.count({
+     *   where: {
+     *     // ... the filter for the Appointment_recurring_series we want to count
+     *   }
+     * })
+    **/
+    count<T extends appointment_recurring_seriesCountArgs>(
+      args?: Subset<T, appointment_recurring_seriesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Appointment_recurring_seriesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Appointment_recurring_series.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Appointment_recurring_seriesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Appointment_recurring_seriesAggregateArgs>(args: Subset<T, Appointment_recurring_seriesAggregateArgs>): Prisma.PrismaPromise<GetAppointment_recurring_seriesAggregateType<T>>
+
+    /**
+     * Group by Appointment_recurring_series.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_seriesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends appointment_recurring_seriesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: appointment_recurring_seriesGroupByArgs['orderBy'] }
+        : { orderBy?: appointment_recurring_seriesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, appointment_recurring_seriesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAppointment_recurring_seriesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the appointment_recurring_series model
+   */
+  readonly fields: appointment_recurring_seriesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for appointment_recurring_series.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__appointment_recurring_seriesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    customer<T extends appointment_recurring_series$customerArgs<ExtArgs> = {}>(args?: Subset<T, appointment_recurring_series$customerArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    patientProfile<T extends appointment_recurring_series$patientProfileArgs<ExtArgs> = {}>(args?: Subset<T, appointment_recurring_series$patientProfileArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    healthcareProvider<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    createdByUser<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    appointments<T extends appointment_recurring_series$appointmentsArgs<ExtArgs> = {}>(args?: Subset<T, appointment_recurring_series$appointmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    rules<T extends appointment_recurring_series$rulesArgs<ExtArgs> = {}>(args?: Subset<T, appointment_recurring_series$rulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    procedures<T extends appointment_recurring_series$proceduresArgs<ExtArgs> = {}>(args?: Subset<T, appointment_recurring_series$proceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the appointment_recurring_series model
+   */
+  interface appointment_recurring_seriesFieldRefs {
+    readonly id: FieldRef<"appointment_recurring_series", 'String'>
+    readonly customerId: FieldRef<"appointment_recurring_series", 'String'>
+    readonly patientProfileId: FieldRef<"appointment_recurring_series", 'String'>
+    readonly healthcareProviderId: FieldRef<"appointment_recurring_series", 'String'>
+    readonly createdByUserId: FieldRef<"appointment_recurring_series", 'String'>
+    readonly serviceModality: FieldRef<"appointment_recurring_series", 'String'>
+    readonly notes: FieldRef<"appointment_recurring_series", 'String'>
+    readonly startsOn: FieldRef<"appointment_recurring_series", 'DateTime'>
+    readonly endsOn: FieldRef<"appointment_recurring_series", 'DateTime'>
+    readonly isIndefinite: FieldRef<"appointment_recurring_series", 'Boolean'>
+    readonly isActive: FieldRef<"appointment_recurring_series", 'Boolean'>
+    readonly generatedUntil: FieldRef<"appointment_recurring_series", 'DateTime'>
+    readonly cancelledAt: FieldRef<"appointment_recurring_series", 'DateTime'>
+    readonly createdAt: FieldRef<"appointment_recurring_series", 'DateTime'>
+    readonly updatedAt: FieldRef<"appointment_recurring_series", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * appointment_recurring_series findUnique
+   */
+  export type appointment_recurring_seriesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series to fetch.
+     */
+    where: appointment_recurring_seriesWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series findUniqueOrThrow
+   */
+  export type appointment_recurring_seriesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series to fetch.
+     */
+    where: appointment_recurring_seriesWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series findFirst
+   */
+  export type appointment_recurring_seriesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series to fetch.
+     */
+    where?: appointment_recurring_seriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series to fetch.
+     */
+    orderBy?: appointment_recurring_seriesOrderByWithRelationInput | appointment_recurring_seriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_recurring_series.
+     */
+    cursor?: appointment_recurring_seriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_recurring_series.
+     */
+    distinct?: Appointment_recurring_seriesScalarFieldEnum | Appointment_recurring_seriesScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series findFirstOrThrow
+   */
+  export type appointment_recurring_seriesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series to fetch.
+     */
+    where?: appointment_recurring_seriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series to fetch.
+     */
+    orderBy?: appointment_recurring_seriesOrderByWithRelationInput | appointment_recurring_seriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_recurring_series.
+     */
+    cursor?: appointment_recurring_seriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_recurring_series.
+     */
+    distinct?: Appointment_recurring_seriesScalarFieldEnum | Appointment_recurring_seriesScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series findMany
+   */
+  export type appointment_recurring_seriesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series to fetch.
+     */
+    where?: appointment_recurring_seriesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series to fetch.
+     */
+    orderBy?: appointment_recurring_seriesOrderByWithRelationInput | appointment_recurring_seriesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing appointment_recurring_series.
+     */
+    cursor?: appointment_recurring_seriesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_recurring_series.
+     */
+    distinct?: Appointment_recurring_seriesScalarFieldEnum | Appointment_recurring_seriesScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series create
+   */
+  export type appointment_recurring_seriesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a appointment_recurring_series.
+     */
+    data: XOR<appointment_recurring_seriesCreateInput, appointment_recurring_seriesUncheckedCreateInput>
+  }
+
+  /**
+   * appointment_recurring_series createMany
+   */
+  export type appointment_recurring_seriesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many appointment_recurring_series.
+     */
+    data: appointment_recurring_seriesCreateManyInput | appointment_recurring_seriesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * appointment_recurring_series createManyAndReturn
+   */
+  export type appointment_recurring_seriesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * The data used to create many appointment_recurring_series.
+     */
+    data: appointment_recurring_seriesCreateManyInput | appointment_recurring_seriesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_recurring_series update
+   */
+  export type appointment_recurring_seriesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a appointment_recurring_series.
+     */
+    data: XOR<appointment_recurring_seriesUpdateInput, appointment_recurring_seriesUncheckedUpdateInput>
+    /**
+     * Choose, which appointment_recurring_series to update.
+     */
+    where: appointment_recurring_seriesWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series updateMany
+   */
+  export type appointment_recurring_seriesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update appointment_recurring_series.
+     */
+    data: XOR<appointment_recurring_seriesUpdateManyMutationInput, appointment_recurring_seriesUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_recurring_series to update
+     */
+    where?: appointment_recurring_seriesWhereInput
+    /**
+     * Limit how many appointment_recurring_series to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_recurring_series updateManyAndReturn
+   */
+  export type appointment_recurring_seriesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * The data used to update appointment_recurring_series.
+     */
+    data: XOR<appointment_recurring_seriesUpdateManyMutationInput, appointment_recurring_seriesUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_recurring_series to update
+     */
+    where?: appointment_recurring_seriesWhereInput
+    /**
+     * Limit how many appointment_recurring_series to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_recurring_series upsert
+   */
+  export type appointment_recurring_seriesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the appointment_recurring_series to update in case it exists.
+     */
+    where: appointment_recurring_seriesWhereUniqueInput
+    /**
+     * In case the appointment_recurring_series found by the `where` argument doesn't exist, create a new appointment_recurring_series with this data.
+     */
+    create: XOR<appointment_recurring_seriesCreateInput, appointment_recurring_seriesUncheckedCreateInput>
+    /**
+     * In case the appointment_recurring_series was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<appointment_recurring_seriesUpdateInput, appointment_recurring_seriesUncheckedUpdateInput>
+  }
+
+  /**
+   * appointment_recurring_series delete
+   */
+  export type appointment_recurring_seriesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    /**
+     * Filter which appointment_recurring_series to delete.
+     */
+    where: appointment_recurring_seriesWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series deleteMany
+   */
+  export type appointment_recurring_seriesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_recurring_series to delete
+     */
+    where?: appointment_recurring_seriesWhereInput
+    /**
+     * Limit how many appointment_recurring_series to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_recurring_series.customer
+   */
+  export type appointment_recurring_series$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user
+     */
+    select?: userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user
+     */
+    omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    where?: userWhereInput
+  }
+
+  /**
+   * appointment_recurring_series.patientProfile
+   */
+  export type appointment_recurring_series$patientProfileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    where?: patient_profileWhereInput
+  }
+
+  /**
+   * appointment_recurring_series.appointments
+   */
+  export type appointment_recurring_series$appointmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment
+     */
+    select?: appointmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment
+     */
+    omit?: appointmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointmentInclude<ExtArgs> | null
+    where?: appointmentWhereInput
+    orderBy?: appointmentOrderByWithRelationInput | appointmentOrderByWithRelationInput[]
+    cursor?: appointmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AppointmentScalarFieldEnum | AppointmentScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series.rules
+   */
+  export type appointment_recurring_series$rulesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    where?: appointment_recurring_series_ruleWhereInput
+    orderBy?: appointment_recurring_series_ruleOrderByWithRelationInput | appointment_recurring_series_ruleOrderByWithRelationInput[]
+    cursor?: appointment_recurring_series_ruleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_recurring_series_ruleScalarFieldEnum | Appointment_recurring_series_ruleScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series.procedures
+   */
+  export type appointment_recurring_series$proceduresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    where?: appointment_recurring_series_procedureWhereInput
+    orderBy?: appointment_recurring_series_procedureOrderByWithRelationInput | appointment_recurring_series_procedureOrderByWithRelationInput[]
+    cursor?: appointment_recurring_series_procedureWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_recurring_series_procedureScalarFieldEnum | Appointment_recurring_series_procedureScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series without action
+   */
+  export type appointment_recurring_seriesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model appointment_recurring_series_rule
+   */
+
+  export type AggregateAppointment_recurring_series_rule = {
+    _count: Appointment_recurring_series_ruleCountAggregateOutputType | null
+    _avg: Appointment_recurring_series_ruleAvgAggregateOutputType | null
+    _sum: Appointment_recurring_series_ruleSumAggregateOutputType | null
+    _min: Appointment_recurring_series_ruleMinAggregateOutputType | null
+    _max: Appointment_recurring_series_ruleMaxAggregateOutputType | null
+  }
+
+  export type Appointment_recurring_series_ruleAvgAggregateOutputType = {
+    dayOfWeek: number | null
+  }
+
+  export type Appointment_recurring_series_ruleSumAggregateOutputType = {
+    dayOfWeek: number | null
+  }
+
+  export type Appointment_recurring_series_ruleMinAggregateOutputType = {
+    id: string | null
+    seriesId: string | null
+    dayOfWeek: number | null
+    startTime: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Appointment_recurring_series_ruleMaxAggregateOutputType = {
+    id: string | null
+    seriesId: string | null
+    dayOfWeek: number | null
+    startTime: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Appointment_recurring_series_ruleCountAggregateOutputType = {
+    id: number
+    seriesId: number
+    dayOfWeek: number
+    startTime: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Appointment_recurring_series_ruleAvgAggregateInputType = {
+    dayOfWeek?: true
+  }
+
+  export type Appointment_recurring_series_ruleSumAggregateInputType = {
+    dayOfWeek?: true
+  }
+
+  export type Appointment_recurring_series_ruleMinAggregateInputType = {
+    id?: true
+    seriesId?: true
+    dayOfWeek?: true
+    startTime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Appointment_recurring_series_ruleMaxAggregateInputType = {
+    id?: true
+    seriesId?: true
+    dayOfWeek?: true
+    startTime?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Appointment_recurring_series_ruleCountAggregateInputType = {
+    id?: true
+    seriesId?: true
+    dayOfWeek?: true
+    startTime?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Appointment_recurring_series_ruleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_recurring_series_rule to aggregate.
+     */
+    where?: appointment_recurring_series_ruleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series_rules to fetch.
+     */
+    orderBy?: appointment_recurring_series_ruleOrderByWithRelationInput | appointment_recurring_series_ruleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: appointment_recurring_series_ruleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series_rules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series_rules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned appointment_recurring_series_rules
+    **/
+    _count?: true | Appointment_recurring_series_ruleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Appointment_recurring_series_ruleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Appointment_recurring_series_ruleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Appointment_recurring_series_ruleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Appointment_recurring_series_ruleMaxAggregateInputType
+  }
+
+  export type GetAppointment_recurring_series_ruleAggregateType<T extends Appointment_recurring_series_ruleAggregateArgs> = {
+        [P in keyof T & keyof AggregateAppointment_recurring_series_rule]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAppointment_recurring_series_rule[P]>
+      : GetScalarType<T[P], AggregateAppointment_recurring_series_rule[P]>
+  }
+
+
+
+
+  export type appointment_recurring_series_ruleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_series_ruleWhereInput
+    orderBy?: appointment_recurring_series_ruleOrderByWithAggregationInput | appointment_recurring_series_ruleOrderByWithAggregationInput[]
+    by: Appointment_recurring_series_ruleScalarFieldEnum[] | Appointment_recurring_series_ruleScalarFieldEnum
+    having?: appointment_recurring_series_ruleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Appointment_recurring_series_ruleCountAggregateInputType | true
+    _avg?: Appointment_recurring_series_ruleAvgAggregateInputType
+    _sum?: Appointment_recurring_series_ruleSumAggregateInputType
+    _min?: Appointment_recurring_series_ruleMinAggregateInputType
+    _max?: Appointment_recurring_series_ruleMaxAggregateInputType
+  }
+
+  export type Appointment_recurring_series_ruleGroupByOutputType = {
+    id: string
+    seriesId: string
+    dayOfWeek: number
+    startTime: string
+    createdAt: Date
+    updatedAt: Date
+    _count: Appointment_recurring_series_ruleCountAggregateOutputType | null
+    _avg: Appointment_recurring_series_ruleAvgAggregateOutputType | null
+    _sum: Appointment_recurring_series_ruleSumAggregateOutputType | null
+    _min: Appointment_recurring_series_ruleMinAggregateOutputType | null
+    _max: Appointment_recurring_series_ruleMaxAggregateOutputType | null
+  }
+
+  type GetAppointment_recurring_series_ruleGroupByPayload<T extends appointment_recurring_series_ruleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Appointment_recurring_series_ruleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Appointment_recurring_series_ruleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Appointment_recurring_series_ruleGroupByOutputType[P]>
+            : GetScalarType<T[P], Appointment_recurring_series_ruleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type appointment_recurring_series_ruleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    seriesId?: boolean
+    dayOfWeek?: boolean
+    startTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+    appointments?: boolean | appointment_recurring_series_rule$appointmentsArgs<ExtArgs>
+    _count?: boolean | Appointment_recurring_series_ruleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_recurring_series_rule"]>
+
+  export type appointment_recurring_series_ruleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    seriesId?: boolean
+    dayOfWeek?: boolean
+    startTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_recurring_series_rule"]>
+
+  export type appointment_recurring_series_ruleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    seriesId?: boolean
+    dayOfWeek?: boolean
+    startTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_recurring_series_rule"]>
+
+  export type appointment_recurring_series_ruleSelectScalar = {
+    id?: boolean
+    seriesId?: boolean
+    dayOfWeek?: boolean
+    startTime?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type appointment_recurring_series_ruleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "seriesId" | "dayOfWeek" | "startTime" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment_recurring_series_rule"]>
+  export type appointment_recurring_series_ruleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+    appointments?: boolean | appointment_recurring_series_rule$appointmentsArgs<ExtArgs>
+    _count?: boolean | Appointment_recurring_series_ruleCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type appointment_recurring_series_ruleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+  }
+  export type appointment_recurring_series_ruleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+  }
+
+  export type $appointment_recurring_series_rulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "appointment_recurring_series_rule"
+    objects: {
+      series: Prisma.$appointment_recurring_seriesPayload<ExtArgs>
+      appointments: Prisma.$appointmentPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      seriesId: string
+      dayOfWeek: number
+      startTime: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["appointment_recurring_series_rule"]>
+    composites: {}
+  }
+
+  type appointment_recurring_series_ruleGetPayload<S extends boolean | null | undefined | appointment_recurring_series_ruleDefaultArgs> = $Result.GetResult<Prisma.$appointment_recurring_series_rulePayload, S>
+
+  type appointment_recurring_series_ruleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<appointment_recurring_series_ruleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Appointment_recurring_series_ruleCountAggregateInputType | true
+    }
+
+  export interface appointment_recurring_series_ruleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['appointment_recurring_series_rule'], meta: { name: 'appointment_recurring_series_rule' } }
+    /**
+     * Find zero or one Appointment_recurring_series_rule that matches the filter.
+     * @param {appointment_recurring_series_ruleFindUniqueArgs} args - Arguments to find a Appointment_recurring_series_rule
+     * @example
+     * // Get one Appointment_recurring_series_rule
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends appointment_recurring_series_ruleFindUniqueArgs>(args: SelectSubset<T, appointment_recurring_series_ruleFindUniqueArgs<ExtArgs>>): Prisma__appointment_recurring_series_ruleClient<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Appointment_recurring_series_rule that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {appointment_recurring_series_ruleFindUniqueOrThrowArgs} args - Arguments to find a Appointment_recurring_series_rule
+     * @example
+     * // Get one Appointment_recurring_series_rule
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends appointment_recurring_series_ruleFindUniqueOrThrowArgs>(args: SelectSubset<T, appointment_recurring_series_ruleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__appointment_recurring_series_ruleClient<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_recurring_series_rule that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_ruleFindFirstArgs} args - Arguments to find a Appointment_recurring_series_rule
+     * @example
+     * // Get one Appointment_recurring_series_rule
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends appointment_recurring_series_ruleFindFirstArgs>(args?: SelectSubset<T, appointment_recurring_series_ruleFindFirstArgs<ExtArgs>>): Prisma__appointment_recurring_series_ruleClient<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_recurring_series_rule that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_ruleFindFirstOrThrowArgs} args - Arguments to find a Appointment_recurring_series_rule
+     * @example
+     * // Get one Appointment_recurring_series_rule
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends appointment_recurring_series_ruleFindFirstOrThrowArgs>(args?: SelectSubset<T, appointment_recurring_series_ruleFindFirstOrThrowArgs<ExtArgs>>): Prisma__appointment_recurring_series_ruleClient<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Appointment_recurring_series_rules that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_ruleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Appointment_recurring_series_rules
+     * const appointment_recurring_series_rules = await prisma.appointment_recurring_series_rule.findMany()
+     * 
+     * // Get first 10 Appointment_recurring_series_rules
+     * const appointment_recurring_series_rules = await prisma.appointment_recurring_series_rule.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const appointment_recurring_series_ruleWithIdOnly = await prisma.appointment_recurring_series_rule.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends appointment_recurring_series_ruleFindManyArgs>(args?: SelectSubset<T, appointment_recurring_series_ruleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Appointment_recurring_series_rule.
+     * @param {appointment_recurring_series_ruleCreateArgs} args - Arguments to create a Appointment_recurring_series_rule.
+     * @example
+     * // Create one Appointment_recurring_series_rule
+     * const Appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.create({
+     *   data: {
+     *     // ... data to create a Appointment_recurring_series_rule
+     *   }
+     * })
+     * 
+     */
+    create<T extends appointment_recurring_series_ruleCreateArgs>(args: SelectSubset<T, appointment_recurring_series_ruleCreateArgs<ExtArgs>>): Prisma__appointment_recurring_series_ruleClient<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Appointment_recurring_series_rules.
+     * @param {appointment_recurring_series_ruleCreateManyArgs} args - Arguments to create many Appointment_recurring_series_rules.
+     * @example
+     * // Create many Appointment_recurring_series_rules
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends appointment_recurring_series_ruleCreateManyArgs>(args?: SelectSubset<T, appointment_recurring_series_ruleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Appointment_recurring_series_rules and returns the data saved in the database.
+     * @param {appointment_recurring_series_ruleCreateManyAndReturnArgs} args - Arguments to create many Appointment_recurring_series_rules.
+     * @example
+     * // Create many Appointment_recurring_series_rules
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Appointment_recurring_series_rules and only return the `id`
+     * const appointment_recurring_series_ruleWithIdOnly = await prisma.appointment_recurring_series_rule.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends appointment_recurring_series_ruleCreateManyAndReturnArgs>(args?: SelectSubset<T, appointment_recurring_series_ruleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Appointment_recurring_series_rule.
+     * @param {appointment_recurring_series_ruleDeleteArgs} args - Arguments to delete one Appointment_recurring_series_rule.
+     * @example
+     * // Delete one Appointment_recurring_series_rule
+     * const Appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.delete({
+     *   where: {
+     *     // ... filter to delete one Appointment_recurring_series_rule
+     *   }
+     * })
+     * 
+     */
+    delete<T extends appointment_recurring_series_ruleDeleteArgs>(args: SelectSubset<T, appointment_recurring_series_ruleDeleteArgs<ExtArgs>>): Prisma__appointment_recurring_series_ruleClient<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Appointment_recurring_series_rule.
+     * @param {appointment_recurring_series_ruleUpdateArgs} args - Arguments to update one Appointment_recurring_series_rule.
+     * @example
+     * // Update one Appointment_recurring_series_rule
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends appointment_recurring_series_ruleUpdateArgs>(args: SelectSubset<T, appointment_recurring_series_ruleUpdateArgs<ExtArgs>>): Prisma__appointment_recurring_series_ruleClient<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Appointment_recurring_series_rules.
+     * @param {appointment_recurring_series_ruleDeleteManyArgs} args - Arguments to filter Appointment_recurring_series_rules to delete.
+     * @example
+     * // Delete a few Appointment_recurring_series_rules
+     * const { count } = await prisma.appointment_recurring_series_rule.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends appointment_recurring_series_ruleDeleteManyArgs>(args?: SelectSubset<T, appointment_recurring_series_ruleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_recurring_series_rules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_ruleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Appointment_recurring_series_rules
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends appointment_recurring_series_ruleUpdateManyArgs>(args: SelectSubset<T, appointment_recurring_series_ruleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_recurring_series_rules and returns the data updated in the database.
+     * @param {appointment_recurring_series_ruleUpdateManyAndReturnArgs} args - Arguments to update many Appointment_recurring_series_rules.
+     * @example
+     * // Update many Appointment_recurring_series_rules
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Appointment_recurring_series_rules and only return the `id`
+     * const appointment_recurring_series_ruleWithIdOnly = await prisma.appointment_recurring_series_rule.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends appointment_recurring_series_ruleUpdateManyAndReturnArgs>(args: SelectSubset<T, appointment_recurring_series_ruleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Appointment_recurring_series_rule.
+     * @param {appointment_recurring_series_ruleUpsertArgs} args - Arguments to update or create a Appointment_recurring_series_rule.
+     * @example
+     * // Update or create a Appointment_recurring_series_rule
+     * const appointment_recurring_series_rule = await prisma.appointment_recurring_series_rule.upsert({
+     *   create: {
+     *     // ... data to create a Appointment_recurring_series_rule
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Appointment_recurring_series_rule we want to update
+     *   }
+     * })
+     */
+    upsert<T extends appointment_recurring_series_ruleUpsertArgs>(args: SelectSubset<T, appointment_recurring_series_ruleUpsertArgs<ExtArgs>>): Prisma__appointment_recurring_series_ruleClient<$Result.GetResult<Prisma.$appointment_recurring_series_rulePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Appointment_recurring_series_rules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_ruleCountArgs} args - Arguments to filter Appointment_recurring_series_rules to count.
+     * @example
+     * // Count the number of Appointment_recurring_series_rules
+     * const count = await prisma.appointment_recurring_series_rule.count({
+     *   where: {
+     *     // ... the filter for the Appointment_recurring_series_rules we want to count
+     *   }
+     * })
+    **/
+    count<T extends appointment_recurring_series_ruleCountArgs>(
+      args?: Subset<T, appointment_recurring_series_ruleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Appointment_recurring_series_ruleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Appointment_recurring_series_rule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Appointment_recurring_series_ruleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Appointment_recurring_series_ruleAggregateArgs>(args: Subset<T, Appointment_recurring_series_ruleAggregateArgs>): Prisma.PrismaPromise<GetAppointment_recurring_series_ruleAggregateType<T>>
+
+    /**
+     * Group by Appointment_recurring_series_rule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_ruleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends appointment_recurring_series_ruleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: appointment_recurring_series_ruleGroupByArgs['orderBy'] }
+        : { orderBy?: appointment_recurring_series_ruleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, appointment_recurring_series_ruleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAppointment_recurring_series_ruleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the appointment_recurring_series_rule model
+   */
+  readonly fields: appointment_recurring_series_ruleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for appointment_recurring_series_rule.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__appointment_recurring_series_ruleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    series<T extends appointment_recurring_seriesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, appointment_recurring_seriesDefaultArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    appointments<T extends appointment_recurring_series_rule$appointmentsArgs<ExtArgs> = {}>(args?: Subset<T, appointment_recurring_series_rule$appointmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the appointment_recurring_series_rule model
+   */
+  interface appointment_recurring_series_ruleFieldRefs {
+    readonly id: FieldRef<"appointment_recurring_series_rule", 'String'>
+    readonly seriesId: FieldRef<"appointment_recurring_series_rule", 'String'>
+    readonly dayOfWeek: FieldRef<"appointment_recurring_series_rule", 'Int'>
+    readonly startTime: FieldRef<"appointment_recurring_series_rule", 'String'>
+    readonly createdAt: FieldRef<"appointment_recurring_series_rule", 'DateTime'>
+    readonly updatedAt: FieldRef<"appointment_recurring_series_rule", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * appointment_recurring_series_rule findUnique
+   */
+  export type appointment_recurring_series_ruleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_rule to fetch.
+     */
+    where: appointment_recurring_series_ruleWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series_rule findUniqueOrThrow
+   */
+  export type appointment_recurring_series_ruleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_rule to fetch.
+     */
+    where: appointment_recurring_series_ruleWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series_rule findFirst
+   */
+  export type appointment_recurring_series_ruleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_rule to fetch.
+     */
+    where?: appointment_recurring_series_ruleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series_rules to fetch.
+     */
+    orderBy?: appointment_recurring_series_ruleOrderByWithRelationInput | appointment_recurring_series_ruleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_recurring_series_rules.
+     */
+    cursor?: appointment_recurring_series_ruleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series_rules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series_rules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_recurring_series_rules.
+     */
+    distinct?: Appointment_recurring_series_ruleScalarFieldEnum | Appointment_recurring_series_ruleScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series_rule findFirstOrThrow
+   */
+  export type appointment_recurring_series_ruleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_rule to fetch.
+     */
+    where?: appointment_recurring_series_ruleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series_rules to fetch.
+     */
+    orderBy?: appointment_recurring_series_ruleOrderByWithRelationInput | appointment_recurring_series_ruleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_recurring_series_rules.
+     */
+    cursor?: appointment_recurring_series_ruleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series_rules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series_rules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_recurring_series_rules.
+     */
+    distinct?: Appointment_recurring_series_ruleScalarFieldEnum | Appointment_recurring_series_ruleScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series_rule findMany
+   */
+  export type appointment_recurring_series_ruleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_rules to fetch.
+     */
+    where?: appointment_recurring_series_ruleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series_rules to fetch.
+     */
+    orderBy?: appointment_recurring_series_ruleOrderByWithRelationInput | appointment_recurring_series_ruleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing appointment_recurring_series_rules.
+     */
+    cursor?: appointment_recurring_series_ruleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series_rules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series_rules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_recurring_series_rules.
+     */
+    distinct?: Appointment_recurring_series_ruleScalarFieldEnum | Appointment_recurring_series_ruleScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series_rule create
+   */
+  export type appointment_recurring_series_ruleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a appointment_recurring_series_rule.
+     */
+    data: XOR<appointment_recurring_series_ruleCreateInput, appointment_recurring_series_ruleUncheckedCreateInput>
+  }
+
+  /**
+   * appointment_recurring_series_rule createMany
+   */
+  export type appointment_recurring_series_ruleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many appointment_recurring_series_rules.
+     */
+    data: appointment_recurring_series_ruleCreateManyInput | appointment_recurring_series_ruleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * appointment_recurring_series_rule createManyAndReturn
+   */
+  export type appointment_recurring_series_ruleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * The data used to create many appointment_recurring_series_rules.
+     */
+    data: appointment_recurring_series_ruleCreateManyInput | appointment_recurring_series_ruleCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_recurring_series_rule update
+   */
+  export type appointment_recurring_series_ruleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a appointment_recurring_series_rule.
+     */
+    data: XOR<appointment_recurring_series_ruleUpdateInput, appointment_recurring_series_ruleUncheckedUpdateInput>
+    /**
+     * Choose, which appointment_recurring_series_rule to update.
+     */
+    where: appointment_recurring_series_ruleWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series_rule updateMany
+   */
+  export type appointment_recurring_series_ruleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update appointment_recurring_series_rules.
+     */
+    data: XOR<appointment_recurring_series_ruleUpdateManyMutationInput, appointment_recurring_series_ruleUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_recurring_series_rules to update
+     */
+    where?: appointment_recurring_series_ruleWhereInput
+    /**
+     * Limit how many appointment_recurring_series_rules to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_recurring_series_rule updateManyAndReturn
+   */
+  export type appointment_recurring_series_ruleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * The data used to update appointment_recurring_series_rules.
+     */
+    data: XOR<appointment_recurring_series_ruleUpdateManyMutationInput, appointment_recurring_series_ruleUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_recurring_series_rules to update
+     */
+    where?: appointment_recurring_series_ruleWhereInput
+    /**
+     * Limit how many appointment_recurring_series_rules to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_recurring_series_rule upsert
+   */
+  export type appointment_recurring_series_ruleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the appointment_recurring_series_rule to update in case it exists.
+     */
+    where: appointment_recurring_series_ruleWhereUniqueInput
+    /**
+     * In case the appointment_recurring_series_rule found by the `where` argument doesn't exist, create a new appointment_recurring_series_rule with this data.
+     */
+    create: XOR<appointment_recurring_series_ruleCreateInput, appointment_recurring_series_ruleUncheckedCreateInput>
+    /**
+     * In case the appointment_recurring_series_rule was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<appointment_recurring_series_ruleUpdateInput, appointment_recurring_series_ruleUncheckedUpdateInput>
+  }
+
+  /**
+   * appointment_recurring_series_rule delete
+   */
+  export type appointment_recurring_series_ruleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+    /**
+     * Filter which appointment_recurring_series_rule to delete.
+     */
+    where: appointment_recurring_series_ruleWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series_rule deleteMany
+   */
+  export type appointment_recurring_series_ruleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_recurring_series_rules to delete
+     */
+    where?: appointment_recurring_series_ruleWhereInput
+    /**
+     * Limit how many appointment_recurring_series_rules to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_recurring_series_rule.appointments
+   */
+  export type appointment_recurring_series_rule$appointmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment
+     */
+    select?: appointmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment
+     */
+    omit?: appointmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointmentInclude<ExtArgs> | null
+    where?: appointmentWhereInput
+    orderBy?: appointmentOrderByWithRelationInput | appointmentOrderByWithRelationInput[]
+    cursor?: appointmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AppointmentScalarFieldEnum | AppointmentScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series_rule without action
+   */
+  export type appointment_recurring_series_ruleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_rule
+     */
+    select?: appointment_recurring_series_ruleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_rule
+     */
+    omit?: appointment_recurring_series_ruleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_ruleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model appointment_recurring_series_procedure
+   */
+
+  export type AggregateAppointment_recurring_series_procedure = {
+    _count: Appointment_recurring_series_procedureCountAggregateOutputType | null
+    _min: Appointment_recurring_series_procedureMinAggregateOutputType | null
+    _max: Appointment_recurring_series_procedureMaxAggregateOutputType | null
+  }
+
+  export type Appointment_recurring_series_procedureMinAggregateOutputType = {
+    id: string | null
+    seriesId: string | null
+    procedureId: string | null
+    createdAt: Date | null
+  }
+
+  export type Appointment_recurring_series_procedureMaxAggregateOutputType = {
+    id: string | null
+    seriesId: string | null
+    procedureId: string | null
+    createdAt: Date | null
+  }
+
+  export type Appointment_recurring_series_procedureCountAggregateOutputType = {
+    id: number
+    seriesId: number
+    procedureId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type Appointment_recurring_series_procedureMinAggregateInputType = {
+    id?: true
+    seriesId?: true
+    procedureId?: true
+    createdAt?: true
+  }
+
+  export type Appointment_recurring_series_procedureMaxAggregateInputType = {
+    id?: true
+    seriesId?: true
+    procedureId?: true
+    createdAt?: true
+  }
+
+  export type Appointment_recurring_series_procedureCountAggregateInputType = {
+    id?: true
+    seriesId?: true
+    procedureId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type Appointment_recurring_series_procedureAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_recurring_series_procedure to aggregate.
+     */
+    where?: appointment_recurring_series_procedureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series_procedures to fetch.
+     */
+    orderBy?: appointment_recurring_series_procedureOrderByWithRelationInput | appointment_recurring_series_procedureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: appointment_recurring_series_procedureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series_procedures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series_procedures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned appointment_recurring_series_procedures
+    **/
+    _count?: true | Appointment_recurring_series_procedureCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Appointment_recurring_series_procedureMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Appointment_recurring_series_procedureMaxAggregateInputType
+  }
+
+  export type GetAppointment_recurring_series_procedureAggregateType<T extends Appointment_recurring_series_procedureAggregateArgs> = {
+        [P in keyof T & keyof AggregateAppointment_recurring_series_procedure]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAppointment_recurring_series_procedure[P]>
+      : GetScalarType<T[P], AggregateAppointment_recurring_series_procedure[P]>
+  }
+
+
+
+
+  export type appointment_recurring_series_procedureGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_recurring_series_procedureWhereInput
+    orderBy?: appointment_recurring_series_procedureOrderByWithAggregationInput | appointment_recurring_series_procedureOrderByWithAggregationInput[]
+    by: Appointment_recurring_series_procedureScalarFieldEnum[] | Appointment_recurring_series_procedureScalarFieldEnum
+    having?: appointment_recurring_series_procedureScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Appointment_recurring_series_procedureCountAggregateInputType | true
+    _min?: Appointment_recurring_series_procedureMinAggregateInputType
+    _max?: Appointment_recurring_series_procedureMaxAggregateInputType
+  }
+
+  export type Appointment_recurring_series_procedureGroupByOutputType = {
+    id: string
+    seriesId: string
+    procedureId: string
+    createdAt: Date
+    _count: Appointment_recurring_series_procedureCountAggregateOutputType | null
+    _min: Appointment_recurring_series_procedureMinAggregateOutputType | null
+    _max: Appointment_recurring_series_procedureMaxAggregateOutputType | null
+  }
+
+  type GetAppointment_recurring_series_procedureGroupByPayload<T extends appointment_recurring_series_procedureGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Appointment_recurring_series_procedureGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Appointment_recurring_series_procedureGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Appointment_recurring_series_procedureGroupByOutputType[P]>
+            : GetScalarType<T[P], Appointment_recurring_series_procedureGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type appointment_recurring_series_procedureSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    seriesId?: boolean
+    procedureId?: boolean
+    createdAt?: boolean
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_recurring_series_procedure"]>
+
+  export type appointment_recurring_series_procedureSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    seriesId?: boolean
+    procedureId?: boolean
+    createdAt?: boolean
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_recurring_series_procedure"]>
+
+  export type appointment_recurring_series_procedureSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    seriesId?: boolean
+    procedureId?: boolean
+    createdAt?: boolean
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_recurring_series_procedure"]>
+
+  export type appointment_recurring_series_procedureSelectScalar = {
+    id?: boolean
+    seriesId?: boolean
+    procedureId?: boolean
+    createdAt?: boolean
+  }
+
+  export type appointment_recurring_series_procedureOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "seriesId" | "procedureId" | "createdAt", ExtArgs["result"]["appointment_recurring_series_procedure"]>
+  export type appointment_recurring_series_procedureInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }
+  export type appointment_recurring_series_procedureIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }
+  export type appointment_recurring_series_procedureIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    series?: boolean | appointment_recurring_seriesDefaultArgs<ExtArgs>
+    procedure?: boolean | procedureDefaultArgs<ExtArgs>
+  }
+
+  export type $appointment_recurring_series_procedurePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "appointment_recurring_series_procedure"
+    objects: {
+      series: Prisma.$appointment_recurring_seriesPayload<ExtArgs>
+      procedure: Prisma.$procedurePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      seriesId: string
+      procedureId: string
+      createdAt: Date
+    }, ExtArgs["result"]["appointment_recurring_series_procedure"]>
+    composites: {}
+  }
+
+  type appointment_recurring_series_procedureGetPayload<S extends boolean | null | undefined | appointment_recurring_series_procedureDefaultArgs> = $Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload, S>
+
+  type appointment_recurring_series_procedureCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<appointment_recurring_series_procedureFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Appointment_recurring_series_procedureCountAggregateInputType | true
+    }
+
+  export interface appointment_recurring_series_procedureDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['appointment_recurring_series_procedure'], meta: { name: 'appointment_recurring_series_procedure' } }
+    /**
+     * Find zero or one Appointment_recurring_series_procedure that matches the filter.
+     * @param {appointment_recurring_series_procedureFindUniqueArgs} args - Arguments to find a Appointment_recurring_series_procedure
+     * @example
+     * // Get one Appointment_recurring_series_procedure
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends appointment_recurring_series_procedureFindUniqueArgs>(args: SelectSubset<T, appointment_recurring_series_procedureFindUniqueArgs<ExtArgs>>): Prisma__appointment_recurring_series_procedureClient<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Appointment_recurring_series_procedure that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {appointment_recurring_series_procedureFindUniqueOrThrowArgs} args - Arguments to find a Appointment_recurring_series_procedure
+     * @example
+     * // Get one Appointment_recurring_series_procedure
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends appointment_recurring_series_procedureFindUniqueOrThrowArgs>(args: SelectSubset<T, appointment_recurring_series_procedureFindUniqueOrThrowArgs<ExtArgs>>): Prisma__appointment_recurring_series_procedureClient<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_recurring_series_procedure that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_procedureFindFirstArgs} args - Arguments to find a Appointment_recurring_series_procedure
+     * @example
+     * // Get one Appointment_recurring_series_procedure
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends appointment_recurring_series_procedureFindFirstArgs>(args?: SelectSubset<T, appointment_recurring_series_procedureFindFirstArgs<ExtArgs>>): Prisma__appointment_recurring_series_procedureClient<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_recurring_series_procedure that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_procedureFindFirstOrThrowArgs} args - Arguments to find a Appointment_recurring_series_procedure
+     * @example
+     * // Get one Appointment_recurring_series_procedure
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends appointment_recurring_series_procedureFindFirstOrThrowArgs>(args?: SelectSubset<T, appointment_recurring_series_procedureFindFirstOrThrowArgs<ExtArgs>>): Prisma__appointment_recurring_series_procedureClient<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Appointment_recurring_series_procedures that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_procedureFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Appointment_recurring_series_procedures
+     * const appointment_recurring_series_procedures = await prisma.appointment_recurring_series_procedure.findMany()
+     * 
+     * // Get first 10 Appointment_recurring_series_procedures
+     * const appointment_recurring_series_procedures = await prisma.appointment_recurring_series_procedure.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const appointment_recurring_series_procedureWithIdOnly = await prisma.appointment_recurring_series_procedure.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends appointment_recurring_series_procedureFindManyArgs>(args?: SelectSubset<T, appointment_recurring_series_procedureFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Appointment_recurring_series_procedure.
+     * @param {appointment_recurring_series_procedureCreateArgs} args - Arguments to create a Appointment_recurring_series_procedure.
+     * @example
+     * // Create one Appointment_recurring_series_procedure
+     * const Appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.create({
+     *   data: {
+     *     // ... data to create a Appointment_recurring_series_procedure
+     *   }
+     * })
+     * 
+     */
+    create<T extends appointment_recurring_series_procedureCreateArgs>(args: SelectSubset<T, appointment_recurring_series_procedureCreateArgs<ExtArgs>>): Prisma__appointment_recurring_series_procedureClient<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Appointment_recurring_series_procedures.
+     * @param {appointment_recurring_series_procedureCreateManyArgs} args - Arguments to create many Appointment_recurring_series_procedures.
+     * @example
+     * // Create many Appointment_recurring_series_procedures
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends appointment_recurring_series_procedureCreateManyArgs>(args?: SelectSubset<T, appointment_recurring_series_procedureCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Appointment_recurring_series_procedures and returns the data saved in the database.
+     * @param {appointment_recurring_series_procedureCreateManyAndReturnArgs} args - Arguments to create many Appointment_recurring_series_procedures.
+     * @example
+     * // Create many Appointment_recurring_series_procedures
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Appointment_recurring_series_procedures and only return the `id`
+     * const appointment_recurring_series_procedureWithIdOnly = await prisma.appointment_recurring_series_procedure.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends appointment_recurring_series_procedureCreateManyAndReturnArgs>(args?: SelectSubset<T, appointment_recurring_series_procedureCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Appointment_recurring_series_procedure.
+     * @param {appointment_recurring_series_procedureDeleteArgs} args - Arguments to delete one Appointment_recurring_series_procedure.
+     * @example
+     * // Delete one Appointment_recurring_series_procedure
+     * const Appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.delete({
+     *   where: {
+     *     // ... filter to delete one Appointment_recurring_series_procedure
+     *   }
+     * })
+     * 
+     */
+    delete<T extends appointment_recurring_series_procedureDeleteArgs>(args: SelectSubset<T, appointment_recurring_series_procedureDeleteArgs<ExtArgs>>): Prisma__appointment_recurring_series_procedureClient<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Appointment_recurring_series_procedure.
+     * @param {appointment_recurring_series_procedureUpdateArgs} args - Arguments to update one Appointment_recurring_series_procedure.
+     * @example
+     * // Update one Appointment_recurring_series_procedure
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends appointment_recurring_series_procedureUpdateArgs>(args: SelectSubset<T, appointment_recurring_series_procedureUpdateArgs<ExtArgs>>): Prisma__appointment_recurring_series_procedureClient<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Appointment_recurring_series_procedures.
+     * @param {appointment_recurring_series_procedureDeleteManyArgs} args - Arguments to filter Appointment_recurring_series_procedures to delete.
+     * @example
+     * // Delete a few Appointment_recurring_series_procedures
+     * const { count } = await prisma.appointment_recurring_series_procedure.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends appointment_recurring_series_procedureDeleteManyArgs>(args?: SelectSubset<T, appointment_recurring_series_procedureDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_recurring_series_procedures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_procedureUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Appointment_recurring_series_procedures
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends appointment_recurring_series_procedureUpdateManyArgs>(args: SelectSubset<T, appointment_recurring_series_procedureUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_recurring_series_procedures and returns the data updated in the database.
+     * @param {appointment_recurring_series_procedureUpdateManyAndReturnArgs} args - Arguments to update many Appointment_recurring_series_procedures.
+     * @example
+     * // Update many Appointment_recurring_series_procedures
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Appointment_recurring_series_procedures and only return the `id`
+     * const appointment_recurring_series_procedureWithIdOnly = await prisma.appointment_recurring_series_procedure.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends appointment_recurring_series_procedureUpdateManyAndReturnArgs>(args: SelectSubset<T, appointment_recurring_series_procedureUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Appointment_recurring_series_procedure.
+     * @param {appointment_recurring_series_procedureUpsertArgs} args - Arguments to update or create a Appointment_recurring_series_procedure.
+     * @example
+     * // Update or create a Appointment_recurring_series_procedure
+     * const appointment_recurring_series_procedure = await prisma.appointment_recurring_series_procedure.upsert({
+     *   create: {
+     *     // ... data to create a Appointment_recurring_series_procedure
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Appointment_recurring_series_procedure we want to update
+     *   }
+     * })
+     */
+    upsert<T extends appointment_recurring_series_procedureUpsertArgs>(args: SelectSubset<T, appointment_recurring_series_procedureUpsertArgs<ExtArgs>>): Prisma__appointment_recurring_series_procedureClient<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Appointment_recurring_series_procedures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_procedureCountArgs} args - Arguments to filter Appointment_recurring_series_procedures to count.
+     * @example
+     * // Count the number of Appointment_recurring_series_procedures
+     * const count = await prisma.appointment_recurring_series_procedure.count({
+     *   where: {
+     *     // ... the filter for the Appointment_recurring_series_procedures we want to count
+     *   }
+     * })
+    **/
+    count<T extends appointment_recurring_series_procedureCountArgs>(
+      args?: Subset<T, appointment_recurring_series_procedureCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Appointment_recurring_series_procedureCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Appointment_recurring_series_procedure.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Appointment_recurring_series_procedureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Appointment_recurring_series_procedureAggregateArgs>(args: Subset<T, Appointment_recurring_series_procedureAggregateArgs>): Prisma.PrismaPromise<GetAppointment_recurring_series_procedureAggregateType<T>>
+
+    /**
+     * Group by Appointment_recurring_series_procedure.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_recurring_series_procedureGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends appointment_recurring_series_procedureGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: appointment_recurring_series_procedureGroupByArgs['orderBy'] }
+        : { orderBy?: appointment_recurring_series_procedureGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, appointment_recurring_series_procedureGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAppointment_recurring_series_procedureGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the appointment_recurring_series_procedure model
+   */
+  readonly fields: appointment_recurring_series_procedureFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for appointment_recurring_series_procedure.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__appointment_recurring_series_procedureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    series<T extends appointment_recurring_seriesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, appointment_recurring_seriesDefaultArgs<ExtArgs>>): Prisma__appointment_recurring_seriesClient<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    procedure<T extends procedureDefaultArgs<ExtArgs> = {}>(args?: Subset<T, procedureDefaultArgs<ExtArgs>>): Prisma__procedureClient<$Result.GetResult<Prisma.$procedurePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the appointment_recurring_series_procedure model
+   */
+  interface appointment_recurring_series_procedureFieldRefs {
+    readonly id: FieldRef<"appointment_recurring_series_procedure", 'String'>
+    readonly seriesId: FieldRef<"appointment_recurring_series_procedure", 'String'>
+    readonly procedureId: FieldRef<"appointment_recurring_series_procedure", 'String'>
+    readonly createdAt: FieldRef<"appointment_recurring_series_procedure", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * appointment_recurring_series_procedure findUnique
+   */
+  export type appointment_recurring_series_procedureFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_procedure to fetch.
+     */
+    where: appointment_recurring_series_procedureWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series_procedure findUniqueOrThrow
+   */
+  export type appointment_recurring_series_procedureFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_procedure to fetch.
+     */
+    where: appointment_recurring_series_procedureWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series_procedure findFirst
+   */
+  export type appointment_recurring_series_procedureFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_procedure to fetch.
+     */
+    where?: appointment_recurring_series_procedureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series_procedures to fetch.
+     */
+    orderBy?: appointment_recurring_series_procedureOrderByWithRelationInput | appointment_recurring_series_procedureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_recurring_series_procedures.
+     */
+    cursor?: appointment_recurring_series_procedureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series_procedures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series_procedures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_recurring_series_procedures.
+     */
+    distinct?: Appointment_recurring_series_procedureScalarFieldEnum | Appointment_recurring_series_procedureScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series_procedure findFirstOrThrow
+   */
+  export type appointment_recurring_series_procedureFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_procedure to fetch.
+     */
+    where?: appointment_recurring_series_procedureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series_procedures to fetch.
+     */
+    orderBy?: appointment_recurring_series_procedureOrderByWithRelationInput | appointment_recurring_series_procedureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_recurring_series_procedures.
+     */
+    cursor?: appointment_recurring_series_procedureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series_procedures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series_procedures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_recurring_series_procedures.
+     */
+    distinct?: Appointment_recurring_series_procedureScalarFieldEnum | Appointment_recurring_series_procedureScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series_procedure findMany
+   */
+  export type appointment_recurring_series_procedureFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_recurring_series_procedures to fetch.
+     */
+    where?: appointment_recurring_series_procedureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_recurring_series_procedures to fetch.
+     */
+    orderBy?: appointment_recurring_series_procedureOrderByWithRelationInput | appointment_recurring_series_procedureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing appointment_recurring_series_procedures.
+     */
+    cursor?: appointment_recurring_series_procedureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_recurring_series_procedures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_recurring_series_procedures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_recurring_series_procedures.
+     */
+    distinct?: Appointment_recurring_series_procedureScalarFieldEnum | Appointment_recurring_series_procedureScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_recurring_series_procedure create
+   */
+  export type appointment_recurring_series_procedureCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    /**
+     * The data needed to create a appointment_recurring_series_procedure.
+     */
+    data: XOR<appointment_recurring_series_procedureCreateInput, appointment_recurring_series_procedureUncheckedCreateInput>
+  }
+
+  /**
+   * appointment_recurring_series_procedure createMany
+   */
+  export type appointment_recurring_series_procedureCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many appointment_recurring_series_procedures.
+     */
+    data: appointment_recurring_series_procedureCreateManyInput | appointment_recurring_series_procedureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * appointment_recurring_series_procedure createManyAndReturn
+   */
+  export type appointment_recurring_series_procedureCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * The data used to create many appointment_recurring_series_procedures.
+     */
+    data: appointment_recurring_series_procedureCreateManyInput | appointment_recurring_series_procedureCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_recurring_series_procedure update
+   */
+  export type appointment_recurring_series_procedureUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    /**
+     * The data needed to update a appointment_recurring_series_procedure.
+     */
+    data: XOR<appointment_recurring_series_procedureUpdateInput, appointment_recurring_series_procedureUncheckedUpdateInput>
+    /**
+     * Choose, which appointment_recurring_series_procedure to update.
+     */
+    where: appointment_recurring_series_procedureWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series_procedure updateMany
+   */
+  export type appointment_recurring_series_procedureUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update appointment_recurring_series_procedures.
+     */
+    data: XOR<appointment_recurring_series_procedureUpdateManyMutationInput, appointment_recurring_series_procedureUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_recurring_series_procedures to update
+     */
+    where?: appointment_recurring_series_procedureWhereInput
+    /**
+     * Limit how many appointment_recurring_series_procedures to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_recurring_series_procedure updateManyAndReturn
+   */
+  export type appointment_recurring_series_procedureUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * The data used to update appointment_recurring_series_procedures.
+     */
+    data: XOR<appointment_recurring_series_procedureUpdateManyMutationInput, appointment_recurring_series_procedureUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_recurring_series_procedures to update
+     */
+    where?: appointment_recurring_series_procedureWhereInput
+    /**
+     * Limit how many appointment_recurring_series_procedures to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_recurring_series_procedure upsert
+   */
+  export type appointment_recurring_series_procedureUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    /**
+     * The filter to search for the appointment_recurring_series_procedure to update in case it exists.
+     */
+    where: appointment_recurring_series_procedureWhereUniqueInput
+    /**
+     * In case the appointment_recurring_series_procedure found by the `where` argument doesn't exist, create a new appointment_recurring_series_procedure with this data.
+     */
+    create: XOR<appointment_recurring_series_procedureCreateInput, appointment_recurring_series_procedureUncheckedCreateInput>
+    /**
+     * In case the appointment_recurring_series_procedure was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<appointment_recurring_series_procedureUpdateInput, appointment_recurring_series_procedureUncheckedUpdateInput>
+  }
+
+  /**
+   * appointment_recurring_series_procedure delete
+   */
+  export type appointment_recurring_series_procedureDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    /**
+     * Filter which appointment_recurring_series_procedure to delete.
+     */
+    where: appointment_recurring_series_procedureWhereUniqueInput
+  }
+
+  /**
+   * appointment_recurring_series_procedure deleteMany
+   */
+  export type appointment_recurring_series_procedureDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_recurring_series_procedures to delete
+     */
+    where?: appointment_recurring_series_procedureWhereInput
+    /**
+     * Limit how many appointment_recurring_series_procedures to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_recurring_series_procedure without action
+   */
+  export type appointment_recurring_series_procedureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
   }
 
 
@@ -27589,6 +31619,7 @@ export namespace Prisma {
     customerOwner?: boolean | patient_profile$customerOwnerArgs<ExtArgs>
     createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
     appointments?: boolean | patient_profile$appointmentsArgs<ExtArgs>
+    recurringAppointmentSeries?: boolean | patient_profile$recurringAppointmentSeriesArgs<ExtArgs>
     _count?: boolean | Patient_profileCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["patient_profile"]>
 
@@ -27682,6 +31713,7 @@ export namespace Prisma {
     customerOwner?: boolean | patient_profile$customerOwnerArgs<ExtArgs>
     createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
     appointments?: boolean | patient_profile$appointmentsArgs<ExtArgs>
+    recurringAppointmentSeries?: boolean | patient_profile$recurringAppointmentSeriesArgs<ExtArgs>
     _count?: boolean | Patient_profileCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type patient_profileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -27699,6 +31731,7 @@ export namespace Prisma {
       customerOwner: Prisma.$userPayload<ExtArgs> | null
       createdByHealthcareProvider: Prisma.$userPayload<ExtArgs> | null
       appointments: Prisma.$appointmentPayload<ExtArgs>[]
+      recurringAppointmentSeries: Prisma.$appointment_recurring_seriesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -28122,6 +32155,7 @@ export namespace Prisma {
     customerOwner<T extends patient_profile$customerOwnerArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$customerOwnerArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     createdByHealthcareProvider<T extends patient_profile$createdByHealthcareProviderArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$createdByHealthcareProviderArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     appointments<T extends patient_profile$appointmentsArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$appointmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recurringAppointmentSeries<T extends patient_profile$recurringAppointmentSeriesArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$recurringAppointmentSeriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -28638,6 +32672,30 @@ export namespace Prisma {
   }
 
   /**
+   * patient_profile.recurringAppointmentSeries
+   */
+  export type patient_profile$recurringAppointmentSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    where?: appointment_recurring_seriesWhereInput
+    orderBy?: appointment_recurring_seriesOrderByWithRelationInput | appointment_recurring_seriesOrderByWithRelationInput[]
+    cursor?: appointment_recurring_seriesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_recurring_seriesScalarFieldEnum | Appointment_recurring_seriesScalarFieldEnum[]
+  }
+
+  /**
    * patient_profile without action
    */
   export type patient_profileDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -28886,6 +32944,7 @@ export namespace Prisma {
     appointmentProcedures?: boolean | procedure$appointmentProceduresArgs<ExtArgs>
     waitlistEntryProcedures?: boolean | procedure$waitlistEntryProceduresArgs<ExtArgs>
     checklistItems?: boolean | procedure$checklistItemsArgs<ExtArgs>
+    recurringSeriesProcedures?: boolean | procedure$recurringSeriesProceduresArgs<ExtArgs>
     _count?: boolean | ProcedureCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["procedure"]>
 
@@ -28930,6 +32989,7 @@ export namespace Prisma {
     appointmentProcedures?: boolean | procedure$appointmentProceduresArgs<ExtArgs>
     waitlistEntryProcedures?: boolean | procedure$waitlistEntryProceduresArgs<ExtArgs>
     checklistItems?: boolean | procedure$checklistItemsArgs<ExtArgs>
+    recurringSeriesProcedures?: boolean | procedure$recurringSeriesProceduresArgs<ExtArgs>
     _count?: boolean | ProcedureCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type procedureIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -28946,6 +33006,7 @@ export namespace Prisma {
       appointmentProcedures: Prisma.$appointment_procedurePayload<ExtArgs>[]
       waitlistEntryProcedures: Prisma.$appointment_waitlist_entry_procedurePayload<ExtArgs>[]
       checklistItems: Prisma.$procedure_checklist_itemPayload<ExtArgs>[]
+      recurringSeriesProcedures: Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -29354,6 +33415,7 @@ export namespace Prisma {
     appointmentProcedures<T extends procedure$appointmentProceduresArgs<ExtArgs> = {}>(args?: Subset<T, procedure$appointmentProceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     waitlistEntryProcedures<T extends procedure$waitlistEntryProceduresArgs<ExtArgs> = {}>(args?: Subset<T, procedure$waitlistEntryProceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_waitlist_entry_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     checklistItems<T extends procedure$checklistItemsArgs<ExtArgs> = {}>(args?: Subset<T, procedure$checklistItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$procedure_checklist_itemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recurringSeriesProcedures<T extends procedure$recurringSeriesProceduresArgs<ExtArgs> = {}>(args?: Subset<T, procedure$recurringSeriesProceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_series_procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -29861,6 +33923,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Procedure_checklist_itemScalarFieldEnum | Procedure_checklist_itemScalarFieldEnum[]
+  }
+
+  /**
+   * procedure.recurringSeriesProcedures
+   */
+  export type procedure$recurringSeriesProceduresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series_procedure
+     */
+    select?: appointment_recurring_series_procedureSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series_procedure
+     */
+    omit?: appointment_recurring_series_procedureOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_series_procedureInclude<ExtArgs> | null
+    where?: appointment_recurring_series_procedureWhereInput
+    orderBy?: appointment_recurring_series_procedureOrderByWithRelationInput | appointment_recurring_series_procedureOrderByWithRelationInput[]
+    cursor?: appointment_recurring_series_procedureWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_recurring_series_procedureScalarFieldEnum | Appointment_recurring_series_procedureScalarFieldEnum[]
   }
 
   /**
@@ -34397,6 +38483,7 @@ export namespace Prisma {
     clinicLatitude: number | null
     clinicLongitude: number | null
     homeCareRadiusKm: number | null
+    bookingAvailabilityDays: number | null
     cancellationPolicyHoursBefore: number | null
     cancellationPolicyFixedFeeCents: number | null
     cancellationPolicyPercentage: number | null
@@ -34408,6 +38495,7 @@ export namespace Prisma {
     clinicLatitude: number | null
     clinicLongitude: number | null
     homeCareRadiusKm: number | null
+    bookingAvailabilityDays: number | null
     cancellationPolicyHoursBefore: number | null
     cancellationPolicyFixedFeeCents: number | null
     cancellationPolicyPercentage: number | null
@@ -34458,6 +38546,7 @@ export namespace Prisma {
     clinicCity: string | null
     clinicState: string | null
     homeCareRadiusKm: number | null
+    bookingAvailabilityDays: number | null
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean | null
     cancellationPolicyHoursBefore: number | null
@@ -34517,6 +38606,7 @@ export namespace Prisma {
     clinicCity: string | null
     clinicState: string | null
     homeCareRadiusKm: number | null
+    bookingAvailabilityDays: number | null
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean | null
     cancellationPolicyHoursBefore: number | null
@@ -34581,6 +38671,7 @@ export namespace Prisma {
     homeCareRadiusKm: number
     acceptedInsurance: number
     paymentMethods: number
+    bookingAvailabilityDays: number
     cancellationPolicy: number
     cancellationPolicyEnabled: number
     cancellationPolicyHoursBefore: number
@@ -34604,6 +38695,7 @@ export namespace Prisma {
     clinicLatitude?: true
     clinicLongitude?: true
     homeCareRadiusKm?: true
+    bookingAvailabilityDays?: true
     cancellationPolicyHoursBefore?: true
     cancellationPolicyFixedFeeCents?: true
     cancellationPolicyPercentage?: true
@@ -34615,6 +38707,7 @@ export namespace Prisma {
     clinicLatitude?: true
     clinicLongitude?: true
     homeCareRadiusKm?: true
+    bookingAvailabilityDays?: true
     cancellationPolicyHoursBefore?: true
     cancellationPolicyFixedFeeCents?: true
     cancellationPolicyPercentage?: true
@@ -34665,6 +38758,7 @@ export namespace Prisma {
     clinicCity?: true
     clinicState?: true
     homeCareRadiusKm?: true
+    bookingAvailabilityDays?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
     cancellationPolicyHoursBefore?: true
@@ -34724,6 +38818,7 @@ export namespace Prisma {
     clinicCity?: true
     clinicState?: true
     homeCareRadiusKm?: true
+    bookingAvailabilityDays?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
     cancellationPolicyHoursBefore?: true
@@ -34788,6 +38883,7 @@ export namespace Prisma {
     homeCareRadiusKm?: true
     acceptedInsurance?: true
     paymentMethods?: true
+    bookingAvailabilityDays?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
     cancellationPolicyHoursBefore?: true
@@ -34940,6 +39036,7 @@ export namespace Prisma {
     homeCareRadiusKm: number | null
     acceptedInsurance: string[]
     paymentMethods: string[]
+    bookingAvailabilityDays: number
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean
     cancellationPolicyHoursBefore: number | null
@@ -35024,6 +39121,7 @@ export namespace Prisma {
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
+    bookingAvailabilityDays?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -35068,6 +39166,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: boolean | user$appointmentRescheduleRequestsArgs<ExtArgs>
     customerAppointmentWaitlistEntries?: boolean | user$customerAppointmentWaitlistEntriesArgs<ExtArgs>
     providerAppointmentWaitlistEntries?: boolean | user$providerAppointmentWaitlistEntriesArgs<ExtArgs>
+    customerRecurringAppointmentSeries?: boolean | user$customerRecurringAppointmentSeriesArgs<ExtArgs>
+    providerRecurringAppointmentSeries?: boolean | user$providerRecurringAppointmentSeriesArgs<ExtArgs>
+    createdRecurringAppointmentSeries?: boolean | user$createdRecurringAppointmentSeriesArgs<ExtArgs>
     verifiedProviders?: boolean | user$verifiedProvidersArgs<ExtArgs>
     providerVerificationReviews?: boolean | user$providerVerificationReviewsArgs<ExtArgs>
     adminProviderVerificationReviews?: boolean | user$adminProviderVerificationReviewsArgs<ExtArgs>
@@ -35126,6 +39227,7 @@ export namespace Prisma {
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
+    bookingAvailabilityDays?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -35193,6 +39295,7 @@ export namespace Prisma {
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
+    bookingAvailabilityDays?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -35260,6 +39363,7 @@ export namespace Prisma {
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
+    bookingAvailabilityDays?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -35275,7 +39379,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
@@ -35308,6 +39412,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: boolean | user$appointmentRescheduleRequestsArgs<ExtArgs>
     customerAppointmentWaitlistEntries?: boolean | user$customerAppointmentWaitlistEntriesArgs<ExtArgs>
     providerAppointmentWaitlistEntries?: boolean | user$providerAppointmentWaitlistEntriesArgs<ExtArgs>
+    customerRecurringAppointmentSeries?: boolean | user$customerRecurringAppointmentSeriesArgs<ExtArgs>
+    providerRecurringAppointmentSeries?: boolean | user$providerRecurringAppointmentSeriesArgs<ExtArgs>
+    createdRecurringAppointmentSeries?: boolean | user$createdRecurringAppointmentSeriesArgs<ExtArgs>
     verifiedProviders?: boolean | user$verifiedProvidersArgs<ExtArgs>
     providerVerificationReviews?: boolean | user$providerVerificationReviewsArgs<ExtArgs>
     adminProviderVerificationReviews?: boolean | user$adminProviderVerificationReviewsArgs<ExtArgs>
@@ -35358,6 +39465,9 @@ export namespace Prisma {
       appointmentRescheduleRequests: Prisma.$appointment_reschedule_requestPayload<ExtArgs>[]
       customerAppointmentWaitlistEntries: Prisma.$appointment_waitlist_entryPayload<ExtArgs>[]
       providerAppointmentWaitlistEntries: Prisma.$appointment_waitlist_entryPayload<ExtArgs>[]
+      customerRecurringAppointmentSeries: Prisma.$appointment_recurring_seriesPayload<ExtArgs>[]
+      providerRecurringAppointmentSeries: Prisma.$appointment_recurring_seriesPayload<ExtArgs>[]
+      createdRecurringAppointmentSeries: Prisma.$appointment_recurring_seriesPayload<ExtArgs>[]
       verifiedProviders: Prisma.$userPayload<ExtArgs>[]
       providerVerificationReviews: Prisma.$provider_verification_reviewPayload<ExtArgs>[]
       adminProviderVerificationReviews: Prisma.$provider_verification_reviewPayload<ExtArgs>[]
@@ -35414,6 +39524,7 @@ export namespace Prisma {
       homeCareRadiusKm: number | null
       acceptedInsurance: string[]
       paymentMethods: string[]
+      bookingAvailabilityDays: number
       cancellationPolicy: string | null
       cancellationPolicyEnabled: boolean
       cancellationPolicyHoursBefore: number | null
@@ -35852,6 +39963,9 @@ export namespace Prisma {
     appointmentRescheduleRequests<T extends user$appointmentRescheduleRequestsArgs<ExtArgs> = {}>(args?: Subset<T, user$appointmentRescheduleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     customerAppointmentWaitlistEntries<T extends user$customerAppointmentWaitlistEntriesArgs<ExtArgs> = {}>(args?: Subset<T, user$customerAppointmentWaitlistEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_waitlist_entryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     providerAppointmentWaitlistEntries<T extends user$providerAppointmentWaitlistEntriesArgs<ExtArgs> = {}>(args?: Subset<T, user$providerAppointmentWaitlistEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_waitlist_entryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    customerRecurringAppointmentSeries<T extends user$customerRecurringAppointmentSeriesArgs<ExtArgs> = {}>(args?: Subset<T, user$customerRecurringAppointmentSeriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    providerRecurringAppointmentSeries<T extends user$providerRecurringAppointmentSeriesArgs<ExtArgs> = {}>(args?: Subset<T, user$providerRecurringAppointmentSeriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    createdRecurringAppointmentSeries<T extends user$createdRecurringAppointmentSeriesArgs<ExtArgs> = {}>(args?: Subset<T, user$createdRecurringAppointmentSeriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     verifiedProviders<T extends user$verifiedProvidersArgs<ExtArgs> = {}>(args?: Subset<T, user$verifiedProvidersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     providerVerificationReviews<T extends user$providerVerificationReviewsArgs<ExtArgs> = {}>(args?: Subset<T, user$providerVerificationReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     adminProviderVerificationReviews<T extends user$adminProviderVerificationReviewsArgs<ExtArgs> = {}>(args?: Subset<T, user$adminProviderVerificationReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$provider_verification_reviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -35935,6 +40049,7 @@ export namespace Prisma {
     readonly homeCareRadiusKm: FieldRef<"user", 'Int'>
     readonly acceptedInsurance: FieldRef<"user", 'String[]'>
     readonly paymentMethods: FieldRef<"user", 'String[]'>
+    readonly bookingAvailabilityDays: FieldRef<"user", 'Int'>
     readonly cancellationPolicy: FieldRef<"user", 'String'>
     readonly cancellationPolicyEnabled: FieldRef<"user", 'Boolean'>
     readonly cancellationPolicyHoursBefore: FieldRef<"user", 'Int'>
@@ -37075,6 +41190,78 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Appointment_waitlist_entryScalarFieldEnum | Appointment_waitlist_entryScalarFieldEnum[]
+  }
+
+  /**
+   * user.customerRecurringAppointmentSeries
+   */
+  export type user$customerRecurringAppointmentSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    where?: appointment_recurring_seriesWhereInput
+    orderBy?: appointment_recurring_seriesOrderByWithRelationInput | appointment_recurring_seriesOrderByWithRelationInput[]
+    cursor?: appointment_recurring_seriesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_recurring_seriesScalarFieldEnum | Appointment_recurring_seriesScalarFieldEnum[]
+  }
+
+  /**
+   * user.providerRecurringAppointmentSeries
+   */
+  export type user$providerRecurringAppointmentSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    where?: appointment_recurring_seriesWhereInput
+    orderBy?: appointment_recurring_seriesOrderByWithRelationInput | appointment_recurring_seriesOrderByWithRelationInput[]
+    cursor?: appointment_recurring_seriesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_recurring_seriesScalarFieldEnum | Appointment_recurring_seriesScalarFieldEnum[]
+  }
+
+  /**
+   * user.createdRecurringAppointmentSeries
+   */
+  export type user$createdRecurringAppointmentSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_recurring_series
+     */
+    select?: appointment_recurring_seriesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_recurring_series
+     */
+    omit?: appointment_recurring_seriesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_recurring_seriesInclude<ExtArgs> | null
+    where?: appointment_recurring_seriesWhereInput
+    orderBy?: appointment_recurring_seriesOrderByWithRelationInput | appointment_recurring_seriesOrderByWithRelationInput[]
+    cursor?: appointment_recurring_seriesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_recurring_seriesScalarFieldEnum | Appointment_recurring_seriesScalarFieldEnum[]
   }
 
   /**
@@ -41624,6 +45811,9 @@ export namespace Prisma {
     customerId: 'customerId',
     patientProfileId: 'patientProfileId',
     healthcareProviderId: 'healthcareProviderId',
+    recurringSeriesId: 'recurringSeriesId',
+    recurringRuleId: 'recurringRuleId',
+    recurringGeneratedAt: 'recurringGeneratedAt',
     scheduledAt: 'scheduledAt',
     status: 'status',
     serviceModality: 'serviceModality',
@@ -41659,6 +45849,49 @@ export namespace Prisma {
   };
 
   export type Appointment_reschedule_requestScalarFieldEnum = (typeof Appointment_reschedule_requestScalarFieldEnum)[keyof typeof Appointment_reschedule_requestScalarFieldEnum]
+
+
+  export const Appointment_recurring_seriesScalarFieldEnum: {
+    id: 'id',
+    customerId: 'customerId',
+    patientProfileId: 'patientProfileId',
+    healthcareProviderId: 'healthcareProviderId',
+    createdByUserId: 'createdByUserId',
+    serviceModality: 'serviceModality',
+    notes: 'notes',
+    startsOn: 'startsOn',
+    endsOn: 'endsOn',
+    isIndefinite: 'isIndefinite',
+    isActive: 'isActive',
+    generatedUntil: 'generatedUntil',
+    cancelledAt: 'cancelledAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Appointment_recurring_seriesScalarFieldEnum = (typeof Appointment_recurring_seriesScalarFieldEnum)[keyof typeof Appointment_recurring_seriesScalarFieldEnum]
+
+
+  export const Appointment_recurring_series_ruleScalarFieldEnum: {
+    id: 'id',
+    seriesId: 'seriesId',
+    dayOfWeek: 'dayOfWeek',
+    startTime: 'startTime',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Appointment_recurring_series_ruleScalarFieldEnum = (typeof Appointment_recurring_series_ruleScalarFieldEnum)[keyof typeof Appointment_recurring_series_ruleScalarFieldEnum]
+
+
+  export const Appointment_recurring_series_procedureScalarFieldEnum: {
+    id: 'id',
+    seriesId: 'seriesId',
+    procedureId: 'procedureId',
+    createdAt: 'createdAt'
+  };
+
+  export type Appointment_recurring_series_procedureScalarFieldEnum = (typeof Appointment_recurring_series_procedureScalarFieldEnum)[keyof typeof Appointment_recurring_series_procedureScalarFieldEnum]
 
 
   export const Appointment_waitlist_entryScalarFieldEnum: {
@@ -42035,6 +46268,7 @@ export namespace Prisma {
     homeCareRadiusKm: 'homeCareRadiusKm',
     acceptedInsurance: 'acceptedInsurance',
     paymentMethods: 'paymentMethods',
+    bookingAvailabilityDays: 'bookingAvailabilityDays',
     cancellationPolicy: 'cancellationPolicy',
     cancellationPolicyEnabled: 'cancellationPolicyEnabled',
     cancellationPolicyHoursBefore: 'cancellationPolicyHoursBefore',
@@ -42208,6 +46442,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'AppointmentWaitlistStatus'
    */
   export type EnumAppointmentWaitlistStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppointmentWaitlistStatus'>
@@ -42274,13 +46515,6 @@ export namespace Prisma {
    * Reference to a field of type 'ClinicPermission'
    */
   export type EnumClinicPermissionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ClinicPermission'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -42597,6 +46831,9 @@ export namespace Prisma {
     customerId?: StringNullableFilter<"appointment"> | string | null
     patientProfileId?: StringNullableFilter<"appointment"> | string | null
     healthcareProviderId?: StringFilter<"appointment"> | string
+    recurringSeriesId?: StringNullableFilter<"appointment"> | string | null
+    recurringRuleId?: StringNullableFilter<"appointment"> | string | null
+    recurringGeneratedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
     scheduledAt?: DateTimeFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
     serviceModality?: StringFilter<"appointment"> | string
@@ -42617,6 +46854,8 @@ export namespace Prisma {
     customer?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     patientProfile?: XOR<Patient_profileNullableScalarRelationFilter, patient_profileWhereInput> | null
     healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    recurringSeries?: XOR<Appointment_recurring_seriesNullableScalarRelationFilter, appointment_recurring_seriesWhereInput> | null
+    recurringRule?: XOR<Appointment_recurring_series_ruleNullableScalarRelationFilter, appointment_recurring_series_ruleWhereInput> | null
     cancelledByUser?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     appointmentProcedures?: Appointment_procedureListRelationFilter
     relatedMessages?: Conversation_messageListRelationFilter
@@ -42629,6 +46868,9 @@ export namespace Prisma {
     customerId?: SortOrderInput | SortOrder
     patientProfileId?: SortOrderInput | SortOrder
     healthcareProviderId?: SortOrder
+    recurringSeriesId?: SortOrderInput | SortOrder
+    recurringRuleId?: SortOrderInput | SortOrder
+    recurringGeneratedAt?: SortOrderInput | SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
     serviceModality?: SortOrder
@@ -42649,6 +46891,8 @@ export namespace Prisma {
     customer?: userOrderByWithRelationInput
     patientProfile?: patient_profileOrderByWithRelationInput
     healthcareProvider?: userOrderByWithRelationInput
+    recurringSeries?: appointment_recurring_seriesOrderByWithRelationInput
+    recurringRule?: appointment_recurring_series_ruleOrderByWithRelationInput
     cancelledByUser?: userOrderByWithRelationInput
     appointmentProcedures?: appointment_procedureOrderByRelationAggregateInput
     relatedMessages?: conversation_messageOrderByRelationAggregateInput
@@ -42664,6 +46908,9 @@ export namespace Prisma {
     customerId?: StringNullableFilter<"appointment"> | string | null
     patientProfileId?: StringNullableFilter<"appointment"> | string | null
     healthcareProviderId?: StringFilter<"appointment"> | string
+    recurringSeriesId?: StringNullableFilter<"appointment"> | string | null
+    recurringRuleId?: StringNullableFilter<"appointment"> | string | null
+    recurringGeneratedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
     scheduledAt?: DateTimeFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
     serviceModality?: StringFilter<"appointment"> | string
@@ -42684,6 +46931,8 @@ export namespace Prisma {
     customer?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     patientProfile?: XOR<Patient_profileNullableScalarRelationFilter, patient_profileWhereInput> | null
     healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    recurringSeries?: XOR<Appointment_recurring_seriesNullableScalarRelationFilter, appointment_recurring_seriesWhereInput> | null
+    recurringRule?: XOR<Appointment_recurring_series_ruleNullableScalarRelationFilter, appointment_recurring_series_ruleWhereInput> | null
     cancelledByUser?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     appointmentProcedures?: Appointment_procedureListRelationFilter
     relatedMessages?: Conversation_messageListRelationFilter
@@ -42696,6 +46945,9 @@ export namespace Prisma {
     customerId?: SortOrderInput | SortOrder
     patientProfileId?: SortOrderInput | SortOrder
     healthcareProviderId?: SortOrder
+    recurringSeriesId?: SortOrderInput | SortOrder
+    recurringRuleId?: SortOrderInput | SortOrder
+    recurringGeneratedAt?: SortOrderInput | SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
     serviceModality?: SortOrder
@@ -42728,6 +46980,9 @@ export namespace Prisma {
     customerId?: StringNullableWithAggregatesFilter<"appointment"> | string | null
     patientProfileId?: StringNullableWithAggregatesFilter<"appointment"> | string | null
     healthcareProviderId?: StringWithAggregatesFilter<"appointment"> | string
+    recurringSeriesId?: StringNullableWithAggregatesFilter<"appointment"> | string | null
+    recurringRuleId?: StringNullableWithAggregatesFilter<"appointment"> | string | null
+    recurringGeneratedAt?: DateTimeNullableWithAggregatesFilter<"appointment"> | Date | string | null
     scheduledAt?: DateTimeWithAggregatesFilter<"appointment"> | Date | string
     status?: EnumAppointmentStatusWithAggregatesFilter<"appointment"> | $Enums.AppointmentStatus
     serviceModality?: StringWithAggregatesFilter<"appointment"> | string
@@ -42823,6 +47078,249 @@ export namespace Prisma {
     respondedAt?: DateTimeNullableWithAggregatesFilter<"appointment_reschedule_request"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"appointment_reschedule_request"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"appointment_reschedule_request"> | Date | string
+  }
+
+  export type appointment_recurring_seriesWhereInput = {
+    AND?: appointment_recurring_seriesWhereInput | appointment_recurring_seriesWhereInput[]
+    OR?: appointment_recurring_seriesWhereInput[]
+    NOT?: appointment_recurring_seriesWhereInput | appointment_recurring_seriesWhereInput[]
+    id?: StringFilter<"appointment_recurring_series"> | string
+    customerId?: StringNullableFilter<"appointment_recurring_series"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment_recurring_series"> | string | null
+    healthcareProviderId?: StringFilter<"appointment_recurring_series"> | string
+    createdByUserId?: StringFilter<"appointment_recurring_series"> | string
+    serviceModality?: StringFilter<"appointment_recurring_series"> | string
+    notes?: StringNullableFilter<"appointment_recurring_series"> | string | null
+    startsOn?: DateTimeFilter<"appointment_recurring_series"> | Date | string
+    endsOn?: DateTimeNullableFilter<"appointment_recurring_series"> | Date | string | null
+    isIndefinite?: BoolFilter<"appointment_recurring_series"> | boolean
+    isActive?: BoolFilter<"appointment_recurring_series"> | boolean
+    generatedUntil?: DateTimeNullableFilter<"appointment_recurring_series"> | Date | string | null
+    cancelledAt?: DateTimeNullableFilter<"appointment_recurring_series"> | Date | string | null
+    createdAt?: DateTimeFilter<"appointment_recurring_series"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_recurring_series"> | Date | string
+    customer?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
+    patientProfile?: XOR<Patient_profileNullableScalarRelationFilter, patient_profileWhereInput> | null
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    createdByUser?: XOR<UserScalarRelationFilter, userWhereInput>
+    appointments?: AppointmentListRelationFilter
+    rules?: Appointment_recurring_series_ruleListRelationFilter
+    procedures?: Appointment_recurring_series_procedureListRelationFilter
+  }
+
+  export type appointment_recurring_seriesOrderByWithRelationInput = {
+    id?: SortOrder
+    customerId?: SortOrderInput | SortOrder
+    patientProfileId?: SortOrderInput | SortOrder
+    healthcareProviderId?: SortOrder
+    createdByUserId?: SortOrder
+    serviceModality?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    startsOn?: SortOrder
+    endsOn?: SortOrderInput | SortOrder
+    isIndefinite?: SortOrder
+    isActive?: SortOrder
+    generatedUntil?: SortOrderInput | SortOrder
+    cancelledAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    customer?: userOrderByWithRelationInput
+    patientProfile?: patient_profileOrderByWithRelationInput
+    healthcareProvider?: userOrderByWithRelationInput
+    createdByUser?: userOrderByWithRelationInput
+    appointments?: appointmentOrderByRelationAggregateInput
+    rules?: appointment_recurring_series_ruleOrderByRelationAggregateInput
+    procedures?: appointment_recurring_series_procedureOrderByRelationAggregateInput
+  }
+
+  export type appointment_recurring_seriesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: appointment_recurring_seriesWhereInput | appointment_recurring_seriesWhereInput[]
+    OR?: appointment_recurring_seriesWhereInput[]
+    NOT?: appointment_recurring_seriesWhereInput | appointment_recurring_seriesWhereInput[]
+    customerId?: StringNullableFilter<"appointment_recurring_series"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment_recurring_series"> | string | null
+    healthcareProviderId?: StringFilter<"appointment_recurring_series"> | string
+    createdByUserId?: StringFilter<"appointment_recurring_series"> | string
+    serviceModality?: StringFilter<"appointment_recurring_series"> | string
+    notes?: StringNullableFilter<"appointment_recurring_series"> | string | null
+    startsOn?: DateTimeFilter<"appointment_recurring_series"> | Date | string
+    endsOn?: DateTimeNullableFilter<"appointment_recurring_series"> | Date | string | null
+    isIndefinite?: BoolFilter<"appointment_recurring_series"> | boolean
+    isActive?: BoolFilter<"appointment_recurring_series"> | boolean
+    generatedUntil?: DateTimeNullableFilter<"appointment_recurring_series"> | Date | string | null
+    cancelledAt?: DateTimeNullableFilter<"appointment_recurring_series"> | Date | string | null
+    createdAt?: DateTimeFilter<"appointment_recurring_series"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_recurring_series"> | Date | string
+    customer?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
+    patientProfile?: XOR<Patient_profileNullableScalarRelationFilter, patient_profileWhereInput> | null
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    createdByUser?: XOR<UserScalarRelationFilter, userWhereInput>
+    appointments?: AppointmentListRelationFilter
+    rules?: Appointment_recurring_series_ruleListRelationFilter
+    procedures?: Appointment_recurring_series_procedureListRelationFilter
+  }, "id">
+
+  export type appointment_recurring_seriesOrderByWithAggregationInput = {
+    id?: SortOrder
+    customerId?: SortOrderInput | SortOrder
+    patientProfileId?: SortOrderInput | SortOrder
+    healthcareProviderId?: SortOrder
+    createdByUserId?: SortOrder
+    serviceModality?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    startsOn?: SortOrder
+    endsOn?: SortOrderInput | SortOrder
+    isIndefinite?: SortOrder
+    isActive?: SortOrder
+    generatedUntil?: SortOrderInput | SortOrder
+    cancelledAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: appointment_recurring_seriesCountOrderByAggregateInput
+    _max?: appointment_recurring_seriesMaxOrderByAggregateInput
+    _min?: appointment_recurring_seriesMinOrderByAggregateInput
+  }
+
+  export type appointment_recurring_seriesScalarWhereWithAggregatesInput = {
+    AND?: appointment_recurring_seriesScalarWhereWithAggregatesInput | appointment_recurring_seriesScalarWhereWithAggregatesInput[]
+    OR?: appointment_recurring_seriesScalarWhereWithAggregatesInput[]
+    NOT?: appointment_recurring_seriesScalarWhereWithAggregatesInput | appointment_recurring_seriesScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"appointment_recurring_series"> | string
+    customerId?: StringNullableWithAggregatesFilter<"appointment_recurring_series"> | string | null
+    patientProfileId?: StringNullableWithAggregatesFilter<"appointment_recurring_series"> | string | null
+    healthcareProviderId?: StringWithAggregatesFilter<"appointment_recurring_series"> | string
+    createdByUserId?: StringWithAggregatesFilter<"appointment_recurring_series"> | string
+    serviceModality?: StringWithAggregatesFilter<"appointment_recurring_series"> | string
+    notes?: StringNullableWithAggregatesFilter<"appointment_recurring_series"> | string | null
+    startsOn?: DateTimeWithAggregatesFilter<"appointment_recurring_series"> | Date | string
+    endsOn?: DateTimeNullableWithAggregatesFilter<"appointment_recurring_series"> | Date | string | null
+    isIndefinite?: BoolWithAggregatesFilter<"appointment_recurring_series"> | boolean
+    isActive?: BoolWithAggregatesFilter<"appointment_recurring_series"> | boolean
+    generatedUntil?: DateTimeNullableWithAggregatesFilter<"appointment_recurring_series"> | Date | string | null
+    cancelledAt?: DateTimeNullableWithAggregatesFilter<"appointment_recurring_series"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"appointment_recurring_series"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"appointment_recurring_series"> | Date | string
+  }
+
+  export type appointment_recurring_series_ruleWhereInput = {
+    AND?: appointment_recurring_series_ruleWhereInput | appointment_recurring_series_ruleWhereInput[]
+    OR?: appointment_recurring_series_ruleWhereInput[]
+    NOT?: appointment_recurring_series_ruleWhereInput | appointment_recurring_series_ruleWhereInput[]
+    id?: StringFilter<"appointment_recurring_series_rule"> | string
+    seriesId?: StringFilter<"appointment_recurring_series_rule"> | string
+    dayOfWeek?: IntFilter<"appointment_recurring_series_rule"> | number
+    startTime?: StringFilter<"appointment_recurring_series_rule"> | string
+    createdAt?: DateTimeFilter<"appointment_recurring_series_rule"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_recurring_series_rule"> | Date | string
+    series?: XOR<Appointment_recurring_seriesScalarRelationFilter, appointment_recurring_seriesWhereInput>
+    appointments?: AppointmentListRelationFilter
+  }
+
+  export type appointment_recurring_series_ruleOrderByWithRelationInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    series?: appointment_recurring_seriesOrderByWithRelationInput
+    appointments?: appointmentOrderByRelationAggregateInput
+  }
+
+  export type appointment_recurring_series_ruleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    seriesId_dayOfWeek_startTime?: appointment_recurring_series_ruleSeriesIdDayOfWeekStartTimeCompoundUniqueInput
+    AND?: appointment_recurring_series_ruleWhereInput | appointment_recurring_series_ruleWhereInput[]
+    OR?: appointment_recurring_series_ruleWhereInput[]
+    NOT?: appointment_recurring_series_ruleWhereInput | appointment_recurring_series_ruleWhereInput[]
+    seriesId?: StringFilter<"appointment_recurring_series_rule"> | string
+    dayOfWeek?: IntFilter<"appointment_recurring_series_rule"> | number
+    startTime?: StringFilter<"appointment_recurring_series_rule"> | string
+    createdAt?: DateTimeFilter<"appointment_recurring_series_rule"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_recurring_series_rule"> | Date | string
+    series?: XOR<Appointment_recurring_seriesScalarRelationFilter, appointment_recurring_seriesWhereInput>
+    appointments?: AppointmentListRelationFilter
+  }, "id" | "seriesId_dayOfWeek_startTime">
+
+  export type appointment_recurring_series_ruleOrderByWithAggregationInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: appointment_recurring_series_ruleCountOrderByAggregateInput
+    _avg?: appointment_recurring_series_ruleAvgOrderByAggregateInput
+    _max?: appointment_recurring_series_ruleMaxOrderByAggregateInput
+    _min?: appointment_recurring_series_ruleMinOrderByAggregateInput
+    _sum?: appointment_recurring_series_ruleSumOrderByAggregateInput
+  }
+
+  export type appointment_recurring_series_ruleScalarWhereWithAggregatesInput = {
+    AND?: appointment_recurring_series_ruleScalarWhereWithAggregatesInput | appointment_recurring_series_ruleScalarWhereWithAggregatesInput[]
+    OR?: appointment_recurring_series_ruleScalarWhereWithAggregatesInput[]
+    NOT?: appointment_recurring_series_ruleScalarWhereWithAggregatesInput | appointment_recurring_series_ruleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"appointment_recurring_series_rule"> | string
+    seriesId?: StringWithAggregatesFilter<"appointment_recurring_series_rule"> | string
+    dayOfWeek?: IntWithAggregatesFilter<"appointment_recurring_series_rule"> | number
+    startTime?: StringWithAggregatesFilter<"appointment_recurring_series_rule"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"appointment_recurring_series_rule"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"appointment_recurring_series_rule"> | Date | string
+  }
+
+  export type appointment_recurring_series_procedureWhereInput = {
+    AND?: appointment_recurring_series_procedureWhereInput | appointment_recurring_series_procedureWhereInput[]
+    OR?: appointment_recurring_series_procedureWhereInput[]
+    NOT?: appointment_recurring_series_procedureWhereInput | appointment_recurring_series_procedureWhereInput[]
+    id?: StringFilter<"appointment_recurring_series_procedure"> | string
+    seriesId?: StringFilter<"appointment_recurring_series_procedure"> | string
+    procedureId?: StringFilter<"appointment_recurring_series_procedure"> | string
+    createdAt?: DateTimeFilter<"appointment_recurring_series_procedure"> | Date | string
+    series?: XOR<Appointment_recurring_seriesScalarRelationFilter, appointment_recurring_seriesWhereInput>
+    procedure?: XOR<ProcedureScalarRelationFilter, procedureWhereInput>
+  }
+
+  export type appointment_recurring_series_procedureOrderByWithRelationInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    procedureId?: SortOrder
+    createdAt?: SortOrder
+    series?: appointment_recurring_seriesOrderByWithRelationInput
+    procedure?: procedureOrderByWithRelationInput
+  }
+
+  export type appointment_recurring_series_procedureWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    seriesId_procedureId?: appointment_recurring_series_procedureSeriesIdProcedureIdCompoundUniqueInput
+    AND?: appointment_recurring_series_procedureWhereInput | appointment_recurring_series_procedureWhereInput[]
+    OR?: appointment_recurring_series_procedureWhereInput[]
+    NOT?: appointment_recurring_series_procedureWhereInput | appointment_recurring_series_procedureWhereInput[]
+    seriesId?: StringFilter<"appointment_recurring_series_procedure"> | string
+    procedureId?: StringFilter<"appointment_recurring_series_procedure"> | string
+    createdAt?: DateTimeFilter<"appointment_recurring_series_procedure"> | Date | string
+    series?: XOR<Appointment_recurring_seriesScalarRelationFilter, appointment_recurring_seriesWhereInput>
+    procedure?: XOR<ProcedureScalarRelationFilter, procedureWhereInput>
+  }, "id" | "seriesId_procedureId">
+
+  export type appointment_recurring_series_procedureOrderByWithAggregationInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    procedureId?: SortOrder
+    createdAt?: SortOrder
+    _count?: appointment_recurring_series_procedureCountOrderByAggregateInput
+    _max?: appointment_recurring_series_procedureMaxOrderByAggregateInput
+    _min?: appointment_recurring_series_procedureMinOrderByAggregateInput
+  }
+
+  export type appointment_recurring_series_procedureScalarWhereWithAggregatesInput = {
+    AND?: appointment_recurring_series_procedureScalarWhereWithAggregatesInput | appointment_recurring_series_procedureScalarWhereWithAggregatesInput[]
+    OR?: appointment_recurring_series_procedureScalarWhereWithAggregatesInput[]
+    NOT?: appointment_recurring_series_procedureScalarWhereWithAggregatesInput | appointment_recurring_series_procedureScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"appointment_recurring_series_procedure"> | string
+    seriesId?: StringWithAggregatesFilter<"appointment_recurring_series_procedure"> | string
+    procedureId?: StringWithAggregatesFilter<"appointment_recurring_series_procedure"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"appointment_recurring_series_procedure"> | Date | string
   }
 
   export type appointment_waitlist_entryWhereInput = {
@@ -44023,6 +48521,7 @@ export namespace Prisma {
     customerOwner?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     createdByHealthcareProvider?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     appointments?: AppointmentListRelationFilter
+    recurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
   }
 
   export type patient_profileOrderByWithRelationInput = {
@@ -44053,6 +48552,7 @@ export namespace Prisma {
     customerOwner?: userOrderByWithRelationInput
     createdByHealthcareProvider?: userOrderByWithRelationInput
     appointments?: appointmentOrderByRelationAggregateInput
+    recurringAppointmentSeries?: appointment_recurring_seriesOrderByRelationAggregateInput
   }
 
   export type patient_profileWhereUniqueInput = Prisma.AtLeast<{
@@ -44086,6 +48586,7 @@ export namespace Prisma {
     customerOwner?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     createdByHealthcareProvider?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     appointments?: AppointmentListRelationFilter
+    recurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
   }, "id">
 
   export type patient_profileOrderByWithAggregationInput = {
@@ -44164,6 +48665,7 @@ export namespace Prisma {
     appointmentProcedures?: Appointment_procedureListRelationFilter
     waitlistEntryProcedures?: Appointment_waitlist_entry_procedureListRelationFilter
     checklistItems?: Procedure_checklist_itemListRelationFilter
+    recurringSeriesProcedures?: Appointment_recurring_series_procedureListRelationFilter
   }
 
   export type procedureOrderByWithRelationInput = {
@@ -44179,6 +48681,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureOrderByRelationAggregateInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureOrderByRelationAggregateInput
     checklistItems?: procedure_checklist_itemOrderByRelationAggregateInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureOrderByRelationAggregateInput
   }
 
   export type procedureWhereUniqueInput = Prisma.AtLeast<{
@@ -44197,6 +48700,7 @@ export namespace Prisma {
     appointmentProcedures?: Appointment_procedureListRelationFilter
     waitlistEntryProcedures?: Appointment_waitlist_entry_procedureListRelationFilter
     checklistItems?: Procedure_checklist_itemListRelationFilter
+    recurringSeriesProcedures?: Appointment_recurring_series_procedureListRelationFilter
   }, "id">
 
   export type procedureOrderByWithAggregationInput = {
@@ -44575,6 +49079,7 @@ export namespace Prisma {
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
+    bookingAvailabilityDays?: IntFilter<"user"> | number
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableFilter<"user"> | number | null
@@ -44619,6 +49124,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: Appointment_reschedule_requestListRelationFilter
     customerAppointmentWaitlistEntries?: Appointment_waitlist_entryListRelationFilter
     providerAppointmentWaitlistEntries?: Appointment_waitlist_entryListRelationFilter
+    customerRecurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
+    providerRecurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
+    createdRecurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
     verifiedProviders?: UserListRelationFilter
     providerVerificationReviews?: Provider_verification_reviewListRelationFilter
     adminProviderVerificationReviews?: Provider_verification_reviewListRelationFilter
@@ -44676,6 +49184,7 @@ export namespace Prisma {
     homeCareRadiusKm?: SortOrderInput | SortOrder
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
+    bookingAvailabilityDays?: SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrderInput | SortOrder
@@ -44720,6 +49229,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestOrderByRelationAggregateInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryOrderByRelationAggregateInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryOrderByRelationAggregateInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesOrderByRelationAggregateInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesOrderByRelationAggregateInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesOrderByRelationAggregateInput
     verifiedProviders?: userOrderByRelationAggregateInput
     providerVerificationReviews?: provider_verification_reviewOrderByRelationAggregateInput
     adminProviderVerificationReviews?: provider_verification_reviewOrderByRelationAggregateInput
@@ -44780,6 +49292,7 @@ export namespace Prisma {
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
+    bookingAvailabilityDays?: IntFilter<"user"> | number
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableFilter<"user"> | number | null
@@ -44824,6 +49337,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: Appointment_reschedule_requestListRelationFilter
     customerAppointmentWaitlistEntries?: Appointment_waitlist_entryListRelationFilter
     providerAppointmentWaitlistEntries?: Appointment_waitlist_entryListRelationFilter
+    customerRecurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
+    providerRecurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
+    createdRecurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
     verifiedProviders?: UserListRelationFilter
     providerVerificationReviews?: Provider_verification_reviewListRelationFilter
     adminProviderVerificationReviews?: Provider_verification_reviewListRelationFilter
@@ -44881,6 +49397,7 @@ export namespace Prisma {
     homeCareRadiusKm?: SortOrderInput | SortOrder
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
+    bookingAvailabilityDays?: SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrderInput | SortOrder
@@ -44954,6 +49471,7 @@ export namespace Prisma {
     homeCareRadiusKm?: IntNullableWithAggregatesFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
+    bookingAvailabilityDays?: IntWithAggregatesFilter<"user"> | number
     cancellationPolicy?: StringNullableWithAggregatesFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolWithAggregatesFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableWithAggregatesFilter<"user"> | number | null
@@ -45407,6 +49925,7 @@ export namespace Prisma {
 
   export type appointmentCreateInput = {
     id?: string
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -45426,6 +49945,8 @@ export namespace Prisma {
     customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
     patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
     cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
@@ -45438,6 +49959,9 @@ export namespace Prisma {
     customerId?: string | null
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -45463,6 +49987,7 @@ export namespace Prisma {
 
   export type appointmentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -45482,6 +50007,8 @@ export namespace Prisma {
     customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
     patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
     cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
@@ -45494,6 +50021,9 @@ export namespace Prisma {
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -45522,6 +50052,9 @@ export namespace Prisma {
     customerId?: string | null
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -45543,6 +50076,7 @@ export namespace Prisma {
 
   export type appointmentUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -45566,6 +50100,9 @@ export namespace Prisma {
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -45665,6 +50202,253 @@ export namespace Prisma {
     respondedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_seriesCreateInput = {
+    id?: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerRecurringAppointmentSeriesInput
+    patientProfile?: patient_profileCreateNestedOneWithoutRecurringAppointmentSeriesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderRecurringAppointmentSeriesInput
+    createdByUser: userCreateNestedOneWithoutCreatedRecurringAppointmentSeriesInput
+    appointments?: appointmentCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleUncheckedCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerRecurringAppointmentSeriesNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutRecurringAppointmentSeriesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderRecurringAppointmentSeriesNestedInput
+    createdByUser?: userUpdateOneRequiredWithoutCreatedRecurringAppointmentSeriesNestedInput
+    appointments?: appointmentUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesCreateManyInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_recurring_seriesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_series_ruleCreateInput = {
+    id?: string
+    dayOfWeek: number
+    startTime: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    series: appointment_recurring_seriesCreateNestedOneWithoutRulesInput
+    appointments?: appointmentCreateNestedManyWithoutRecurringRuleInput
+  }
+
+  export type appointment_recurring_series_ruleUncheckedCreateInput = {
+    id?: string
+    seriesId: string
+    dayOfWeek: number
+    startTime: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutRecurringRuleInput
+  }
+
+  export type appointment_recurring_series_ruleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    series?: appointment_recurring_seriesUpdateOneRequiredWithoutRulesNestedInput
+    appointments?: appointmentUpdateManyWithoutRecurringRuleNestedInput
+  }
+
+  export type appointment_recurring_series_ruleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    seriesId?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutRecurringRuleNestedInput
+  }
+
+  export type appointment_recurring_series_ruleCreateManyInput = {
+    id?: string
+    seriesId: string
+    dayOfWeek: number
+    startTime: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_recurring_series_ruleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_series_ruleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    seriesId?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_series_procedureCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    series: appointment_recurring_seriesCreateNestedOneWithoutProceduresInput
+    procedure: procedureCreateNestedOneWithoutRecurringSeriesProceduresInput
+  }
+
+  export type appointment_recurring_series_procedureUncheckedCreateInput = {
+    id?: string
+    seriesId: string
+    procedureId: string
+    createdAt?: Date | string
+  }
+
+  export type appointment_recurring_series_procedureUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    series?: appointment_recurring_seriesUpdateOneRequiredWithoutProceduresNestedInput
+    procedure?: procedureUpdateOneRequiredWithoutRecurringSeriesProceduresNestedInput
+  }
+
+  export type appointment_recurring_series_procedureUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    seriesId?: StringFieldUpdateOperationsInput | string
+    procedureId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_series_procedureCreateManyInput = {
+    id?: string
+    seriesId: string
+    procedureId: string
+    createdAt?: Date | string
+  }
+
+  export type appointment_recurring_series_procedureUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_series_procedureUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    seriesId?: StringFieldUpdateOperationsInput | string
+    procedureId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type appointment_waitlist_entryCreateInput = {
@@ -46910,6 +51694,7 @@ export namespace Prisma {
     customerOwner?: userCreateNestedOneWithoutPatientProfilesInput
     createdByHealthcareProvider?: userCreateNestedOneWithoutCreatedPatientProfilesInput
     appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
+    recurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUncheckedCreateInput = {
@@ -46938,6 +51723,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUpdateInput = {
@@ -46966,6 +51752,7 @@ export namespace Prisma {
     customerOwner?: userUpdateOneWithoutPatientProfilesNestedInput
     createdByHealthcareProvider?: userUpdateOneWithoutCreatedPatientProfilesNestedInput
     appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateInput = {
@@ -46994,6 +51781,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileCreateManyInput = {
@@ -47087,6 +51875,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureCreateNestedManyWithoutProcedureInput
     checklistItems?: procedure_checklist_itemCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUncheckedCreateInput = {
@@ -47101,6 +51890,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedCreateNestedManyWithoutProcedureInput
     checklistItems?: procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUpdateInput = {
@@ -47115,6 +51905,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUpdateManyWithoutProcedureNestedInput
     checklistItems?: procedure_checklist_itemUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateInput = {
@@ -47129,6 +51920,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureNestedInput
     checklistItems?: procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureCreateManyInput = {
@@ -47521,6 +52313,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -47565,6 +52358,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -47622,6 +52418,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -47664,6 +52461,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -47719,6 +52519,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -47763,6 +52564,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -47820,6 +52624,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -47862,6 +52667,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -47919,6 +52727,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -47982,6 +52791,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -48047,6 +52857,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -48607,6 +53418,16 @@ export namespace Prisma {
     isNot?: patient_profileWhereInput | null
   }
 
+  export type Appointment_recurring_seriesNullableScalarRelationFilter = {
+    is?: appointment_recurring_seriesWhereInput | null
+    isNot?: appointment_recurring_seriesWhereInput | null
+  }
+
+  export type Appointment_recurring_series_ruleNullableScalarRelationFilter = {
+    is?: appointment_recurring_series_ruleWhereInput | null
+    isNot?: appointment_recurring_series_ruleWhereInput | null
+  }
+
   export type Appointment_procedureListRelationFilter = {
     every?: appointment_procedureWhereInput
     some?: appointment_procedureWhereInput
@@ -48652,6 +53473,9 @@ export namespace Prisma {
     customerId?: SortOrder
     patientProfileId?: SortOrder
     healthcareProviderId?: SortOrder
+    recurringSeriesId?: SortOrder
+    recurringRuleId?: SortOrder
+    recurringGeneratedAt?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
     serviceModality?: SortOrder
@@ -48682,6 +53506,9 @@ export namespace Prisma {
     customerId?: SortOrder
     patientProfileId?: SortOrder
     healthcareProviderId?: SortOrder
+    recurringSeriesId?: SortOrder
+    recurringRuleId?: SortOrder
+    recurringGeneratedAt?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
     serviceModality?: SortOrder
@@ -48706,6 +53533,9 @@ export namespace Prisma {
     customerId?: SortOrder
     patientProfileId?: SortOrder
     healthcareProviderId?: SortOrder
+    recurringSeriesId?: SortOrder
+    recurringRuleId?: SortOrder
+    recurringGeneratedAt?: SortOrder
     scheduledAt?: SortOrder
     status?: SortOrder
     serviceModality?: SortOrder
@@ -48824,6 +53654,175 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel>
     _max?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel>
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type AppointmentListRelationFilter = {
+    every?: appointmentWhereInput
+    some?: appointmentWhereInput
+    none?: appointmentWhereInput
+  }
+
+  export type Appointment_recurring_series_ruleListRelationFilter = {
+    every?: appointment_recurring_series_ruleWhereInput
+    some?: appointment_recurring_series_ruleWhereInput
+    none?: appointment_recurring_series_ruleWhereInput
+  }
+
+  export type Appointment_recurring_series_procedureListRelationFilter = {
+    every?: appointment_recurring_series_procedureWhereInput
+    some?: appointment_recurring_series_procedureWhereInput
+    none?: appointment_recurring_series_procedureWhereInput
+  }
+
+  export type appointmentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type appointment_recurring_series_ruleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type appointment_recurring_series_procedureOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type appointment_recurring_seriesCountOrderByAggregateInput = {
+    id?: SortOrder
+    customerId?: SortOrder
+    patientProfileId?: SortOrder
+    healthcareProviderId?: SortOrder
+    createdByUserId?: SortOrder
+    serviceModality?: SortOrder
+    notes?: SortOrder
+    startsOn?: SortOrder
+    endsOn?: SortOrder
+    isIndefinite?: SortOrder
+    isActive?: SortOrder
+    generatedUntil?: SortOrder
+    cancelledAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_recurring_seriesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    customerId?: SortOrder
+    patientProfileId?: SortOrder
+    healthcareProviderId?: SortOrder
+    createdByUserId?: SortOrder
+    serviceModality?: SortOrder
+    notes?: SortOrder
+    startsOn?: SortOrder
+    endsOn?: SortOrder
+    isIndefinite?: SortOrder
+    isActive?: SortOrder
+    generatedUntil?: SortOrder
+    cancelledAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_recurring_seriesMinOrderByAggregateInput = {
+    id?: SortOrder
+    customerId?: SortOrder
+    patientProfileId?: SortOrder
+    healthcareProviderId?: SortOrder
+    createdByUserId?: SortOrder
+    serviceModality?: SortOrder
+    notes?: SortOrder
+    startsOn?: SortOrder
+    endsOn?: SortOrder
+    isIndefinite?: SortOrder
+    isActive?: SortOrder
+    generatedUntil?: SortOrder
+    cancelledAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type Appointment_recurring_seriesScalarRelationFilter = {
+    is?: appointment_recurring_seriesWhereInput
+    isNot?: appointment_recurring_seriesWhereInput
+  }
+
+  export type appointment_recurring_series_ruleSeriesIdDayOfWeekStartTimeCompoundUniqueInput = {
+    seriesId: string
+    dayOfWeek: number
+    startTime: string
+  }
+
+  export type appointment_recurring_series_ruleCountOrderByAggregateInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_recurring_series_ruleAvgOrderByAggregateInput = {
+    dayOfWeek?: SortOrder
+  }
+
+  export type appointment_recurring_series_ruleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_recurring_series_ruleMinOrderByAggregateInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    dayOfWeek?: SortOrder
+    startTime?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_recurring_series_ruleSumOrderByAggregateInput = {
+    dayOfWeek?: SortOrder
+  }
+
+  export type appointment_recurring_series_procedureSeriesIdProcedureIdCompoundUniqueInput = {
+    seriesId: string
+    procedureId: string
+  }
+
+  export type appointment_recurring_series_procedureCountOrderByAggregateInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    procedureId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type appointment_recurring_series_procedureMaxOrderByAggregateInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    procedureId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type appointment_recurring_series_procedureMinOrderByAggregateInput = {
+    id?: SortOrder
+    seriesId?: SortOrder
+    procedureId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type EnumAppointmentWaitlistStatusFilter<$PrismaModel = never> = {
@@ -49112,11 +54111,6 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type ClinicScalarRelationFilter = {
     is?: clinicWhereInput
     isNot?: clinicWhereInput
@@ -49166,14 +54160,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumClinicEmployeeRoleFilter<$PrismaModel>
     _max?: NestedEnumClinicEmployeeRoleFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type customer_favorite_providerCustomerIdHealthcareProviderIdCompoundUniqueInput = {
@@ -49681,13 +54667,13 @@ export namespace Prisma {
     _max?: NestedEnumNotificationDeliveryStatusFilter<$PrismaModel>
   }
 
-  export type AppointmentListRelationFilter = {
-    every?: appointmentWhereInput
-    some?: appointmentWhereInput
-    none?: appointmentWhereInput
+  export type Appointment_recurring_seriesListRelationFilter = {
+    every?: appointment_recurring_seriesWhereInput
+    some?: appointment_recurring_seriesWhereInput
+    none?: appointment_recurring_seriesWhereInput
   }
 
-  export type appointmentOrderByRelationAggregateInput = {
+  export type appointment_recurring_seriesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -50277,6 +55263,7 @@ export namespace Prisma {
     homeCareRadiusKm?: SortOrder
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
+    bookingAvailabilityDays?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
@@ -50298,6 +55285,7 @@ export namespace Prisma {
     clinicLatitude?: SortOrder
     clinicLongitude?: SortOrder
     homeCareRadiusKm?: SortOrder
+    bookingAvailabilityDays?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
     cancellationPolicyFixedFeeCents?: SortOrder
     cancellationPolicyPercentage?: SortOrder
@@ -50348,6 +55336,7 @@ export namespace Prisma {
     clinicCity?: SortOrder
     clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
+    bookingAvailabilityDays?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
@@ -50407,6 +55396,7 @@ export namespace Prisma {
     clinicCity?: SortOrder
     clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
+    bookingAvailabilityDays?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
@@ -50427,6 +55417,7 @@ export namespace Prisma {
     clinicLatitude?: SortOrder
     clinicLongitude?: SortOrder
     homeCareRadiusKm?: SortOrder
+    bookingAvailabilityDays?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
     cancellationPolicyFixedFeeCents?: SortOrder
     cancellationPolicyPercentage?: SortOrder
@@ -50674,6 +55665,18 @@ export namespace Prisma {
     connect?: userWhereUniqueInput
   }
 
+  export type appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutAppointmentsInput, appointment_recurring_seriesUncheckedCreateWithoutAppointmentsInput>
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutAppointmentsInput
+    connect?: appointment_recurring_seriesWhereUniqueInput
+  }
+
+  export type appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput = {
+    create?: XOR<appointment_recurring_series_ruleCreateWithoutAppointmentsInput, appointment_recurring_series_ruleUncheckedCreateWithoutAppointmentsInput>
+    connectOrCreate?: appointment_recurring_series_ruleCreateOrConnectWithoutAppointmentsInput
+    connect?: appointment_recurring_series_ruleWhereUniqueInput
+  }
+
   export type userCreateNestedOneWithoutCancelledAppointmentsInput = {
     create?: XOR<userCreateWithoutCancelledAppointmentsInput, userUncheckedCreateWithoutCancelledAppointmentsInput>
     connectOrCreate?: userCreateOrConnectWithoutCancelledAppointmentsInput
@@ -50782,6 +55785,26 @@ export namespace Prisma {
     upsert?: userUpsertWithoutHealthcareProviderAppointmentsInput
     connect?: userWhereUniqueInput
     update?: XOR<XOR<userUpdateToOneWithWhereWithoutHealthcareProviderAppointmentsInput, userUpdateWithoutHealthcareProviderAppointmentsInput>, userUncheckedUpdateWithoutHealthcareProviderAppointmentsInput>
+  }
+
+  export type appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutAppointmentsInput, appointment_recurring_seriesUncheckedCreateWithoutAppointmentsInput>
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutAppointmentsInput
+    upsert?: appointment_recurring_seriesUpsertWithoutAppointmentsInput
+    disconnect?: appointment_recurring_seriesWhereInput | boolean
+    delete?: appointment_recurring_seriesWhereInput | boolean
+    connect?: appointment_recurring_seriesWhereUniqueInput
+    update?: XOR<XOR<appointment_recurring_seriesUpdateToOneWithWhereWithoutAppointmentsInput, appointment_recurring_seriesUpdateWithoutAppointmentsInput>, appointment_recurring_seriesUncheckedUpdateWithoutAppointmentsInput>
+  }
+
+  export type appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput = {
+    create?: XOR<appointment_recurring_series_ruleCreateWithoutAppointmentsInput, appointment_recurring_series_ruleUncheckedCreateWithoutAppointmentsInput>
+    connectOrCreate?: appointment_recurring_series_ruleCreateOrConnectWithoutAppointmentsInput
+    upsert?: appointment_recurring_series_ruleUpsertWithoutAppointmentsInput
+    disconnect?: appointment_recurring_series_ruleWhereInput | boolean
+    delete?: appointment_recurring_series_ruleWhereInput | boolean
+    connect?: appointment_recurring_series_ruleWhereUniqueInput
+    update?: XOR<XOR<appointment_recurring_series_ruleUpdateToOneWithWhereWithoutAppointmentsInput, appointment_recurring_series_ruleUpdateWithoutAppointmentsInput>, appointment_recurring_series_ruleUncheckedUpdateWithoutAppointmentsInput>
   }
 
   export type userUpdateOneWithoutCancelledAppointmentsNestedInput = {
@@ -50936,6 +55959,280 @@ export namespace Prisma {
     upsert?: userUpsertWithoutAppointmentRescheduleRequestsInput
     connect?: userWhereUniqueInput
     update?: XOR<XOR<userUpdateToOneWithWhereWithoutAppointmentRescheduleRequestsInput, userUpdateWithoutAppointmentRescheduleRequestsInput>, userUncheckedUpdateWithoutAppointmentRescheduleRequestsInput>
+  }
+
+  export type userCreateNestedOneWithoutCustomerRecurringAppointmentSeriesInput = {
+    create?: XOR<userCreateWithoutCustomerRecurringAppointmentSeriesInput, userUncheckedCreateWithoutCustomerRecurringAppointmentSeriesInput>
+    connectOrCreate?: userCreateOrConnectWithoutCustomerRecurringAppointmentSeriesInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type patient_profileCreateNestedOneWithoutRecurringAppointmentSeriesInput = {
+    create?: XOR<patient_profileCreateWithoutRecurringAppointmentSeriesInput, patient_profileUncheckedCreateWithoutRecurringAppointmentSeriesInput>
+    connectOrCreate?: patient_profileCreateOrConnectWithoutRecurringAppointmentSeriesInput
+    connect?: patient_profileWhereUniqueInput
+  }
+
+  export type userCreateNestedOneWithoutProviderRecurringAppointmentSeriesInput = {
+    create?: XOR<userCreateWithoutProviderRecurringAppointmentSeriesInput, userUncheckedCreateWithoutProviderRecurringAppointmentSeriesInput>
+    connectOrCreate?: userCreateOrConnectWithoutProviderRecurringAppointmentSeriesInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type userCreateNestedOneWithoutCreatedRecurringAppointmentSeriesInput = {
+    create?: XOR<userCreateWithoutCreatedRecurringAppointmentSeriesInput, userUncheckedCreateWithoutCreatedRecurringAppointmentSeriesInput>
+    connectOrCreate?: userCreateOrConnectWithoutCreatedRecurringAppointmentSeriesInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type appointmentCreateNestedManyWithoutRecurringSeriesInput = {
+    create?: XOR<appointmentCreateWithoutRecurringSeriesInput, appointmentUncheckedCreateWithoutRecurringSeriesInput> | appointmentCreateWithoutRecurringSeriesInput[] | appointmentUncheckedCreateWithoutRecurringSeriesInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutRecurringSeriesInput | appointmentCreateOrConnectWithoutRecurringSeriesInput[]
+    createMany?: appointmentCreateManyRecurringSeriesInputEnvelope
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_series_ruleCreateNestedManyWithoutSeriesInput = {
+    create?: XOR<appointment_recurring_series_ruleCreateWithoutSeriesInput, appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput> | appointment_recurring_series_ruleCreateWithoutSeriesInput[] | appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput[]
+    connectOrCreate?: appointment_recurring_series_ruleCreateOrConnectWithoutSeriesInput | appointment_recurring_series_ruleCreateOrConnectWithoutSeriesInput[]
+    createMany?: appointment_recurring_series_ruleCreateManySeriesInputEnvelope
+    connect?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_series_procedureCreateNestedManyWithoutSeriesInput = {
+    create?: XOR<appointment_recurring_series_procedureCreateWithoutSeriesInput, appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput> | appointment_recurring_series_procedureCreateWithoutSeriesInput[] | appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput[]
+    connectOrCreate?: appointment_recurring_series_procedureCreateOrConnectWithoutSeriesInput | appointment_recurring_series_procedureCreateOrConnectWithoutSeriesInput[]
+    createMany?: appointment_recurring_series_procedureCreateManySeriesInputEnvelope
+    connect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+  }
+
+  export type appointmentUncheckedCreateNestedManyWithoutRecurringSeriesInput = {
+    create?: XOR<appointmentCreateWithoutRecurringSeriesInput, appointmentUncheckedCreateWithoutRecurringSeriesInput> | appointmentCreateWithoutRecurringSeriesInput[] | appointmentUncheckedCreateWithoutRecurringSeriesInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutRecurringSeriesInput | appointmentCreateOrConnectWithoutRecurringSeriesInput[]
+    createMany?: appointmentCreateManyRecurringSeriesInputEnvelope
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_series_ruleUncheckedCreateNestedManyWithoutSeriesInput = {
+    create?: XOR<appointment_recurring_series_ruleCreateWithoutSeriesInput, appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput> | appointment_recurring_series_ruleCreateWithoutSeriesInput[] | appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput[]
+    connectOrCreate?: appointment_recurring_series_ruleCreateOrConnectWithoutSeriesInput | appointment_recurring_series_ruleCreateOrConnectWithoutSeriesInput[]
+    createMany?: appointment_recurring_series_ruleCreateManySeriesInputEnvelope
+    connect?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutSeriesInput = {
+    create?: XOR<appointment_recurring_series_procedureCreateWithoutSeriesInput, appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput> | appointment_recurring_series_procedureCreateWithoutSeriesInput[] | appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput[]
+    connectOrCreate?: appointment_recurring_series_procedureCreateOrConnectWithoutSeriesInput | appointment_recurring_series_procedureCreateOrConnectWithoutSeriesInput[]
+    createMany?: appointment_recurring_series_procedureCreateManySeriesInputEnvelope
+    connect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type userUpdateOneWithoutCustomerRecurringAppointmentSeriesNestedInput = {
+    create?: XOR<userCreateWithoutCustomerRecurringAppointmentSeriesInput, userUncheckedCreateWithoutCustomerRecurringAppointmentSeriesInput>
+    connectOrCreate?: userCreateOrConnectWithoutCustomerRecurringAppointmentSeriesInput
+    upsert?: userUpsertWithoutCustomerRecurringAppointmentSeriesInput
+    disconnect?: userWhereInput | boolean
+    delete?: userWhereInput | boolean
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutCustomerRecurringAppointmentSeriesInput, userUpdateWithoutCustomerRecurringAppointmentSeriesInput>, userUncheckedUpdateWithoutCustomerRecurringAppointmentSeriesInput>
+  }
+
+  export type patient_profileUpdateOneWithoutRecurringAppointmentSeriesNestedInput = {
+    create?: XOR<patient_profileCreateWithoutRecurringAppointmentSeriesInput, patient_profileUncheckedCreateWithoutRecurringAppointmentSeriesInput>
+    connectOrCreate?: patient_profileCreateOrConnectWithoutRecurringAppointmentSeriesInput
+    upsert?: patient_profileUpsertWithoutRecurringAppointmentSeriesInput
+    disconnect?: patient_profileWhereInput | boolean
+    delete?: patient_profileWhereInput | boolean
+    connect?: patient_profileWhereUniqueInput
+    update?: XOR<XOR<patient_profileUpdateToOneWithWhereWithoutRecurringAppointmentSeriesInput, patient_profileUpdateWithoutRecurringAppointmentSeriesInput>, patient_profileUncheckedUpdateWithoutRecurringAppointmentSeriesInput>
+  }
+
+  export type userUpdateOneRequiredWithoutProviderRecurringAppointmentSeriesNestedInput = {
+    create?: XOR<userCreateWithoutProviderRecurringAppointmentSeriesInput, userUncheckedCreateWithoutProviderRecurringAppointmentSeriesInput>
+    connectOrCreate?: userCreateOrConnectWithoutProviderRecurringAppointmentSeriesInput
+    upsert?: userUpsertWithoutProviderRecurringAppointmentSeriesInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutProviderRecurringAppointmentSeriesInput, userUpdateWithoutProviderRecurringAppointmentSeriesInput>, userUncheckedUpdateWithoutProviderRecurringAppointmentSeriesInput>
+  }
+
+  export type userUpdateOneRequiredWithoutCreatedRecurringAppointmentSeriesNestedInput = {
+    create?: XOR<userCreateWithoutCreatedRecurringAppointmentSeriesInput, userUncheckedCreateWithoutCreatedRecurringAppointmentSeriesInput>
+    connectOrCreate?: userCreateOrConnectWithoutCreatedRecurringAppointmentSeriesInput
+    upsert?: userUpsertWithoutCreatedRecurringAppointmentSeriesInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutCreatedRecurringAppointmentSeriesInput, userUpdateWithoutCreatedRecurringAppointmentSeriesInput>, userUncheckedUpdateWithoutCreatedRecurringAppointmentSeriesInput>
+  }
+
+  export type appointmentUpdateManyWithoutRecurringSeriesNestedInput = {
+    create?: XOR<appointmentCreateWithoutRecurringSeriesInput, appointmentUncheckedCreateWithoutRecurringSeriesInput> | appointmentCreateWithoutRecurringSeriesInput[] | appointmentUncheckedCreateWithoutRecurringSeriesInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutRecurringSeriesInput | appointmentCreateOrConnectWithoutRecurringSeriesInput[]
+    upsert?: appointmentUpsertWithWhereUniqueWithoutRecurringSeriesInput | appointmentUpsertWithWhereUniqueWithoutRecurringSeriesInput[]
+    createMany?: appointmentCreateManyRecurringSeriesInputEnvelope
+    set?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    disconnect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    delete?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    update?: appointmentUpdateWithWhereUniqueWithoutRecurringSeriesInput | appointmentUpdateWithWhereUniqueWithoutRecurringSeriesInput[]
+    updateMany?: appointmentUpdateManyWithWhereWithoutRecurringSeriesInput | appointmentUpdateManyWithWhereWithoutRecurringSeriesInput[]
+    deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+  }
+
+  export type appointment_recurring_series_ruleUpdateManyWithoutSeriesNestedInput = {
+    create?: XOR<appointment_recurring_series_ruleCreateWithoutSeriesInput, appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput> | appointment_recurring_series_ruleCreateWithoutSeriesInput[] | appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput[]
+    connectOrCreate?: appointment_recurring_series_ruleCreateOrConnectWithoutSeriesInput | appointment_recurring_series_ruleCreateOrConnectWithoutSeriesInput[]
+    upsert?: appointment_recurring_series_ruleUpsertWithWhereUniqueWithoutSeriesInput | appointment_recurring_series_ruleUpsertWithWhereUniqueWithoutSeriesInput[]
+    createMany?: appointment_recurring_series_ruleCreateManySeriesInputEnvelope
+    set?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+    disconnect?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+    delete?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+    connect?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+    update?: appointment_recurring_series_ruleUpdateWithWhereUniqueWithoutSeriesInput | appointment_recurring_series_ruleUpdateWithWhereUniqueWithoutSeriesInput[]
+    updateMany?: appointment_recurring_series_ruleUpdateManyWithWhereWithoutSeriesInput | appointment_recurring_series_ruleUpdateManyWithWhereWithoutSeriesInput[]
+    deleteMany?: appointment_recurring_series_ruleScalarWhereInput | appointment_recurring_series_ruleScalarWhereInput[]
+  }
+
+  export type appointment_recurring_series_procedureUpdateManyWithoutSeriesNestedInput = {
+    create?: XOR<appointment_recurring_series_procedureCreateWithoutSeriesInput, appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput> | appointment_recurring_series_procedureCreateWithoutSeriesInput[] | appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput[]
+    connectOrCreate?: appointment_recurring_series_procedureCreateOrConnectWithoutSeriesInput | appointment_recurring_series_procedureCreateOrConnectWithoutSeriesInput[]
+    upsert?: appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutSeriesInput | appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutSeriesInput[]
+    createMany?: appointment_recurring_series_procedureCreateManySeriesInputEnvelope
+    set?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    disconnect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    delete?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    connect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    update?: appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutSeriesInput | appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutSeriesInput[]
+    updateMany?: appointment_recurring_series_procedureUpdateManyWithWhereWithoutSeriesInput | appointment_recurring_series_procedureUpdateManyWithWhereWithoutSeriesInput[]
+    deleteMany?: appointment_recurring_series_procedureScalarWhereInput | appointment_recurring_series_procedureScalarWhereInput[]
+  }
+
+  export type appointmentUncheckedUpdateManyWithoutRecurringSeriesNestedInput = {
+    create?: XOR<appointmentCreateWithoutRecurringSeriesInput, appointmentUncheckedCreateWithoutRecurringSeriesInput> | appointmentCreateWithoutRecurringSeriesInput[] | appointmentUncheckedCreateWithoutRecurringSeriesInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutRecurringSeriesInput | appointmentCreateOrConnectWithoutRecurringSeriesInput[]
+    upsert?: appointmentUpsertWithWhereUniqueWithoutRecurringSeriesInput | appointmentUpsertWithWhereUniqueWithoutRecurringSeriesInput[]
+    createMany?: appointmentCreateManyRecurringSeriesInputEnvelope
+    set?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    disconnect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    delete?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    update?: appointmentUpdateWithWhereUniqueWithoutRecurringSeriesInput | appointmentUpdateWithWhereUniqueWithoutRecurringSeriesInput[]
+    updateMany?: appointmentUpdateManyWithWhereWithoutRecurringSeriesInput | appointmentUpdateManyWithWhereWithoutRecurringSeriesInput[]
+    deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+  }
+
+  export type appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesNestedInput = {
+    create?: XOR<appointment_recurring_series_ruleCreateWithoutSeriesInput, appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput> | appointment_recurring_series_ruleCreateWithoutSeriesInput[] | appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput[]
+    connectOrCreate?: appointment_recurring_series_ruleCreateOrConnectWithoutSeriesInput | appointment_recurring_series_ruleCreateOrConnectWithoutSeriesInput[]
+    upsert?: appointment_recurring_series_ruleUpsertWithWhereUniqueWithoutSeriesInput | appointment_recurring_series_ruleUpsertWithWhereUniqueWithoutSeriesInput[]
+    createMany?: appointment_recurring_series_ruleCreateManySeriesInputEnvelope
+    set?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+    disconnect?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+    delete?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+    connect?: appointment_recurring_series_ruleWhereUniqueInput | appointment_recurring_series_ruleWhereUniqueInput[]
+    update?: appointment_recurring_series_ruleUpdateWithWhereUniqueWithoutSeriesInput | appointment_recurring_series_ruleUpdateWithWhereUniqueWithoutSeriesInput[]
+    updateMany?: appointment_recurring_series_ruleUpdateManyWithWhereWithoutSeriesInput | appointment_recurring_series_ruleUpdateManyWithWhereWithoutSeriesInput[]
+    deleteMany?: appointment_recurring_series_ruleScalarWhereInput | appointment_recurring_series_ruleScalarWhereInput[]
+  }
+
+  export type appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesNestedInput = {
+    create?: XOR<appointment_recurring_series_procedureCreateWithoutSeriesInput, appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput> | appointment_recurring_series_procedureCreateWithoutSeriesInput[] | appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput[]
+    connectOrCreate?: appointment_recurring_series_procedureCreateOrConnectWithoutSeriesInput | appointment_recurring_series_procedureCreateOrConnectWithoutSeriesInput[]
+    upsert?: appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutSeriesInput | appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutSeriesInput[]
+    createMany?: appointment_recurring_series_procedureCreateManySeriesInputEnvelope
+    set?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    disconnect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    delete?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    connect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    update?: appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutSeriesInput | appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutSeriesInput[]
+    updateMany?: appointment_recurring_series_procedureUpdateManyWithWhereWithoutSeriesInput | appointment_recurring_series_procedureUpdateManyWithWhereWithoutSeriesInput[]
+    deleteMany?: appointment_recurring_series_procedureScalarWhereInput | appointment_recurring_series_procedureScalarWhereInput[]
+  }
+
+  export type appointment_recurring_seriesCreateNestedOneWithoutRulesInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutRulesInput, appointment_recurring_seriesUncheckedCreateWithoutRulesInput>
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutRulesInput
+    connect?: appointment_recurring_seriesWhereUniqueInput
+  }
+
+  export type appointmentCreateNestedManyWithoutRecurringRuleInput = {
+    create?: XOR<appointmentCreateWithoutRecurringRuleInput, appointmentUncheckedCreateWithoutRecurringRuleInput> | appointmentCreateWithoutRecurringRuleInput[] | appointmentUncheckedCreateWithoutRecurringRuleInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutRecurringRuleInput | appointmentCreateOrConnectWithoutRecurringRuleInput[]
+    createMany?: appointmentCreateManyRecurringRuleInputEnvelope
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+  }
+
+  export type appointmentUncheckedCreateNestedManyWithoutRecurringRuleInput = {
+    create?: XOR<appointmentCreateWithoutRecurringRuleInput, appointmentUncheckedCreateWithoutRecurringRuleInput> | appointmentCreateWithoutRecurringRuleInput[] | appointmentUncheckedCreateWithoutRecurringRuleInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutRecurringRuleInput | appointmentCreateOrConnectWithoutRecurringRuleInput[]
+    createMany?: appointmentCreateManyRecurringRuleInputEnvelope
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_seriesUpdateOneRequiredWithoutRulesNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutRulesInput, appointment_recurring_seriesUncheckedCreateWithoutRulesInput>
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutRulesInput
+    upsert?: appointment_recurring_seriesUpsertWithoutRulesInput
+    connect?: appointment_recurring_seriesWhereUniqueInput
+    update?: XOR<XOR<appointment_recurring_seriesUpdateToOneWithWhereWithoutRulesInput, appointment_recurring_seriesUpdateWithoutRulesInput>, appointment_recurring_seriesUncheckedUpdateWithoutRulesInput>
+  }
+
+  export type appointmentUpdateManyWithoutRecurringRuleNestedInput = {
+    create?: XOR<appointmentCreateWithoutRecurringRuleInput, appointmentUncheckedCreateWithoutRecurringRuleInput> | appointmentCreateWithoutRecurringRuleInput[] | appointmentUncheckedCreateWithoutRecurringRuleInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutRecurringRuleInput | appointmentCreateOrConnectWithoutRecurringRuleInput[]
+    upsert?: appointmentUpsertWithWhereUniqueWithoutRecurringRuleInput | appointmentUpsertWithWhereUniqueWithoutRecurringRuleInput[]
+    createMany?: appointmentCreateManyRecurringRuleInputEnvelope
+    set?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    disconnect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    delete?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    update?: appointmentUpdateWithWhereUniqueWithoutRecurringRuleInput | appointmentUpdateWithWhereUniqueWithoutRecurringRuleInput[]
+    updateMany?: appointmentUpdateManyWithWhereWithoutRecurringRuleInput | appointmentUpdateManyWithWhereWithoutRecurringRuleInput[]
+    deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+  }
+
+  export type appointmentUncheckedUpdateManyWithoutRecurringRuleNestedInput = {
+    create?: XOR<appointmentCreateWithoutRecurringRuleInput, appointmentUncheckedCreateWithoutRecurringRuleInput> | appointmentCreateWithoutRecurringRuleInput[] | appointmentUncheckedCreateWithoutRecurringRuleInput[]
+    connectOrCreate?: appointmentCreateOrConnectWithoutRecurringRuleInput | appointmentCreateOrConnectWithoutRecurringRuleInput[]
+    upsert?: appointmentUpsertWithWhereUniqueWithoutRecurringRuleInput | appointmentUpsertWithWhereUniqueWithoutRecurringRuleInput[]
+    createMany?: appointmentCreateManyRecurringRuleInputEnvelope
+    set?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    disconnect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    delete?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+    update?: appointmentUpdateWithWhereUniqueWithoutRecurringRuleInput | appointmentUpdateWithWhereUniqueWithoutRecurringRuleInput[]
+    updateMany?: appointmentUpdateManyWithWhereWithoutRecurringRuleInput | appointmentUpdateManyWithWhereWithoutRecurringRuleInput[]
+    deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+  }
+
+  export type appointment_recurring_seriesCreateNestedOneWithoutProceduresInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutProceduresInput, appointment_recurring_seriesUncheckedCreateWithoutProceduresInput>
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutProceduresInput
+    connect?: appointment_recurring_seriesWhereUniqueInput
+  }
+
+  export type procedureCreateNestedOneWithoutRecurringSeriesProceduresInput = {
+    create?: XOR<procedureCreateWithoutRecurringSeriesProceduresInput, procedureUncheckedCreateWithoutRecurringSeriesProceduresInput>
+    connectOrCreate?: procedureCreateOrConnectWithoutRecurringSeriesProceduresInput
+    connect?: procedureWhereUniqueInput
+  }
+
+  export type appointment_recurring_seriesUpdateOneRequiredWithoutProceduresNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutProceduresInput, appointment_recurring_seriesUncheckedCreateWithoutProceduresInput>
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutProceduresInput
+    upsert?: appointment_recurring_seriesUpsertWithoutProceduresInput
+    connect?: appointment_recurring_seriesWhereUniqueInput
+    update?: XOR<XOR<appointment_recurring_seriesUpdateToOneWithWhereWithoutProceduresInput, appointment_recurring_seriesUpdateWithoutProceduresInput>, appointment_recurring_seriesUncheckedUpdateWithoutProceduresInput>
+  }
+
+  export type procedureUpdateOneRequiredWithoutRecurringSeriesProceduresNestedInput = {
+    create?: XOR<procedureCreateWithoutRecurringSeriesProceduresInput, procedureUncheckedCreateWithoutRecurringSeriesProceduresInput>
+    connectOrCreate?: procedureCreateOrConnectWithoutRecurringSeriesProceduresInput
+    upsert?: procedureUpsertWithoutRecurringSeriesProceduresInput
+    connect?: procedureWhereUniqueInput
+    update?: XOR<XOR<procedureUpdateToOneWithWhereWithoutRecurringSeriesProceduresInput, procedureUpdateWithoutRecurringSeriesProceduresInput>, procedureUncheckedUpdateWithoutRecurringSeriesProceduresInput>
   }
 
   export type userCreateNestedOneWithoutCustomerAppointmentWaitlistEntriesInput = {
@@ -51201,10 +56498,6 @@ export namespace Prisma {
   export type clinic_employeeUpdatepermissionsInput = {
     set?: $Enums.ClinicPermission[]
     push?: $Enums.ClinicPermission | $Enums.ClinicPermission[]
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type clinicUpdateOneRequiredWithoutEmployeesNestedInput = {
@@ -51522,11 +56815,25 @@ export namespace Prisma {
     connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
   }
 
+  export type appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutPatientProfileInput, appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput> | appointment_recurring_seriesCreateWithoutPatientProfileInput[] | appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput | appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput[]
+    createMany?: appointment_recurring_seriesCreateManyPatientProfileInputEnvelope
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+  }
+
   export type appointmentUncheckedCreateNestedManyWithoutPatientProfileInput = {
     create?: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput> | appointmentCreateWithoutPatientProfileInput[] | appointmentUncheckedCreateWithoutPatientProfileInput[]
     connectOrCreate?: appointmentCreateOrConnectWithoutPatientProfileInput | appointmentCreateOrConnectWithoutPatientProfileInput[]
     createMany?: appointmentCreateManyPatientProfileInputEnvelope
     connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutPatientProfileInput, appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput> | appointment_recurring_seriesCreateWithoutPatientProfileInput[] | appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput | appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput[]
+    createMany?: appointment_recurring_seriesCreateManyPatientProfileInputEnvelope
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
   }
 
   export type userUpdateOneWithoutPatientProfilesNestedInput = {
@@ -51563,6 +56870,20 @@ export namespace Prisma {
     deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
   }
 
+  export type appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutPatientProfileInput, appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput> | appointment_recurring_seriesCreateWithoutPatientProfileInput[] | appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput | appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput[]
+    upsert?: appointment_recurring_seriesUpsertWithWhereUniqueWithoutPatientProfileInput | appointment_recurring_seriesUpsertWithWhereUniqueWithoutPatientProfileInput[]
+    createMany?: appointment_recurring_seriesCreateManyPatientProfileInputEnvelope
+    set?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    disconnect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    delete?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    update?: appointment_recurring_seriesUpdateWithWhereUniqueWithoutPatientProfileInput | appointment_recurring_seriesUpdateWithWhereUniqueWithoutPatientProfileInput[]
+    updateMany?: appointment_recurring_seriesUpdateManyWithWhereWithoutPatientProfileInput | appointment_recurring_seriesUpdateManyWithWhereWithoutPatientProfileInput[]
+    deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+  }
+
   export type appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput = {
     create?: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput> | appointmentCreateWithoutPatientProfileInput[] | appointmentUncheckedCreateWithoutPatientProfileInput[]
     connectOrCreate?: appointmentCreateOrConnectWithoutPatientProfileInput | appointmentCreateOrConnectWithoutPatientProfileInput[]
@@ -51575,6 +56896,20 @@ export namespace Prisma {
     update?: appointmentUpdateWithWhereUniqueWithoutPatientProfileInput | appointmentUpdateWithWhereUniqueWithoutPatientProfileInput[]
     updateMany?: appointmentUpdateManyWithWhereWithoutPatientProfileInput | appointmentUpdateManyWithWhereWithoutPatientProfileInput[]
     deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutPatientProfileInput, appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput> | appointment_recurring_seriesCreateWithoutPatientProfileInput[] | appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput | appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput[]
+    upsert?: appointment_recurring_seriesUpsertWithWhereUniqueWithoutPatientProfileInput | appointment_recurring_seriesUpsertWithWhereUniqueWithoutPatientProfileInput[]
+    createMany?: appointment_recurring_seriesCreateManyPatientProfileInputEnvelope
+    set?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    disconnect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    delete?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    update?: appointment_recurring_seriesUpdateWithWhereUniqueWithoutPatientProfileInput | appointment_recurring_seriesUpdateWithWhereUniqueWithoutPatientProfileInput[]
+    updateMany?: appointment_recurring_seriesUpdateManyWithWhereWithoutPatientProfileInput | appointment_recurring_seriesUpdateManyWithWhereWithoutPatientProfileInput[]
+    deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
   }
 
   export type userCreateNestedOneWithoutProceduresInput = {
@@ -51604,6 +56939,13 @@ export namespace Prisma {
     connect?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
   }
 
+  export type appointment_recurring_series_procedureCreateNestedManyWithoutProcedureInput = {
+    create?: XOR<appointment_recurring_series_procedureCreateWithoutProcedureInput, appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput> | appointment_recurring_series_procedureCreateWithoutProcedureInput[] | appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput[]
+    connectOrCreate?: appointment_recurring_series_procedureCreateOrConnectWithoutProcedureInput | appointment_recurring_series_procedureCreateOrConnectWithoutProcedureInput[]
+    createMany?: appointment_recurring_series_procedureCreateManyProcedureInputEnvelope
+    connect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+  }
+
   export type appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput = {
     create?: XOR<appointment_procedureCreateWithoutProcedureInput, appointment_procedureUncheckedCreateWithoutProcedureInput> | appointment_procedureCreateWithoutProcedureInput[] | appointment_procedureUncheckedCreateWithoutProcedureInput[]
     connectOrCreate?: appointment_procedureCreateOrConnectWithoutProcedureInput | appointment_procedureCreateOrConnectWithoutProcedureInput[]
@@ -51623,6 +56965,13 @@ export namespace Prisma {
     connectOrCreate?: procedure_checklist_itemCreateOrConnectWithoutProcedureInput | procedure_checklist_itemCreateOrConnectWithoutProcedureInput[]
     createMany?: procedure_checklist_itemCreateManyProcedureInputEnvelope
     connect?: procedure_checklist_itemWhereUniqueInput | procedure_checklist_itemWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutProcedureInput = {
+    create?: XOR<appointment_recurring_series_procedureCreateWithoutProcedureInput, appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput> | appointment_recurring_series_procedureCreateWithoutProcedureInput[] | appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput[]
+    connectOrCreate?: appointment_recurring_series_procedureCreateOrConnectWithoutProcedureInput | appointment_recurring_series_procedureCreateOrConnectWithoutProcedureInput[]
+    createMany?: appointment_recurring_series_procedureCreateManyProcedureInputEnvelope
+    connect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
   }
 
   export type userUpdateOneRequiredWithoutProceduresNestedInput = {
@@ -51675,6 +57024,20 @@ export namespace Prisma {
     deleteMany?: procedure_checklist_itemScalarWhereInput | procedure_checklist_itemScalarWhereInput[]
   }
 
+  export type appointment_recurring_series_procedureUpdateManyWithoutProcedureNestedInput = {
+    create?: XOR<appointment_recurring_series_procedureCreateWithoutProcedureInput, appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput> | appointment_recurring_series_procedureCreateWithoutProcedureInput[] | appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput[]
+    connectOrCreate?: appointment_recurring_series_procedureCreateOrConnectWithoutProcedureInput | appointment_recurring_series_procedureCreateOrConnectWithoutProcedureInput[]
+    upsert?: appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutProcedureInput | appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutProcedureInput[]
+    createMany?: appointment_recurring_series_procedureCreateManyProcedureInputEnvelope
+    set?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    disconnect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    delete?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    connect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    update?: appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutProcedureInput | appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutProcedureInput[]
+    updateMany?: appointment_recurring_series_procedureUpdateManyWithWhereWithoutProcedureInput | appointment_recurring_series_procedureUpdateManyWithWhereWithoutProcedureInput[]
+    deleteMany?: appointment_recurring_series_procedureScalarWhereInput | appointment_recurring_series_procedureScalarWhereInput[]
+  }
+
   export type appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput = {
     create?: XOR<appointment_procedureCreateWithoutProcedureInput, appointment_procedureUncheckedCreateWithoutProcedureInput> | appointment_procedureCreateWithoutProcedureInput[] | appointment_procedureUncheckedCreateWithoutProcedureInput[]
     connectOrCreate?: appointment_procedureCreateOrConnectWithoutProcedureInput | appointment_procedureCreateOrConnectWithoutProcedureInput[]
@@ -51715,6 +57078,20 @@ export namespace Prisma {
     update?: procedure_checklist_itemUpdateWithWhereUniqueWithoutProcedureInput | procedure_checklist_itemUpdateWithWhereUniqueWithoutProcedureInput[]
     updateMany?: procedure_checklist_itemUpdateManyWithWhereWithoutProcedureInput | procedure_checklist_itemUpdateManyWithWhereWithoutProcedureInput[]
     deleteMany?: procedure_checklist_itemScalarWhereInput | procedure_checklist_itemScalarWhereInput[]
+  }
+
+  export type appointment_recurring_series_procedureUncheckedUpdateManyWithoutProcedureNestedInput = {
+    create?: XOR<appointment_recurring_series_procedureCreateWithoutProcedureInput, appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput> | appointment_recurring_series_procedureCreateWithoutProcedureInput[] | appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput[]
+    connectOrCreate?: appointment_recurring_series_procedureCreateOrConnectWithoutProcedureInput | appointment_recurring_series_procedureCreateOrConnectWithoutProcedureInput[]
+    upsert?: appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutProcedureInput | appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutProcedureInput[]
+    createMany?: appointment_recurring_series_procedureCreateManyProcedureInputEnvelope
+    set?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    disconnect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    delete?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    connect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
+    update?: appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutProcedureInput | appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutProcedureInput[]
+    updateMany?: appointment_recurring_series_procedureUpdateManyWithWhereWithoutProcedureInput | appointment_recurring_series_procedureUpdateManyWithWhereWithoutProcedureInput[]
+    deleteMany?: appointment_recurring_series_procedureScalarWhereInput | appointment_recurring_series_procedureScalarWhereInput[]
   }
 
   export type procedureCreateNestedOneWithoutChecklistItemsInput = {
@@ -52033,6 +57410,27 @@ export namespace Prisma {
     connect?: appointment_waitlist_entryWhereUniqueInput | appointment_waitlist_entryWhereUniqueInput[]
   }
 
+  export type appointment_recurring_seriesCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutCustomerInput, appointment_recurring_seriesUncheckedCreateWithoutCustomerInput> | appointment_recurring_seriesCreateWithoutCustomerInput[] | appointment_recurring_seriesUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutCustomerInput | appointment_recurring_seriesCreateOrConnectWithoutCustomerInput[]
+    createMany?: appointment_recurring_seriesCreateManyCustomerInputEnvelope
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutHealthcareProviderInput, appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput> | appointment_recurring_seriesCreateWithoutHealthcareProviderInput[] | appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutHealthcareProviderInput | appointment_recurring_seriesCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: appointment_recurring_seriesCreateManyHealthcareProviderInputEnvelope
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutCreatedByUserInput, appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput> | appointment_recurring_seriesCreateWithoutCreatedByUserInput[] | appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutCreatedByUserInput | appointment_recurring_seriesCreateOrConnectWithoutCreatedByUserInput[]
+    createMany?: appointment_recurring_seriesCreateManyCreatedByUserInputEnvelope
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+  }
+
   export type userCreateNestedManyWithoutVerifiedByUserInput = {
     create?: XOR<userCreateWithoutVerifiedByUserInput, userUncheckedCreateWithoutVerifiedByUserInput> | userCreateWithoutVerifiedByUserInput[] | userUncheckedCreateWithoutVerifiedByUserInput[]
     connectOrCreate?: userCreateOrConnectWithoutVerifiedByUserInput | userCreateOrConnectWithoutVerifiedByUserInput[]
@@ -52268,6 +57666,27 @@ export namespace Prisma {
     connectOrCreate?: appointment_waitlist_entryCreateOrConnectWithoutHealthcareProviderInput | appointment_waitlist_entryCreateOrConnectWithoutHealthcareProviderInput[]
     createMany?: appointment_waitlist_entryCreateManyHealthcareProviderInputEnvelope
     connect?: appointment_waitlist_entryWhereUniqueInput | appointment_waitlist_entryWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutCustomerInput, appointment_recurring_seriesUncheckedCreateWithoutCustomerInput> | appointment_recurring_seriesCreateWithoutCustomerInput[] | appointment_recurring_seriesUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutCustomerInput | appointment_recurring_seriesCreateOrConnectWithoutCustomerInput[]
+    createMany?: appointment_recurring_seriesCreateManyCustomerInputEnvelope
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutHealthcareProviderInput, appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput> | appointment_recurring_seriesCreateWithoutHealthcareProviderInput[] | appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutHealthcareProviderInput | appointment_recurring_seriesCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: appointment_recurring_seriesCreateManyHealthcareProviderInputEnvelope
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutCreatedByUserInput, appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput> | appointment_recurring_seriesCreateWithoutCreatedByUserInput[] | appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutCreatedByUserInput | appointment_recurring_seriesCreateOrConnectWithoutCreatedByUserInput[]
+    createMany?: appointment_recurring_seriesCreateManyCreatedByUserInputEnvelope
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
   }
 
   export type userUncheckedCreateNestedManyWithoutVerifiedByUserInput = {
@@ -52765,6 +58184,48 @@ export namespace Prisma {
     deleteMany?: appointment_waitlist_entryScalarWhereInput | appointment_waitlist_entryScalarWhereInput[]
   }
 
+  export type appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutCustomerInput, appointment_recurring_seriesUncheckedCreateWithoutCustomerInput> | appointment_recurring_seriesCreateWithoutCustomerInput[] | appointment_recurring_seriesUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutCustomerInput | appointment_recurring_seriesCreateOrConnectWithoutCustomerInput[]
+    upsert?: appointment_recurring_seriesUpsertWithWhereUniqueWithoutCustomerInput | appointment_recurring_seriesUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: appointment_recurring_seriesCreateManyCustomerInputEnvelope
+    set?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    disconnect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    delete?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    update?: appointment_recurring_seriesUpdateWithWhereUniqueWithoutCustomerInput | appointment_recurring_seriesUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: appointment_recurring_seriesUpdateManyWithWhereWithoutCustomerInput | appointment_recurring_seriesUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+  }
+
+  export type appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutHealthcareProviderInput, appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput> | appointment_recurring_seriesCreateWithoutHealthcareProviderInput[] | appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutHealthcareProviderInput | appointment_recurring_seriesCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: appointment_recurring_seriesUpsertWithWhereUniqueWithoutHealthcareProviderInput | appointment_recurring_seriesUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: appointment_recurring_seriesCreateManyHealthcareProviderInputEnvelope
+    set?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    disconnect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    delete?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    update?: appointment_recurring_seriesUpdateWithWhereUniqueWithoutHealthcareProviderInput | appointment_recurring_seriesUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: appointment_recurring_seriesUpdateManyWithWhereWithoutHealthcareProviderInput | appointment_recurring_seriesUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+  }
+
+  export type appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutCreatedByUserInput, appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput> | appointment_recurring_seriesCreateWithoutCreatedByUserInput[] | appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutCreatedByUserInput | appointment_recurring_seriesCreateOrConnectWithoutCreatedByUserInput[]
+    upsert?: appointment_recurring_seriesUpsertWithWhereUniqueWithoutCreatedByUserInput | appointment_recurring_seriesUpsertWithWhereUniqueWithoutCreatedByUserInput[]
+    createMany?: appointment_recurring_seriesCreateManyCreatedByUserInputEnvelope
+    set?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    disconnect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    delete?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    update?: appointment_recurring_seriesUpdateWithWhereUniqueWithoutCreatedByUserInput | appointment_recurring_seriesUpdateWithWhereUniqueWithoutCreatedByUserInput[]
+    updateMany?: appointment_recurring_seriesUpdateManyWithWhereWithoutCreatedByUserInput | appointment_recurring_seriesUpdateManyWithWhereWithoutCreatedByUserInput[]
+    deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+  }
+
   export type userUpdateManyWithoutVerifiedByUserNestedInput = {
     create?: XOR<userCreateWithoutVerifiedByUserInput, userUncheckedCreateWithoutVerifiedByUserInput> | userCreateWithoutVerifiedByUserInput[] | userUncheckedCreateWithoutVerifiedByUserInput[]
     connectOrCreate?: userCreateOrConnectWithoutVerifiedByUserInput | userCreateOrConnectWithoutVerifiedByUserInput[]
@@ -53237,6 +58698,48 @@ export namespace Prisma {
     deleteMany?: appointment_waitlist_entryScalarWhereInput | appointment_waitlist_entryScalarWhereInput[]
   }
 
+  export type appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutCustomerInput, appointment_recurring_seriesUncheckedCreateWithoutCustomerInput> | appointment_recurring_seriesCreateWithoutCustomerInput[] | appointment_recurring_seriesUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutCustomerInput | appointment_recurring_seriesCreateOrConnectWithoutCustomerInput[]
+    upsert?: appointment_recurring_seriesUpsertWithWhereUniqueWithoutCustomerInput | appointment_recurring_seriesUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: appointment_recurring_seriesCreateManyCustomerInputEnvelope
+    set?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    disconnect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    delete?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    update?: appointment_recurring_seriesUpdateWithWhereUniqueWithoutCustomerInput | appointment_recurring_seriesUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: appointment_recurring_seriesUpdateManyWithWhereWithoutCustomerInput | appointment_recurring_seriesUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutHealthcareProviderInput, appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput> | appointment_recurring_seriesCreateWithoutHealthcareProviderInput[] | appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutHealthcareProviderInput | appointment_recurring_seriesCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: appointment_recurring_seriesUpsertWithWhereUniqueWithoutHealthcareProviderInput | appointment_recurring_seriesUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: appointment_recurring_seriesCreateManyHealthcareProviderInputEnvelope
+    set?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    disconnect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    delete?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    update?: appointment_recurring_seriesUpdateWithWhereUniqueWithoutHealthcareProviderInput | appointment_recurring_seriesUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: appointment_recurring_seriesUpdateManyWithWhereWithoutHealthcareProviderInput | appointment_recurring_seriesUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput = {
+    create?: XOR<appointment_recurring_seriesCreateWithoutCreatedByUserInput, appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput> | appointment_recurring_seriesCreateWithoutCreatedByUserInput[] | appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput[]
+    connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutCreatedByUserInput | appointment_recurring_seriesCreateOrConnectWithoutCreatedByUserInput[]
+    upsert?: appointment_recurring_seriesUpsertWithWhereUniqueWithoutCreatedByUserInput | appointment_recurring_seriesUpsertWithWhereUniqueWithoutCreatedByUserInput[]
+    createMany?: appointment_recurring_seriesCreateManyCreatedByUserInputEnvelope
+    set?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    disconnect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    delete?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+    update?: appointment_recurring_seriesUpdateWithWhereUniqueWithoutCreatedByUserInput | appointment_recurring_seriesUpdateWithWhereUniqueWithoutCreatedByUserInput[]
+    updateMany?: appointment_recurring_seriesUpdateManyWithWhereWithoutCreatedByUserInput | appointment_recurring_seriesUpdateManyWithWhereWithoutCreatedByUserInput[]
+    deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+  }
+
   export type userUncheckedUpdateManyWithoutVerifiedByUserNestedInput = {
     create?: XOR<userCreateWithoutVerifiedByUserInput, userUncheckedCreateWithoutVerifiedByUserInput> | userCreateWithoutVerifiedByUserInput[] | userUncheckedCreateWithoutVerifiedByUserInput[]
     connectOrCreate?: userCreateOrConnectWithoutVerifiedByUserInput | userCreateOrConnectWithoutVerifiedByUserInput[]
@@ -53631,6 +59134,19 @@ export namespace Prisma {
     _max?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedEnumAppointmentWaitlistStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.AppointmentWaitlistStatus | EnumAppointmentWaitlistStatusFieldRefInput<$PrismaModel>
     in?: $Enums.AppointmentWaitlistStatus[] | ListEnumAppointmentWaitlistStatusFieldRefInput<$PrismaModel>
@@ -53688,11 +59204,6 @@ export namespace Prisma {
     not?: NestedEnumClinicEmployeeRoleFilter<$PrismaModel> | $Enums.ClinicEmployeeRole
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type NestedEnumClinicEmployeeRoleWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.ClinicEmployeeRole | EnumClinicEmployeeRoleFieldRefInput<$PrismaModel>
     in?: $Enums.ClinicEmployeeRole[] | ListEnumClinicEmployeeRoleFieldRefInput<$PrismaModel>
@@ -53701,14 +59212,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumClinicEmployeeRoleFilter<$PrismaModel>
     _max?: NestedEnumClinicEmployeeRoleFilter<$PrismaModel>
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedEnumScheduleExceptionTypeFilter<$PrismaModel = never> = {
@@ -53946,6 +59449,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -53989,6 +59493,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -54046,6 +59553,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -54087,6 +59595,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -54158,6 +59669,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54201,6 +59713,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -54258,6 +59773,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54299,6 +59815,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -54308,6 +59827,7 @@ export namespace Prisma {
 
   export type appointmentCreateWithoutAppointmentProceduresInput = {
     id?: string
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -54327,6 +59847,8 @@ export namespace Prisma {
     customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
     patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
     cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
@@ -54338,6 +59860,9 @@ export namespace Prisma {
     customerId?: string | null
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -54376,6 +59901,7 @@ export namespace Prisma {
     healthcareProvider: userCreateNestedOneWithoutProceduresInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureCreateNestedManyWithoutProcedureInput
     checklistItems?: procedure_checklist_itemCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUncheckedCreateWithoutAppointmentProceduresInput = {
@@ -54389,6 +59915,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedCreateNestedManyWithoutProcedureInput
     checklistItems?: procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureCreateOrConnectWithoutAppointmentProceduresInput = {
@@ -54409,6 +59936,7 @@ export namespace Prisma {
 
   export type appointmentUpdateWithoutAppointmentProceduresInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -54428,6 +59956,8 @@ export namespace Prisma {
     customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
     patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
     cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
@@ -54439,6 +59969,9 @@ export namespace Prisma {
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -54483,6 +60016,7 @@ export namespace Prisma {
     healthcareProvider?: userUpdateOneRequiredWithoutProceduresNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUpdateManyWithoutProcedureNestedInput
     checklistItems?: procedure_checklist_itemUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateWithoutAppointmentProceduresInput = {
@@ -54496,6 +60030,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureNestedInput
     checklistItems?: procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type userCreateWithoutCustomerAppointmentsInput = {
@@ -54546,6 +60081,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -54589,6 +60125,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -54646,6 +60185,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -54687,6 +60227,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -54724,6 +60267,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     customerOwner?: userCreateNestedOneWithoutPatientProfilesInput
     createdByHealthcareProvider?: userCreateNestedOneWithoutCreatedPatientProfilesInput
+    recurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUncheckedCreateWithoutAppointmentsInput = {
@@ -54751,6 +60295,7 @@ export namespace Prisma {
     emergencyContactPhone?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileCreateOrConnectWithoutAppointmentsInput = {
@@ -54806,6 +60351,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -54849,6 +60395,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -54906,6 +60455,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -54947,6 +60497,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -54957,6 +60510,74 @@ export namespace Prisma {
   export type userCreateOrConnectWithoutHealthcareProviderAppointmentsInput = {
     where: userWhereUniqueInput
     create: XOR<userCreateWithoutHealthcareProviderAppointmentsInput, userUncheckedCreateWithoutHealthcareProviderAppointmentsInput>
+  }
+
+  export type appointment_recurring_seriesCreateWithoutAppointmentsInput = {
+    id?: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerRecurringAppointmentSeriesInput
+    patientProfile?: patient_profileCreateNestedOneWithoutRecurringAppointmentSeriesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderRecurringAppointmentSeriesInput
+    createdByUser: userCreateNestedOneWithoutCreatedRecurringAppointmentSeriesInput
+    rules?: appointment_recurring_series_ruleCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateWithoutAppointmentsInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    rules?: appointment_recurring_series_ruleUncheckedCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesCreateOrConnectWithoutAppointmentsInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    create: XOR<appointment_recurring_seriesCreateWithoutAppointmentsInput, appointment_recurring_seriesUncheckedCreateWithoutAppointmentsInput>
+  }
+
+  export type appointment_recurring_series_ruleCreateWithoutAppointmentsInput = {
+    id?: string
+    dayOfWeek: number
+    startTime: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    series: appointment_recurring_seriesCreateNestedOneWithoutRulesInput
+  }
+
+  export type appointment_recurring_series_ruleUncheckedCreateWithoutAppointmentsInput = {
+    id?: string
+    seriesId: string
+    dayOfWeek: number
+    startTime: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_recurring_series_ruleCreateOrConnectWithoutAppointmentsInput = {
+    where: appointment_recurring_series_ruleWhereUniqueInput
+    create: XOR<appointment_recurring_series_ruleCreateWithoutAppointmentsInput, appointment_recurring_series_ruleUncheckedCreateWithoutAppointmentsInput>
   }
 
   export type userCreateWithoutCancelledAppointmentsInput = {
@@ -55007,6 +60628,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -55050,6 +60672,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -55107,6 +60732,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -55148,6 +60774,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -55347,6 +60976,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55390,6 +61020,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -55447,6 +61080,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55488,6 +61122,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -55531,6 +61168,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     customerOwner?: userUpdateOneWithoutPatientProfilesNestedInput
     createdByHealthcareProvider?: userUpdateOneWithoutCreatedPatientProfilesNestedInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateWithoutAppointmentsInput = {
@@ -55558,6 +61196,7 @@ export namespace Prisma {
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type userUpsertWithoutHealthcareProviderAppointmentsInput = {
@@ -55619,6 +61258,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55662,6 +61302,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -55719,6 +61362,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55760,11 +61404,94 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type appointment_recurring_seriesUpsertWithoutAppointmentsInput = {
+    update: XOR<appointment_recurring_seriesUpdateWithoutAppointmentsInput, appointment_recurring_seriesUncheckedUpdateWithoutAppointmentsInput>
+    create: XOR<appointment_recurring_seriesCreateWithoutAppointmentsInput, appointment_recurring_seriesUncheckedCreateWithoutAppointmentsInput>
+    where?: appointment_recurring_seriesWhereInput
+  }
+
+  export type appointment_recurring_seriesUpdateToOneWithWhereWithoutAppointmentsInput = {
+    where?: appointment_recurring_seriesWhereInput
+    data: XOR<appointment_recurring_seriesUpdateWithoutAppointmentsInput, appointment_recurring_seriesUncheckedUpdateWithoutAppointmentsInput>
+  }
+
+  export type appointment_recurring_seriesUpdateWithoutAppointmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerRecurringAppointmentSeriesNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutRecurringAppointmentSeriesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderRecurringAppointmentSeriesNestedInput
+    createdByUser?: userUpdateOneRequiredWithoutCreatedRecurringAppointmentSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateWithoutAppointmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    rules?: appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_series_ruleUpsertWithoutAppointmentsInput = {
+    update: XOR<appointment_recurring_series_ruleUpdateWithoutAppointmentsInput, appointment_recurring_series_ruleUncheckedUpdateWithoutAppointmentsInput>
+    create: XOR<appointment_recurring_series_ruleCreateWithoutAppointmentsInput, appointment_recurring_series_ruleUncheckedCreateWithoutAppointmentsInput>
+    where?: appointment_recurring_series_ruleWhereInput
+  }
+
+  export type appointment_recurring_series_ruleUpdateToOneWithWhereWithoutAppointmentsInput = {
+    where?: appointment_recurring_series_ruleWhereInput
+    data: XOR<appointment_recurring_series_ruleUpdateWithoutAppointmentsInput, appointment_recurring_series_ruleUncheckedUpdateWithoutAppointmentsInput>
+  }
+
+  export type appointment_recurring_series_ruleUpdateWithoutAppointmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    series?: appointment_recurring_seriesUpdateOneRequiredWithoutRulesNestedInput
+  }
+
+  export type appointment_recurring_series_ruleUncheckedUpdateWithoutAppointmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    seriesId?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type userUpsertWithoutCancelledAppointmentsInput = {
@@ -55826,6 +61553,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55869,6 +61597,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -55926,6 +61657,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55967,6 +61699,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -56100,6 +61835,7 @@ export namespace Prisma {
 
   export type appointmentCreateWithoutRescheduleRequestsInput = {
     id?: string
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -56119,6 +61855,8 @@ export namespace Prisma {
     customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
     patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
     cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
@@ -56130,6 +61868,9 @@ export namespace Prisma {
     customerId?: string | null
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -56205,6 +61946,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -56248,6 +61990,9 @@ export namespace Prisma {
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -56305,6 +62050,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -56346,6 +62092,9 @@ export namespace Prisma {
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -56371,6 +62120,7 @@ export namespace Prisma {
 
   export type appointmentUpdateWithoutRescheduleRequestsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -56390,6 +62140,8 @@ export namespace Prisma {
     customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
     patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
     cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
@@ -56401,6 +62153,9 @@ export namespace Prisma {
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -56482,6 +62237,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -56525,6 +62281,9 @@ export namespace Prisma {
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -56582,6 +62341,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -56623,11 +62383,1984 @@ export namespace Prisma {
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userCreateWithoutCustomerRecurringAppointmentSeriesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutCustomerRecurringAppointmentSeriesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    professionalCouncilId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutCustomerRecurringAppointmentSeriesInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutCustomerRecurringAppointmentSeriesInput, userUncheckedCreateWithoutCustomerRecurringAppointmentSeriesInput>
+  }
+
+  export type patient_profileCreateWithoutRecurringAppointmentSeriesInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customerOwner?: userCreateNestedOneWithoutPatientProfilesInput
+    createdByHealthcareProvider?: userCreateNestedOneWithoutCreatedPatientProfilesInput
+    appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileUncheckedCreateWithoutRecurringAppointmentSeriesInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    customerOwnerId?: string | null
+    createdByHealthcareProviderId?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileCreateOrConnectWithoutRecurringAppointmentSeriesInput = {
+    where: patient_profileWhereUniqueInput
+    create: XOR<patient_profileCreateWithoutRecurringAppointmentSeriesInput, patient_profileUncheckedCreateWithoutRecurringAppointmentSeriesInput>
+  }
+
+  export type userCreateWithoutProviderRecurringAppointmentSeriesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutProviderRecurringAppointmentSeriesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    professionalCouncilId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutProviderRecurringAppointmentSeriesInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutProviderRecurringAppointmentSeriesInput, userUncheckedCreateWithoutProviderRecurringAppointmentSeriesInput>
+  }
+
+  export type userCreateWithoutCreatedRecurringAppointmentSeriesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutCreatedRecurringAppointmentSeriesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    professionalCouncilId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutCreatedRecurringAppointmentSeriesInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutCreatedRecurringAppointmentSeriesInput, userUncheckedCreateWithoutCreatedRecurringAppointmentSeriesInput>
+  }
+
+  export type appointmentCreateWithoutRecurringSeriesInput = {
+    id?: string
+    recurringGeneratedAt?: Date | string | null
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    cancellationReason?: string | null
+    cancellationFeeCents?: number | null
+    cancellationPolicyAppliedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
+    patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
+    healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
+    cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
+    appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+  }
+
+  export type appointmentUncheckedCreateWithoutRecurringSeriesInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    cancellationReason?: string | null
+    cancellationFeeCents?: number | null
+    cancellationPolicyAppliedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    cancelledByUserId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+  }
+
+  export type appointmentCreateOrConnectWithoutRecurringSeriesInput = {
+    where: appointmentWhereUniqueInput
+    create: XOR<appointmentCreateWithoutRecurringSeriesInput, appointmentUncheckedCreateWithoutRecurringSeriesInput>
+  }
+
+  export type appointmentCreateManyRecurringSeriesInputEnvelope = {
+    data: appointmentCreateManyRecurringSeriesInput | appointmentCreateManyRecurringSeriesInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_recurring_series_ruleCreateWithoutSeriesInput = {
+    id?: string
+    dayOfWeek: number
+    startTime: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentCreateNestedManyWithoutRecurringRuleInput
+  }
+
+  export type appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput = {
+    id?: string
+    dayOfWeek: number
+    startTime: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutRecurringRuleInput
+  }
+
+  export type appointment_recurring_series_ruleCreateOrConnectWithoutSeriesInput = {
+    where: appointment_recurring_series_ruleWhereUniqueInput
+    create: XOR<appointment_recurring_series_ruleCreateWithoutSeriesInput, appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput>
+  }
+
+  export type appointment_recurring_series_ruleCreateManySeriesInputEnvelope = {
+    data: appointment_recurring_series_ruleCreateManySeriesInput | appointment_recurring_series_ruleCreateManySeriesInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_recurring_series_procedureCreateWithoutSeriesInput = {
+    id?: string
+    createdAt?: Date | string
+    procedure: procedureCreateNestedOneWithoutRecurringSeriesProceduresInput
+  }
+
+  export type appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput = {
+    id?: string
+    procedureId: string
+    createdAt?: Date | string
+  }
+
+  export type appointment_recurring_series_procedureCreateOrConnectWithoutSeriesInput = {
+    where: appointment_recurring_series_procedureWhereUniqueInput
+    create: XOR<appointment_recurring_series_procedureCreateWithoutSeriesInput, appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput>
+  }
+
+  export type appointment_recurring_series_procedureCreateManySeriesInputEnvelope = {
+    data: appointment_recurring_series_procedureCreateManySeriesInput | appointment_recurring_series_procedureCreateManySeriesInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type userUpsertWithoutCustomerRecurringAppointmentSeriesInput = {
+    update: XOR<userUpdateWithoutCustomerRecurringAppointmentSeriesInput, userUncheckedUpdateWithoutCustomerRecurringAppointmentSeriesInput>
+    create: XOR<userCreateWithoutCustomerRecurringAppointmentSeriesInput, userUncheckedCreateWithoutCustomerRecurringAppointmentSeriesInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutCustomerRecurringAppointmentSeriesInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutCustomerRecurringAppointmentSeriesInput, userUncheckedUpdateWithoutCustomerRecurringAppointmentSeriesInput>
+  }
+
+  export type userUpdateWithoutCustomerRecurringAppointmentSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutCustomerRecurringAppointmentSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type patient_profileUpsertWithoutRecurringAppointmentSeriesInput = {
+    update: XOR<patient_profileUpdateWithoutRecurringAppointmentSeriesInput, patient_profileUncheckedUpdateWithoutRecurringAppointmentSeriesInput>
+    create: XOR<patient_profileCreateWithoutRecurringAppointmentSeriesInput, patient_profileUncheckedCreateWithoutRecurringAppointmentSeriesInput>
+    where?: patient_profileWhereInput
+  }
+
+  export type patient_profileUpdateToOneWithWhereWithoutRecurringAppointmentSeriesInput = {
+    where?: patient_profileWhereInput
+    data: XOR<patient_profileUpdateWithoutRecurringAppointmentSeriesInput, patient_profileUncheckedUpdateWithoutRecurringAppointmentSeriesInput>
+  }
+
+  export type patient_profileUpdateWithoutRecurringAppointmentSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customerOwner?: userUpdateOneWithoutPatientProfilesNestedInput
+    createdByHealthcareProvider?: userUpdateOneWithoutCreatedPatientProfilesNestedInput
+    appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type patient_profileUncheckedUpdateWithoutRecurringAppointmentSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    customerOwnerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdByHealthcareProviderId?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type userUpsertWithoutProviderRecurringAppointmentSeriesInput = {
+    update: XOR<userUpdateWithoutProviderRecurringAppointmentSeriesInput, userUncheckedUpdateWithoutProviderRecurringAppointmentSeriesInput>
+    create: XOR<userCreateWithoutProviderRecurringAppointmentSeriesInput, userUncheckedCreateWithoutProviderRecurringAppointmentSeriesInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutProviderRecurringAppointmentSeriesInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutProviderRecurringAppointmentSeriesInput, userUncheckedUpdateWithoutProviderRecurringAppointmentSeriesInput>
+  }
+
+  export type userUpdateWithoutProviderRecurringAppointmentSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutProviderRecurringAppointmentSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUpsertWithoutCreatedRecurringAppointmentSeriesInput = {
+    update: XOR<userUpdateWithoutCreatedRecurringAppointmentSeriesInput, userUncheckedUpdateWithoutCreatedRecurringAppointmentSeriesInput>
+    create: XOR<userCreateWithoutCreatedRecurringAppointmentSeriesInput, userUncheckedCreateWithoutCreatedRecurringAppointmentSeriesInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutCreatedRecurringAppointmentSeriesInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutCreatedRecurringAppointmentSeriesInput, userUncheckedUpdateWithoutCreatedRecurringAppointmentSeriesInput>
+  }
+
+  export type userUpdateWithoutCreatedRecurringAppointmentSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutCreatedRecurringAppointmentSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type appointmentUpsertWithWhereUniqueWithoutRecurringSeriesInput = {
+    where: appointmentWhereUniqueInput
+    update: XOR<appointmentUpdateWithoutRecurringSeriesInput, appointmentUncheckedUpdateWithoutRecurringSeriesInput>
+    create: XOR<appointmentCreateWithoutRecurringSeriesInput, appointmentUncheckedCreateWithoutRecurringSeriesInput>
+  }
+
+  export type appointmentUpdateWithWhereUniqueWithoutRecurringSeriesInput = {
+    where: appointmentWhereUniqueInput
+    data: XOR<appointmentUpdateWithoutRecurringSeriesInput, appointmentUncheckedUpdateWithoutRecurringSeriesInput>
+  }
+
+  export type appointmentUpdateManyWithWhereWithoutRecurringSeriesInput = {
+    where: appointmentScalarWhereInput
+    data: XOR<appointmentUpdateManyMutationInput, appointmentUncheckedUpdateManyWithoutRecurringSeriesInput>
+  }
+
+  export type appointmentScalarWhereInput = {
+    AND?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+    OR?: appointmentScalarWhereInput[]
+    NOT?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+    id?: StringFilter<"appointment"> | string
+    customerId?: StringNullableFilter<"appointment"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment"> | string | null
+    healthcareProviderId?: StringFilter<"appointment"> | string
+    recurringSeriesId?: StringNullableFilter<"appointment"> | string | null
+    recurringRuleId?: StringNullableFilter<"appointment"> | string | null
+    recurringGeneratedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
+    scheduledAt?: DateTimeFilter<"appointment"> | Date | string
+    status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
+    serviceModality?: StringFilter<"appointment"> | string
+    onlineMeetingUrl?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingProvider?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingExternalId?: StringNullableFilter<"appointment"> | string | null
+    onlineMeetingCreatedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
+    totalDurationMinutes?: IntFilter<"appointment"> | number
+    totalPriceCents?: IntFilter<"appointment"> | number
+    notes?: StringNullableFilter<"appointment"> | string | null
+    cancellationReason?: StringNullableFilter<"appointment"> | string | null
+    cancellationFeeCents?: IntNullableFilter<"appointment"> | number | null
+    cancellationPolicyAppliedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
+    cancelledAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
+    cancelledByUserId?: StringNullableFilter<"appointment"> | string | null
+    createdAt?: DateTimeFilter<"appointment"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment"> | Date | string
+  }
+
+  export type appointment_recurring_series_ruleUpsertWithWhereUniqueWithoutSeriesInput = {
+    where: appointment_recurring_series_ruleWhereUniqueInput
+    update: XOR<appointment_recurring_series_ruleUpdateWithoutSeriesInput, appointment_recurring_series_ruleUncheckedUpdateWithoutSeriesInput>
+    create: XOR<appointment_recurring_series_ruleCreateWithoutSeriesInput, appointment_recurring_series_ruleUncheckedCreateWithoutSeriesInput>
+  }
+
+  export type appointment_recurring_series_ruleUpdateWithWhereUniqueWithoutSeriesInput = {
+    where: appointment_recurring_series_ruleWhereUniqueInput
+    data: XOR<appointment_recurring_series_ruleUpdateWithoutSeriesInput, appointment_recurring_series_ruleUncheckedUpdateWithoutSeriesInput>
+  }
+
+  export type appointment_recurring_series_ruleUpdateManyWithWhereWithoutSeriesInput = {
+    where: appointment_recurring_series_ruleScalarWhereInput
+    data: XOR<appointment_recurring_series_ruleUpdateManyMutationInput, appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesInput>
+  }
+
+  export type appointment_recurring_series_ruleScalarWhereInput = {
+    AND?: appointment_recurring_series_ruleScalarWhereInput | appointment_recurring_series_ruleScalarWhereInput[]
+    OR?: appointment_recurring_series_ruleScalarWhereInput[]
+    NOT?: appointment_recurring_series_ruleScalarWhereInput | appointment_recurring_series_ruleScalarWhereInput[]
+    id?: StringFilter<"appointment_recurring_series_rule"> | string
+    seriesId?: StringFilter<"appointment_recurring_series_rule"> | string
+    dayOfWeek?: IntFilter<"appointment_recurring_series_rule"> | number
+    startTime?: StringFilter<"appointment_recurring_series_rule"> | string
+    createdAt?: DateTimeFilter<"appointment_recurring_series_rule"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_recurring_series_rule"> | Date | string
+  }
+
+  export type appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutSeriesInput = {
+    where: appointment_recurring_series_procedureWhereUniqueInput
+    update: XOR<appointment_recurring_series_procedureUpdateWithoutSeriesInput, appointment_recurring_series_procedureUncheckedUpdateWithoutSeriesInput>
+    create: XOR<appointment_recurring_series_procedureCreateWithoutSeriesInput, appointment_recurring_series_procedureUncheckedCreateWithoutSeriesInput>
+  }
+
+  export type appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutSeriesInput = {
+    where: appointment_recurring_series_procedureWhereUniqueInput
+    data: XOR<appointment_recurring_series_procedureUpdateWithoutSeriesInput, appointment_recurring_series_procedureUncheckedUpdateWithoutSeriesInput>
+  }
+
+  export type appointment_recurring_series_procedureUpdateManyWithWhereWithoutSeriesInput = {
+    where: appointment_recurring_series_procedureScalarWhereInput
+    data: XOR<appointment_recurring_series_procedureUpdateManyMutationInput, appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesInput>
+  }
+
+  export type appointment_recurring_series_procedureScalarWhereInput = {
+    AND?: appointment_recurring_series_procedureScalarWhereInput | appointment_recurring_series_procedureScalarWhereInput[]
+    OR?: appointment_recurring_series_procedureScalarWhereInput[]
+    NOT?: appointment_recurring_series_procedureScalarWhereInput | appointment_recurring_series_procedureScalarWhereInput[]
+    id?: StringFilter<"appointment_recurring_series_procedure"> | string
+    seriesId?: StringFilter<"appointment_recurring_series_procedure"> | string
+    procedureId?: StringFilter<"appointment_recurring_series_procedure"> | string
+    createdAt?: DateTimeFilter<"appointment_recurring_series_procedure"> | Date | string
+  }
+
+  export type appointment_recurring_seriesCreateWithoutRulesInput = {
+    id?: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerRecurringAppointmentSeriesInput
+    patientProfile?: patient_profileCreateNestedOneWithoutRecurringAppointmentSeriesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderRecurringAppointmentSeriesInput
+    createdByUser: userCreateNestedOneWithoutCreatedRecurringAppointmentSeriesInput
+    appointments?: appointmentCreateNestedManyWithoutRecurringSeriesInput
+    procedures?: appointment_recurring_series_procedureCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateWithoutRulesInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutRecurringSeriesInput
+    procedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesCreateOrConnectWithoutRulesInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    create: XOR<appointment_recurring_seriesCreateWithoutRulesInput, appointment_recurring_seriesUncheckedCreateWithoutRulesInput>
+  }
+
+  export type appointmentCreateWithoutRecurringRuleInput = {
+    id?: string
+    recurringGeneratedAt?: Date | string | null
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    cancellationReason?: string | null
+    cancellationFeeCents?: number | null
+    cancellationPolicyAppliedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
+    patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
+    healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
+    appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+  }
+
+  export type appointmentUncheckedCreateWithoutRecurringRuleInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringGeneratedAt?: Date | string | null
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    cancellationReason?: string | null
+    cancellationFeeCents?: number | null
+    cancellationPolicyAppliedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    cancelledByUserId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+  }
+
+  export type appointmentCreateOrConnectWithoutRecurringRuleInput = {
+    where: appointmentWhereUniqueInput
+    create: XOR<appointmentCreateWithoutRecurringRuleInput, appointmentUncheckedCreateWithoutRecurringRuleInput>
+  }
+
+  export type appointmentCreateManyRecurringRuleInputEnvelope = {
+    data: appointmentCreateManyRecurringRuleInput | appointmentCreateManyRecurringRuleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_recurring_seriesUpsertWithoutRulesInput = {
+    update: XOR<appointment_recurring_seriesUpdateWithoutRulesInput, appointment_recurring_seriesUncheckedUpdateWithoutRulesInput>
+    create: XOR<appointment_recurring_seriesCreateWithoutRulesInput, appointment_recurring_seriesUncheckedCreateWithoutRulesInput>
+    where?: appointment_recurring_seriesWhereInput
+  }
+
+  export type appointment_recurring_seriesUpdateToOneWithWhereWithoutRulesInput = {
+    where?: appointment_recurring_seriesWhereInput
+    data: XOR<appointment_recurring_seriesUpdateWithoutRulesInput, appointment_recurring_seriesUncheckedUpdateWithoutRulesInput>
+  }
+
+  export type appointment_recurring_seriesUpdateWithoutRulesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerRecurringAppointmentSeriesNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutRecurringAppointmentSeriesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderRecurringAppointmentSeriesNestedInput
+    createdByUser?: userUpdateOneRequiredWithoutCreatedRecurringAppointmentSeriesNestedInput
+    appointments?: appointmentUpdateManyWithoutRecurringSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateWithoutRulesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutRecurringSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointmentUpsertWithWhereUniqueWithoutRecurringRuleInput = {
+    where: appointmentWhereUniqueInput
+    update: XOR<appointmentUpdateWithoutRecurringRuleInput, appointmentUncheckedUpdateWithoutRecurringRuleInput>
+    create: XOR<appointmentCreateWithoutRecurringRuleInput, appointmentUncheckedCreateWithoutRecurringRuleInput>
+  }
+
+  export type appointmentUpdateWithWhereUniqueWithoutRecurringRuleInput = {
+    where: appointmentWhereUniqueInput
+    data: XOR<appointmentUpdateWithoutRecurringRuleInput, appointmentUncheckedUpdateWithoutRecurringRuleInput>
+  }
+
+  export type appointmentUpdateManyWithWhereWithoutRecurringRuleInput = {
+    where: appointmentScalarWhereInput
+    data: XOR<appointmentUpdateManyMutationInput, appointmentUncheckedUpdateManyWithoutRecurringRuleInput>
+  }
+
+  export type appointment_recurring_seriesCreateWithoutProceduresInput = {
+    id?: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerRecurringAppointmentSeriesInput
+    patientProfile?: patient_profileCreateNestedOneWithoutRecurringAppointmentSeriesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderRecurringAppointmentSeriesInput
+    createdByUser: userCreateNestedOneWithoutCreatedRecurringAppointmentSeriesInput
+    appointments?: appointmentCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateWithoutProceduresInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleUncheckedCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesCreateOrConnectWithoutProceduresInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    create: XOR<appointment_recurring_seriesCreateWithoutProceduresInput, appointment_recurring_seriesUncheckedCreateWithoutProceduresInput>
+  }
+
+  export type procedureCreateWithoutRecurringSeriesProceduresInput = {
+    id?: string
+    name: string
+    description?: string | null
+    priceInCents: number
+    durationInMinutes: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    healthcareProvider: userCreateNestedOneWithoutProceduresInput
+    appointmentProcedures?: appointment_procedureCreateNestedManyWithoutProcedureInput
+    waitlistEntryProcedures?: appointment_waitlist_entry_procedureCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemCreateNestedManyWithoutProcedureInput
+  }
+
+  export type procedureUncheckedCreateWithoutRecurringSeriesProceduresInput = {
+    id?: string
+    name: string
+    description?: string | null
+    priceInCents: number
+    durationInMinutes: number
+    healthcareProviderId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput
+    waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedCreateNestedManyWithoutProcedureInput
+    checklistItems?: procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput
+  }
+
+  export type procedureCreateOrConnectWithoutRecurringSeriesProceduresInput = {
+    where: procedureWhereUniqueInput
+    create: XOR<procedureCreateWithoutRecurringSeriesProceduresInput, procedureUncheckedCreateWithoutRecurringSeriesProceduresInput>
+  }
+
+  export type appointment_recurring_seriesUpsertWithoutProceduresInput = {
+    update: XOR<appointment_recurring_seriesUpdateWithoutProceduresInput, appointment_recurring_seriesUncheckedUpdateWithoutProceduresInput>
+    create: XOR<appointment_recurring_seriesCreateWithoutProceduresInput, appointment_recurring_seriesUncheckedCreateWithoutProceduresInput>
+    where?: appointment_recurring_seriesWhereInput
+  }
+
+  export type appointment_recurring_seriesUpdateToOneWithWhereWithoutProceduresInput = {
+    where?: appointment_recurring_seriesWhereInput
+    data: XOR<appointment_recurring_seriesUpdateWithoutProceduresInput, appointment_recurring_seriesUncheckedUpdateWithoutProceduresInput>
+  }
+
+  export type appointment_recurring_seriesUpdateWithoutProceduresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerRecurringAppointmentSeriesNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutRecurringAppointmentSeriesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderRecurringAppointmentSeriesNestedInput
+    createdByUser?: userUpdateOneRequiredWithoutCreatedRecurringAppointmentSeriesNestedInput
+    appointments?: appointmentUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateWithoutProceduresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type procedureUpsertWithoutRecurringSeriesProceduresInput = {
+    update: XOR<procedureUpdateWithoutRecurringSeriesProceduresInput, procedureUncheckedUpdateWithoutRecurringSeriesProceduresInput>
+    create: XOR<procedureCreateWithoutRecurringSeriesProceduresInput, procedureUncheckedCreateWithoutRecurringSeriesProceduresInput>
+    where?: procedureWhereInput
+  }
+
+  export type procedureUpdateToOneWithWhereWithoutRecurringSeriesProceduresInput = {
+    where?: procedureWhereInput
+    data: XOR<procedureUpdateWithoutRecurringSeriesProceduresInput, procedureUncheckedUpdateWithoutRecurringSeriesProceduresInput>
+  }
+
+  export type procedureUpdateWithoutRecurringSeriesProceduresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInCents?: IntFieldUpdateOperationsInput | number
+    durationInMinutes?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProvider?: userUpdateOneRequiredWithoutProceduresNestedInput
+    appointmentProcedures?: appointment_procedureUpdateManyWithoutProcedureNestedInput
+    waitlistEntryProcedures?: appointment_waitlist_entry_procedureUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUpdateManyWithoutProcedureNestedInput
+  }
+
+  export type procedureUncheckedUpdateWithoutRecurringSeriesProceduresInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    priceInCents?: IntFieldUpdateOperationsInput | number
+    durationInMinutes?: IntFieldUpdateOperationsInput | number
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput
+    waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureNestedInput
+    checklistItems?: procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type userCreateWithoutCustomerAppointmentWaitlistEntriesInput = {
@@ -56678,6 +64411,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -56721,6 +64455,9 @@ export namespace Prisma {
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -56778,6 +64515,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -56819,6 +64557,9 @@ export namespace Prisma {
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -56879,6 +64620,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -56922,6 +64664,9 @@ export namespace Prisma {
     supportRequests?: support_requestCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -56979,6 +64724,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -57020,6 +64766,9 @@ export namespace Prisma {
     supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -57113,6 +64862,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -57156,6 +64906,9 @@ export namespace Prisma {
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -57213,6 +64966,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -57254,6 +65008,9 @@ export namespace Prisma {
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -57320,6 +65077,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -57363,6 +65121,9 @@ export namespace Prisma {
     supportRequests?: support_requestUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -57420,6 +65181,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -57461,6 +65223,9 @@ export namespace Prisma {
     supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -57532,6 +65297,7 @@ export namespace Prisma {
     healthcareProvider: userCreateNestedOneWithoutProceduresInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutProcedureInput
     checklistItems?: procedure_checklist_itemCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUncheckedCreateWithoutWaitlistEntryProceduresInput = {
@@ -57545,6 +65311,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput
     checklistItems?: procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureCreateOrConnectWithoutWaitlistEntryProceduresInput = {
@@ -57607,6 +65374,7 @@ export namespace Prisma {
     healthcareProvider?: userUpdateOneRequiredWithoutProceduresNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutProcedureNestedInput
     checklistItems?: procedure_checklist_itemUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateWithoutWaitlistEntryProceduresInput = {
@@ -57620,6 +65388,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput
     checklistItems?: procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type healthcare_provider_categoryCreateWithoutCategoryInput = {
@@ -57718,6 +65487,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -57761,6 +65531,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -57818,6 +65591,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -57859,6 +65633,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -57951,6 +65728,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -57994,6 +65772,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -58051,6 +65832,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -58092,6 +65874,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -58174,6 +65959,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -58217,6 +66003,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -58274,6 +66063,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -58315,6 +66105,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -58416,6 +66209,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -58459,6 +66253,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -58516,6 +66313,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -58557,6 +66355,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -58677,6 +66478,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -58720,6 +66522,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -58777,6 +66582,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -58818,6 +66624,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -58930,6 +66739,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -58973,6 +66783,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -59030,6 +66843,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -59071,6 +66885,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -59126,6 +66943,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -59169,6 +66987,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -59226,6 +67047,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -59267,6 +67089,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -59327,6 +67152,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -59370,6 +67196,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -59427,6 +67256,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -59468,6 +67298,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -59539,6 +67372,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -59582,6 +67416,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -59639,6 +67476,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -59680,6 +67518,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -59746,6 +67587,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -59789,6 +67631,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -59846,6 +67691,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -59887,6 +67733,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -59942,6 +67791,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -59985,6 +67835,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -60042,6 +67895,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60083,6 +67937,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -60154,6 +68011,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -60197,6 +68055,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -60254,6 +68115,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -60295,6 +68157,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -60350,6 +68215,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60393,6 +68259,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -60450,6 +68319,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60491,6 +68361,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -60562,6 +68435,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -60605,6 +68479,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -60662,6 +68539,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -60703,6 +68581,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -60758,6 +68639,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60801,6 +68683,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -60858,6 +68743,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60899,6 +68785,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -60970,6 +68859,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61013,6 +68903,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -61070,6 +68963,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61111,6 +69005,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -61166,6 +69063,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -61209,6 +69107,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -61266,6 +69167,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -61307,6 +69209,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -61378,6 +69283,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61421,6 +69327,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -61478,6 +69387,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61519,6 +69429,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -61574,6 +69487,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -61617,6 +69531,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -61674,6 +69591,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -61715,6 +69633,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -61775,6 +69696,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -61818,6 +69740,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -61875,6 +69800,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -61916,6 +69842,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -62027,6 +69956,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62070,6 +70000,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -62127,6 +70060,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62168,6 +70102,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -62234,6 +70171,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62277,6 +70215,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -62334,6 +70275,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62375,6 +70317,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -62469,6 +70414,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62512,6 +70458,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -62569,6 +70518,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62610,6 +70560,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -62624,6 +70577,7 @@ export namespace Prisma {
 
   export type appointmentCreateWithoutRelatedMessagesInput = {
     id?: string
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -62643,6 +70597,8 @@ export namespace Prisma {
     customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
     patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
     cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
@@ -62654,6 +70610,9 @@ export namespace Prisma {
     customerId?: string | null
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -62769,6 +70728,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62812,6 +70772,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -62869,6 +70832,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62910,6 +70874,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -62930,6 +70897,7 @@ export namespace Prisma {
 
   export type appointmentUpdateWithoutRelatedMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -62949,6 +70917,8 @@ export namespace Prisma {
     customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
     patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
     cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
@@ -62960,6 +70930,9 @@ export namespace Prisma {
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -63030,6 +71003,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63073,6 +71047,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -63130,6 +71107,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63171,6 +71149,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -63242,6 +71223,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63285,6 +71267,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -63342,6 +71327,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63383,6 +71369,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -63438,6 +71427,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63481,6 +71471,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -63538,6 +71531,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63579,6 +71573,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -63650,6 +71647,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63693,6 +71691,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -63750,6 +71751,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63791,6 +71793,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -63846,6 +71851,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63889,6 +71895,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -63946,6 +71955,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63987,6 +71997,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -64001,6 +72014,7 @@ export namespace Prisma {
 
   export type appointmentCreateWithoutNotificationDeliveriesInput = {
     id?: string
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -64020,6 +72034,8 @@ export namespace Prisma {
     customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
     patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
     cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
@@ -64031,6 +72047,9 @@ export namespace Prisma {
     customerId?: string | null
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -64117,6 +72136,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64160,6 +72180,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -64217,6 +72240,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64258,6 +72282,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -64278,6 +72305,7 @@ export namespace Prisma {
 
   export type appointmentUpdateWithoutNotificationDeliveriesInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -64297,6 +72325,8 @@ export namespace Prisma {
     customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
     patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
     cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
@@ -64308,6 +72338,9 @@ export namespace Prisma {
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -64378,6 +72411,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64421,6 +72455,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -64478,6 +72515,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64519,6 +72557,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -64579,6 +72620,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64622,6 +72664,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -64679,6 +72724,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64720,6 +72766,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -64734,6 +72783,7 @@ export namespace Prisma {
 
   export type appointmentCreateWithoutPatientProfileInput = {
     id?: string
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -64752,6 +72802,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
     cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
@@ -64763,6 +72815,9 @@ export namespace Prisma {
     id?: string
     customerId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -64793,6 +72848,56 @@ export namespace Prisma {
 
   export type appointmentCreateManyPatientProfileInputEnvelope = {
     data: appointmentCreateManyPatientProfileInput | appointmentCreateManyPatientProfileInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_recurring_seriesCreateWithoutPatientProfileInput = {
+    id?: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerRecurringAppointmentSeriesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderRecurringAppointmentSeriesInput
+    createdByUser: userCreateNestedOneWithoutCreatedRecurringAppointmentSeriesInput
+    appointments?: appointmentCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput = {
+    id?: string
+    customerId?: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleUncheckedCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    create: XOR<appointment_recurring_seriesCreateWithoutPatientProfileInput, appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput>
+  }
+
+  export type appointment_recurring_seriesCreateManyPatientProfileInputEnvelope = {
+    data: appointment_recurring_seriesCreateManyPatientProfileInput | appointment_recurring_seriesCreateManyPatientProfileInput[]
     skipDuplicates?: boolean
   }
 
@@ -64855,6 +72960,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64898,6 +73004,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -64955,6 +73064,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64996,6 +73106,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -65062,6 +73175,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65105,6 +73219,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -65162,6 +73279,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65203,6 +73321,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -65226,31 +73347,41 @@ export namespace Prisma {
     data: XOR<appointmentUpdateManyMutationInput, appointmentUncheckedUpdateManyWithoutPatientProfileInput>
   }
 
-  export type appointmentScalarWhereInput = {
-    AND?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
-    OR?: appointmentScalarWhereInput[]
-    NOT?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
-    id?: StringFilter<"appointment"> | string
-    customerId?: StringNullableFilter<"appointment"> | string | null
-    patientProfileId?: StringNullableFilter<"appointment"> | string | null
-    healthcareProviderId?: StringFilter<"appointment"> | string
-    scheduledAt?: DateTimeFilter<"appointment"> | Date | string
-    status?: EnumAppointmentStatusFilter<"appointment"> | $Enums.AppointmentStatus
-    serviceModality?: StringFilter<"appointment"> | string
-    onlineMeetingUrl?: StringNullableFilter<"appointment"> | string | null
-    onlineMeetingProvider?: StringNullableFilter<"appointment"> | string | null
-    onlineMeetingExternalId?: StringNullableFilter<"appointment"> | string | null
-    onlineMeetingCreatedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
-    totalDurationMinutes?: IntFilter<"appointment"> | number
-    totalPriceCents?: IntFilter<"appointment"> | number
-    notes?: StringNullableFilter<"appointment"> | string | null
-    cancellationReason?: StringNullableFilter<"appointment"> | string | null
-    cancellationFeeCents?: IntNullableFilter<"appointment"> | number | null
-    cancellationPolicyAppliedAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
-    cancelledAt?: DateTimeNullableFilter<"appointment"> | Date | string | null
-    cancelledByUserId?: StringNullableFilter<"appointment"> | string | null
-    createdAt?: DateTimeFilter<"appointment"> | Date | string
-    updatedAt?: DateTimeFilter<"appointment"> | Date | string
+  export type appointment_recurring_seriesUpsertWithWhereUniqueWithoutPatientProfileInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    update: XOR<appointment_recurring_seriesUpdateWithoutPatientProfileInput, appointment_recurring_seriesUncheckedUpdateWithoutPatientProfileInput>
+    create: XOR<appointment_recurring_seriesCreateWithoutPatientProfileInput, appointment_recurring_seriesUncheckedCreateWithoutPatientProfileInput>
+  }
+
+  export type appointment_recurring_seriesUpdateWithWhereUniqueWithoutPatientProfileInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    data: XOR<appointment_recurring_seriesUpdateWithoutPatientProfileInput, appointment_recurring_seriesUncheckedUpdateWithoutPatientProfileInput>
+  }
+
+  export type appointment_recurring_seriesUpdateManyWithWhereWithoutPatientProfileInput = {
+    where: appointment_recurring_seriesScalarWhereInput
+    data: XOR<appointment_recurring_seriesUpdateManyMutationInput, appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileInput>
+  }
+
+  export type appointment_recurring_seriesScalarWhereInput = {
+    AND?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+    OR?: appointment_recurring_seriesScalarWhereInput[]
+    NOT?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+    id?: StringFilter<"appointment_recurring_series"> | string
+    customerId?: StringNullableFilter<"appointment_recurring_series"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment_recurring_series"> | string | null
+    healthcareProviderId?: StringFilter<"appointment_recurring_series"> | string
+    createdByUserId?: StringFilter<"appointment_recurring_series"> | string
+    serviceModality?: StringFilter<"appointment_recurring_series"> | string
+    notes?: StringNullableFilter<"appointment_recurring_series"> | string | null
+    startsOn?: DateTimeFilter<"appointment_recurring_series"> | Date | string
+    endsOn?: DateTimeNullableFilter<"appointment_recurring_series"> | Date | string | null
+    isIndefinite?: BoolFilter<"appointment_recurring_series"> | boolean
+    isActive?: BoolFilter<"appointment_recurring_series"> | boolean
+    generatedUntil?: DateTimeNullableFilter<"appointment_recurring_series"> | Date | string | null
+    cancelledAt?: DateTimeNullableFilter<"appointment_recurring_series"> | Date | string | null
+    createdAt?: DateTimeFilter<"appointment_recurring_series"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_recurring_series"> | Date | string
   }
 
   export type userCreateWithoutProceduresInput = {
@@ -65301,6 +73432,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -65344,6 +73476,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -65401,6 +73536,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -65442,6 +73578,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -65524,6 +73663,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type appointment_recurring_series_procedureCreateWithoutProcedureInput = {
+    id?: string
+    createdAt?: Date | string
+    series: appointment_recurring_seriesCreateNestedOneWithoutProceduresInput
+  }
+
+  export type appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput = {
+    id?: string
+    seriesId: string
+    createdAt?: Date | string
+  }
+
+  export type appointment_recurring_series_procedureCreateOrConnectWithoutProcedureInput = {
+    where: appointment_recurring_series_procedureWhereUniqueInput
+    create: XOR<appointment_recurring_series_procedureCreateWithoutProcedureInput, appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput>
+  }
+
+  export type appointment_recurring_series_procedureCreateManyProcedureInputEnvelope = {
+    data: appointment_recurring_series_procedureCreateManyProcedureInput | appointment_recurring_series_procedureCreateManyProcedureInput[]
+    skipDuplicates?: boolean
+  }
+
   export type userUpsertWithoutProceduresInput = {
     update: XOR<userUpdateWithoutProceduresInput, userUncheckedUpdateWithoutProceduresInput>
     create: XOR<userCreateWithoutProceduresInput, userUncheckedCreateWithoutProceduresInput>
@@ -65583,6 +73744,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65626,6 +73788,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -65683,6 +73848,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65724,6 +73890,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -65791,6 +73960,22 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"procedure_checklist_item"> | Date | string
   }
 
+  export type appointment_recurring_series_procedureUpsertWithWhereUniqueWithoutProcedureInput = {
+    where: appointment_recurring_series_procedureWhereUniqueInput
+    update: XOR<appointment_recurring_series_procedureUpdateWithoutProcedureInput, appointment_recurring_series_procedureUncheckedUpdateWithoutProcedureInput>
+    create: XOR<appointment_recurring_series_procedureCreateWithoutProcedureInput, appointment_recurring_series_procedureUncheckedCreateWithoutProcedureInput>
+  }
+
+  export type appointment_recurring_series_procedureUpdateWithWhereUniqueWithoutProcedureInput = {
+    where: appointment_recurring_series_procedureWhereUniqueInput
+    data: XOR<appointment_recurring_series_procedureUpdateWithoutProcedureInput, appointment_recurring_series_procedureUncheckedUpdateWithoutProcedureInput>
+  }
+
+  export type appointment_recurring_series_procedureUpdateManyWithWhereWithoutProcedureInput = {
+    where: appointment_recurring_series_procedureScalarWhereInput
+    data: XOR<appointment_recurring_series_procedureUpdateManyMutationInput, appointment_recurring_series_procedureUncheckedUpdateManyWithoutProcedureInput>
+  }
+
   export type procedureCreateWithoutChecklistItemsInput = {
     id?: string
     name: string
@@ -65802,6 +73987,7 @@ export namespace Prisma {
     healthcareProvider: userCreateNestedOneWithoutProceduresInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUncheckedCreateWithoutChecklistItemsInput = {
@@ -65815,6 +74001,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureCreateOrConnectWithoutChecklistItemsInput = {
@@ -65844,6 +74031,7 @@ export namespace Prisma {
     healthcareProvider?: userUpdateOneRequiredWithoutProceduresNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateWithoutChecklistItemsInput = {
@@ -65857,6 +74045,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type userCreateWithoutRatingsInput = {
@@ -65907,6 +74096,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -65950,6 +74140,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -66007,6 +74200,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66048,6 +74242,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -66108,6 +74305,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66151,6 +74349,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -66208,6 +74409,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66249,6 +74451,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -66320,6 +74525,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66363,6 +74569,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -66420,6 +74629,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66461,6 +74671,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -66527,6 +74740,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66570,6 +74784,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -66627,6 +74844,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66668,6 +74886,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -66723,6 +74944,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66766,6 +74988,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -66823,6 +75048,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66864,6 +75090,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -66935,6 +75164,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66978,6 +75208,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -67035,6 +75268,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67076,6 +75310,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -67131,6 +75368,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67174,6 +75412,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -67231,6 +75472,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67272,6 +75514,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -67343,6 +75588,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67386,6 +75632,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -67443,6 +75692,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67484,6 +75734,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -67568,6 +75821,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67612,6 +75866,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
@@ -67668,6 +75925,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67710,6 +75968,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -67863,6 +76124,7 @@ export namespace Prisma {
 
   export type appointmentCreateWithoutCustomerInput = {
     id?: string
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -67881,6 +76143,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
     cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
@@ -67892,6 +76156,9 @@ export namespace Prisma {
     id?: string
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -67927,6 +76194,7 @@ export namespace Prisma {
 
   export type appointmentCreateWithoutHealthcareProviderInput = {
     id?: string
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -67945,6 +76213,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
     patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
     cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
@@ -67956,6 +76226,9 @@ export namespace Prisma {
     id?: string
     customerId?: string | null
     patientProfileId?: string | null
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -67991,6 +76264,7 @@ export namespace Prisma {
 
   export type appointmentCreateWithoutCancelledByUserInput = {
     id?: string
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -68010,6 +76284,8 @@ export namespace Prisma {
     customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
     patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
     healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
@@ -68021,6 +76297,9 @@ export namespace Prisma {
     customerId?: string | null
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -68064,6 +76343,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureCreateNestedManyWithoutProcedureInput
     checklistItems?: procedure_checklist_itemCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureUncheckedCreateWithoutHealthcareProviderInput = {
@@ -68077,6 +76357,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutProcedureInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedCreateNestedManyWithoutProcedureInput
     checklistItems?: procedure_checklist_itemUncheckedCreateNestedManyWithoutProcedureInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutProcedureInput
   }
 
   export type procedureCreateOrConnectWithoutHealthcareProviderInput = {
@@ -68389,6 +76670,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     createdByHealthcareProvider?: userCreateNestedOneWithoutCreatedPatientProfilesInput
     appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
+    recurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUncheckedCreateWithoutCustomerOwnerInput = {
@@ -68416,6 +76698,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileCreateOrConnectWithoutCustomerOwnerInput = {
@@ -68453,6 +76736,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     customerOwner?: userCreateNestedOneWithoutPatientProfilesInput
     appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
+    recurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput = {
@@ -68480,6 +76764,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput = {
@@ -68786,6 +77071,156 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type appointment_recurring_seriesCreateWithoutCustomerInput = {
+    id?: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    patientProfile?: patient_profileCreateNestedOneWithoutRecurringAppointmentSeriesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderRecurringAppointmentSeriesInput
+    createdByUser: userCreateNestedOneWithoutCreatedRecurringAppointmentSeriesInput
+    appointments?: appointmentCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateWithoutCustomerInput = {
+    id?: string
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleUncheckedCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesCreateOrConnectWithoutCustomerInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    create: XOR<appointment_recurring_seriesCreateWithoutCustomerInput, appointment_recurring_seriesUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type appointment_recurring_seriesCreateManyCustomerInputEnvelope = {
+    data: appointment_recurring_seriesCreateManyCustomerInput | appointment_recurring_seriesCreateManyCustomerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_recurring_seriesCreateWithoutHealthcareProviderInput = {
+    id?: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerRecurringAppointmentSeriesInput
+    patientProfile?: patient_profileCreateNestedOneWithoutRecurringAppointmentSeriesInput
+    createdByUser: userCreateNestedOneWithoutCreatedRecurringAppointmentSeriesInput
+    appointments?: appointmentCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleUncheckedCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesCreateOrConnectWithoutHealthcareProviderInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    create: XOR<appointment_recurring_seriesCreateWithoutHealthcareProviderInput, appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type appointment_recurring_seriesCreateManyHealthcareProviderInputEnvelope = {
+    data: appointment_recurring_seriesCreateManyHealthcareProviderInput | appointment_recurring_seriesCreateManyHealthcareProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_recurring_seriesCreateWithoutCreatedByUserInput = {
+    id?: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerRecurringAppointmentSeriesInput
+    patientProfile?: patient_profileCreateNestedOneWithoutRecurringAppointmentSeriesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderRecurringAppointmentSeriesInput
+    appointments?: appointmentCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutRecurringSeriesInput
+    rules?: appointment_recurring_series_ruleUncheckedCreateNestedManyWithoutSeriesInput
+    procedures?: appointment_recurring_series_procedureUncheckedCreateNestedManyWithoutSeriesInput
+  }
+
+  export type appointment_recurring_seriesCreateOrConnectWithoutCreatedByUserInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    create: XOR<appointment_recurring_seriesCreateWithoutCreatedByUserInput, appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput>
+  }
+
+  export type appointment_recurring_seriesCreateManyCreatedByUserInputEnvelope = {
+    data: appointment_recurring_seriesCreateManyCreatedByUserInput | appointment_recurring_seriesCreateManyCreatedByUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type userCreateWithoutVerifiedByUserInput = {
     id?: string
     name: string
@@ -68834,6 +77269,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68877,6 +77313,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -68933,6 +77372,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68975,6 +77415,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -69206,6 +77649,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69250,6 +77694,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
@@ -69306,6 +77753,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69348,6 +77796,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -70076,6 +78527,54 @@ export namespace Prisma {
     data: XOR<appointment_waitlist_entryUpdateManyMutationInput, appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderInput>
   }
 
+  export type appointment_recurring_seriesUpsertWithWhereUniqueWithoutCustomerInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    update: XOR<appointment_recurring_seriesUpdateWithoutCustomerInput, appointment_recurring_seriesUncheckedUpdateWithoutCustomerInput>
+    create: XOR<appointment_recurring_seriesCreateWithoutCustomerInput, appointment_recurring_seriesUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type appointment_recurring_seriesUpdateWithWhereUniqueWithoutCustomerInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    data: XOR<appointment_recurring_seriesUpdateWithoutCustomerInput, appointment_recurring_seriesUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type appointment_recurring_seriesUpdateManyWithWhereWithoutCustomerInput = {
+    where: appointment_recurring_seriesScalarWhereInput
+    data: XOR<appointment_recurring_seriesUpdateManyMutationInput, appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerInput>
+  }
+
+  export type appointment_recurring_seriesUpsertWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    update: XOR<appointment_recurring_seriesUpdateWithoutHealthcareProviderInput, appointment_recurring_seriesUncheckedUpdateWithoutHealthcareProviderInput>
+    create: XOR<appointment_recurring_seriesCreateWithoutHealthcareProviderInput, appointment_recurring_seriesUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type appointment_recurring_seriesUpdateWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    data: XOR<appointment_recurring_seriesUpdateWithoutHealthcareProviderInput, appointment_recurring_seriesUncheckedUpdateWithoutHealthcareProviderInput>
+  }
+
+  export type appointment_recurring_seriesUpdateManyWithWhereWithoutHealthcareProviderInput = {
+    where: appointment_recurring_seriesScalarWhereInput
+    data: XOR<appointment_recurring_seriesUpdateManyMutationInput, appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderInput>
+  }
+
+  export type appointment_recurring_seriesUpsertWithWhereUniqueWithoutCreatedByUserInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    update: XOR<appointment_recurring_seriesUpdateWithoutCreatedByUserInput, appointment_recurring_seriesUncheckedUpdateWithoutCreatedByUserInput>
+    create: XOR<appointment_recurring_seriesCreateWithoutCreatedByUserInput, appointment_recurring_seriesUncheckedCreateWithoutCreatedByUserInput>
+  }
+
+  export type appointment_recurring_seriesUpdateWithWhereUniqueWithoutCreatedByUserInput = {
+    where: appointment_recurring_seriesWhereUniqueInput
+    data: XOR<appointment_recurring_seriesUpdateWithoutCreatedByUserInput, appointment_recurring_seriesUncheckedUpdateWithoutCreatedByUserInput>
+  }
+
+  export type appointment_recurring_seriesUpdateManyWithWhereWithoutCreatedByUserInput = {
+    where: appointment_recurring_seriesScalarWhereInput
+    data: XOR<appointment_recurring_seriesUpdateManyMutationInput, appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserInput>
+  }
+
   export type userUpsertWithWhereUniqueWithoutVerifiedByUserInput = {
     where: userWhereUniqueInput
     update: XOR<userUpdateWithoutVerifiedByUserInput, userUncheckedUpdateWithoutVerifiedByUserInput>
@@ -70145,6 +78644,7 @@ export namespace Prisma {
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
+    bookingAvailabilityDays?: IntFilter<"user"> | number
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableFilter<"user"> | number | null
@@ -70300,6 +78800,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70343,6 +78844,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -70399,6 +78903,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70441,6 +78946,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -70522,6 +79030,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70566,6 +79075,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
@@ -70622,6 +79134,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70664,6 +79177,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -70723,6 +79239,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70767,6 +79284,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
@@ -70823,6 +79343,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70865,6 +79386,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -70935,6 +79459,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70979,6 +79504,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
@@ -71035,6 +79563,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71077,6 +79606,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -71142,6 +79674,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71186,6 +79719,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
@@ -71242,6 +79778,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71284,6 +79821,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -71338,6 +79878,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71382,6 +79923,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -71438,6 +79982,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71480,6 +80025,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -71539,6 +80087,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71583,6 +80132,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
@@ -71639,6 +80191,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71681,6 +80234,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
     verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
     providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
@@ -71751,6 +80307,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71795,6 +80352,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -71851,6 +80411,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71893,6 +80454,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -71958,6 +80522,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72002,6 +80567,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -72058,6 +80626,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72100,6 +80669,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -72282,6 +80854,288 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type appointmentCreateManyRecurringSeriesInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    cancellationReason?: string | null
+    cancellationFeeCents?: number | null
+    cancellationPolicyAppliedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    cancelledByUserId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_recurring_series_ruleCreateManySeriesInput = {
+    id?: string
+    dayOfWeek: number
+    startTime: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_recurring_series_procedureCreateManySeriesInput = {
+    id?: string
+    procedureId: string
+    createdAt?: Date | string
+  }
+
+  export type appointmentUpdateWithoutRecurringSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
+    cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
+    appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+  }
+
+  export type appointmentUncheckedUpdateWithoutRecurringSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+  }
+
+  export type appointmentUncheckedUpdateManyWithoutRecurringSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_series_ruleUpdateWithoutSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUpdateManyWithoutRecurringRuleNestedInput
+  }
+
+  export type appointment_recurring_series_ruleUncheckedUpdateWithoutSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutRecurringRuleNestedInput
+  }
+
+  export type appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    dayOfWeek?: IntFieldUpdateOperationsInput | number
+    startTime?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_series_procedureUpdateWithoutSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    procedure?: procedureUpdateOneRequiredWithoutRecurringSeriesProceduresNestedInput
+  }
+
+  export type appointment_recurring_series_procedureUncheckedUpdateWithoutSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    procedureId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    procedureId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointmentCreateManyRecurringRuleInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringGeneratedAt?: Date | string | null
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    cancellationReason?: string | null
+    cancellationFeeCents?: number | null
+    cancellationPolicyAppliedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    cancelledByUserId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointmentUpdateWithoutRecurringRuleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
+    appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+  }
+
+  export type appointmentUncheckedUpdateWithoutRecurringRuleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+  }
+
+  export type appointmentUncheckedUpdateManyWithoutRecurringRuleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type appointment_waitlist_entry_procedureCreateManyWaitlistEntryInput = {
     id?: string
     procedureId: string
@@ -72434,6 +81288,9 @@ export namespace Prisma {
     id?: string
     customerId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -72453,8 +81310,26 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type appointment_recurring_seriesCreateManyPatientProfileInput = {
+    id?: string
+    customerId?: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type appointmentUpdateWithoutPatientProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -72473,6 +81348,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
     cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
@@ -72484,6 +81361,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -72511,6 +81391,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -72526,6 +81409,63 @@ export namespace Prisma {
     cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_seriesUpdateWithoutPatientProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerRecurringAppointmentSeriesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderRecurringAppointmentSeriesNestedInput
+    createdByUser?: userUpdateOneRequiredWithoutCreatedRecurringAppointmentSeriesNestedInput
+    appointments?: appointmentUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateWithoutPatientProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -72548,6 +81488,12 @@ export namespace Prisma {
     position?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type appointment_recurring_series_procedureCreateManyProcedureInput = {
+    id?: string
+    seriesId: string
+    createdAt?: Date | string
   }
 
   export type appointment_procedureUpdateWithoutProcedureInput = {
@@ -72610,6 +81556,24 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type appointment_recurring_series_procedureUpdateWithoutProcedureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    series?: appointment_recurring_seriesUpdateOneRequiredWithoutProceduresNestedInput
+  }
+
+  export type appointment_recurring_series_procedureUncheckedUpdateWithoutProcedureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    seriesId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_series_procedureUncheckedUpdateManyWithoutProcedureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    seriesId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type sessionCreateManyUserInput = {
     id?: string
     expiresAt: Date | string
@@ -72663,6 +81627,9 @@ export namespace Prisma {
     id?: string
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -72686,6 +81653,9 @@ export namespace Prisma {
     id?: string
     customerId?: string | null
     patientProfileId?: string | null
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -72710,6 +81680,9 @@ export namespace Prisma {
     customerId?: string | null
     patientProfileId?: string | null
     healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
     scheduledAt: Date | string
     status?: $Enums.AppointmentStatus
     serviceModality?: string
@@ -72962,6 +81935,57 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type appointment_recurring_seriesCreateManyCustomerInput = {
+    id?: string
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_recurring_seriesCreateManyHealthcareProviderInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    createdByUserId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_recurring_seriesCreateManyCreatedByUserInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    serviceModality?: string
+    notes?: string | null
+    startsOn: Date | string
+    endsOn?: Date | string | null
+    isIndefinite?: boolean
+    isActive?: boolean
+    generatedUntil?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type userCreateManyVerifiedByUserInput = {
     id?: string
     name: string
@@ -73011,6 +82035,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -73217,6 +82242,7 @@ export namespace Prisma {
 
   export type appointmentUpdateWithoutCustomerInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -73235,6 +82261,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
     cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
@@ -73246,6 +82274,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -73273,6 +82304,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -73294,6 +82328,7 @@ export namespace Prisma {
 
   export type appointmentUpdateWithoutHealthcareProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -73312,6 +82347,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
     patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
     cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
@@ -73323,6 +82360,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -73350,6 +82390,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -73371,6 +82414,7 @@ export namespace Prisma {
 
   export type appointmentUpdateWithoutCancelledByUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -73390,6 +82434,8 @@ export namespace Prisma {
     customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
     patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
     healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
@@ -73401,6 +82447,9 @@ export namespace Prisma {
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -73428,6 +82477,9 @@ export namespace Prisma {
     customerId?: NullableStringFieldUpdateOperationsInput | string | null
     patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
     serviceModality?: StringFieldUpdateOperationsInput | string
@@ -73457,6 +82509,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUpdateManyWithoutProcedureNestedInput
     checklistItems?: procedure_checklist_itemUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateWithoutHealthcareProviderInput = {
@@ -73470,6 +82523,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutProcedureNestedInput
     waitlistEntryProcedures?: appointment_waitlist_entry_procedureUncheckedUpdateManyWithoutProcedureNestedInput
     checklistItems?: procedure_checklist_itemUncheckedUpdateManyWithoutProcedureNestedInput
+    recurringSeriesProcedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutProcedureNestedInput
   }
 
   export type procedureUncheckedUpdateManyWithoutHealthcareProviderInput = {
@@ -73727,6 +82781,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdByHealthcareProvider?: userUpdateOneWithoutCreatedPatientProfilesNestedInput
     appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateWithoutCustomerOwnerInput = {
@@ -73754,6 +82809,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateManyWithoutCustomerOwnerInput = {
@@ -73807,6 +82863,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     customerOwner?: userUpdateOneWithoutPatientProfilesNestedInput
     appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateWithoutCreatedByHealthcareProviderInput = {
@@ -73834,6 +82891,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderInput = {
@@ -74166,6 +83224,177 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type appointment_recurring_seriesUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    patientProfile?: patient_profileUpdateOneWithoutRecurringAppointmentSeriesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderRecurringAppointmentSeriesNestedInput
+    createdByUser?: userUpdateOneRequiredWithoutCreatedRecurringAppointmentSeriesNestedInput
+    appointments?: appointmentUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_seriesUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerRecurringAppointmentSeriesNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutRecurringAppointmentSeriesNestedInput
+    createdByUser?: userUpdateOneRequiredWithoutCreatedRecurringAppointmentSeriesNestedInput
+    appointments?: appointmentUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdByUserId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_recurring_seriesUpdateWithoutCreatedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerRecurringAppointmentSeriesNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutRecurringAppointmentSeriesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderRecurringAppointmentSeriesNestedInput
+    appointments?: appointmentUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateWithoutCreatedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutRecurringSeriesNestedInput
+    rules?: appointment_recurring_series_ruleUncheckedUpdateManyWithoutSeriesNestedInput
+    procedures?: appointment_recurring_series_procedureUncheckedUpdateManyWithoutSeriesNestedInput
+  }
+
+  export type appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    startsOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    endsOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isIndefinite?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type userUpdateWithoutVerifiedByUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -74214,6 +83443,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74257,6 +83487,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -74313,6 +83546,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74355,6 +83589,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -74411,6 +83648,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74595,6 +83833,7 @@ export namespace Prisma {
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -74658,6 +83897,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74701,6 +83941,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
@@ -74757,6 +84000,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74799,6 +84043,9 @@ export namespace Prisma {
     appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
     customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
     providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
     verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
     providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
@@ -74855,6 +84102,7 @@ export namespace Prisma {
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null

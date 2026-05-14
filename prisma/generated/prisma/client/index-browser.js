@@ -148,6 +148,9 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   customerId: 'customerId',
   patientProfileId: 'patientProfileId',
   healthcareProviderId: 'healthcareProviderId',
+  recurringSeriesId: 'recurringSeriesId',
+  recurringRuleId: 'recurringRuleId',
+  recurringGeneratedAt: 'recurringGeneratedAt',
   scheduledAt: 'scheduledAt',
   status: 'status',
   serviceModality: 'serviceModality',
@@ -177,6 +180,40 @@ exports.Prisma.Appointment_reschedule_requestScalarFieldEnum = {
   respondedAt: 'respondedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Appointment_recurring_seriesScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  patientProfileId: 'patientProfileId',
+  healthcareProviderId: 'healthcareProviderId',
+  createdByUserId: 'createdByUserId',
+  serviceModality: 'serviceModality',
+  notes: 'notes',
+  startsOn: 'startsOn',
+  endsOn: 'endsOn',
+  isIndefinite: 'isIndefinite',
+  isActive: 'isActive',
+  generatedUntil: 'generatedUntil',
+  cancelledAt: 'cancelledAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Appointment_recurring_series_ruleScalarFieldEnum = {
+  id: 'id',
+  seriesId: 'seriesId',
+  dayOfWeek: 'dayOfWeek',
+  startTime: 'startTime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Appointment_recurring_series_procedureScalarFieldEnum = {
+  id: 'id',
+  seriesId: 'seriesId',
+  procedureId: 'procedureId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.Appointment_waitlist_entryScalarFieldEnum = {
@@ -487,6 +524,7 @@ exports.Prisma.UserScalarFieldEnum = {
   homeCareRadiusKm: 'homeCareRadiusKm',
   acceptedInsurance: 'acceptedInsurance',
   paymentMethods: 'paymentMethods',
+  bookingAvailabilityDays: 'bookingAvailabilityDays',
   cancellationPolicy: 'cancellationPolicy',
   cancellationPolicyEnabled: 'cancellationPolicyEnabled',
   cancellationPolicyHoursBefore: 'cancellationPolicyHoursBefore',
@@ -680,6 +718,9 @@ exports.Prisma.ModelName = {
   appointment_procedure: 'appointment_procedure',
   appointment: 'appointment',
   appointment_reschedule_request: 'appointment_reschedule_request',
+  appointment_recurring_series: 'appointment_recurring_series',
+  appointment_recurring_series_rule: 'appointment_recurring_series_rule',
+  appointment_recurring_series_procedure: 'appointment_recurring_series_procedure',
   appointment_waitlist_entry: 'appointment_waitlist_entry',
   appointment_waitlist_entry_procedure: 'appointment_waitlist_entry_procedure',
   category: 'category',

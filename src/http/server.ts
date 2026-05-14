@@ -12,6 +12,7 @@ import { prisma } from "@/database/prisma";
 import { env } from "@/env";
 import { errorHandler } from "@/http/error-handler";
 import { startAppointmentReminderWorker } from "@/http/services/appointment-reminder-worker";
+import { startRecurringAppointmentsWorker } from "@/http/services/recurring-appointments-worker";
 import { routerLoader } from "@/loaders/router/router";
 import { z } from "zod";
 
@@ -329,7 +330,8 @@ routerLoader()
 				process.exit(1);
 			}
 			console.log("\n✅ Server running on http://localhost:3333\n");
-			startAppointmentReminderWorker();
+startAppointmentReminderWorker();
+startRecurringAppointmentsWorker();
 		});
 	});
 

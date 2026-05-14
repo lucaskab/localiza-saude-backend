@@ -1,6 +1,8 @@
 import type {
 	AppointmentStatus,
 	appointment,
+	appointment_recurring_series,
+	appointment_recurring_series_rule,
 	appointment_reschedule_request,
 	user,
 	patient_profile,
@@ -18,6 +20,9 @@ export type CreateAppointmentData = {
 	procedureIds: string[];
 	serviceModality: ServiceModality;
 	notes?: string | null;
+	recurringSeriesId?: string | null;
+	recurringRuleId?: string | null;
+	recurringGeneratedAt?: Date | null;
 };
 
 export type UpdateAppointmentData = {
@@ -48,6 +53,10 @@ export type AppointmentWithRelations = appointment & {
 	patientProfile: patient_profile | null;
 	healthcareProvider: user;
 	cancelledByUser: user | null;
+	recurringSeries: (appointment_recurring_series & {
+		rules: appointment_recurring_series_rule[];
+	}) | null;
+	recurringRule: appointment_recurring_series_rule | null;
 	appointmentProcedures: AppointmentProcedure[];
 	rescheduleRequests: appointment_reschedule_request[];
 };

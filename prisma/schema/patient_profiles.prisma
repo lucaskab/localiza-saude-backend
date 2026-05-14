@@ -27,6 +27,7 @@ model patient_profile {
   updatedAt                     DateTime             @updatedAt @map("updated_at")
 
   appointments appointment[]
+  recurringAppointmentSeries appointment_recurring_series[]
 
   @@index([fullName])
   @@index([phone])

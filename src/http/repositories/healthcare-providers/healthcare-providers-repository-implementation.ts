@@ -358,8 +358,10 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					clinicCity: data.clinicCity,
 					clinicState: data.clinicState,
 					homeCareRadiusKm: data.homeCareRadiusKm,
-					acceptedInsurance: data.acceptedInsurance,
-					paymentMethods: data.paymentMethods,
+						acceptedInsurance: data.acceptedInsurance,
+						paymentMethods: data.paymentMethods,
+						bookingAvailabilityDays:
+							data.bookingAvailabilityDays ?? undefined,
 					cancellationPolicy: data.cancellationPolicy,
 					cancellationPolicyEnabled: data.cancellationPolicyEnabled,
 					cancellationPolicyHoursBefore: data.cancellationPolicyHoursBefore,
@@ -391,142 +393,147 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 
 		async update(id: string, data: UpdateHealthcareProviderData) {
 			const healthcareProvider = await prisma.$transaction(async (tx) => {
+				const updateData: Prisma.userUncheckedUpdateInput = {
+					...(data.displayName !== undefined && {
+						displayName: data.displayName,
+					}),
+					...(data.document !== undefined && { document: data.document }),
+					...(data.birthDate !== undefined && { birthDate: data.birthDate }),
+					...(data.gender !== undefined && { gender: data.gender }),
+					...(data.languages !== undefined && { languages: data.languages }),
+					...(data.specialty !== undefined && { specialty: data.specialty }),
+					...(data.professionalCategory !== undefined && {
+						professionalCategory: data.professionalCategory,
+					}),
+					...(data.professionalId !== undefined && {
+						professionalId: data.professionalId,
+					}),
+					...(data.professionalCouncilId !== undefined && {
+						professionalCouncilId: data.professionalCouncilId,
+					}),
+					...(data.licenseState !== undefined && {
+						licenseState: data.licenseState,
+					}),
+					...(data.licenseDocumentKey !== undefined && {
+						licenseDocumentKey: data.licenseDocumentKey,
+					}),
+					...(data.licenseDocumentFileName !== undefined && {
+						licenseDocumentFileName: data.licenseDocumentFileName,
+					}),
+					...(data.licenseDocumentMimeType !== undefined && {
+						licenseDocumentMimeType: data.licenseDocumentMimeType,
+					}),
+					...(data.licenseDocumentSize !== undefined && {
+						licenseDocumentSize: data.licenseDocumentSize,
+					}),
+					...(data.licenseDocumentSha256 !== undefined && {
+						licenseDocumentSha256: data.licenseDocumentSha256,
+					}),
+					...(data.licenseDocumentUploadedAt !== undefined && {
+						licenseDocumentUploadedAt: data.licenseDocumentUploadedAt,
+					}),
+					...(data.verificationStatus !== undefined && {
+						verificationStatus: data.verificationStatus,
+					}),
+					...(data.verificationRejectionReason !== undefined && {
+						verificationRejectionReason: data.verificationRejectionReason,
+					}),
+					...(data.verifiedAt !== undefined && {
+						verifiedAt: data.verifiedAt,
+					}),
+					...(data.verifiedByUserId !== undefined && {
+						verifiedByUserId: data.verifiedByUserId,
+					}),
+					...(data.bio !== undefined && { bio: data.bio }),
+					...(data.approach !== undefined && { approach: data.approach }),
+					...(data.education !== undefined && { education: data.education }),
+					...(data.certifications !== undefined && {
+						certifications: data.certifications,
+					}),
+					...(data.yearsOfExperience !== undefined && {
+						yearsOfExperience: data.yearsOfExperience,
+					}),
+					...(data.targetAudiences !== undefined && {
+						targetAudiences: data.targetAudiences,
+					}),
+					...(data.serviceModalities !== undefined && {
+						serviceModalities: data.serviceModalities,
+					}),
+					...(data.clinicAddress !== undefined && {
+						clinicAddress: data.clinicAddress,
+					}),
+					...(data.clinicLatitude !== undefined && {
+						clinicLatitude: data.clinicLatitude,
+					}),
+					...(data.clinicLongitude !== undefined && {
+						clinicLongitude: data.clinicLongitude,
+					}),
+					...(data.clinicNeighborhood !== undefined && {
+						clinicNeighborhood: data.clinicNeighborhood,
+					}),
+					...(data.clinicCity !== undefined && {
+						clinicCity: data.clinicCity,
+					}),
+					...(data.clinicState !== undefined && {
+						clinicState: data.clinicState,
+					}),
+					...(data.homeCareRadiusKm !== undefined && {
+						homeCareRadiusKm: data.homeCareRadiusKm,
+					}),
+					...(data.acceptedInsurance !== undefined && {
+						acceptedInsurance: data.acceptedInsurance,
+					}),
+					...(data.paymentMethods !== undefined && {
+						paymentMethods: data.paymentMethods,
+					}),
+					...(data.bookingAvailabilityDays !== undefined && {
+						bookingAvailabilityDays: data.bookingAvailabilityDays ?? undefined,
+					}),
+					...(data.cancellationPolicy !== undefined && {
+						cancellationPolicy: data.cancellationPolicy,
+					}),
+					...(data.cancellationPolicyEnabled !== undefined && {
+						cancellationPolicyEnabled: data.cancellationPolicyEnabled,
+					}),
+					...(data.cancellationPolicyHoursBefore !== undefined && {
+						cancellationPolicyHoursBefore:
+							data.cancellationPolicyHoursBefore,
+					}),
+					...(data.cancellationPolicyPenaltyType !== undefined && {
+						cancellationPolicyPenaltyType:
+							data.cancellationPolicyPenaltyType,
+					}),
+					...(data.cancellationPolicyFixedFeeCents !== undefined && {
+						cancellationPolicyFixedFeeCents:
+							data.cancellationPolicyFixedFeeCents,
+					}),
+					...(data.cancellationPolicyPercentage !== undefined && {
+						cancellationPolicyPercentage:
+							data.cancellationPolicyPercentage,
+					}),
+					...(data.cancellationPolicyRequiresJustification !==
+						undefined && {
+						cancellationPolicyRequiresJustification:
+							data.cancellationPolicyRequiresJustification,
+					}),
+					...(data.clinicPhotos !== undefined && {
+						clinicPhotos: data.clinicPhotos,
+					}),
+					...(data.termsAcceptedAt !== undefined && {
+						termsAcceptedAt: data.termsAcceptedAt,
+					}),
+					...(data.lgpdConsentAt !== undefined && {
+						lgpdConsentAt: data.lgpdConsentAt,
+					}),
+					...(data.professionalResponsibilityAcceptedAt !== undefined && {
+						professionalResponsibilityAcceptedAt:
+							data.professionalResponsibilityAcceptedAt,
+					}),
+				};
+
 				const updatedProfessional = await tx.user.update({
 					where: { id },
-					data: {
-						...(data.displayName !== undefined && {
-							displayName: data.displayName,
-						}),
-						...(data.document !== undefined && { document: data.document }),
-						...(data.birthDate !== undefined && { birthDate: data.birthDate }),
-						...(data.gender !== undefined && { gender: data.gender }),
-						...(data.languages !== undefined && { languages: data.languages }),
-						...(data.specialty !== undefined && { specialty: data.specialty }),
-						...(data.professionalCategory !== undefined && {
-							professionalCategory: data.professionalCategory,
-						}),
-						...(data.professionalId !== undefined && {
-							professionalId: data.professionalId,
-						}),
-						...(data.professionalCouncilId !== undefined && {
-							professionalCouncilId: data.professionalCouncilId,
-						}),
-						...(data.licenseState !== undefined && {
-							licenseState: data.licenseState,
-						}),
-						...(data.licenseDocumentKey !== undefined && {
-							licenseDocumentKey: data.licenseDocumentKey,
-						}),
-						...(data.licenseDocumentFileName !== undefined && {
-							licenseDocumentFileName: data.licenseDocumentFileName,
-						}),
-						...(data.licenseDocumentMimeType !== undefined && {
-							licenseDocumentMimeType: data.licenseDocumentMimeType,
-						}),
-						...(data.licenseDocumentSize !== undefined && {
-							licenseDocumentSize: data.licenseDocumentSize,
-						}),
-						...(data.licenseDocumentSha256 !== undefined && {
-							licenseDocumentSha256: data.licenseDocumentSha256,
-						}),
-						...(data.licenseDocumentUploadedAt !== undefined && {
-							licenseDocumentUploadedAt: data.licenseDocumentUploadedAt,
-						}),
-						...(data.verificationStatus !== undefined && {
-							verificationStatus: data.verificationStatus,
-						}),
-						...(data.verificationRejectionReason !== undefined && {
-							verificationRejectionReason: data.verificationRejectionReason,
-						}),
-						...(data.verifiedAt !== undefined && {
-							verifiedAt: data.verifiedAt,
-						}),
-						...(data.verifiedByUserId !== undefined && {
-							verifiedByUserId: data.verifiedByUserId,
-						}),
-						...(data.bio !== undefined && { bio: data.bio }),
-						...(data.approach !== undefined && { approach: data.approach }),
-						...(data.education !== undefined && { education: data.education }),
-						...(data.certifications !== undefined && {
-							certifications: data.certifications,
-						}),
-						...(data.yearsOfExperience !== undefined && {
-							yearsOfExperience: data.yearsOfExperience,
-						}),
-						...(data.targetAudiences !== undefined && {
-							targetAudiences: data.targetAudiences,
-						}),
-						...(data.serviceModalities !== undefined && {
-							serviceModalities: data.serviceModalities,
-						}),
-						...(data.clinicAddress !== undefined && {
-							clinicAddress: data.clinicAddress,
-						}),
-						...(data.clinicLatitude !== undefined && {
-							clinicLatitude: data.clinicLatitude,
-						}),
-						...(data.clinicLongitude !== undefined && {
-							clinicLongitude: data.clinicLongitude,
-						}),
-						...(data.clinicNeighborhood !== undefined && {
-							clinicNeighborhood: data.clinicNeighborhood,
-						}),
-						...(data.clinicCity !== undefined && {
-							clinicCity: data.clinicCity,
-						}),
-						...(data.clinicState !== undefined && {
-							clinicState: data.clinicState,
-						}),
-						...(data.homeCareRadiusKm !== undefined && {
-							homeCareRadiusKm: data.homeCareRadiusKm,
-						}),
-						...(data.acceptedInsurance !== undefined && {
-							acceptedInsurance: data.acceptedInsurance,
-						}),
-						...(data.paymentMethods !== undefined && {
-							paymentMethods: data.paymentMethods,
-						}),
-						...(data.cancellationPolicy !== undefined && {
-							cancellationPolicy: data.cancellationPolicy,
-						}),
-						...(data.cancellationPolicyEnabled !== undefined && {
-							cancellationPolicyEnabled: data.cancellationPolicyEnabled,
-						}),
-						...(data.cancellationPolicyHoursBefore !== undefined && {
-							cancellationPolicyHoursBefore:
-								data.cancellationPolicyHoursBefore,
-						}),
-						...(data.cancellationPolicyPenaltyType !== undefined && {
-							cancellationPolicyPenaltyType:
-								data.cancellationPolicyPenaltyType,
-						}),
-						...(data.cancellationPolicyFixedFeeCents !== undefined && {
-							cancellationPolicyFixedFeeCents:
-								data.cancellationPolicyFixedFeeCents,
-						}),
-						...(data.cancellationPolicyPercentage !== undefined && {
-							cancellationPolicyPercentage:
-								data.cancellationPolicyPercentage,
-						}),
-						...(data.cancellationPolicyRequiresJustification !==
-							undefined && {
-							cancellationPolicyRequiresJustification:
-								data.cancellationPolicyRequiresJustification,
-						}),
-						...(data.clinicPhotos !== undefined && {
-							clinicPhotos: data.clinicPhotos,
-						}),
-						...(data.termsAcceptedAt !== undefined && {
-							termsAcceptedAt: data.termsAcceptedAt,
-						}),
-						...(data.lgpdConsentAt !== undefined && {
-							lgpdConsentAt: data.lgpdConsentAt,
-						}),
-						...(data.professionalResponsibilityAcceptedAt !== undefined && {
-							professionalResponsibilityAcceptedAt:
-								data.professionalResponsibilityAcceptedAt,
-						}),
-					},
+					data: updateData,
 				});
 
 				if (data.faqs !== undefined) {

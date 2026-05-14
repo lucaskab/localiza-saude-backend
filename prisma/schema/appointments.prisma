@@ -6,6 +6,11 @@ model appointment {
   patientProfile       patient_profile?    @relation(fields: [patientProfileId], references: [id])
   healthcareProviderId   String              @map("healthcare_provider_id")
   healthcareProvider         user                @relation("ProviderAppointments", fields: [healthcareProviderId], references: [id])
+  recurringSeriesId    String?             @map("recurring_series_id")
+  recurringSeries      appointment_recurring_series? @relation(fields: [recurringSeriesId], references: [id], onDelete: SetNull)
+  recurringRuleId      String?             @map("recurring_rule_id")
+  recurringRule        appointment_recurring_series_rule? @relation(fields: [recurringRuleId], references: [id], onDelete: SetNull)
+  recurringGeneratedAt DateTime?           @map("recurring_generated_at")
   scheduledAt          DateTime            @map("scheduled_at")
   status               AppointmentStatus   @default(SCHEDULED)
   serviceModality      String              @default("IN_PERSON") @map("service_modality")
@@ -33,6 +38,8 @@ model appointment {
   @@index([customerId])
   @@index([patientProfileId])
   @@index([healthcareProviderId])
+  @@index([recurringSeriesId])
+  @@index([recurringRuleId])
   @@index([cancelledByUserId])
   @@index([scheduledAt])
   @@map("appointments")
@@ -71,6 +78,67 @@ enum AppointmentRescheduleRequestStatus {
   ACCEPTED
   DECLINED
   CANCELLED
+}
+
+model appointment_recurring_series {
+  id                   String   @id @default(cuid())
+  customerId           String?  @map("customer_id")
+  customer             user?    @relation("CustomerRecurringAppointmentSeries", fields: [customerId], references: [id], onDelete: SetNull)
+  patientProfileId     String?  @map("patient_profile_id")
+  patientProfile       patient_profile? @relation(fields: [patientProfileId], references: [id], onDelete: SetNull)
+  healthcareProviderId String   @map("healthcare_provider_id")
+  healthcareProvider   user     @relation("ProviderRecurringAppointmentSeries", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  createdByUserId      String   @map("created_by_user_id")
+  createdByUser        user     @relation("CreatedRecurringAppointmentSeries", fields: [createdByUserId], references: [id], onDelete: Cascade)
+  serviceModality      String   @default("IN_PERSON") @map("service_modality")
+  notes                String?
+  startsOn             DateTime @map("starts_on")
+  endsOn               DateTime? @map("ends_on")
+  isIndefinite         Boolean  @default(false) @map("is_indefinite")
+  isActive             Boolean  @default(true) @map("is_active")
+  generatedUntil       DateTime? @map("generated_until")
+  cancelledAt          DateTime? @map("cancelled_at")
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
+
+  appointments appointment[]
+  rules        appointment_recurring_series_rule[]
+  procedures   appointment_recurring_series_procedure[]
+
+  @@index([customerId, isActive])
+  @@index([patientProfileId])
+  @@index([healthcareProviderId, isActive])
+  @@index([createdByUserId])
+  @@map("appointment_recurring_series")
+}
+
+model appointment_recurring_series_rule {
+  id         String   @id @default(cuid())
+  seriesId    String   @map("series_id")
+  series      appointment_recurring_series @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+  dayOfWeek   Int      @map("day_of_week")
+  startTime   String   @map("start_time")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  appointments appointment[]
+
+  @@unique([seriesId, dayOfWeek, startTime])
+  @@index([seriesId, dayOfWeek])
+  @@map("appointment_recurring_series_rules")
+}
+
+model appointment_recurring_series_procedure {
+  id         String   @id @default(cuid())
+  seriesId    String   @map("series_id")
+  series      appointment_recurring_series @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+  procedureId String   @map("procedure_id")
+  procedure   procedure @relation(fields: [procedureId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@unique([seriesId, procedureId])
+  @@index([procedureId])
+  @@map("appointment_recurring_series_procedures")
 }
 
 model appointment_waitlist_entry {

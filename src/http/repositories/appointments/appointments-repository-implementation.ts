@@ -14,6 +14,17 @@ const includeRelations = {
 	patientProfile: true,
 	healthcareProvider: true,
 	cancelledByUser: true,
+	recurringSeries: {
+		include: {
+			rules: {
+				orderBy: [
+					{ dayOfWeek: "asc" as const },
+					{ startTime: "asc" as const },
+				],
+			},
+		},
+	},
+	recurringRule: true,
 	appointmentProcedures: {
 		include: {
 			procedure: {
@@ -275,6 +286,9 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 				customerId: data.customerId,
 				patientProfileId: data.patientProfileId,
 				healthcareProviderId: data.healthcareProviderId,
+				recurringSeriesId: data.recurringSeriesId,
+				recurringRuleId: data.recurringRuleId,
+				recurringGeneratedAt: data.recurringGeneratedAt,
 				scheduledAt: data.scheduledAt,
 				serviceModality: data.serviceModality,
 				notes: data.notes,

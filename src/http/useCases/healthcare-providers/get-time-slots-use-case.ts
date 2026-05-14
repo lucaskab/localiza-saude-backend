@@ -1,6 +1,7 @@
 import { prisma } from "@/database/prisma";
 import { prismaAppointmentRepository } from "@/http/repositories/appointments/appointments-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
+import { recurringAppointmentsService } from "@/http/services/recurring-appointments-service";
 
 type TimeSlot = {
 	startTime: string;
@@ -30,6 +31,9 @@ type GetTimeSlotsResponse = {
 	};
 	slots: TimeSlot[];
 };
+
+const DEFAULT_BOOKING_AVAILABILITY_DAYS = 60;
+const MAX_BOOKING_AVAILABILITY_DAYS = 365;
 
 function timeToMinutes(time: string): number {
 	const [hours = 0, minutes = 0] = time.split(":").map(Number);
@@ -85,6 +89,33 @@ function parseUtcDateString(date: string): Date {
 	return new Date(Date.UTC(year || 0, (month || 1) - 1, day || 1));
 }
 
+function endOfUtcDay(date: Date) {
+	const result = new Date(date);
+	result.setUTCHours(23, 59, 59, 999);
+	return result;
+}
+
+function addUtcDays(date: Date, days: number) {
+	const result = new Date(date);
+	result.setUTCDate(result.getUTCDate() + days);
+	return result;
+}
+
+function getBookingWindowEndDate(
+	bookingAvailabilityDays: number | null | undefined,
+	referenceDate = new Date(),
+) {
+	const normalizedDays = Math.min(
+		Math.max(bookingAvailabilityDays ?? DEFAULT_BOOKING_AVAILABILITY_DAYS, 1),
+		MAX_BOOKING_AVAILABILITY_DAYS,
+	);
+
+	const start = new Date(referenceDate);
+	start.setUTCHours(0, 0, 0, 0);
+
+	return endOfUtcDay(addUtcDays(start, normalizedDays));
+}
+
 export const getTimeSlotsUseCase = {
 	async execute(params: GetTimeSlotsParams): Promise<GetTimeSlotsResponse> {
 		const { healthcareProviderId, date, procedureIds } = params;
@@ -92,6 +123,10 @@ export const getTimeSlotsUseCase = {
 		// Validate healthcare provider exists
 		const provider = await prisma.user.findUnique({
 			where: { id: healthcareProviderId },
+			select: {
+				id: true,
+				bookingAvailabilityDays: true,
+			},
 		});
 
 		if (!provider) {
@@ -145,6 +180,28 @@ export const getTimeSlotsUseCase = {
 
 		// Parse date as UTC to keep slot generation independent from server timezone
 		const dateObj = parseUtcDateString(date);
+		const bookingWindowEnd = getBookingWindowEndDate(
+			provider.bookingAvailabilityDays,
+		);
+
+		if (endOfUtcDay(dateObj) > bookingWindowEnd) {
+			return {
+				date,
+				healthcareProviderId,
+				totalDurationMinutes,
+				slotIntervalMinutes,
+				workingHours: {
+					startTime: "00:00",
+					endTime: "00:00",
+				},
+				slots: [],
+			};
+		}
+
+		await recurringAppointmentsService.ensureProviderRecurringAppointmentsUpToDate(
+			healthcareProviderId,
+			dateObj,
+		);
 		const dayOfWeek = getDayOfWeek(dateObj);
 
 		// Get provider's recurring schedule and date-specific exceptions.

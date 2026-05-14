@@ -90,6 +90,34 @@ const appointmentRescheduleRequestSchema = z.object({
 	updatedAt: z.date(),
 });
 
+const recurringWeeklySlotSchema = z.object({
+	id: z.cuid(),
+	seriesId: z.cuid(),
+	dayOfWeek: z.number().int().min(0).max(6),
+	startTime: z.string(),
+	createdAt: z.date(),
+	updatedAt: z.date(),
+});
+
+const recurringSeriesSummarySchema = z.object({
+	id: z.cuid(),
+	customerId: z.cuid().nullable(),
+	patientProfileId: z.cuid().nullable(),
+	healthcareProviderId: z.cuid(),
+	createdByUserId: z.cuid(),
+	serviceModality: serviceModalitySchema,
+	notes: z.string().nullable(),
+	startsOn: z.date(),
+	endsOn: z.date().nullable(),
+	isIndefinite: z.boolean(),
+	isActive: z.boolean(),
+	generatedUntil: z.date().nullable(),
+	cancelledAt: z.date().nullable(),
+	createdAt: z.date(),
+	updatedAt: z.date(),
+	weeklySlots: z.array(recurringWeeklySlotSchema),
+});
+
 export const appointmentSchema = z.object({
 	id: z.cuid(),
 	customerId: z.cuid().nullable(),
@@ -114,6 +142,11 @@ export const appointmentSchema = z.object({
 	cancelledAt: z.date().nullable(),
 	cancelledByUserId: z.cuid().nullable(),
 	cancelledByUser: publicUserSchema.nullable(),
+	recurringSeriesId: z.cuid().nullable(),
+	recurringSeries: recurringSeriesSummarySchema.nullable(),
+	recurringRuleId: z.cuid().nullable(),
+	recurringRule: recurringWeeklySlotSchema.nullable(),
+	recurringGeneratedAt: z.date().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
 	appointmentProcedures: z.array(appointmentProcedureSchema),

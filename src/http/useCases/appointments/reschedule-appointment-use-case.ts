@@ -5,6 +5,7 @@ import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
 import { clinicRbac } from "@/http/services/clinic-rbac";
 import { googleMeetService } from "@/http/services/google-meet-service";
+import { recurringAppointmentsService } from "@/http/services/recurring-appointments-service";
 import type { user } from "../../../../prisma/generated/prisma/client";
 
 type RescheduleAppointmentData = {
@@ -97,6 +98,24 @@ async function assertAvailableScheduledAt({
 			"Selected time is outside the provider working hours",
 		);
 	}
+
+	const provider = await prisma.user.findUnique({
+		where: {
+			id: appointment.healthcareProviderId,
+		},
+		select: {
+			bookingAvailabilityDays: true,
+		},
+	});
+
+	recurringAppointmentsService.assertScheduledAtWithinBookingWindow(
+		provider?.bookingAvailabilityDays,
+		scheduledAt,
+	);
+	await recurringAppointmentsService.ensureProviderRecurringAppointmentsUpToDate(
+		appointment.healthcareProviderId,
+		scheduledAt,
+	);
 
 	const startOfDay = new Date(scheduledAt);
 	startOfDay.setUTCHours(0, 0, 0, 0);

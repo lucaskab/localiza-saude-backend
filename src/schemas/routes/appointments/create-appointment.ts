@@ -19,6 +19,21 @@ export const appointmentPatientSchema = z
 	])
 	.optional();
 
+export const recurringWeeklySlotSchema = z.object({
+	dayOfWeek: z.number().int().min(0).max(6),
+	startTime: z.string().regex(/^\d{2}:\d{2}$/),
+});
+
+export const appointmentRecurrenceSchema = z.object({
+	isIndefinite: z.boolean().default(false),
+	endsOn: z
+		.string()
+		.regex(/^\d{4}-\d{2}-\d{2}$/)
+		.nullable()
+		.optional(),
+	weeklySlots: z.array(recurringWeeklySlotSchema).min(1),
+});
+
 export const createAppointmentBodySchema = z.object({
 	healthcareProviderId: z.cuid().optional(),
 	scheduledAt: z.string().datetime().transform((val) => new Date(val)),
@@ -26,6 +41,7 @@ export const createAppointmentBodySchema = z.object({
 	serviceModality: serviceModalitySchema.optional(),
 	notes: z.string().nullable().optional(),
 	customer: appointmentPatientSchema,
+	recurrence: appointmentRecurrenceSchema.optional(),
 });
 
 export const createAppointmentResponseSchema = z.object({

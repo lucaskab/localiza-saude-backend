@@ -12,6 +12,7 @@ model procedure {
   appointmentProcedures appointment_procedure[]
   waitlistEntryProcedures appointment_waitlist_entry_procedure[]
   checklistItems       procedure_checklist_item[]
+  recurringSeriesProcedures appointment_recurring_series_procedure[]
 
   @@index([healthcareProviderId])
   @@map("procedures")

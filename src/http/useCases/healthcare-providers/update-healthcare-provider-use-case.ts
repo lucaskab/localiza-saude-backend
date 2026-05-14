@@ -7,6 +7,7 @@ import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
 import { clinicRbac } from "@/http/services/clinic-rbac";
 import { geocodingService } from "@/http/services/geocoding-service";
+import { recurringAppointmentsService } from "@/http/services/recurring-appointments-service";
 import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
 import type { user } from "../../../../prisma/generated/prisma/client";
 
@@ -100,6 +101,12 @@ export const updateHealthcareProviderUseCase = {
 			id,
 			dataWithLocation,
 		);
+
+		if (data.bookingAvailabilityDays !== undefined) {
+			await recurringAppointmentsService.trimProviderRecurringAppointmentsToWindow(
+				id,
+			);
+		}
 
 		return { healthcareProvider: signClinicPhotoUrls(healthcareProvider) };
 	},

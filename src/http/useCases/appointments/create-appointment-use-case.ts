@@ -11,6 +11,7 @@ import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
 import { clinicRbac } from "@/http/services/clinic-rbac";
 import { googleMeetService } from "@/http/services/google-meet-service";
+import { recurringAppointmentsService } from "@/http/services/recurring-appointments-service";
 import { sendAppointmentEventNotificationUseCase } from "@/http/useCases/notifications/send-appointment-event-notification-use-case";
 import type { CreateAppointmentBodySchema } from "@/schemas/routes/appointments/create-appointment";
 import { isServiceModality } from "@/schemas/service-modalities";
@@ -238,6 +239,15 @@ export const createAppointmentUseCase = {
 			appointmentStart.getTime() + totalDurationMinutes * 60 * 1000,
 		);
 
+		recurringAppointmentsService.assertScheduledAtWithinBookingWindow(
+			healthcareProvider.bookingAvailabilityDays,
+			appointmentStart,
+		);
+		await recurringAppointmentsService.ensureProviderRecurringAppointmentsUpToDate(
+			healthcareProvider.id,
+			appointmentStart,
+		);
+
 		const startOfDay = new Date(appointmentStart);
 		startOfDay.setUTCHours(0, 0, 0, 0);
 		const endOfDay = new Date(appointmentStart);
@@ -293,9 +303,28 @@ export const createAppointmentUseCase = {
 			status: isClinicActor ? "CONFIRMED" : "SCHEDULED",
 		};
 
-		let appointment = await prismaAppointmentRepository.create(
-			appointmentData,
-		);
+		let appointment: AppointmentWithRelations;
+
+		if (data.recurrence) {
+			const result =
+				await recurringAppointmentsService.createSeriesFromAppointment({
+					currentUser,
+					customerId: appointmentData.customerId ?? null,
+					patientProfileId: appointmentData.patientProfileId ?? null,
+					healthcareProviderId: appointmentData.healthcareProviderId,
+					scheduledAt: appointmentData.scheduledAt,
+					serviceModality: appointmentData.serviceModality,
+					notes: appointmentData.notes,
+					procedureIds: appointmentData.procedureIds,
+					recurrence: data.recurrence,
+				});
+
+			appointment = result.appointment;
+		} else {
+			appointment = await prismaAppointmentRepository.create(
+				appointmentData,
+			);
+		}
 
 		if (appointment.status === "CONFIRMED") {
 			appointment = await googleMeetService
