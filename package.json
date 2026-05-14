@@ -12,10 +12,13 @@
     "test:recurring": "bun test src/http/services/recurring-appointments",
     "test:recurring:watch": "bun test src/http/services/recurring-appointments --watch",
     "generate": "bunx --bun prisma generate",
+    "prisma:validate": "bunx --bun prisma validate",
+    "prisma:check-drift": "bunx --bun prisma migrate diff --from-migrations prisma/migrations --to-schema prisma/schema --exit-code",
     "migrate": "bunx --bun prisma migrate dev",
     "migrate:deploy": "bunx --bun prisma migrate deploy",
     "studio": "bunx --bun prisma studio",
-    "seed": "bunx --bun prisma db seed"
+    "seed": "bunx --bun prisma db seed",
+    "ci": "bun run prisma:validate && bun run generate && bun run prisma:check-drift && bun test && npx tsc --noEmit"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.8",

@@ -1,0 +1,73 @@
+name: Backend CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: localiza_saude_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres -d localiza_saude_ci"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      CI: "true"
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/localiza_saude_ci?schema=public
+      BETTER_AUTH_SECRET: test-secret
+      BETTER_AUTH_URL: http://localhost:3333
+      WEB_APP_URL: http://localhost:5173
+      GOOGLE_CLIENT_ID: test-google-client-id
+      GOOGLE_CLIENT_SECRET: test-google-client-secret
+      GOOGLE_REDIRECT_URI: http://localhost:3333/api/auth/callback/google
+      RESEND_API_KEY: test-resend-api-key
+      RESEND_FROM_EMAIL: no-reply@example.com
+      R2_ACCOUNT_ID: test-account
+      R2_ACCESS_KEY_ID: test-access-key
+      R2_SECRET_ACCESS_KEY: test-secret-key
+      R2_BUCKET_NAME: test-bucket
+      R2_PUBLIC_URL: https://example.com
+      EXPO_ACCESS_TOKEN: test-expo-token
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Validate Prisma schema
+        run: bun run prisma:validate
+
+      - name: Generate Prisma client
+        run: bun run generate
+
+      - name: Apply migrations on CI database
+        run: bun run migrate:deploy
+
+      - name: Check Prisma drift
+        run: bun run prisma:check-drift
+
+      - name: Run tests
+        run: bun test
+
+      - name: Typecheck
+        run: npx tsc --noEmit
