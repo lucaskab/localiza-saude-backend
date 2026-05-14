@@ -1,7 +1,7 @@
 import { prisma } from "@/database/prisma";
 import { prismaAppointmentRepository } from "@/http/repositories/appointments/appointments-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
-import { recurringAppointmentsService } from "@/http/services/recurring-appointments-service";
+import { recurringAppointmentsService } from "@/http/services/recurring-appointments";
 
 type TimeSlot = {
 	startTime: string;

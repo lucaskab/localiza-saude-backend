@@ -51,6 +51,7 @@ model user {
   acceptedInsurance String[] @default([]) @map("accepted_insurance")
   paymentMethods String[]  @default([]) @map("payment_methods")
   bookingAvailabilityDays Int @default(60) @map("booking_availability_days")
+  birthdayGreetingEmailEnabled Boolean @default(false) @map("birthday_greeting_email_enabled")
   cancellationPolicy String? @map("cancellation_policy")
   cancellationPolicyEnabled Boolean @default(false) @map("cancellation_policy_enabled")
   cancellationPolicyHoursBefore Int? @map("cancellation_policy_hours_before")

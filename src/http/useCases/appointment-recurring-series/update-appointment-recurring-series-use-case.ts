@@ -1,4 +1,4 @@
-import { recurringAppointmentsService } from "@/http/services/recurring-appointments-service";
+import { recurringAppointmentsService } from "@/http/services/recurring-appointments";
 import type { user } from "../../../../prisma/generated/prisma/client";
 import type { UpdateAppointmentRecurringSeriesBodySchema } from "@/schemas/routes/appointment-recurring-series/update-appointment-recurring-series";
 

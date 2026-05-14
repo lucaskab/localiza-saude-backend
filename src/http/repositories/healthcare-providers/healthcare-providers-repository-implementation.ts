@@ -362,6 +362,8 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 						paymentMethods: data.paymentMethods,
 						bookingAvailabilityDays:
 							data.bookingAvailabilityDays ?? undefined,
+					birthdayGreetingEmailEnabled:
+						data.birthdayGreetingEmailEnabled ?? undefined,
 					cancellationPolicy: data.cancellationPolicy,
 					cancellationPolicyEnabled: data.cancellationPolicyEnabled,
 					cancellationPolicyHoursBefore: data.cancellationPolicyHoursBefore,
@@ -488,6 +490,9 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					}),
 					...(data.bookingAvailabilityDays !== undefined && {
 						bookingAvailabilityDays: data.bookingAvailabilityDays ?? undefined,
+					}),
+					...(data.birthdayGreetingEmailEnabled !== undefined && {
+						birthdayGreetingEmailEnabled: data.birthdayGreetingEmailEnabled,
 					}),
 					...(data.cancellationPolicy !== undefined && {
 						cancellationPolicy: data.cancellationPolicy,

@@ -102,23 +102,26 @@ export const prismaNotificationsRepository: NotificationsRepository = {
 					create: {
 						userId,
 						type: preference.type,
-						enabled: preference.enabled,
+						pushEnabled: preference.pushEnabled,
+						emailEnabled: preference.emailEnabled,
 					},
 					update: {
-						enabled: preference.enabled,
+						pushEnabled: preference.pushEnabled,
+						emailEnabled: preference.emailEnabled,
 					},
 				}),
 			),
 		);
 	},
 
-	async findDelivery(userId: string, type, appointmentId: string) {
+	async findDelivery(userId: string, type, channel, dedupeKey: string) {
 		return prisma.notification_delivery.findUnique({
 			where: {
-				userId_type_appointmentId: {
+				userId_type_channel_dedupeKey: {
 					userId,
 					type,
-					appointmentId,
+					channel,
+					dedupeKey,
 				},
 			},
 		});
@@ -129,7 +132,9 @@ export const prismaNotificationsRepository: NotificationsRepository = {
 			data: {
 				userId: data.userId,
 				type: data.type,
+				channel: data.channel,
 				appointmentId: data.appointmentId,
+				dedupeKey: data.dedupeKey,
 				status: data.status,
 				expoTicketId: data.expoTicketId,
 				errorMessage: data.errorMessage,
@@ -138,7 +143,7 @@ export const prismaNotificationsRepository: NotificationsRepository = {
 		});
 	},
 
-	async findUpcomingAppointmentsMissingReminder(now: Date, until: Date) {
+	async findUpcomingAppointmentsForReminderWindow(now: Date, until: Date) {
 		const where: Prisma.appointmentWhereInput = {
 			scheduledAt: {
 				gt: now,
@@ -150,11 +155,6 @@ export const prismaNotificationsRepository: NotificationsRepository = {
 			customer: {
 				isNot: null,
 			},
-			notificationDeliveries: {
-				none: {
-					type: "APPOINTMENT_REMINDER",
-				},
-			},
 		};
 
 		const appointments = await prisma.appointment.findMany({
@@ -163,6 +163,35 @@ export const prismaNotificationsRepository: NotificationsRepository = {
 			orderBy: {
 				scheduledAt: "asc",
 			},
+		});
+
+		return appointments;
+	},
+
+	async findBirthdayGreetingCandidates() {
+		const appointments = await prisma.appointment.findMany({
+			where: {
+				customerId: {
+					not: null,
+				},
+				customer: {
+					is: {
+						dateOfBirth: {
+							not: null,
+						},
+					},
+				},
+				healthcareProvider: {
+					is: {
+						birthdayGreetingEmailEnabled: true,
+					},
+				},
+				status: {
+					in: ["SCHEDULED", "CONFIRMED", "IN_PROGRESS", "COMPLETED"],
+				},
+			},
+			include: appointmentNotificationInclude,
+			distinct: ["customerId", "healthcareProviderId"],
 		});
 
 		return appointments;

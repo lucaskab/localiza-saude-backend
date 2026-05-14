@@ -3,12 +3,26 @@ import { beforeEach, describe, expect, mock, test } from "bun:test";
 const mockPrisma: any = {
 	user: {
 		findUnique: mock(() => Promise.resolve({ id: "provider-1" })),
+		findFirst: mock(() =>
+			Promise.resolve({
+				id: "provider-1",
+				role: "HEALTHCARE_PROVIDER",
+				bookingAvailabilityDays: 60,
+			}),
+		),
 	},
 	procedure: {
 		findMany: mock(() => Promise.resolve([])),
 	},
+	appointment_recurring_series: {
+		findMany: mock(() => Promise.resolve([])),
+	},
 	healthcare_provider_schedule: {
 		findFirst: mock(() => Promise.resolve(null)),
+		findMany: mock(() => Promise.resolve([])),
+	},
+	healthcare_provider_schedule_exception: {
+		findMany: mock(() => Promise.resolve([])),
 	},
 };
 
@@ -44,6 +58,11 @@ describe("Get Time Slots Use Case", () => {
 		mockPrisma.user.findUnique.mockResolvedValue({
 			id: "provider-1",
 		});
+		mockPrisma.user.findFirst.mockResolvedValue({
+			id: "provider-1",
+			role: "HEALTHCARE_PROVIDER",
+			bookingAvailabilityDays: 60,
+		});
 		mockPrisma.procedure.findMany.mockImplementation((args: any) => {
 			if (args?.where?.id?.in) {
 				return Promise.resolve([selectedProcedure]);
@@ -51,12 +70,24 @@ describe("Get Time Slots Use Case", () => {
 
 			return Promise.resolve([shortestProcedure, selectedProcedure]);
 		});
+		mockPrisma.appointment_recurring_series.findMany.mockResolvedValue([]);
 		mockPrisma.healthcare_provider_schedule.findFirst.mockResolvedValue({
 			dayOfWeek: 1,
 			startTime: "09:00",
 			endTime: "12:00",
 			isActive: true,
 		});
+		mockPrisma.healthcare_provider_schedule.findMany.mockResolvedValue([
+			{
+				dayOfWeek: 1,
+				startTime: "09:00",
+				endTime: "12:00",
+				isActive: true,
+			},
+		]);
+		mockPrisma.healthcare_provider_schedule_exception.findMany.mockResolvedValue(
+			[],
+		);
 		mockAppointmentRepository.findByProfessionalAndDateRange.mockResolvedValue([]);
 	});
 
@@ -98,11 +129,14 @@ describe("Get Time Slots Use Case", () => {
 			procedureIds: ["procedure-1"],
 		});
 
-		expect(mockPrisma.healthcare_provider_schedule.findFirst).toHaveBeenCalledWith({
+		expect(mockPrisma.healthcare_provider_schedule.findMany).toHaveBeenCalledWith({
 			where: {
 				healthcareProviderId: "provider-1",
 				dayOfWeek: 1,
 				isActive: true,
+			},
+			orderBy: {
+				startTime: "asc",
 			},
 		});
 		expect(

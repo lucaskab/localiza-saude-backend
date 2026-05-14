@@ -1,4 +1,4 @@
-import { recurringAppointmentsService } from "@/http/services/recurring-appointments-service";
+import { recurringAppointmentsService } from "@/http/services/recurring-appointments";
 import type { user } from "../../../../prisma/generated/prisma/client";
 
 export const deleteAppointmentRecurringSeriesUseCase = {

@@ -1,4 +1,5 @@
 import type {
+	NotificationChannel,
 	NotificationDeliveryStatus,
 	NotificationType,
 	PushPlatform,
@@ -19,7 +20,8 @@ export type RegisterPushTokenData = {
 
 export type NotificationPreferenceInput = {
 	type: NotificationType;
-	enabled: boolean;
+	pushEnabled: boolean;
+	emailEnabled: boolean;
 };
 
 export type AppointmentForNotification = appointment & {
@@ -31,7 +33,9 @@ export type AppointmentForNotification = appointment & {
 export type CreateDeliveryData = {
 	userId: string;
 	type: NotificationType;
+	channel: NotificationChannel;
 	appointmentId?: string | null;
+	dedupeKey?: string | null;
 	status: NotificationDeliveryStatus;
 	expoTicketId?: string | null;
 	errorMessage?: string | null;
@@ -53,13 +57,15 @@ export type NotificationsRepository = {
 	findDelivery: (
 		userId: string,
 		type: NotificationType,
-		appointmentId: string,
+		channel: NotificationChannel,
+		dedupeKey: string,
 	) => Promise<notification_delivery | null>;
 	createDelivery: (
 		data: CreateDeliveryData,
-	) => Promise<notification_delivery>;
-	findUpcomingAppointmentsMissingReminder: (
+		) => Promise<notification_delivery>;
+	findUpcomingAppointmentsForReminderWindow: (
 		now: Date,
 		until: Date,
 	) => Promise<AppointmentForNotification[]>;
+	findBirthdayGreetingCandidates: () => Promise<AppointmentForNotification[]>;
 };

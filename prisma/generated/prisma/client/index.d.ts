@@ -292,7 +292,8 @@ export const NotificationType: {
   APPOINTMENT_REMINDER: 'APPOINTMENT_REMINDER',
   APPOINTMENT_STATUS_UPDATE: 'APPOINTMENT_STATUS_UPDATE',
   NEW_APPOINTMENT_REQUEST: 'NEW_APPOINTMENT_REQUEST',
-  WAITLIST_SLOT_AVAILABLE: 'WAITLIST_SLOT_AVAILABLE'
+  WAITLIST_SLOT_AVAILABLE: 'WAITLIST_SLOT_AVAILABLE',
+  CUSTOMER_BIRTHDAY_GREETING: 'CUSTOMER_BIRTHDAY_GREETING'
 };
 
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
@@ -306,6 +307,14 @@ export const NotificationDeliveryStatus: {
 };
 
 export type NotificationDeliveryStatus = (typeof NotificationDeliveryStatus)[keyof typeof NotificationDeliveryStatus]
+
+
+export const NotificationChannel: {
+  PUSH: 'PUSH',
+  EMAIL: 'EMAIL'
+};
+
+export type NotificationChannel = (typeof NotificationChannel)[keyof typeof NotificationChannel]
 
 
 export const SupportRequestType: {
@@ -403,6 +412,10 @@ export const NotificationType: typeof $Enums.NotificationType
 export type NotificationDeliveryStatus = $Enums.NotificationDeliveryStatus
 
 export const NotificationDeliveryStatus: typeof $Enums.NotificationDeliveryStatus
+
+export type NotificationChannel = $Enums.NotificationChannel
+
+export const NotificationChannel: typeof $Enums.NotificationChannel
 
 export type SupportRequestType = $Enums.SupportRequestType
 
@@ -29083,7 +29096,8 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     type: $Enums.NotificationType | null
-    enabled: boolean | null
+    pushEnabled: boolean | null
+    emailEnabled: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -29092,7 +29106,8 @@ export namespace Prisma {
     id: string | null
     userId: string | null
     type: $Enums.NotificationType | null
-    enabled: boolean | null
+    pushEnabled: boolean | null
+    emailEnabled: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -29101,7 +29116,8 @@ export namespace Prisma {
     id: number
     userId: number
     type: number
-    enabled: number
+    pushEnabled: number
+    emailEnabled: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -29112,7 +29128,8 @@ export namespace Prisma {
     id?: true
     userId?: true
     type?: true
-    enabled?: true
+    pushEnabled?: true
+    emailEnabled?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -29121,7 +29138,8 @@ export namespace Prisma {
     id?: true
     userId?: true
     type?: true
-    enabled?: true
+    pushEnabled?: true
+    emailEnabled?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -29130,7 +29148,8 @@ export namespace Prisma {
     id?: true
     userId?: true
     type?: true
-    enabled?: true
+    pushEnabled?: true
+    emailEnabled?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -29212,7 +29231,8 @@ export namespace Prisma {
     id: string
     userId: string
     type: $Enums.NotificationType
-    enabled: boolean
+    pushEnabled: boolean
+    emailEnabled: boolean
     createdAt: Date
     updatedAt: Date
     _count: Notification_preferenceCountAggregateOutputType | null
@@ -29238,7 +29258,8 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     type?: boolean
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -29248,7 +29269,8 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     type?: boolean
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -29258,7 +29280,8 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     type?: boolean
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -29268,12 +29291,13 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     type?: boolean
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type notification_preferenceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "enabled" | "createdAt" | "updatedAt", ExtArgs["result"]["notification_preference"]>
+  export type notification_preferenceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "pushEnabled" | "emailEnabled" | "createdAt" | "updatedAt", ExtArgs["result"]["notification_preference"]>
   export type notification_preferenceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | userDefaultArgs<ExtArgs>
   }
@@ -29293,7 +29317,8 @@ export namespace Prisma {
       id: string
       userId: string
       type: $Enums.NotificationType
-      enabled: boolean
+      pushEnabled: boolean
+      emailEnabled: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["notification_preference"]>
@@ -29723,7 +29748,8 @@ export namespace Prisma {
     readonly id: FieldRef<"notification_preference", 'String'>
     readonly userId: FieldRef<"notification_preference", 'String'>
     readonly type: FieldRef<"notification_preference", 'NotificationType'>
-    readonly enabled: FieldRef<"notification_preference", 'Boolean'>
+    readonly pushEnabled: FieldRef<"notification_preference", 'Boolean'>
+    readonly emailEnabled: FieldRef<"notification_preference", 'Boolean'>
     readonly createdAt: FieldRef<"notification_preference", 'DateTime'>
     readonly updatedAt: FieldRef<"notification_preference", 'DateTime'>
   }
@@ -30158,8 +30184,10 @@ export namespace Prisma {
   export type Notification_deliveryMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    channel: $Enums.NotificationChannel | null
     appointmentId: string | null
     type: $Enums.NotificationType | null
+    dedupeKey: string | null
     status: $Enums.NotificationDeliveryStatus | null
     expoTicketId: string | null
     errorMessage: string | null
@@ -30171,8 +30199,10 @@ export namespace Prisma {
   export type Notification_deliveryMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    channel: $Enums.NotificationChannel | null
     appointmentId: string | null
     type: $Enums.NotificationType | null
+    dedupeKey: string | null
     status: $Enums.NotificationDeliveryStatus | null
     expoTicketId: string | null
     errorMessage: string | null
@@ -30184,8 +30214,10 @@ export namespace Prisma {
   export type Notification_deliveryCountAggregateOutputType = {
     id: number
     userId: number
+    channel: number
     appointmentId: number
     type: number
+    dedupeKey: number
     status: number
     expoTicketId: number
     errorMessage: number
@@ -30199,8 +30231,10 @@ export namespace Prisma {
   export type Notification_deliveryMinAggregateInputType = {
     id?: true
     userId?: true
+    channel?: true
     appointmentId?: true
     type?: true
+    dedupeKey?: true
     status?: true
     expoTicketId?: true
     errorMessage?: true
@@ -30212,8 +30246,10 @@ export namespace Prisma {
   export type Notification_deliveryMaxAggregateInputType = {
     id?: true
     userId?: true
+    channel?: true
     appointmentId?: true
     type?: true
+    dedupeKey?: true
     status?: true
     expoTicketId?: true
     errorMessage?: true
@@ -30225,8 +30261,10 @@ export namespace Prisma {
   export type Notification_deliveryCountAggregateInputType = {
     id?: true
     userId?: true
+    channel?: true
     appointmentId?: true
     type?: true
+    dedupeKey?: true
     status?: true
     expoTicketId?: true
     errorMessage?: true
@@ -30311,8 +30349,10 @@ export namespace Prisma {
   export type Notification_deliveryGroupByOutputType = {
     id: string
     userId: string
+    channel: $Enums.NotificationChannel
     appointmentId: string | null
     type: $Enums.NotificationType
+    dedupeKey: string | null
     status: $Enums.NotificationDeliveryStatus
     expoTicketId: string | null
     errorMessage: string | null
@@ -30341,8 +30381,10 @@ export namespace Prisma {
   export type notification_deliverySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    channel?: boolean
     appointmentId?: boolean
     type?: boolean
+    dedupeKey?: boolean
     status?: boolean
     expoTicketId?: boolean
     errorMessage?: boolean
@@ -30356,8 +30398,10 @@ export namespace Prisma {
   export type notification_deliverySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    channel?: boolean
     appointmentId?: boolean
     type?: boolean
+    dedupeKey?: boolean
     status?: boolean
     expoTicketId?: boolean
     errorMessage?: boolean
@@ -30371,8 +30415,10 @@ export namespace Prisma {
   export type notification_deliverySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    channel?: boolean
     appointmentId?: boolean
     type?: boolean
+    dedupeKey?: boolean
     status?: boolean
     expoTicketId?: boolean
     errorMessage?: boolean
@@ -30386,8 +30432,10 @@ export namespace Prisma {
   export type notification_deliverySelectScalar = {
     id?: boolean
     userId?: boolean
+    channel?: boolean
     appointmentId?: boolean
     type?: boolean
+    dedupeKey?: boolean
     status?: boolean
     expoTicketId?: boolean
     errorMessage?: boolean
@@ -30396,7 +30444,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type notification_deliveryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "appointmentId" | "type" | "status" | "expoTicketId" | "errorMessage" | "sentAt" | "createdAt" | "updatedAt", ExtArgs["result"]["notification_delivery"]>
+  export type notification_deliveryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "channel" | "appointmentId" | "type" | "dedupeKey" | "status" | "expoTicketId" | "errorMessage" | "sentAt" | "createdAt" | "updatedAt", ExtArgs["result"]["notification_delivery"]>
   export type notification_deliveryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | userDefaultArgs<ExtArgs>
     appointment?: boolean | notification_delivery$appointmentArgs<ExtArgs>
@@ -30419,8 +30467,10 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
+      channel: $Enums.NotificationChannel
       appointmentId: string | null
       type: $Enums.NotificationType
+      dedupeKey: string | null
       status: $Enums.NotificationDeliveryStatus
       expoTicketId: string | null
       errorMessage: string | null
@@ -30854,8 +30904,10 @@ export namespace Prisma {
   interface notification_deliveryFieldRefs {
     readonly id: FieldRef<"notification_delivery", 'String'>
     readonly userId: FieldRef<"notification_delivery", 'String'>
+    readonly channel: FieldRef<"notification_delivery", 'NotificationChannel'>
     readonly appointmentId: FieldRef<"notification_delivery", 'String'>
     readonly type: FieldRef<"notification_delivery", 'NotificationType'>
+    readonly dedupeKey: FieldRef<"notification_delivery", 'String'>
     readonly status: FieldRef<"notification_delivery", 'NotificationDeliveryStatus'>
     readonly expoTicketId: FieldRef<"notification_delivery", 'String'>
     readonly errorMessage: FieldRef<"notification_delivery", 'String'>
@@ -38547,6 +38599,7 @@ export namespace Prisma {
     clinicState: string | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
+    birthdayGreetingEmailEnabled: boolean | null
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean | null
     cancellationPolicyHoursBefore: number | null
@@ -38607,6 +38660,7 @@ export namespace Prisma {
     clinicState: string | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
+    birthdayGreetingEmailEnabled: boolean | null
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean | null
     cancellationPolicyHoursBefore: number | null
@@ -38672,6 +38726,7 @@ export namespace Prisma {
     acceptedInsurance: number
     paymentMethods: number
     bookingAvailabilityDays: number
+    birthdayGreetingEmailEnabled: number
     cancellationPolicy: number
     cancellationPolicyEnabled: number
     cancellationPolicyHoursBefore: number
@@ -38759,6 +38814,7 @@ export namespace Prisma {
     clinicState?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
+    birthdayGreetingEmailEnabled?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
     cancellationPolicyHoursBefore?: true
@@ -38819,6 +38875,7 @@ export namespace Prisma {
     clinicState?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
+    birthdayGreetingEmailEnabled?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
     cancellationPolicyHoursBefore?: true
@@ -38884,6 +38941,7 @@ export namespace Prisma {
     acceptedInsurance?: true
     paymentMethods?: true
     bookingAvailabilityDays?: true
+    birthdayGreetingEmailEnabled?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
     cancellationPolicyHoursBefore?: true
@@ -39037,6 +39095,7 @@ export namespace Prisma {
     acceptedInsurance: string[]
     paymentMethods: string[]
     bookingAvailabilityDays: number
+    birthdayGreetingEmailEnabled: boolean
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean
     cancellationPolicyHoursBefore: number | null
@@ -39122,6 +39181,7 @@ export namespace Prisma {
     acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -39228,6 +39288,7 @@ export namespace Prisma {
     acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -39296,6 +39357,7 @@ export namespace Prisma {
     acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -39364,6 +39426,7 @@ export namespace Prisma {
     acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -39379,7 +39442,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "birthdayGreetingEmailEnabled" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
@@ -39525,6 +39588,7 @@ export namespace Prisma {
       acceptedInsurance: string[]
       paymentMethods: string[]
       bookingAvailabilityDays: number
+      birthdayGreetingEmailEnabled: boolean
       cancellationPolicy: string | null
       cancellationPolicyEnabled: boolean
       cancellationPolicyHoursBefore: number | null
@@ -40050,6 +40114,7 @@ export namespace Prisma {
     readonly acceptedInsurance: FieldRef<"user", 'String[]'>
     readonly paymentMethods: FieldRef<"user", 'String[]'>
     readonly bookingAvailabilityDays: FieldRef<"user", 'Int'>
+    readonly birthdayGreetingEmailEnabled: FieldRef<"user", 'Boolean'>
     readonly cancellationPolicy: FieldRef<"user", 'String'>
     readonly cancellationPolicyEnabled: FieldRef<"user", 'Boolean'>
     readonly cancellationPolicyHoursBefore: FieldRef<"user", 'Int'>
@@ -46093,7 +46158,8 @@ export namespace Prisma {
     id: 'id',
     userId: 'userId',
     type: 'type',
-    enabled: 'enabled',
+    pushEnabled: 'pushEnabled',
+    emailEnabled: 'emailEnabled',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -46104,8 +46170,10 @@ export namespace Prisma {
   export const Notification_deliveryScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    channel: 'channel',
     appointmentId: 'appointmentId',
     type: 'type',
+    dedupeKey: 'dedupeKey',
     status: 'status',
     expoTicketId: 'expoTicketId',
     errorMessage: 'errorMessage',
@@ -46269,6 +46337,7 @@ export namespace Prisma {
     acceptedInsurance: 'acceptedInsurance',
     paymentMethods: 'paymentMethods',
     bookingAvailabilityDays: 'bookingAvailabilityDays',
+    birthdayGreetingEmailEnabled: 'birthdayGreetingEmailEnabled',
     cancellationPolicy: 'cancellationPolicy',
     cancellationPolicyEnabled: 'cancellationPolicyEnabled',
     cancellationPolicyHoursBefore: 'cancellationPolicyHoursBefore',
@@ -46585,6 +46654,20 @@ export namespace Prisma {
    * Reference to a field of type 'NotificationType[]'
    */
   export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'NotificationChannel'
+   */
+  export type EnumNotificationChannelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationChannel'>
+    
+
+
+  /**
+   * Reference to a field of type 'NotificationChannel[]'
+   */
+  export type ListEnumNotificationChannelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationChannel[]'>
     
 
 
@@ -48352,7 +48435,8 @@ export namespace Prisma {
     id?: StringFilter<"notification_preference"> | string
     userId?: StringFilter<"notification_preference"> | string
     type?: EnumNotificationTypeFilter<"notification_preference"> | $Enums.NotificationType
-    enabled?: BoolFilter<"notification_preference"> | boolean
+    pushEnabled?: BoolFilter<"notification_preference"> | boolean
+    emailEnabled?: BoolFilter<"notification_preference"> | boolean
     createdAt?: DateTimeFilter<"notification_preference"> | Date | string
     updatedAt?: DateTimeFilter<"notification_preference"> | Date | string
     user?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -48362,7 +48446,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     type?: SortOrder
-    enabled?: SortOrder
+    pushEnabled?: SortOrder
+    emailEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: userOrderByWithRelationInput
@@ -48376,7 +48461,8 @@ export namespace Prisma {
     NOT?: notification_preferenceWhereInput | notification_preferenceWhereInput[]
     userId?: StringFilter<"notification_preference"> | string
     type?: EnumNotificationTypeFilter<"notification_preference"> | $Enums.NotificationType
-    enabled?: BoolFilter<"notification_preference"> | boolean
+    pushEnabled?: BoolFilter<"notification_preference"> | boolean
+    emailEnabled?: BoolFilter<"notification_preference"> | boolean
     createdAt?: DateTimeFilter<"notification_preference"> | Date | string
     updatedAt?: DateTimeFilter<"notification_preference"> | Date | string
     user?: XOR<UserScalarRelationFilter, userWhereInput>
@@ -48386,7 +48472,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     type?: SortOrder
-    enabled?: SortOrder
+    pushEnabled?: SortOrder
+    emailEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: notification_preferenceCountOrderByAggregateInput
@@ -48401,7 +48488,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"notification_preference"> | string
     userId?: StringWithAggregatesFilter<"notification_preference"> | string
     type?: EnumNotificationTypeWithAggregatesFilter<"notification_preference"> | $Enums.NotificationType
-    enabled?: BoolWithAggregatesFilter<"notification_preference"> | boolean
+    pushEnabled?: BoolWithAggregatesFilter<"notification_preference"> | boolean
+    emailEnabled?: BoolWithAggregatesFilter<"notification_preference"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"notification_preference"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"notification_preference"> | Date | string
   }
@@ -48412,8 +48500,10 @@ export namespace Prisma {
     NOT?: notification_deliveryWhereInput | notification_deliveryWhereInput[]
     id?: StringFilter<"notification_delivery"> | string
     userId?: StringFilter<"notification_delivery"> | string
+    channel?: EnumNotificationChannelFilter<"notification_delivery"> | $Enums.NotificationChannel
     appointmentId?: StringNullableFilter<"notification_delivery"> | string | null
     type?: EnumNotificationTypeFilter<"notification_delivery"> | $Enums.NotificationType
+    dedupeKey?: StringNullableFilter<"notification_delivery"> | string | null
     status?: EnumNotificationDeliveryStatusFilter<"notification_delivery"> | $Enums.NotificationDeliveryStatus
     expoTicketId?: StringNullableFilter<"notification_delivery"> | string | null
     errorMessage?: StringNullableFilter<"notification_delivery"> | string | null
@@ -48427,8 +48517,10 @@ export namespace Prisma {
   export type notification_deliveryOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    channel?: SortOrder
     appointmentId?: SortOrderInput | SortOrder
     type?: SortOrder
+    dedupeKey?: SortOrderInput | SortOrder
     status?: SortOrder
     expoTicketId?: SortOrderInput | SortOrder
     errorMessage?: SortOrderInput | SortOrder
@@ -48441,13 +48533,15 @@ export namespace Prisma {
 
   export type notification_deliveryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    userId_type_appointmentId?: notification_deliveryUserIdTypeAppointmentIdCompoundUniqueInput
+    userId_type_channel_dedupeKey?: notification_deliveryUserIdTypeChannelDedupeKeyCompoundUniqueInput
     AND?: notification_deliveryWhereInput | notification_deliveryWhereInput[]
     OR?: notification_deliveryWhereInput[]
     NOT?: notification_deliveryWhereInput | notification_deliveryWhereInput[]
     userId?: StringFilter<"notification_delivery"> | string
+    channel?: EnumNotificationChannelFilter<"notification_delivery"> | $Enums.NotificationChannel
     appointmentId?: StringNullableFilter<"notification_delivery"> | string | null
     type?: EnumNotificationTypeFilter<"notification_delivery"> | $Enums.NotificationType
+    dedupeKey?: StringNullableFilter<"notification_delivery"> | string | null
     status?: EnumNotificationDeliveryStatusFilter<"notification_delivery"> | $Enums.NotificationDeliveryStatus
     expoTicketId?: StringNullableFilter<"notification_delivery"> | string | null
     errorMessage?: StringNullableFilter<"notification_delivery"> | string | null
@@ -48456,13 +48550,15 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"notification_delivery"> | Date | string
     user?: XOR<UserScalarRelationFilter, userWhereInput>
     appointment?: XOR<AppointmentNullableScalarRelationFilter, appointmentWhereInput> | null
-  }, "id" | "userId_type_appointmentId">
+  }, "id" | "userId_type_channel_dedupeKey">
 
   export type notification_deliveryOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    channel?: SortOrder
     appointmentId?: SortOrderInput | SortOrder
     type?: SortOrder
+    dedupeKey?: SortOrderInput | SortOrder
     status?: SortOrder
     expoTicketId?: SortOrderInput | SortOrder
     errorMessage?: SortOrderInput | SortOrder
@@ -48480,8 +48576,10 @@ export namespace Prisma {
     NOT?: notification_deliveryScalarWhereWithAggregatesInput | notification_deliveryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"notification_delivery"> | string
     userId?: StringWithAggregatesFilter<"notification_delivery"> | string
+    channel?: EnumNotificationChannelWithAggregatesFilter<"notification_delivery"> | $Enums.NotificationChannel
     appointmentId?: StringNullableWithAggregatesFilter<"notification_delivery"> | string | null
     type?: EnumNotificationTypeWithAggregatesFilter<"notification_delivery"> | $Enums.NotificationType
+    dedupeKey?: StringNullableWithAggregatesFilter<"notification_delivery"> | string | null
     status?: EnumNotificationDeliveryStatusWithAggregatesFilter<"notification_delivery"> | $Enums.NotificationDeliveryStatus
     expoTicketId?: StringNullableWithAggregatesFilter<"notification_delivery"> | string | null
     errorMessage?: StringNullableWithAggregatesFilter<"notification_delivery"> | string | null
@@ -49080,6 +49178,7 @@ export namespace Prisma {
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntFilter<"user"> | number
+    birthdayGreetingEmailEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableFilter<"user"> | number | null
@@ -49185,6 +49284,7 @@ export namespace Prisma {
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrderInput | SortOrder
@@ -49293,6 +49393,7 @@ export namespace Prisma {
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntFilter<"user"> | number
+    birthdayGreetingEmailEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableFilter<"user"> | number | null
@@ -49398,6 +49499,7 @@ export namespace Prisma {
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrderInput | SortOrder
@@ -49472,6 +49574,7 @@ export namespace Prisma {
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntWithAggregatesFilter<"user"> | number
+    birthdayGreetingEmailEnabled?: BoolWithAggregatesFilter<"user"> | boolean
     cancellationPolicy?: StringNullableWithAggregatesFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolWithAggregatesFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableWithAggregatesFilter<"user"> | number | null
@@ -51520,7 +51623,8 @@ export namespace Prisma {
   export type notification_preferenceCreateInput = {
     id?: string
     type: $Enums.NotificationType
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     user: userCreateNestedOneWithoutNotificationPreferencesInput
@@ -51530,7 +51634,8 @@ export namespace Prisma {
     id?: string
     userId: string
     type: $Enums.NotificationType
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -51538,7 +51643,8 @@ export namespace Prisma {
   export type notification_preferenceUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    enabled?: BoolFieldUpdateOperationsInput | boolean
+    pushEnabled?: BoolFieldUpdateOperationsInput | boolean
+    emailEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: userUpdateOneRequiredWithoutNotificationPreferencesNestedInput
@@ -51548,7 +51654,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    enabled?: BoolFieldUpdateOperationsInput | boolean
+    pushEnabled?: BoolFieldUpdateOperationsInput | boolean
+    emailEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -51557,7 +51664,8 @@ export namespace Prisma {
     id?: string
     userId: string
     type: $Enums.NotificationType
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -51565,7 +51673,8 @@ export namespace Prisma {
   export type notification_preferenceUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    enabled?: BoolFieldUpdateOperationsInput | boolean
+    pushEnabled?: BoolFieldUpdateOperationsInput | boolean
+    emailEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -51574,14 +51683,17 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    enabled?: BoolFieldUpdateOperationsInput | boolean
+    pushEnabled?: BoolFieldUpdateOperationsInput | boolean
+    emailEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type notification_deliveryCreateInput = {
     id?: string
+    channel: $Enums.NotificationChannel
     type: $Enums.NotificationType
+    dedupeKey?: string | null
     status?: $Enums.NotificationDeliveryStatus
     expoTicketId?: string | null
     errorMessage?: string | null
@@ -51595,8 +51707,10 @@ export namespace Prisma {
   export type notification_deliveryUncheckedCreateInput = {
     id?: string
     userId: string
+    channel: $Enums.NotificationChannel
     appointmentId?: string | null
     type: $Enums.NotificationType
+    dedupeKey?: string | null
     status?: $Enums.NotificationDeliveryStatus
     expoTicketId?: string | null
     errorMessage?: string | null
@@ -51607,7 +51721,9 @@ export namespace Prisma {
 
   export type notification_deliveryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51621,8 +51737,10 @@ export namespace Prisma {
   export type notification_deliveryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51634,8 +51752,10 @@ export namespace Prisma {
   export type notification_deliveryCreateManyInput = {
     id?: string
     userId: string
+    channel: $Enums.NotificationChannel
     appointmentId?: string | null
     type: $Enums.NotificationType
+    dedupeKey?: string | null
     status?: $Enums.NotificationDeliveryStatus
     expoTicketId?: string | null
     errorMessage?: string | null
@@ -51646,7 +51766,9 @@ export namespace Prisma {
 
   export type notification_deliveryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51658,8 +51780,10 @@ export namespace Prisma {
   export type notification_deliveryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52314,6 +52438,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -52419,6 +52544,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -52520,6 +52646,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -52625,6 +52752,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -52728,6 +52856,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -52792,6 +52921,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -52858,6 +52988,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54572,7 +54703,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     type?: SortOrder
-    enabled?: SortOrder
+    pushEnabled?: SortOrder
+    emailEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -54581,7 +54713,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     type?: SortOrder
-    enabled?: SortOrder
+    pushEnabled?: SortOrder
+    emailEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -54590,7 +54723,8 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     type?: SortOrder
-    enabled?: SortOrder
+    pushEnabled?: SortOrder
+    emailEnabled?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -54605,6 +54739,13 @@ export namespace Prisma {
     _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
   }
 
+  export type EnumNotificationChannelFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationChannel | EnumNotificationChannelFieldRefInput<$PrismaModel>
+    in?: $Enums.NotificationChannel[] | ListEnumNotificationChannelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.NotificationChannel[] | ListEnumNotificationChannelFieldRefInput<$PrismaModel>
+    not?: NestedEnumNotificationChannelFilter<$PrismaModel> | $Enums.NotificationChannel
+  }
+
   export type EnumNotificationDeliveryStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.NotificationDeliveryStatus | EnumNotificationDeliveryStatusFieldRefInput<$PrismaModel>
     in?: $Enums.NotificationDeliveryStatus[] | ListEnumNotificationDeliveryStatusFieldRefInput<$PrismaModel>
@@ -54612,17 +54753,20 @@ export namespace Prisma {
     not?: NestedEnumNotificationDeliveryStatusFilter<$PrismaModel> | $Enums.NotificationDeliveryStatus
   }
 
-  export type notification_deliveryUserIdTypeAppointmentIdCompoundUniqueInput = {
+  export type notification_deliveryUserIdTypeChannelDedupeKeyCompoundUniqueInput = {
     userId: string
     type: $Enums.NotificationType
-    appointmentId: string
+    channel: $Enums.NotificationChannel
+    dedupeKey: string
   }
 
   export type notification_deliveryCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    channel?: SortOrder
     appointmentId?: SortOrder
     type?: SortOrder
+    dedupeKey?: SortOrder
     status?: SortOrder
     expoTicketId?: SortOrder
     errorMessage?: SortOrder
@@ -54634,8 +54778,10 @@ export namespace Prisma {
   export type notification_deliveryMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    channel?: SortOrder
     appointmentId?: SortOrder
     type?: SortOrder
+    dedupeKey?: SortOrder
     status?: SortOrder
     expoTicketId?: SortOrder
     errorMessage?: SortOrder
@@ -54647,14 +54793,26 @@ export namespace Prisma {
   export type notification_deliveryMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    channel?: SortOrder
     appointmentId?: SortOrder
     type?: SortOrder
+    dedupeKey?: SortOrder
     status?: SortOrder
     expoTicketId?: SortOrder
     errorMessage?: SortOrder
     sentAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type EnumNotificationChannelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationChannel | EnumNotificationChannelFieldRefInput<$PrismaModel>
+    in?: $Enums.NotificationChannel[] | ListEnumNotificationChannelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.NotificationChannel[] | ListEnumNotificationChannelFieldRefInput<$PrismaModel>
+    not?: NestedEnumNotificationChannelWithAggregatesFilter<$PrismaModel> | $Enums.NotificationChannel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumNotificationChannelFilter<$PrismaModel>
+    _max?: NestedEnumNotificationChannelFilter<$PrismaModel>
   }
 
   export type EnumNotificationDeliveryStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -55264,6 +55422,7 @@ export namespace Prisma {
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
@@ -55337,6 +55496,7 @@ export namespace Prisma {
     clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
@@ -55397,6 +55557,7 @@ export namespace Prisma {
     clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
@@ -56772,6 +56933,10 @@ export namespace Prisma {
     create?: XOR<appointmentCreateWithoutNotificationDeliveriesInput, appointmentUncheckedCreateWithoutNotificationDeliveriesInput>
     connectOrCreate?: appointmentCreateOrConnectWithoutNotificationDeliveriesInput
     connect?: appointmentWhereUniqueInput
+  }
+
+  export type EnumNotificationChannelFieldUpdateOperationsInput = {
+    set?: $Enums.NotificationChannel
   }
 
   export type EnumNotificationDeliveryStatusFieldUpdateOperationsInput = {
@@ -59299,11 +59464,28 @@ export namespace Prisma {
     _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
   }
 
+  export type NestedEnumNotificationChannelFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationChannel | EnumNotificationChannelFieldRefInput<$PrismaModel>
+    in?: $Enums.NotificationChannel[] | ListEnumNotificationChannelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.NotificationChannel[] | ListEnumNotificationChannelFieldRefInput<$PrismaModel>
+    not?: NestedEnumNotificationChannelFilter<$PrismaModel> | $Enums.NotificationChannel
+  }
+
   export type NestedEnumNotificationDeliveryStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.NotificationDeliveryStatus | EnumNotificationDeliveryStatusFieldRefInput<$PrismaModel>
     in?: $Enums.NotificationDeliveryStatus[] | ListEnumNotificationDeliveryStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.NotificationDeliveryStatus[] | ListEnumNotificationDeliveryStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumNotificationDeliveryStatusFilter<$PrismaModel> | $Enums.NotificationDeliveryStatus
+  }
+
+  export type NestedEnumNotificationChannelWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.NotificationChannel | EnumNotificationChannelFieldRefInput<$PrismaModel>
+    in?: $Enums.NotificationChannel[] | ListEnumNotificationChannelFieldRefInput<$PrismaModel>
+    notIn?: $Enums.NotificationChannel[] | ListEnumNotificationChannelFieldRefInput<$PrismaModel>
+    not?: NestedEnumNotificationChannelWithAggregatesFilter<$PrismaModel> | $Enums.NotificationChannel
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumNotificationChannelFilter<$PrismaModel>
+    _max?: NestedEnumNotificationChannelFilter<$PrismaModel>
   }
 
   export type NestedEnumNotificationDeliveryStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -59450,6 +59632,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -59554,6 +59737,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -59670,6 +59854,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -59774,6 +59959,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -60082,6 +60268,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60186,6 +60373,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60352,6 +60540,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60456,6 +60645,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60629,6 +60819,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60733,6 +60924,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -60853,7 +61045,9 @@ export namespace Prisma {
 
   export type notification_deliveryCreateWithoutAppointmentInput = {
     id?: string
+    channel: $Enums.NotificationChannel
     type: $Enums.NotificationType
+    dedupeKey?: string | null
     status?: $Enums.NotificationDeliveryStatus
     expoTicketId?: string | null
     errorMessage?: string | null
@@ -60866,7 +61060,9 @@ export namespace Prisma {
   export type notification_deliveryUncheckedCreateWithoutAppointmentInput = {
     id?: string
     userId: string
+    channel: $Enums.NotificationChannel
     type: $Enums.NotificationType
+    dedupeKey?: string | null
     status?: $Enums.NotificationDeliveryStatus
     expoTicketId?: string | null
     errorMessage?: string | null
@@ -60977,6 +61173,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61081,6 +61278,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61259,6 +61457,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61363,6 +61562,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61554,6 +61754,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61658,6 +61859,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61792,8 +61994,10 @@ export namespace Prisma {
     NOT?: notification_deliveryScalarWhereInput | notification_deliveryScalarWhereInput[]
     id?: StringFilter<"notification_delivery"> | string
     userId?: StringFilter<"notification_delivery"> | string
+    channel?: EnumNotificationChannelFilter<"notification_delivery"> | $Enums.NotificationChannel
     appointmentId?: StringNullableFilter<"notification_delivery"> | string | null
     type?: EnumNotificationTypeFilter<"notification_delivery"> | $Enums.NotificationType
+    dedupeKey?: StringNullableFilter<"notification_delivery"> | string | null
     status?: EnumNotificationDeliveryStatusFilter<"notification_delivery"> | $Enums.NotificationDeliveryStatus
     expoTicketId?: StringNullableFilter<"notification_delivery"> | string | null
     errorMessage?: StringNullableFilter<"notification_delivery"> | string | null
@@ -61947,6 +62151,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62051,6 +62256,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62238,6 +62444,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62342,6 +62549,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62442,6 +62650,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62546,6 +62755,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62712,6 +62922,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62816,6 +63027,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62921,6 +63133,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63025,6 +63238,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63261,6 +63475,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63365,6 +63580,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63543,6 +63759,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63647,6 +63864,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63758,6 +63976,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63862,6 +64081,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64412,6 +64632,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64516,6 +64737,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64621,6 +64843,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64725,6 +64948,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64863,6 +65087,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64967,6 +65192,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65078,6 +65304,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65182,6 +65409,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65488,6 +65716,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -65592,6 +65821,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -65729,6 +65959,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65833,6 +66064,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65960,6 +66192,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66064,6 +66297,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66210,6 +66444,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66314,6 +66549,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66479,6 +66715,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66583,6 +66820,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66740,6 +66978,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66844,6 +67083,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66944,6 +67184,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67048,6 +67289,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67153,6 +67395,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67257,6 +67500,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67373,6 +67617,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67477,6 +67722,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67588,6 +67834,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67692,6 +67939,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67792,6 +68040,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67896,6 +68145,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68012,6 +68262,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68116,6 +68367,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68216,6 +68468,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68320,6 +68573,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68436,6 +68690,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68540,6 +68795,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68640,6 +68896,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68744,6 +69001,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68860,6 +69118,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68964,6 +69223,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69064,6 +69324,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -69168,6 +69429,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -69284,6 +69546,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69388,6 +69651,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69488,6 +69752,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -69592,6 +69857,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -69697,6 +69963,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -69801,6 +70068,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -69957,6 +70225,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70061,6 +70330,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70172,6 +70442,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70276,6 +70547,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70415,6 +70687,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70519,6 +70792,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70729,6 +71003,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70833,6 +71108,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71004,6 +71280,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71108,6 +71385,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71224,6 +71502,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71328,6 +71607,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71428,6 +71708,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71532,6 +71813,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71648,6 +71930,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71752,6 +72035,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71852,6 +72136,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71956,6 +72241,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -72137,6 +72423,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72241,6 +72528,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72412,6 +72700,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -72516,6 +72805,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -72621,6 +72911,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -72725,6 +73016,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -72961,6 +73253,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73065,6 +73358,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73176,6 +73470,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73280,6 +73575,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73433,6 +73729,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -73537,6 +73834,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -73745,6 +74043,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73849,6 +74148,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74097,6 +74397,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -74201,6 +74502,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -74306,6 +74608,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -74410,6 +74713,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -74526,6 +74830,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74630,6 +74935,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74741,6 +75047,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74845,6 +75152,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74945,6 +75253,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -75049,6 +75358,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -75165,6 +75475,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -75269,6 +75580,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -75369,6 +75681,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -75473,6 +75786,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -75589,6 +75903,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -75693,6 +76008,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -75822,6 +76138,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -75926,6 +76243,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -76880,7 +77198,8 @@ export namespace Prisma {
   export type notification_preferenceCreateWithoutUserInput = {
     id?: string
     type: $Enums.NotificationType
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -76888,7 +77207,8 @@ export namespace Prisma {
   export type notification_preferenceUncheckedCreateWithoutUserInput = {
     id?: string
     type: $Enums.NotificationType
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -76905,7 +77225,9 @@ export namespace Prisma {
 
   export type notification_deliveryCreateWithoutUserInput = {
     id?: string
+    channel: $Enums.NotificationChannel
     type: $Enums.NotificationType
+    dedupeKey?: string | null
     status?: $Enums.NotificationDeliveryStatus
     expoTicketId?: string | null
     errorMessage?: string | null
@@ -76917,8 +77239,10 @@ export namespace Prisma {
 
   export type notification_deliveryUncheckedCreateWithoutUserInput = {
     id?: string
+    channel: $Enums.NotificationChannel
     appointmentId?: string | null
     type: $Enums.NotificationType
+    dedupeKey?: string | null
     status?: $Enums.NotificationDeliveryStatus
     expoTicketId?: string | null
     errorMessage?: string | null
@@ -77270,6 +77594,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -77373,6 +77698,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -77650,6 +77976,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -77754,6 +78081,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -78410,7 +78738,8 @@ export namespace Prisma {
     id?: StringFilter<"notification_preference"> | string
     userId?: StringFilter<"notification_preference"> | string
     type?: EnumNotificationTypeFilter<"notification_preference"> | $Enums.NotificationType
-    enabled?: BoolFilter<"notification_preference"> | boolean
+    pushEnabled?: BoolFilter<"notification_preference"> | boolean
+    emailEnabled?: BoolFilter<"notification_preference"> | boolean
     createdAt?: DateTimeFilter<"notification_preference"> | Date | string
     updatedAt?: DateTimeFilter<"notification_preference"> | Date | string
   }
@@ -78645,6 +78974,7 @@ export namespace Prisma {
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntFilter<"user"> | number
+    birthdayGreetingEmailEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableFilter<"user"> | number | null
@@ -78801,6 +79131,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -78904,6 +79235,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79031,6 +79363,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79135,6 +79468,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79240,6 +79574,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79344,6 +79679,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79460,6 +79796,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -79564,6 +79901,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -79675,6 +80013,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -79779,6 +80118,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -79879,6 +80219,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79983,6 +80324,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -80088,6 +80430,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -80192,6 +80535,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -80308,6 +80652,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -80412,6 +80757,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -80523,6 +80869,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -80627,6 +80974,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -80702,7 +81050,9 @@ export namespace Prisma {
   export type notification_deliveryCreateManyAppointmentInput = {
     id?: string
     userId: string
+    channel: $Enums.NotificationChannel
     type: $Enums.NotificationType
+    dedupeKey?: string | null
     status?: $Enums.NotificationDeliveryStatus
     expoTicketId?: string | null
     errorMessage?: string | null
@@ -80787,7 +81137,9 @@ export namespace Prisma {
 
   export type notification_deliveryUpdateWithoutAppointmentInput = {
     id?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80800,7 +81152,9 @@ export namespace Prisma {
   export type notification_deliveryUncheckedUpdateWithoutAppointmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -80812,7 +81166,9 @@ export namespace Prisma {
   export type notification_deliveryUncheckedUpdateManyWithoutAppointmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -81873,15 +82229,18 @@ export namespace Prisma {
   export type notification_preferenceCreateManyUserInput = {
     id?: string
     type: $Enums.NotificationType
-    enabled?: boolean
+    pushEnabled?: boolean
+    emailEnabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type notification_deliveryCreateManyUserInput = {
     id?: string
+    channel: $Enums.NotificationChannel
     appointmentId?: string | null
     type: $Enums.NotificationType
+    dedupeKey?: string | null
     status?: $Enums.NotificationDeliveryStatus
     expoTicketId?: string | null
     errorMessage?: string | null
@@ -82036,6 +82395,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -83028,7 +83388,8 @@ export namespace Prisma {
   export type notification_preferenceUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    enabled?: BoolFieldUpdateOperationsInput | boolean
+    pushEnabled?: BoolFieldUpdateOperationsInput | boolean
+    emailEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -83036,7 +83397,8 @@ export namespace Prisma {
   export type notification_preferenceUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    enabled?: BoolFieldUpdateOperationsInput | boolean
+    pushEnabled?: BoolFieldUpdateOperationsInput | boolean
+    emailEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -83044,14 +83406,17 @@ export namespace Prisma {
   export type notification_preferenceUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
-    enabled?: BoolFieldUpdateOperationsInput | boolean
+    pushEnabled?: BoolFieldUpdateOperationsInput | boolean
+    emailEnabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type notification_deliveryUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83063,8 +83428,10 @@ export namespace Prisma {
 
   export type notification_deliveryUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83075,8 +83442,10 @@ export namespace Prisma {
 
   export type notification_deliveryUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    channel?: EnumNotificationChannelFieldUpdateOperationsInput | $Enums.NotificationChannel
     appointmentId?: NullableStringFieldUpdateOperationsInput | string | null
     type?: EnumNotificationTypeFieldUpdateOperationsInput | $Enums.NotificationType
+    dedupeKey?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumNotificationDeliveryStatusFieldUpdateOperationsInput | $Enums.NotificationDeliveryStatus
     expoTicketId?: NullableStringFieldUpdateOperationsInput | string | null
     errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
@@ -83444,6 +83813,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -83547,6 +83917,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -83649,6 +84020,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -83834,6 +84206,7 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -83898,6 +84271,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -84001,6 +84375,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -84103,6 +84478,7 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null

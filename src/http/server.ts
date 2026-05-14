@@ -12,7 +12,7 @@ import { prisma } from "@/database/prisma";
 import { env } from "@/env";
 import { errorHandler } from "@/http/error-handler";
 import { startAppointmentReminderWorker } from "@/http/services/appointment-reminder-worker";
-import { startRecurringAppointmentsWorker } from "@/http/services/recurring-appointments-worker";
+import { startRecurringAppointmentsWorker } from "@/http/services/recurring-appointments";
 import { routerLoader } from "@/loaders/router/router";
 import { z } from "zod";
 

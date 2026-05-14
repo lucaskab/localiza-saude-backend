@@ -461,13 +461,14 @@ model push_token {
 }
 
 model notification_preference {
-  id        String           @id @default(cuid())
-  userId    String           @map("user_id")
-  user      user             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  type      NotificationType
-  enabled   Boolean          @default(true)
-  createdAt DateTime         @default(now()) @map("created_at")
-  updatedAt DateTime         @updatedAt @map("updated_at")
+  id           String           @id @default(cuid())
+  userId       String           @map("user_id")
+  user         user             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type         NotificationType
+  pushEnabled  Boolean          @default(true) @map("push_enabled")
+  emailEnabled Boolean          @default(false) @map("email_enabled")
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
 
   @@unique([userId, type])
   @@index([userId])
@@ -478,9 +479,11 @@ model notification_delivery {
   id            String                     @id @default(cuid())
   userId        String                     @map("user_id")
   user          user                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  channel       NotificationChannel
   appointmentId String?                    @map("appointment_id")
   appointment   appointment?               @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
   type          NotificationType
+  dedupeKey     String?                    @map("dedupe_key")
   status        NotificationDeliveryStatus @default(PENDING)
   expoTicketId  String?                    @map("expo_ticket_id")
   errorMessage  String?                    @map("error_message")
@@ -488,9 +491,9 @@ model notification_delivery {
   createdAt     DateTime                   @default(now()) @map("created_at")
   updatedAt     DateTime                   @updatedAt @map("updated_at")
 
-  @@unique([userId, type, appointmentId])
+  @@unique([userId, type, channel, dedupeKey])
   @@index([appointmentId])
-  @@index([type, status])
+  @@index([type, status, channel])
   @@map("notification_deliveries")
 }
 
@@ -506,6 +509,7 @@ enum NotificationType {
   APPOINTMENT_STATUS_UPDATE
   NEW_APPOINTMENT_REQUEST
   WAITLIST_SLOT_AVAILABLE
+  CUSTOMER_BIRTHDAY_GREETING
 }
 
 enum NotificationDeliveryStatus {
@@ -513,6 +517,11 @@ enum NotificationDeliveryStatus {
   SENT
   FAILED
   SKIPPED
+}
+
+enum NotificationChannel {
+  PUSH
+  EMAIL
 }
 
 model patient_profile {
@@ -719,6 +728,7 @@ model user {
   acceptedInsurance                       String[]                 @default([]) @map("accepted_insurance")
   paymentMethods                          String[]                 @default([]) @map("payment_methods")
   bookingAvailabilityDays                 Int                      @default(60) @map("booking_availability_days")
+  birthdayGreetingEmailEnabled            Boolean                  @default(false) @map("birthday_greeting_email_enabled")
   cancellationPolicy                      String?                  @map("cancellation_policy")
   cancellationPolicyEnabled               Boolean                  @default(false) @map("cancellation_policy_enabled")
   cancellationPolicyHoursBefore           Int?                     @map("cancellation_policy_hours_before")

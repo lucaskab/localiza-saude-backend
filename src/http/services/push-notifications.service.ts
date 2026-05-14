@@ -30,7 +30,8 @@ export const notificationTypes: NotificationType[] = [
 
 export const defaultNotificationPreferences = notificationTypes.map((type) => ({
 	type,
-	enabled: true,
+	pushEnabled: true,
+	emailEnabled: false,
 }));
 
 type SendPushToUserData = {
@@ -49,6 +50,9 @@ type SendPushToUserResult = {
 	errorMessage?: string | null;
 };
 
+const getDeliveryDedupeKey = (appointmentId?: string | null) =>
+	appointmentId ? `appointment:${appointmentId}` : null;
+
 const isDeviceNotRegistered = (ticket: ExpoPushTicket) =>
 	ticket.status === "error" && ticket.details?.error === "DeviceNotRegistered";
 
@@ -57,18 +61,41 @@ export const pushNotificationsService = {
 		const persisted =
 			await prismaNotificationsRepository.findPreferencesByUserId(userId);
 		const persistedByType = new Map(
-			persisted.map((preference) => [preference.type, preference.enabled]),
+			persisted.map((preference) => [
+				preference.type,
+				{
+					pushEnabled: preference.pushEnabled,
+					emailEnabled: preference.emailEnabled,
+				},
+			]),
 		);
 
 		return defaultNotificationPreferences.map((preference) => ({
 			type: preference.type,
-			enabled: persistedByType.get(preference.type) ?? preference.enabled,
+			pushEnabled:
+				persistedByType.get(preference.type)?.pushEnabled ??
+				preference.pushEnabled,
+			emailEnabled:
+				persistedByType.get(preference.type)?.emailEnabled ??
+				preference.emailEnabled,
 		}));
 	},
 
-	async isPreferenceEnabled(userId: string, type: NotificationType) {
+	async isPreferenceEnabled(
+		userId: string,
+		type: NotificationType,
+		channel: "PUSH" | "EMAIL",
+	) {
 		const preferences = await this.getPreferences(userId);
-		return preferences.find((preference) => preference.type === type)?.enabled ?? true;
+		const preference = preferences.find((item) => item.type === type);
+
+		if (!preference) {
+			return channel === "PUSH";
+		}
+
+		return channel === "PUSH"
+			? preference.pushEnabled
+			: preference.emailEnabled;
 	},
 
 	async sendToUser({
@@ -80,14 +107,20 @@ export const pushNotificationsService = {
 		appointmentId,
 		recordDelivery = false,
 	}: SendPushToUserData): Promise<SendPushToUserResult> {
-		const preferenceEnabled = await this.isPreferenceEnabled(userId, type);
+		const preferenceEnabled = await this.isPreferenceEnabled(
+			userId,
+			type,
+			"PUSH",
+		);
 
 		if (!preferenceEnabled) {
 			if (recordDelivery) {
 				await prismaNotificationsRepository.createDelivery({
 					userId,
 					type,
+					channel: "PUSH",
 					appointmentId,
+					dedupeKey: getDeliveryDedupeKey(appointmentId),
 					status: "SKIPPED",
 					errorMessage: "Notification preference disabled",
 				});
@@ -104,7 +137,9 @@ export const pushNotificationsService = {
 				await prismaNotificationsRepository.createDelivery({
 					userId,
 					type,
+					channel: "PUSH",
 					appointmentId,
+					dedupeKey: getDeliveryDedupeKey(appointmentId),
 					status: "SKIPPED",
 					errorMessage: "No active push tokens",
 				});
@@ -144,7 +179,9 @@ export const pushNotificationsService = {
 					await prismaNotificationsRepository.createDelivery({
 						userId,
 						type,
+						channel: "PUSH",
 						appointmentId,
+						dedupeKey: getDeliveryDedupeKey(appointmentId),
 						status: "FAILED",
 						errorMessage,
 					});
@@ -174,7 +211,9 @@ export const pushNotificationsService = {
 					await prismaNotificationsRepository.createDelivery({
 						userId,
 						type,
+						channel: "PUSH",
 						appointmentId,
+						dedupeKey: getDeliveryDedupeKey(appointmentId),
 						status: "SENT",
 						expoTicketId: successfulTicket.id,
 						sentAt: new Date(),
@@ -193,7 +232,9 @@ export const pushNotificationsService = {
 				await prismaNotificationsRepository.createDelivery({
 					userId,
 					type,
+					channel: "PUSH",
 					appointmentId,
+					dedupeKey: getDeliveryDedupeKey(appointmentId),
 					status: "FAILED",
 					errorMessage,
 				});
@@ -208,7 +249,9 @@ export const pushNotificationsService = {
 				await prismaNotificationsRepository.createDelivery({
 					userId,
 					type,
+					channel: "PUSH",
 					appointmentId,
+					dedupeKey: getDeliveryDedupeKey(appointmentId),
 					status: "FAILED",
 					errorMessage,
 				});

@@ -52,6 +52,7 @@ export type CreateHealthcareProviderData = {
 	acceptedInsurance?: string[];
 	paymentMethods?: string[];
 	bookingAvailabilityDays?: number | null;
+	birthdayGreetingEmailEnabled?: boolean;
 	cancellationPolicy?: string | null;
 	cancellationPolicyEnabled?: boolean;
 	cancellationPolicyHoursBefore?: number | null;
@@ -104,6 +105,7 @@ export type UpdateHealthcareProviderData = {
 	acceptedInsurance?: string[];
 	paymentMethods?: string[];
 	bookingAvailabilityDays?: number | null;
+	birthdayGreetingEmailEnabled?: boolean;
 	cancellationPolicy?: string | null;
 	cancellationPolicyEnabled?: boolean;
 	cancellationPolicyHoursBefore?: number | null;

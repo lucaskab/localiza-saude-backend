@@ -373,7 +373,8 @@ exports.Prisma.Notification_preferenceScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   type: 'type',
-  enabled: 'enabled',
+  pushEnabled: 'pushEnabled',
+  emailEnabled: 'emailEnabled',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -381,8 +382,10 @@ exports.Prisma.Notification_preferenceScalarFieldEnum = {
 exports.Prisma.Notification_deliveryScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  channel: 'channel',
   appointmentId: 'appointmentId',
   type: 'type',
+  dedupeKey: 'dedupeKey',
   status: 'status',
   expoTicketId: 'expoTicketId',
   errorMessage: 'errorMessage',
@@ -525,6 +528,7 @@ exports.Prisma.UserScalarFieldEnum = {
   acceptedInsurance: 'acceptedInsurance',
   paymentMethods: 'paymentMethods',
   bookingAvailabilityDays: 'bookingAvailabilityDays',
+  birthdayGreetingEmailEnabled: 'birthdayGreetingEmailEnabled',
   cancellationPolicy: 'cancellationPolicy',
   cancellationPolicyEnabled: 'cancellationPolicyEnabled',
   cancellationPolicyHoursBefore: 'cancellationPolicyHoursBefore',
@@ -671,7 +675,13 @@ exports.NotificationType = exports.$Enums.NotificationType = {
   APPOINTMENT_REMINDER: 'APPOINTMENT_REMINDER',
   APPOINTMENT_STATUS_UPDATE: 'APPOINTMENT_STATUS_UPDATE',
   NEW_APPOINTMENT_REQUEST: 'NEW_APPOINTMENT_REQUEST',
-  WAITLIST_SLOT_AVAILABLE: 'WAITLIST_SLOT_AVAILABLE'
+  WAITLIST_SLOT_AVAILABLE: 'WAITLIST_SLOT_AVAILABLE',
+  CUSTOMER_BIRTHDAY_GREETING: 'CUSTOMER_BIRTHDAY_GREETING'
+};
+
+exports.NotificationChannel = exports.$Enums.NotificationChannel = {
+  PUSH: 'PUSH',
+  EMAIL: 'EMAIL'
 };
 
 exports.NotificationDeliveryStatus = exports.$Enums.NotificationDeliveryStatus = {

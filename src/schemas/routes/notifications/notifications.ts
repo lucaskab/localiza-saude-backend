@@ -4,11 +4,13 @@ export const notificationTypeSchema = z.enum([
 	"APPOINTMENT_REMINDER",
 	"APPOINTMENT_STATUS_UPDATE",
 	"NEW_APPOINTMENT_REQUEST",
+	"WAITLIST_SLOT_AVAILABLE",
 ]);
 
 export const notificationPreferenceSchema = z.object({
 	type: notificationTypeSchema,
-	enabled: z.boolean(),
+	pushEnabled: z.boolean(),
+	emailEnabled: z.boolean(),
 });
 
 export const notificationPreferencesResponseSchema = z.object({
