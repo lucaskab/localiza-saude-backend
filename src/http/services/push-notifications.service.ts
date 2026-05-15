@@ -22,6 +22,7 @@ type ExpoPushResponse = {
 };
 
 export const notificationTypes: NotificationType[] = [
+	"APPOINTMENT_CONFIRMATION_REMINDER",
 	"APPOINTMENT_REMINDER",
 	"APPOINTMENT_STATUS_UPDATE",
 	"NEW_APPOINTMENT_REQUEST",

@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const notificationTypeSchema = z.enum([
+	"APPOINTMENT_CONFIRMATION_REMINDER",
 	"APPOINTMENT_REMINDER",
 	"APPOINTMENT_STATUS_UPDATE",
 	"NEW_APPOINTMENT_REQUEST",

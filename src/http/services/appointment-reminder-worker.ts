@@ -1,3 +1,4 @@
+import { sendDueAppointmentConfirmationRemindersUseCase } from "@/http/useCases/notifications/send-due-appointment-confirmation-reminders-use-case";
 import { sendCustomerBirthdayGreetingsUseCase } from "@/http/useCases/notifications/send-customer-birthday-greetings-use-case";
 import { sendDueAppointmentRemindersUseCase } from "@/http/useCases/notifications/send-due-appointment-reminders-use-case";
 
@@ -14,10 +15,18 @@ export function startAppointmentReminderWorker() {
 
 	const run = async () => {
 		try {
-			const [reminderResult, birthdayResult] = await Promise.all([
+			const [confirmationReminderResult, reminderResult, birthdayResult] = await Promise.all([
+				sendDueAppointmentConfirmationRemindersUseCase.execute(),
 				sendDueAppointmentRemindersUseCase.execute(),
 				sendCustomerBirthdayGreetingsUseCase.execute(),
 			]);
+
+			if (confirmationReminderResult.processed > 0) {
+				console.log(
+					"Appointment confirmation reminder worker result:",
+					confirmationReminderResult,
+				);
+			}
 
 			if (reminderResult.processed > 0) {
 				console.log("Appointment reminder worker result:", reminderResult);

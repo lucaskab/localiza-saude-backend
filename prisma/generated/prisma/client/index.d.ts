@@ -289,6 +289,7 @@ export type PushPlatform = (typeof PushPlatform)[keyof typeof PushPlatform]
 
 
 export const NotificationType: {
+  APPOINTMENT_CONFIRMATION_REMINDER: 'APPOINTMENT_CONFIRMATION_REMINDER',
   APPOINTMENT_REMINDER: 'APPOINTMENT_REMINDER',
   APPOINTMENT_STATUS_UPDATE: 'APPOINTMENT_STATUS_UPDATE',
   NEW_APPOINTMENT_REQUEST: 'NEW_APPOINTMENT_REQUEST',
@@ -38536,6 +38537,8 @@ export namespace Prisma {
     clinicLongitude: number | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
+    appointmentConfirmationReminderHoursBefore: number | null
+    appointmentReminderHoursBefore: number | null
     cancellationPolicyHoursBefore: number | null
     cancellationPolicyFixedFeeCents: number | null
     cancellationPolicyPercentage: number | null
@@ -38548,6 +38551,8 @@ export namespace Prisma {
     clinicLongitude: number | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
+    appointmentConfirmationReminderHoursBefore: number | null
+    appointmentReminderHoursBefore: number | null
     cancellationPolicyHoursBefore: number | null
     cancellationPolicyFixedFeeCents: number | null
     cancellationPolicyPercentage: number | null
@@ -38599,6 +38604,8 @@ export namespace Prisma {
     clinicState: string | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
+    appointmentConfirmationReminderHoursBefore: number | null
+    appointmentReminderHoursBefore: number | null
     birthdayGreetingEmailEnabled: boolean | null
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean | null
@@ -38660,6 +38667,8 @@ export namespace Prisma {
     clinicState: string | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
+    appointmentConfirmationReminderHoursBefore: number | null
+    appointmentReminderHoursBefore: number | null
     birthdayGreetingEmailEnabled: boolean | null
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean | null
@@ -38726,6 +38735,8 @@ export namespace Prisma {
     acceptedInsurance: number
     paymentMethods: number
     bookingAvailabilityDays: number
+    appointmentConfirmationReminderHoursBefore: number
+    appointmentReminderHoursBefore: number
     birthdayGreetingEmailEnabled: number
     cancellationPolicy: number
     cancellationPolicyEnabled: number
@@ -38751,6 +38762,8 @@ export namespace Prisma {
     clinicLongitude?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
+    appointmentConfirmationReminderHoursBefore?: true
+    appointmentReminderHoursBefore?: true
     cancellationPolicyHoursBefore?: true
     cancellationPolicyFixedFeeCents?: true
     cancellationPolicyPercentage?: true
@@ -38763,6 +38776,8 @@ export namespace Prisma {
     clinicLongitude?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
+    appointmentConfirmationReminderHoursBefore?: true
+    appointmentReminderHoursBefore?: true
     cancellationPolicyHoursBefore?: true
     cancellationPolicyFixedFeeCents?: true
     cancellationPolicyPercentage?: true
@@ -38814,6 +38829,8 @@ export namespace Prisma {
     clinicState?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
+    appointmentConfirmationReminderHoursBefore?: true
+    appointmentReminderHoursBefore?: true
     birthdayGreetingEmailEnabled?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
@@ -38875,6 +38892,8 @@ export namespace Prisma {
     clinicState?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
+    appointmentConfirmationReminderHoursBefore?: true
+    appointmentReminderHoursBefore?: true
     birthdayGreetingEmailEnabled?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
@@ -38941,6 +38960,8 @@ export namespace Prisma {
     acceptedInsurance?: true
     paymentMethods?: true
     bookingAvailabilityDays?: true
+    appointmentConfirmationReminderHoursBefore?: true
+    appointmentReminderHoursBefore?: true
     birthdayGreetingEmailEnabled?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
@@ -39095,6 +39116,8 @@ export namespace Prisma {
     acceptedInsurance: string[]
     paymentMethods: string[]
     bookingAvailabilityDays: number
+    appointmentConfirmationReminderHoursBefore: number
+    appointmentReminderHoursBefore: number
     birthdayGreetingEmailEnabled: boolean
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean
@@ -39181,6 +39204,8 @@ export namespace Prisma {
     acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
+    appointmentConfirmationReminderHoursBefore?: boolean
+    appointmentReminderHoursBefore?: boolean
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
@@ -39288,6 +39313,8 @@ export namespace Prisma {
     acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
+    appointmentConfirmationReminderHoursBefore?: boolean
+    appointmentReminderHoursBefore?: boolean
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
@@ -39357,6 +39384,8 @@ export namespace Prisma {
     acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
+    appointmentConfirmationReminderHoursBefore?: boolean
+    appointmentReminderHoursBefore?: boolean
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
@@ -39426,6 +39455,8 @@ export namespace Prisma {
     acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
+    appointmentConfirmationReminderHoursBefore?: boolean
+    appointmentReminderHoursBefore?: boolean
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
@@ -39442,7 +39473,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "birthdayGreetingEmailEnabled" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "appointmentConfirmationReminderHoursBefore" | "appointmentReminderHoursBefore" | "birthdayGreetingEmailEnabled" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
@@ -39588,6 +39619,8 @@ export namespace Prisma {
       acceptedInsurance: string[]
       paymentMethods: string[]
       bookingAvailabilityDays: number
+      appointmentConfirmationReminderHoursBefore: number
+      appointmentReminderHoursBefore: number
       birthdayGreetingEmailEnabled: boolean
       cancellationPolicy: string | null
       cancellationPolicyEnabled: boolean
@@ -40114,6 +40147,8 @@ export namespace Prisma {
     readonly acceptedInsurance: FieldRef<"user", 'String[]'>
     readonly paymentMethods: FieldRef<"user", 'String[]'>
     readonly bookingAvailabilityDays: FieldRef<"user", 'Int'>
+    readonly appointmentConfirmationReminderHoursBefore: FieldRef<"user", 'Int'>
+    readonly appointmentReminderHoursBefore: FieldRef<"user", 'Int'>
     readonly birthdayGreetingEmailEnabled: FieldRef<"user", 'Boolean'>
     readonly cancellationPolicy: FieldRef<"user", 'String'>
     readonly cancellationPolicyEnabled: FieldRef<"user", 'Boolean'>
@@ -46337,6 +46372,8 @@ export namespace Prisma {
     acceptedInsurance: 'acceptedInsurance',
     paymentMethods: 'paymentMethods',
     bookingAvailabilityDays: 'bookingAvailabilityDays',
+    appointmentConfirmationReminderHoursBefore: 'appointmentConfirmationReminderHoursBefore',
+    appointmentReminderHoursBefore: 'appointmentReminderHoursBefore',
     birthdayGreetingEmailEnabled: 'birthdayGreetingEmailEnabled',
     cancellationPolicy: 'cancellationPolicy',
     cancellationPolicyEnabled: 'cancellationPolicyEnabled',
@@ -49178,6 +49215,8 @@ export namespace Prisma {
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntFilter<"user"> | number
+    appointmentConfirmationReminderHoursBefore?: IntFilter<"user"> | number
+    appointmentReminderHoursBefore?: IntFilter<"user"> | number
     birthdayGreetingEmailEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
@@ -49284,6 +49323,8 @@ export namespace Prisma {
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    appointmentConfirmationReminderHoursBefore?: SortOrder
+    appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     cancellationPolicyEnabled?: SortOrder
@@ -49393,6 +49434,8 @@ export namespace Prisma {
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntFilter<"user"> | number
+    appointmentConfirmationReminderHoursBefore?: IntFilter<"user"> | number
+    appointmentReminderHoursBefore?: IntFilter<"user"> | number
     birthdayGreetingEmailEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
@@ -49499,6 +49542,8 @@ export namespace Prisma {
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    appointmentConfirmationReminderHoursBefore?: SortOrder
+    appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     cancellationPolicyEnabled?: SortOrder
@@ -49574,6 +49619,8 @@ export namespace Prisma {
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntWithAggregatesFilter<"user"> | number
+    appointmentConfirmationReminderHoursBefore?: IntWithAggregatesFilter<"user"> | number
+    appointmentReminderHoursBefore?: IntWithAggregatesFilter<"user"> | number
     birthdayGreetingEmailEnabled?: BoolWithAggregatesFilter<"user"> | boolean
     cancellationPolicy?: StringNullableWithAggregatesFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolWithAggregatesFilter<"user"> | boolean
@@ -52438,6 +52485,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -52544,6 +52593,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -52646,6 +52697,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -52752,6 +52805,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -52856,6 +52911,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -52921,6 +52978,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -52988,6 +53047,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -55422,6 +55483,8 @@ export namespace Prisma {
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    appointmentConfirmationReminderHoursBefore?: SortOrder
+    appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
@@ -55445,6 +55508,8 @@ export namespace Prisma {
     clinicLongitude?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    appointmentConfirmationReminderHoursBefore?: SortOrder
+    appointmentReminderHoursBefore?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
     cancellationPolicyFixedFeeCents?: SortOrder
     cancellationPolicyPercentage?: SortOrder
@@ -55496,6 +55561,8 @@ export namespace Prisma {
     clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    appointmentConfirmationReminderHoursBefore?: SortOrder
+    appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
@@ -55557,6 +55624,8 @@ export namespace Prisma {
     clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    appointmentConfirmationReminderHoursBefore?: SortOrder
+    appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
@@ -55579,6 +55648,8 @@ export namespace Prisma {
     clinicLongitude?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
+    appointmentConfirmationReminderHoursBefore?: SortOrder
+    appointmentReminderHoursBefore?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
     cancellationPolicyFixedFeeCents?: SortOrder
     cancellationPolicyPercentage?: SortOrder
@@ -59632,6 +59703,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -59737,6 +59810,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -59854,6 +59929,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -59959,6 +60036,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -60268,6 +60347,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -60373,6 +60454,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -60540,6 +60623,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -60645,6 +60730,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -60819,6 +60906,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -60924,6 +61013,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -61173,6 +61264,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -61278,6 +61371,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -61457,6 +61552,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -61562,6 +61659,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -61754,6 +61853,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -61859,6 +61960,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -62151,6 +62254,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -62256,6 +62361,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -62444,6 +62551,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -62549,6 +62658,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -62650,6 +62761,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -62755,6 +62868,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -62922,6 +63037,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -63027,6 +63144,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -63133,6 +63252,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -63238,6 +63359,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -63475,6 +63598,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -63580,6 +63705,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -63759,6 +63886,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -63864,6 +63993,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -63976,6 +64107,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -64081,6 +64214,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -64632,6 +64767,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -64737,6 +64874,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -64843,6 +64982,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -64948,6 +65089,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -65087,6 +65230,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -65192,6 +65337,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -65304,6 +65451,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -65409,6 +65558,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -65716,6 +65867,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -65821,6 +65974,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -65959,6 +66114,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -66064,6 +66221,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -66192,6 +66351,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -66297,6 +66458,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -66444,6 +66607,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -66549,6 +66714,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -66715,6 +66882,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -66820,6 +66989,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -66978,6 +67149,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -67083,6 +67256,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -67184,6 +67359,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -67289,6 +67466,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -67395,6 +67574,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -67500,6 +67681,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -67617,6 +67800,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -67722,6 +67907,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -67834,6 +68021,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -67939,6 +68128,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -68040,6 +68231,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -68145,6 +68338,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -68262,6 +68457,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -68367,6 +68564,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -68468,6 +68667,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -68573,6 +68774,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -68690,6 +68893,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -68795,6 +69000,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -68896,6 +69103,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -69001,6 +69210,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -69118,6 +69329,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -69223,6 +69436,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -69324,6 +69539,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -69429,6 +69646,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -69546,6 +69765,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -69651,6 +69872,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -69752,6 +69975,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -69857,6 +70082,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -69963,6 +70190,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -70068,6 +70297,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -70225,6 +70456,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -70330,6 +70563,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -70442,6 +70677,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -70547,6 +70784,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -70687,6 +70926,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -70792,6 +71033,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -71003,6 +71246,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -71108,6 +71353,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -71280,6 +71527,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -71385,6 +71634,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -71502,6 +71753,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -71607,6 +71860,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -71708,6 +71963,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -71813,6 +72070,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -71930,6 +72189,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -72035,6 +72296,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -72136,6 +72399,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -72241,6 +72506,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -72423,6 +72690,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -72528,6 +72797,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -72700,6 +72971,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -72805,6 +73078,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -72911,6 +73186,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -73016,6 +73293,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -73253,6 +73532,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -73358,6 +73639,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -73470,6 +73753,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -73575,6 +73860,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -73729,6 +74016,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -73834,6 +74123,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -74043,6 +74334,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -74148,6 +74441,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -74397,6 +74692,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -74502,6 +74799,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -74608,6 +74907,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -74713,6 +75014,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -74830,6 +75133,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -74935,6 +75240,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -75047,6 +75354,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -75152,6 +75461,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -75253,6 +75564,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -75358,6 +75671,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -75475,6 +75790,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -75580,6 +75897,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -75681,6 +76000,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -75786,6 +76107,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -75903,6 +76226,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -76008,6 +76333,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -76138,6 +76465,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -76243,6 +76572,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -77594,6 +77925,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -77698,6 +78031,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -77976,6 +78311,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -78081,6 +78418,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -78974,6 +79313,8 @@ export namespace Prisma {
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntFilter<"user"> | number
+    appointmentConfirmationReminderHoursBefore?: IntFilter<"user"> | number
+    appointmentReminderHoursBefore?: IntFilter<"user"> | number
     birthdayGreetingEmailEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
@@ -79131,6 +79472,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -79235,6 +79578,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -79363,6 +79708,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -79468,6 +79815,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -79574,6 +79923,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -79679,6 +80030,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -79796,6 +80149,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -79901,6 +80256,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -80013,6 +80370,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -80118,6 +80477,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -80219,6 +80580,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -80324,6 +80687,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -80430,6 +80795,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -80535,6 +80902,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -80652,6 +81021,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -80757,6 +81128,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -80869,6 +81242,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -80974,6 +81349,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -82395,6 +82772,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -83813,6 +84192,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -83917,6 +84298,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -84020,6 +84403,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -84206,6 +84591,8 @@ export namespace Prisma {
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
@@ -84271,6 +84658,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -84375,6 +84764,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
@@ -84478,6 +84869,8 @@ export namespace Prisma {
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean

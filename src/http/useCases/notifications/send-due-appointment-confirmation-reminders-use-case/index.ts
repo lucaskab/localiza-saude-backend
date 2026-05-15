@@ -3,7 +3,7 @@ import { prismaNotificationsRepository } from "@/http/repositories/notifications
 import { pushNotificationsService } from "@/http/services/push-notifications.service";
 
 const ONE_HOUR_IN_MS = 60 * 60 * 1000;
-const DEFAULT_APPOINTMENT_REMINDER_HOURS = 1;
+const DEFAULT_APPOINTMENT_CONFIRMATION_REMINDER_HOURS = 24;
 const MAX_NOTIFICATION_LEAD_HOURS = 168;
 
 const formatAppointmentDate = (date: Date) =>
@@ -27,8 +27,8 @@ const getPatientName = (
 	appointment.customer?.name ||
 	"paciente";
 
-const getReminderDedupeKey = (appointmentId: string) =>
-	`appointment:${appointmentId}`;
+const getConfirmationReminderDedupeKey = (appointmentId: string) =>
+	`appointment-confirmation:${appointmentId}`;
 
 function normalizeLeadHours(value: number | null | undefined, fallback: number) {
 	return Math.min(Math.max(value ?? fallback, 1), MAX_NOTIFICATION_LEAD_HOURS);
@@ -48,49 +48,39 @@ function formatLeadHours(hours: number) {
 	return hours === 1 ? "1 hora" : `${hours} horas`;
 }
 
-function formatRemainingLeadSentence(hours: number) {
-	return hours === 1 ? "Falta apenas 1 hora" : `Faltam apenas ${hours} horas`;
-}
-
-const buildReminderEmailHtml = ({
-	customerName,
-	providerName,
-	scheduledAt,
-	leadHours,
-}: {
+function buildConfirmationEmailHtml(params: {
 	customerName: string;
 	providerName: string;
 	scheduledAt: Date;
 	leadHours: number;
-}) => `
-	<div style="background:#f4fbfa;padding:32px 16px;font-family:Inter,Arial,sans-serif;color:#16313c;">
-		<div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid #d9ebe8;border-radius:24px;overflow:hidden;box-shadow:0 18px 50px rgba(20,73,80,.08);">
-			<div style="background:linear-gradient(135deg,#1e847f,#146963);padding:28px 32px;color:#ffffff;">
-				<div style="font-size:14px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;">Localiza Saúde</div>
-				<h1 style="margin:12px 0 0;font-size:28px;line-height:1.15;">Sua consulta começa em ${formatLeadHours(leadHours)}</h1>
-			</div>
-			<div style="padding:32px;">
-				<p style="margin:0 0 16px;font-size:16px;line-height:1.7;">Olá, <strong>${customerName}</strong>.</p>
-				<p style="margin:0 0 16px;font-size:16px;line-height:1.7;">
-					Este é um lembrete carinhoso de que sua consulta com <strong>${providerName}</strong> está marcada para
-					<strong> ${formatAppointmentDate(scheduledAt)}</strong>.
-				</p>
-				<div style="margin:24px 0;padding:20px;border-radius:20px;background:#eef8f7;border:1px solid #d8ece8;">
-					<div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5f7783;">Prepare-se com tranquilidade</div>
-					<div style="margin-top:10px;font-size:18px;font-weight:700;color:#16313c;">${formatRemainingLeadSentence(leadHours)}</div>
+}) {
+	return `
+		<div style="background:#f4fbfa;padding:32px 16px;font-family:Inter,Arial,sans-serif;color:#16313c;">
+			<div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid #d9ebe8;border-radius:24px;overflow:hidden;box-shadow:0 18px 50px rgba(20,73,80,.08);">
+				<div style="background:linear-gradient(135deg,#1e847f,#146963);padding:28px 32px;color:#ffffff;">
+					<div style="font-size:14px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;">Localiza Saúde</div>
+					<h1 style="margin:12px 0 0;font-size:28px;line-height:1.15;">Sua consulta está confirmada</h1>
 				</div>
-				<p style="margin:0 0 12px;font-size:15px;line-height:1.7;color:#5f7783;">
-					Se sua consulta for online, vale a pena conferir seu dispositivo e conexão alguns minutos antes.
-				</p>
-				<p style="margin:0;font-size:15px;line-height:1.7;color:#5f7783;">
-					Estamos aqui para deixar seu cuidado mais leve, organizado e humano.
-				</p>
+				<div style="padding:32px;">
+					<p style="margin:0 0 16px;font-size:16px;line-height:1.7;">Olá, <strong>${params.customerName}</strong>.</p>
+					<p style="margin:0 0 16px;font-size:16px;line-height:1.7;">
+						Só passando para confirmar que sua consulta com <strong>${params.providerName}</strong> segue reservada para
+						<strong> ${formatAppointmentDate(params.scheduledAt)}</strong>.
+					</p>
+					<div style="margin:24px 0;padding:20px;border-radius:20px;background:#eef8f7;border:1px solid #d8ece8;">
+						<div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5f7783;">Confirmação antecipada</div>
+						<div style="margin-top:10px;font-size:18px;font-weight:700;color:#16313c;">Enviada com ${formatLeadHours(params.leadHours)} de antecedência</div>
+					</div>
+					<p style="margin:0;font-size:15px;line-height:1.7;color:#5f7783;">
+						Se precisar revisar horário, modalidade ou detalhes do atendimento, este é um bom momento para conferir tudo com calma.
+					</p>
+				</div>
 			</div>
 		</div>
-	</div>
-`;
+	`;
+}
 
-export const sendDueAppointmentRemindersUseCase = {
+export const sendDueAppointmentConfirmationRemindersUseCase = {
 	async execute(now = new Date()) {
 		const until = new Date(now.getTime() + MAX_NOTIFICATION_LEAD_HOURS * ONE_HOUR_IN_MS);
 		const appointments =
@@ -108,9 +98,9 @@ export const sendDueAppointmentRemindersUseCase = {
 
 		for (const appointment of appointments) {
 			const customerId = appointment.customer?.id;
-			const reminderLeadHours = normalizeLeadHours(
-				appointment.healthcareProvider.appointmentReminderHoursBefore,
-				DEFAULT_APPOINTMENT_REMINDER_HOURS,
+			const leadHours = normalizeLeadHours(
+				appointment.healthcareProvider.appointmentConfirmationReminderHoursBefore,
+				DEFAULT_APPOINTMENT_CONFIRMATION_REMINDER_HOURS,
 			);
 
 			if (!customerId) {
@@ -122,7 +112,7 @@ export const sendDueAppointmentRemindersUseCase = {
 				!shouldSendForLeadHours({
 					now,
 					scheduledAt: appointment.scheduledAt,
-					leadHours: reminderLeadHours,
+					leadHours,
 				})
 			) {
 				summary.skipped += 1;
@@ -131,13 +121,13 @@ export const sendDueAppointmentRemindersUseCase = {
 
 			const preference = (
 				await pushNotificationsService.getPreferences(customerId)
-			).find((item) => item.type === "APPOINTMENT_REMINDER");
+			).find((item) => item.type === "APPOINTMENT_CONFIRMATION_REMINDER");
 
 			const reminderChannels = {
 				push: preference?.pushEnabled ?? true,
 				email: preference?.emailEnabled ?? false,
 			};
-			const dedupeKey = getReminderDedupeKey(appointment.id);
+			const dedupeKey = getConfirmationReminderDedupeKey(appointment.id);
 
 			if (!reminderChannels.push && !reminderChannels.email) {
 				summary.skipped += 1;
@@ -148,7 +138,7 @@ export const sendDueAppointmentRemindersUseCase = {
 				const existingPushDelivery =
 					await prismaNotificationsRepository.findDelivery(
 						customerId,
-						"APPOINTMENT_REMINDER",
+						"APPOINTMENT_CONFIRMATION_REMINDER",
 						"PUSH",
 						dedupeKey,
 					);
@@ -156,9 +146,9 @@ export const sendDueAppointmentRemindersUseCase = {
 				if (!existingPushDelivery) {
 					const result = await pushNotificationsService.sendToUser({
 						userId: customerId,
-						type: "APPOINTMENT_REMINDER",
-						title: `Sua consulta começa em ${formatLeadHours(reminderLeadHours)}`,
-						body: `${getPatientName(appointment)}, sua consulta com ${appointment.healthcareProvider.name} acontece às ${formatAppointmentDate(appointment.scheduledAt)}.`,
+						type: "APPOINTMENT_CONFIRMATION_REMINDER",
+						title: "Sua consulta está confirmada",
+						body: `${getPatientName(appointment)}, sua consulta com ${appointment.healthcareProvider.name} segue marcada para ${formatAppointmentDate(appointment.scheduledAt)}.`,
 						appointmentId: appointment.id,
 						recordDelivery: true,
 						data: {
@@ -182,7 +172,7 @@ export const sendDueAppointmentRemindersUseCase = {
 				const existingEmailDelivery =
 					await prismaNotificationsRepository.findDelivery(
 						customerId,
-						"APPOINTMENT_REMINDER",
+						"APPOINTMENT_CONFIRMATION_REMINDER",
 						"EMAIL",
 						dedupeKey,
 					);
@@ -190,20 +180,20 @@ export const sendDueAppointmentRemindersUseCase = {
 				if (!existingEmailDelivery) {
 					const emailResult = await emailService.send({
 						to: appointment.customer.email,
-						subject: `Sua consulta começa em ${formatLeadHours(reminderLeadHours)}`,
-						html: buildReminderEmailHtml({
+						subject: "Sua consulta está confirmada",
+						html: buildConfirmationEmailHtml({
 							customerName: getPatientName(appointment),
 							providerName: appointment.healthcareProvider.name,
 							scheduledAt: appointment.scheduledAt,
-							leadHours: reminderLeadHours,
+							leadHours,
 						}),
-						text: `${getPatientName(appointment)}, sua consulta com ${appointment.healthcareProvider.name} está marcada para ${formatAppointmentDate(appointment.scheduledAt)}. ${formatRemainingLeadSentence(reminderLeadHours)} para o atendimento.`,
+						text: `${getPatientName(appointment)}, sua consulta com ${appointment.healthcareProvider.name} segue marcada para ${formatAppointmentDate(appointment.scheduledAt)}. Este aviso foi enviado com ${formatLeadHours(leadHours)} de antecedência.`,
 						idempotencyKey: dedupeKey,
 					});
 
 					await prismaNotificationsRepository.createDelivery({
 						userId: customerId,
-						type: "APPOINTMENT_REMINDER",
+						type: "APPOINTMENT_CONFIRMATION_REMINDER",
 						channel: "EMAIL",
 						appointmentId: appointment.id,
 						dedupeKey,

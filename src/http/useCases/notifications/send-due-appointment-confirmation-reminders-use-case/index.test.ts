@@ -40,12 +40,13 @@ const makeAppointment = (
 		role: "HEALTHCARE_PROVIDER",
 		name: "Dra. Ana Souza",
 		displayName: "Dra. Ana Souza",
+		appointmentConfirmationReminderHoursBefore: 24,
 	}),
 	recurringSeriesId: null,
 	recurringRuleId: null,
 	recurringGeneratedAt: null,
 	scheduledAt: new Date("2026-08-20T13:00:00.000Z"),
-	status: "SCHEDULED",
+	status: "CONFIRMED",
 	serviceModality: "ONLINE",
 	onlineMeetingUrl: null,
 	onlineMeetingProvider: null,
@@ -62,10 +63,10 @@ const makeAppointment = (
 	...overrides,
 });
 
-const reminderPreference = (
+const confirmationPreference = (
 	overrides: Partial<NotificationPreferenceInput> = {},
 ): NotificationPreferenceInput => ({
-	type: "APPOINTMENT_REMINDER",
+	type: "APPOINTMENT_CONFIRMATION_REMINDER",
 	pushEnabled: true,
 	emailEnabled: false,
 	...overrides,
@@ -79,18 +80,18 @@ const mockNotificationsRepository = {
 	findDelivery: mock(
 		(
 			_: string,
-			__: "APPOINTMENT_REMINDER",
+			__: "APPOINTMENT_CONFIRMATION_REMINDER",
 			___: "PUSH" | "EMAIL",
 			____: string,
 		): Promise<notification_delivery | null> => Promise.resolve(null),
-		),
+	),
 	createDelivery: mock(() => Promise.resolve(undefined)),
 };
 
 const mockPushNotificationsService = {
 	getPreferences: mock(
 		(_: string): Promise<NotificationPreferenceInput[]> =>
-			Promise.resolve([reminderPreference()]),
+			Promise.resolve([confirmationPreference()]),
 	),
 	sendToUser: mock(
 		(): Promise<SendToUserResult> =>
@@ -125,9 +126,9 @@ mock.module("@/http/services/email.service", () => ({
 	emailService: mockEmailService,
 }));
 
-const { sendDueAppointmentRemindersUseCase } = await import("./index");
+const { sendDueAppointmentConfirmationRemindersUseCase } = await import("./index");
 
-describe("sendDueAppointmentRemindersUseCase", () => {
+describe("sendDueAppointmentConfirmationRemindersUseCase", () => {
 	beforeEach(() => {
 		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockReset();
 		mockNotificationsRepository.findDelivery.mockReset();
@@ -142,7 +143,7 @@ describe("sendDueAppointmentRemindersUseCase", () => {
 		mockNotificationsRepository.findDelivery.mockResolvedValue(null);
 		mockNotificationsRepository.createDelivery.mockResolvedValue(undefined);
 		mockPushNotificationsService.getPreferences.mockResolvedValue([
-			reminderPreference(),
+			confirmationPreference(),
 		]);
 		mockPushNotificationsService.sendToUser.mockResolvedValue({
 			status: "sent",
@@ -154,8 +155,8 @@ describe("sendDueAppointmentRemindersUseCase", () => {
 	});
 
 	test("returns empty summary when there are no upcoming appointments", async () => {
-		const result = await sendDueAppointmentRemindersUseCase.execute(
-			new Date("2026-08-20T12:15:00.000Z"),
+		const result = await sendDueAppointmentConfirmationRemindersUseCase.execute(
+			new Date("2026-08-19T10:00:00.000Z"),
 		);
 
 		expect(result).toEqual({
@@ -166,41 +167,16 @@ describe("sendDueAppointmentRemindersUseCase", () => {
 		});
 	});
 
-	test("skips appointments without customer", async () => {
-		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockResolvedValue(
-			[
-				makeAppointment({
-					id: "appointment-2",
-					customer: null,
-					customerId: null,
-				}),
-			],
-		);
-
-		const result = await sendDueAppointmentRemindersUseCase.execute(
-			new Date("2026-08-20T12:15:00.000Z"),
-		);
-
-		expect(mockPushNotificationsService.sendToUser).not.toHaveBeenCalled();
-		expect(result).toEqual({
-			processed: 1,
-			sent: 0,
-			skipped: 1,
-			failed: 0,
-		});
-	});
-
-	test("sends push reminder when push is enabled", async () => {
+	test("sends push confirmation reminder when appointment enters the provider window", async () => {
 		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockResolvedValue(
 			[makeAppointment()],
 		);
 
-		const result = await sendDueAppointmentRemindersUseCase.execute(
-			new Date("2026-08-20T12:15:00.000Z"),
+		const result = await sendDueAppointmentConfirmationRemindersUseCase.execute(
+			new Date("2026-08-19T13:30:00.000Z"),
 		);
 
 		expect(mockPushNotificationsService.sendToUser).toHaveBeenCalledTimes(1);
-		expect(mockEmailService.send).not.toHaveBeenCalled();
 		expect(result).toEqual({
 			processed: 1,
 			sent: 1,
@@ -209,7 +185,7 @@ describe("sendDueAppointmentRemindersUseCase", () => {
 		});
 	});
 
-	test("respects the provider reminder lead time", async () => {
+	test("respects the provider confirmation lead time", async () => {
 		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockResolvedValue(
 			[
 				makeAppointment({
@@ -217,15 +193,14 @@ describe("sendDueAppointmentRemindersUseCase", () => {
 						id: "provider-1",
 						role: "HEALTHCARE_PROVIDER",
 						name: "Dra. Ana Souza",
-						appointmentReminderHoursBefore: 6,
+						appointmentConfirmationReminderHoursBefore: 48,
 					}),
-					scheduledAt: new Date("2026-08-20T18:00:00.000Z"),
 				}),
 			],
 		);
 
-		const result = await sendDueAppointmentRemindersUseCase.execute(
-			new Date("2026-08-20T10:30:00.000Z"),
+		const result = await sendDueAppointmentConfirmationRemindersUseCase.execute(
+			new Date("2026-08-18T12:00:00.000Z"),
 		);
 
 		expect(mockPushNotificationsService.sendToUser).not.toHaveBeenCalled();
@@ -237,142 +212,25 @@ describe("sendDueAppointmentRemindersUseCase", () => {
 		});
 	});
 
-	test("sends email reminder and records email delivery when email is enabled", async () => {
+	test("sends email confirmation reminder when email is enabled", async () => {
 		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockResolvedValue(
 			[makeAppointment()],
 		);
 		mockPushNotificationsService.getPreferences.mockResolvedValue([
-			reminderPreference({ pushEnabled: false, emailEnabled: true }),
+			confirmationPreference({ pushEnabled: false, emailEnabled: true }),
 		]);
 
-		const result = await sendDueAppointmentRemindersUseCase.execute(
-			new Date("2026-08-20T12:15:00.000Z"),
+		const result = await sendDueAppointmentConfirmationRemindersUseCase.execute(
+			new Date("2026-08-19T13:30:00.000Z"),
 		);
 
-		expect(mockEmailService.send).toHaveBeenCalledWith(
-			expect.objectContaining({
-				to: "lucas@example.com",
-				subject: "Sua consulta começa em 1 hora",
-				idempotencyKey: "appointment:appointment-1",
-			}),
-		);
-		expect(mockNotificationsRepository.createDelivery).toHaveBeenCalledWith(
-			expect.objectContaining({
-				userId: "customer-1",
-				type: "APPOINTMENT_REMINDER",
-				channel: "EMAIL",
-				appointmentId: "appointment-1",
-				dedupeKey: "appointment:appointment-1",
-				status: "SENT",
-			}),
-		);
+		expect(mockEmailService.send).toHaveBeenCalledTimes(1);
+		expect(mockNotificationsRepository.createDelivery).toHaveBeenCalledTimes(1);
 		expect(result).toEqual({
 			processed: 1,
 			sent: 1,
 			skipped: 0,
 			failed: 0,
-		});
-	});
-
-	test("respects disabled reminder preferences", async () => {
-		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockResolvedValue(
-			[makeAppointment()],
-		);
-		mockPushNotificationsService.getPreferences.mockResolvedValue([
-			reminderPreference({ pushEnabled: false, emailEnabled: false }),
-		]);
-
-		const result = await sendDueAppointmentRemindersUseCase.execute(
-			new Date("2026-08-19T10:00:00.000Z"),
-		);
-
-		expect(mockPushNotificationsService.sendToUser).not.toHaveBeenCalled();
-		expect(mockEmailService.send).not.toHaveBeenCalled();
-		expect(result).toEqual({
-			processed: 1,
-			sent: 0,
-			skipped: 1,
-			failed: 0,
-		});
-	});
-
-	test("does not resend channels that already have a recorded delivery", async () => {
-		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockResolvedValue(
-			[makeAppointment()],
-		);
-		mockPushNotificationsService.getPreferences.mockResolvedValue([
-			reminderPreference({ pushEnabled: true, emailEnabled: true }),
-		]);
-		mockNotificationsRepository.findDelivery.mockImplementation(
-			(
-				_: string,
-				__: "APPOINTMENT_REMINDER",
-				channel: "PUSH" | "EMAIL",
-			) =>
-				Promise.resolve(
-					channel === "PUSH"
-						? ({ id: "delivery-1" } as notification_delivery)
-						: null,
-				),
-		);
-
-		await sendDueAppointmentRemindersUseCase.execute(
-			new Date("2026-08-20T12:15:00.000Z"),
-		);
-
-		expect(mockPushNotificationsService.sendToUser).not.toHaveBeenCalled();
-		expect(mockEmailService.send).toHaveBeenCalledTimes(1);
-	});
-
-	test("counts failed push deliveries", async () => {
-		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockResolvedValue(
-			[makeAppointment()],
-		);
-		mockPushNotificationsService.sendToUser.mockResolvedValue({
-			status: "failed",
-			errorMessage: "Expo request failed",
-		});
-
-		const result = await sendDueAppointmentRemindersUseCase.execute(
-			new Date("2026-08-20T12:15:00.000Z"),
-		);
-
-		expect(result).toEqual({
-			processed: 1,
-			sent: 0,
-			skipped: 0,
-			failed: 1,
-		});
-	});
-
-	test("counts failed email deliveries", async () => {
-		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockResolvedValue(
-			[makeAppointment()],
-		);
-		mockPushNotificationsService.getPreferences.mockResolvedValue([
-			reminderPreference({ pushEnabled: false, emailEnabled: true }),
-		]);
-		mockEmailService.send.mockResolvedValue({
-			status: "failed",
-			errorMessage: "Resend request failed",
-		});
-
-		const result = await sendDueAppointmentRemindersUseCase.execute(
-			new Date("2026-08-20T12:15:00.000Z"),
-		);
-
-		expect(mockNotificationsRepository.createDelivery).toHaveBeenCalledWith(
-			expect.objectContaining({
-				channel: "EMAIL",
-				status: "FAILED",
-				errorMessage: "Resend request failed",
-			}),
-		);
-		expect(result).toEqual({
-			processed: 1,
-			sent: 0,
-			skipped: 0,
-			failed: 1,
 		});
 	});
 });

@@ -528,6 +528,8 @@ exports.Prisma.UserScalarFieldEnum = {
   acceptedInsurance: 'acceptedInsurance',
   paymentMethods: 'paymentMethods',
   bookingAvailabilityDays: 'bookingAvailabilityDays',
+  appointmentConfirmationReminderHoursBefore: 'appointmentConfirmationReminderHoursBefore',
+  appointmentReminderHoursBefore: 'appointmentReminderHoursBefore',
   birthdayGreetingEmailEnabled: 'birthdayGreetingEmailEnabled',
   cancellationPolicy: 'cancellationPolicy',
   cancellationPolicyEnabled: 'cancellationPolicyEnabled',
@@ -672,6 +674,7 @@ exports.PushPlatform = exports.$Enums.PushPlatform = {
 };
 
 exports.NotificationType = exports.$Enums.NotificationType = {
+  APPOINTMENT_CONFIRMATION_REMINDER: 'APPOINTMENT_CONFIRMATION_REMINDER',
   APPOINTMENT_REMINDER: 'APPOINTMENT_REMINDER',
   APPOINTMENT_STATUS_UPDATE: 'APPOINTMENT_STATUS_UPDATE',
   NEW_APPOINTMENT_REQUEST: 'NEW_APPOINTMENT_REQUEST',

@@ -505,6 +505,7 @@ enum PushPlatform {
 }
 
 enum NotificationType {
+  APPOINTMENT_CONFIRMATION_REMINDER
   APPOINTMENT_REMINDER
   APPOINTMENT_STATUS_UPDATE
   NEW_APPOINTMENT_REQUEST
@@ -676,72 +677,74 @@ enum SupportRequestStatus {
 }
 
 model user {
-  id                                      String                   @id @default(cuid())
-  name                                    String
-  firstName                               String?                  @map("first_name")
-  lastName                                String?                  @map("last_name")
-  phone                                   String?
-  email                                   String                   @unique
-  emailVerified                           Boolean                  @default(false) @map("email_verified")
-  image                                   String?
-  role                                    UserRole                 @default(CUSTOMER)
-  onboardingCompleted                     Boolean                  @default(true) @map("onboarding_completed")
-  cpf                                     String?
-  dateOfBirth                             DateTime?                @map("date_of_birth")
-  address                                 String?
-  displayName                             String?                  @map("display_name")
-  document                                String?
-  birthDate                               DateTime?                @map("birth_date")
-  gender                                  String?
-  languages                               String[]                 @default([])
-  specialty                               String?
-  professionalCategory                    String?                  @map("healthcare_provider_category")
-  professionalId                          String?                  @map("professional_id")
-  professionalCouncilId                   String?                  @map("professional_council_id")
-  professionalCouncil                     professional_council?    @relation(fields: [professionalCouncilId], references: [id], onDelete: SetNull)
-  licenseState                            String?                  @map("license_state")
-  licenseDocumentKey                      String?                  @map("license_document_key")
-  licenseDocumentFileName                 String?                  @map("license_document_file_name")
-  licenseDocumentMimeType                 String?                  @map("license_document_mime_type")
-  licenseDocumentSize                     Int?                     @map("license_document_size")
-  licenseDocumentSha256                   String?                  @map("license_document_sha256")
-  licenseDocumentUploadedAt               DateTime?                @map("license_document_uploaded_at")
-  verificationStatus                      String                   @default("PENDING") @map("verification_status")
-  verificationRejectionReason             String?                  @map("verification_rejection_reason")
-  verifiedAt                              DateTime?                @map("verified_at")
-  verifiedByUserId                        String?                  @map("verified_by_user_id")
-  verifiedByUser                          user?                    @relation("VerifiedProviders", fields: [verifiedByUserId], references: [id], onDelete: SetNull)
-  bio                                     String?
-  approach                                String?
-  education                               String?
-  certifications                          String?
-  yearsOfExperience                       Int?                     @map("years_of_experience")
-  targetAudiences                         String[]                 @default([]) @map("target_audiences")
-  serviceModalities                       String[]                 @default([]) @map("service_modalities")
-  clinicAddress                           String?                  @map("clinic_address")
-  clinicLatitude                          Float?                   @map("clinic_latitude")
-  clinicLongitude                         Float?                   @map("clinic_longitude")
-  clinicNeighborhood                      String?                  @map("clinic_neighborhood")
-  clinicCity                              String?                  @map("clinic_city")
-  clinicState                             String?                  @map("clinic_state")
-  homeCareRadiusKm                        Int?                     @map("home_care_radius_km")
-  acceptedInsurance                       String[]                 @default([]) @map("accepted_insurance")
-  paymentMethods                          String[]                 @default([]) @map("payment_methods")
-  bookingAvailabilityDays                 Int                      @default(60) @map("booking_availability_days")
-  birthdayGreetingEmailEnabled            Boolean                  @default(false) @map("birthday_greeting_email_enabled")
-  cancellationPolicy                      String?                  @map("cancellation_policy")
-  cancellationPolicyEnabled               Boolean                  @default(false) @map("cancellation_policy_enabled")
-  cancellationPolicyHoursBefore           Int?                     @map("cancellation_policy_hours_before")
-  cancellationPolicyPenaltyType           CancellationPenaltyType? @map("cancellation_policy_penalty_type")
-  cancellationPolicyFixedFeeCents         Int?                     @map("cancellation_policy_fixed_fee_cents")
-  cancellationPolicyPercentage            Int?                     @map("cancellation_policy_percentage")
-  cancellationPolicyRequiresJustification Boolean                  @default(false) @map("cancellation_policy_requires_justification")
-  clinicPhotos                            String[]                 @default([]) @map("clinic_photos")
-  termsAcceptedAt                         DateTime?                @map("terms_accepted_at")
-  lgpdConsentAt                           DateTime?                @map("lgpd_consent_at")
-  professionalResponsibilityAcceptedAt    DateTime?                @map("professional_responsibility_accepted_at")
-  createdAt                               DateTime                 @default(now()) @map("created_at")
-  updatedAt                               DateTime                 @updatedAt @map("updated_at")
+  id                                         String                   @id @default(cuid())
+  name                                       String
+  firstName                                  String?                  @map("first_name")
+  lastName                                   String?                  @map("last_name")
+  phone                                      String?
+  email                                      String                   @unique
+  emailVerified                              Boolean                  @default(false) @map("email_verified")
+  image                                      String?
+  role                                       UserRole                 @default(CUSTOMER)
+  onboardingCompleted                        Boolean                  @default(true) @map("onboarding_completed")
+  cpf                                        String?
+  dateOfBirth                                DateTime?                @map("date_of_birth")
+  address                                    String?
+  displayName                                String?                  @map("display_name")
+  document                                   String?
+  birthDate                                  DateTime?                @map("birth_date")
+  gender                                     String?
+  languages                                  String[]                 @default([])
+  specialty                                  String?
+  professionalCategory                       String?                  @map("healthcare_provider_category")
+  professionalId                             String?                  @map("professional_id")
+  professionalCouncilId                      String?                  @map("professional_council_id")
+  professionalCouncil                        professional_council?    @relation(fields: [professionalCouncilId], references: [id], onDelete: SetNull)
+  licenseState                               String?                  @map("license_state")
+  licenseDocumentKey                         String?                  @map("license_document_key")
+  licenseDocumentFileName                    String?                  @map("license_document_file_name")
+  licenseDocumentMimeType                    String?                  @map("license_document_mime_type")
+  licenseDocumentSize                        Int?                     @map("license_document_size")
+  licenseDocumentSha256                      String?                  @map("license_document_sha256")
+  licenseDocumentUploadedAt                  DateTime?                @map("license_document_uploaded_at")
+  verificationStatus                         String                   @default("PENDING") @map("verification_status")
+  verificationRejectionReason                String?                  @map("verification_rejection_reason")
+  verifiedAt                                 DateTime?                @map("verified_at")
+  verifiedByUserId                           String?                  @map("verified_by_user_id")
+  verifiedByUser                             user?                    @relation("VerifiedProviders", fields: [verifiedByUserId], references: [id], onDelete: SetNull)
+  bio                                        String?
+  approach                                   String?
+  education                                  String?
+  certifications                             String?
+  yearsOfExperience                          Int?                     @map("years_of_experience")
+  targetAudiences                            String[]                 @default([]) @map("target_audiences")
+  serviceModalities                          String[]                 @default([]) @map("service_modalities")
+  clinicAddress                              String?                  @map("clinic_address")
+  clinicLatitude                             Float?                   @map("clinic_latitude")
+  clinicLongitude                            Float?                   @map("clinic_longitude")
+  clinicNeighborhood                         String?                  @map("clinic_neighborhood")
+  clinicCity                                 String?                  @map("clinic_city")
+  clinicState                                String?                  @map("clinic_state")
+  homeCareRadiusKm                           Int?                     @map("home_care_radius_km")
+  acceptedInsurance                          String[]                 @default([]) @map("accepted_insurance")
+  paymentMethods                             String[]                 @default([]) @map("payment_methods")
+  bookingAvailabilityDays                    Int                      @default(90) @map("booking_availability_days")
+  appointmentConfirmationReminderHoursBefore Int                      @default(24) @map("appointment_confirmation_reminder_hours_before")
+  appointmentReminderHoursBefore             Int                      @default(1) @map("appointment_reminder_hours_before")
+  birthdayGreetingEmailEnabled               Boolean                  @default(false) @map("birthday_greeting_email_enabled")
+  cancellationPolicy                         String?                  @map("cancellation_policy")
+  cancellationPolicyEnabled                  Boolean                  @default(false) @map("cancellation_policy_enabled")
+  cancellationPolicyHoursBefore              Int?                     @map("cancellation_policy_hours_before")
+  cancellationPolicyPenaltyType              CancellationPenaltyType? @map("cancellation_policy_penalty_type")
+  cancellationPolicyFixedFeeCents            Int?                     @map("cancellation_policy_fixed_fee_cents")
+  cancellationPolicyPercentage               Int?                     @map("cancellation_policy_percentage")
+  cancellationPolicyRequiresJustification    Boolean                  @default(false) @map("cancellation_policy_requires_justification")
+  clinicPhotos                               String[]                 @default([]) @map("clinic_photos")
+  termsAcceptedAt                            DateTime?                @map("terms_accepted_at")
+  lgpdConsentAt                              DateTime?                @map("lgpd_consent_at")
+  professionalResponsibilityAcceptedAt       DateTime?                @map("professional_responsibility_accepted_at")
+  createdAt                                  DateTime                 @default(now()) @map("created_at")
+  updatedAt                                  DateTime                 @updatedAt @map("updated_at")
 
   sessions        session[]
   accounts        account[]

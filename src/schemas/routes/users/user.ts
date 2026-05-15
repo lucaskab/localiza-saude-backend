@@ -96,6 +96,8 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	acceptedInsurance: z.array(z.string()).optional(),
 	paymentMethods: z.array(z.string()).optional(),
 	bookingAvailabilityDays: z.number().int().optional(),
+	appointmentConfirmationReminderHoursBefore: z.number().int().optional(),
+	appointmentReminderHoursBefore: z.number().int().optional(),
 	birthdayGreetingEmailEnabled: z.boolean().optional(),
 	cancellationPolicy: z.string().nullable().optional(),
 	cancellationPolicyEnabled: z.boolean().optional(),

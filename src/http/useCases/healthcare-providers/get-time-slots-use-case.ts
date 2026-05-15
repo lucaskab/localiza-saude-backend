@@ -2,17 +2,18 @@ import { prisma } from "@/database/prisma";
 import { prismaAppointmentRepository } from "@/http/repositories/appointments/appointments-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { recurringAppointmentsService } from "@/http/services/recurring-appointments";
-
-type TimeSlot = {
-	startTime: string;
-	endTime: string;
-	available: boolean;
-};
-
-type TimeRange = {
-	startTime: string;
-	endTime: string;
-};
+import {
+	endOfUtcDay,
+	getBookingWindowEndDate,
+	getDayOfWeek,
+	getRangeBounds,
+	hasTimeOverlap,
+	isValidRange,
+	minutesToTime,
+	parseUtcDateString,
+	timeToMinutes,
+	type TimeSlot,
+} from "./get-time-slots-helpers";
 
 type GetTimeSlotsParams = {
 	healthcareProviderId: string;
@@ -31,90 +32,6 @@ type GetTimeSlotsResponse = {
 	};
 	slots: TimeSlot[];
 };
-
-const DEFAULT_BOOKING_AVAILABILITY_DAYS = 90;
-const MAX_BOOKING_AVAILABILITY_DAYS = 365;
-
-function timeToMinutes(time: string): number {
-	const [hours = 0, minutes = 0] = time.split(":").map(Number);
-	return hours * 60 + minutes;
-}
-
-function minutesToTime(minutes: number): string {
-	const hours = Math.floor(minutes / 60);
-	const mins = minutes % 60;
-	return `${hours.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}`;
-}
-
-function getDayOfWeek(date: Date): number {
-	return date.getUTCDay();
-}
-
-function hasTimeOverlap(
-	slotStart: number,
-	slotEnd: number,
-	apptStart: number,
-	apptEnd: number,
-): boolean {
-	return slotStart < apptEnd && slotEnd > apptStart;
-}
-
-function isValidRange(range: TimeRange): boolean {
-	return timeToMinutes(range.startTime) < timeToMinutes(range.endTime);
-}
-
-function getRangeBounds(ranges: TimeRange[]) {
-	if (ranges.length === 0) {
-		return {
-			startTime: "00:00",
-			endTime: "00:00",
-		};
-	}
-
-	const startMinutes = Math.min(
-		...ranges.map((range) => timeToMinutes(range.startTime)),
-	);
-	const endMinutes = Math.max(
-		...ranges.map((range) => timeToMinutes(range.endTime)),
-	);
-
-	return {
-		startTime: minutesToTime(startMinutes),
-		endTime: minutesToTime(endMinutes),
-	};
-}
-
-function parseUtcDateString(date: string): Date {
-	const [year, month, day] = date.split("-").map(Number);
-	return new Date(Date.UTC(year || 0, (month || 1) - 1, day || 1));
-}
-
-function endOfUtcDay(date: Date) {
-	const result = new Date(date);
-	result.setUTCHours(23, 59, 59, 999);
-	return result;
-}
-
-function addUtcDays(date: Date, days: number) {
-	const result = new Date(date);
-	result.setUTCDate(result.getUTCDate() + days);
-	return result;
-}
-
-function getBookingWindowEndDate(
-	bookingAvailabilityDays: number | null | undefined,
-	referenceDate = new Date(),
-) {
-	const normalizedDays = Math.min(
-		Math.max(bookingAvailabilityDays ?? DEFAULT_BOOKING_AVAILABILITY_DAYS, 1),
-		MAX_BOOKING_AVAILABILITY_DAYS,
-	);
-
-	const start = new Date(referenceDate);
-	start.setUTCHours(0, 0, 0, 0);
-
-	return endOfUtcDay(addUtcDays(start, normalizedDays));
-}
 
 export const getTimeSlotsUseCase = {
 	async execute(params: GetTimeSlotsParams): Promise<GetTimeSlotsResponse> {

@@ -39,6 +39,8 @@ export const updateHealthcareProviderBodySchema = z.object({
 	acceptedInsurance: z.array(z.string().trim().min(1)).optional(),
 	paymentMethods: z.array(z.string().trim().min(1)).optional(),
 	bookingAvailabilityDays: z.number().int().min(1).max(365).nullable().optional(),
+	appointmentConfirmationReminderHoursBefore: z.number().int().min(1).max(168).nullable().optional(),
+	appointmentReminderHoursBefore: z.number().int().min(1).max(168).nullable().optional(),
 	birthdayGreetingEmailEnabled: z.boolean().optional(),
 	cancellationPolicy: z.string().trim().nullable().optional(),
 	cancellationPolicyEnabled: z.boolean().optional(),
