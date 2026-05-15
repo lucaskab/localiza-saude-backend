@@ -1,4 +1,5 @@
 import { prisma } from "@/database/prisma";
+import { presentAppointment } from "@/http/presenters/appointment";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
 import { clinicRbac } from "@/http/services/clinic-rbac";
@@ -143,10 +144,12 @@ function buildRecurringSeriesSummary(series: RecurringSeriesWithRelations) {
 }
 
 async function getAppointmentWithRelations(appointmentId: string) {
-	return prisma.appointment.findUnique({
+	const appointment = await prisma.appointment.findUnique({
 		where: { id: appointmentId },
 		include: appointmentInclude,
 	});
+
+	return presentAppointment(appointment);
 }
 
 async function getProviderForBookingWindow(healthcareProviderId: string) {

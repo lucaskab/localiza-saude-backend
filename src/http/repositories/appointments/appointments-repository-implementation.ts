@@ -1,4 +1,5 @@
 import { prisma } from "@/database/prisma";
+import { presentAppointment, presentAppointments } from "@/http/presenters/appointment";
 import type { Prisma } from "../../../../prisma/generated/prisma/client";
 import type {
 	AppointmentRepository,
@@ -138,7 +139,9 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 		]);
 
 		return {
-			appointments: appointments as AppointmentWithRelations[],
+			appointments: presentAppointments(
+				appointments as AppointmentWithRelations[],
+			),
 			total,
 			limit,
 			offset,
@@ -152,7 +155,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 			include: includeRelations,
 		});
 
-		return appointment as AppointmentWithRelations | null;
+		return presentAppointment(appointment as AppointmentWithRelations | null);
 	},
 
 	async findByUserId(customerId: string) {
@@ -164,7 +167,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 			},
 		});
 
-		return appointments as AppointmentWithRelations[];
+		return presentAppointments(appointments as AppointmentWithRelations[]);
 	},
 
 	async findByHealthcareProviderId(healthcareProviderId: string) {
@@ -176,7 +179,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 			},
 		});
 
-		return appointments as AppointmentWithRelations[];
+		return presentAppointments(appointments as AppointmentWithRelations[]);
 	},
 
 	async findByDateRange(params: DateRangeParams) {
@@ -193,7 +196,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 			},
 		});
 
-		return appointments as AppointmentWithRelations[];
+		return presentAppointments(appointments as AppointmentWithRelations[]);
 	},
 
 	async findByProfessionalAndDateRange(
@@ -217,7 +220,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 			},
 		});
 
-		return appointments as AppointmentWithRelations[];
+		return presentAppointments(appointments as AppointmentWithRelations[]);
 	},
 
 	async existsByCustomerAndProfessional(customerId: string, healthcareProviderId: string) {
@@ -304,7 +307,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 			include: includeRelations,
 		});
 
-		return appointment as AppointmentWithRelations;
+		return presentAppointment(appointment as AppointmentWithRelations);
 	},
 
 	async update(id: string, data: UpdateAppointmentData) {
@@ -347,7 +350,7 @@ export const prismaAppointmentRepository: AppointmentRepository = {
 			include: includeRelations,
 		});
 
-		return appointment as AppointmentWithRelations;
+		return presentAppointment(appointment as AppointmentWithRelations);
 	},
 
 	async delete(id: string) {
