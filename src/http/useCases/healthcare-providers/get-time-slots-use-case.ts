@@ -32,7 +32,7 @@ type GetTimeSlotsResponse = {
 	slots: TimeSlot[];
 };
 
-const DEFAULT_BOOKING_AVAILABILITY_DAYS = 60;
+const DEFAULT_BOOKING_AVAILABILITY_DAYS = 90;
 const MAX_BOOKING_AVAILABILITY_DAYS = 365;
 
 function timeToMinutes(time: string): number {

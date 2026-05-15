@@ -41,6 +41,47 @@ type RecurringSeriesWithRelations =
 		include: typeof recurringSeriesInclude;
 	}>;
 
+const appointmentInclude = {
+	customer: true,
+	patientProfile: true,
+	healthcareProvider: true,
+	cancelledByUser: true,
+	recurringSeries: {
+		include: {
+			rules: {
+				orderBy: [{ dayOfWeek: "asc" as const }, { startTime: "asc" as const }],
+			},
+		},
+	},
+	recurringRule: true,
+	appointmentProcedures: {
+		include: {
+			procedure: {
+				include: {
+					checklistItems: {
+						orderBy: {
+							position: "asc" as const,
+						},
+					},
+				},
+			},
+		},
+		orderBy: {
+			createdAt: "desc" as const,
+		},
+	},
+	rescheduleRequests: {
+		orderBy: {
+			createdAt: "desc" as const,
+		},
+	},
+} satisfies Prisma.appointmentInclude;
+
+const recurringTransactionOptions = {
+	timeout: 20_000,
+	maxWait: 10_000,
+};
+
 type CreateRecurringSeriesInput = {
 	currentUser: user;
 	customerId: string | null;
@@ -99,6 +140,13 @@ function buildRecurringSeriesSummary(series: RecurringSeriesWithRelations) {
 		updatedAt: series.updatedAt,
 		weeklySlots: series.rules,
 	};
+}
+
+async function getAppointmentWithRelations(appointmentId: string) {
+	return prisma.appointment.findUnique({
+		where: { id: appointmentId },
+		include: appointmentInclude,
+	});
 }
 
 async function getProviderForBookingWindow(healthcareProviderId: string) {
@@ -376,6 +424,12 @@ async function syncSeriesAppointmentsTx({
 				},
 			});
 
+			if (!createdAppointment) {
+				throw new BadRequestError(
+					"Could not create a recurring appointment occurrence",
+				);
+			}
+
 			existingAppointments.push(createdAppointment);
 			existingByStart.set(
 				createdAppointment.scheduledAt.toISOString(),
@@ -443,7 +497,7 @@ export const recurringAppointmentsService = {
 					bookingWindowEnd,
 					strict: false,
 				});
-			});
+			}, recurringTransactionOptions);
 		}
 	},
 
@@ -474,7 +528,7 @@ export const recurringAppointmentsService = {
 			);
 		}
 
-		const { recurringSeries, appointment } = await prisma.$transaction(
+		const { recurringSeries, appointmentId } = await prisma.$transaction(
 			async (tx) => {
 				const procedures = await tx.procedure.findMany({
 					where: {
@@ -526,43 +580,8 @@ export const recurringAppointmentsService = {
 						recurringSeriesId: recurringSeries.id,
 						scheduledAt: input.scheduledAt,
 					},
-					include: {
-						customer: true,
-						patientProfile: true,
-						healthcareProvider: true,
-						cancelledByUser: true,
-						recurringSeries: {
-							include: {
-								rules: {
-									orderBy: [
-										{ dayOfWeek: "asc" },
-										{ startTime: "asc" },
-									],
-								},
-							},
-						},
-						recurringRule: true,
-						appointmentProcedures: {
-							include: {
-								procedure: {
-									include: {
-										checklistItems: {
-											orderBy: {
-												position: "asc",
-											},
-										},
-									},
-								},
-							},
-							orderBy: {
-								createdAt: "desc",
-							},
-						},
-						rescheduleRequests: {
-							orderBy: {
-								createdAt: "desc",
-							},
-						},
+					select: {
+						id: true,
 					},
 				});
 
@@ -574,10 +593,19 @@ export const recurringAppointmentsService = {
 
 				return {
 					recurringSeries,
-					appointment,
+					appointmentId: appointment.id,
 				};
 			},
+			recurringTransactionOptions,
 		);
+
+		const appointment = await getAppointmentWithRelations(appointmentId);
+
+		if (!appointment) {
+			throw new BadRequestError(
+				"Could not load the first recurring appointment occurrence",
+			);
+		}
 
 		return {
 			recurringSeries: buildRecurringSeriesSummary(recurringSeries),
@@ -659,7 +687,7 @@ export const recurringAppointmentsService = {
 			});
 
 			return updatedSeries;
-		});
+		}, recurringTransactionOptions);
 
 		return {
 			recurringSeries: buildRecurringSeriesSummary(recurringSeries),
@@ -695,7 +723,7 @@ export const recurringAppointmentsService = {
 					cancelledAt: new Date(),
 				},
 			});
-		});
+		}, recurringTransactionOptions);
 	},
 
 	async trimProviderRecurringAppointmentsToWindow(healthcareProviderId: string) {

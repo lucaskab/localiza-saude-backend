@@ -1,4 +1,4 @@
-export const DEFAULT_BOOKING_AVAILABILITY_DAYS = 60;
+export const DEFAULT_BOOKING_AVAILABILITY_DAYS = 90;
 export const MAX_BOOKING_AVAILABILITY_DAYS = 365;
 
 export type RecurringWeeklySlotInput = {

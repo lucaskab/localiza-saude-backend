@@ -110,6 +110,43 @@ function toDateInput(date: Date) {
 	return date.toISOString().slice(0, 10);
 }
 
+function createProviderActor() {
+	return {
+		id: "provider-1",
+		role: "HEALTHCARE_PROVIDER",
+	} as Parameters<typeof recurringAppointmentsService.cancelSeries>[1];
+}
+
+function createRecurringAppointmentInput(
+	overrides: Partial<Parameters<
+		typeof recurringAppointmentsService.createSeriesFromAppointment
+	>[0]> = {},
+) {
+	const scheduledAt = nextUpcomingUtcWeekday(1, 9, 0);
+	const endsOn = new Date(scheduledAt);
+	endsOn.setUTCDate(endsOn.getUTCDate() + 10);
+
+	return {
+		currentUser: createProviderActor(),
+		customerId: "customer-1",
+		patientProfileId: null,
+		healthcareProviderId: "provider-1",
+		scheduledAt,
+		serviceModality:
+			"IN_PERSON" as Parameters<
+				typeof recurringAppointmentsService.createSeriesFromAppointment
+			>[0]["serviceModality"],
+		notes: "Weekly therapy",
+		procedureIds: ["procedure-1"],
+		recurrence: {
+			isIndefinite: false,
+			endsOn: toDateInput(endsOn),
+			weeklySlots: [{ dayOfWeek: 3, startTime: "10:00" }],
+		},
+		...overrides,
+	};
+}
+
 function createMockPrisma() {
 	const provider = {
 		id: "provider-1",
@@ -334,6 +371,17 @@ function createMockPrisma() {
 					throw new Error("Series not found");
 				}
 
+				if (data.rules?.create) {
+					for (const rule of data.rules.create) {
+						state.rules.push({
+							id: nextId("rule"),
+							seriesId: series.id,
+							dayOfWeek: rule.dayOfWeek,
+							startTime: rule.startTime,
+						});
+					}
+				}
+
 				Object.assign(series, data, { updatedAt: new Date() });
 				return buildSeriesWithRelations(series);
 			},
@@ -493,6 +541,10 @@ function createMockPrisma() {
 		},
 		appointment: {
 			updateMany: tx.appointment.updateMany,
+			findUnique: async ({ where }: any) => {
+				const appointment = state.appointments.find((item) => item.id === where.id);
+				return appointment ? buildAppointmentWithRelations(appointment) : null;
+			},
 		},
 		$transaction: async (callback: (txClient: typeof tx) => Promise<unknown>) =>
 			callback(tx),
@@ -530,28 +582,12 @@ describe("recurringAppointmentsService e2e", () => {
 	});
 
 	test("creates recurring occurrences across weekly slots inside the provider booking window", async () => {
-		const scheduledAt = nextUpcomingUtcWeekday(1, 9, 0);
-		const endsOn = new Date(scheduledAt);
-		endsOn.setUTCDate(endsOn.getUTCDate() + 10);
+		const input = createRecurringAppointmentInput();
 
-		const result = await recurringAppointmentsService.createSeriesFromAppointment({
-			currentUser: { id: "provider-1", role: "HEALTHCARE_PROVIDER" } as any,
-			customerId: "customer-1",
-			patientProfileId: null,
-			healthcareProviderId: "provider-1",
-			scheduledAt,
-			serviceModality: "IN_PERSON" as any,
-			notes: "Weekly therapy",
-			procedureIds: ["procedure-1"],
-			recurrence: {
-				isIndefinite: false,
-				endsOn: toDateInput(endsOn),
-				weeklySlots: [{ dayOfWeek: 3, startTime: "10:00" }],
-			},
-		});
+		const result = await recurringAppointmentsService.createSeriesFromAppointment(input);
 
 		expect(result.appointment.scheduledAt.toISOString()).toBe(
-			scheduledAt.toISOString(),
+			input.scheduledAt.toISOString(),
 		);
 		expect(result.recurringSeries.weeklySlots).toHaveLength(2);
 		expect(currentMock.state.appointments).toHaveLength(4);
@@ -560,24 +596,26 @@ describe("recurringAppointmentsService e2e", () => {
 				.map((appointment) => appointment.scheduledAt.toISOString())
 				.sort(),
 		).toEqual([
-			scheduledAt.toISOString(),
+			input.scheduledAt.toISOString(),
 			new Date(
 				Date.UTC(
-					scheduledAt.getUTCFullYear(),
-					scheduledAt.getUTCMonth(),
-					scheduledAt.getUTCDate() + 2,
+					input.scheduledAt.getUTCFullYear(),
+					input.scheduledAt.getUTCMonth(),
+					input.scheduledAt.getUTCDate() + 2,
 					10,
 					0,
 					0,
 					0,
 				),
 			).toISOString(),
-			new Date(scheduledAt.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+			new Date(
+				input.scheduledAt.getTime() + 7 * 24 * 60 * 60 * 1000,
+			).toISOString(),
 			new Date(
 				Date.UTC(
-					scheduledAt.getUTCFullYear(),
-					scheduledAt.getUTCMonth(),
-					scheduledAt.getUTCDate() + 9,
+					input.scheduledAt.getUTCFullYear(),
+					input.scheduledAt.getUTCMonth(),
+					input.scheduledAt.getUTCDate() + 9,
 					10,
 					0,
 					0,
@@ -588,30 +626,14 @@ describe("recurringAppointmentsService e2e", () => {
 	});
 
 	test("cancels the recurring series and future generated appointments", async () => {
-		const scheduledAt = nextUpcomingUtcWeekday(1, 9, 0);
-		const endsOn = new Date(scheduledAt);
-		endsOn.setUTCDate(endsOn.getUTCDate() + 10);
+		const created = await recurringAppointmentsService.createSeriesFromAppointment(
+			createRecurringAppointmentInput(),
+		);
 
-		const created = await recurringAppointmentsService.createSeriesFromAppointment({
-			currentUser: { id: "provider-1", role: "HEALTHCARE_PROVIDER" } as any,
-			customerId: "customer-1",
-			patientProfileId: null,
-			healthcareProviderId: "provider-1",
-			scheduledAt,
-			serviceModality: "IN_PERSON" as any,
-			notes: "Weekly therapy",
-			procedureIds: ["procedure-1"],
-			recurrence: {
-				isIndefinite: false,
-				endsOn: toDateInput(endsOn),
-				weeklySlots: [{ dayOfWeek: 3, startTime: "10:00" }],
-			},
-		});
-
-		await recurringAppointmentsService.cancelSeries(created.recurringSeries.id, {
-			id: "provider-1",
-			role: "HEALTHCARE_PROVIDER",
-		} as any);
+		await recurringAppointmentsService.cancelSeries(
+			created.recurringSeries.id,
+			createProviderActor(),
+		);
 
 		const cancelledSeries = currentMock.state.series.find(
 			(series) => series.id === created.recurringSeries.id,
@@ -623,5 +645,247 @@ describe("recurringAppointmentsService e2e", () => {
 				(appointment) => appointment.status === "CANCELLED",
 			),
 		).toBe(true);
+	});
+
+	test("requires an end date when the recurrence is not indefinite", async () => {
+		const input = createRecurringAppointmentInput({
+			recurrence: {
+				isIndefinite: false,
+				endsOn: null,
+				weeklySlots: [{ dayOfWeek: 3, startTime: "10:00" }],
+			},
+		});
+
+		await expect(
+			recurringAppointmentsService.createSeriesFromAppointment(input),
+		).rejects.toThrow(
+			"Recurring appointments must define an end date or be indefinite",
+		);
+	});
+
+	test("rejects a recurrence whose end date is before the first occurrence", async () => {
+		const scheduledAt = nextUpcomingUtcWeekday(1, 9, 0);
+		const dayBefore = new Date(scheduledAt);
+		dayBefore.setUTCDate(dayBefore.getUTCDate() - 1);
+
+		const input = createRecurringAppointmentInput({
+			scheduledAt,
+			recurrence: {
+				isIndefinite: false,
+				endsOn: toDateInput(dayBefore),
+				weeklySlots: [{ dayOfWeek: 3, startTime: "10:00" }],
+			},
+		});
+
+		await expect(
+			recurringAppointmentsService.createSeriesFromAppointment(input),
+		).rejects.toThrow(
+			"Recurring appointment end date must be after the first occurrence",
+		);
+	});
+
+	test("rejects recurring slots that do not fit the provider schedule in strict mode", async () => {
+		const input = createRecurringAppointmentInput({
+			recurrence: {
+				isIndefinite: false,
+				endsOn: createRecurringAppointmentInput().recurrence.endsOn,
+				weeklySlots: [{ dayOfWeek: 3, startTime: "13:30" }],
+			},
+		});
+
+		await expect(
+			recurringAppointmentsService.createSeriesFromAppointment(input),
+		).rejects.toThrow("Recurring appointment does not fit provider schedule");
+	});
+
+	test("rejects recurring slots that overlap another booking in strict mode", async () => {
+		const input = createRecurringAppointmentInput();
+		const conflictingDate = new Date(
+			Date.UTC(
+				input.scheduledAt.getUTCFullYear(),
+				input.scheduledAt.getUTCMonth(),
+				input.scheduledAt.getUTCDate() + 2,
+				10,
+				0,
+				0,
+				0,
+			),
+		);
+
+		currentMock.state.appointments.push({
+			id: "existing-conflict",
+			customerId: "customer-2",
+			patientProfileId: null,
+			healthcareProviderId: "provider-1",
+			recurringSeriesId: null,
+			recurringRuleId: null,
+			recurringGeneratedAt: null,
+			scheduledAt: conflictingDate,
+			serviceModality: "IN_PERSON",
+			notes: null,
+			totalDurationMinutes: 60,
+			totalPriceCents: 12000,
+			status: "SCHEDULED",
+			cancellationReason: null,
+			cancelledAt: null,
+			cancelledByUserId: null,
+		});
+
+		await expect(
+			recurringAppointmentsService.createSeriesFromAppointment(input),
+		).rejects.toThrow("Recurring appointment conflicts with another booking");
+	});
+
+	test("updates a recurring series by cancelling future occurrences and regenerating the new rule set", async () => {
+		const created = await recurringAppointmentsService.createSeriesFromAppointment(
+			createRecurringAppointmentInput(),
+		);
+
+		const updated = await recurringAppointmentsService.updateSeries(
+			created.recurringSeries.id,
+			{
+				currentUser: createProviderActor(),
+				notes: "Updated weekly therapy",
+				recurrence: {
+					isIndefinite: false,
+					endsOn: created.recurringSeries.endsOn?.toISOString().slice(0, 10) || null,
+					weeklySlots: [{ dayOfWeek: 3, startTime: "11:00" }],
+				},
+			},
+		);
+
+		const scheduledAppointments = currentMock.state.appointments.filter(
+			(appointment) =>
+				appointment.recurringSeriesId === created.recurringSeries.id &&
+				appointment.status === "SCHEDULED",
+		);
+		const cancelledAppointments = currentMock.state.appointments.filter(
+			(appointment) =>
+				appointment.recurringSeriesId === created.recurringSeries.id &&
+				appointment.status === "CANCELLED",
+		);
+
+		expect(updated.recurringSeries.weeklySlots).toEqual([
+			expect.objectContaining({ dayOfWeek: 3, startTime: "11:00" }),
+		]);
+		expect(cancelledAppointments.length).toBeGreaterThan(0);
+		expect(scheduledAppointments.length).toBeGreaterThan(0);
+		expect(
+			scheduledAppointments.every(
+				(appointment) =>
+					appointment.scheduledAt.getUTCDay() === 3 &&
+					appointment.scheduledAt.toISOString().slice(11, 16) === "11:00",
+			),
+		).toBe(true);
+	});
+
+	test("keeps an indefinite recurring series inside the provider booking window", async () => {
+		currentMock.state.provider.bookingAvailabilityDays = 14;
+		const created = await recurringAppointmentsService.createSeriesFromAppointment(
+			createRecurringAppointmentInput({
+				recurrence: {
+					isIndefinite: true,
+					endsOn: null,
+					weeklySlots: [{ dayOfWeek: 3, startTime: "10:00" }],
+				},
+			}),
+		);
+
+		const series = currentMock.state.series.find(
+			(item) => item.id === created.recurringSeries.id,
+		);
+		const latestAppointment = currentMock.state.appointments
+			.filter((appointment) => appointment.recurringSeriesId === created.recurringSeries.id)
+			.sort((a, b) => b.scheduledAt.getTime() - a.scheduledAt.getTime())[0];
+
+		expect(series?.generatedUntil).toBeInstanceOf(Date);
+		expect(latestAppointment).toBeDefined();
+		expect(latestAppointment!.scheduledAt <= series!.generatedUntil!).toBe(true);
+	});
+
+	test("syncs future occurrences up to a later target date without duplicating existing ones", async () => {
+		currentMock.state.provider.bookingAvailabilityDays = 7;
+		const created = await recurringAppointmentsService.createSeriesFromAppointment(
+			createRecurringAppointmentInput({
+				recurrence: {
+					isIndefinite: true,
+					endsOn: null,
+					weeklySlots: [{ dayOfWeek: 3, startTime: "10:00" }],
+				},
+			}),
+		);
+		const initialCount = currentMock.state.appointments.length;
+
+		currentMock.state.provider.bookingAvailabilityDays = 30;
+
+		await recurringAppointmentsService.ensureProviderRecurringAppointmentsUpToDate(
+			"provider-1",
+			new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+		);
+
+		const generatedAppointments = currentMock.state.appointments.filter(
+			(appointment) => appointment.recurringSeriesId === created.recurringSeries.id,
+		);
+		const uniqueOccurrenceCount = new Set(
+			generatedAppointments.map((appointment) => appointment.scheduledAt.toISOString()),
+		).size;
+
+		expect(generatedAppointments.length).toBeGreaterThan(initialCount);
+		expect(generatedAppointments).toHaveLength(uniqueOccurrenceCount);
+	});
+
+	test("skips conflicting future occurrences during background sync instead of failing the whole series", async () => {
+		currentMock.state.provider.bookingAvailabilityDays = 7;
+		const created = await recurringAppointmentsService.createSeriesFromAppointment(
+			createRecurringAppointmentInput({
+				recurrence: {
+					isIndefinite: true,
+					endsOn: null,
+					weeklySlots: [{ dayOfWeek: 3, startTime: "10:00" }],
+				},
+			}),
+		);
+
+		currentMock.state.provider.bookingAvailabilityDays = 30;
+		const futureWednesday = currentMock.state.appointments
+			.filter((appointment) => appointment.recurringSeriesId === created.recurringSeries.id)
+			.map((appointment) => appointment.scheduledAt)
+			.sort((a, b) => a.getTime() - b.getTime())
+			.pop()!;
+		const conflictingFutureDate = new Date(futureWednesday);
+		conflictingFutureDate.setUTCDate(conflictingFutureDate.getUTCDate() + 7);
+		conflictingFutureDate.setUTCHours(10, 0, 0, 0);
+
+		currentMock.state.appointments.push({
+			id: "sync-conflict",
+			customerId: "customer-2",
+			patientProfileId: null,
+			healthcareProviderId: "provider-1",
+			recurringSeriesId: null,
+			recurringRuleId: null,
+			recurringGeneratedAt: null,
+			scheduledAt: conflictingFutureDate,
+			serviceModality: "IN_PERSON",
+			notes: null,
+			totalDurationMinutes: 60,
+			totalPriceCents: 12000,
+			status: "SCHEDULED",
+			cancellationReason: null,
+			cancelledAt: null,
+			cancelledByUserId: null,
+		});
+
+		await recurringAppointmentsService.ensureProviderRecurringAppointmentsUpToDate(
+			"provider-1",
+			new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+		);
+
+		const seriesAppointments = currentMock.state.appointments.filter(
+			(appointment) =>
+				appointment.recurringSeriesId === created.recurringSeries.id &&
+				appointment.scheduledAt.toISOString() === conflictingFutureDate.toISOString(),
+		);
+
+		expect(seriesAppointments).toHaveLength(0);
 	});
 });
