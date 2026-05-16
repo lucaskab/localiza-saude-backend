@@ -76,6 +76,8 @@ model user {
   customerAppointments appointment[] @relation("CustomerAppointments")
   healthcareProviderAppointments appointment[] @relation("ProviderAppointments")
   cancelledAppointments appointment[] @relation("AppointmentCancelledBy")
+  customerAppointmentEvolutionNotes appointment_evolution_note[] @relation("CustomerAppointmentEvolutionNotes")
+  providerAppointmentEvolutionNotes appointment_evolution_note[] @relation("ProviderAppointmentEvolutionNotes")
   procedures procedure[] @relation("ProviderProcedures")
   schedules healthcare_provider_schedule[] @relation("ProviderSchedules")
   scheduleExceptions healthcare_provider_schedule_exception[] @relation("ProviderScheduleExceptions")

@@ -28,6 +28,7 @@ model patient_profile {
 
   appointments appointment[]
   recurringAppointmentSeries appointment_recurring_series[]
+  evolutionNotes appointment_evolution_note[]
 
   @@index([fullName])
   @@index([phone])

@@ -170,6 +170,23 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.Appointment_evolution_noteScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  customerId: 'customerId',
+  patientProfileId: 'patientProfileId',
+  healthcareProviderId: 'healthcareProviderId',
+  subjective: 'subjective',
+  objective: 'objective',
+  assessment: 'assessment',
+  plan: 'plan',
+  painLevel: 'painLevel',
+  painLocation: 'painLocation',
+  evolutionStatus: 'evolutionStatus',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.Appointment_reschedule_requestScalarFieldEnum = {
   id: 'id',
   appointmentId: 'appointmentId',
@@ -612,6 +629,12 @@ exports.AppointmentStatus = exports.$Enums.AppointmentStatus = {
   NO_SHOW: 'NO_SHOW'
 };
 
+exports.AppointmentEvolutionStatus = exports.$Enums.AppointmentEvolutionStatus = {
+  IMPROVED: 'IMPROVED',
+  STABLE: 'STABLE',
+  WORSENED: 'WORSENED'
+};
+
 exports.AppointmentRescheduleRequestStatus = exports.$Enums.AppointmentRescheduleRequestStatus = {
   PENDING: 'PENDING',
   ACCEPTED: 'ACCEPTED',
@@ -730,6 +753,7 @@ exports.Prisma.ModelName = {
   account: 'account',
   appointment_procedure: 'appointment_procedure',
   appointment: 'appointment',
+  appointment_evolution_note: 'appointment_evolution_note',
   appointment_reschedule_request: 'appointment_reschedule_request',
   appointment_recurring_series: 'appointment_recurring_series',
   appointment_recurring_series_rule: 'appointment_recurring_series_rule',

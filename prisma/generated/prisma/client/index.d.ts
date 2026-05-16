@@ -29,6 +29,11 @@ export type appointment_procedure = $Result.DefaultSelection<Prisma.$appointment
  */
 export type appointment = $Result.DefaultSelection<Prisma.$appointmentPayload>
 /**
+ * Model appointment_evolution_note
+ * 
+ */
+export type appointment_evolution_note = $Result.DefaultSelection<Prisma.$appointment_evolution_notePayload>
+/**
  * Model appointment_reschedule_request
  * 
  */
@@ -188,7 +193,16 @@ export type verification = $Result.DefaultSelection<Prisma.$verificationPayload>
  * Enums
  */
 export namespace $Enums {
-  export const AppointmentStatus: {
+  export const AppointmentEvolutionStatus: {
+  IMPROVED: 'IMPROVED',
+  STABLE: 'STABLE',
+  WORSENED: 'WORSENED'
+};
+
+export type AppointmentEvolutionStatus = (typeof AppointmentEvolutionStatus)[keyof typeof AppointmentEvolutionStatus]
+
+
+export const AppointmentStatus: {
   SCHEDULED: 'SCHEDULED',
   CONFIRMED: 'CONFIRMED',
   IN_PROGRESS: 'IN_PROGRESS',
@@ -365,6 +379,10 @@ export const ProviderVerificationReviewStatus: {
 export type ProviderVerificationReviewStatus = (typeof ProviderVerificationReviewStatus)[keyof typeof ProviderVerificationReviewStatus]
 
 }
+
+export type AppointmentEvolutionStatus = $Enums.AppointmentEvolutionStatus
+
+export const AppointmentEvolutionStatus: typeof $Enums.AppointmentEvolutionStatus
 
 export type AppointmentStatus = $Enums.AppointmentStatus
 
@@ -588,6 +606,16 @@ export class PrismaClient<
     * ```
     */
   get appointment(): Prisma.appointmentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.appointment_evolution_note`: Exposes CRUD operations for the **appointment_evolution_note** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Appointment_evolution_notes
+    * const appointment_evolution_notes = await prisma.appointment_evolution_note.findMany()
+    * ```
+    */
+  get appointment_evolution_note(): Prisma.appointment_evolution_noteDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.appointment_reschedule_request`: Exposes CRUD operations for the **appointment_reschedule_request** model.
@@ -1335,6 +1363,7 @@ export namespace Prisma {
     account: 'account',
     appointment_procedure: 'appointment_procedure',
     appointment: 'appointment',
+    appointment_evolution_note: 'appointment_evolution_note',
     appointment_reschedule_request: 'appointment_reschedule_request',
     appointment_recurring_series: 'appointment_recurring_series',
     appointment_recurring_series_rule: 'appointment_recurring_series_rule',
@@ -1381,7 +1410,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_reschedule_request" | "appointment_recurring_series" | "appointment_recurring_series_rule" | "appointment_recurring_series_procedure" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "professional_council" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
+      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_evolution_note" | "appointment_reschedule_request" | "appointment_recurring_series" | "appointment_recurring_series_rule" | "appointment_recurring_series_procedure" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "professional_council" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1604,6 +1633,80 @@ export namespace Prisma {
           count: {
             args: Prisma.appointmentCountArgs<ExtArgs>
             result: $Utils.Optional<AppointmentCountAggregateOutputType> | number
+          }
+        }
+      }
+      appointment_evolution_note: {
+        payload: Prisma.$appointment_evolution_notePayload<ExtArgs>
+        fields: Prisma.appointment_evolution_noteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.appointment_evolution_noteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.appointment_evolution_noteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload>
+          }
+          findFirst: {
+            args: Prisma.appointment_evolution_noteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.appointment_evolution_noteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload>
+          }
+          findMany: {
+            args: Prisma.appointment_evolution_noteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload>[]
+          }
+          create: {
+            args: Prisma.appointment_evolution_noteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload>
+          }
+          createMany: {
+            args: Prisma.appointment_evolution_noteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.appointment_evolution_noteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload>[]
+          }
+          delete: {
+            args: Prisma.appointment_evolution_noteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload>
+          }
+          update: {
+            args: Prisma.appointment_evolution_noteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload>
+          }
+          deleteMany: {
+            args: Prisma.appointment_evolution_noteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.appointment_evolution_noteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.appointment_evolution_noteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload>[]
+          }
+          upsert: {
+            args: Prisma.appointment_evolution_noteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$appointment_evolution_notePayload>
+          }
+          aggregate: {
+            args: Prisma.Appointment_evolution_noteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAppointment_evolution_note>
+          }
+          groupBy: {
+            args: Prisma.appointment_evolution_noteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_evolution_noteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.appointment_evolution_noteCountArgs<ExtArgs>
+            result: $Utils.Optional<Appointment_evolution_noteCountAggregateOutputType> | number
           }
         }
       }
@@ -4012,6 +4115,7 @@ export namespace Prisma {
     account?: accountOmit
     appointment_procedure?: appointment_procedureOmit
     appointment?: appointmentOmit
+    appointment_evolution_note?: appointment_evolution_noteOmit
     appointment_reschedule_request?: appointment_reschedule_requestOmit
     appointment_recurring_series?: appointment_recurring_seriesOmit
     appointment_recurring_series_rule?: appointment_recurring_series_ruleOmit
@@ -4387,11 +4491,13 @@ export namespace Prisma {
   export type Patient_profileCountOutputType = {
     appointments: number
     recurringAppointmentSeries: number
+    evolutionNotes: number
   }
 
   export type Patient_profileCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     appointments?: boolean | Patient_profileCountOutputTypeCountAppointmentsArgs
     recurringAppointmentSeries?: boolean | Patient_profileCountOutputTypeCountRecurringAppointmentSeriesArgs
+    evolutionNotes?: boolean | Patient_profileCountOutputTypeCountEvolutionNotesArgs
   }
 
   // Custom InputTypes
@@ -4417,6 +4523,13 @@ export namespace Prisma {
    */
   export type Patient_profileCountOutputTypeCountRecurringAppointmentSeriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: appointment_recurring_seriesWhereInput
+  }
+
+  /**
+   * Patient_profileCountOutputType without action
+   */
+  export type Patient_profileCountOutputTypeCountEvolutionNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_evolution_noteWhereInput
   }
 
 
@@ -4490,6 +4603,8 @@ export namespace Prisma {
     customerAppointments: number
     healthcareProviderAppointments: number
     cancelledAppointments: number
+    customerAppointmentEvolutionNotes: number
+    providerAppointmentEvolutionNotes: number
     procedures: number
     schedules: number
     scheduleExceptions: number
@@ -4529,6 +4644,8 @@ export namespace Prisma {
     customerAppointments?: boolean | UserCountOutputTypeCountCustomerAppointmentsArgs
     healthcareProviderAppointments?: boolean | UserCountOutputTypeCountHealthcareProviderAppointmentsArgs
     cancelledAppointments?: boolean | UserCountOutputTypeCountCancelledAppointmentsArgs
+    customerAppointmentEvolutionNotes?: boolean | UserCountOutputTypeCountCustomerAppointmentEvolutionNotesArgs
+    providerAppointmentEvolutionNotes?: boolean | UserCountOutputTypeCountProviderAppointmentEvolutionNotesArgs
     procedures?: boolean | UserCountOutputTypeCountProceduresArgs
     schedules?: boolean | UserCountOutputTypeCountSchedulesArgs
     scheduleExceptions?: boolean | UserCountOutputTypeCountScheduleExceptionsArgs
@@ -4618,6 +4735,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCancelledAppointmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: appointmentWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCustomerAppointmentEvolutionNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_evolution_noteWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProviderAppointmentEvolutionNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_evolution_noteWhereInput
   }
 
   /**
@@ -7452,6 +7583,7 @@ export namespace Prisma {
     relatedMessages?: boolean | appointment$relatedMessagesArgs<ExtArgs>
     notificationDeliveries?: boolean | appointment$notificationDeliveriesArgs<ExtArgs>
     rescheduleRequests?: boolean | appointment$rescheduleRequestsArgs<ExtArgs>
+    evolutionNote?: boolean | appointment$evolutionNoteArgs<ExtArgs>
     _count?: boolean | AppointmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["appointment"]>
 
@@ -7560,6 +7692,7 @@ export namespace Prisma {
     relatedMessages?: boolean | appointment$relatedMessagesArgs<ExtArgs>
     notificationDeliveries?: boolean | appointment$notificationDeliveriesArgs<ExtArgs>
     rescheduleRequests?: boolean | appointment$rescheduleRequestsArgs<ExtArgs>
+    evolutionNote?: boolean | appointment$evolutionNoteArgs<ExtArgs>
     _count?: boolean | AppointmentCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type appointmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7592,6 +7725,7 @@ export namespace Prisma {
       relatedMessages: Prisma.$conversation_messagePayload<ExtArgs>[]
       notificationDeliveries: Prisma.$notification_deliveryPayload<ExtArgs>[]
       rescheduleRequests: Prisma.$appointment_reschedule_requestPayload<ExtArgs>[]
+      evolutionNote: Prisma.$appointment_evolution_notePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8022,6 +8156,7 @@ export namespace Prisma {
     relatedMessages<T extends appointment$relatedMessagesArgs<ExtArgs> = {}>(args?: Subset<T, appointment$relatedMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$conversation_messagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notificationDeliveries<T extends appointment$notificationDeliveriesArgs<ExtArgs> = {}>(args?: Subset<T, appointment$notificationDeliveriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$notification_deliveryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     rescheduleRequests<T extends appointment$rescheduleRequestsArgs<ExtArgs> = {}>(args?: Subset<T, appointment$rescheduleRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_reschedule_requestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    evolutionNote<T extends appointment$evolutionNoteArgs<ExtArgs> = {}>(args?: Subset<T, appointment$evolutionNoteArgs<ExtArgs>>): Prisma__appointment_evolution_noteClient<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8667,6 +8802,25 @@ export namespace Prisma {
   }
 
   /**
+   * appointment.evolutionNote
+   */
+  export type appointment$evolutionNoteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    where?: appointment_evolution_noteWhereInput
+  }
+
+  /**
    * appointment without action
    */
   export type appointmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8682,6 +8836,1282 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: appointmentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model appointment_evolution_note
+   */
+
+  export type AggregateAppointment_evolution_note = {
+    _count: Appointment_evolution_noteCountAggregateOutputType | null
+    _avg: Appointment_evolution_noteAvgAggregateOutputType | null
+    _sum: Appointment_evolution_noteSumAggregateOutputType | null
+    _min: Appointment_evolution_noteMinAggregateOutputType | null
+    _max: Appointment_evolution_noteMaxAggregateOutputType | null
+  }
+
+  export type Appointment_evolution_noteAvgAggregateOutputType = {
+    painLevel: number | null
+  }
+
+  export type Appointment_evolution_noteSumAggregateOutputType = {
+    painLevel: number | null
+  }
+
+  export type Appointment_evolution_noteMinAggregateOutputType = {
+    id: string | null
+    appointmentId: string | null
+    customerId: string | null
+    patientProfileId: string | null
+    healthcareProviderId: string | null
+    subjective: string | null
+    objective: string | null
+    assessment: string | null
+    plan: string | null
+    painLevel: number | null
+    painLocation: string | null
+    evolutionStatus: $Enums.AppointmentEvolutionStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Appointment_evolution_noteMaxAggregateOutputType = {
+    id: string | null
+    appointmentId: string | null
+    customerId: string | null
+    patientProfileId: string | null
+    healthcareProviderId: string | null
+    subjective: string | null
+    objective: string | null
+    assessment: string | null
+    plan: string | null
+    painLevel: number | null
+    painLocation: string | null
+    evolutionStatus: $Enums.AppointmentEvolutionStatus | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Appointment_evolution_noteCountAggregateOutputType = {
+    id: number
+    appointmentId: number
+    customerId: number
+    patientProfileId: number
+    healthcareProviderId: number
+    subjective: number
+    objective: number
+    assessment: number
+    plan: number
+    painLevel: number
+    painLocation: number
+    evolutionStatus: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Appointment_evolution_noteAvgAggregateInputType = {
+    painLevel?: true
+  }
+
+  export type Appointment_evolution_noteSumAggregateInputType = {
+    painLevel?: true
+  }
+
+  export type Appointment_evolution_noteMinAggregateInputType = {
+    id?: true
+    appointmentId?: true
+    customerId?: true
+    patientProfileId?: true
+    healthcareProviderId?: true
+    subjective?: true
+    objective?: true
+    assessment?: true
+    plan?: true
+    painLevel?: true
+    painLocation?: true
+    evolutionStatus?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Appointment_evolution_noteMaxAggregateInputType = {
+    id?: true
+    appointmentId?: true
+    customerId?: true
+    patientProfileId?: true
+    healthcareProviderId?: true
+    subjective?: true
+    objective?: true
+    assessment?: true
+    plan?: true
+    painLevel?: true
+    painLocation?: true
+    evolutionStatus?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Appointment_evolution_noteCountAggregateInputType = {
+    id?: true
+    appointmentId?: true
+    customerId?: true
+    patientProfileId?: true
+    healthcareProviderId?: true
+    subjective?: true
+    objective?: true
+    assessment?: true
+    plan?: true
+    painLevel?: true
+    painLocation?: true
+    evolutionStatus?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Appointment_evolution_noteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_evolution_note to aggregate.
+     */
+    where?: appointment_evolution_noteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_evolution_notes to fetch.
+     */
+    orderBy?: appointment_evolution_noteOrderByWithRelationInput | appointment_evolution_noteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: appointment_evolution_noteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_evolution_notes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_evolution_notes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned appointment_evolution_notes
+    **/
+    _count?: true | Appointment_evolution_noteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Appointment_evolution_noteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Appointment_evolution_noteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Appointment_evolution_noteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Appointment_evolution_noteMaxAggregateInputType
+  }
+
+  export type GetAppointment_evolution_noteAggregateType<T extends Appointment_evolution_noteAggregateArgs> = {
+        [P in keyof T & keyof AggregateAppointment_evolution_note]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAppointment_evolution_note[P]>
+      : GetScalarType<T[P], AggregateAppointment_evolution_note[P]>
+  }
+
+
+
+
+  export type appointment_evolution_noteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: appointment_evolution_noteWhereInput
+    orderBy?: appointment_evolution_noteOrderByWithAggregationInput | appointment_evolution_noteOrderByWithAggregationInput[]
+    by: Appointment_evolution_noteScalarFieldEnum[] | Appointment_evolution_noteScalarFieldEnum
+    having?: appointment_evolution_noteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Appointment_evolution_noteCountAggregateInputType | true
+    _avg?: Appointment_evolution_noteAvgAggregateInputType
+    _sum?: Appointment_evolution_noteSumAggregateInputType
+    _min?: Appointment_evolution_noteMinAggregateInputType
+    _max?: Appointment_evolution_noteMaxAggregateInputType
+  }
+
+  export type Appointment_evolution_noteGroupByOutputType = {
+    id: string
+    appointmentId: string
+    customerId: string | null
+    patientProfileId: string | null
+    healthcareProviderId: string
+    subjective: string | null
+    objective: string | null
+    assessment: string | null
+    plan: string | null
+    painLevel: number | null
+    painLocation: string | null
+    evolutionStatus: $Enums.AppointmentEvolutionStatus | null
+    createdAt: Date
+    updatedAt: Date
+    _count: Appointment_evolution_noteCountAggregateOutputType | null
+    _avg: Appointment_evolution_noteAvgAggregateOutputType | null
+    _sum: Appointment_evolution_noteSumAggregateOutputType | null
+    _min: Appointment_evolution_noteMinAggregateOutputType | null
+    _max: Appointment_evolution_noteMaxAggregateOutputType | null
+  }
+
+  type GetAppointment_evolution_noteGroupByPayload<T extends appointment_evolution_noteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Appointment_evolution_noteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Appointment_evolution_noteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Appointment_evolution_noteGroupByOutputType[P]>
+            : GetScalarType<T[P], Appointment_evolution_noteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type appointment_evolution_noteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    appointmentId?: boolean
+    customerId?: boolean
+    patientProfileId?: boolean
+    healthcareProviderId?: boolean
+    subjective?: boolean
+    objective?: boolean
+    assessment?: boolean
+    plan?: boolean
+    painLevel?: boolean
+    painLocation?: boolean
+    evolutionStatus?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    customer?: boolean | appointment_evolution_note$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_evolution_note$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_evolution_note"]>
+
+  export type appointment_evolution_noteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    appointmentId?: boolean
+    customerId?: boolean
+    patientProfileId?: boolean
+    healthcareProviderId?: boolean
+    subjective?: boolean
+    objective?: boolean
+    assessment?: boolean
+    plan?: boolean
+    painLevel?: boolean
+    painLocation?: boolean
+    evolutionStatus?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    customer?: boolean | appointment_evolution_note$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_evolution_note$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_evolution_note"]>
+
+  export type appointment_evolution_noteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    appointmentId?: boolean
+    customerId?: boolean
+    patientProfileId?: boolean
+    healthcareProviderId?: boolean
+    subjective?: boolean
+    objective?: boolean
+    assessment?: boolean
+    plan?: boolean
+    painLevel?: boolean
+    painLocation?: boolean
+    evolutionStatus?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    customer?: boolean | appointment_evolution_note$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_evolution_note$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["appointment_evolution_note"]>
+
+  export type appointment_evolution_noteSelectScalar = {
+    id?: boolean
+    appointmentId?: boolean
+    customerId?: boolean
+    patientProfileId?: boolean
+    healthcareProviderId?: boolean
+    subjective?: boolean
+    objective?: boolean
+    assessment?: boolean
+    plan?: boolean
+    painLevel?: boolean
+    painLocation?: boolean
+    evolutionStatus?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type appointment_evolution_noteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "appointmentId" | "customerId" | "patientProfileId" | "healthcareProviderId" | "subjective" | "objective" | "assessment" | "plan" | "painLevel" | "painLocation" | "evolutionStatus" | "createdAt" | "updatedAt", ExtArgs["result"]["appointment_evolution_note"]>
+  export type appointment_evolution_noteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    customer?: boolean | appointment_evolution_note$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_evolution_note$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type appointment_evolution_noteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    customer?: boolean | appointment_evolution_note$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_evolution_note$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type appointment_evolution_noteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    appointment?: boolean | appointmentDefaultArgs<ExtArgs>
+    customer?: boolean | appointment_evolution_note$customerArgs<ExtArgs>
+    patientProfile?: boolean | appointment_evolution_note$patientProfileArgs<ExtArgs>
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+  }
+
+  export type $appointment_evolution_notePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "appointment_evolution_note"
+    objects: {
+      appointment: Prisma.$appointmentPayload<ExtArgs>
+      customer: Prisma.$userPayload<ExtArgs> | null
+      patientProfile: Prisma.$patient_profilePayload<ExtArgs> | null
+      healthcareProvider: Prisma.$userPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      appointmentId: string
+      customerId: string | null
+      patientProfileId: string | null
+      healthcareProviderId: string
+      subjective: string | null
+      objective: string | null
+      assessment: string | null
+      plan: string | null
+      painLevel: number | null
+      painLocation: string | null
+      evolutionStatus: $Enums.AppointmentEvolutionStatus | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["appointment_evolution_note"]>
+    composites: {}
+  }
+
+  type appointment_evolution_noteGetPayload<S extends boolean | null | undefined | appointment_evolution_noteDefaultArgs> = $Result.GetResult<Prisma.$appointment_evolution_notePayload, S>
+
+  type appointment_evolution_noteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<appointment_evolution_noteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Appointment_evolution_noteCountAggregateInputType | true
+    }
+
+  export interface appointment_evolution_noteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['appointment_evolution_note'], meta: { name: 'appointment_evolution_note' } }
+    /**
+     * Find zero or one Appointment_evolution_note that matches the filter.
+     * @param {appointment_evolution_noteFindUniqueArgs} args - Arguments to find a Appointment_evolution_note
+     * @example
+     * // Get one Appointment_evolution_note
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends appointment_evolution_noteFindUniqueArgs>(args: SelectSubset<T, appointment_evolution_noteFindUniqueArgs<ExtArgs>>): Prisma__appointment_evolution_noteClient<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Appointment_evolution_note that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {appointment_evolution_noteFindUniqueOrThrowArgs} args - Arguments to find a Appointment_evolution_note
+     * @example
+     * // Get one Appointment_evolution_note
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends appointment_evolution_noteFindUniqueOrThrowArgs>(args: SelectSubset<T, appointment_evolution_noteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__appointment_evolution_noteClient<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_evolution_note that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_evolution_noteFindFirstArgs} args - Arguments to find a Appointment_evolution_note
+     * @example
+     * // Get one Appointment_evolution_note
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends appointment_evolution_noteFindFirstArgs>(args?: SelectSubset<T, appointment_evolution_noteFindFirstArgs<ExtArgs>>): Prisma__appointment_evolution_noteClient<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Appointment_evolution_note that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_evolution_noteFindFirstOrThrowArgs} args - Arguments to find a Appointment_evolution_note
+     * @example
+     * // Get one Appointment_evolution_note
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends appointment_evolution_noteFindFirstOrThrowArgs>(args?: SelectSubset<T, appointment_evolution_noteFindFirstOrThrowArgs<ExtArgs>>): Prisma__appointment_evolution_noteClient<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Appointment_evolution_notes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_evolution_noteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Appointment_evolution_notes
+     * const appointment_evolution_notes = await prisma.appointment_evolution_note.findMany()
+     * 
+     * // Get first 10 Appointment_evolution_notes
+     * const appointment_evolution_notes = await prisma.appointment_evolution_note.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const appointment_evolution_noteWithIdOnly = await prisma.appointment_evolution_note.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends appointment_evolution_noteFindManyArgs>(args?: SelectSubset<T, appointment_evolution_noteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Appointment_evolution_note.
+     * @param {appointment_evolution_noteCreateArgs} args - Arguments to create a Appointment_evolution_note.
+     * @example
+     * // Create one Appointment_evolution_note
+     * const Appointment_evolution_note = await prisma.appointment_evolution_note.create({
+     *   data: {
+     *     // ... data to create a Appointment_evolution_note
+     *   }
+     * })
+     * 
+     */
+    create<T extends appointment_evolution_noteCreateArgs>(args: SelectSubset<T, appointment_evolution_noteCreateArgs<ExtArgs>>): Prisma__appointment_evolution_noteClient<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Appointment_evolution_notes.
+     * @param {appointment_evolution_noteCreateManyArgs} args - Arguments to create many Appointment_evolution_notes.
+     * @example
+     * // Create many Appointment_evolution_notes
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends appointment_evolution_noteCreateManyArgs>(args?: SelectSubset<T, appointment_evolution_noteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Appointment_evolution_notes and returns the data saved in the database.
+     * @param {appointment_evolution_noteCreateManyAndReturnArgs} args - Arguments to create many Appointment_evolution_notes.
+     * @example
+     * // Create many Appointment_evolution_notes
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Appointment_evolution_notes and only return the `id`
+     * const appointment_evolution_noteWithIdOnly = await prisma.appointment_evolution_note.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends appointment_evolution_noteCreateManyAndReturnArgs>(args?: SelectSubset<T, appointment_evolution_noteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Appointment_evolution_note.
+     * @param {appointment_evolution_noteDeleteArgs} args - Arguments to delete one Appointment_evolution_note.
+     * @example
+     * // Delete one Appointment_evolution_note
+     * const Appointment_evolution_note = await prisma.appointment_evolution_note.delete({
+     *   where: {
+     *     // ... filter to delete one Appointment_evolution_note
+     *   }
+     * })
+     * 
+     */
+    delete<T extends appointment_evolution_noteDeleteArgs>(args: SelectSubset<T, appointment_evolution_noteDeleteArgs<ExtArgs>>): Prisma__appointment_evolution_noteClient<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Appointment_evolution_note.
+     * @param {appointment_evolution_noteUpdateArgs} args - Arguments to update one Appointment_evolution_note.
+     * @example
+     * // Update one Appointment_evolution_note
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends appointment_evolution_noteUpdateArgs>(args: SelectSubset<T, appointment_evolution_noteUpdateArgs<ExtArgs>>): Prisma__appointment_evolution_noteClient<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Appointment_evolution_notes.
+     * @param {appointment_evolution_noteDeleteManyArgs} args - Arguments to filter Appointment_evolution_notes to delete.
+     * @example
+     * // Delete a few Appointment_evolution_notes
+     * const { count } = await prisma.appointment_evolution_note.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends appointment_evolution_noteDeleteManyArgs>(args?: SelectSubset<T, appointment_evolution_noteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_evolution_notes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_evolution_noteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Appointment_evolution_notes
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends appointment_evolution_noteUpdateManyArgs>(args: SelectSubset<T, appointment_evolution_noteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Appointment_evolution_notes and returns the data updated in the database.
+     * @param {appointment_evolution_noteUpdateManyAndReturnArgs} args - Arguments to update many Appointment_evolution_notes.
+     * @example
+     * // Update many Appointment_evolution_notes
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Appointment_evolution_notes and only return the `id`
+     * const appointment_evolution_noteWithIdOnly = await prisma.appointment_evolution_note.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends appointment_evolution_noteUpdateManyAndReturnArgs>(args: SelectSubset<T, appointment_evolution_noteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Appointment_evolution_note.
+     * @param {appointment_evolution_noteUpsertArgs} args - Arguments to update or create a Appointment_evolution_note.
+     * @example
+     * // Update or create a Appointment_evolution_note
+     * const appointment_evolution_note = await prisma.appointment_evolution_note.upsert({
+     *   create: {
+     *     // ... data to create a Appointment_evolution_note
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Appointment_evolution_note we want to update
+     *   }
+     * })
+     */
+    upsert<T extends appointment_evolution_noteUpsertArgs>(args: SelectSubset<T, appointment_evolution_noteUpsertArgs<ExtArgs>>): Prisma__appointment_evolution_noteClient<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Appointment_evolution_notes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_evolution_noteCountArgs} args - Arguments to filter Appointment_evolution_notes to count.
+     * @example
+     * // Count the number of Appointment_evolution_notes
+     * const count = await prisma.appointment_evolution_note.count({
+     *   where: {
+     *     // ... the filter for the Appointment_evolution_notes we want to count
+     *   }
+     * })
+    **/
+    count<T extends appointment_evolution_noteCountArgs>(
+      args?: Subset<T, appointment_evolution_noteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Appointment_evolution_noteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Appointment_evolution_note.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Appointment_evolution_noteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Appointment_evolution_noteAggregateArgs>(args: Subset<T, Appointment_evolution_noteAggregateArgs>): Prisma.PrismaPromise<GetAppointment_evolution_noteAggregateType<T>>
+
+    /**
+     * Group by Appointment_evolution_note.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {appointment_evolution_noteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends appointment_evolution_noteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: appointment_evolution_noteGroupByArgs['orderBy'] }
+        : { orderBy?: appointment_evolution_noteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, appointment_evolution_noteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAppointment_evolution_noteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the appointment_evolution_note model
+   */
+  readonly fields: appointment_evolution_noteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for appointment_evolution_note.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__appointment_evolution_noteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    appointment<T extends appointmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, appointmentDefaultArgs<ExtArgs>>): Prisma__appointmentClient<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    customer<T extends appointment_evolution_note$customerArgs<ExtArgs> = {}>(args?: Subset<T, appointment_evolution_note$customerArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    patientProfile<T extends appointment_evolution_note$patientProfileArgs<ExtArgs> = {}>(args?: Subset<T, appointment_evolution_note$patientProfileArgs<ExtArgs>>): Prisma__patient_profileClient<$Result.GetResult<Prisma.$patient_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    healthcareProvider<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the appointment_evolution_note model
+   */
+  interface appointment_evolution_noteFieldRefs {
+    readonly id: FieldRef<"appointment_evolution_note", 'String'>
+    readonly appointmentId: FieldRef<"appointment_evolution_note", 'String'>
+    readonly customerId: FieldRef<"appointment_evolution_note", 'String'>
+    readonly patientProfileId: FieldRef<"appointment_evolution_note", 'String'>
+    readonly healthcareProviderId: FieldRef<"appointment_evolution_note", 'String'>
+    readonly subjective: FieldRef<"appointment_evolution_note", 'String'>
+    readonly objective: FieldRef<"appointment_evolution_note", 'String'>
+    readonly assessment: FieldRef<"appointment_evolution_note", 'String'>
+    readonly plan: FieldRef<"appointment_evolution_note", 'String'>
+    readonly painLevel: FieldRef<"appointment_evolution_note", 'Int'>
+    readonly painLocation: FieldRef<"appointment_evolution_note", 'String'>
+    readonly evolutionStatus: FieldRef<"appointment_evolution_note", 'AppointmentEvolutionStatus'>
+    readonly createdAt: FieldRef<"appointment_evolution_note", 'DateTime'>
+    readonly updatedAt: FieldRef<"appointment_evolution_note", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * appointment_evolution_note findUnique
+   */
+  export type appointment_evolution_noteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_evolution_note to fetch.
+     */
+    where: appointment_evolution_noteWhereUniqueInput
+  }
+
+  /**
+   * appointment_evolution_note findUniqueOrThrow
+   */
+  export type appointment_evolution_noteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_evolution_note to fetch.
+     */
+    where: appointment_evolution_noteWhereUniqueInput
+  }
+
+  /**
+   * appointment_evolution_note findFirst
+   */
+  export type appointment_evolution_noteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_evolution_note to fetch.
+     */
+    where?: appointment_evolution_noteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_evolution_notes to fetch.
+     */
+    orderBy?: appointment_evolution_noteOrderByWithRelationInput | appointment_evolution_noteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_evolution_notes.
+     */
+    cursor?: appointment_evolution_noteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_evolution_notes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_evolution_notes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_evolution_notes.
+     */
+    distinct?: Appointment_evolution_noteScalarFieldEnum | Appointment_evolution_noteScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_evolution_note findFirstOrThrow
+   */
+  export type appointment_evolution_noteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_evolution_note to fetch.
+     */
+    where?: appointment_evolution_noteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_evolution_notes to fetch.
+     */
+    orderBy?: appointment_evolution_noteOrderByWithRelationInput | appointment_evolution_noteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for appointment_evolution_notes.
+     */
+    cursor?: appointment_evolution_noteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_evolution_notes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_evolution_notes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_evolution_notes.
+     */
+    distinct?: Appointment_evolution_noteScalarFieldEnum | Appointment_evolution_noteScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_evolution_note findMany
+   */
+  export type appointment_evolution_noteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    /**
+     * Filter, which appointment_evolution_notes to fetch.
+     */
+    where?: appointment_evolution_noteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of appointment_evolution_notes to fetch.
+     */
+    orderBy?: appointment_evolution_noteOrderByWithRelationInput | appointment_evolution_noteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing appointment_evolution_notes.
+     */
+    cursor?: appointment_evolution_noteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` appointment_evolution_notes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` appointment_evolution_notes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of appointment_evolution_notes.
+     */
+    distinct?: Appointment_evolution_noteScalarFieldEnum | Appointment_evolution_noteScalarFieldEnum[]
+  }
+
+  /**
+   * appointment_evolution_note create
+   */
+  export type appointment_evolution_noteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a appointment_evolution_note.
+     */
+    data: XOR<appointment_evolution_noteCreateInput, appointment_evolution_noteUncheckedCreateInput>
+  }
+
+  /**
+   * appointment_evolution_note createMany
+   */
+  export type appointment_evolution_noteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many appointment_evolution_notes.
+     */
+    data: appointment_evolution_noteCreateManyInput | appointment_evolution_noteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * appointment_evolution_note createManyAndReturn
+   */
+  export type appointment_evolution_noteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * The data used to create many appointment_evolution_notes.
+     */
+    data: appointment_evolution_noteCreateManyInput | appointment_evolution_noteCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_evolution_note update
+   */
+  export type appointment_evolution_noteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a appointment_evolution_note.
+     */
+    data: XOR<appointment_evolution_noteUpdateInput, appointment_evolution_noteUncheckedUpdateInput>
+    /**
+     * Choose, which appointment_evolution_note to update.
+     */
+    where: appointment_evolution_noteWhereUniqueInput
+  }
+
+  /**
+   * appointment_evolution_note updateMany
+   */
+  export type appointment_evolution_noteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update appointment_evolution_notes.
+     */
+    data: XOR<appointment_evolution_noteUpdateManyMutationInput, appointment_evolution_noteUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_evolution_notes to update
+     */
+    where?: appointment_evolution_noteWhereInput
+    /**
+     * Limit how many appointment_evolution_notes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_evolution_note updateManyAndReturn
+   */
+  export type appointment_evolution_noteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * The data used to update appointment_evolution_notes.
+     */
+    data: XOR<appointment_evolution_noteUpdateManyMutationInput, appointment_evolution_noteUncheckedUpdateManyInput>
+    /**
+     * Filter which appointment_evolution_notes to update
+     */
+    where?: appointment_evolution_noteWhereInput
+    /**
+     * Limit how many appointment_evolution_notes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * appointment_evolution_note upsert
+   */
+  export type appointment_evolution_noteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the appointment_evolution_note to update in case it exists.
+     */
+    where: appointment_evolution_noteWhereUniqueInput
+    /**
+     * In case the appointment_evolution_note found by the `where` argument doesn't exist, create a new appointment_evolution_note with this data.
+     */
+    create: XOR<appointment_evolution_noteCreateInput, appointment_evolution_noteUncheckedCreateInput>
+    /**
+     * In case the appointment_evolution_note was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<appointment_evolution_noteUpdateInput, appointment_evolution_noteUncheckedUpdateInput>
+  }
+
+  /**
+   * appointment_evolution_note delete
+   */
+  export type appointment_evolution_noteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    /**
+     * Filter which appointment_evolution_note to delete.
+     */
+    where: appointment_evolution_noteWhereUniqueInput
+  }
+
+  /**
+   * appointment_evolution_note deleteMany
+   */
+  export type appointment_evolution_noteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which appointment_evolution_notes to delete
+     */
+    where?: appointment_evolution_noteWhereInput
+    /**
+     * Limit how many appointment_evolution_notes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * appointment_evolution_note.customer
+   */
+  export type appointment_evolution_note$customerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user
+     */
+    select?: userSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user
+     */
+    omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    where?: userWhereInput
+  }
+
+  /**
+   * appointment_evolution_note.patientProfile
+   */
+  export type appointment_evolution_note$patientProfileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the patient_profile
+     */
+    select?: patient_profileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the patient_profile
+     */
+    omit?: patient_profileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: patient_profileInclude<ExtArgs> | null
+    where?: patient_profileWhereInput
+  }
+
+  /**
+   * appointment_evolution_note without action
+   */
+  export type appointment_evolution_noteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
   }
 
 
@@ -31673,6 +33103,7 @@ export namespace Prisma {
     createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
     appointments?: boolean | patient_profile$appointmentsArgs<ExtArgs>
     recurringAppointmentSeries?: boolean | patient_profile$recurringAppointmentSeriesArgs<ExtArgs>
+    evolutionNotes?: boolean | patient_profile$evolutionNotesArgs<ExtArgs>
     _count?: boolean | Patient_profileCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["patient_profile"]>
 
@@ -31767,6 +33198,7 @@ export namespace Prisma {
     createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
     appointments?: boolean | patient_profile$appointmentsArgs<ExtArgs>
     recurringAppointmentSeries?: boolean | patient_profile$recurringAppointmentSeriesArgs<ExtArgs>
+    evolutionNotes?: boolean | patient_profile$evolutionNotesArgs<ExtArgs>
     _count?: boolean | Patient_profileCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type patient_profileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -31785,6 +33217,7 @@ export namespace Prisma {
       createdByHealthcareProvider: Prisma.$userPayload<ExtArgs> | null
       appointments: Prisma.$appointmentPayload<ExtArgs>[]
       recurringAppointmentSeries: Prisma.$appointment_recurring_seriesPayload<ExtArgs>[]
+      evolutionNotes: Prisma.$appointment_evolution_notePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -32209,6 +33642,7 @@ export namespace Prisma {
     createdByHealthcareProvider<T extends patient_profile$createdByHealthcareProviderArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$createdByHealthcareProviderArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     appointments<T extends patient_profile$appointmentsArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$appointmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     recurringAppointmentSeries<T extends patient_profile$recurringAppointmentSeriesArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$recurringAppointmentSeriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_recurring_seriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    evolutionNotes<T extends patient_profile$evolutionNotesArgs<ExtArgs> = {}>(args?: Subset<T, patient_profile$evolutionNotesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -32746,6 +34180,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Appointment_recurring_seriesScalarFieldEnum | Appointment_recurring_seriesScalarFieldEnum[]
+  }
+
+  /**
+   * patient_profile.evolutionNotes
+   */
+  export type patient_profile$evolutionNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    where?: appointment_evolution_noteWhereInput
+    orderBy?: appointment_evolution_noteOrderByWithRelationInput | appointment_evolution_noteOrderByWithRelationInput[]
+    cursor?: appointment_evolution_noteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_evolution_noteScalarFieldEnum | Appointment_evolution_noteScalarFieldEnum[]
   }
 
   /**
@@ -39229,6 +40687,8 @@ export namespace Prisma {
     customerAppointments?: boolean | user$customerAppointmentsArgs<ExtArgs>
     healthcareProviderAppointments?: boolean | user$healthcareProviderAppointmentsArgs<ExtArgs>
     cancelledAppointments?: boolean | user$cancelledAppointmentsArgs<ExtArgs>
+    customerAppointmentEvolutionNotes?: boolean | user$customerAppointmentEvolutionNotesArgs<ExtArgs>
+    providerAppointmentEvolutionNotes?: boolean | user$providerAppointmentEvolutionNotesArgs<ExtArgs>
     procedures?: boolean | user$proceduresArgs<ExtArgs>
     schedules?: boolean | user$schedulesArgs<ExtArgs>
     scheduleExceptions?: boolean | user$scheduleExceptionsArgs<ExtArgs>
@@ -39484,6 +40944,8 @@ export namespace Prisma {
     customerAppointments?: boolean | user$customerAppointmentsArgs<ExtArgs>
     healthcareProviderAppointments?: boolean | user$healthcareProviderAppointmentsArgs<ExtArgs>
     cancelledAppointments?: boolean | user$cancelledAppointmentsArgs<ExtArgs>
+    customerAppointmentEvolutionNotes?: boolean | user$customerAppointmentEvolutionNotesArgs<ExtArgs>
+    providerAppointmentEvolutionNotes?: boolean | user$providerAppointmentEvolutionNotesArgs<ExtArgs>
     procedures?: boolean | user$proceduresArgs<ExtArgs>
     schedules?: boolean | user$schedulesArgs<ExtArgs>
     scheduleExceptions?: boolean | user$scheduleExceptionsArgs<ExtArgs>
@@ -39537,6 +40999,8 @@ export namespace Prisma {
       customerAppointments: Prisma.$appointmentPayload<ExtArgs>[]
       healthcareProviderAppointments: Prisma.$appointmentPayload<ExtArgs>[]
       cancelledAppointments: Prisma.$appointmentPayload<ExtArgs>[]
+      customerAppointmentEvolutionNotes: Prisma.$appointment_evolution_notePayload<ExtArgs>[]
+      providerAppointmentEvolutionNotes: Prisma.$appointment_evolution_notePayload<ExtArgs>[]
       procedures: Prisma.$procedurePayload<ExtArgs>[]
       schedules: Prisma.$healthcare_provider_schedulePayload<ExtArgs>[]
       scheduleExceptions: Prisma.$healthcare_provider_schedule_exceptionPayload<ExtArgs>[]
@@ -40038,6 +41502,8 @@ export namespace Prisma {
     customerAppointments<T extends user$customerAppointmentsArgs<ExtArgs> = {}>(args?: Subset<T, user$customerAppointmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     healthcareProviderAppointments<T extends user$healthcareProviderAppointmentsArgs<ExtArgs> = {}>(args?: Subset<T, user$healthcareProviderAppointmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cancelledAppointments<T extends user$cancelledAppointmentsArgs<ExtArgs> = {}>(args?: Subset<T, user$cancelledAppointmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    customerAppointmentEvolutionNotes<T extends user$customerAppointmentEvolutionNotesArgs<ExtArgs> = {}>(args?: Subset<T, user$customerAppointmentEvolutionNotesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    providerAppointmentEvolutionNotes<T extends user$providerAppointmentEvolutionNotesArgs<ExtArgs> = {}>(args?: Subset<T, user$providerAppointmentEvolutionNotesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$appointment_evolution_notePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     procedures<T extends user$proceduresArgs<ExtArgs> = {}>(args?: Subset<T, user$proceduresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$procedurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     schedules<T extends user$schedulesArgs<ExtArgs> = {}>(args?: Subset<T, user$schedulesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_schedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     scheduleExceptions<T extends user$scheduleExceptionsArgs<ExtArgs> = {}>(args?: Subset<T, user$scheduleExceptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_schedule_exceptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -40767,6 +42233,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AppointmentScalarFieldEnum | AppointmentScalarFieldEnum[]
+  }
+
+  /**
+   * user.customerAppointmentEvolutionNotes
+   */
+  export type user$customerAppointmentEvolutionNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    where?: appointment_evolution_noteWhereInput
+    orderBy?: appointment_evolution_noteOrderByWithRelationInput | appointment_evolution_noteOrderByWithRelationInput[]
+    cursor?: appointment_evolution_noteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_evolution_noteScalarFieldEnum | Appointment_evolution_noteScalarFieldEnum[]
+  }
+
+  /**
+   * user.providerAppointmentEvolutionNotes
+   */
+  export type user$providerAppointmentEvolutionNotesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the appointment_evolution_note
+     */
+    select?: appointment_evolution_noteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the appointment_evolution_note
+     */
+    omit?: appointment_evolution_noteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: appointment_evolution_noteInclude<ExtArgs> | null
+    where?: appointment_evolution_noteWhereInput
+    orderBy?: appointment_evolution_noteOrderByWithRelationInput | appointment_evolution_noteOrderByWithRelationInput[]
+    cursor?: appointment_evolution_noteWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Appointment_evolution_noteScalarFieldEnum | Appointment_evolution_noteScalarFieldEnum[]
   }
 
   /**
@@ -45936,6 +47450,26 @@ export namespace Prisma {
   export type AppointmentScalarFieldEnum = (typeof AppointmentScalarFieldEnum)[keyof typeof AppointmentScalarFieldEnum]
 
 
+  export const Appointment_evolution_noteScalarFieldEnum: {
+    id: 'id',
+    appointmentId: 'appointmentId',
+    customerId: 'customerId',
+    patientProfileId: 'patientProfileId',
+    healthcareProviderId: 'healthcareProviderId',
+    subjective: 'subjective',
+    objective: 'objective',
+    assessment: 'assessment',
+    plan: 'plan',
+    painLevel: 'painLevel',
+    painLocation: 'painLocation',
+    evolutionStatus: 'evolutionStatus',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Appointment_evolution_noteScalarFieldEnum = (typeof Appointment_evolution_noteScalarFieldEnum)[keyof typeof Appointment_evolution_noteScalarFieldEnum]
+
+
   export const Appointment_reschedule_requestScalarFieldEnum: {
     id: 'id',
     appointmentId: 'appointmentId',
@@ -46534,6 +48068,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'AppointmentEvolutionStatus'
+   */
+  export type EnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppointmentEvolutionStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'AppointmentEvolutionStatus[]'
+   */
+  export type ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppointmentEvolutionStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'AppointmentRescheduleRequestStatus'
    */
   export type EnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppointmentRescheduleRequestStatus'>
@@ -46981,6 +48529,7 @@ export namespace Prisma {
     relatedMessages?: Conversation_messageListRelationFilter
     notificationDeliveries?: Notification_deliveryListRelationFilter
     rescheduleRequests?: Appointment_reschedule_requestListRelationFilter
+    evolutionNote?: XOR<Appointment_evolution_noteNullableScalarRelationFilter, appointment_evolution_noteWhereInput> | null
   }
 
   export type appointmentOrderByWithRelationInput = {
@@ -47018,6 +48567,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageOrderByRelationAggregateInput
     notificationDeliveries?: notification_deliveryOrderByRelationAggregateInput
     rescheduleRequests?: appointment_reschedule_requestOrderByRelationAggregateInput
+    evolutionNote?: appointment_evolution_noteOrderByWithRelationInput
   }
 
   export type appointmentWhereUniqueInput = Prisma.AtLeast<{
@@ -47058,6 +48608,7 @@ export namespace Prisma {
     relatedMessages?: Conversation_messageListRelationFilter
     notificationDeliveries?: Notification_deliveryListRelationFilter
     rescheduleRequests?: Appointment_reschedule_requestListRelationFilter
+    evolutionNote?: XOR<Appointment_evolution_noteNullableScalarRelationFilter, appointment_evolution_noteWhereInput> | null
   }, "id">
 
   export type appointmentOrderByWithAggregationInput = {
@@ -47120,6 +48671,117 @@ export namespace Prisma {
     cancelledByUserId?: StringNullableWithAggregatesFilter<"appointment"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"appointment"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"appointment"> | Date | string
+  }
+
+  export type appointment_evolution_noteWhereInput = {
+    AND?: appointment_evolution_noteWhereInput | appointment_evolution_noteWhereInput[]
+    OR?: appointment_evolution_noteWhereInput[]
+    NOT?: appointment_evolution_noteWhereInput | appointment_evolution_noteWhereInput[]
+    id?: StringFilter<"appointment_evolution_note"> | string
+    appointmentId?: StringFilter<"appointment_evolution_note"> | string
+    customerId?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    healthcareProviderId?: StringFilter<"appointment_evolution_note"> | string
+    subjective?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    objective?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    assessment?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    plan?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    painLevel?: IntNullableFilter<"appointment_evolution_note"> | number | null
+    painLocation?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    evolutionStatus?: EnumAppointmentEvolutionStatusNullableFilter<"appointment_evolution_note"> | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFilter<"appointment_evolution_note"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_evolution_note"> | Date | string
+    appointment?: XOR<AppointmentScalarRelationFilter, appointmentWhereInput>
+    customer?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
+    patientProfile?: XOR<Patient_profileNullableScalarRelationFilter, patient_profileWhereInput> | null
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+  }
+
+  export type appointment_evolution_noteOrderByWithRelationInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    customerId?: SortOrderInput | SortOrder
+    patientProfileId?: SortOrderInput | SortOrder
+    healthcareProviderId?: SortOrder
+    subjective?: SortOrderInput | SortOrder
+    objective?: SortOrderInput | SortOrder
+    assessment?: SortOrderInput | SortOrder
+    plan?: SortOrderInput | SortOrder
+    painLevel?: SortOrderInput | SortOrder
+    painLocation?: SortOrderInput | SortOrder
+    evolutionStatus?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    appointment?: appointmentOrderByWithRelationInput
+    customer?: userOrderByWithRelationInput
+    patientProfile?: patient_profileOrderByWithRelationInput
+    healthcareProvider?: userOrderByWithRelationInput
+  }
+
+  export type appointment_evolution_noteWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    appointmentId?: string
+    AND?: appointment_evolution_noteWhereInput | appointment_evolution_noteWhereInput[]
+    OR?: appointment_evolution_noteWhereInput[]
+    NOT?: appointment_evolution_noteWhereInput | appointment_evolution_noteWhereInput[]
+    customerId?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    healthcareProviderId?: StringFilter<"appointment_evolution_note"> | string
+    subjective?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    objective?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    assessment?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    plan?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    painLevel?: IntNullableFilter<"appointment_evolution_note"> | number | null
+    painLocation?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    evolutionStatus?: EnumAppointmentEvolutionStatusNullableFilter<"appointment_evolution_note"> | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFilter<"appointment_evolution_note"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_evolution_note"> | Date | string
+    appointment?: XOR<AppointmentScalarRelationFilter, appointmentWhereInput>
+    customer?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
+    patientProfile?: XOR<Patient_profileNullableScalarRelationFilter, patient_profileWhereInput> | null
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+  }, "id" | "appointmentId">
+
+  export type appointment_evolution_noteOrderByWithAggregationInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    customerId?: SortOrderInput | SortOrder
+    patientProfileId?: SortOrderInput | SortOrder
+    healthcareProviderId?: SortOrder
+    subjective?: SortOrderInput | SortOrder
+    objective?: SortOrderInput | SortOrder
+    assessment?: SortOrderInput | SortOrder
+    plan?: SortOrderInput | SortOrder
+    painLevel?: SortOrderInput | SortOrder
+    painLocation?: SortOrderInput | SortOrder
+    evolutionStatus?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: appointment_evolution_noteCountOrderByAggregateInput
+    _avg?: appointment_evolution_noteAvgOrderByAggregateInput
+    _max?: appointment_evolution_noteMaxOrderByAggregateInput
+    _min?: appointment_evolution_noteMinOrderByAggregateInput
+    _sum?: appointment_evolution_noteSumOrderByAggregateInput
+  }
+
+  export type appointment_evolution_noteScalarWhereWithAggregatesInput = {
+    AND?: appointment_evolution_noteScalarWhereWithAggregatesInput | appointment_evolution_noteScalarWhereWithAggregatesInput[]
+    OR?: appointment_evolution_noteScalarWhereWithAggregatesInput[]
+    NOT?: appointment_evolution_noteScalarWhereWithAggregatesInput | appointment_evolution_noteScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"appointment_evolution_note"> | string
+    appointmentId?: StringWithAggregatesFilter<"appointment_evolution_note"> | string
+    customerId?: StringNullableWithAggregatesFilter<"appointment_evolution_note"> | string | null
+    patientProfileId?: StringNullableWithAggregatesFilter<"appointment_evolution_note"> | string | null
+    healthcareProviderId?: StringWithAggregatesFilter<"appointment_evolution_note"> | string
+    subjective?: StringNullableWithAggregatesFilter<"appointment_evolution_note"> | string | null
+    objective?: StringNullableWithAggregatesFilter<"appointment_evolution_note"> | string | null
+    assessment?: StringNullableWithAggregatesFilter<"appointment_evolution_note"> | string | null
+    plan?: StringNullableWithAggregatesFilter<"appointment_evolution_note"> | string | null
+    painLevel?: IntNullableWithAggregatesFilter<"appointment_evolution_note"> | number | null
+    painLocation?: StringNullableWithAggregatesFilter<"appointment_evolution_note"> | string | null
+    evolutionStatus?: EnumAppointmentEvolutionStatusNullableWithAggregatesFilter<"appointment_evolution_note"> | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeWithAggregatesFilter<"appointment_evolution_note"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"appointment_evolution_note"> | Date | string
   }
 
   export type appointment_reschedule_requestWhereInput = {
@@ -48657,6 +50319,7 @@ export namespace Prisma {
     createdByHealthcareProvider?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     appointments?: AppointmentListRelationFilter
     recurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
+    evolutionNotes?: Appointment_evolution_noteListRelationFilter
   }
 
   export type patient_profileOrderByWithRelationInput = {
@@ -48688,6 +50351,7 @@ export namespace Prisma {
     createdByHealthcareProvider?: userOrderByWithRelationInput
     appointments?: appointmentOrderByRelationAggregateInput
     recurringAppointmentSeries?: appointment_recurring_seriesOrderByRelationAggregateInput
+    evolutionNotes?: appointment_evolution_noteOrderByRelationAggregateInput
   }
 
   export type patient_profileWhereUniqueInput = Prisma.AtLeast<{
@@ -48722,6 +50386,7 @@ export namespace Prisma {
     createdByHealthcareProvider?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
     appointments?: AppointmentListRelationFilter
     recurringAppointmentSeries?: Appointment_recurring_seriesListRelationFilter
+    evolutionNotes?: Appointment_evolution_noteListRelationFilter
   }, "id">
 
   export type patient_profileOrderByWithAggregationInput = {
@@ -49240,6 +50905,8 @@ export namespace Prisma {
     customerAppointments?: AppointmentListRelationFilter
     healthcareProviderAppointments?: AppointmentListRelationFilter
     cancelledAppointments?: AppointmentListRelationFilter
+    customerAppointmentEvolutionNotes?: Appointment_evolution_noteListRelationFilter
+    providerAppointmentEvolutionNotes?: Appointment_evolution_noteListRelationFilter
     procedures?: ProcedureListRelationFilter
     schedules?: Healthcare_provider_scheduleListRelationFilter
     scheduleExceptions?: Healthcare_provider_schedule_exceptionListRelationFilter
@@ -49348,6 +51015,8 @@ export namespace Prisma {
     customerAppointments?: appointmentOrderByRelationAggregateInput
     healthcareProviderAppointments?: appointmentOrderByRelationAggregateInput
     cancelledAppointments?: appointmentOrderByRelationAggregateInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteOrderByRelationAggregateInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteOrderByRelationAggregateInput
     procedures?: procedureOrderByRelationAggregateInput
     schedules?: healthcare_provider_scheduleOrderByRelationAggregateInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionOrderByRelationAggregateInput
@@ -49459,6 +51128,8 @@ export namespace Prisma {
     customerAppointments?: AppointmentListRelationFilter
     healthcareProviderAppointments?: AppointmentListRelationFilter
     cancelledAppointments?: AppointmentListRelationFilter
+    customerAppointmentEvolutionNotes?: Appointment_evolution_noteListRelationFilter
+    providerAppointmentEvolutionNotes?: Appointment_evolution_noteListRelationFilter
     procedures?: ProcedureListRelationFilter
     schedules?: Healthcare_provider_scheduleListRelationFilter
     scheduleExceptions?: Healthcare_provider_schedule_exceptionListRelationFilter
@@ -50102,6 +51773,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateInput = {
@@ -50133,6 +51805,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUpdateInput = {
@@ -50164,6 +51837,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateInput = {
@@ -50195,6 +51869,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentCreateManyInput = {
@@ -50268,6 +51943,121 @@ export namespace Prisma {
     cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_evolution_noteCreateInput = {
+    id?: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointment: appointmentCreateNestedOneWithoutEvolutionNoteInput
+    customer?: userCreateNestedOneWithoutCustomerAppointmentEvolutionNotesInput
+    patientProfile?: patient_profileCreateNestedOneWithoutEvolutionNotesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderAppointmentEvolutionNotesInput
+  }
+
+  export type appointment_evolution_noteUncheckedCreateInput = {
+    id?: string
+    appointmentId: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_evolution_noteUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointment?: appointmentUpdateOneRequiredWithoutEvolutionNoteNestedInput
+    customer?: userUpdateOneWithoutCustomerAppointmentEvolutionNotesNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutEvolutionNotesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderAppointmentEvolutionNotesNestedInput
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_evolution_noteCreateManyInput = {
+    id?: string
+    appointmentId: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_evolution_noteUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -51866,6 +53656,7 @@ export namespace Prisma {
     createdByHealthcareProvider?: userCreateNestedOneWithoutCreatedPatientProfilesInput
     appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
     recurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUncheckedCreateInput = {
@@ -51895,6 +53686,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
     recurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUpdateInput = {
@@ -51924,6 +53716,7 @@ export namespace Prisma {
     createdByHealthcareProvider?: userUpdateOneWithoutCreatedPatientProfilesNestedInput
     appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
     recurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateInput = {
@@ -51953,6 +53746,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
     recurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileCreateManyInput = {
@@ -52510,6 +54304,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -52616,6 +54412,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -52722,6 +54520,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -52828,6 +54628,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -53644,6 +55446,11 @@ export namespace Prisma {
     none?: appointment_reschedule_requestWhereInput
   }
 
+  export type Appointment_evolution_noteNullableScalarRelationFilter = {
+    is?: appointment_evolution_noteWhereInput | null
+    isNot?: appointment_evolution_noteWhereInput | null
+  }
+
   export type appointment_procedureOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -53793,6 +55600,82 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type EnumAppointmentEvolutionStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.AppointmentEvolutionStatus | EnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AppointmentEvolutionStatus[] | ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.AppointmentEvolutionStatus[] | ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumAppointmentEvolutionStatusNullableFilter<$PrismaModel> | $Enums.AppointmentEvolutionStatus | null
+  }
+
+  export type appointment_evolution_noteCountOrderByAggregateInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    customerId?: SortOrder
+    patientProfileId?: SortOrder
+    healthcareProviderId?: SortOrder
+    subjective?: SortOrder
+    objective?: SortOrder
+    assessment?: SortOrder
+    plan?: SortOrder
+    painLevel?: SortOrder
+    painLocation?: SortOrder
+    evolutionStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_evolution_noteAvgOrderByAggregateInput = {
+    painLevel?: SortOrder
+  }
+
+  export type appointment_evolution_noteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    customerId?: SortOrder
+    patientProfileId?: SortOrder
+    healthcareProviderId?: SortOrder
+    subjective?: SortOrder
+    objective?: SortOrder
+    assessment?: SortOrder
+    plan?: SortOrder
+    painLevel?: SortOrder
+    painLocation?: SortOrder
+    evolutionStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_evolution_noteMinOrderByAggregateInput = {
+    id?: SortOrder
+    appointmentId?: SortOrder
+    customerId?: SortOrder
+    patientProfileId?: SortOrder
+    healthcareProviderId?: SortOrder
+    subjective?: SortOrder
+    objective?: SortOrder
+    assessment?: SortOrder
+    plan?: SortOrder
+    painLevel?: SortOrder
+    painLocation?: SortOrder
+    evolutionStatus?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type appointment_evolution_noteSumOrderByAggregateInput = {
+    painLevel?: SortOrder
+  }
+
+  export type EnumAppointmentEvolutionStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AppointmentEvolutionStatus | EnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AppointmentEvolutionStatus[] | ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.AppointmentEvolutionStatus[] | ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumAppointmentEvolutionStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.AppointmentEvolutionStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumAppointmentEvolutionStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumAppointmentEvolutionStatusNullableFilter<$PrismaModel>
   }
 
   export type EnumAppointmentRescheduleRequestStatusFilter<$PrismaModel = never> = {
@@ -54892,7 +56775,17 @@ export namespace Prisma {
     none?: appointment_recurring_seriesWhereInput
   }
 
+  export type Appointment_evolution_noteListRelationFilter = {
+    every?: appointment_evolution_noteWhereInput
+    some?: appointment_evolution_noteWhereInput
+    none?: appointment_evolution_noteWhereInput
+  }
+
   export type appointment_recurring_seriesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type appointment_evolution_noteOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -55943,6 +57836,12 @@ export namespace Prisma {
     connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
   }
 
+  export type appointment_evolution_noteCreateNestedOneWithoutAppointmentInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutAppointmentInput, appointment_evolution_noteUncheckedCreateWithoutAppointmentInput>
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutAppointmentInput
+    connect?: appointment_evolution_noteWhereUniqueInput
+  }
+
   export type appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput = {
     create?: XOR<appointment_procedureCreateWithoutAppointmentInput, appointment_procedureUncheckedCreateWithoutAppointmentInput> | appointment_procedureCreateWithoutAppointmentInput[] | appointment_procedureUncheckedCreateWithoutAppointmentInput[]
     connectOrCreate?: appointment_procedureCreateOrConnectWithoutAppointmentInput | appointment_procedureCreateOrConnectWithoutAppointmentInput[]
@@ -55969,6 +57868,12 @@ export namespace Prisma {
     connectOrCreate?: appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput | appointment_reschedule_requestCreateOrConnectWithoutAppointmentInput[]
     createMany?: appointment_reschedule_requestCreateManyAppointmentInputEnvelope
     connect?: appointment_reschedule_requestWhereUniqueInput | appointment_reschedule_requestWhereUniqueInput[]
+  }
+
+  export type appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutAppointmentInput, appointment_evolution_noteUncheckedCreateWithoutAppointmentInput>
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutAppointmentInput
+    connect?: appointment_evolution_noteWhereUniqueInput
   }
 
   export type EnumAppointmentStatusFieldUpdateOperationsInput = {
@@ -56105,6 +58010,16 @@ export namespace Prisma {
     deleteMany?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
   }
 
+  export type appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutAppointmentInput, appointment_evolution_noteUncheckedCreateWithoutAppointmentInput>
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutAppointmentInput
+    upsert?: appointment_evolution_noteUpsertWithoutAppointmentInput
+    disconnect?: appointment_evolution_noteWhereInput | boolean
+    delete?: appointment_evolution_noteWhereInput | boolean
+    connect?: appointment_evolution_noteWhereUniqueInput
+    update?: XOR<XOR<appointment_evolution_noteUpdateToOneWithWhereWithoutAppointmentInput, appointment_evolution_noteUpdateWithoutAppointmentInput>, appointment_evolution_noteUncheckedUpdateWithoutAppointmentInput>
+  }
+
   export type appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput = {
     create?: XOR<appointment_procedureCreateWithoutAppointmentInput, appointment_procedureUncheckedCreateWithoutAppointmentInput> | appointment_procedureCreateWithoutAppointmentInput[] | appointment_procedureUncheckedCreateWithoutAppointmentInput[]
     connectOrCreate?: appointment_procedureCreateOrConnectWithoutAppointmentInput | appointment_procedureCreateOrConnectWithoutAppointmentInput[]
@@ -56159,6 +58074,80 @@ export namespace Prisma {
     update?: appointment_reschedule_requestUpdateWithWhereUniqueWithoutAppointmentInput | appointment_reschedule_requestUpdateWithWhereUniqueWithoutAppointmentInput[]
     updateMany?: appointment_reschedule_requestUpdateManyWithWhereWithoutAppointmentInput | appointment_reschedule_requestUpdateManyWithWhereWithoutAppointmentInput[]
     deleteMany?: appointment_reschedule_requestScalarWhereInput | appointment_reschedule_requestScalarWhereInput[]
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutAppointmentInput, appointment_evolution_noteUncheckedCreateWithoutAppointmentInput>
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutAppointmentInput
+    upsert?: appointment_evolution_noteUpsertWithoutAppointmentInput
+    disconnect?: appointment_evolution_noteWhereInput | boolean
+    delete?: appointment_evolution_noteWhereInput | boolean
+    connect?: appointment_evolution_noteWhereUniqueInput
+    update?: XOR<XOR<appointment_evolution_noteUpdateToOneWithWhereWithoutAppointmentInput, appointment_evolution_noteUpdateWithoutAppointmentInput>, appointment_evolution_noteUncheckedUpdateWithoutAppointmentInput>
+  }
+
+  export type appointmentCreateNestedOneWithoutEvolutionNoteInput = {
+    create?: XOR<appointmentCreateWithoutEvolutionNoteInput, appointmentUncheckedCreateWithoutEvolutionNoteInput>
+    connectOrCreate?: appointmentCreateOrConnectWithoutEvolutionNoteInput
+    connect?: appointmentWhereUniqueInput
+  }
+
+  export type userCreateNestedOneWithoutCustomerAppointmentEvolutionNotesInput = {
+    create?: XOR<userCreateWithoutCustomerAppointmentEvolutionNotesInput, userUncheckedCreateWithoutCustomerAppointmentEvolutionNotesInput>
+    connectOrCreate?: userCreateOrConnectWithoutCustomerAppointmentEvolutionNotesInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type patient_profileCreateNestedOneWithoutEvolutionNotesInput = {
+    create?: XOR<patient_profileCreateWithoutEvolutionNotesInput, patient_profileUncheckedCreateWithoutEvolutionNotesInput>
+    connectOrCreate?: patient_profileCreateOrConnectWithoutEvolutionNotesInput
+    connect?: patient_profileWhereUniqueInput
+  }
+
+  export type userCreateNestedOneWithoutProviderAppointmentEvolutionNotesInput = {
+    create?: XOR<userCreateWithoutProviderAppointmentEvolutionNotesInput, userUncheckedCreateWithoutProviderAppointmentEvolutionNotesInput>
+    connectOrCreate?: userCreateOrConnectWithoutProviderAppointmentEvolutionNotesInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput = {
+    set?: $Enums.AppointmentEvolutionStatus | null
+  }
+
+  export type appointmentUpdateOneRequiredWithoutEvolutionNoteNestedInput = {
+    create?: XOR<appointmentCreateWithoutEvolutionNoteInput, appointmentUncheckedCreateWithoutEvolutionNoteInput>
+    connectOrCreate?: appointmentCreateOrConnectWithoutEvolutionNoteInput
+    upsert?: appointmentUpsertWithoutEvolutionNoteInput
+    connect?: appointmentWhereUniqueInput
+    update?: XOR<XOR<appointmentUpdateToOneWithWhereWithoutEvolutionNoteInput, appointmentUpdateWithoutEvolutionNoteInput>, appointmentUncheckedUpdateWithoutEvolutionNoteInput>
+  }
+
+  export type userUpdateOneWithoutCustomerAppointmentEvolutionNotesNestedInput = {
+    create?: XOR<userCreateWithoutCustomerAppointmentEvolutionNotesInput, userUncheckedCreateWithoutCustomerAppointmentEvolutionNotesInput>
+    connectOrCreate?: userCreateOrConnectWithoutCustomerAppointmentEvolutionNotesInput
+    upsert?: userUpsertWithoutCustomerAppointmentEvolutionNotesInput
+    disconnect?: userWhereInput | boolean
+    delete?: userWhereInput | boolean
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutCustomerAppointmentEvolutionNotesInput, userUpdateWithoutCustomerAppointmentEvolutionNotesInput>, userUncheckedUpdateWithoutCustomerAppointmentEvolutionNotesInput>
+  }
+
+  export type patient_profileUpdateOneWithoutEvolutionNotesNestedInput = {
+    create?: XOR<patient_profileCreateWithoutEvolutionNotesInput, patient_profileUncheckedCreateWithoutEvolutionNotesInput>
+    connectOrCreate?: patient_profileCreateOrConnectWithoutEvolutionNotesInput
+    upsert?: patient_profileUpsertWithoutEvolutionNotesInput
+    disconnect?: patient_profileWhereInput | boolean
+    delete?: patient_profileWhereInput | boolean
+    connect?: patient_profileWhereUniqueInput
+    update?: XOR<XOR<patient_profileUpdateToOneWithWhereWithoutEvolutionNotesInput, patient_profileUpdateWithoutEvolutionNotesInput>, patient_profileUncheckedUpdateWithoutEvolutionNotesInput>
+  }
+
+  export type userUpdateOneRequiredWithoutProviderAppointmentEvolutionNotesNestedInput = {
+    create?: XOR<userCreateWithoutProviderAppointmentEvolutionNotesInput, userUncheckedCreateWithoutProviderAppointmentEvolutionNotesInput>
+    connectOrCreate?: userCreateOrConnectWithoutProviderAppointmentEvolutionNotesInput
+    upsert?: userUpsertWithoutProviderAppointmentEvolutionNotesInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutProviderAppointmentEvolutionNotesInput, userUpdateWithoutProviderAppointmentEvolutionNotesInput>, userUncheckedUpdateWithoutProviderAppointmentEvolutionNotesInput>
   }
 
   export type appointmentCreateNestedOneWithoutRescheduleRequestsInput = {
@@ -57058,6 +59047,13 @@ export namespace Prisma {
     connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
   }
 
+  export type appointment_evolution_noteCreateNestedManyWithoutPatientProfileInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutPatientProfileInput, appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput> | appointment_evolution_noteCreateWithoutPatientProfileInput[] | appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutPatientProfileInput | appointment_evolution_noteCreateOrConnectWithoutPatientProfileInput[]
+    createMany?: appointment_evolution_noteCreateManyPatientProfileInputEnvelope
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+  }
+
   export type appointmentUncheckedCreateNestedManyWithoutPatientProfileInput = {
     create?: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput> | appointmentCreateWithoutPatientProfileInput[] | appointmentUncheckedCreateWithoutPatientProfileInput[]
     connectOrCreate?: appointmentCreateOrConnectWithoutPatientProfileInput | appointmentCreateOrConnectWithoutPatientProfileInput[]
@@ -57070,6 +59066,13 @@ export namespace Prisma {
     connectOrCreate?: appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput | appointment_recurring_seriesCreateOrConnectWithoutPatientProfileInput[]
     createMany?: appointment_recurring_seriesCreateManyPatientProfileInputEnvelope
     connect?: appointment_recurring_seriesWhereUniqueInput | appointment_recurring_seriesWhereUniqueInput[]
+  }
+
+  export type appointment_evolution_noteUncheckedCreateNestedManyWithoutPatientProfileInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutPatientProfileInput, appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput> | appointment_evolution_noteCreateWithoutPatientProfileInput[] | appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutPatientProfileInput | appointment_evolution_noteCreateOrConnectWithoutPatientProfileInput[]
+    createMany?: appointment_evolution_noteCreateManyPatientProfileInputEnvelope
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
   }
 
   export type userUpdateOneWithoutPatientProfilesNestedInput = {
@@ -57120,6 +59123,20 @@ export namespace Prisma {
     deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
   }
 
+  export type appointment_evolution_noteUpdateManyWithoutPatientProfileNestedInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutPatientProfileInput, appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput> | appointment_evolution_noteCreateWithoutPatientProfileInput[] | appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutPatientProfileInput | appointment_evolution_noteCreateOrConnectWithoutPatientProfileInput[]
+    upsert?: appointment_evolution_noteUpsertWithWhereUniqueWithoutPatientProfileInput | appointment_evolution_noteUpsertWithWhereUniqueWithoutPatientProfileInput[]
+    createMany?: appointment_evolution_noteCreateManyPatientProfileInputEnvelope
+    set?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    disconnect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    delete?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    update?: appointment_evolution_noteUpdateWithWhereUniqueWithoutPatientProfileInput | appointment_evolution_noteUpdateWithWhereUniqueWithoutPatientProfileInput[]
+    updateMany?: appointment_evolution_noteUpdateManyWithWhereWithoutPatientProfileInput | appointment_evolution_noteUpdateManyWithWhereWithoutPatientProfileInput[]
+    deleteMany?: appointment_evolution_noteScalarWhereInput | appointment_evolution_noteScalarWhereInput[]
+  }
+
   export type appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput = {
     create?: XOR<appointmentCreateWithoutPatientProfileInput, appointmentUncheckedCreateWithoutPatientProfileInput> | appointmentCreateWithoutPatientProfileInput[] | appointmentUncheckedCreateWithoutPatientProfileInput[]
     connectOrCreate?: appointmentCreateOrConnectWithoutPatientProfileInput | appointmentCreateOrConnectWithoutPatientProfileInput[]
@@ -57146,6 +59163,20 @@ export namespace Prisma {
     update?: appointment_recurring_seriesUpdateWithWhereUniqueWithoutPatientProfileInput | appointment_recurring_seriesUpdateWithWhereUniqueWithoutPatientProfileInput[]
     updateMany?: appointment_recurring_seriesUpdateManyWithWhereWithoutPatientProfileInput | appointment_recurring_seriesUpdateManyWithWhereWithoutPatientProfileInput[]
     deleteMany?: appointment_recurring_seriesScalarWhereInput | appointment_recurring_seriesScalarWhereInput[]
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateManyWithoutPatientProfileNestedInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutPatientProfileInput, appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput> | appointment_evolution_noteCreateWithoutPatientProfileInput[] | appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutPatientProfileInput | appointment_evolution_noteCreateOrConnectWithoutPatientProfileInput[]
+    upsert?: appointment_evolution_noteUpsertWithWhereUniqueWithoutPatientProfileInput | appointment_evolution_noteUpsertWithWhereUniqueWithoutPatientProfileInput[]
+    createMany?: appointment_evolution_noteCreateManyPatientProfileInputEnvelope
+    set?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    disconnect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    delete?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    update?: appointment_evolution_noteUpdateWithWhereUniqueWithoutPatientProfileInput | appointment_evolution_noteUpdateWithWhereUniqueWithoutPatientProfileInput[]
+    updateMany?: appointment_evolution_noteUpdateManyWithWhereWithoutPatientProfileInput | appointment_evolution_noteUpdateManyWithWhereWithoutPatientProfileInput[]
+    deleteMany?: appointment_evolution_noteScalarWhereInput | appointment_evolution_noteScalarWhereInput[]
   }
 
   export type userCreateNestedOneWithoutProceduresInput = {
@@ -57493,6 +59524,20 @@ export namespace Prisma {
     connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
   }
 
+  export type appointment_evolution_noteCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutCustomerInput, appointment_evolution_noteUncheckedCreateWithoutCustomerInput> | appointment_evolution_noteCreateWithoutCustomerInput[] | appointment_evolution_noteUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutCustomerInput | appointment_evolution_noteCreateOrConnectWithoutCustomerInput[]
+    createMany?: appointment_evolution_noteCreateManyCustomerInputEnvelope
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+  }
+
+  export type appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutHealthcareProviderInput, appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput> | appointment_evolution_noteCreateWithoutHealthcareProviderInput[] | appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutHealthcareProviderInput | appointment_evolution_noteCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: appointment_evolution_noteCreateManyHealthcareProviderInputEnvelope
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+  }
+
   export type procedureCreateNestedManyWithoutHealthcareProviderInput = {
     create?: XOR<procedureCreateWithoutHealthcareProviderInput, procedureUncheckedCreateWithoutHealthcareProviderInput> | procedureCreateWithoutHealthcareProviderInput[] | procedureUncheckedCreateWithoutHealthcareProviderInput[]
     connectOrCreate?: procedureCreateOrConnectWithoutHealthcareProviderInput | procedureCreateOrConnectWithoutHealthcareProviderInput[]
@@ -57749,6 +59794,20 @@ export namespace Prisma {
     connectOrCreate?: appointmentCreateOrConnectWithoutCancelledByUserInput | appointmentCreateOrConnectWithoutCancelledByUserInput[]
     createMany?: appointmentCreateManyCancelledByUserInputEnvelope
     connect?: appointmentWhereUniqueInput | appointmentWhereUniqueInput[]
+  }
+
+  export type appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutCustomerInput, appointment_evolution_noteUncheckedCreateWithoutCustomerInput> | appointment_evolution_noteCreateWithoutCustomerInput[] | appointment_evolution_noteUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutCustomerInput | appointment_evolution_noteCreateOrConnectWithoutCustomerInput[]
+    createMany?: appointment_evolution_noteCreateManyCustomerInputEnvelope
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+  }
+
+  export type appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutHealthcareProviderInput, appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput> | appointment_evolution_noteCreateWithoutHealthcareProviderInput[] | appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutHealthcareProviderInput | appointment_evolution_noteCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: appointment_evolution_noteCreateManyHealthcareProviderInputEnvelope
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
   }
 
   export type procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput = {
@@ -58114,6 +60173,34 @@ export namespace Prisma {
     update?: appointmentUpdateWithWhereUniqueWithoutCancelledByUserInput | appointmentUpdateWithWhereUniqueWithoutCancelledByUserInput[]
     updateMany?: appointmentUpdateManyWithWhereWithoutCancelledByUserInput | appointmentUpdateManyWithWhereWithoutCancelledByUserInput[]
     deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+  }
+
+  export type appointment_evolution_noteUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutCustomerInput, appointment_evolution_noteUncheckedCreateWithoutCustomerInput> | appointment_evolution_noteCreateWithoutCustomerInput[] | appointment_evolution_noteUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutCustomerInput | appointment_evolution_noteCreateOrConnectWithoutCustomerInput[]
+    upsert?: appointment_evolution_noteUpsertWithWhereUniqueWithoutCustomerInput | appointment_evolution_noteUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: appointment_evolution_noteCreateManyCustomerInputEnvelope
+    set?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    disconnect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    delete?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    update?: appointment_evolution_noteUpdateWithWhereUniqueWithoutCustomerInput | appointment_evolution_noteUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: appointment_evolution_noteUpdateManyWithWhereWithoutCustomerInput | appointment_evolution_noteUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: appointment_evolution_noteScalarWhereInput | appointment_evolution_noteScalarWhereInput[]
+  }
+
+  export type appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutHealthcareProviderInput, appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput> | appointment_evolution_noteCreateWithoutHealthcareProviderInput[] | appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutHealthcareProviderInput | appointment_evolution_noteCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: appointment_evolution_noteUpsertWithWhereUniqueWithoutHealthcareProviderInput | appointment_evolution_noteUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: appointment_evolution_noteCreateManyHealthcareProviderInputEnvelope
+    set?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    disconnect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    delete?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    update?: appointment_evolution_noteUpdateWithWhereUniqueWithoutHealthcareProviderInput | appointment_evolution_noteUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: appointment_evolution_noteUpdateManyWithWhereWithoutHealthcareProviderInput | appointment_evolution_noteUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: appointment_evolution_noteScalarWhereInput | appointment_evolution_noteScalarWhereInput[]
   }
 
   export type procedureUpdateManyWithoutHealthcareProviderNestedInput = {
@@ -58628,6 +60715,34 @@ export namespace Prisma {
     update?: appointmentUpdateWithWhereUniqueWithoutCancelledByUserInput | appointmentUpdateWithWhereUniqueWithoutCancelledByUserInput[]
     updateMany?: appointmentUpdateManyWithWhereWithoutCancelledByUserInput | appointmentUpdateManyWithWhereWithoutCancelledByUserInput[]
     deleteMany?: appointmentScalarWhereInput | appointmentScalarWhereInput[]
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutCustomerInput, appointment_evolution_noteUncheckedCreateWithoutCustomerInput> | appointment_evolution_noteCreateWithoutCustomerInput[] | appointment_evolution_noteUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutCustomerInput | appointment_evolution_noteCreateOrConnectWithoutCustomerInput[]
+    upsert?: appointment_evolution_noteUpsertWithWhereUniqueWithoutCustomerInput | appointment_evolution_noteUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: appointment_evolution_noteCreateManyCustomerInputEnvelope
+    set?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    disconnect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    delete?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    update?: appointment_evolution_noteUpdateWithWhereUniqueWithoutCustomerInput | appointment_evolution_noteUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: appointment_evolution_noteUpdateManyWithWhereWithoutCustomerInput | appointment_evolution_noteUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: appointment_evolution_noteScalarWhereInput | appointment_evolution_noteScalarWhereInput[]
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<appointment_evolution_noteCreateWithoutHealthcareProviderInput, appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput> | appointment_evolution_noteCreateWithoutHealthcareProviderInput[] | appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: appointment_evolution_noteCreateOrConnectWithoutHealthcareProviderInput | appointment_evolution_noteCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: appointment_evolution_noteUpsertWithWhereUniqueWithoutHealthcareProviderInput | appointment_evolution_noteUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: appointment_evolution_noteCreateManyHealthcareProviderInputEnvelope
+    set?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    disconnect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    delete?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    connect?: appointment_evolution_noteWhereUniqueInput | appointment_evolution_noteWhereUniqueInput[]
+    update?: appointment_evolution_noteUpdateWithWhereUniqueWithoutHealthcareProviderInput | appointment_evolution_noteUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: appointment_evolution_noteUpdateManyWithWhereWithoutHealthcareProviderInput | appointment_evolution_noteUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: appointment_evolution_noteScalarWhereInput | appointment_evolution_noteScalarWhereInput[]
   }
 
   export type procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput = {
@@ -59353,6 +61468,23 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumAppointmentEvolutionStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.AppointmentEvolutionStatus | EnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AppointmentEvolutionStatus[] | ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.AppointmentEvolutionStatus[] | ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumAppointmentEvolutionStatusNullableFilter<$PrismaModel> | $Enums.AppointmentEvolutionStatus | null
+  }
+
+  export type NestedEnumAppointmentEvolutionStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AppointmentEvolutionStatus | EnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AppointmentEvolutionStatus[] | ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.AppointmentEvolutionStatus[] | ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumAppointmentEvolutionStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.AppointmentEvolutionStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumAppointmentEvolutionStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumAppointmentEvolutionStatusNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.AppointmentRescheduleRequestStatus | EnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
     in?: $Enums.AppointmentRescheduleRequestStatus[] | ListEnumAppointmentRescheduleRequestStatusFieldRefInput<$PrismaModel>
@@ -59727,6 +61859,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -59832,6 +61966,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -59953,6 +62089,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -60058,6 +62196,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -60118,6 +62258,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutAppointmentProceduresInput = {
@@ -60148,6 +62289,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutAppointmentProceduresInput = {
@@ -60227,6 +62369,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutAppointmentProceduresInput = {
@@ -60257,6 +62400,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type procedureUpsertWithoutAppointmentProceduresInput = {
@@ -60371,6 +62515,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -60476,6 +62622,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -60539,6 +62687,7 @@ export namespace Prisma {
     customerOwner?: userCreateNestedOneWithoutPatientProfilesInput
     createdByHealthcareProvider?: userCreateNestedOneWithoutCreatedPatientProfilesInput
     recurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUncheckedCreateWithoutAppointmentsInput = {
@@ -60567,6 +62716,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     recurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileCreateOrConnectWithoutAppointmentsInput = {
@@ -60647,6 +62797,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -60752,6 +62904,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -60930,6 +63084,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -61035,6 +63191,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -61204,6 +63362,43 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type appointment_evolution_noteCreateWithoutAppointmentInput = {
+    id?: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerAppointmentEvolutionNotesInput
+    patientProfile?: patient_profileCreateNestedOneWithoutEvolutionNotesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderAppointmentEvolutionNotesInput
+  }
+
+  export type appointment_evolution_noteUncheckedCreateWithoutAppointmentInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_evolution_noteCreateOrConnectWithoutAppointmentInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    create: XOR<appointment_evolution_noteCreateWithoutAppointmentInput, appointment_evolution_noteUncheckedCreateWithoutAppointmentInput>
+  }
+
   export type userUpsertWithoutCustomerAppointmentsInput = {
     update: XOR<userUpdateWithoutCustomerAppointmentsInput, userUncheckedUpdateWithoutCustomerAppointmentsInput>
     create: XOR<userCreateWithoutCustomerAppointmentsInput, userUncheckedCreateWithoutCustomerAppointmentsInput>
@@ -61288,6 +63483,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -61393,6 +63590,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -61462,6 +63661,7 @@ export namespace Prisma {
     customerOwner?: userUpdateOneWithoutPatientProfilesNestedInput
     createdByHealthcareProvider?: userUpdateOneWithoutCreatedPatientProfilesNestedInput
     recurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateWithoutAppointmentsInput = {
@@ -61490,6 +63690,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     recurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type userUpsertWithoutHealthcareProviderAppointmentsInput = {
@@ -61576,6 +63777,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -61681,6 +63884,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -61877,6 +64082,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -61982,6 +64189,8 @@ export namespace Prisma {
     clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -62140,6 +64349,1209 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"appointment_reschedule_request"> | Date | string
   }
 
+  export type appointment_evolution_noteUpsertWithoutAppointmentInput = {
+    update: XOR<appointment_evolution_noteUpdateWithoutAppointmentInput, appointment_evolution_noteUncheckedUpdateWithoutAppointmentInput>
+    create: XOR<appointment_evolution_noteCreateWithoutAppointmentInput, appointment_evolution_noteUncheckedCreateWithoutAppointmentInput>
+    where?: appointment_evolution_noteWhereInput
+  }
+
+  export type appointment_evolution_noteUpdateToOneWithWhereWithoutAppointmentInput = {
+    where?: appointment_evolution_noteWhereInput
+    data: XOR<appointment_evolution_noteUpdateWithoutAppointmentInput, appointment_evolution_noteUncheckedUpdateWithoutAppointmentInput>
+  }
+
+  export type appointment_evolution_noteUpdateWithoutAppointmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerAppointmentEvolutionNotesNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutEvolutionNotesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderAppointmentEvolutionNotesNestedInput
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateWithoutAppointmentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointmentCreateWithoutEvolutionNoteInput = {
+    id?: string
+    recurringGeneratedAt?: Date | string | null
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    cancellationReason?: string | null
+    cancellationFeeCents?: number | null
+    cancellationPolicyAppliedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer?: userCreateNestedOneWithoutCustomerAppointmentsInput
+    patientProfile?: patient_profileCreateNestedOneWithoutAppointmentsInput
+    healthcareProvider: userCreateNestedOneWithoutHealthcareProviderAppointmentsInput
+    recurringSeries?: appointment_recurring_seriesCreateNestedOneWithoutAppointmentsInput
+    recurringRule?: appointment_recurring_series_ruleCreateNestedOneWithoutAppointmentsInput
+    cancelledByUser?: userCreateNestedOneWithoutCancelledAppointmentsInput
+    appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+  }
+
+  export type appointmentUncheckedCreateWithoutEvolutionNoteInput = {
+    id?: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    recurringSeriesId?: string | null
+    recurringRuleId?: string | null
+    recurringGeneratedAt?: Date | string | null
+    scheduledAt: Date | string
+    status?: $Enums.AppointmentStatus
+    serviceModality?: string
+    onlineMeetingUrl?: string | null
+    onlineMeetingProvider?: string | null
+    onlineMeetingExternalId?: string | null
+    onlineMeetingCreatedAt?: Date | string | null
+    totalDurationMinutes: number
+    totalPriceCents: number
+    notes?: string | null
+    cancellationReason?: string | null
+    cancellationFeeCents?: number | null
+    cancellationPolicyAppliedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    cancelledByUserId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
+    relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+  }
+
+  export type appointmentCreateOrConnectWithoutEvolutionNoteInput = {
+    where: appointmentWhereUniqueInput
+    create: XOR<appointmentCreateWithoutEvolutionNoteInput, appointmentUncheckedCreateWithoutEvolutionNoteInput>
+  }
+
+  export type userCreateWithoutCustomerAppointmentEvolutionNotesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
+    birthdayGreetingEmailEnabled?: boolean
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutCustomerAppointmentEvolutionNotesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    professionalCouncilId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
+    birthdayGreetingEmailEnabled?: boolean
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutCustomerAppointmentEvolutionNotesInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutCustomerAppointmentEvolutionNotesInput, userUncheckedCreateWithoutCustomerAppointmentEvolutionNotesInput>
+  }
+
+  export type patient_profileCreateWithoutEvolutionNotesInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customerOwner?: userCreateNestedOneWithoutPatientProfilesInput
+    createdByHealthcareProvider?: userCreateNestedOneWithoutCreatedPatientProfilesInput
+    appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
+    recurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileUncheckedCreateWithoutEvolutionNotesInput = {
+    id?: string
+    fullName: string
+    dateOfBirth?: Date | string | null
+    cpf?: string | null
+    phone?: string | null
+    email?: string | null
+    address?: string | null
+    gender?: string | null
+    relationshipToCustomer?: string | null
+    notes?: string | null
+    customerOwnerId?: string | null
+    createdByHealthcareProviderId?: string | null
+    bloodType?: string | null
+    medications?: string | null
+    chronicPain?: string | null
+    preExistingConditions?: string | null
+    allergies?: string | null
+    surgeries?: string | null
+    familyHistory?: string | null
+    lifestyleNotes?: string | null
+    emergencyContactName?: string | null
+    emergencyContactPhone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput
+  }
+
+  export type patient_profileCreateOrConnectWithoutEvolutionNotesInput = {
+    where: patient_profileWhereUniqueInput
+    create: XOR<patient_profileCreateWithoutEvolutionNotesInput, patient_profileUncheckedCreateWithoutEvolutionNotesInput>
+  }
+
+  export type userCreateWithoutProviderAppointmentEvolutionNotesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
+    birthdayGreetingEmailEnabled?: boolean
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutProviderAppointmentEvolutionNotesInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    address?: string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    professionalCouncilId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    clinicAddress?: string | null
+    clinicLatitude?: number | null
+    clinicLongitude?: number | null
+    clinicNeighborhood?: string | null
+    clinicCity?: string | null
+    clinicState?: string | null
+    homeCareRadiusKm?: number | null
+    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
+    birthdayGreetingEmailEnabled?: boolean
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutProviderAppointmentEvolutionNotesInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutProviderAppointmentEvolutionNotesInput, userUncheckedCreateWithoutProviderAppointmentEvolutionNotesInput>
+  }
+
+  export type appointmentUpsertWithoutEvolutionNoteInput = {
+    update: XOR<appointmentUpdateWithoutEvolutionNoteInput, appointmentUncheckedUpdateWithoutEvolutionNoteInput>
+    create: XOR<appointmentCreateWithoutEvolutionNoteInput, appointmentUncheckedCreateWithoutEvolutionNoteInput>
+    where?: appointmentWhereInput
+  }
+
+  export type appointmentUpdateToOneWithWhereWithoutEvolutionNoteInput = {
+    where?: appointmentWhereInput
+    data: XOR<appointmentUpdateWithoutEvolutionNoteInput, appointmentUncheckedUpdateWithoutEvolutionNoteInput>
+  }
+
+  export type appointmentUpdateWithoutEvolutionNoteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: userUpdateOneWithoutCustomerAppointmentsNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutAppointmentsNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutHealthcareProviderAppointmentsNestedInput
+    recurringSeries?: appointment_recurring_seriesUpdateOneWithoutAppointmentsNestedInput
+    recurringRule?: appointment_recurring_series_ruleUpdateOneWithoutAppointmentsNestedInput
+    cancelledByUser?: userUpdateOneWithoutCancelledAppointmentsNestedInput
+    appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+  }
+
+  export type appointmentUncheckedUpdateWithoutEvolutionNoteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    recurringSeriesId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringRuleId?: NullableStringFieldUpdateOperationsInput | string | null
+    recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    scheduledAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAppointmentStatusFieldUpdateOperationsInput | $Enums.AppointmentStatus
+    serviceModality?: StringFieldUpdateOperationsInput | string
+    onlineMeetingUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingProvider?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingExternalId?: NullableStringFieldUpdateOperationsInput | string | null
+    onlineMeetingCreatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    totalDurationMinutes?: IntFieldUpdateOperationsInput | number
+    totalPriceCents?: IntFieldUpdateOperationsInput | number
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationReason?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
+    relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+  }
+
+  export type userUpsertWithoutCustomerAppointmentEvolutionNotesInput = {
+    update: XOR<userUpdateWithoutCustomerAppointmentEvolutionNotesInput, userUncheckedUpdateWithoutCustomerAppointmentEvolutionNotesInput>
+    create: XOR<userCreateWithoutCustomerAppointmentEvolutionNotesInput, userUncheckedCreateWithoutCustomerAppointmentEvolutionNotesInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutCustomerAppointmentEvolutionNotesInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutCustomerAppointmentEvolutionNotesInput, userUncheckedUpdateWithoutCustomerAppointmentEvolutionNotesInput>
+  }
+
+  export type userUpdateWithoutCustomerAppointmentEvolutionNotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutCustomerAppointmentEvolutionNotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type patient_profileUpsertWithoutEvolutionNotesInput = {
+    update: XOR<patient_profileUpdateWithoutEvolutionNotesInput, patient_profileUncheckedUpdateWithoutEvolutionNotesInput>
+    create: XOR<patient_profileCreateWithoutEvolutionNotesInput, patient_profileUncheckedCreateWithoutEvolutionNotesInput>
+    where?: patient_profileWhereInput
+  }
+
+  export type patient_profileUpdateToOneWithWhereWithoutEvolutionNotesInput = {
+    where?: patient_profileWhereInput
+    data: XOR<patient_profileUpdateWithoutEvolutionNotesInput, patient_profileUncheckedUpdateWithoutEvolutionNotesInput>
+  }
+
+  export type patient_profileUpdateWithoutEvolutionNotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customerOwner?: userUpdateOneWithoutPatientProfilesNestedInput
+    createdByHealthcareProvider?: userUpdateOneWithoutCreatedPatientProfilesNestedInput
+    appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type patient_profileUncheckedUpdateWithoutEvolutionNotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    relationshipToCustomer?: NullableStringFieldUpdateOperationsInput | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    customerOwnerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdByHealthcareProviderId?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodType?: NullableStringFieldUpdateOperationsInput | string | null
+    medications?: NullableStringFieldUpdateOperationsInput | string | null
+    chronicPain?: NullableStringFieldUpdateOperationsInput | string | null
+    preExistingConditions?: NullableStringFieldUpdateOperationsInput | string | null
+    allergies?: NullableStringFieldUpdateOperationsInput | string | null
+    surgeries?: NullableStringFieldUpdateOperationsInput | string | null
+    familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
+    emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
+    recurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput
+  }
+
+  export type userUpsertWithoutProviderAppointmentEvolutionNotesInput = {
+    update: XOR<userUpdateWithoutProviderAppointmentEvolutionNotesInput, userUncheckedUpdateWithoutProviderAppointmentEvolutionNotesInput>
+    create: XOR<userCreateWithoutProviderAppointmentEvolutionNotesInput, userUncheckedCreateWithoutProviderAppointmentEvolutionNotesInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutProviderAppointmentEvolutionNotesInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutProviderAppointmentEvolutionNotesInput, userUncheckedUpdateWithoutProviderAppointmentEvolutionNotesInput>
+  }
+
+  export type userUpdateWithoutProviderAppointmentEvolutionNotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutProviderAppointmentEvolutionNotesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
+    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
   export type appointmentCreateWithoutRescheduleRequestsInput = {
     id?: string
     recurringGeneratedAt?: Date | string | null
@@ -62168,6 +65580,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutRescheduleRequestsInput = {
@@ -62198,6 +65611,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutRescheduleRequestsInput = {
@@ -62279,6 +65693,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -62384,6 +65800,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -62459,6 +65877,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutRescheduleRequestsInput = {
@@ -62489,6 +65908,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type userUpsertWithoutAppointmentRescheduleRequestsInput = {
@@ -62576,6 +65996,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -62681,6 +66103,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -62786,6 +66210,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -62891,6 +66317,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -62953,6 +66381,7 @@ export namespace Prisma {
     customerOwner?: userCreateNestedOneWithoutPatientProfilesInput
     createdByHealthcareProvider?: userCreateNestedOneWithoutCreatedPatientProfilesInput
     appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUncheckedCreateWithoutRecurringAppointmentSeriesInput = {
@@ -62981,6 +66410,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileCreateOrConnectWithoutRecurringAppointmentSeriesInput = {
@@ -63062,6 +66492,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -63167,6 +66599,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -63277,6 +66711,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -63382,6 +66818,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -63446,6 +66884,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutRecurringSeriesInput = {
@@ -63476,6 +66915,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutRecurringSeriesInput = {
@@ -63623,6 +67063,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -63728,6 +67170,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -63796,6 +67240,7 @@ export namespace Prisma {
     customerOwner?: userUpdateOneWithoutPatientProfilesNestedInput
     createdByHealthcareProvider?: userUpdateOneWithoutCreatedPatientProfilesNestedInput
     appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateWithoutRecurringAppointmentSeriesInput = {
@@ -63824,6 +67269,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type userUpsertWithoutProviderRecurringAppointmentSeriesInput = {
@@ -63911,6 +67357,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -64016,6 +67464,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -64132,6 +67582,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -64237,6 +67689,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -64441,6 +67895,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutRecurringRuleInput = {
@@ -64471,6 +67926,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutRecurringRuleInput = {
@@ -64792,6 +68248,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -64897,6 +68355,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -65007,6 +68467,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -65112,6 +68574,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -65255,6 +68719,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -65360,6 +68826,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -65476,6 +68944,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -65581,6 +69051,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -65892,6 +69364,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -65997,6 +69471,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -66139,6 +69615,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -66244,6 +69722,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -66375,6 +69855,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -66480,6 +69962,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -66631,6 +70115,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -66736,6 +70222,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -66906,6 +70394,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -67011,6 +70501,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -67173,6 +70665,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -67278,6 +70772,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -67384,6 +70880,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -67489,6 +70987,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -67599,6 +71099,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -67704,6 +71206,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -67825,6 +71329,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -67930,6 +71436,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -68046,6 +71554,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -68151,6 +71661,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -68256,6 +71768,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -68361,6 +71875,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -68482,6 +71998,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -68587,6 +72105,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -68692,6 +72212,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
     healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
@@ -68797,6 +72319,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
     healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -68918,6 +72442,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
     healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
@@ -69023,6 +72549,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -69128,6 +72656,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
@@ -69233,6 +72763,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -69354,6 +72886,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
@@ -69459,6 +72993,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -69564,6 +73100,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -69669,6 +73207,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -69790,6 +73330,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -69895,6 +73437,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -70000,6 +73544,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -70105,6 +73651,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -70215,6 +73763,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -70320,6 +73870,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -70481,6 +74033,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -70586,6 +74140,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -70702,6 +74258,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -70807,6 +74365,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -70951,6 +74511,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -71056,6 +74618,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -71120,6 +74684,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutRelatedMessagesInput = {
@@ -71150,6 +74715,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutRelatedMessagesInput = {
@@ -71271,6 +74837,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -71376,6 +74944,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -71446,6 +75016,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutRelatedMessagesInput = {
@@ -71476,6 +75047,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type userCreateWithoutPushTokensInput = {
@@ -71552,6 +75124,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -71657,6 +75231,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -71778,6 +75354,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -71883,6 +75461,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -71988,6 +75568,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -72093,6 +75675,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -72214,6 +75798,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -72319,6 +75905,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -72424,6 +76012,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -72529,6 +76119,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -72593,6 +76185,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutNotificationDeliveriesInput = {
@@ -72623,6 +76216,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedCreateNestedManyWithoutAppointmentInput
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutNotificationDeliveriesInput = {
@@ -72715,6 +76309,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -72820,6 +76416,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -72890,6 +76488,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutNotificationDeliveriesInput = {
@@ -72920,6 +76519,7 @@ export namespace Prisma {
     appointmentProcedures?: appointment_procedureUncheckedUpdateManyWithoutAppointmentNestedInput
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type userCreateWithoutPatientProfilesInput = {
@@ -72996,6 +76596,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -73101,6 +76703,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -73211,6 +76815,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -73316,6 +76922,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -73380,6 +76988,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutPatientProfileInput = {
@@ -73410,6 +77019,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutPatientProfileInput = {
@@ -73469,6 +77079,48 @@ export namespace Prisma {
 
   export type appointment_recurring_seriesCreateManyPatientProfileInputEnvelope = {
     data: appointment_recurring_seriesCreateManyPatientProfileInput | appointment_recurring_seriesCreateManyPatientProfileInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_evolution_noteCreateWithoutPatientProfileInput = {
+    id?: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointment: appointmentCreateNestedOneWithoutEvolutionNoteInput
+    customer?: userCreateNestedOneWithoutCustomerAppointmentEvolutionNotesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderAppointmentEvolutionNotesInput
+  }
+
+  export type appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput = {
+    id?: string
+    appointmentId: string
+    customerId?: string | null
+    healthcareProviderId: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_evolution_noteCreateOrConnectWithoutPatientProfileInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    create: XOR<appointment_evolution_noteCreateWithoutPatientProfileInput, appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput>
+  }
+
+  export type appointment_evolution_noteCreateManyPatientProfileInputEnvelope = {
+    data: appointment_evolution_noteCreateManyPatientProfileInput | appointment_evolution_noteCreateManyPatientProfileInput[]
     skipDuplicates?: boolean
   }
 
@@ -73557,6 +77209,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -73662,6 +77316,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -73778,6 +77434,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -73883,6 +77541,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -73967,6 +77627,42 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"appointment_recurring_series"> | Date | string
   }
 
+  export type appointment_evolution_noteUpsertWithWhereUniqueWithoutPatientProfileInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    update: XOR<appointment_evolution_noteUpdateWithoutPatientProfileInput, appointment_evolution_noteUncheckedUpdateWithoutPatientProfileInput>
+    create: XOR<appointment_evolution_noteCreateWithoutPatientProfileInput, appointment_evolution_noteUncheckedCreateWithoutPatientProfileInput>
+  }
+
+  export type appointment_evolution_noteUpdateWithWhereUniqueWithoutPatientProfileInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    data: XOR<appointment_evolution_noteUpdateWithoutPatientProfileInput, appointment_evolution_noteUncheckedUpdateWithoutPatientProfileInput>
+  }
+
+  export type appointment_evolution_noteUpdateManyWithWhereWithoutPatientProfileInput = {
+    where: appointment_evolution_noteScalarWhereInput
+    data: XOR<appointment_evolution_noteUpdateManyMutationInput, appointment_evolution_noteUncheckedUpdateManyWithoutPatientProfileInput>
+  }
+
+  export type appointment_evolution_noteScalarWhereInput = {
+    AND?: appointment_evolution_noteScalarWhereInput | appointment_evolution_noteScalarWhereInput[]
+    OR?: appointment_evolution_noteScalarWhereInput[]
+    NOT?: appointment_evolution_noteScalarWhereInput | appointment_evolution_noteScalarWhereInput[]
+    id?: StringFilter<"appointment_evolution_note"> | string
+    appointmentId?: StringFilter<"appointment_evolution_note"> | string
+    customerId?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    patientProfileId?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    healthcareProviderId?: StringFilter<"appointment_evolution_note"> | string
+    subjective?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    objective?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    assessment?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    plan?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    painLevel?: IntNullableFilter<"appointment_evolution_note"> | number | null
+    painLocation?: StringNullableFilter<"appointment_evolution_note"> | string | null
+    evolutionStatus?: EnumAppointmentEvolutionStatusNullableFilter<"appointment_evolution_note"> | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFilter<"appointment_evolution_note"> | Date | string
+    updatedAt?: DateTimeFilter<"appointment_evolution_note"> | Date | string
+  }
+
   export type userCreateWithoutProceduresInput = {
     id?: string
     name: string
@@ -74041,6 +77737,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
     healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
@@ -74146,6 +77844,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
     healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -74359,6 +78059,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
     healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
@@ -74464,6 +78166,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -74717,6 +78421,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -74822,6 +78528,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -74932,6 +78640,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -75037,6 +78747,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -75158,6 +78870,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -75263,6 +78977,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -75379,6 +79095,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -75484,6 +79202,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -75588,6 +79308,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -75693,6 +79415,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -75814,6 +79538,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -75919,6 +79645,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -76025,6 +79753,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -76130,6 +79860,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -76251,6 +79983,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -76356,6 +80090,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -76490,6 +80226,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -76595,6 +80333,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -76799,6 +80539,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutCustomerInput = {
@@ -76829,6 +80570,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutCustomerInput = {
@@ -76869,6 +80611,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutHealthcareProviderInput = {
@@ -76899,6 +80642,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutHealthcareProviderInput = {
@@ -76939,6 +80683,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentUncheckedCreateWithoutCancelledByUserInput = {
@@ -76969,6 +80714,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedCreateNestedManyWithoutRelatedAppointmentInput
     notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutAppointmentInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutAppointmentInput
+    evolutionNote?: appointment_evolution_noteUncheckedCreateNestedOneWithoutAppointmentInput
   }
 
   export type appointmentCreateOrConnectWithoutCancelledByUserInput = {
@@ -76978,6 +80724,90 @@ export namespace Prisma {
 
   export type appointmentCreateManyCancelledByUserInputEnvelope = {
     data: appointmentCreateManyCancelledByUserInput | appointmentCreateManyCancelledByUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_evolution_noteCreateWithoutCustomerInput = {
+    id?: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointment: appointmentCreateNestedOneWithoutEvolutionNoteInput
+    patientProfile?: patient_profileCreateNestedOneWithoutEvolutionNotesInput
+    healthcareProvider: userCreateNestedOneWithoutProviderAppointmentEvolutionNotesInput
+  }
+
+  export type appointment_evolution_noteUncheckedCreateWithoutCustomerInput = {
+    id?: string
+    appointmentId: string
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_evolution_noteCreateOrConnectWithoutCustomerInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    create: XOR<appointment_evolution_noteCreateWithoutCustomerInput, appointment_evolution_noteUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type appointment_evolution_noteCreateManyCustomerInputEnvelope = {
+    data: appointment_evolution_noteCreateManyCustomerInput | appointment_evolution_noteCreateManyCustomerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type appointment_evolution_noteCreateWithoutHealthcareProviderInput = {
+    id?: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    appointment: appointmentCreateNestedOneWithoutEvolutionNoteInput
+    customer?: userCreateNestedOneWithoutCustomerAppointmentEvolutionNotesInput
+    patientProfile?: patient_profileCreateNestedOneWithoutEvolutionNotesInput
+  }
+
+  export type appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput = {
+    id?: string
+    appointmentId: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_evolution_noteCreateOrConnectWithoutHealthcareProviderInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    create: XOR<appointment_evolution_noteCreateWithoutHealthcareProviderInput, appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type appointment_evolution_noteCreateManyHealthcareProviderInputEnvelope = {
+    data: appointment_evolution_noteCreateManyHealthcareProviderInput | appointment_evolution_noteCreateManyHealthcareProviderInput[]
     skipDuplicates?: boolean
   }
 
@@ -77320,6 +81150,7 @@ export namespace Prisma {
     createdByHealthcareProvider?: userCreateNestedOneWithoutCreatedPatientProfilesInput
     appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
     recurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUncheckedCreateWithoutCustomerOwnerInput = {
@@ -77348,6 +81179,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
     recurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileCreateOrConnectWithoutCustomerOwnerInput = {
@@ -77386,6 +81218,7 @@ export namespace Prisma {
     customerOwner?: userCreateNestedOneWithoutPatientProfilesInput
     appointments?: appointmentCreateNestedManyWithoutPatientProfileInput
     recurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileUncheckedCreateWithoutCreatedByHealthcareProviderInput = {
@@ -77414,6 +81247,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     appointments?: appointmentUncheckedCreateNestedManyWithoutPatientProfileInput
     recurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutPatientProfileInput
+    evolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutPatientProfileInput
   }
 
   export type patient_profileCreateOrConnectWithoutCreatedByHealthcareProviderInput = {
@@ -77949,6 +81783,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -78054,6 +81890,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -78336,6 +82174,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -78441,6 +82281,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -78633,6 +82475,38 @@ export namespace Prisma {
   export type appointmentUpdateManyWithWhereWithoutCancelledByUserInput = {
     where: appointmentScalarWhereInput
     data: XOR<appointmentUpdateManyMutationInput, appointmentUncheckedUpdateManyWithoutCancelledByUserInput>
+  }
+
+  export type appointment_evolution_noteUpsertWithWhereUniqueWithoutCustomerInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    update: XOR<appointment_evolution_noteUpdateWithoutCustomerInput, appointment_evolution_noteUncheckedUpdateWithoutCustomerInput>
+    create: XOR<appointment_evolution_noteCreateWithoutCustomerInput, appointment_evolution_noteUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type appointment_evolution_noteUpdateWithWhereUniqueWithoutCustomerInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    data: XOR<appointment_evolution_noteUpdateWithoutCustomerInput, appointment_evolution_noteUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type appointment_evolution_noteUpdateManyWithWhereWithoutCustomerInput = {
+    where: appointment_evolution_noteScalarWhereInput
+    data: XOR<appointment_evolution_noteUpdateManyMutationInput, appointment_evolution_noteUncheckedUpdateManyWithoutCustomerInput>
+  }
+
+  export type appointment_evolution_noteUpsertWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    update: XOR<appointment_evolution_noteUpdateWithoutHealthcareProviderInput, appointment_evolution_noteUncheckedUpdateWithoutHealthcareProviderInput>
+    create: XOR<appointment_evolution_noteCreateWithoutHealthcareProviderInput, appointment_evolution_noteUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type appointment_evolution_noteUpdateWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: appointment_evolution_noteWhereUniqueInput
+    data: XOR<appointment_evolution_noteUpdateWithoutHealthcareProviderInput, appointment_evolution_noteUncheckedUpdateWithoutHealthcareProviderInput>
+  }
+
+  export type appointment_evolution_noteUpdateManyWithWhereWithoutHealthcareProviderInput = {
+    where: appointment_evolution_noteScalarWhereInput
+    data: XOR<appointment_evolution_noteUpdateManyMutationInput, appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderInput>
   }
 
   export type procedureUpsertWithWhereUniqueWithoutHealthcareProviderInput = {
@@ -79496,6 +83370,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -79601,6 +83477,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -79733,6 +83611,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -79838,6 +83718,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -79948,6 +83830,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -80053,6 +83937,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -80174,6 +84060,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -80279,6 +84167,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -80395,6 +84285,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -80500,6 +84392,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -80605,6 +84499,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -80710,6 +84606,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -80820,6 +84718,8 @@ export namespace Prisma {
     customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
@@ -80925,6 +84825,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
     healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
     cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
     procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
     schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
@@ -81046,6 +84948,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -81151,6 +85055,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -81267,6 +85173,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -81372,6 +85280,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -81655,6 +85565,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutRecurringSeriesInput = {
@@ -81685,6 +85596,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateManyWithoutRecurringSeriesInput = {
@@ -81811,6 +85723,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutRecurringRuleInput = {
@@ -81841,6 +85754,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateManyWithoutRecurringRuleInput = {
@@ -82060,6 +85974,22 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type appointment_evolution_noteCreateManyPatientProfileInput = {
+    id?: string
+    appointmentId: string
+    customerId?: string | null
+    healthcareProviderId: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type appointmentUpdateWithoutPatientProfileInput = {
     id?: StringFieldUpdateOperationsInput | string
     recurringGeneratedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -82088,6 +86018,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutPatientProfileInput = {
@@ -82118,6 +86049,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateManyWithoutPatientProfileInput = {
@@ -82199,6 +86131,54 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     generatedUntil?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_evolution_noteUpdateWithoutPatientProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointment?: appointmentUpdateOneRequiredWithoutEvolutionNoteNestedInput
+    customer?: userUpdateOneWithoutCustomerAppointmentEvolutionNotesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderAppointmentEvolutionNotesNestedInput
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateWithoutPatientProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateManyWithoutPatientProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -82430,6 +86410,38 @@ export namespace Prisma {
     cancellationFeeCents?: number | null
     cancellationPolicyAppliedAt?: Date | string | null
     cancelledAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_evolution_noteCreateManyCustomerInput = {
+    id?: string
+    appointmentId: string
+    patientProfileId?: string | null
+    healthcareProviderId: string
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type appointment_evolution_noteCreateManyHealthcareProviderInput = {
+    id?: string
+    appointmentId: string
+    customerId?: string | null
+    patientProfileId?: string | null
+    subjective?: string | null
+    objective?: string | null
+    assessment?: string | null
+    plan?: string | null
+    painLevel?: number | null
+    painLocation?: string | null
+    evolutionStatus?: $Enums.AppointmentEvolutionStatus | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -83007,6 +87019,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutCustomerInput = {
@@ -83037,6 +87050,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateManyWithoutCustomerInput = {
@@ -83093,6 +87107,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutHealthcareProviderInput = {
@@ -83123,6 +87138,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateManyWithoutHealthcareProviderInput = {
@@ -83179,6 +87195,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateWithoutCancelledByUserInput = {
@@ -83209,6 +87226,7 @@ export namespace Prisma {
     relatedMessages?: conversation_messageUncheckedUpdateManyWithoutRelatedAppointmentNestedInput
     notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutAppointmentNestedInput
     rescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutAppointmentNestedInput
+    evolutionNote?: appointment_evolution_noteUncheckedUpdateOneWithoutAppointmentNestedInput
   }
 
   export type appointmentUncheckedUpdateManyWithoutCancelledByUserInput = {
@@ -83233,6 +87251,102 @@ export namespace Prisma {
     cancellationFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
     cancellationPolicyAppliedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_evolution_noteUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointment?: appointmentUpdateOneRequiredWithoutEvolutionNoteNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutEvolutionNotesNestedInput
+    healthcareProvider?: userUpdateOneRequiredWithoutProviderAppointmentEvolutionNotesNestedInput
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateManyWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_evolution_noteUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    appointment?: appointmentUpdateOneRequiredWithoutEvolutionNoteNestedInput
+    customer?: userUpdateOneWithoutCustomerAppointmentEvolutionNotesNestedInput
+    patientProfile?: patient_profileUpdateOneWithoutEvolutionNotesNestedInput
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    appointmentId?: StringFieldUpdateOperationsInput | string
+    customerId?: NullableStringFieldUpdateOperationsInput | string | null
+    patientProfileId?: NullableStringFieldUpdateOperationsInput | string | null
+    subjective?: NullableStringFieldUpdateOperationsInput | string | null
+    objective?: NullableStringFieldUpdateOperationsInput | string | null
+    assessment?: NullableStringFieldUpdateOperationsInput | string | null
+    plan?: NullableStringFieldUpdateOperationsInput | string | null
+    painLevel?: NullableIntFieldUpdateOperationsInput | number | null
+    painLocation?: NullableStringFieldUpdateOperationsInput | string | null
+    evolutionStatus?: NullableEnumAppointmentEvolutionStatusFieldUpdateOperationsInput | $Enums.AppointmentEvolutionStatus | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -83521,6 +87635,7 @@ export namespace Prisma {
     createdByHealthcareProvider?: userUpdateOneWithoutCreatedPatientProfilesNestedInput
     appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
     recurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateWithoutCustomerOwnerInput = {
@@ -83549,6 +87664,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
     recurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateManyWithoutCustomerOwnerInput = {
@@ -83603,6 +87719,7 @@ export namespace Prisma {
     customerOwner?: userUpdateOneWithoutPatientProfilesNestedInput
     appointments?: appointmentUpdateManyWithoutPatientProfileNestedInput
     recurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateWithoutCreatedByHealthcareProviderInput = {
@@ -83631,6 +87748,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     appointments?: appointmentUncheckedUpdateManyWithoutPatientProfileNestedInput
     recurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutPatientProfileNestedInput
+    evolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutPatientProfileNestedInput
   }
 
   export type patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderInput = {
@@ -84216,6 +88334,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -84321,6 +88441,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
@@ -84682,6 +88804,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
@@ -84787,6 +88911,8 @@ export namespace Prisma {
     customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
     healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
