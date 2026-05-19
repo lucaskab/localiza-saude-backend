@@ -300,6 +300,9 @@ export function buildHealthcareProviderCreateData(
 		appointmentReminderHoursBefore:
 			data.appointmentReminderHoursBefore ?? undefined,
 		birthdayGreetingEmailEnabled: data.birthdayGreetingEmailEnabled ?? undefined,
+		birthdayGreetingEmailSubjectTemplate:
+			data.birthdayGreetingEmailSubjectTemplate,
+		birthdayGreetingEmailHtmlTemplate: data.birthdayGreetingEmailHtmlTemplate,
 		cancellationPolicy: data.cancellationPolicy,
 		cancellationPolicyEnabled: data.cancellationPolicyEnabled,
 		cancellationPolicyHoursBefore: data.cancellationPolicyHoursBefore,
@@ -434,6 +437,13 @@ export function buildHealthcareProviderUpdateData(
 		}),
 		...(data.birthdayGreetingEmailEnabled !== undefined && {
 			birthdayGreetingEmailEnabled: data.birthdayGreetingEmailEnabled,
+		}),
+		...(data.birthdayGreetingEmailSubjectTemplate !== undefined && {
+			birthdayGreetingEmailSubjectTemplate:
+				data.birthdayGreetingEmailSubjectTemplate,
+		}),
+		...(data.birthdayGreetingEmailHtmlTemplate !== undefined && {
+			birthdayGreetingEmailHtmlTemplate: data.birthdayGreetingEmailHtmlTemplate,
 		}),
 		...(data.cancellationPolicy !== undefined && {
 			cancellationPolicy: data.cancellationPolicy,

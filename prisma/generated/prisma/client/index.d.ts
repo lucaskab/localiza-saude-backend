@@ -40065,6 +40065,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore: number | null
     appointmentReminderHoursBefore: number | null
     birthdayGreetingEmailEnabled: boolean | null
+    birthdayGreetingEmailSubjectTemplate: string | null
+    birthdayGreetingEmailHtmlTemplate: string | null
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean | null
     cancellationPolicyHoursBefore: number | null
@@ -40128,6 +40130,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore: number | null
     appointmentReminderHoursBefore: number | null
     birthdayGreetingEmailEnabled: boolean | null
+    birthdayGreetingEmailSubjectTemplate: string | null
+    birthdayGreetingEmailHtmlTemplate: string | null
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean | null
     cancellationPolicyHoursBefore: number | null
@@ -40196,6 +40200,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore: number
     appointmentReminderHoursBefore: number
     birthdayGreetingEmailEnabled: number
+    birthdayGreetingEmailSubjectTemplate: number
+    birthdayGreetingEmailHtmlTemplate: number
     cancellationPolicy: number
     cancellationPolicyEnabled: number
     cancellationPolicyHoursBefore: number
@@ -40290,6 +40296,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: true
     appointmentReminderHoursBefore?: true
     birthdayGreetingEmailEnabled?: true
+    birthdayGreetingEmailSubjectTemplate?: true
+    birthdayGreetingEmailHtmlTemplate?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
     cancellationPolicyHoursBefore?: true
@@ -40353,6 +40361,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: true
     appointmentReminderHoursBefore?: true
     birthdayGreetingEmailEnabled?: true
+    birthdayGreetingEmailSubjectTemplate?: true
+    birthdayGreetingEmailHtmlTemplate?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
     cancellationPolicyHoursBefore?: true
@@ -40421,6 +40431,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: true
     appointmentReminderHoursBefore?: true
     birthdayGreetingEmailEnabled?: true
+    birthdayGreetingEmailSubjectTemplate?: true
+    birthdayGreetingEmailHtmlTemplate?: true
     cancellationPolicy?: true
     cancellationPolicyEnabled?: true
     cancellationPolicyHoursBefore?: true
@@ -40577,6 +40589,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore: number
     appointmentReminderHoursBefore: number
     birthdayGreetingEmailEnabled: boolean
+    birthdayGreetingEmailSubjectTemplate: string | null
+    birthdayGreetingEmailHtmlTemplate: string | null
     cancellationPolicy: string | null
     cancellationPolicyEnabled: boolean
     cancellationPolicyHoursBefore: number | null
@@ -40665,6 +40679,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: boolean
     appointmentReminderHoursBefore?: boolean
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: boolean
+    birthdayGreetingEmailHtmlTemplate?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -40776,6 +40792,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: boolean
     appointmentReminderHoursBefore?: boolean
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: boolean
+    birthdayGreetingEmailHtmlTemplate?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -40847,6 +40865,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: boolean
     appointmentReminderHoursBefore?: boolean
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: boolean
+    birthdayGreetingEmailHtmlTemplate?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -40918,6 +40938,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: boolean
     appointmentReminderHoursBefore?: boolean
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: boolean
+    birthdayGreetingEmailHtmlTemplate?: boolean
     cancellationPolicy?: boolean
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: boolean
@@ -40933,7 +40955,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "appointmentConfirmationReminderHoursBefore" | "appointmentReminderHoursBefore" | "birthdayGreetingEmailEnabled" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "appointmentConfirmationReminderHoursBefore" | "appointmentReminderHoursBefore" | "birthdayGreetingEmailEnabled" | "birthdayGreetingEmailSubjectTemplate" | "birthdayGreetingEmailHtmlTemplate" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
@@ -41086,6 +41108,8 @@ export namespace Prisma {
       appointmentConfirmationReminderHoursBefore: number
       appointmentReminderHoursBefore: number
       birthdayGreetingEmailEnabled: boolean
+      birthdayGreetingEmailSubjectTemplate: string | null
+      birthdayGreetingEmailHtmlTemplate: string | null
       cancellationPolicy: string | null
       cancellationPolicyEnabled: boolean
       cancellationPolicyHoursBefore: number | null
@@ -41616,6 +41640,8 @@ export namespace Prisma {
     readonly appointmentConfirmationReminderHoursBefore: FieldRef<"user", 'Int'>
     readonly appointmentReminderHoursBefore: FieldRef<"user", 'Int'>
     readonly birthdayGreetingEmailEnabled: FieldRef<"user", 'Boolean'>
+    readonly birthdayGreetingEmailSubjectTemplate: FieldRef<"user", 'String'>
+    readonly birthdayGreetingEmailHtmlTemplate: FieldRef<"user", 'String'>
     readonly cancellationPolicy: FieldRef<"user", 'String'>
     readonly cancellationPolicyEnabled: FieldRef<"user", 'Boolean'>
     readonly cancellationPolicyHoursBefore: FieldRef<"user", 'Int'>
@@ -47909,6 +47935,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore: 'appointmentConfirmationReminderHoursBefore',
     appointmentReminderHoursBefore: 'appointmentReminderHoursBefore',
     birthdayGreetingEmailEnabled: 'birthdayGreetingEmailEnabled',
+    birthdayGreetingEmailSubjectTemplate: 'birthdayGreetingEmailSubjectTemplate',
+    birthdayGreetingEmailHtmlTemplate: 'birthdayGreetingEmailHtmlTemplate',
     cancellationPolicy: 'cancellationPolicy',
     cancellationPolicyEnabled: 'cancellationPolicyEnabled',
     cancellationPolicyHoursBefore: 'cancellationPolicyHoursBefore',
@@ -50883,6 +50911,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFilter<"user"> | number
     appointmentReminderHoursBefore?: IntFilter<"user"> | number
     birthdayGreetingEmailEnabled?: BoolFilter<"user"> | boolean
+    birthdayGreetingEmailSubjectTemplate?: StringNullableFilter<"user"> | string | null
+    birthdayGreetingEmailHtmlTemplate?: StringNullableFilter<"user"> | string | null
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableFilter<"user"> | number | null
@@ -50993,6 +51023,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: SortOrder
     appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
+    birthdayGreetingEmailSubjectTemplate?: SortOrderInput | SortOrder
+    birthdayGreetingEmailHtmlTemplate?: SortOrderInput | SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrderInput | SortOrder
@@ -51106,6 +51138,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFilter<"user"> | number
     appointmentReminderHoursBefore?: IntFilter<"user"> | number
     birthdayGreetingEmailEnabled?: BoolFilter<"user"> | boolean
+    birthdayGreetingEmailSubjectTemplate?: StringNullableFilter<"user"> | string | null
+    birthdayGreetingEmailHtmlTemplate?: StringNullableFilter<"user"> | string | null
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableFilter<"user"> | number | null
@@ -51216,6 +51250,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: SortOrder
     appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
+    birthdayGreetingEmailSubjectTemplate?: SortOrderInput | SortOrder
+    birthdayGreetingEmailHtmlTemplate?: SortOrderInput | SortOrder
     cancellationPolicy?: SortOrderInput | SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrderInput | SortOrder
@@ -51293,6 +51329,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntWithAggregatesFilter<"user"> | number
     appointmentReminderHoursBefore?: IntWithAggregatesFilter<"user"> | number
     birthdayGreetingEmailEnabled?: BoolWithAggregatesFilter<"user"> | boolean
+    birthdayGreetingEmailSubjectTemplate?: StringNullableWithAggregatesFilter<"user"> | string | null
+    birthdayGreetingEmailHtmlTemplate?: StringNullableWithAggregatesFilter<"user"> | string | null
     cancellationPolicy?: StringNullableWithAggregatesFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolWithAggregatesFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableWithAggregatesFilter<"user"> | number | null
@@ -54282,6 +54320,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -54392,6 +54432,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -54498,6 +54540,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54608,6 +54652,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54716,6 +54762,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -54783,6 +54831,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54852,6 +54902,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -57379,6 +57431,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: SortOrder
     appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
+    birthdayGreetingEmailSubjectTemplate?: SortOrder
+    birthdayGreetingEmailHtmlTemplate?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
@@ -57457,6 +57511,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: SortOrder
     appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
+    birthdayGreetingEmailSubjectTemplate?: SortOrder
+    birthdayGreetingEmailHtmlTemplate?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
@@ -57520,6 +57576,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: SortOrder
     appointmentReminderHoursBefore?: SortOrder
     birthdayGreetingEmailEnabled?: SortOrder
+    birthdayGreetingEmailSubjectTemplate?: SortOrder
+    birthdayGreetingEmailHtmlTemplate?: SortOrder
     cancellationPolicy?: SortOrder
     cancellationPolicyEnabled?: SortOrder
     cancellationPolicyHoursBefore?: SortOrder
@@ -61838,6 +61896,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -61947,6 +62007,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62068,6 +62130,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62177,6 +62241,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62494,6 +62560,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62603,6 +62671,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62776,6 +62846,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -62885,6 +62957,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63063,6 +63137,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63172,6 +63248,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -63462,6 +63540,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63571,6 +63651,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63756,6 +63838,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63865,6 +63949,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64061,6 +64147,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64170,6 +64258,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64511,6 +64601,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64620,6 +64712,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64793,6 +64887,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -64902,6 +64998,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -65096,6 +65194,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65205,6 +65305,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65390,6 +65492,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65499,6 +65603,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65671,6 +65777,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -65780,6 +65888,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -65974,6 +66084,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66083,6 +66195,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66188,6 +66302,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66297,6 +66413,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66470,6 +66588,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66579,6 +66699,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66689,6 +66811,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -66798,6 +66922,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -67041,6 +67167,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67150,6 +67278,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67335,6 +67465,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67444,6 +67576,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67560,6 +67694,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67669,6 +67805,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68226,6 +68364,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68335,6 +68475,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68445,6 +68587,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68554,6 +68698,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -68697,6 +68843,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68806,6 +68954,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68922,6 +69072,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69031,6 +69183,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69342,6 +69496,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -69451,6 +69607,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -69593,6 +69751,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69702,6 +69862,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69834,6 +69996,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -69943,6 +70107,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70094,6 +70260,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70203,6 +70371,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70373,6 +70543,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70482,6 +70654,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70644,6 +70818,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70753,6 +70929,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70858,6 +71036,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -70967,6 +71147,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71077,6 +71259,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71186,6 +71370,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71307,6 +71493,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71416,6 +71604,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71532,6 +71722,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71641,6 +71833,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71746,6 +71940,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71855,6 +72051,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -71976,6 +72174,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72085,6 +72285,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72190,6 +72392,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -72299,6 +72503,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -72420,6 +72626,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72529,6 +72737,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72634,6 +72844,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -72743,6 +72955,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -72864,6 +73078,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -72973,6 +73189,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73078,6 +73296,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -73187,6 +73407,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -73308,6 +73530,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73417,6 +73641,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -73522,6 +73748,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -73631,6 +73859,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -73741,6 +73971,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -73850,6 +74082,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -74011,6 +74245,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74120,6 +74356,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74236,6 +74474,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74345,6 +74585,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74489,6 +74731,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -74598,6 +74842,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -74815,6 +75061,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -74924,6 +75172,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -75102,6 +75352,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -75211,6 +75463,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -75332,6 +75586,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -75441,6 +75697,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -75546,6 +75804,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -75655,6 +75915,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -75776,6 +76038,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -75885,6 +76149,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -75990,6 +76256,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -76099,6 +76367,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -76287,6 +76557,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -76396,6 +76668,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -76574,6 +76848,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -76683,6 +76959,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -76793,6 +77071,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -76902,6 +77182,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -77187,6 +77469,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -77296,6 +77580,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -77412,6 +77698,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -77521,6 +77809,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -77715,6 +78005,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -77824,6 +78116,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -78037,6 +78331,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -78146,6 +78442,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -78399,6 +78697,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -78508,6 +78808,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -78618,6 +78920,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -78727,6 +79031,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -78848,6 +79154,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -78957,6 +79265,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -79073,6 +79383,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -79182,6 +79494,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -79287,6 +79601,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79396,6 +79712,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79517,6 +79835,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -79626,6 +79946,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -79731,6 +80053,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79840,6 +80164,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -79961,6 +80287,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -80070,6 +80398,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -80204,6 +80534,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -80313,6 +80645,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -81762,6 +82096,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -81870,6 +82206,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -82152,6 +82490,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -82261,6 +82601,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -83190,6 +83532,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFilter<"user"> | number
     appointmentReminderHoursBefore?: IntFilter<"user"> | number
     birthdayGreetingEmailEnabled?: BoolFilter<"user"> | boolean
+    birthdayGreetingEmailSubjectTemplate?: StringNullableFilter<"user"> | string | null
+    birthdayGreetingEmailHtmlTemplate?: StringNullableFilter<"user"> | string | null
     cancellationPolicy?: StringNullableFilter<"user"> | string | null
     cancellationPolicyEnabled?: BoolFilter<"user"> | boolean
     cancellationPolicyHoursBefore?: IntNullableFilter<"user"> | number | null
@@ -83349,6 +83693,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -83457,6 +83803,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -83589,6 +83937,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -83698,6 +84048,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -83808,6 +84160,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -83917,6 +84271,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -84038,6 +84394,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -84147,6 +84505,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -84263,6 +84623,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -84372,6 +84734,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -84477,6 +84841,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -84586,6 +84952,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -84696,6 +85064,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -84805,6 +85175,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -84926,6 +85298,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -85035,6 +85409,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -85151,6 +85527,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -85260,6 +85638,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -86787,6 +87167,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -88313,6 +88695,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -88421,6 +88805,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -88528,6 +88914,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -88716,6 +89104,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: number
     appointmentReminderHoursBefore?: number
     birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
     cancellationPolicy?: string | null
     cancellationPolicyEnabled?: boolean
     cancellationPolicyHoursBefore?: number | null
@@ -88783,6 +89173,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -88891,6 +89283,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
@@ -88998,6 +89392,8 @@ export namespace Prisma {
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
     birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
     cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
     cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null

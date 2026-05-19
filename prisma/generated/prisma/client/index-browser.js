@@ -548,6 +548,8 @@ exports.Prisma.UserScalarFieldEnum = {
   appointmentConfirmationReminderHoursBefore: 'appointmentConfirmationReminderHoursBefore',
   appointmentReminderHoursBefore: 'appointmentReminderHoursBefore',
   birthdayGreetingEmailEnabled: 'birthdayGreetingEmailEnabled',
+  birthdayGreetingEmailSubjectTemplate: 'birthdayGreetingEmailSubjectTemplate',
+  birthdayGreetingEmailHtmlTemplate: 'birthdayGreetingEmailHtmlTemplate',
   cancellationPolicy: 'cancellationPolicy',
   cancellationPolicyEnabled: 'cancellationPolicyEnabled',
   cancellationPolicyHoursBefore: 'cancellationPolicyHoursBefore',

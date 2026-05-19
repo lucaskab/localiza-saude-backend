@@ -54,6 +54,8 @@ model user {
   appointmentConfirmationReminderHoursBefore Int @default(24) @map("appointment_confirmation_reminder_hours_before")
   appointmentReminderHoursBefore Int @default(1) @map("appointment_reminder_hours_before")
   birthdayGreetingEmailEnabled Boolean @default(false) @map("birthday_greeting_email_enabled")
+  birthdayGreetingEmailSubjectTemplate String? @map("birthday_greeting_email_subject_template")
+  birthdayGreetingEmailHtmlTemplate String? @map("birthday_greeting_email_html_template")
   cancellationPolicy String? @map("cancellation_policy")
   cancellationPolicyEnabled Boolean @default(false) @map("cancellation_policy_enabled")
   cancellationPolicyHoursBefore Int? @map("cancellation_policy_hours_before")

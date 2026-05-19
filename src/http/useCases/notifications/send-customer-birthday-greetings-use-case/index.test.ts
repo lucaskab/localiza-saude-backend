@@ -140,6 +140,12 @@ describe("sendCustomerBirthdayGreetingsUseCase", () => {
 				idempotencyKey: "birthday:provider-1:2026",
 			}),
 		);
+		const sendCalls = mockEmailService.send.mock.calls as unknown as Array<
+			Array<{ html?: string }>
+		>;
+		const firstSendPayload = sendCalls[0]?.[0];
+		expect(firstSendPayload).toBeDefined();
+		expect(firstSendPayload?.html).toContain("Lucas");
 		expect(mockNotificationsRepository.createDelivery).toHaveBeenCalledWith(
 			expect.objectContaining({
 				userId: "customer-1",
@@ -155,6 +161,36 @@ describe("sendCustomerBirthdayGreetingsUseCase", () => {
 			skipped: 0,
 			failed: 0,
 		});
+	});
+
+	test("renders custom birthday templates with provider placeholders", async () => {
+		mockNotificationsRepository.findBirthdayGreetingCandidates.mockResolvedValue([
+			makeBirthdayCandidate({
+				healthcareProvider: makeUser({
+					id: "provider-1",
+					role: "HEALTHCARE_PROVIDER",
+					name: "Clínica Cuidar",
+					displayName: "Dra. Ana Souza",
+					birthdayGreetingEmailEnabled: true,
+					birthdayGreetingEmailSubjectTemplate:
+						"Parabéns, {{customerFirstName}}! Um abraço de {{providerName}}",
+					birthdayGreetingEmailHtmlTemplate:
+						"<div>Olá <strong>{{customerName}}</strong>, hoje é seu dia. Com carinho, {{providerName}}.</div>",
+				}),
+			}),
+		]);
+
+		await sendCustomerBirthdayGreetingsUseCase.execute(
+			new Date("2026-05-14T09:00:00.000Z"),
+		);
+
+		expect(mockEmailService.send).toHaveBeenCalledWith(
+			expect.objectContaining({
+				subject: "Parabéns, Lucas! Um abraço de Dra. Ana Souza",
+				html: "<div>Olá <strong>Lucas</strong>, hoje é seu dia. Com carinho, Dra. Ana Souza.</div>",
+				text: "Olá Lucas, hoje é seu dia. Com carinho, Dra. Ana Souza.",
+			}),
+		);
 	});
 
 	test("skips customers whose birthday does not match the current day", async () => {

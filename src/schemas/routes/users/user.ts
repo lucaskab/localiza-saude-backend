@@ -99,6 +99,8 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	appointmentConfirmationReminderHoursBefore: z.number().int().optional(),
 	appointmentReminderHoursBefore: z.number().int().optional(),
 	birthdayGreetingEmailEnabled: z.boolean().optional(),
+	birthdayGreetingEmailSubjectTemplate: z.string().nullable().optional(),
+	birthdayGreetingEmailHtmlTemplate: z.string().nullable().optional(),
 	cancellationPolicy: z.string().nullable().optional(),
 	cancellationPolicyEnabled: z.boolean().optional(),
 	cancellationPolicyHoursBefore: z.number().int().nullable().optional(),

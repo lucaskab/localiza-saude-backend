@@ -61,6 +61,8 @@ export function makeUser(overrides: Override<user> = {}): user {
 		bookingAvailabilityDays: 90,
 		appointmentConfirmationReminderHoursBefore: 24,
 		appointmentReminderHoursBefore: 1,
+		birthdayGreetingEmailSubjectTemplate: null,
+		birthdayGreetingEmailHtmlTemplate: null,
 		cancellationPolicy: null,
 		cancellationPolicyEnabled: false,
 		cancellationPolicyHoursBefore: null,

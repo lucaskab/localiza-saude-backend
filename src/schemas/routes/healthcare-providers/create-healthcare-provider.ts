@@ -39,6 +39,8 @@ export const createHealthcareProviderBodySchema = z.object({
 	appointmentConfirmationReminderHoursBefore: z.number().int().min(1).max(168).nullable().optional(),
 	appointmentReminderHoursBefore: z.number().int().min(1).max(168).nullable().optional(),
 	birthdayGreetingEmailEnabled: z.boolean().optional(),
+	birthdayGreetingEmailSubjectTemplate: z.string().trim().min(1).max(200).nullable().optional(),
+	birthdayGreetingEmailHtmlTemplate: z.string().trim().min(1).max(50000).nullable().optional(),
 	cancellationPolicy: z.string().trim().nullable().optional(),
 	cancellationPolicyEnabled: z.boolean().optional(),
 	cancellationPolicyHoursBefore: z.number().int().min(0).max(720).nullable().optional(),

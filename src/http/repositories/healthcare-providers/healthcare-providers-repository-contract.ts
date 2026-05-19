@@ -55,6 +55,8 @@ export type CreateHealthcareProviderData = {
 	appointmentConfirmationReminderHoursBefore?: number | null;
 	appointmentReminderHoursBefore?: number | null;
 	birthdayGreetingEmailEnabled?: boolean;
+	birthdayGreetingEmailSubjectTemplate?: string | null;
+	birthdayGreetingEmailHtmlTemplate?: string | null;
 	cancellationPolicy?: string | null;
 	cancellationPolicyEnabled?: boolean;
 	cancellationPolicyHoursBefore?: number | null;
@@ -110,6 +112,8 @@ export type UpdateHealthcareProviderData = {
 	appointmentConfirmationReminderHoursBefore?: number | null;
 	appointmentReminderHoursBefore?: number | null;
 	birthdayGreetingEmailEnabled?: boolean;
+	birthdayGreetingEmailSubjectTemplate?: string | null;
+	birthdayGreetingEmailHtmlTemplate?: string | null;
 	cancellationPolicy?: string | null;
 	cancellationPolicyEnabled?: boolean;
 	cancellationPolicyHoursBefore?: number | null;
