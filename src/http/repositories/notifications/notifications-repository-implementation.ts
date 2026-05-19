@@ -1,5 +1,5 @@
 import { prisma } from "@/database/prisma";
-import type { Prisma } from "../../../../prisma/generated/prisma/client";
+import { Prisma } from "../../../../prisma/generated/prisma/client";
 import type {
 	CreateDeliveryData,
 	NotificationsRepository,
@@ -128,19 +128,44 @@ export const prismaNotificationsRepository: NotificationsRepository = {
 	},
 
 	async createDelivery(data: CreateDeliveryData) {
-		return prisma.notification_delivery.create({
-			data: {
-				userId: data.userId,
-				type: data.type,
-				channel: data.channel,
-				appointmentId: data.appointmentId,
-				dedupeKey: data.dedupeKey,
-				status: data.status,
-				expoTicketId: data.expoTicketId,
-				errorMessage: data.errorMessage,
-				sentAt: data.sentAt,
-			},
-		});
+		try {
+			return await prisma.notification_delivery.create({
+				data: {
+					userId: data.userId,
+					type: data.type,
+					channel: data.channel,
+					appointmentId: data.appointmentId,
+					dedupeKey: data.dedupeKey,
+					status: data.status,
+					expoTicketId: data.expoTicketId,
+					errorMessage: data.errorMessage,
+					sentAt: data.sentAt,
+				},
+			});
+		} catch (error) {
+			if (
+				error instanceof Prisma.PrismaClientKnownRequestError &&
+				error.code === "P2002" &&
+				data.dedupeKey
+			) {
+				const existingDelivery = await prisma.notification_delivery.findUnique({
+					where: {
+						userId_type_channel_dedupeKey: {
+							userId: data.userId,
+							type: data.type,
+							channel: data.channel,
+							dedupeKey: data.dedupeKey,
+						},
+					},
+				});
+
+				if (existingDelivery) {
+					return existingDelivery;
+				}
+			}
+
+			throw error;
+		}
 	},
 
 	async findUpcomingAppointmentsForReminderWindow(now: Date, until: Date) {
