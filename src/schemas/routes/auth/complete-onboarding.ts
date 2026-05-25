@@ -15,6 +15,12 @@ export const onboardingUserSchema = z.object({
 	image: z.string().nullable(),
 	role: z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER", "STAFF"]),
 	onboardingCompleted: z.boolean(),
+	onboardingStep: z.enum([
+		"ROLE",
+		"CUSTOMER_PROFILE",
+		"CUSTOMER_MEDICAL",
+		"COMPLETED",
+	]),
 	createdAt: z.date(),
 	updatedAt: z.date(),
 });

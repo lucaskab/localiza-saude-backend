@@ -18,8 +18,6 @@ export const getHealthcareProvidersQuerySchema = z.object({
 	latitude: z.coerce.number().min(-90).max(90).optional(),
 	longitude: z.coerce.number().min(-180).max(180).optional(),
 	radiusInKm: z.coerce.number().min(1).max(200).default(25).optional(),
-	verified: booleanQuerySchema.optional(),
-	superProfessional: booleanQuerySchema.optional(),
 	available: booleanQuerySchema.optional(),
 	minRating: z.coerce.number().min(0).max(5).optional(),
 	maxPriceCents: z.coerce.number().int().min(0).optional(),

@@ -11,6 +11,7 @@ import { seedProviderFaqs, seedProviderVerification } from "./providers";
 import { seedProfessionalCouncils } from "./professional-councils";
 import { seedScheduleExceptions } from "./schedule-exceptions";
 import type { SeedClient } from "./types";
+import { seedClinicAddresses, seedUserAddresses } from "./addresses";
 import { seedUsers } from "./users";
 
 export async function runSeed(prisma: SeedClient) {
@@ -23,9 +24,11 @@ export async function runSeed(prisma: SeedClient) {
 
 	await seedProfessionalCouncils(prisma);
 	const users = await seedUsers(prisma);
+	await seedUserAddresses(prisma, users);
 	await seedAuthFixtures(prisma, users);
 	const categories = await seedCategories(prisma, users);
 	const clinics = await seedClinics(prisma, users);
+	await seedClinicAddresses(prisma, clinics);
 	await seedProviderFaqs(prisma, users);
 	await seedProviderVerification(prisma, users);
 	const procedures = await seedSchedulesAndProcedures(prisma, users);

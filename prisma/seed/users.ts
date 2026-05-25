@@ -46,7 +46,6 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			onboardingCompleted: true,
 			cpf: "123.456.789-10",
 			dateOfBirth: new Date("1994-02-14T00:00:00.000Z"),
-			address: "Rua Augusta, 1200 - Consolação, São Paulo - SP",
 		},
 		update: {
 			name: REAL_USERS.customerLucas.name,
@@ -59,7 +58,6 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			onboardingCompleted: true,
 			cpf: "123.456.789-10",
 			dateOfBirth: new Date("1994-02-14T00:00:00.000Z"),
-			address: "Rua Augusta, 1200 - Consolação, São Paulo - SP",
 		},
 	});
 
@@ -106,13 +104,7 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			yearsOfExperience: 9,
 			targetAudiences: ["Adultos", "Idosos", "Famílias"],
 			serviceModalities: ["IN_PERSON", "ONLINE", "HOME_CARE"],
-			clinicAddress:
 				"Av. Paulista, 900 - Bela Vista, São Paulo - SP, 01310-100",
-			clinicLatitude: -23.564186,
-			clinicLongitude: -46.652741,
-			clinicNeighborhood: "Bela Vista",
-			clinicCity: "São Paulo",
-			clinicState: "SP",
 			homeCareRadiusKm: 10,
 			acceptedInsurance: ["Particular", "Unimed", "Bradesco Saúde"],
 			paymentMethods: ["Pix", "Cartão de crédito", "Cartão de débito"],
@@ -168,13 +160,7 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			yearsOfExperience: 9,
 			targetAudiences: ["Adultos", "Idosos", "Famílias"],
 			serviceModalities: ["IN_PERSON", "ONLINE", "HOME_CARE"],
-			clinicAddress:
 				"Av. Paulista, 900 - Bela Vista, São Paulo - SP, 01310-100",
-			clinicLatitude: -23.564186,
-			clinicLongitude: -46.652741,
-			clinicNeighborhood: "Bela Vista",
-			clinicCity: "São Paulo",
-			clinicState: "SP",
 			homeCareRadiusKm: 10,
 			acceptedInsurance: ["Particular", "Unimed", "Bradesco Saúde"],
 			paymentMethods: ["Pix", "Cartão de crédito", "Cartão de débito"],
@@ -229,7 +215,6 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			onboardingCompleted: true,
 			cpf: "987.654.321-00",
 			dateOfBirth: new Date("1992-08-22T00:00:00.000Z"),
-			address: "Av. Paulista, 900 - Bela Vista, São Paulo - SP",
 		},
 	});
 

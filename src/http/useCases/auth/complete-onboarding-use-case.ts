@@ -19,13 +19,18 @@ export const completeOnboardingUseCase = {
 		}
 
 		return prisma.$transaction(async (tx) => {
+			const isCustomer = data.role === "CUSTOMER";
+
 			const user = await tx.user.update({
 				where: {
 					id: userId,
 				},
 				data: {
 					role: data.role,
-					onboardingCompleted: true,
+					onboardingCompleted: !isCustomer,
+					onboardingStep: isCustomer
+						? "CUSTOMER_PROFILE"
+						: "COMPLETED",
 					...(data.role === "HEALTHCARE_PROVIDER" && {
 						displayName: existingUser.name,
 						verificationStatus: "PENDING",

@@ -3,25 +3,17 @@ import { prisma } from "@/database/prisma";
 type ProviderMarketplaceMetrics = {
 	completedAppointments: number;
 	confirmationRate: number;
-	isSuperProfessional: boolean;
-};
-
-type ProviderQualityInput = {
-	averageRating: number;
-	totalRatings: number;
 };
 
 const emptyMetrics: ProviderMarketplaceMetrics = {
 	completedAppointments: 0,
 	confirmationRate: 0,
-	isSuperProfessional: false,
 };
 
 const confirmedStatuses = new Set(["CONFIRMED", "IN_PROGRESS", "COMPLETED"]);
 
 export async function getProviderMarketplaceMetricsByProviderIds(
 	providerIds: string[],
-	qualityByProviderId?: Map<string, ProviderQualityInput>,
 ): Promise<Map<string, ProviderMarketplaceMetrics>> {
 	const uniqueProviderIds = Array.from(new Set(providerIds));
 	const metrics = new Map<string, ProviderMarketplaceMetrics>(
@@ -69,7 +61,6 @@ export async function getProviderMarketplaceMetricsByProviderIds(
 
 	for (const providerId of uniqueProviderIds) {
 		const total = totals.get(providerId);
-		const quality = qualityByProviderId?.get(providerId);
 		const confirmationRate = total?.total
 			? total.confirmed / total.total
 			: 0;
@@ -78,11 +69,6 @@ export async function getProviderMarketplaceMetricsByProviderIds(
 		metrics.set(providerId, {
 			completedAppointments,
 			confirmationRate,
-			isSuperProfessional:
-				completedAppointments >= 20 &&
-				confirmationRate >= 0.85 &&
-				(quality?.averageRating ?? 0) >= 4.8 &&
-				(quality?.totalRatings ?? 0) >= 10,
 		});
 	}
 

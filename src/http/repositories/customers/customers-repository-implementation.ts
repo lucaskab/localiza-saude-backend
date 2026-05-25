@@ -40,7 +40,6 @@ export const prismaCustomerRepository: CustomerRepository = {
 				role: "CUSTOMER",
 				cpf: data.cpf,
 				dateOfBirth: data.dateOfBirth,
-				address: data.address,
 			},
 		});
 
@@ -55,7 +54,6 @@ export const prismaCustomerRepository: CustomerRepository = {
 				...(data.dateOfBirth !== undefined && {
 					dateOfBirth: data.dateOfBirth,
 				}),
-				...(data.address !== undefined && { address: data.address }),
 			},
 		});
 

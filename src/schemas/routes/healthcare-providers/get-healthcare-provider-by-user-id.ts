@@ -1,12 +1,18 @@
 import { z } from "zod";
-import { healthcareProviderSchema } from "./get-healthcare-providers";
+import { procedureSchema } from "../procedures/get-procedures";
+import { healthcareProviderProfileSchema } from "../users/user";
+
+const healthcareProviderProfileWithRelationsSchema =
+	healthcareProviderProfileSchema.extend({
+		procedures: z.array(procedureSchema),
+	});
 
 export const getHealthcareProviderByUserIdParamsSchema = z.object({
 	userId: z.string(),
 });
 
 export const getHealthcareProviderByUserIdResponseSchema = z.object({
-	healthcareProvider: healthcareProviderSchema,
+	healthcareProvider: healthcareProviderProfileWithRelationsSchema,
 });
 
 export type GetHealthcareProviderByUserIdParamsSchema = z.infer<

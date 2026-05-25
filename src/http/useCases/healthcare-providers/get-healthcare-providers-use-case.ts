@@ -5,6 +5,7 @@ import { getProviderRatingSummariesByProviderIds } from "@/http/useCases/ratings
 import { getProviderMarketplaceMetricsByProviderIds } from "./get-provider-marketplace-metrics";
 import { getNextAvailableSlotsByProviderIds } from "./get-next-available-slots";
 import { signClinicPhotoUrls } from "./sign-clinic-photo-urls";
+import { toPublicHealthcareProvider } from "./to-public-healthcare-provider";
 
 type HealthcareProviderWithNextAvailability = HealthcareProviderWithRelations & {
 	nextAvailableAt: Date | null;
@@ -14,7 +15,6 @@ type HealthcareProviderWithNextAvailability = HealthcareProviderWithRelations & 
 	completedAppointments: number;
 	confirmationRate: number;
 	distanceInKm?: number | null;
-	isSuperProfessional: boolean;
 };
 
 function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
@@ -32,10 +32,6 @@ function applyComputedFilters(
 	filters: Partial<GetHealthcareProvidersQuerySchema>,
 ) {
 	return providers.filter((provider) => {
-		if (filters.superProfessional && !provider.isSuperProfessional) {
-			return false;
-		}
-
 		if (filters.available && !provider.nextAvailableAt) {
 			return false;
 		}
@@ -73,7 +69,6 @@ export const getHealthcareProvidersUseCase = {
 				latitude: filters.latitude,
 				longitude: filters.longitude,
 				radiusInKm: filters.radiusInKm,
-				verified: filters.verified,
 				maxPriceCents: filters.maxPriceCents,
 			});
 		const providerIds = healthcareProviders.map((provider) => provider.id);
@@ -83,10 +78,7 @@ export const getHealthcareProvidersUseCase = {
 				getProviderRatingSummariesByProviderIds(providerIds),
 			]);
 		const marketplaceMetricsByProviderId =
-			await getProviderMarketplaceMetricsByProviderIds(
-				providerIds,
-				ratingSummariesByProviderId,
-			);
+			await getProviderMarketplaceMetricsByProviderIds(providerIds);
 
 		const enrichedProviders = healthcareProviders.map((provider) => {
 			const ratingSummary = ratingSummariesByProviderId.get(provider.id);
@@ -94,17 +86,18 @@ export const getHealthcareProvidersUseCase = {
 				provider.id,
 			);
 
-			return signClinicPhotoUrls({
-				...provider,
-				nextAvailableAt: nextAvailableByProviderId.get(provider.id) ?? null,
-				startingPriceCents: getStartingPriceCents(provider),
-				averageRating: ratingSummary?.averageRating ?? 0,
-				totalRatings: ratingSummary?.totalRatings ?? 0,
-				completedAppointments: marketplaceMetrics?.completedAppointments ?? 0,
-				confirmationRate: marketplaceMetrics?.confirmationRate ?? 0,
-				isSuperProfessional:
-					marketplaceMetrics?.isSuperProfessional ?? false,
-			});
+			return toPublicHealthcareProvider(
+				signClinicPhotoUrls({
+					...provider,
+					nextAvailableAt: nextAvailableByProviderId.get(provider.id) ?? null,
+					startingPriceCents: getStartingPriceCents(provider),
+					averageRating: ratingSummary?.averageRating ?? 0,
+					totalRatings: ratingSummary?.totalRatings ?? 0,
+					completedAppointments:
+						marketplaceMetrics?.completedAppointments ?? 0,
+					confirmationRate: marketplaceMetrics?.confirmationRate ?? 0,
+				}),
+			);
 		});
 
 		const filteredProviders = applyComputedFilters(enrichedProviders, filters);

@@ -1,0 +1,43 @@
+enum AddressOwnerType {
+  USER
+  CLINIC
+}
+
+enum AddressType {
+  HOME
+  BILLING
+  CLINIC
+  WORK
+  OTHER
+}
+
+model address {
+  id               String           @id @default(cuid())
+  ownerType        AddressOwnerType @map("owner_type")
+  ownerId          String           @map("owner_id")
+  type             AddressType      @default(HOME)
+  isPrimary        Boolean          @default(true) @map("is_primary")
+  label            String?
+
+  countryCode      String           @default("BR") @map("country_code")
+  postalCode       String           @map("postal_code")
+  state            String
+  city             String
+  neighborhood     String
+  street           String
+  number           String
+  complement       String?
+  reference        String?
+
+  latitude         Float?
+  longitude        Float?
+  formattedAddress String?          @map("formatted_address")
+
+  createdAt        DateTime         @default(now()) @map("created_at")
+  updatedAt        DateTime         @updatedAt @map("updated_at")
+
+  @@index([ownerType, ownerId])
+  @@index([postalCode])
+  @@index([city, state])
+  @@map("addresses")
+}

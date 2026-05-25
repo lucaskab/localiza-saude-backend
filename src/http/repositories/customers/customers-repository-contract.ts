@@ -4,13 +4,11 @@ export type CreateCustomerData = {
 	userId: string;
 	cpf?: string | null;
 	dateOfBirth?: Date | null;
-	address?: string | null;
 };
 
 export type UpdateCustomerData = {
 	cpf?: string | null;
 	dateOfBirth?: Date | null;
-	address?: string | null;
 };
 
 export type CustomerRepository = {

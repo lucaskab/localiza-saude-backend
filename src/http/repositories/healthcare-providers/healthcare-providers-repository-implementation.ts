@@ -5,6 +5,8 @@ import type {
 	HealthcareProviderRepository,
 	UpdateHealthcareProviderData,
 } from "./healthcare-providers-repository-contract";
+import { augmentHealthcareProviderSearchWhere } from "@/http/repositories/addresses/address-search";
+import { attachPrimaryAddressesToOwners } from "@/http/useCases/addresses/attach-primary-addresses";
 import {
 	buildHealthcareProviderCreateData,
 	buildHealthcareProviderUpdateData,
@@ -18,7 +20,11 @@ import {
 export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 	{
 		async findAll(filters) {
-			const where = createFindAllWhere(filters);
+			const baseWhere = createFindAllWhere(filters);
+			const where = await augmentHealthcareProviderSearchWhere(
+				filters,
+				baseWhere,
+			);
 			const healthcareProvidersResult = await prisma.user.findMany({
 				where: {
 					role: "HEALTHCARE_PROVIDER",
@@ -29,8 +35,11 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					createdAt: "desc",
 				},
 			});
-			let healthcareProviders =
-				healthcareProvidersResult.map(toHealthcareProvider);
+			let healthcareProviders = await attachPrimaryAddressesToOwners(
+				"USER",
+				healthcareProvidersResult.map(toHealthcareProvider),
+				"CLINIC",
+			);
 
 			if (
 				typeof filters?.latitude === "number" &&
@@ -42,13 +51,13 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 					.map((provider) => ({
 						...provider,
 						distanceInKm:
-							typeof provider.clinicLatitude === "number" &&
-							typeof provider.clinicLongitude === "number"
+							typeof provider.primaryAddress?.latitude === "number" &&
+							typeof provider.primaryAddress?.longitude === "number"
 								? calculateDistanceInKm({
 										fromLatitude: filters.latitude as number,
 										fromLongitude: filters.longitude as number,
-										toLatitude: provider.clinicLatitude,
-										toLongitude: provider.clinicLongitude,
+										toLatitude: provider.primaryAddress.latitude,
+										toLongitude: provider.primaryAddress.longitude,
 									})
 								: null,
 					}))
@@ -69,9 +78,17 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 				include: healthcareProviderInclude,
 			});
 
-			return healthcareProvider
-				? toHealthcareProvider(healthcareProvider)
-				: null;
+			if (!healthcareProvider) {
+				return null;
+			}
+
+			const [withAddress] = await attachPrimaryAddressesToOwners(
+				"USER",
+				[toHealthcareProvider(healthcareProvider)],
+				"CLINIC",
+			);
+
+			return withAddress;
 		},
 
 		async findByUserId(userId: string) {
@@ -80,9 +97,17 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 				include: healthcareProviderInclude,
 			});
 
-			return healthcareProvider
-				? toHealthcareProvider(healthcareProvider)
-				: null;
+			if (!healthcareProvider) {
+				return null;
+			}
+
+			const [withAddress] = await attachPrimaryAddressesToOwners(
+				"USER",
+				[toHealthcareProvider(healthcareProvider)],
+				"CLINIC",
+			);
+
+			return withAddress;
 		},
 
 		async create(data: CreateHealthcareProviderData) {

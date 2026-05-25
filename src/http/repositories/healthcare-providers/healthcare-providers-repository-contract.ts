@@ -7,6 +7,7 @@ import type {
 	user,
 } from "../../../../prisma/generated/prisma/client";
 import type { ServiceModality } from "@/schemas/service-modalities";
+import type { WithPrimaryAddress } from "@/http/useCases/addresses/attach-primary-addresses";
 
 export type HealthcareProviderFaqData = {
 	question: string;
@@ -42,13 +43,8 @@ export type CreateHealthcareProviderData = {
 	yearsOfExperience?: number | null;
 	targetAudiences?: string[];
 	serviceModalities?: ServiceModality[];
-	clinicAddress?: string | null;
-	clinicLatitude?: number | null;
-	clinicLongitude?: number | null;
-	clinicNeighborhood?: string | null;
-	clinicCity?: string | null;
-	clinicState?: string | null;
 	homeCareRadiusKm?: number | null;
+	primaryAddress?: import("../../../../prisma/generated/prisma/client").address | null;
 	acceptedInsurance?: string[];
 	paymentMethods?: string[];
 	bookingAvailabilityDays?: number | null;
@@ -99,13 +95,8 @@ export type UpdateHealthcareProviderData = {
 	yearsOfExperience?: number | null;
 	targetAudiences?: string[];
 	serviceModalities?: ServiceModality[];
-	clinicAddress?: string | null;
-	clinicLatitude?: number | null;
-	clinicLongitude?: number | null;
-	clinicNeighborhood?: string | null;
-	clinicCity?: string | null;
-	clinicState?: string | null;
 	homeCareRadiusKm?: number | null;
+	primaryAddress?: import("../../../../prisma/generated/prisma/client").address | null;
 	acceptedInsurance?: string[];
 	paymentMethods?: string[];
 	bookingAvailabilityDays?: number | null;
@@ -128,12 +119,16 @@ export type UpdateHealthcareProviderData = {
 	faqs?: HealthcareProviderFaqData[];
 };
 
-export type HealthcareProviderWithRelations = user & {
-	procedures: (procedure & { checklistItems: procedure_checklist_item[] })[];
-	faqs: healthcare_provider_faq[];
-	professionalCouncil: professional_council | null;
-	distanceInKm?: number | null;
-};
+export type HealthcareProviderWithRelations = WithPrimaryAddress<
+	user & {
+		procedures: (procedure & {
+			checklistItems: procedure_checklist_item[];
+		})[];
+		faqs: healthcare_provider_faq[];
+		professionalCouncil: professional_council | null;
+		distanceInKm?: number | null;
+	}
+>;
 
 export type FindAllHealthcareProviderFilters = {
 	search?: string;
@@ -141,7 +136,6 @@ export type FindAllHealthcareProviderFilters = {
 	serviceModality?: ServiceModality;
 	language?: string;
 	insurance?: string;
-	verified?: boolean;
 	maxPriceCents?: number;
 	city?: string;
 	neighborhood?: string;

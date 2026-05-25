@@ -8,7 +8,6 @@ export const updateCustomerParamsSchema = z.object({
 export const updateCustomerBodySchema = z.object({
 	cpf: z.string().nullable().optional(),
 	dateOfBirth: z.coerce.date().nullable().optional(),
-	address: z.string().nullable().optional(),
 });
 
 export const updateCustomerResponseSchema = z.object({

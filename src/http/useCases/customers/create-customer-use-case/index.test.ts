@@ -10,7 +10,6 @@ const makeCustomer = (data: CreateCustomerData): user =>
 		email: "lucas@example.com",
 		cpf: data.cpf ?? null,
 		dateOfBirth: data.dateOfBirth ?? null,
-		address: data.address ?? null,
 	});
 
 const mockCustomerRepository = {

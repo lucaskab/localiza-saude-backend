@@ -1,3 +1,4 @@
+import { getCustomerFormattedAddress } from "./addresses";
 import type { SeedClient, SeedPatientProfiles, SeedUsers } from "./types";
 
 export async function seedCustomerData(
@@ -44,7 +45,7 @@ export async function seedCustomerData(
 			cpf: "123.456.789-10",
 			phone: users.customers.lucas.phone,
 			email: users.customers.lucas.email,
-			address: users.customers.lucas.address,
+			address: getCustomerFormattedAddress(users.customers.lucas.id),
 			gender: "Feminino",
 			relationshipToCustomer: "Titular",
 			customerOwnerId: users.customers.lucas.id,
@@ -63,7 +64,7 @@ export async function seedCustomerData(
 			cpf: "222.333.444-55",
 			phone: "+5511999992001",
 			email: "mariana.furini.seed@example.com",
-			address: users.customers.lucas.address,
+			address: getCustomerFormattedAddress(users.customers.lucas.id),
 			gender: "Feminino",
 			relationshipToCustomer: "Cônjuge",
 			customerOwnerId: users.customers.lucas.id,
@@ -80,7 +81,7 @@ export async function seedCustomerData(
 			cpf: "987.654.321-00",
 			phone: users.customers.juliana.phone,
 			email: users.customers.juliana.email,
-			address: users.customers.juliana.address,
+			address: getCustomerFormattedAddress(users.customers.juliana.id),
 			gender: "Masculino",
 			relationshipToCustomer: "Titular",
 			customerOwnerId: users.customers.juliana.id,

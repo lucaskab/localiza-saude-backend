@@ -1,17 +1,18 @@
-import type {
-	HealthcareProviderWithRelations,
-	UpdateHealthcareProviderData,
-} from "@/http/repositories/healthcare-providers/healthcare-providers-repository-contract";
+import type { UpdateHealthcareProviderBodySchema } from "@/schemas/routes/healthcare-providers/update-healthcare-provider";
+import type { UpdateHealthcareProviderData } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-contract";
 import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { UnauthorizedError } from "@/http/routes/_errors/unauthorized-error";
 import { clinicRbac } from "@/http/services/clinic-rbac";
-import { geocodingService } from "@/http/services/geocoding-service";
 import { recurringAppointmentsService } from "@/http/services/recurring-appointments";
+import { attachPrimaryAddressToOwner } from "@/http/useCases/addresses/attach-primary-addresses";
 import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
+import { syncProviderClinicAddress } from "./sync-provider-address";
 import type { user } from "../../../../prisma/generated/prisma/client";
 
-function removeStaffRestrictedFields(data: UpdateHealthcareProviderData) {
+function removeStaffRestrictedFields(
+	data: Omit<UpdateHealthcareProviderData, "address">,
+) {
 	const sanitized = { ...data };
 
 	delete sanitized.professionalCategory;
@@ -38,9 +39,10 @@ function removeStaffRestrictedFields(data: UpdateHealthcareProviderData) {
 export const updateHealthcareProviderUseCase = {
 	async execute(
 		id: string,
-		data: UpdateHealthcareProviderData,
+		body: UpdateHealthcareProviderBodySchema,
 		currentUser: user,
-	): Promise<{ healthcareProvider: HealthcareProviderWithRelations }> {
+	) {
+		const { address, ...data } = body;
 		const existingProvider =
 			await prismaHealthcareProviderRepository.findById(id);
 
@@ -69,38 +71,13 @@ export const updateHealthcareProviderUseCase = {
 			currentUser.role === "ADMIN" || isSelfUpdate
 				? data
 				: removeStaffRestrictedFields(data);
-		const dataWithLocation = { ...editableData };
-
-		if (editableData.clinicAddress !== undefined) {
-			if (!editableData.clinicAddress?.trim()) {
-				dataWithLocation.clinicLatitude = null;
-				dataWithLocation.clinicLongitude = null;
-				dataWithLocation.clinicNeighborhood = null;
-				dataWithLocation.clinicCity = null;
-				dataWithLocation.clinicState = null;
-			} else if (
-				editableData.clinicLatitude === undefined ||
-				editableData.clinicLongitude === undefined
-			) {
-				const location = await geocodingService.geocode(
-					editableData.clinicAddress,
-				);
-
-				dataWithLocation.clinicLatitude = location?.latitude ?? null;
-				dataWithLocation.clinicLongitude = location?.longitude ?? null;
-				dataWithLocation.clinicNeighborhood =
-					editableData.clinicNeighborhood ?? location?.neighborhood ?? null;
-				dataWithLocation.clinicCity =
-					editableData.clinicCity ?? location?.city ?? null;
-				dataWithLocation.clinicState =
-					editableData.clinicState ?? location?.state ?? null;
-			}
-		}
 
 		const healthcareProvider = await prismaHealthcareProviderRepository.update(
 			id,
-			dataWithLocation,
+			editableData,
 		);
+
+		await syncProviderClinicAddress(id, address);
 
 		if (data.bookingAvailabilityDays !== undefined) {
 			await recurringAppointmentsService.trimProviderRecurringAppointmentsToWindow(
@@ -108,6 +85,12 @@ export const updateHealthcareProviderUseCase = {
 			);
 		}
 
-		return { healthcareProvider: signClinicPhotoUrls(healthcareProvider) };
+		const withAddress = await attachPrimaryAddressToOwner(
+			"USER",
+			signClinicPhotoUrls(healthcareProvider),
+			"CLINIC",
+		);
+
+		return { healthcareProvider: withAddress };
 	},
 };

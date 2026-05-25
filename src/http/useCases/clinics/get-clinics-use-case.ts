@@ -1,12 +1,12 @@
 import { prismaClinicRepository } from "@/http/repositories/clinics/clinics-repository-implementation";
-import type { clinic } from "../../../../prisma/generated/prisma/client";
+import { attachPrimaryAddressesToOwners } from "@/http/useCases/addresses/attach-primary-addresses";
 
 export const getClinicsUseCase = {
-	async execute(): Promise<{
-		clinics: clinic[];
-	}> {
+	async execute() {
 		const clinics = await prismaClinicRepository.findAll();
 
-		return { clinics };
+		return {
+			clinics: await attachPrimaryAddressesToOwners("CLINIC", clinics, "CLINIC"),
+		};
 	},
 };

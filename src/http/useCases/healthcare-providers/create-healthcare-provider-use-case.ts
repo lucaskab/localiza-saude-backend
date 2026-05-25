@@ -1,33 +1,24 @@
-import type {
-	CreateHealthcareProviderData,
-	HealthcareProviderWithRelations,
-} from "@/http/repositories/healthcare-providers/healthcare-providers-repository-contract";
+import type { CreateHealthcareProviderBodySchema } from "@/schemas/routes/healthcare-providers/create-healthcare-provider";
 import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
-import { geocodingService } from "@/http/services/geocoding-service";
+import { attachPrimaryAddressToOwner } from "@/http/useCases/addresses/attach-primary-addresses";
 import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
+import { syncProviderClinicAddress } from "./sync-provider-address";
 
 export const createHealthcareProviderUseCase = {
-	async execute(
-		data: CreateHealthcareProviderData,
-	): Promise<{ healthcareProvider: HealthcareProviderWithRelations }> {
-		const dataWithLocation = { ...data };
-
-		if (
-			data.clinicAddress?.trim() &&
-			(data.clinicLatitude === undefined || data.clinicLongitude === undefined)
-		) {
-			const location = await geocodingService.geocode(data.clinicAddress);
-
-			dataWithLocation.clinicLatitude = location?.latitude ?? null;
-			dataWithLocation.clinicLongitude = location?.longitude ?? null;
-			dataWithLocation.clinicNeighborhood = location?.neighborhood ?? null;
-			dataWithLocation.clinicCity = location?.city ?? null;
-			dataWithLocation.clinicState = location?.state ?? null;
-		}
+	async execute(body: CreateHealthcareProviderBodySchema) {
+		const { address, ...data } = body;
 
 		const healthcareProvider =
-			await prismaHealthcareProviderRepository.create(dataWithLocation);
+			await prismaHealthcareProviderRepository.create(data);
 
-		return { healthcareProvider: signClinicPhotoUrls(healthcareProvider) };
+		await syncProviderClinicAddress(healthcareProvider.id, address);
+
+		const withAddress = await attachPrimaryAddressToOwner(
+			"USER",
+			signClinicPhotoUrls(healthcareProvider),
+			"CLINIC",
+		);
+
+		return { healthcareProvider: withAddress };
 	},
 };

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { addressSchema } from "../addresses/address";
 import { publicUserSchema } from "../users/user";
 
 export const clinicTypeSchema = z.enum([
@@ -17,9 +18,7 @@ export const clinicSchema = z.object({
 	description: z.string().nullable(),
 	email: z.email(),
 	type: clinicTypeSchema,
-	address: z.string().nullable(),
-	latitude: z.number().nullable(),
-	longitude: z.number().nullable(),
+	primaryAddress: addressSchema.nullable().optional(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
 	ownerId: z.string(),

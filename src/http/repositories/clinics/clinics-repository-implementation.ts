@@ -41,9 +41,6 @@ export const prismaClinicRepository: ClinicRepository = {
 				description: string | null;
 				email: string;
 				type: string;
-				address: string | null;
-				latitude: number | null;
-				longitude: number | null;
 				created_at: Date;
 				updated_at: Date;
 				owner_id: string;
@@ -51,39 +48,39 @@ export const prismaClinicRepository: ClinicRepository = {
 			}[]
 		>`
 			SELECT
-				id,
-				name,
-				phone,
-				description,
-				email,
-				type,
-				address,
-				latitude,
-				longitude,
-				created_at,
-				updated_at,
-				owner_id,
+				c.id,
+				c.name,
+				c.phone,
+				c.description,
+				c.email,
+				c.type,
+				c.created_at,
+				c.updated_at,
+				c.owner_id,
 				(
 					6371 * acos(
-						cos(radians(${latitude})) * cos(radians(latitude)) *
-						cos(radians(longitude) - radians(${longitude})) +
-						sin(radians(${latitude})) * sin(radians(latitude))
+						cos(radians(${latitude})) * cos(radians(a.latitude)) *
+						cos(radians(a.longitude) - radians(${longitude})) +
+						sin(radians(${latitude})) * sin(radians(a.latitude))
 					)
 			) AS distance
-			FROM clinics
-			WHERE latitude IS NOT NULL
-			AND longitude IS NOT NULL
+			FROM clinics c
+			INNER JOIN addresses a
+				ON a.owner_type = 'CLINIC'
+				AND a.owner_id = c.id
+				AND a.is_primary = true
+			WHERE a.latitude IS NOT NULL
+			AND a.longitude IS NOT NULL
 			AND (
 				6371 * acos(
-					cos(radians(${latitude})) * cos(radians(latitude)) *
-					cos(radians(longitude) - radians(${longitude})) +
-					sin(radians(${latitude})) * sin(radians(latitude))
+					cos(radians(${latitude})) * cos(radians(a.latitude)) *
+					cos(radians(a.longitude) - radians(${longitude})) +
+					sin(radians(${latitude})) * sin(radians(a.latitude))
 				)
 			) <= ${radiusInKm}
 			ORDER BY distance ASC
 		`;
 
-		// Map raw results to clinic type
 		return clinics.map((clinic) => ({
 			id: clinic.id,
 			name: clinic.name,
@@ -91,9 +88,6 @@ export const prismaClinicRepository: ClinicRepository = {
 			description: clinic.description,
 			email: clinic.email,
 			type: clinic.type as ClinicType,
-			address: clinic.address,
-			latitude: clinic.latitude,
-			longitude: clinic.longitude,
 			createdAt: clinic.created_at,
 			updatedAt: clinic.updated_at,
 			ownerId: clinic.owner_id,
@@ -108,9 +102,6 @@ export const prismaClinicRepository: ClinicRepository = {
 				description: data.description,
 				email: data.email,
 				type: data.type,
-				address: data.address,
-				latitude: data.latitude,
-				longitude: data.longitude,
 				ownerId: data.ownerId,
 			},
 		});
@@ -129,9 +120,6 @@ export const prismaClinicRepository: ClinicRepository = {
 				}),
 				...(data.email && { email: data.email }),
 				...(data.type && { type: data.type }),
-				...(data.address !== undefined && { address: data.address }),
-				...(data.latitude !== undefined && { latitude: data.latitude }),
-				...(data.longitude !== undefined && { longitude: data.longitude }),
 			},
 		});
 

@@ -4,6 +4,7 @@ import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { getProviderMarketplaceMetricsByProviderIds } from "@/http/useCases/healthcare-providers/get-provider-marketplace-metrics";
 import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
 import { getProviderRatingSummariesByProviderIds } from "@/http/useCases/ratings/get-provider-rating-summaries";
+import { toPublicHealthcareProvider } from "./to-public-healthcare-provider";
 
 type HealthcareProviderWithRatingSummary = HealthcareProviderWithRelations & {
 	startingPriceCents: number | null;
@@ -11,7 +12,6 @@ type HealthcareProviderWithRatingSummary = HealthcareProviderWithRelations & {
 	totalRatings: number;
 	completedAppointments: number;
 	confirmationRate: number;
-	isSuperProfessional: boolean;
 };
 
 function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
@@ -34,29 +34,30 @@ export const getHealthcareProviderByIdUseCase = {
 		if (!healthcareProvider) {
 			throw new BadRequestError("Healthcare provider not found");
 		}
+
+		if (healthcareProvider.verificationStatus !== "VERIFIED") {
+			throw new BadRequestError("Healthcare provider not found");
+		}
 		const ratingSummaries = await getProviderRatingSummariesByProviderIds([
 			healthcareProvider.id,
 		]);
 		const ratingSummary = ratingSummaries.get(healthcareProvider.id);
 		const marketplaceMetrics = (
-			await getProviderMarketplaceMetricsByProviderIds(
-				[healthcareProvider.id],
-				ratingSummaries,
-			)
+			await getProviderMarketplaceMetricsByProviderIds([healthcareProvider.id])
 		).get(healthcareProvider.id);
 
 		return {
-			healthcareProvider: signClinicPhotoUrls({
-				...healthcareProvider,
-				startingPriceCents: getStartingPriceCents(healthcareProvider),
-				averageRating: ratingSummary?.averageRating ?? 0,
-				totalRatings: ratingSummary?.totalRatings ?? 0,
-				completedAppointments:
-					marketplaceMetrics?.completedAppointments ?? 0,
-				confirmationRate: marketplaceMetrics?.confirmationRate ?? 0,
-				isSuperProfessional:
-					marketplaceMetrics?.isSuperProfessional ?? false,
-			}),
+			healthcareProvider: toPublicHealthcareProvider(
+				signClinicPhotoUrls({
+					...healthcareProvider,
+					startingPriceCents: getStartingPriceCents(healthcareProvider),
+					averageRating: ratingSummary?.averageRating ?? 0,
+					totalRatings: ratingSummary?.totalRatings ?? 0,
+					completedAppointments:
+						marketplaceMetrics?.completedAppointments ?? 0,
+					confirmationRate: marketplaceMetrics?.confirmationRate ?? 0,
+				}),
+			),
 		};
 	},
 };

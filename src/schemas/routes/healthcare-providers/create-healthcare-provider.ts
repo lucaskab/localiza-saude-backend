@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { addressInputSchema } from "@/schemas/routes/addresses/address";
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { healthcareProviderSchema } from "./get-healthcare-providers";
 
@@ -26,12 +27,7 @@ export const createHealthcareProviderBodySchema = z.object({
 	yearsOfExperience: z.number().int().min(0).nullable().optional(),
 	targetAudiences: z.array(z.string().trim().min(1)).optional(),
 	serviceModalities: z.array(serviceModalitySchema).optional(),
-	clinicAddress: z.string().trim().nullable().optional(),
-	clinicLatitude: z.number().min(-90).max(90).nullable().optional(),
-	clinicLongitude: z.number().min(-180).max(180).nullable().optional(),
-	clinicNeighborhood: z.string().trim().nullable().optional(),
-	clinicCity: z.string().trim().nullable().optional(),
-	clinicState: z.string().trim().nullable().optional(),
+	address: addressInputSchema.optional(),
 	homeCareRadiusKm: z.number().int().min(0).nullable().optional(),
 	acceptedInsurance: z.array(z.string().trim().min(1)).optional(),
 	paymentMethods: z.array(z.string().trim().min(1)).optional(),

@@ -9,9 +9,6 @@ export type CreateClinicData = {
 	description?: string | null;
 	email: string;
 	type: ClinicType;
-	address?: string | null;
-	latitude?: number | null;
-	longitude?: number | null;
 	ownerId: string;
 };
 
@@ -21,9 +18,6 @@ export type UpdateClinicData = {
 	description?: string | null;
 	email?: string;
 	type?: ClinicType;
-	address?: string | null;
-	latitude?: number | null;
-	longitude?: number | null;
 };
 
 export type FindNearbyParams = {

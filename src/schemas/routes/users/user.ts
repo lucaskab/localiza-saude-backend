@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { addressSchema } from "@/schemas/routes/addresses/address";
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { procedureSchema } from "../procedures/get-procedures";
 
@@ -20,6 +21,9 @@ export const publicUserSchema = z.object({
 	image: z.string().nullable().optional(),
 	role: userRoleSchema.optional(),
 	onboardingCompleted: z.boolean().optional(),
+	onboardingStep: z
+		.enum(["ROLE", "CUSTOMER_PROFILE", "CUSTOMER_MEDICAL", "COMPLETED"])
+		.optional(),
 	createdAt: z.date().optional(),
 	updatedAt: z.date().optional(),
 });
@@ -28,7 +32,7 @@ export const customerUserSchema = publicUserSchema.extend({
 	role: z.literal("CUSTOMER").optional(),
 	cpf: z.string().nullable().optional(),
 	dateOfBirth: z.date().nullable().optional(),
-	address: z.string().nullable().optional(),
+	primaryAddress: addressSchema.nullable().optional(),
 });
 
 export const staffUserSchema = publicUserSchema.extend({
@@ -75,10 +79,6 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	licenseDocumentSize: z.number().int().nullable().optional(),
 	licenseDocumentSha256: z.string().nullable().optional(),
 	licenseDocumentUploadedAt: z.date().nullable().optional(),
-	verificationStatus: z.enum(["PENDING", "VERIFIED", "REJECTED"]).optional(),
-	verificationRejectionReason: z.string().nullable().optional(),
-	verifiedAt: z.date().nullable().optional(),
-	verifiedByUserId: z.string().nullable().optional(),
 	bio: z.string().nullable().optional(),
 	approach: z.string().nullable().optional(),
 	education: z.string().nullable().optional(),
@@ -86,13 +86,8 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	yearsOfExperience: z.number().int().nullable().optional(),
 	targetAudiences: z.array(z.string()).optional(),
 	serviceModalities: z.array(serviceModalitySchema).optional(),
-	clinicAddress: z.string().nullable().optional(),
-	clinicLatitude: z.number().nullable().optional(),
-	clinicLongitude: z.number().nullable().optional(),
-	clinicNeighborhood: z.string().nullable().optional(),
-	clinicCity: z.string().nullable().optional(),
-	clinicState: z.string().nullable().optional(),
 	homeCareRadiusKm: z.number().int().nullable().optional(),
+	primaryAddress: addressSchema.nullable().optional(),
 	acceptedInsurance: z.array(z.string()).optional(),
 	paymentMethods: z.array(z.string()).optional(),
 	bookingAvailabilityDays: z.number().int().optional(),
@@ -119,7 +114,13 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	completedAppointments: z.number().int().optional(),
 	confirmationRate: z.number().optional(),
 	distanceInKm: z.number().nullable().optional(),
-	isSuperProfessional: z.boolean().optional(),
 	procedures: z.array(procedureSchema).optional(),
 	faqs: z.array(professionalFaqSchema).optional(),
+});
+
+export const healthcareProviderProfileSchema = healthcareProviderUserSchema.extend({
+	verificationStatus: z.enum(["PENDING", "VERIFIED", "REJECTED"]).optional(),
+	verificationRejectionReason: z.string().nullable().optional(),
+	verifiedAt: z.date().nullable().optional(),
+	verifiedByUserId: z.string().nullable().optional(),
 });

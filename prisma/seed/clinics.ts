@@ -19,9 +19,6 @@ export async function seedClinics(
 			email: "lucas.furini.clinica@localizasaude.seed",
 			description:
 				"Consultório próprio para clínica geral, check-ups e acompanhamento preventivo.",
-			address: "Av. Paulista, 900 - Bela Vista, São Paulo - SP, 01310-100",
-			latitude: -23.564186,
-			longitude: -46.652741,
 			ownerId: users.providers.lucas.id,
 		},
 	});
@@ -34,9 +31,6 @@ export async function seedClinics(
 			email: "paulista@localizasaude.seed",
 			description:
 				"Clínica multidisciplinar com consultórios para atendimento presencial e online.",
-			address: "Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200",
-			latitude: -23.561684,
-			longitude: -46.655981,
 			ownerId: users.providers.ana.id,
 		},
 	});
@@ -49,9 +43,6 @@ export async function seedClinics(
 			email: "pinheiros@localizasaude.seed",
 			description:
 				"Núcleo de nutrição, psicologia e prevenção com foco em cuidado continuado.",
-			address: "Rua Oscar Freire, 2250 - Pinheiros, São Paulo - SP, 05409-011",
-			latitude: -23.561321,
-			longitude: -46.681412,
 			ownerId: users.providers.carlos.id,
 		},
 	});
@@ -64,10 +55,6 @@ export async function seedClinics(
 			email: "copacabana@localizasaude.seed",
 			description:
 				"Espaço para reabilitação, fisioterapia ortopédica e atendimento domiciliar.",
-			address:
-				"Av. Nossa Senhora de Copacabana, 680 - Copacabana, Rio de Janeiro - RJ",
-			latitude: -22.970722,
-			longitude: -43.186874,
 			ownerId: users.providers.rafael.id,
 		},
 	});
@@ -80,9 +67,6 @@ export async function seedClinics(
 			email: "sorriso@localizasaude.seed",
 			description:
 				"Clínica odontológica com estética dental, planejamento digital e reabilitação oral.",
-			address: "Rua Augusta, 2203 - Cerqueira César, São Paulo - SP, 01413-100",
-			latitude: -23.560973,
-			longitude: -46.662433,
 			ownerId: users.providers.pedro.id,
 		},
 	});

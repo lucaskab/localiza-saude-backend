@@ -1,10 +1,11 @@
 import { z } from "zod";
+import { addressSchema } from "../addresses/address";
 import { customerUserSchema } from "../users/user";
 
 export const customerSchema = customerUserSchema.extend({
 	cpf: z.string().nullable(),
 	dateOfBirth: z.date().nullable(),
-	address: z.string().nullable(),
+	primaryAddress: addressSchema.nullable().optional(),
 });
 
 export const getCustomersResponseSchema = z.object({

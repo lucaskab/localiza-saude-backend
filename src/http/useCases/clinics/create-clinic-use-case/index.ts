@@ -1,27 +1,29 @@
-import type { CreateClinicData } from "@/http/repositories/clinics/clinics-repository-contract";
+import type { CreateClinicBodySchema } from "@/schemas/routes/clinics/create-clinic";
 import { prisma } from "@/database/prisma";
 import { CLINIC_OWNER_PERMISSIONS } from "@/http/services/clinic-rbac";
-import { geocodingService } from "@/http/services/geocoding-service";
+import {
+	attachPrimaryAddressToOwner,
+	type WithPrimaryAddress,
+} from "@/http/useCases/addresses/attach-primary-addresses";
+import { upsertPrimaryAddressUseCase } from "@/http/useCases/addresses/upsert-primary-address-use-case";
 import type { clinic, user } from "../../../../../prisma/generated/prisma/client";
 
 export const createClinicUseCase = {
 	async execute(
 		currentUser: user,
-		data: Omit<CreateClinicData, "ownerId"> & { ownerId?: string },
-	): Promise<{ clinic: clinic }> {
-		const location = await geocodingService.geocode(data.address);
+		body: CreateClinicBodySchema,
+	): Promise<{ clinic: WithPrimaryAddress<clinic> }> {
+		const { address, ownerId, ...data } = body;
+
 		const clinic = await prisma.$transaction(async (tx) => {
-			const clinic = await tx.clinic.create({
+			return tx.clinic.create({
 				data: {
 					name: data.name,
 					phone: data.phone,
 					description: data.description,
 					email: data.email,
 					type: data.type,
-					address: data.address,
-					latitude: location?.latitude ?? data.latitude ?? null,
-					longitude: location?.longitude ?? data.longitude ?? null,
-					ownerId: currentUser.id,
+					ownerId: ownerId ?? currentUser.id,
 					employees: {
 						create: {
 							userId: currentUser.id,
@@ -32,10 +34,17 @@ export const createClinicUseCase = {
 					},
 				},
 			});
-
-			return clinic;
 		});
 
-		return { clinic };
+		if (address) {
+			await upsertPrimaryAddressUseCase.execute("CLINIC", clinic.id, {
+				...address,
+				type: address.type ?? "CLINIC",
+			});
+		}
+
+		return {
+			clinic: await attachPrimaryAddressToOwner("CLINIC", clinic, "CLINIC"),
+		};
 	},
 };

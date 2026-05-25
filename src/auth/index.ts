@@ -157,6 +157,11 @@ export const auth = betterAuth({
 				required: true,
 				defaultValue: true,
 			},
+			onboardingStep: {
+				type: "string",
+				required: true,
+				defaultValue: "COMPLETED",
+			},
 			firstName: {
 				type: "string",
 				required: false,
@@ -205,6 +210,7 @@ export const auth = betterAuth({
 							lastName,
 							role: "CUSTOMER",
 							onboardingCompleted: false,
+							onboardingStep: "ROLE",
 						},
 					};
 				},

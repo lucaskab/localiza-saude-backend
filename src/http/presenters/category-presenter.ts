@@ -54,10 +54,11 @@ export const categoryPresenter = {
 				professionalCouncilId: hpc.healthcareProvider.professionalCouncilId,
 				professionalCouncil: hpc.healthcareProvider.professionalCouncil,
 				licenseState: hpc.healthcareProvider.licenseState,
-				verificationStatus: hpc.healthcareProvider.verificationStatus,
 				bio: hpc.healthcareProvider.bio,
 				serviceModalities: hpc.healthcareProvider.serviceModalities,
-				clinicAddress: hpc.healthcareProvider.clinicAddress,
+				primaryAddress:
+					(hpc.healthcareProvider as { primaryAddress?: unknown }).primaryAddress ??
+					null,
 				nextAvailableAt:
 					nextAvailableByHealthcareProviderId?.get(hpc.healthcareProvider.id) ?? null,
 				startingPriceCents: getStartingPriceCents(hpc.healthcareProvider),

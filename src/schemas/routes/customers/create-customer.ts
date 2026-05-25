@@ -5,7 +5,6 @@ export const createCustomerBodySchema = z.object({
 	userId: z.cuid(),
 	cpf: z.string().nullable().optional(),
 	dateOfBirth: z.coerce.date().nullable().optional(),
-	address: z.string().nullable().optional(),
 });
 
 export const createCustomerResponseSchema = z.object({

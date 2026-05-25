@@ -47,17 +47,10 @@ type HealthcareProviderQueryResult = Prisma.userGetPayload<{
 export function toHealthcareProvider(
 	user: HealthcareProviderQueryResult,
 ): HealthcareProviderWithRelations {
-	const { clinicEmployees, procedures, faqs, ...profile } = user;
-	const primaryClinic =
-		clinicEmployees.find((employee) => employee.role === "OWNER")?.clinic ??
-		clinicEmployees[0]?.clinic;
+	const { procedures, faqs, ...profile } = user;
 
 	return {
 		...profile,
-		clinicAddress: profile.clinicAddress ?? primaryClinic?.address ?? null,
-		clinicLatitude: profile.clinicLatitude ?? primaryClinic?.latitude ?? null,
-		clinicLongitude:
-			profile.clinicLongitude ?? primaryClinic?.longitude ?? null,
 		procedures,
 		faqs,
 	};
@@ -119,35 +112,6 @@ export function createFindAllWhere(
 	const specialty = filters.specialty?.trim();
 	const conditions: Prisma.userWhereInput[] = [];
 
-	if (search) {
-		conditions.push({
-			OR: [
-				{ displayName: { contains: search, mode: "insensitive" } },
-				{ specialty: { contains: search, mode: "insensitive" } },
-				{
-					professionalCategory: {
-						contains: search,
-						mode: "insensitive",
-					},
-				},
-				{ bio: { contains: search, mode: "insensitive" } },
-				{ approach: { contains: search, mode: "insensitive" } },
-				{ clinicAddress: { contains: search, mode: "insensitive" } },
-				{
-					clinicEmployees: {
-						some: {
-							active: true,
-							clinic: {
-								address: { contains: search, mode: "insensitive" },
-							},
-						},
-					},
-				},
-				{ name: { contains: search, mode: "insensitive" } },
-			],
-		});
-	}
-
 	if (specialty) {
 		conditions.push({
 			OR: [
@@ -176,67 +140,7 @@ export function createFindAllWhere(
 		conditions.push({ acceptedInsurance: { has: filters.insurance } });
 	}
 
-	if (filters.city) {
-		conditions.push({
-			clinicCity: { contains: filters.city, mode: "insensitive" },
-		});
-	}
-
-	if (filters.neighborhood) {
-		conditions.push({
-			clinicNeighborhood: {
-				contains: filters.neighborhood,
-				mode: "insensitive",
-			},
-		});
-	}
-
-	if (
-		typeof filters.latitude === "number" &&
-		typeof filters.longitude === "number"
-	) {
-		const bounds = calculateCoordinateBounds({
-			latitude: filters.latitude,
-			longitude: filters.longitude,
-			radiusInKm: filters.radiusInKm ?? 25,
-		});
-
-		conditions.push({
-			OR: [
-				{
-					clinicLatitude: {
-						gte: bounds.minLatitude,
-						lte: bounds.maxLatitude,
-					},
-					clinicLongitude: {
-						gte: bounds.minLongitude,
-						lte: bounds.maxLongitude,
-					},
-				},
-				{
-					clinicEmployees: {
-						some: {
-							active: true,
-							clinic: {
-								latitude: {
-									gte: bounds.minLatitude,
-									lte: bounds.maxLatitude,
-								},
-								longitude: {
-									gte: bounds.minLongitude,
-									lte: bounds.maxLongitude,
-								},
-							},
-						},
-					},
-				},
-			],
-		});
-	}
-
-	if (filters.verified) {
-		conditions.push({ verificationStatus: "VERIFIED" });
-	}
+	conditions.push({ verificationStatus: "VERIFIED" });
 
 	if (typeof filters.maxPriceCents === "number") {
 		conditions.push({
@@ -285,12 +189,6 @@ export function buildHealthcareProviderCreateData(
 		yearsOfExperience: data.yearsOfExperience,
 		targetAudiences: data.targetAudiences,
 		serviceModalities: data.serviceModalities,
-		clinicAddress: data.clinicAddress,
-		clinicLatitude: data.clinicLatitude,
-		clinicLongitude: data.clinicLongitude,
-		clinicNeighborhood: data.clinicNeighborhood,
-		clinicCity: data.clinicCity,
-		clinicState: data.clinicState,
 		homeCareRadiusKm: data.homeCareRadiusKm,
 		acceptedInsurance: data.acceptedInsurance,
 		paymentMethods: data.paymentMethods,
@@ -396,24 +294,6 @@ export function buildHealthcareProviderUpdateData(
 		}),
 		...(data.serviceModalities !== undefined && {
 			serviceModalities: data.serviceModalities,
-		}),
-		...(data.clinicAddress !== undefined && {
-			clinicAddress: data.clinicAddress,
-		}),
-		...(data.clinicLatitude !== undefined && {
-			clinicLatitude: data.clinicLatitude,
-		}),
-		...(data.clinicLongitude !== undefined && {
-			clinicLongitude: data.clinicLongitude,
-		}),
-		...(data.clinicNeighborhood !== undefined && {
-			clinicNeighborhood: data.clinicNeighborhood,
-		}),
-		...(data.clinicCity !== undefined && {
-			clinicCity: data.clinicCity,
-		}),
-		...(data.clinicState !== undefined && {
-			clinicState: data.clinicState,
 		}),
 		...(data.homeCareRadiusKm !== undefined && {
 			homeCareRadiusKm: data.homeCareRadiusKm,

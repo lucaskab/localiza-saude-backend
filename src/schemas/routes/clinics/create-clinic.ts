@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { addressInputSchema } from "../addresses/address";
 import { clinicSchema, clinicTypeSchema } from "./get-clinics";
 
 export const createClinicBodySchema = z.object({
@@ -7,9 +8,7 @@ export const createClinicBodySchema = z.object({
 	description: z.string().nullable().optional(),
 	email: z.email(),
 	type: clinicTypeSchema,
-	address: z.string().trim().nullable().optional(),
-	latitude: z.number().min(-90).max(90).nullable().optional(),
-	longitude: z.number().min(-180).max(180).nullable().optional(),
+	address: addressInputSchema.optional(),
 	ownerId: z.cuid().optional(),
 });
 
