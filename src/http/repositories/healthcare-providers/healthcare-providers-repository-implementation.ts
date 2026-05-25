@@ -88,7 +88,7 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 				"CLINIC",
 			);
 
-			return withAddress;
+			return withAddress ?? null;
 		},
 
 		async findByUserId(userId: string) {
@@ -107,7 +107,7 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 				"CLINIC",
 			);
 
-			return withAddress;
+			return withAddress ?? null;
 		},
 
 		async create(data: CreateHealthcareProviderData) {

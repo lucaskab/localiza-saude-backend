@@ -92,6 +92,7 @@ describe("getFavoritesUseCase", () => {
 						role: "HEALTHCARE_PROVIDER",
 						displayName: "Dr. Teste",
 					}),
+					primaryAddress: null,
 					procedures: [],
 					faqs: [],
 					professionalCouncil: null,

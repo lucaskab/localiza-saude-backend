@@ -136,6 +136,29 @@ exports.Prisma.AccountScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  ownerType: 'ownerType',
+  ownerId: 'ownerId',
+  type: 'type',
+  isPrimary: 'isPrimary',
+  label: 'label',
+  countryCode: 'countryCode',
+  postalCode: 'postalCode',
+  state: 'state',
+  city: 'city',
+  neighborhood: 'neighborhood',
+  street: 'street',
+  number: 'number',
+  complement: 'complement',
+  reference: 'reference',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  formattedAddress: 'formattedAddress',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.Appointment_procedureScalarFieldEnum = {
   id: 'id',
   appointmentId: 'appointmentId',
@@ -273,9 +296,6 @@ exports.Prisma.ClinicScalarFieldEnum = {
   description: 'description',
   email: 'email',
   type: 'type',
-  address: 'address',
-  latitude: 'latitude',
-  longitude: 'longitude',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   ownerId: 'ownerId'
@@ -505,9 +525,9 @@ exports.Prisma.UserScalarFieldEnum = {
   image: 'image',
   role: 'role',
   onboardingCompleted: 'onboardingCompleted',
+  onboardingStep: 'onboardingStep',
   cpf: 'cpf',
   dateOfBirth: 'dateOfBirth',
-  address: 'address',
   displayName: 'displayName',
   document: 'document',
   birthDate: 'birthDate',
@@ -535,12 +555,6 @@ exports.Prisma.UserScalarFieldEnum = {
   yearsOfExperience: 'yearsOfExperience',
   targetAudiences: 'targetAudiences',
   serviceModalities: 'serviceModalities',
-  clinicAddress: 'clinicAddress',
-  clinicLatitude: 'clinicLatitude',
-  clinicLongitude: 'clinicLongitude',
-  clinicNeighborhood: 'clinicNeighborhood',
-  clinicCity: 'clinicCity',
-  clinicState: 'clinicState',
   homeCareRadiusKm: 'homeCareRadiusKm',
   acceptedInsurance: 'acceptedInsurance',
   paymentMethods: 'paymentMethods',
@@ -622,6 +636,19 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.AddressOwnerType = exports.$Enums.AddressOwnerType = {
+  USER: 'USER',
+  CLINIC: 'CLINIC'
+};
+
+exports.AddressType = exports.$Enums.AddressType = {
+  HOME: 'HOME',
+  BILLING: 'BILLING',
+  CLINIC: 'CLINIC',
+  WORK: 'WORK',
+  OTHER: 'OTHER'
+};
+
 exports.AppointmentStatus = exports.$Enums.AppointmentStatus = {
   SCHEDULED: 'SCHEDULED',
   CONFIRMED: 'CONFIRMED',
@@ -741,6 +768,13 @@ exports.UserRole = exports.$Enums.UserRole = {
   STAFF: 'STAFF'
 };
 
+exports.OnboardingStep = exports.$Enums.OnboardingStep = {
+  ROLE: 'ROLE',
+  CUSTOMER_PROFILE: 'CUSTOMER_PROFILE',
+  CUSTOMER_MEDICAL: 'CUSTOMER_MEDICAL',
+  COMPLETED: 'COMPLETED'
+};
+
 exports.CancellationPenaltyType = exports.$Enums.CancellationPenaltyType = {
   FIXED: 'FIXED',
   PERCENTAGE: 'PERCENTAGE'
@@ -753,6 +787,7 @@ exports.ProviderVerificationReviewStatus = exports.$Enums.ProviderVerificationRe
 
 exports.Prisma.ModelName = {
   account: 'account',
+  address: 'address',
   appointment_procedure: 'appointment_procedure',
   appointment: 'appointment',
   appointment_evolution_note: 'appointment_evolution_note',

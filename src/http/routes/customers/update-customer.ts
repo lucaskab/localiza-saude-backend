@@ -12,6 +12,11 @@ const updateCustomer = (app: FastifyInstance) => {
 			"/customers/:id",
 			updateCustomerRouteOptions,
 			updateCustomerController.handle,
+		)
+		.patch(
+			"/customers/:id",
+			updateCustomerRouteOptions,
+			updateCustomerController.handle,
 		);
 };
 

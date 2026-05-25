@@ -18,6 +18,50 @@ model account {
   @@map("accounts")
 }
 
+enum AddressOwnerType {
+  USER
+  CLINIC
+}
+
+enum AddressType {
+  HOME
+  BILLING
+  CLINIC
+  WORK
+  OTHER
+}
+
+model address {
+  id        String           @id @default(cuid())
+  ownerType AddressOwnerType @map("owner_type")
+  ownerId   String           @map("owner_id")
+  type      AddressType      @default(HOME)
+  isPrimary Boolean          @default(true) @map("is_primary")
+  label     String?
+
+  countryCode  String  @default("BR") @map("country_code")
+  postalCode   String  @map("postal_code")
+  state        String
+  city         String
+  neighborhood String
+  street       String
+  number       String
+  complement   String?
+  reference    String?
+
+  latitude         Float?
+  longitude        Float?
+  formattedAddress String? @map("formatted_address")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([ownerType, ownerId])
+  @@index([postalCode])
+  @@index([city, state])
+  @@map("addresses")
+}
+
 model appointment_procedure {
   id            String      @id @default(cuid())
   appointmentId String      @map("appointment_id")
@@ -278,9 +322,6 @@ model clinic {
   description String?
   email       String            @unique
   type        ClinicType        @default(MEDICAL)
-  address     String?
-  latitude    Float?
-  longitude   Float?
   createdAt   DateTime          @default(now()) @map("created_at")
   updatedAt   DateTime          @updatedAt @map("updated_at")
   ownerId     String            @map("owner_id")
@@ -721,9 +762,9 @@ model user {
   image                                      String?
   role                                       UserRole                 @default(CUSTOMER)
   onboardingCompleted                        Boolean                  @default(true) @map("onboarding_completed")
+  onboardingStep                             OnboardingStep           @default(COMPLETED) @map("onboarding_step")
   cpf                                        String?
   dateOfBirth                                DateTime?                @map("date_of_birth")
-  address                                    String?
   displayName                                String?                  @map("display_name")
   document                                   String?
   birthDate                                  DateTime?                @map("birth_date")
@@ -753,12 +794,6 @@ model user {
   yearsOfExperience                          Int?                     @map("years_of_experience")
   targetAudiences                            String[]                 @default([]) @map("target_audiences")
   serviceModalities                          String[]                 @default([]) @map("service_modalities")
-  clinicAddress                              String?                  @map("clinic_address")
-  clinicLatitude                             Float?                   @map("clinic_latitude")
-  clinicLongitude                            Float?                   @map("clinic_longitude")
-  clinicNeighborhood                         String?                  @map("clinic_neighborhood")
-  clinicCity                                 String?                  @map("clinic_city")
-  clinicState                                String?                  @map("clinic_state")
   homeCareRadiusKm                           Int?                     @map("home_care_radius_km")
   acceptedInsurance                          String[]                 @default([]) @map("accepted_insurance")
   paymentMethods                             String[]                 @default([]) @map("payment_methods")
@@ -825,9 +860,6 @@ model user {
 
   @@index([verifiedByUserId])
   @@index([professionalCouncilId])
-  @@index([clinicCity])
-  @@index([clinicNeighborhood])
-  @@index([clinicLatitude, clinicLongitude])
   @@map("users")
 }
 
@@ -853,6 +885,13 @@ enum UserRole {
   CUSTOMER
   ADMIN
   STAFF
+}
+
+enum OnboardingStep {
+  ROLE
+  CUSTOMER_PROFILE
+  CUSTOMER_MEDICAL
+  COMPLETED
 }
 
 enum CancellationPenaltyType {

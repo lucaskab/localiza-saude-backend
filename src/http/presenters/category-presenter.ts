@@ -1,3 +1,4 @@
+import { signUserImageUrl } from "@/http/useCases/users/sign-user-image-url";
 import type {
 	category,
 	healthcare_provider_category,
@@ -73,7 +74,7 @@ export const categoryPresenter = {
 				lastName: hpc.healthcareProvider.lastName,
 				email: hpc.healthcareProvider.email,
 				phone: hpc.healthcareProvider.phone,
-				image: hpc.healthcareProvider.image,
+				image: signUserImageUrl(hpc.healthcareProvider.image),
 			})),
 		};
 	},

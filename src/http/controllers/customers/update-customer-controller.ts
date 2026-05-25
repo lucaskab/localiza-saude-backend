@@ -15,8 +15,13 @@ export const updateCustomerController = {
 	) {
 		const { id } = request.params;
 		const data = request.body;
+		const currentUser = await request.getCurrentUser();
 
-		const result = await updateCustomerUseCase.execute(id, data);
+		const result = await updateCustomerUseCase.execute({
+			customerId: id,
+			currentUser,
+			data,
+		});
 
 		return reply.status(200).send(result);
 	},

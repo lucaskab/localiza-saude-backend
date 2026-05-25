@@ -1,3 +1,5 @@
+import { signUserImageUrl } from "@/http/useCases/users/sign-user-image-url";
+
 type ConversationWithParticipants = {
 	id: string;
 	customerId: string;
@@ -71,14 +73,14 @@ export const conversationPresenter = {
 				name: conversation.customer.name,
 				firstName: conversation.customer.firstName,
 				lastName: conversation.customer.lastName,
-				image: conversation.customer.image,
+				image: signUserImageUrl(conversation.customer.image),
 			},
 			healthcareProvider: {
 				id: conversation.healthcareProvider.id,
 				name: conversation.healthcareProvider.name,
 				firstName: conversation.healthcareProvider.firstName,
 				lastName: conversation.healthcareProvider.lastName,
-				image: conversation.healthcareProvider.image,
+				image: signUserImageUrl(conversation.healthcareProvider.image),
 			},
 			lastMessage:
 				conversation.messages && conversation.messages[0]
@@ -120,7 +122,7 @@ export const messagePresenter = {
 				name: message.sender.name,
 				firstName: message.sender.firstName,
 				lastName: message.sender.lastName,
-				image: message.sender.image,
+				image: signUserImageUrl(message.sender.image),
 			},
 			relatedAppointment: message.relatedAppointment
 				? {

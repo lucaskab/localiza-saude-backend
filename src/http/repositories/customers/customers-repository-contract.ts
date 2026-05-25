@@ -1,4 +1,5 @@
 import type { user } from "../../../../prisma/generated/prisma/client";
+import type { AddressInputSchema } from "@/schemas/routes/addresses/address";
 
 export type CreateCustomerData = {
 	userId: string;
@@ -7,8 +8,11 @@ export type CreateCustomerData = {
 };
 
 export type UpdateCustomerData = {
+	name?: string;
+	phone?: string | null;
 	cpf?: string | null;
 	dateOfBirth?: Date | null;
+	address?: AddressInputSchema;
 };
 
 export type CustomerRepository = {

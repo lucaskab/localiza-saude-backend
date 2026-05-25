@@ -51,6 +51,7 @@ export function toHealthcareProvider(
 
 	return {
 		...profile,
+		primaryAddress: null,
 		procedures,
 		faqs,
 	};

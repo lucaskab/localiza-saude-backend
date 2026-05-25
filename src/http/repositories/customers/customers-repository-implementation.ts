@@ -50,6 +50,8 @@ export const prismaCustomerRepository: CustomerRepository = {
 		const customer = await prisma.user.update({
 			where: { id },
 			data: {
+				...(data.name !== undefined && { name: data.name }),
+				...(data.phone !== undefined && { phone: data.phone }),
 				...(data.cpf !== undefined && { cpf: data.cpf }),
 				...(data.dateOfBirth !== undefined && {
 					dateOfBirth: data.dateOfBirth,

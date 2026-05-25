@@ -6,16 +6,18 @@ type VerificationFields = {
 	isSuperProfessional?: unknown;
 };
 
-export function toPublicHealthcareProvider<T extends VerificationFields>(
-	provider: T,
-): Omit<
+export type PublicHealthcareProvider<T extends VerificationFields> = Omit<
 	T,
 	| "verificationStatus"
 	| "verificationRejectionReason"
 	| "verifiedAt"
 	| "verifiedByUserId"
 	| "isSuperProfessional"
-> {
+>;
+
+export function toPublicHealthcareProvider<T extends VerificationFields>(
+	provider: T,
+): PublicHealthcareProvider<T> {
 	const {
 		verificationStatus: _verificationStatus,
 		verificationRejectionReason: _verificationRejectionReason,

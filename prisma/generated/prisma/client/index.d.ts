@@ -19,6 +19,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type account = $Result.DefaultSelection<Prisma.$accountPayload>
 /**
+ * Model address
+ * 
+ */
+export type address = $Result.DefaultSelection<Prisma.$addressPayload>
+/**
  * Model appointment_procedure
  * 
  */
@@ -193,7 +198,26 @@ export type verification = $Result.DefaultSelection<Prisma.$verificationPayload>
  * Enums
  */
 export namespace $Enums {
-  export const AppointmentEvolutionStatus: {
+  export const AddressOwnerType: {
+  USER: 'USER',
+  CLINIC: 'CLINIC'
+};
+
+export type AddressOwnerType = (typeof AddressOwnerType)[keyof typeof AddressOwnerType]
+
+
+export const AddressType: {
+  HOME: 'HOME',
+  BILLING: 'BILLING',
+  CLINIC: 'CLINIC',
+  WORK: 'WORK',
+  OTHER: 'OTHER'
+};
+
+export type AddressType = (typeof AddressType)[keyof typeof AddressType]
+
+
+export const AppointmentEvolutionStatus: {
   IMPROVED: 'IMPROVED',
   STABLE: 'STABLE',
   WORSENED: 'WORSENED'
@@ -363,6 +387,16 @@ export const UserRole: {
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 
 
+export const OnboardingStep: {
+  ROLE: 'ROLE',
+  CUSTOMER_PROFILE: 'CUSTOMER_PROFILE',
+  CUSTOMER_MEDICAL: 'CUSTOMER_MEDICAL',
+  COMPLETED: 'COMPLETED'
+};
+
+export type OnboardingStep = (typeof OnboardingStep)[keyof typeof OnboardingStep]
+
+
 export const CancellationPenaltyType: {
   FIXED: 'FIXED',
   PERCENTAGE: 'PERCENTAGE'
@@ -379,6 +413,14 @@ export const ProviderVerificationReviewStatus: {
 export type ProviderVerificationReviewStatus = (typeof ProviderVerificationReviewStatus)[keyof typeof ProviderVerificationReviewStatus]
 
 }
+
+export type AddressOwnerType = $Enums.AddressOwnerType
+
+export const AddressOwnerType: typeof $Enums.AddressOwnerType
+
+export type AddressType = $Enums.AddressType
+
+export const AddressType: typeof $Enums.AddressType
 
 export type AppointmentEvolutionStatus = $Enums.AppointmentEvolutionStatus
 
@@ -447,6 +489,10 @@ export const SupportRequestStatus: typeof $Enums.SupportRequestStatus
 export type UserRole = $Enums.UserRole
 
 export const UserRole: typeof $Enums.UserRole
+
+export type OnboardingStep = $Enums.OnboardingStep
+
+export const OnboardingStep: typeof $Enums.OnboardingStep
 
 export type CancellationPenaltyType = $Enums.CancellationPenaltyType
 
@@ -586,6 +632,16 @@ export class PrismaClient<
     * ```
     */
   get account(): Prisma.accountDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.address`: Exposes CRUD operations for the **address** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Addresses
+    * const addresses = await prisma.address.findMany()
+    * ```
+    */
+  get address(): Prisma.addressDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.appointment_procedure`: Exposes CRUD operations for the **appointment_procedure** model.
@@ -1361,6 +1417,7 @@ export namespace Prisma {
 
   export const ModelName: {
     account: 'account',
+    address: 'address',
     appointment_procedure: 'appointment_procedure',
     appointment: 'appointment',
     appointment_evolution_note: 'appointment_evolution_note',
@@ -1410,7 +1467,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "appointment_procedure" | "appointment" | "appointment_evolution_note" | "appointment_reschedule_request" | "appointment_recurring_series" | "appointment_recurring_series_rule" | "appointment_recurring_series_procedure" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "professional_council" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
+      modelProps: "account" | "address" | "appointment_procedure" | "appointment" | "appointment_evolution_note" | "appointment_reschedule_request" | "appointment_recurring_series" | "appointment_recurring_series_rule" | "appointment_recurring_series_procedure" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "professional_council" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1485,6 +1542,80 @@ export namespace Prisma {
           count: {
             args: Prisma.accountCountArgs<ExtArgs>
             result: $Utils.Optional<AccountCountAggregateOutputType> | number
+          }
+        }
+      }
+      address: {
+        payload: Prisma.$addressPayload<ExtArgs>
+        fields: Prisma.addressFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.addressFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.addressFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload>
+          }
+          findFirst: {
+            args: Prisma.addressFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.addressFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload>
+          }
+          findMany: {
+            args: Prisma.addressFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload>[]
+          }
+          create: {
+            args: Prisma.addressCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload>
+          }
+          createMany: {
+            args: Prisma.addressCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.addressCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload>[]
+          }
+          delete: {
+            args: Prisma.addressDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload>
+          }
+          update: {
+            args: Prisma.addressUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload>
+          }
+          deleteMany: {
+            args: Prisma.addressDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.addressUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.addressUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload>[]
+          }
+          upsert: {
+            args: Prisma.addressUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$addressPayload>
+          }
+          aggregate: {
+            args: Prisma.AddressAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAddress>
+          }
+          groupBy: {
+            args: Prisma.addressGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AddressGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.addressCountArgs<ExtArgs>
+            result: $Utils.Optional<AddressCountAggregateOutputType> | number
           }
         }
       }
@@ -4113,6 +4244,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     account?: accountOmit
+    address?: addressOmit
     appointment_procedure?: appointment_procedureOmit
     appointment?: appointmentOmit
     appointment_evolution_note?: appointment_evolution_noteOmit
@@ -6154,6 +6286,1239 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: accountInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model address
+   */
+
+  export type AggregateAddress = {
+    _count: AddressCountAggregateOutputType | null
+    _avg: AddressAvgAggregateOutputType | null
+    _sum: AddressSumAggregateOutputType | null
+    _min: AddressMinAggregateOutputType | null
+    _max: AddressMaxAggregateOutputType | null
+  }
+
+  export type AddressAvgAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+  }
+
+  export type AddressSumAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+  }
+
+  export type AddressMinAggregateOutputType = {
+    id: string | null
+    ownerType: $Enums.AddressOwnerType | null
+    ownerId: string | null
+    type: $Enums.AddressType | null
+    isPrimary: boolean | null
+    label: string | null
+    countryCode: string | null
+    postalCode: string | null
+    state: string | null
+    city: string | null
+    neighborhood: string | null
+    street: string | null
+    number: string | null
+    complement: string | null
+    reference: string | null
+    latitude: number | null
+    longitude: number | null
+    formattedAddress: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AddressMaxAggregateOutputType = {
+    id: string | null
+    ownerType: $Enums.AddressOwnerType | null
+    ownerId: string | null
+    type: $Enums.AddressType | null
+    isPrimary: boolean | null
+    label: string | null
+    countryCode: string | null
+    postalCode: string | null
+    state: string | null
+    city: string | null
+    neighborhood: string | null
+    street: string | null
+    number: string | null
+    complement: string | null
+    reference: string | null
+    latitude: number | null
+    longitude: number | null
+    formattedAddress: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type AddressCountAggregateOutputType = {
+    id: number
+    ownerType: number
+    ownerId: number
+    type: number
+    isPrimary: number
+    label: number
+    countryCode: number
+    postalCode: number
+    state: number
+    city: number
+    neighborhood: number
+    street: number
+    number: number
+    complement: number
+    reference: number
+    latitude: number
+    longitude: number
+    formattedAddress: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type AddressAvgAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
+  export type AddressSumAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
+  export type AddressMinAggregateInputType = {
+    id?: true
+    ownerType?: true
+    ownerId?: true
+    type?: true
+    isPrimary?: true
+    label?: true
+    countryCode?: true
+    postalCode?: true
+    state?: true
+    city?: true
+    neighborhood?: true
+    street?: true
+    number?: true
+    complement?: true
+    reference?: true
+    latitude?: true
+    longitude?: true
+    formattedAddress?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AddressMaxAggregateInputType = {
+    id?: true
+    ownerType?: true
+    ownerId?: true
+    type?: true
+    isPrimary?: true
+    label?: true
+    countryCode?: true
+    postalCode?: true
+    state?: true
+    city?: true
+    neighborhood?: true
+    street?: true
+    number?: true
+    complement?: true
+    reference?: true
+    latitude?: true
+    longitude?: true
+    formattedAddress?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type AddressCountAggregateInputType = {
+    id?: true
+    ownerType?: true
+    ownerId?: true
+    type?: true
+    isPrimary?: true
+    label?: true
+    countryCode?: true
+    postalCode?: true
+    state?: true
+    city?: true
+    neighborhood?: true
+    street?: true
+    number?: true
+    complement?: true
+    reference?: true
+    latitude?: true
+    longitude?: true
+    formattedAddress?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type AddressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which address to aggregate.
+     */
+    where?: addressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of addresses to fetch.
+     */
+    orderBy?: addressOrderByWithRelationInput | addressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: addressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` addresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` addresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned addresses
+    **/
+    _count?: true | AddressCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AddressAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AddressSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AddressMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AddressMaxAggregateInputType
+  }
+
+  export type GetAddressAggregateType<T extends AddressAggregateArgs> = {
+        [P in keyof T & keyof AggregateAddress]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAddress[P]>
+      : GetScalarType<T[P], AggregateAddress[P]>
+  }
+
+
+
+
+  export type addressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: addressWhereInput
+    orderBy?: addressOrderByWithAggregationInput | addressOrderByWithAggregationInput[]
+    by: AddressScalarFieldEnum[] | AddressScalarFieldEnum
+    having?: addressScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AddressCountAggregateInputType | true
+    _avg?: AddressAvgAggregateInputType
+    _sum?: AddressSumAggregateInputType
+    _min?: AddressMinAggregateInputType
+    _max?: AddressMaxAggregateInputType
+  }
+
+  export type AddressGroupByOutputType = {
+    id: string
+    ownerType: $Enums.AddressOwnerType
+    ownerId: string
+    type: $Enums.AddressType
+    isPrimary: boolean
+    label: string | null
+    countryCode: string
+    postalCode: string
+    state: string
+    city: string
+    neighborhood: string
+    street: string
+    number: string
+    complement: string | null
+    reference: string | null
+    latitude: number | null
+    longitude: number | null
+    formattedAddress: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: AddressCountAggregateOutputType | null
+    _avg: AddressAvgAggregateOutputType | null
+    _sum: AddressSumAggregateOutputType | null
+    _min: AddressMinAggregateOutputType | null
+    _max: AddressMaxAggregateOutputType | null
+  }
+
+  type GetAddressGroupByPayload<T extends addressGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AddressGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AddressGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AddressGroupByOutputType[P]>
+            : GetScalarType<T[P], AddressGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type addressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerType?: boolean
+    ownerId?: boolean
+    type?: boolean
+    isPrimary?: boolean
+    label?: boolean
+    countryCode?: boolean
+    postalCode?: boolean
+    state?: boolean
+    city?: boolean
+    neighborhood?: boolean
+    street?: boolean
+    number?: boolean
+    complement?: boolean
+    reference?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    formattedAddress?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["address"]>
+
+  export type addressSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerType?: boolean
+    ownerId?: boolean
+    type?: boolean
+    isPrimary?: boolean
+    label?: boolean
+    countryCode?: boolean
+    postalCode?: boolean
+    state?: boolean
+    city?: boolean
+    neighborhood?: boolean
+    street?: boolean
+    number?: boolean
+    complement?: boolean
+    reference?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    formattedAddress?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["address"]>
+
+  export type addressSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ownerType?: boolean
+    ownerId?: boolean
+    type?: boolean
+    isPrimary?: boolean
+    label?: boolean
+    countryCode?: boolean
+    postalCode?: boolean
+    state?: boolean
+    city?: boolean
+    neighborhood?: boolean
+    street?: boolean
+    number?: boolean
+    complement?: boolean
+    reference?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    formattedAddress?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["address"]>
+
+  export type addressSelectScalar = {
+    id?: boolean
+    ownerType?: boolean
+    ownerId?: boolean
+    type?: boolean
+    isPrimary?: boolean
+    label?: boolean
+    countryCode?: boolean
+    postalCode?: boolean
+    state?: boolean
+    city?: boolean
+    neighborhood?: boolean
+    street?: boolean
+    number?: boolean
+    complement?: boolean
+    reference?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    formattedAddress?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type addressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerType" | "ownerId" | "type" | "isPrimary" | "label" | "countryCode" | "postalCode" | "state" | "city" | "neighborhood" | "street" | "number" | "complement" | "reference" | "latitude" | "longitude" | "formattedAddress" | "createdAt" | "updatedAt", ExtArgs["result"]["address"]>
+
+  export type $addressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "address"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      ownerType: $Enums.AddressOwnerType
+      ownerId: string
+      type: $Enums.AddressType
+      isPrimary: boolean
+      label: string | null
+      countryCode: string
+      postalCode: string
+      state: string
+      city: string
+      neighborhood: string
+      street: string
+      number: string
+      complement: string | null
+      reference: string | null
+      latitude: number | null
+      longitude: number | null
+      formattedAddress: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["address"]>
+    composites: {}
+  }
+
+  type addressGetPayload<S extends boolean | null | undefined | addressDefaultArgs> = $Result.GetResult<Prisma.$addressPayload, S>
+
+  type addressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<addressFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AddressCountAggregateInputType | true
+    }
+
+  export interface addressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['address'], meta: { name: 'address' } }
+    /**
+     * Find zero or one Address that matches the filter.
+     * @param {addressFindUniqueArgs} args - Arguments to find a Address
+     * @example
+     * // Get one Address
+     * const address = await prisma.address.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends addressFindUniqueArgs>(args: SelectSubset<T, addressFindUniqueArgs<ExtArgs>>): Prisma__addressClient<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Address that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {addressFindUniqueOrThrowArgs} args - Arguments to find a Address
+     * @example
+     * // Get one Address
+     * const address = await prisma.address.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends addressFindUniqueOrThrowArgs>(args: SelectSubset<T, addressFindUniqueOrThrowArgs<ExtArgs>>): Prisma__addressClient<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Address that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {addressFindFirstArgs} args - Arguments to find a Address
+     * @example
+     * // Get one Address
+     * const address = await prisma.address.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends addressFindFirstArgs>(args?: SelectSubset<T, addressFindFirstArgs<ExtArgs>>): Prisma__addressClient<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Address that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {addressFindFirstOrThrowArgs} args - Arguments to find a Address
+     * @example
+     * // Get one Address
+     * const address = await prisma.address.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends addressFindFirstOrThrowArgs>(args?: SelectSubset<T, addressFindFirstOrThrowArgs<ExtArgs>>): Prisma__addressClient<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Addresses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {addressFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Addresses
+     * const addresses = await prisma.address.findMany()
+     * 
+     * // Get first 10 Addresses
+     * const addresses = await prisma.address.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const addressWithIdOnly = await prisma.address.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends addressFindManyArgs>(args?: SelectSubset<T, addressFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Address.
+     * @param {addressCreateArgs} args - Arguments to create a Address.
+     * @example
+     * // Create one Address
+     * const Address = await prisma.address.create({
+     *   data: {
+     *     // ... data to create a Address
+     *   }
+     * })
+     * 
+     */
+    create<T extends addressCreateArgs>(args: SelectSubset<T, addressCreateArgs<ExtArgs>>): Prisma__addressClient<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Addresses.
+     * @param {addressCreateManyArgs} args - Arguments to create many Addresses.
+     * @example
+     * // Create many Addresses
+     * const address = await prisma.address.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends addressCreateManyArgs>(args?: SelectSubset<T, addressCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Addresses and returns the data saved in the database.
+     * @param {addressCreateManyAndReturnArgs} args - Arguments to create many Addresses.
+     * @example
+     * // Create many Addresses
+     * const address = await prisma.address.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Addresses and only return the `id`
+     * const addressWithIdOnly = await prisma.address.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends addressCreateManyAndReturnArgs>(args?: SelectSubset<T, addressCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Address.
+     * @param {addressDeleteArgs} args - Arguments to delete one Address.
+     * @example
+     * // Delete one Address
+     * const Address = await prisma.address.delete({
+     *   where: {
+     *     // ... filter to delete one Address
+     *   }
+     * })
+     * 
+     */
+    delete<T extends addressDeleteArgs>(args: SelectSubset<T, addressDeleteArgs<ExtArgs>>): Prisma__addressClient<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Address.
+     * @param {addressUpdateArgs} args - Arguments to update one Address.
+     * @example
+     * // Update one Address
+     * const address = await prisma.address.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends addressUpdateArgs>(args: SelectSubset<T, addressUpdateArgs<ExtArgs>>): Prisma__addressClient<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Addresses.
+     * @param {addressDeleteManyArgs} args - Arguments to filter Addresses to delete.
+     * @example
+     * // Delete a few Addresses
+     * const { count } = await prisma.address.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends addressDeleteManyArgs>(args?: SelectSubset<T, addressDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Addresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {addressUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Addresses
+     * const address = await prisma.address.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends addressUpdateManyArgs>(args: SelectSubset<T, addressUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Addresses and returns the data updated in the database.
+     * @param {addressUpdateManyAndReturnArgs} args - Arguments to update many Addresses.
+     * @example
+     * // Update many Addresses
+     * const address = await prisma.address.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Addresses and only return the `id`
+     * const addressWithIdOnly = await prisma.address.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends addressUpdateManyAndReturnArgs>(args: SelectSubset<T, addressUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Address.
+     * @param {addressUpsertArgs} args - Arguments to update or create a Address.
+     * @example
+     * // Update or create a Address
+     * const address = await prisma.address.upsert({
+     *   create: {
+     *     // ... data to create a Address
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Address we want to update
+     *   }
+     * })
+     */
+    upsert<T extends addressUpsertArgs>(args: SelectSubset<T, addressUpsertArgs<ExtArgs>>): Prisma__addressClient<$Result.GetResult<Prisma.$addressPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Addresses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {addressCountArgs} args - Arguments to filter Addresses to count.
+     * @example
+     * // Count the number of Addresses
+     * const count = await prisma.address.count({
+     *   where: {
+     *     // ... the filter for the Addresses we want to count
+     *   }
+     * })
+    **/
+    count<T extends addressCountArgs>(
+      args?: Subset<T, addressCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AddressCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Address.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AddressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AddressAggregateArgs>(args: Subset<T, AddressAggregateArgs>): Prisma.PrismaPromise<GetAddressAggregateType<T>>
+
+    /**
+     * Group by Address.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {addressGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends addressGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: addressGroupByArgs['orderBy'] }
+        : { orderBy?: addressGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, addressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAddressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the address model
+   */
+  readonly fields: addressFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for address.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__addressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the address model
+   */
+  interface addressFieldRefs {
+    readonly id: FieldRef<"address", 'String'>
+    readonly ownerType: FieldRef<"address", 'AddressOwnerType'>
+    readonly ownerId: FieldRef<"address", 'String'>
+    readonly type: FieldRef<"address", 'AddressType'>
+    readonly isPrimary: FieldRef<"address", 'Boolean'>
+    readonly label: FieldRef<"address", 'String'>
+    readonly countryCode: FieldRef<"address", 'String'>
+    readonly postalCode: FieldRef<"address", 'String'>
+    readonly state: FieldRef<"address", 'String'>
+    readonly city: FieldRef<"address", 'String'>
+    readonly neighborhood: FieldRef<"address", 'String'>
+    readonly street: FieldRef<"address", 'String'>
+    readonly number: FieldRef<"address", 'String'>
+    readonly complement: FieldRef<"address", 'String'>
+    readonly reference: FieldRef<"address", 'String'>
+    readonly latitude: FieldRef<"address", 'Float'>
+    readonly longitude: FieldRef<"address", 'Float'>
+    readonly formattedAddress: FieldRef<"address", 'String'>
+    readonly createdAt: FieldRef<"address", 'DateTime'>
+    readonly updatedAt: FieldRef<"address", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * address findUnique
+   */
+  export type addressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * Filter, which address to fetch.
+     */
+    where: addressWhereUniqueInput
+  }
+
+  /**
+   * address findUniqueOrThrow
+   */
+  export type addressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * Filter, which address to fetch.
+     */
+    where: addressWhereUniqueInput
+  }
+
+  /**
+   * address findFirst
+   */
+  export type addressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * Filter, which address to fetch.
+     */
+    where?: addressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of addresses to fetch.
+     */
+    orderBy?: addressOrderByWithRelationInput | addressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for addresses.
+     */
+    cursor?: addressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` addresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` addresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of addresses.
+     */
+    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
+  }
+
+  /**
+   * address findFirstOrThrow
+   */
+  export type addressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * Filter, which address to fetch.
+     */
+    where?: addressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of addresses to fetch.
+     */
+    orderBy?: addressOrderByWithRelationInput | addressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for addresses.
+     */
+    cursor?: addressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` addresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` addresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of addresses.
+     */
+    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
+  }
+
+  /**
+   * address findMany
+   */
+  export type addressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * Filter, which addresses to fetch.
+     */
+    where?: addressWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of addresses to fetch.
+     */
+    orderBy?: addressOrderByWithRelationInput | addressOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing addresses.
+     */
+    cursor?: addressWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` addresses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` addresses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of addresses.
+     */
+    distinct?: AddressScalarFieldEnum | AddressScalarFieldEnum[]
+  }
+
+  /**
+   * address create
+   */
+  export type addressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * The data needed to create a address.
+     */
+    data: XOR<addressCreateInput, addressUncheckedCreateInput>
+  }
+
+  /**
+   * address createMany
+   */
+  export type addressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many addresses.
+     */
+    data: addressCreateManyInput | addressCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * address createManyAndReturn
+   */
+  export type addressCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * The data used to create many addresses.
+     */
+    data: addressCreateManyInput | addressCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * address update
+   */
+  export type addressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * The data needed to update a address.
+     */
+    data: XOR<addressUpdateInput, addressUncheckedUpdateInput>
+    /**
+     * Choose, which address to update.
+     */
+    where: addressWhereUniqueInput
+  }
+
+  /**
+   * address updateMany
+   */
+  export type addressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update addresses.
+     */
+    data: XOR<addressUpdateManyMutationInput, addressUncheckedUpdateManyInput>
+    /**
+     * Filter which addresses to update
+     */
+    where?: addressWhereInput
+    /**
+     * Limit how many addresses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * address updateManyAndReturn
+   */
+  export type addressUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * The data used to update addresses.
+     */
+    data: XOR<addressUpdateManyMutationInput, addressUncheckedUpdateManyInput>
+    /**
+     * Filter which addresses to update
+     */
+    where?: addressWhereInput
+    /**
+     * Limit how many addresses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * address upsert
+   */
+  export type addressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * The filter to search for the address to update in case it exists.
+     */
+    where: addressWhereUniqueInput
+    /**
+     * In case the address found by the `where` argument doesn't exist, create a new address with this data.
+     */
+    create: XOR<addressCreateInput, addressUncheckedCreateInput>
+    /**
+     * In case the address was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<addressUpdateInput, addressUncheckedUpdateInput>
+  }
+
+  /**
+   * address delete
+   */
+  export type addressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
+    /**
+     * Filter which address to delete.
+     */
+    where: addressWhereUniqueInput
+  }
+
+  /**
+   * address deleteMany
+   */
+  export type addressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which addresses to delete
+     */
+    where?: addressWhereInput
+    /**
+     * Limit how many addresses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * address without action
+   */
+  export type addressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the address
+     */
+    select?: addressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the address
+     */
+    omit?: addressOmit<ExtArgs> | null
   }
 
 
@@ -19114,20 +20479,8 @@ export namespace Prisma {
 
   export type AggregateClinic = {
     _count: ClinicCountAggregateOutputType | null
-    _avg: ClinicAvgAggregateOutputType | null
-    _sum: ClinicSumAggregateOutputType | null
     _min: ClinicMinAggregateOutputType | null
     _max: ClinicMaxAggregateOutputType | null
-  }
-
-  export type ClinicAvgAggregateOutputType = {
-    latitude: number | null
-    longitude: number | null
-  }
-
-  export type ClinicSumAggregateOutputType = {
-    latitude: number | null
-    longitude: number | null
   }
 
   export type ClinicMinAggregateOutputType = {
@@ -19137,9 +20490,6 @@ export namespace Prisma {
     description: string | null
     email: string | null
     type: $Enums.ClinicType | null
-    address: string | null
-    latitude: number | null
-    longitude: number | null
     createdAt: Date | null
     updatedAt: Date | null
     ownerId: string | null
@@ -19152,9 +20502,6 @@ export namespace Prisma {
     description: string | null
     email: string | null
     type: $Enums.ClinicType | null
-    address: string | null
-    latitude: number | null
-    longitude: number | null
     createdAt: Date | null
     updatedAt: Date | null
     ownerId: string | null
@@ -19167,25 +20514,12 @@ export namespace Prisma {
     description: number
     email: number
     type: number
-    address: number
-    latitude: number
-    longitude: number
     createdAt: number
     updatedAt: number
     ownerId: number
     _all: number
   }
 
-
-  export type ClinicAvgAggregateInputType = {
-    latitude?: true
-    longitude?: true
-  }
-
-  export type ClinicSumAggregateInputType = {
-    latitude?: true
-    longitude?: true
-  }
 
   export type ClinicMinAggregateInputType = {
     id?: true
@@ -19194,9 +20528,6 @@ export namespace Prisma {
     description?: true
     email?: true
     type?: true
-    address?: true
-    latitude?: true
-    longitude?: true
     createdAt?: true
     updatedAt?: true
     ownerId?: true
@@ -19209,9 +20540,6 @@ export namespace Prisma {
     description?: true
     email?: true
     type?: true
-    address?: true
-    latitude?: true
-    longitude?: true
     createdAt?: true
     updatedAt?: true
     ownerId?: true
@@ -19224,9 +20552,6 @@ export namespace Prisma {
     description?: true
     email?: true
     type?: true
-    address?: true
-    latitude?: true
-    longitude?: true
     createdAt?: true
     updatedAt?: true
     ownerId?: true
@@ -19271,18 +20596,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: ClinicAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ClinicSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: ClinicMinAggregateInputType
@@ -19313,8 +20626,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ClinicCountAggregateInputType | true
-    _avg?: ClinicAvgAggregateInputType
-    _sum?: ClinicSumAggregateInputType
     _min?: ClinicMinAggregateInputType
     _max?: ClinicMaxAggregateInputType
   }
@@ -19326,15 +20637,10 @@ export namespace Prisma {
     description: string | null
     email: string
     type: $Enums.ClinicType
-    address: string | null
-    latitude: number | null
-    longitude: number | null
     createdAt: Date
     updatedAt: Date
     ownerId: string
     _count: ClinicCountAggregateOutputType | null
-    _avg: ClinicAvgAggregateOutputType | null
-    _sum: ClinicSumAggregateOutputType | null
     _min: ClinicMinAggregateOutputType | null
     _max: ClinicMaxAggregateOutputType | null
   }
@@ -19360,9 +20666,6 @@ export namespace Prisma {
     description?: boolean
     email?: boolean
     type?: boolean
-    address?: boolean
-    latitude?: boolean
-    longitude?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
@@ -19378,9 +20681,6 @@ export namespace Prisma {
     description?: boolean
     email?: boolean
     type?: boolean
-    address?: boolean
-    latitude?: boolean
-    longitude?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
@@ -19394,9 +20694,6 @@ export namespace Prisma {
     description?: boolean
     email?: boolean
     type?: boolean
-    address?: boolean
-    latitude?: boolean
-    longitude?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
@@ -19410,15 +20707,12 @@ export namespace Prisma {
     description?: boolean
     email?: boolean
     type?: boolean
-    address?: boolean
-    latitude?: boolean
-    longitude?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     ownerId?: boolean
   }
 
-  export type clinicOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "description" | "email" | "type" | "address" | "latitude" | "longitude" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["clinic"]>
+  export type clinicOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "description" | "email" | "type" | "createdAt" | "updatedAt" | "ownerId", ExtArgs["result"]["clinic"]>
   export type clinicInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | userDefaultArgs<ExtArgs>
     employees?: boolean | clinic$employeesArgs<ExtArgs>
@@ -19444,9 +20738,6 @@ export namespace Prisma {
       description: string | null
       email: string
       type: $Enums.ClinicType
-      address: string | null
-      latitude: number | null
-      longitude: number | null
       createdAt: Date
       updatedAt: Date
       ownerId: string
@@ -19881,9 +21172,6 @@ export namespace Prisma {
     readonly description: FieldRef<"clinic", 'String'>
     readonly email: FieldRef<"clinic", 'String'>
     readonly type: FieldRef<"clinic", 'ClinicType'>
-    readonly address: FieldRef<"clinic", 'String'>
-    readonly latitude: FieldRef<"clinic", 'Float'>
-    readonly longitude: FieldRef<"clinic", 'Float'>
     readonly createdAt: FieldRef<"clinic", 'DateTime'>
     readonly updatedAt: FieldRef<"clinic", 'DateTime'>
     readonly ownerId: FieldRef<"clinic", 'String'>
@@ -39991,8 +41279,6 @@ export namespace Prisma {
   export type UserAvgAggregateOutputType = {
     licenseDocumentSize: number | null
     yearsOfExperience: number | null
-    clinicLatitude: number | null
-    clinicLongitude: number | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
     appointmentConfirmationReminderHoursBefore: number | null
@@ -40005,8 +41291,6 @@ export namespace Prisma {
   export type UserSumAggregateOutputType = {
     licenseDocumentSize: number | null
     yearsOfExperience: number | null
-    clinicLatitude: number | null
-    clinicLongitude: number | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
     appointmentConfirmationReminderHoursBefore: number | null
@@ -40027,9 +41311,9 @@ export namespace Prisma {
     image: string | null
     role: $Enums.UserRole | null
     onboardingCompleted: boolean | null
+    onboardingStep: $Enums.OnboardingStep | null
     cpf: string | null
     dateOfBirth: Date | null
-    address: string | null
     displayName: string | null
     document: string | null
     birthDate: Date | null
@@ -40054,12 +41338,6 @@ export namespace Prisma {
     education: string | null
     certifications: string | null
     yearsOfExperience: number | null
-    clinicAddress: string | null
-    clinicLatitude: number | null
-    clinicLongitude: number | null
-    clinicNeighborhood: string | null
-    clinicCity: string | null
-    clinicState: string | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
     appointmentConfirmationReminderHoursBefore: number | null
@@ -40092,9 +41370,9 @@ export namespace Prisma {
     image: string | null
     role: $Enums.UserRole | null
     onboardingCompleted: boolean | null
+    onboardingStep: $Enums.OnboardingStep | null
     cpf: string | null
     dateOfBirth: Date | null
-    address: string | null
     displayName: string | null
     document: string | null
     birthDate: Date | null
@@ -40119,12 +41397,6 @@ export namespace Prisma {
     education: string | null
     certifications: string | null
     yearsOfExperience: number | null
-    clinicAddress: string | null
-    clinicLatitude: number | null
-    clinicLongitude: number | null
-    clinicNeighborhood: string | null
-    clinicCity: string | null
-    clinicState: string | null
     homeCareRadiusKm: number | null
     bookingAvailabilityDays: number | null
     appointmentConfirmationReminderHoursBefore: number | null
@@ -40157,9 +41429,9 @@ export namespace Prisma {
     image: number
     role: number
     onboardingCompleted: number
+    onboardingStep: number
     cpf: number
     dateOfBirth: number
-    address: number
     displayName: number
     document: number
     birthDate: number
@@ -40187,12 +41459,6 @@ export namespace Prisma {
     yearsOfExperience: number
     targetAudiences: number
     serviceModalities: number
-    clinicAddress: number
-    clinicLatitude: number
-    clinicLongitude: number
-    clinicNeighborhood: number
-    clinicCity: number
-    clinicState: number
     homeCareRadiusKm: number
     acceptedInsurance: number
     paymentMethods: number
@@ -40222,8 +41488,6 @@ export namespace Prisma {
   export type UserAvgAggregateInputType = {
     licenseDocumentSize?: true
     yearsOfExperience?: true
-    clinicLatitude?: true
-    clinicLongitude?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
     appointmentConfirmationReminderHoursBefore?: true
@@ -40236,8 +41500,6 @@ export namespace Prisma {
   export type UserSumAggregateInputType = {
     licenseDocumentSize?: true
     yearsOfExperience?: true
-    clinicLatitude?: true
-    clinicLongitude?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
     appointmentConfirmationReminderHoursBefore?: true
@@ -40258,9 +41520,9 @@ export namespace Prisma {
     image?: true
     role?: true
     onboardingCompleted?: true
+    onboardingStep?: true
     cpf?: true
     dateOfBirth?: true
-    address?: true
     displayName?: true
     document?: true
     birthDate?: true
@@ -40285,12 +41547,6 @@ export namespace Prisma {
     education?: true
     certifications?: true
     yearsOfExperience?: true
-    clinicAddress?: true
-    clinicLatitude?: true
-    clinicLongitude?: true
-    clinicNeighborhood?: true
-    clinicCity?: true
-    clinicState?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
     appointmentConfirmationReminderHoursBefore?: true
@@ -40323,9 +41579,9 @@ export namespace Prisma {
     image?: true
     role?: true
     onboardingCompleted?: true
+    onboardingStep?: true
     cpf?: true
     dateOfBirth?: true
-    address?: true
     displayName?: true
     document?: true
     birthDate?: true
@@ -40350,12 +41606,6 @@ export namespace Prisma {
     education?: true
     certifications?: true
     yearsOfExperience?: true
-    clinicAddress?: true
-    clinicLatitude?: true
-    clinicLongitude?: true
-    clinicNeighborhood?: true
-    clinicCity?: true
-    clinicState?: true
     homeCareRadiusKm?: true
     bookingAvailabilityDays?: true
     appointmentConfirmationReminderHoursBefore?: true
@@ -40388,9 +41638,9 @@ export namespace Prisma {
     image?: true
     role?: true
     onboardingCompleted?: true
+    onboardingStep?: true
     cpf?: true
     dateOfBirth?: true
-    address?: true
     displayName?: true
     document?: true
     birthDate?: true
@@ -40418,12 +41668,6 @@ export namespace Prisma {
     yearsOfExperience?: true
     targetAudiences?: true
     serviceModalities?: true
-    clinicAddress?: true
-    clinicLatitude?: true
-    clinicLongitude?: true
-    clinicNeighborhood?: true
-    clinicCity?: true
-    clinicState?: true
     homeCareRadiusKm?: true
     acceptedInsurance?: true
     paymentMethods?: true
@@ -40546,9 +41790,9 @@ export namespace Prisma {
     image: string | null
     role: $Enums.UserRole
     onboardingCompleted: boolean
+    onboardingStep: $Enums.OnboardingStep
     cpf: string | null
     dateOfBirth: Date | null
-    address: string | null
     displayName: string | null
     document: string | null
     birthDate: Date | null
@@ -40576,12 +41820,6 @@ export namespace Prisma {
     yearsOfExperience: number | null
     targetAudiences: string[]
     serviceModalities: string[]
-    clinicAddress: string | null
-    clinicLatitude: number | null
-    clinicLongitude: number | null
-    clinicNeighborhood: string | null
-    clinicCity: string | null
-    clinicState: string | null
     homeCareRadiusKm: number | null
     acceptedInsurance: string[]
     paymentMethods: string[]
@@ -40636,9 +41874,9 @@ export namespace Prisma {
     image?: boolean
     role?: boolean
     onboardingCompleted?: boolean
+    onboardingStep?: boolean
     cpf?: boolean
     dateOfBirth?: boolean
-    address?: boolean
     displayName?: boolean
     document?: boolean
     birthDate?: boolean
@@ -40666,12 +41904,6 @@ export namespace Prisma {
     yearsOfExperience?: boolean
     targetAudiences?: boolean
     serviceModalities?: boolean
-    clinicAddress?: boolean
-    clinicLatitude?: boolean
-    clinicLongitude?: boolean
-    clinicNeighborhood?: boolean
-    clinicCity?: boolean
-    clinicState?: boolean
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
@@ -40749,9 +41981,9 @@ export namespace Prisma {
     image?: boolean
     role?: boolean
     onboardingCompleted?: boolean
+    onboardingStep?: boolean
     cpf?: boolean
     dateOfBirth?: boolean
-    address?: boolean
     displayName?: boolean
     document?: boolean
     birthDate?: boolean
@@ -40779,12 +42011,6 @@ export namespace Prisma {
     yearsOfExperience?: boolean
     targetAudiences?: boolean
     serviceModalities?: boolean
-    clinicAddress?: boolean
-    clinicLatitude?: boolean
-    clinicLongitude?: boolean
-    clinicNeighborhood?: boolean
-    clinicCity?: boolean
-    clinicState?: boolean
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
@@ -40822,9 +42048,9 @@ export namespace Prisma {
     image?: boolean
     role?: boolean
     onboardingCompleted?: boolean
+    onboardingStep?: boolean
     cpf?: boolean
     dateOfBirth?: boolean
-    address?: boolean
     displayName?: boolean
     document?: boolean
     birthDate?: boolean
@@ -40852,12 +42078,6 @@ export namespace Prisma {
     yearsOfExperience?: boolean
     targetAudiences?: boolean
     serviceModalities?: boolean
-    clinicAddress?: boolean
-    clinicLatitude?: boolean
-    clinicLongitude?: boolean
-    clinicNeighborhood?: boolean
-    clinicCity?: boolean
-    clinicState?: boolean
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
@@ -40895,9 +42115,9 @@ export namespace Prisma {
     image?: boolean
     role?: boolean
     onboardingCompleted?: boolean
+    onboardingStep?: boolean
     cpf?: boolean
     dateOfBirth?: boolean
-    address?: boolean
     displayName?: boolean
     document?: boolean
     birthDate?: boolean
@@ -40925,12 +42145,6 @@ export namespace Prisma {
     yearsOfExperience?: boolean
     targetAudiences?: boolean
     serviceModalities?: boolean
-    clinicAddress?: boolean
-    clinicLatitude?: boolean
-    clinicLongitude?: boolean
-    clinicNeighborhood?: boolean
-    clinicCity?: boolean
-    clinicState?: boolean
     homeCareRadiusKm?: boolean
     acceptedInsurance?: boolean
     paymentMethods?: boolean
@@ -40955,7 +42169,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "cpf" | "dateOfBirth" | "address" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "clinicAddress" | "clinicLatitude" | "clinicLongitude" | "clinicNeighborhood" | "clinicCity" | "clinicState" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "appointmentConfirmationReminderHoursBefore" | "appointmentReminderHoursBefore" | "birthdayGreetingEmailEnabled" | "birthdayGreetingEmailSubjectTemplate" | "birthdayGreetingEmailHtmlTemplate" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "onboardingStep" | "cpf" | "dateOfBirth" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "appointmentConfirmationReminderHoursBefore" | "appointmentReminderHoursBefore" | "birthdayGreetingEmailEnabled" | "birthdayGreetingEmailSubjectTemplate" | "birthdayGreetingEmailHtmlTemplate" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
@@ -41065,9 +42279,9 @@ export namespace Prisma {
       image: string | null
       role: $Enums.UserRole
       onboardingCompleted: boolean
+      onboardingStep: $Enums.OnboardingStep
       cpf: string | null
       dateOfBirth: Date | null
-      address: string | null
       displayName: string | null
       document: string | null
       birthDate: Date | null
@@ -41095,12 +42309,6 @@ export namespace Prisma {
       yearsOfExperience: number | null
       targetAudiences: string[]
       serviceModalities: string[]
-      clinicAddress: string | null
-      clinicLatitude: number | null
-      clinicLongitude: number | null
-      clinicNeighborhood: string | null
-      clinicCity: string | null
-      clinicState: string | null
       homeCareRadiusKm: number | null
       acceptedInsurance: string[]
       paymentMethods: string[]
@@ -41597,9 +42805,9 @@ export namespace Prisma {
     readonly image: FieldRef<"user", 'String'>
     readonly role: FieldRef<"user", 'UserRole'>
     readonly onboardingCompleted: FieldRef<"user", 'Boolean'>
+    readonly onboardingStep: FieldRef<"user", 'OnboardingStep'>
     readonly cpf: FieldRef<"user", 'String'>
     readonly dateOfBirth: FieldRef<"user", 'DateTime'>
-    readonly address: FieldRef<"user", 'String'>
     readonly displayName: FieldRef<"user", 'String'>
     readonly document: FieldRef<"user", 'String'>
     readonly birthDate: FieldRef<"user", 'DateTime'>
@@ -41627,12 +42835,6 @@ export namespace Prisma {
     readonly yearsOfExperience: FieldRef<"user", 'Int'>
     readonly targetAudiences: FieldRef<"user", 'String[]'>
     readonly serviceModalities: FieldRef<"user", 'String[]'>
-    readonly clinicAddress: FieldRef<"user", 'String'>
-    readonly clinicLatitude: FieldRef<"user", 'Float'>
-    readonly clinicLongitude: FieldRef<"user", 'Float'>
-    readonly clinicNeighborhood: FieldRef<"user", 'String'>
-    readonly clinicCity: FieldRef<"user", 'String'>
-    readonly clinicState: FieldRef<"user", 'String'>
     readonly homeCareRadiusKm: FieldRef<"user", 'Int'>
     readonly acceptedInsurance: FieldRef<"user", 'String[]'>
     readonly paymentMethods: FieldRef<"user", 'String[]'>
@@ -47436,6 +48638,32 @@ export namespace Prisma {
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
 
 
+  export const AddressScalarFieldEnum: {
+    id: 'id',
+    ownerType: 'ownerType',
+    ownerId: 'ownerId',
+    type: 'type',
+    isPrimary: 'isPrimary',
+    label: 'label',
+    countryCode: 'countryCode',
+    postalCode: 'postalCode',
+    state: 'state',
+    city: 'city',
+    neighborhood: 'neighborhood',
+    street: 'street',
+    number: 'number',
+    complement: 'complement',
+    reference: 'reference',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    formattedAddress: 'formattedAddress',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type AddressScalarFieldEnum = (typeof AddressScalarFieldEnum)[keyof typeof AddressScalarFieldEnum]
+
+
   export const Appointment_procedureScalarFieldEnum: {
     id: 'id',
     appointmentId: 'appointmentId',
@@ -47606,9 +48834,6 @@ export namespace Prisma {
     description: 'description',
     email: 'email',
     type: 'type',
-    address: 'address',
-    latitude: 'latitude',
-    longitude: 'longitude',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     ownerId: 'ownerId'
@@ -47892,9 +49117,9 @@ export namespace Prisma {
     image: 'image',
     role: 'role',
     onboardingCompleted: 'onboardingCompleted',
+    onboardingStep: 'onboardingStep',
     cpf: 'cpf',
     dateOfBirth: 'dateOfBirth',
-    address: 'address',
     displayName: 'displayName',
     document: 'document',
     birthDate: 'birthDate',
@@ -47922,12 +49147,6 @@ export namespace Prisma {
     yearsOfExperience: 'yearsOfExperience',
     targetAudiences: 'targetAudiences',
     serviceModalities: 'serviceModalities',
-    clinicAddress: 'clinicAddress',
-    clinicLatitude: 'clinicLatitude',
-    clinicLongitude: 'clinicLongitude',
-    clinicNeighborhood: 'clinicNeighborhood',
-    clinicCity: 'clinicCity',
-    clinicState: 'clinicState',
     homeCareRadiusKm: 'homeCareRadiusKm',
     acceptedInsurance: 'acceptedInsurance',
     paymentMethods: 'paymentMethods',
@@ -48068,6 +49287,55 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'AddressOwnerType'
+   */
+  export type EnumAddressOwnerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AddressOwnerType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AddressOwnerType[]'
+   */
+  export type ListEnumAddressOwnerTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AddressOwnerType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'AddressType'
+   */
+  export type EnumAddressTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AddressType'>
+    
+
+
+  /**
+   * Reference to a field of type 'AddressType[]'
+   */
+  export type ListEnumAddressTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AddressType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
    * Reference to a field of type 'AppointmentStatus'
    */
   export type EnumAppointmentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppointmentStatus'>
@@ -48124,13 +49392,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'AppointmentWaitlistStatus'
    */
   export type EnumAppointmentWaitlistStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AppointmentWaitlistStatus'>
@@ -48155,20 +49416,6 @@ export namespace Prisma {
    * Reference to a field of type 'ClinicType[]'
    */
   export type ListEnumClinicTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ClinicType[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -48341,6 +49588,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'OnboardingStep'
+   */
+  export type EnumOnboardingStepFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OnboardingStep'>
+    
+
+
+  /**
+   * Reference to a field of type 'OnboardingStep[]'
+   */
+  export type ListEnumOnboardingStepFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OnboardingStep[]'>
+    
+
+
+  /**
    * Reference to a field of type 'CancellationPenaltyType'
    */
   export type EnumCancellationPenaltyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CancellationPenaltyType'>
@@ -48464,6 +49725,135 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"account"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"account"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"account"> | Date | string
+  }
+
+  export type addressWhereInput = {
+    AND?: addressWhereInput | addressWhereInput[]
+    OR?: addressWhereInput[]
+    NOT?: addressWhereInput | addressWhereInput[]
+    id?: StringFilter<"address"> | string
+    ownerType?: EnumAddressOwnerTypeFilter<"address"> | $Enums.AddressOwnerType
+    ownerId?: StringFilter<"address"> | string
+    type?: EnumAddressTypeFilter<"address"> | $Enums.AddressType
+    isPrimary?: BoolFilter<"address"> | boolean
+    label?: StringNullableFilter<"address"> | string | null
+    countryCode?: StringFilter<"address"> | string
+    postalCode?: StringFilter<"address"> | string
+    state?: StringFilter<"address"> | string
+    city?: StringFilter<"address"> | string
+    neighborhood?: StringFilter<"address"> | string
+    street?: StringFilter<"address"> | string
+    number?: StringFilter<"address"> | string
+    complement?: StringNullableFilter<"address"> | string | null
+    reference?: StringNullableFilter<"address"> | string | null
+    latitude?: FloatNullableFilter<"address"> | number | null
+    longitude?: FloatNullableFilter<"address"> | number | null
+    formattedAddress?: StringNullableFilter<"address"> | string | null
+    createdAt?: DateTimeFilter<"address"> | Date | string
+    updatedAt?: DateTimeFilter<"address"> | Date | string
+  }
+
+  export type addressOrderByWithRelationInput = {
+    id?: SortOrder
+    ownerType?: SortOrder
+    ownerId?: SortOrder
+    type?: SortOrder
+    isPrimary?: SortOrder
+    label?: SortOrderInput | SortOrder
+    countryCode?: SortOrder
+    postalCode?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    neighborhood?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrderInput | SortOrder
+    reference?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    formattedAddress?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type addressWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: addressWhereInput | addressWhereInput[]
+    OR?: addressWhereInput[]
+    NOT?: addressWhereInput | addressWhereInput[]
+    ownerType?: EnumAddressOwnerTypeFilter<"address"> | $Enums.AddressOwnerType
+    ownerId?: StringFilter<"address"> | string
+    type?: EnumAddressTypeFilter<"address"> | $Enums.AddressType
+    isPrimary?: BoolFilter<"address"> | boolean
+    label?: StringNullableFilter<"address"> | string | null
+    countryCode?: StringFilter<"address"> | string
+    postalCode?: StringFilter<"address"> | string
+    state?: StringFilter<"address"> | string
+    city?: StringFilter<"address"> | string
+    neighborhood?: StringFilter<"address"> | string
+    street?: StringFilter<"address"> | string
+    number?: StringFilter<"address"> | string
+    complement?: StringNullableFilter<"address"> | string | null
+    reference?: StringNullableFilter<"address"> | string | null
+    latitude?: FloatNullableFilter<"address"> | number | null
+    longitude?: FloatNullableFilter<"address"> | number | null
+    formattedAddress?: StringNullableFilter<"address"> | string | null
+    createdAt?: DateTimeFilter<"address"> | Date | string
+    updatedAt?: DateTimeFilter<"address"> | Date | string
+  }, "id">
+
+  export type addressOrderByWithAggregationInput = {
+    id?: SortOrder
+    ownerType?: SortOrder
+    ownerId?: SortOrder
+    type?: SortOrder
+    isPrimary?: SortOrder
+    label?: SortOrderInput | SortOrder
+    countryCode?: SortOrder
+    postalCode?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    neighborhood?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrderInput | SortOrder
+    reference?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    formattedAddress?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: addressCountOrderByAggregateInput
+    _avg?: addressAvgOrderByAggregateInput
+    _max?: addressMaxOrderByAggregateInput
+    _min?: addressMinOrderByAggregateInput
+    _sum?: addressSumOrderByAggregateInput
+  }
+
+  export type addressScalarWhereWithAggregatesInput = {
+    AND?: addressScalarWhereWithAggregatesInput | addressScalarWhereWithAggregatesInput[]
+    OR?: addressScalarWhereWithAggregatesInput[]
+    NOT?: addressScalarWhereWithAggregatesInput | addressScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"address"> | string
+    ownerType?: EnumAddressOwnerTypeWithAggregatesFilter<"address"> | $Enums.AddressOwnerType
+    ownerId?: StringWithAggregatesFilter<"address"> | string
+    type?: EnumAddressTypeWithAggregatesFilter<"address"> | $Enums.AddressType
+    isPrimary?: BoolWithAggregatesFilter<"address"> | boolean
+    label?: StringNullableWithAggregatesFilter<"address"> | string | null
+    countryCode?: StringWithAggregatesFilter<"address"> | string
+    postalCode?: StringWithAggregatesFilter<"address"> | string
+    state?: StringWithAggregatesFilter<"address"> | string
+    city?: StringWithAggregatesFilter<"address"> | string
+    neighborhood?: StringWithAggregatesFilter<"address"> | string
+    street?: StringWithAggregatesFilter<"address"> | string
+    number?: StringWithAggregatesFilter<"address"> | string
+    complement?: StringNullableWithAggregatesFilter<"address"> | string | null
+    reference?: StringNullableWithAggregatesFilter<"address"> | string | null
+    latitude?: FloatNullableWithAggregatesFilter<"address"> | number | null
+    longitude?: FloatNullableWithAggregatesFilter<"address"> | number | null
+    formattedAddress?: StringNullableWithAggregatesFilter<"address"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"address"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"address"> | Date | string
   }
 
   export type appointment_procedureWhereInput = {
@@ -49383,9 +50773,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"clinic"> | string | null
     email?: StringFilter<"clinic"> | string
     type?: EnumClinicTypeFilter<"clinic"> | $Enums.ClinicType
-    address?: StringNullableFilter<"clinic"> | string | null
-    latitude?: FloatNullableFilter<"clinic"> | number | null
-    longitude?: FloatNullableFilter<"clinic"> | number | null
     createdAt?: DateTimeFilter<"clinic"> | Date | string
     updatedAt?: DateTimeFilter<"clinic"> | Date | string
     ownerId?: StringFilter<"clinic"> | string
@@ -49400,9 +50787,6 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     email?: SortOrder
     type?: SortOrder
-    address?: SortOrderInput | SortOrder
-    latitude?: SortOrderInput | SortOrder
-    longitude?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
@@ -49420,9 +50804,6 @@ export namespace Prisma {
     phone?: StringFilter<"clinic"> | string
     description?: StringNullableFilter<"clinic"> | string | null
     type?: EnumClinicTypeFilter<"clinic"> | $Enums.ClinicType
-    address?: StringNullableFilter<"clinic"> | string | null
-    latitude?: FloatNullableFilter<"clinic"> | number | null
-    longitude?: FloatNullableFilter<"clinic"> | number | null
     createdAt?: DateTimeFilter<"clinic"> | Date | string
     updatedAt?: DateTimeFilter<"clinic"> | Date | string
     ownerId?: StringFilter<"clinic"> | string
@@ -49437,17 +50818,12 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     email?: SortOrder
     type?: SortOrder
-    address?: SortOrderInput | SortOrder
-    latitude?: SortOrderInput | SortOrder
-    longitude?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
     _count?: clinicCountOrderByAggregateInput
-    _avg?: clinicAvgOrderByAggregateInput
     _max?: clinicMaxOrderByAggregateInput
     _min?: clinicMinOrderByAggregateInput
-    _sum?: clinicSumOrderByAggregateInput
   }
 
   export type clinicScalarWhereWithAggregatesInput = {
@@ -49460,9 +50836,6 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"clinic"> | string | null
     email?: StringWithAggregatesFilter<"clinic"> | string
     type?: EnumClinicTypeWithAggregatesFilter<"clinic"> | $Enums.ClinicType
-    address?: StringNullableWithAggregatesFilter<"clinic"> | string | null
-    latitude?: FloatNullableWithAggregatesFilter<"clinic"> | number | null
-    longitude?: FloatNullableWithAggregatesFilter<"clinic"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"clinic"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"clinic"> | Date | string
     ownerId?: StringWithAggregatesFilter<"clinic"> | string
@@ -50868,9 +52241,9 @@ export namespace Prisma {
     image?: StringNullableFilter<"user"> | string | null
     role?: EnumUserRoleFilter<"user"> | $Enums.UserRole
     onboardingCompleted?: BoolFilter<"user"> | boolean
+    onboardingStep?: EnumOnboardingStepFilter<"user"> | $Enums.OnboardingStep
     cpf?: StringNullableFilter<"user"> | string | null
     dateOfBirth?: DateTimeNullableFilter<"user"> | Date | string | null
-    address?: StringNullableFilter<"user"> | string | null
     displayName?: StringNullableFilter<"user"> | string | null
     document?: StringNullableFilter<"user"> | string | null
     birthDate?: DateTimeNullableFilter<"user"> | Date | string | null
@@ -50898,12 +52271,6 @@ export namespace Prisma {
     yearsOfExperience?: IntNullableFilter<"user"> | number | null
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
-    clinicAddress?: StringNullableFilter<"user"> | string | null
-    clinicLatitude?: FloatNullableFilter<"user"> | number | null
-    clinicLongitude?: FloatNullableFilter<"user"> | number | null
-    clinicNeighborhood?: StringNullableFilter<"user"> | string | null
-    clinicCity?: StringNullableFilter<"user"> | string | null
-    clinicState?: StringNullableFilter<"user"> | string | null
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
@@ -50980,9 +52347,9 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     role?: SortOrder
     onboardingCompleted?: SortOrder
+    onboardingStep?: SortOrder
     cpf?: SortOrderInput | SortOrder
     dateOfBirth?: SortOrderInput | SortOrder
-    address?: SortOrderInput | SortOrder
     displayName?: SortOrderInput | SortOrder
     document?: SortOrderInput | SortOrder
     birthDate?: SortOrderInput | SortOrder
@@ -51010,12 +52377,6 @@ export namespace Prisma {
     yearsOfExperience?: SortOrderInput | SortOrder
     targetAudiences?: SortOrder
     serviceModalities?: SortOrder
-    clinicAddress?: SortOrderInput | SortOrder
-    clinicLatitude?: SortOrderInput | SortOrder
-    clinicLongitude?: SortOrderInput | SortOrder
-    clinicNeighborhood?: SortOrderInput | SortOrder
-    clinicCity?: SortOrderInput | SortOrder
-    clinicState?: SortOrderInput | SortOrder
     homeCareRadiusKm?: SortOrderInput | SortOrder
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
@@ -51095,9 +52456,9 @@ export namespace Prisma {
     image?: StringNullableFilter<"user"> | string | null
     role?: EnumUserRoleFilter<"user"> | $Enums.UserRole
     onboardingCompleted?: BoolFilter<"user"> | boolean
+    onboardingStep?: EnumOnboardingStepFilter<"user"> | $Enums.OnboardingStep
     cpf?: StringNullableFilter<"user"> | string | null
     dateOfBirth?: DateTimeNullableFilter<"user"> | Date | string | null
-    address?: StringNullableFilter<"user"> | string | null
     displayName?: StringNullableFilter<"user"> | string | null
     document?: StringNullableFilter<"user"> | string | null
     birthDate?: DateTimeNullableFilter<"user"> | Date | string | null
@@ -51125,12 +52486,6 @@ export namespace Prisma {
     yearsOfExperience?: IntNullableFilter<"user"> | number | null
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
-    clinicAddress?: StringNullableFilter<"user"> | string | null
-    clinicLatitude?: FloatNullableFilter<"user"> | number | null
-    clinicLongitude?: FloatNullableFilter<"user"> | number | null
-    clinicNeighborhood?: StringNullableFilter<"user"> | string | null
-    clinicCity?: StringNullableFilter<"user"> | string | null
-    clinicState?: StringNullableFilter<"user"> | string | null
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
@@ -51207,9 +52562,9 @@ export namespace Prisma {
     image?: SortOrderInput | SortOrder
     role?: SortOrder
     onboardingCompleted?: SortOrder
+    onboardingStep?: SortOrder
     cpf?: SortOrderInput | SortOrder
     dateOfBirth?: SortOrderInput | SortOrder
-    address?: SortOrderInput | SortOrder
     displayName?: SortOrderInput | SortOrder
     document?: SortOrderInput | SortOrder
     birthDate?: SortOrderInput | SortOrder
@@ -51237,12 +52592,6 @@ export namespace Prisma {
     yearsOfExperience?: SortOrderInput | SortOrder
     targetAudiences?: SortOrder
     serviceModalities?: SortOrder
-    clinicAddress?: SortOrderInput | SortOrder
-    clinicLatitude?: SortOrderInput | SortOrder
-    clinicLongitude?: SortOrderInput | SortOrder
-    clinicNeighborhood?: SortOrderInput | SortOrder
-    clinicCity?: SortOrderInput | SortOrder
-    clinicState?: SortOrderInput | SortOrder
     homeCareRadiusKm?: SortOrderInput | SortOrder
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
@@ -51286,9 +52635,9 @@ export namespace Prisma {
     image?: StringNullableWithAggregatesFilter<"user"> | string | null
     role?: EnumUserRoleWithAggregatesFilter<"user"> | $Enums.UserRole
     onboardingCompleted?: BoolWithAggregatesFilter<"user"> | boolean
+    onboardingStep?: EnumOnboardingStepWithAggregatesFilter<"user"> | $Enums.OnboardingStep
     cpf?: StringNullableWithAggregatesFilter<"user"> | string | null
     dateOfBirth?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
-    address?: StringNullableWithAggregatesFilter<"user"> | string | null
     displayName?: StringNullableWithAggregatesFilter<"user"> | string | null
     document?: StringNullableWithAggregatesFilter<"user"> | string | null
     birthDate?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
@@ -51316,12 +52665,6 @@ export namespace Prisma {
     yearsOfExperience?: IntNullableWithAggregatesFilter<"user"> | number | null
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
-    clinicAddress?: StringNullableWithAggregatesFilter<"user"> | string | null
-    clinicLatitude?: FloatNullableWithAggregatesFilter<"user"> | number | null
-    clinicLongitude?: FloatNullableWithAggregatesFilter<"user"> | number | null
-    clinicNeighborhood?: StringNullableWithAggregatesFilter<"user"> | string | null
-    clinicCity?: StringNullableWithAggregatesFilter<"user"> | string | null
-    clinicState?: StringNullableWithAggregatesFilter<"user"> | string | null
     homeCareRadiusKm?: IntNullableWithAggregatesFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
@@ -51731,6 +53074,167 @@ export namespace Prisma {
     refreshTokenExpiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type addressCreateInput = {
+    id?: string
+    ownerType: $Enums.AddressOwnerType
+    ownerId: string
+    type?: $Enums.AddressType
+    isPrimary?: boolean
+    label?: string | null
+    countryCode?: string
+    postalCode: string
+    state: string
+    city: string
+    neighborhood: string
+    street: string
+    number: string
+    complement?: string | null
+    reference?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    formattedAddress?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type addressUncheckedCreateInput = {
+    id?: string
+    ownerType: $Enums.AddressOwnerType
+    ownerId: string
+    type?: $Enums.AddressType
+    isPrimary?: boolean
+    label?: string | null
+    countryCode?: string
+    postalCode: string
+    state: string
+    city: string
+    neighborhood: string
+    street: string
+    number: string
+    complement?: string | null
+    reference?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    formattedAddress?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type addressUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerType?: EnumAddressOwnerTypeFieldUpdateOperationsInput | $Enums.AddressOwnerType
+    ownerId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAddressTypeFieldUpdateOperationsInput | $Enums.AddressType
+    isPrimary?: BoolFieldUpdateOperationsInput | boolean
+    label?: NullableStringFieldUpdateOperationsInput | string | null
+    countryCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type addressUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerType?: EnumAddressOwnerTypeFieldUpdateOperationsInput | $Enums.AddressOwnerType
+    ownerId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAddressTypeFieldUpdateOperationsInput | $Enums.AddressType
+    isPrimary?: BoolFieldUpdateOperationsInput | boolean
+    label?: NullableStringFieldUpdateOperationsInput | string | null
+    countryCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type addressCreateManyInput = {
+    id?: string
+    ownerType: $Enums.AddressOwnerType
+    ownerId: string
+    type?: $Enums.AddressType
+    isPrimary?: boolean
+    label?: string | null
+    countryCode?: string
+    postalCode: string
+    state: string
+    city: string
+    neighborhood: string
+    street: string
+    number: string
+    complement?: string | null
+    reference?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    formattedAddress?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type addressUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerType?: EnumAddressOwnerTypeFieldUpdateOperationsInput | $Enums.AddressOwnerType
+    ownerId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAddressTypeFieldUpdateOperationsInput | $Enums.AddressType
+    isPrimary?: BoolFieldUpdateOperationsInput | boolean
+    label?: NullableStringFieldUpdateOperationsInput | string | null
+    countryCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type addressUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ownerType?: EnumAddressOwnerTypeFieldUpdateOperationsInput | $Enums.AddressOwnerType
+    ownerId?: StringFieldUpdateOperationsInput | string
+    type?: EnumAddressTypeFieldUpdateOperationsInput | $Enums.AddressType
+    isPrimary?: BoolFieldUpdateOperationsInput | boolean
+    label?: NullableStringFieldUpdateOperationsInput | string | null
+    countryCode?: StringFieldUpdateOperationsInput | string
+    postalCode?: StringFieldUpdateOperationsInput | string
+    state?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+    neighborhood?: StringFieldUpdateOperationsInput | string
+    street?: StringFieldUpdateOperationsInput | string
+    number?: StringFieldUpdateOperationsInput | string
+    complement?: NullableStringFieldUpdateOperationsInput | string | null
+    reference?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -52669,9 +54173,6 @@ export namespace Prisma {
     description?: string | null
     email: string
     type?: $Enums.ClinicType
-    address?: string | null
-    latitude?: number | null
-    longitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: userCreateNestedOneWithoutOwnedClinicsInput
@@ -52685,9 +54186,6 @@ export namespace Prisma {
     description?: string | null
     email: string
     type?: $Enums.ClinicType
-    address?: string | null
-    latitude?: number | null
-    longitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: string
@@ -52701,9 +54199,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     type?: EnumClinicTypeFieldUpdateOperationsInput | $Enums.ClinicType
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: userUpdateOneRequiredWithoutOwnedClinicsNestedInput
@@ -52717,9 +54212,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     type?: EnumClinicTypeFieldUpdateOperationsInput | $Enums.ClinicType
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: StringFieldUpdateOperationsInput | string
@@ -52733,9 +54225,6 @@ export namespace Prisma {
     description?: string | null
     email: string
     type?: $Enums.ClinicType
-    address?: string | null
-    latitude?: number | null
-    longitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: string
@@ -52748,9 +54237,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     type?: EnumClinicTypeFieldUpdateOperationsInput | $Enums.ClinicType
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -52762,9 +54248,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     type?: EnumClinicTypeFieldUpdateOperationsInput | $Enums.ClinicType
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: StringFieldUpdateOperationsInput | string
@@ -54279,9 +55762,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -54307,12 +55790,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -54389,9 +55866,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -54419,12 +55896,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -54499,9 +55970,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -54527,12 +55998,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -54609,9 +56074,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -54639,12 +56104,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -54719,9 +56178,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -54749,12 +56208,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -54790,9 +56243,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -54818,12 +56271,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -54859,9 +56306,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -54889,12 +56336,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -55394,6 +56835,159 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type EnumAddressOwnerTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AddressOwnerType | EnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AddressOwnerType[] | ListEnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AddressOwnerType[] | ListEnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAddressOwnerTypeFilter<$PrismaModel> | $Enums.AddressOwnerType
+  }
+
+  export type EnumAddressTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AddressType | EnumAddressTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AddressType[] | ListEnumAddressTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AddressType[] | ListEnumAddressTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAddressTypeFilter<$PrismaModel> | $Enums.AddressType
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type addressCountOrderByAggregateInput = {
+    id?: SortOrder
+    ownerType?: SortOrder
+    ownerId?: SortOrder
+    type?: SortOrder
+    isPrimary?: SortOrder
+    label?: SortOrder
+    countryCode?: SortOrder
+    postalCode?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    neighborhood?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrder
+    reference?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    formattedAddress?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type addressAvgOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+  }
+
+  export type addressMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ownerType?: SortOrder
+    ownerId?: SortOrder
+    type?: SortOrder
+    isPrimary?: SortOrder
+    label?: SortOrder
+    countryCode?: SortOrder
+    postalCode?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    neighborhood?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrder
+    reference?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    formattedAddress?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type addressMinOrderByAggregateInput = {
+    id?: SortOrder
+    ownerType?: SortOrder
+    ownerId?: SortOrder
+    type?: SortOrder
+    isPrimary?: SortOrder
+    label?: SortOrder
+    countryCode?: SortOrder
+    postalCode?: SortOrder
+    state?: SortOrder
+    city?: SortOrder
+    neighborhood?: SortOrder
+    street?: SortOrder
+    number?: SortOrder
+    complement?: SortOrder
+    reference?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    formattedAddress?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type addressSumOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+  }
+
+  export type EnumAddressOwnerTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AddressOwnerType | EnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AddressOwnerType[] | ListEnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AddressOwnerType[] | ListEnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAddressOwnerTypeWithAggregatesFilter<$PrismaModel> | $Enums.AddressOwnerType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAddressOwnerTypeFilter<$PrismaModel>
+    _max?: NestedEnumAddressOwnerTypeFilter<$PrismaModel>
+  }
+
+  export type EnumAddressTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AddressType | EnumAddressTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AddressType[] | ListEnumAddressTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AddressType[] | ListEnumAddressTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAddressTypeWithAggregatesFilter<$PrismaModel> | $Enums.AddressType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAddressTypeFilter<$PrismaModel>
+    _max?: NestedEnumAddressTypeFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
   export type AppointmentScalarRelationFilter = {
     is?: appointmentWhereInput
     isNot?: appointmentWhereInput
@@ -55783,11 +57377,6 @@ export namespace Prisma {
     _max?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel>
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type AppointmentListRelationFilter = {
     every?: appointmentWhereInput
     some?: appointmentWhereInput
@@ -55870,14 +57459,6 @@ export namespace Prisma {
     cancelledAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type Appointment_recurring_seriesScalarRelationFilter = {
@@ -56121,17 +57702,6 @@ export namespace Prisma {
     not?: NestedEnumClinicTypeFilter<$PrismaModel> | $Enums.ClinicType
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type Clinic_employeeListRelationFilter = {
     every?: clinic_employeeWhereInput
     some?: clinic_employeeWhereInput
@@ -56149,17 +57719,9 @@ export namespace Prisma {
     description?: SortOrder
     email?: SortOrder
     type?: SortOrder
-    address?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
-  }
-
-  export type clinicAvgOrderByAggregateInput = {
-    latitude?: SortOrder
-    longitude?: SortOrder
   }
 
   export type clinicMaxOrderByAggregateInput = {
@@ -56169,9 +57731,6 @@ export namespace Prisma {
     description?: SortOrder
     email?: SortOrder
     type?: SortOrder
-    address?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
@@ -56184,17 +57743,9 @@ export namespace Prisma {
     description?: SortOrder
     email?: SortOrder
     type?: SortOrder
-    address?: SortOrder
-    latitude?: SortOrder
-    longitude?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     ownerId?: SortOrder
-  }
-
-  export type clinicSumOrderByAggregateInput = {
-    latitude?: SortOrder
-    longitude?: SortOrder
   }
 
   export type EnumClinicTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -56205,22 +57756,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumClinicTypeFilter<$PrismaModel>
     _max?: NestedEnumClinicTypeFilter<$PrismaModel>
-  }
-
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type EnumClinicEmployeeRoleFilter<$PrismaModel = never> = {
@@ -57172,6 +58707,13 @@ export namespace Prisma {
     not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
+  export type EnumOnboardingStepFilter<$PrismaModel = never> = {
+    equals?: $Enums.OnboardingStep | EnumOnboardingStepFieldRefInput<$PrismaModel>
+    in?: $Enums.OnboardingStep[] | ListEnumOnboardingStepFieldRefInput<$PrismaModel>
+    notIn?: $Enums.OnboardingStep[] | ListEnumOnboardingStepFieldRefInput<$PrismaModel>
+    not?: NestedEnumOnboardingStepFilter<$PrismaModel> | $Enums.OnboardingStep
+  }
+
   export type StringNullableListFilter<$PrismaModel = never> = {
     equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     has?: string | StringFieldRefInput<$PrismaModel> | null
@@ -57388,9 +58930,9 @@ export namespace Prisma {
     image?: SortOrder
     role?: SortOrder
     onboardingCompleted?: SortOrder
+    onboardingStep?: SortOrder
     cpf?: SortOrder
     dateOfBirth?: SortOrder
-    address?: SortOrder
     displayName?: SortOrder
     document?: SortOrder
     birthDate?: SortOrder
@@ -57418,12 +58960,6 @@ export namespace Prisma {
     yearsOfExperience?: SortOrder
     targetAudiences?: SortOrder
     serviceModalities?: SortOrder
-    clinicAddress?: SortOrder
-    clinicLatitude?: SortOrder
-    clinicLongitude?: SortOrder
-    clinicNeighborhood?: SortOrder
-    clinicCity?: SortOrder
-    clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
@@ -57451,8 +58987,6 @@ export namespace Prisma {
   export type userAvgOrderByAggregateInput = {
     licenseDocumentSize?: SortOrder
     yearsOfExperience?: SortOrder
-    clinicLatitude?: SortOrder
-    clinicLongitude?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
     appointmentConfirmationReminderHoursBefore?: SortOrder
@@ -57473,9 +59007,9 @@ export namespace Prisma {
     image?: SortOrder
     role?: SortOrder
     onboardingCompleted?: SortOrder
+    onboardingStep?: SortOrder
     cpf?: SortOrder
     dateOfBirth?: SortOrder
-    address?: SortOrder
     displayName?: SortOrder
     document?: SortOrder
     birthDate?: SortOrder
@@ -57500,12 +59034,6 @@ export namespace Prisma {
     education?: SortOrder
     certifications?: SortOrder
     yearsOfExperience?: SortOrder
-    clinicAddress?: SortOrder
-    clinicLatitude?: SortOrder
-    clinicLongitude?: SortOrder
-    clinicNeighborhood?: SortOrder
-    clinicCity?: SortOrder
-    clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
     appointmentConfirmationReminderHoursBefore?: SortOrder
@@ -57538,9 +59066,9 @@ export namespace Prisma {
     image?: SortOrder
     role?: SortOrder
     onboardingCompleted?: SortOrder
+    onboardingStep?: SortOrder
     cpf?: SortOrder
     dateOfBirth?: SortOrder
-    address?: SortOrder
     displayName?: SortOrder
     document?: SortOrder
     birthDate?: SortOrder
@@ -57565,12 +59093,6 @@ export namespace Prisma {
     education?: SortOrder
     certifications?: SortOrder
     yearsOfExperience?: SortOrder
-    clinicAddress?: SortOrder
-    clinicLatitude?: SortOrder
-    clinicLongitude?: SortOrder
-    clinicNeighborhood?: SortOrder
-    clinicCity?: SortOrder
-    clinicState?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
     appointmentConfirmationReminderHoursBefore?: SortOrder
@@ -57595,8 +59117,6 @@ export namespace Prisma {
   export type userSumOrderByAggregateInput = {
     licenseDocumentSize?: SortOrder
     yearsOfExperience?: SortOrder
-    clinicLatitude?: SortOrder
-    clinicLongitude?: SortOrder
     homeCareRadiusKm?: SortOrder
     bookingAvailabilityDays?: SortOrder
     appointmentConfirmationReminderHoursBefore?: SortOrder
@@ -57614,6 +59134,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserRoleFilter<$PrismaModel>
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
+  export type EnumOnboardingStepWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OnboardingStep | EnumOnboardingStepFieldRefInput<$PrismaModel>
+    in?: $Enums.OnboardingStep[] | ListEnumOnboardingStepFieldRefInput<$PrismaModel>
+    notIn?: $Enums.OnboardingStep[] | ListEnumOnboardingStepFieldRefInput<$PrismaModel>
+    not?: NestedEnumOnboardingStepWithAggregatesFilter<$PrismaModel> | $Enums.OnboardingStep
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumOnboardingStepFilter<$PrismaModel>
+    _max?: NestedEnumOnboardingStepFilter<$PrismaModel>
   }
 
   export type EnumCancellationPenaltyTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -57800,6 +59330,26 @@ export namespace Prisma {
     upsert?: userUpsertWithoutAccountsInput
     connect?: userWhereUniqueInput
     update?: XOR<XOR<userUpdateToOneWithWhereWithoutAccountsInput, userUpdateWithoutAccountsInput>, userUncheckedUpdateWithoutAccountsInput>
+  }
+
+  export type EnumAddressOwnerTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AddressOwnerType
+  }
+
+  export type EnumAddressTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AddressType
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type appointmentCreateNestedOneWithoutAppointmentProceduresInput = {
@@ -58306,10 +59856,6 @@ export namespace Prisma {
     connect?: appointment_recurring_series_procedureWhereUniqueInput | appointment_recurring_series_procedureWhereUniqueInput[]
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
   export type userUpdateOneWithoutCustomerRecurringAppointmentSeriesNestedInput = {
     create?: XOR<userCreateWithoutCustomerRecurringAppointmentSeriesInput, userUncheckedCreateWithoutCustomerRecurringAppointmentSeriesInput>
     connectOrCreate?: userCreateOrConnectWithoutCustomerRecurringAppointmentSeriesInput
@@ -58708,14 +60254,6 @@ export namespace Prisma {
 
   export type EnumClinicTypeFieldUpdateOperationsInput = {
     set?: $Enums.ClinicType
-  }
-
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type userUpdateOneRequiredWithoutOwnedClinicsNestedInput = {
@@ -60079,6 +61617,10 @@ export namespace Prisma {
 
   export type EnumUserRoleFieldUpdateOperationsInput = {
     set?: $Enums.UserRole
+  }
+
+  export type EnumOnboardingStepFieldUpdateOperationsInput = {
+    set?: $Enums.OnboardingStep
   }
 
   export type userUpdatelanguagesInput = {
@@ -61455,6 +62997,80 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumAddressOwnerTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AddressOwnerType | EnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AddressOwnerType[] | ListEnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AddressOwnerType[] | ListEnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAddressOwnerTypeFilter<$PrismaModel> | $Enums.AddressOwnerType
+  }
+
+  export type NestedEnumAddressTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.AddressType | EnumAddressTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AddressType[] | ListEnumAddressTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AddressType[] | ListEnumAddressTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAddressTypeFilter<$PrismaModel> | $Enums.AddressType
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumAddressOwnerTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AddressOwnerType | EnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AddressOwnerType[] | ListEnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AddressOwnerType[] | ListEnumAddressOwnerTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAddressOwnerTypeWithAggregatesFilter<$PrismaModel> | $Enums.AddressOwnerType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAddressOwnerTypeFilter<$PrismaModel>
+    _max?: NestedEnumAddressOwnerTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumAddressTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AddressType | EnumAddressTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.AddressType[] | ListEnumAddressTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AddressType[] | ListEnumAddressTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumAddressTypeWithAggregatesFilter<$PrismaModel> | $Enums.AddressType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAddressTypeFilter<$PrismaModel>
+    _max?: NestedEnumAddressTypeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
   export type NestedEnumAppointmentStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.AppointmentStatus | EnumAppointmentStatusFieldRefInput<$PrismaModel>
     in?: $Enums.AppointmentStatus[] | ListEnumAppointmentStatusFieldRefInput<$PrismaModel>
@@ -61515,17 +63131,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedEnumAppointmentEvolutionStatusNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.AppointmentEvolutionStatus | EnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
     in?: $Enums.AppointmentEvolutionStatus[] | ListEnumAppointmentEvolutionStatusFieldRefInput<$PrismaModel> | null
@@ -61560,19 +63165,6 @@ export namespace Prisma {
     _max?: NestedEnumAppointmentRescheduleRequestStatusFilter<$PrismaModel>
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type NestedEnumAppointmentWaitlistStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.AppointmentWaitlistStatus | EnumAppointmentWaitlistStatusFieldRefInput<$PrismaModel>
     in?: $Enums.AppointmentWaitlistStatus[] | ListEnumAppointmentWaitlistStatusFieldRefInput<$PrismaModel>
@@ -61605,22 +63197,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumClinicTypeFilter<$PrismaModel>
     _max?: NestedEnumClinicTypeFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumClinicEmployeeRoleFilter<$PrismaModel = never> = {
@@ -61800,6 +63376,13 @@ export namespace Prisma {
     not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
+  export type NestedEnumOnboardingStepFilter<$PrismaModel = never> = {
+    equals?: $Enums.OnboardingStep | EnumOnboardingStepFieldRefInput<$PrismaModel>
+    in?: $Enums.OnboardingStep[] | ListEnumOnboardingStepFieldRefInput<$PrismaModel>
+    notIn?: $Enums.OnboardingStep[] | ListEnumOnboardingStepFieldRefInput<$PrismaModel>
+    not?: NestedEnumOnboardingStepFilter<$PrismaModel> | $Enums.OnboardingStep
+  }
+
   export type NestedEnumCancellationPenaltyTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.CancellationPenaltyType | EnumCancellationPenaltyTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.CancellationPenaltyType[] | ListEnumCancellationPenaltyTypeFieldRefInput<$PrismaModel> | null
@@ -61815,6 +63398,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserRoleFilter<$PrismaModel>
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
+  export type NestedEnumOnboardingStepWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.OnboardingStep | EnumOnboardingStepFieldRefInput<$PrismaModel>
+    in?: $Enums.OnboardingStep[] | ListEnumOnboardingStepFieldRefInput<$PrismaModel>
+    notIn?: $Enums.OnboardingStep[] | ListEnumOnboardingStepFieldRefInput<$PrismaModel>
+    not?: NestedEnumOnboardingStepWithAggregatesFilter<$PrismaModel> | $Enums.OnboardingStep
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumOnboardingStepFilter<$PrismaModel>
+    _max?: NestedEnumOnboardingStepFilter<$PrismaModel>
   }
 
   export type NestedEnumCancellationPenaltyTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -61855,9 +63448,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -61883,12 +63476,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -61964,9 +63551,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -61994,12 +63581,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -62089,9 +63670,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -62117,12 +63698,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -62198,9 +63773,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -62228,12 +63803,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -62519,9 +64088,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -62547,12 +64116,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -62628,9 +64191,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -62658,12 +64221,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -62805,9 +64362,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -62833,12 +64390,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -62914,9 +64465,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -62944,12 +64495,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -63096,9 +64641,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -63124,12 +64669,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -63205,9 +64744,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -63235,12 +64774,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -63499,9 +65032,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -63527,12 +65060,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -63608,9 +65135,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -63638,12 +65165,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -63797,9 +65318,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -63825,12 +65346,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -63906,9 +65421,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -63936,12 +65451,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -64106,9 +65615,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -64134,12 +65643,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -64215,9 +65718,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -64245,12 +65748,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -64560,9 +66057,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -64588,12 +66085,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -64669,9 +66160,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -64699,12 +66190,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -64846,9 +66331,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -64874,12 +66359,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -64955,9 +66434,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -64985,12 +66464,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -65153,9 +66626,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65181,12 +66654,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -65262,9 +66729,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65292,12 +66759,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -65451,9 +66912,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65479,12 +66940,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -65560,9 +67015,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -65590,12 +67045,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -65736,9 +67185,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -65764,12 +67213,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -65845,9 +67288,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -65875,12 +67318,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -66043,9 +67480,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66071,12 +67508,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -66152,9 +67583,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -66182,12 +67613,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -66261,9 +67686,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -66289,12 +67714,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -66370,9 +67789,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -66400,12 +67819,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -66547,9 +67960,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -66575,12 +67988,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -66656,9 +68063,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -66686,12 +68093,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -66770,9 +68171,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -66798,12 +68199,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -66879,9 +68274,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -66909,12 +68304,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -67126,9 +68515,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67154,12 +68543,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -67235,9 +68618,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67265,12 +68648,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -67424,9 +68801,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67452,12 +68829,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -67533,9 +68904,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67563,12 +68934,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -67653,9 +69018,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67681,12 +69046,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -67762,9 +69121,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -67792,12 +69151,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -68323,9 +69676,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -68351,12 +69704,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -68432,9 +69779,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -68462,12 +69809,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -68546,9 +69887,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -68574,12 +69915,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -68655,9 +69990,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -68685,12 +70020,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -68802,9 +70131,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -68830,12 +70159,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -68911,9 +70234,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -68941,12 +70264,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -69031,9 +70348,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -69059,12 +70376,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -69140,9 +70451,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -69170,12 +70481,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -69455,9 +70760,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -69483,12 +70788,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -69564,9 +70863,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -69594,12 +70893,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -69710,9 +71003,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -69738,12 +71031,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -69819,9 +71106,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -69849,12 +71136,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -69955,9 +71236,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -69983,12 +71264,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -70064,9 +71339,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -70094,12 +71369,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -70219,9 +71488,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -70247,12 +71516,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -70328,9 +71591,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -70358,12 +71621,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -70463,9 +71720,6 @@ export namespace Prisma {
     description?: string | null
     email: string
     type?: $Enums.ClinicType
-    address?: string | null
-    latitude?: number | null
-    longitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     owner: userCreateNestedOneWithoutOwnedClinicsInput
@@ -70478,9 +71732,6 @@ export namespace Prisma {
     description?: string | null
     email: string
     type?: $Enums.ClinicType
-    address?: string | null
-    latitude?: number | null
-    longitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     ownerId: string
@@ -70502,9 +71753,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -70530,12 +71781,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -70611,9 +71856,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -70641,12 +71886,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -70732,9 +71971,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     type?: EnumClinicTypeFieldUpdateOperationsInput | $Enums.ClinicType
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: userUpdateOneRequiredWithoutOwnedClinicsNestedInput
@@ -70747,9 +71983,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     type?: EnumClinicTypeFieldUpdateOperationsInput | $Enums.ClinicType
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ownerId?: StringFieldUpdateOperationsInput | string
@@ -70777,9 +72010,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -70805,12 +72038,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -70886,9 +72113,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -70916,12 +72143,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -70995,9 +72216,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -71023,12 +72244,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -71104,9 +72319,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -71134,12 +72349,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -71218,9 +72427,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -71246,12 +72455,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -71327,9 +72530,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -71357,12 +72560,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -71452,9 +72649,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -71480,12 +72677,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -71561,9 +72752,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -71591,12 +72782,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -71681,9 +72866,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -71709,12 +72894,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -71790,9 +72969,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -71820,12 +72999,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -71899,9 +73072,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -71927,12 +73100,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -72008,9 +73175,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -72038,12 +73205,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -72133,9 +73294,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -72161,12 +73322,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -72242,9 +73397,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -72272,12 +73427,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -72351,9 +73500,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -72379,12 +73528,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -72460,9 +73603,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -72490,12 +73633,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -72585,9 +73722,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -72613,12 +73750,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -72694,9 +73825,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -72724,12 +73855,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -72803,9 +73928,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -72831,12 +73956,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -72912,9 +74031,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -72942,12 +74061,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -73037,9 +74150,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -73065,12 +74178,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -73146,9 +74253,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -73176,12 +74283,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -73255,9 +74356,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -73283,12 +74384,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -73364,9 +74459,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -73394,12 +74489,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -73489,9 +74578,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -73517,12 +74606,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -73598,9 +74681,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -73628,12 +74711,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -73707,9 +74784,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -73735,12 +74812,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -73816,9 +74887,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -73846,12 +74917,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -73930,9 +74995,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -73958,12 +75023,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -74039,9 +75098,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -74069,12 +75128,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -74204,9 +75257,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -74232,12 +75285,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -74313,9 +75360,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -74343,12 +75390,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -74433,9 +75474,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -74461,12 +75502,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -74542,9 +75577,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -74572,12 +75607,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -74690,9 +75719,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -74718,12 +75747,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -74799,9 +75822,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -74829,12 +75852,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -75020,9 +76037,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -75048,12 +76065,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -75129,9 +76140,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -75159,12 +76170,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -75311,9 +76316,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -75339,12 +76344,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -75420,9 +76419,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -75450,12 +76449,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -75545,9 +76538,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -75573,12 +76566,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -75654,9 +76641,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -75684,12 +76671,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -75763,9 +76744,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -75791,12 +76772,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -75872,9 +76847,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -75902,12 +76877,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -75997,9 +76966,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -76025,12 +76994,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -76106,9 +77069,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -76136,12 +77099,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -76215,9 +77172,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -76243,12 +77200,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -76324,9 +77275,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -76354,12 +77305,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -76516,9 +77461,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -76544,12 +77489,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -76625,9 +77564,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -76655,12 +77594,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -76807,9 +77740,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -76835,12 +77768,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -76916,9 +77843,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -76946,12 +77873,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -77030,9 +77951,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -77058,12 +77979,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -77139,9 +78054,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -77169,12 +78084,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -77428,9 +78337,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -77456,12 +78365,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -77537,9 +78440,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -77567,12 +78470,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -77657,9 +78554,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -77685,12 +78582,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -77766,9 +78657,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -77796,12 +78687,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -77964,9 +78849,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -77992,12 +78877,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -78073,9 +78952,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -78103,12 +78982,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -78290,9 +79163,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -78318,12 +79191,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -78399,9 +79266,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -78429,12 +79296,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -78656,9 +79517,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -78684,12 +79545,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -78765,9 +79620,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -78795,12 +79650,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -78879,9 +79728,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -78907,12 +79756,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -78988,9 +79831,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -79018,12 +79861,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -79113,9 +79950,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -79141,12 +79978,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -79222,9 +80053,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -79252,12 +80083,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -79342,9 +80167,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -79370,12 +80195,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -79451,9 +80270,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -79481,12 +80300,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -79560,9 +80373,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -79588,12 +80401,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -79669,9 +80476,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -79699,12 +80506,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -79794,9 +80595,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -79822,12 +80623,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -79903,9 +80698,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -79933,12 +80728,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -80012,9 +80801,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -80040,12 +80829,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -80121,9 +80904,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -80151,12 +80934,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -80246,9 +81023,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -80274,12 +81051,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -80355,9 +81126,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -80385,12 +81156,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -80493,9 +81258,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -80521,12 +81286,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -80602,9 +81361,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -80632,12 +81391,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -80782,9 +81535,6 @@ export namespace Prisma {
     description?: string | null
     email: string
     type?: $Enums.ClinicType
-    address?: string | null
-    latitude?: number | null
-    longitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     employees?: clinic_employeeCreateNestedManyWithoutClinicInput
@@ -80797,9 +81547,6 @@ export namespace Prisma {
     description?: string | null
     email: string
     type?: $Enums.ClinicType
-    address?: string | null
-    latitude?: number | null
-    longitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
     employees?: clinic_employeeUncheckedCreateNestedManyWithoutClinicInput
@@ -82055,9 +82802,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -82083,12 +82830,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -82164,9 +82905,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -82193,12 +82934,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -82449,9 +83184,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -82477,12 +83212,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -82558,9 +83287,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -82588,12 +83317,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -82747,9 +83470,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"clinic"> | string | null
     email?: StringFilter<"clinic"> | string
     type?: EnumClinicTypeFilter<"clinic"> | $Enums.ClinicType
-    address?: StringNullableFilter<"clinic"> | string | null
-    latitude?: FloatNullableFilter<"clinic"> | number | null
-    longitude?: FloatNullableFilter<"clinic"> | number | null
     createdAt?: DateTimeFilter<"clinic"> | Date | string
     updatedAt?: DateTimeFilter<"clinic"> | Date | string
     ownerId?: StringFilter<"clinic"> | string
@@ -83489,9 +84209,9 @@ export namespace Prisma {
     image?: StringNullableFilter<"user"> | string | null
     role?: EnumUserRoleFilter<"user"> | $Enums.UserRole
     onboardingCompleted?: BoolFilter<"user"> | boolean
+    onboardingStep?: EnumOnboardingStepFilter<"user"> | $Enums.OnboardingStep
     cpf?: StringNullableFilter<"user"> | string | null
     dateOfBirth?: DateTimeNullableFilter<"user"> | Date | string | null
-    address?: StringNullableFilter<"user"> | string | null
     displayName?: StringNullableFilter<"user"> | string | null
     document?: StringNullableFilter<"user"> | string | null
     birthDate?: DateTimeNullableFilter<"user"> | Date | string | null
@@ -83519,12 +84239,6 @@ export namespace Prisma {
     yearsOfExperience?: IntNullableFilter<"user"> | number | null
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
-    clinicAddress?: StringNullableFilter<"user"> | string | null
-    clinicLatitude?: FloatNullableFilter<"user"> | number | null
-    clinicLongitude?: FloatNullableFilter<"user"> | number | null
-    clinicNeighborhood?: StringNullableFilter<"user"> | string | null
-    clinicCity?: StringNullableFilter<"user"> | string | null
-    clinicState?: StringNullableFilter<"user"> | string | null
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
     acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
@@ -83652,9 +84366,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -83680,12 +84394,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -83761,9 +84469,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -83790,12 +84498,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -83896,9 +84598,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -83924,12 +84626,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -84005,9 +84701,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -84035,12 +84731,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -84119,9 +84809,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -84147,12 +84837,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -84228,9 +84912,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -84258,12 +84942,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -84353,9 +85031,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -84381,12 +85059,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -84462,9 +85134,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -84492,12 +85164,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -84582,9 +85248,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -84610,12 +85276,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -84691,9 +85351,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -84721,12 +85381,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -84800,9 +85454,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -84828,12 +85482,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -84909,9 +85557,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -84939,12 +85587,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -85023,9 +85665,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -85051,12 +85693,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -85132,9 +85768,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -85162,12 +85798,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -85257,9 +85887,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -85285,12 +85915,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -85366,9 +85990,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -85396,12 +86020,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -85486,9 +86104,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -85514,12 +86132,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -85595,9 +86207,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -85625,12 +86237,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -86699,9 +87305,6 @@ export namespace Prisma {
     description?: string | null
     email: string
     type?: $Enums.ClinicType
-    address?: string | null
-    latitude?: number | null
-    longitude?: number | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -87125,9 +87728,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -87154,12 +87757,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -87306,9 +87903,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     type?: EnumClinicTypeFieldUpdateOperationsInput | $Enums.ClinicType
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     employees?: clinic_employeeUpdateManyWithoutClinicNestedInput
@@ -87321,9 +87915,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     type?: EnumClinicTypeFieldUpdateOperationsInput | $Enums.ClinicType
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     employees?: clinic_employeeUncheckedUpdateManyWithoutClinicNestedInput
@@ -87336,9 +87927,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     type?: EnumClinicTypeFieldUpdateOperationsInput | $Enums.ClinicType
-    address?: NullableStringFieldUpdateOperationsInput | string | null
-    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -88654,9 +89242,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -88682,12 +89270,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -88763,9 +89345,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -88792,12 +89374,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -88872,9 +89448,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -88901,12 +89477,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -89062,9 +89632,9 @@ export namespace Prisma {
     image?: string | null
     role?: $Enums.UserRole
     onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
     cpf?: string | null
     dateOfBirth?: Date | string | null
-    address?: string | null
     displayName?: string | null
     document?: string | null
     birthDate?: Date | string | null
@@ -89091,12 +89661,6 @@ export namespace Prisma {
     yearsOfExperience?: number | null
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
-    clinicAddress?: string | null
-    clinicLatitude?: number | null
-    clinicLongitude?: number | null
-    clinicNeighborhood?: string | null
-    clinicCity?: string | null
-    clinicState?: string | null
     homeCareRadiusKm?: number | null
     acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
@@ -89132,9 +89696,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -89160,12 +89724,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -89241,9 +89799,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -89270,12 +89828,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
@@ -89350,9 +89902,9 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
     cpf?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    address?: NullableStringFieldUpdateOperationsInput | string | null
     displayName?: NullableStringFieldUpdateOperationsInput | string | null
     document?: NullableStringFieldUpdateOperationsInput | string | null
     birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -89379,12 +89931,6 @@ export namespace Prisma {
     yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
-    clinicAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicLatitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicLongitude?: NullableFloatFieldUpdateOperationsInput | number | null
-    clinicNeighborhood?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicCity?: NullableStringFieldUpdateOperationsInput | string | null
-    clinicState?: NullableStringFieldUpdateOperationsInput | string | null
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
     acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]

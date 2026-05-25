@@ -4,7 +4,10 @@ import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { getProviderMarketplaceMetricsByProviderIds } from "@/http/useCases/healthcare-providers/get-provider-marketplace-metrics";
 import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
 import { getProviderRatingSummariesByProviderIds } from "@/http/useCases/ratings/get-provider-rating-summaries";
-import { toPublicHealthcareProvider } from "./to-public-healthcare-provider";
+import {
+	type PublicHealthcareProvider,
+	toPublicHealthcareProvider,
+} from "./to-public-healthcare-provider";
 
 type HealthcareProviderWithRatingSummary = HealthcareProviderWithRelations & {
 	startingPriceCents: number | null;
@@ -13,6 +16,10 @@ type HealthcareProviderWithRatingSummary = HealthcareProviderWithRelations & {
 	completedAppointments: number;
 	confirmationRate: number;
 };
+
+type PublicHealthcareProviderWithRatingSummary = PublicHealthcareProvider<
+	HealthcareProviderWithRatingSummary
+>;
 
 function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
 	if (provider.procedures.length === 0) {
@@ -27,7 +34,7 @@ function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
 export const getHealthcareProviderByIdUseCase = {
 	async execute(
 		id: string,
-	): Promise<{ healthcareProvider: HealthcareProviderWithRatingSummary }> {
+	): Promise<{ healthcareProvider: PublicHealthcareProviderWithRatingSummary }> {
 		const healthcareProvider =
 			await prismaHealthcareProviderRepository.findById(id);
 

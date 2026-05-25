@@ -5,9 +5,12 @@ import { getProviderRatingSummariesByProviderIds } from "@/http/useCases/ratings
 import { getProviderMarketplaceMetricsByProviderIds } from "./get-provider-marketplace-metrics";
 import { getNextAvailableSlotsByProviderIds } from "./get-next-available-slots";
 import { signClinicPhotoUrls } from "./sign-clinic-photo-urls";
-import { toPublicHealthcareProvider } from "./to-public-healthcare-provider";
+import {
+	type PublicHealthcareProvider,
+	toPublicHealthcareProvider,
+} from "./to-public-healthcare-provider";
 
-type HealthcareProviderWithNextAvailability = HealthcareProviderWithRelations & {
+type EnrichedHealthcareProvider = HealthcareProviderWithRelations & {
 	nextAvailableAt: Date | null;
 	startingPriceCents: number | null;
 	averageRating: number;
@@ -16,6 +19,9 @@ type HealthcareProviderWithNextAvailability = HealthcareProviderWithRelations & 
 	confirmationRate: number;
 	distanceInKm?: number | null;
 };
+
+type HealthcareProviderWithNextAvailability =
+	PublicHealthcareProvider<EnrichedHealthcareProvider>;
 
 function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
 	if (provider.procedures.length === 0) {
@@ -28,7 +34,7 @@ function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
 }
 
 function applyComputedFilters(
-	providers: HealthcareProviderWithNextAvailability[],
+	providers: EnrichedHealthcareProvider[],
 	filters: Partial<GetHealthcareProvidersQuerySchema>,
 ) {
 	return providers.filter((provider) => {
@@ -80,14 +86,14 @@ export const getHealthcareProvidersUseCase = {
 		const marketplaceMetricsByProviderId =
 			await getProviderMarketplaceMetricsByProviderIds(providerIds);
 
-		const enrichedProviders = healthcareProviders.map((provider) => {
+		const enrichedProviders: EnrichedHealthcareProvider[] =
+			healthcareProviders.map((provider) => {
 			const ratingSummary = ratingSummariesByProviderId.get(provider.id);
 			const marketplaceMetrics = marketplaceMetricsByProviderId.get(
 				provider.id,
 			);
 
-			return toPublicHealthcareProvider(
-				signClinicPhotoUrls({
+				return {
 					...provider,
 					nextAvailableAt: nextAvailableByProviderId.get(provider.id) ?? null,
 					startingPriceCents: getStartingPriceCents(provider),
@@ -96,14 +102,17 @@ export const getHealthcareProvidersUseCase = {
 					completedAppointments:
 						marketplaceMetrics?.completedAppointments ?? 0,
 					confirmationRate: marketplaceMetrics?.confirmationRate ?? 0,
-				}),
-			);
-		});
+				};
+			});
 
 		const filteredProviders = applyComputedFilters(enrichedProviders, filters);
 		const limit = filters.limit ?? 20;
 		const offset = filters.offset ?? 0;
-		const paginatedProviders = filteredProviders.slice(offset, offset + limit);
+		const paginatedProviders = filteredProviders
+			.slice(offset, offset + limit)
+			.map((provider) =>
+				toPublicHealthcareProvider(signClinicPhotoUrls(provider)),
+			);
 
 		return {
 			healthcareProviders: paginatedProviders,
