@@ -11,6 +11,7 @@ import type { account } from "../../../prisma/generated/prisma/client";
 const googleTokenUrl = "https://oauth2.googleapis.com/token";
 const calendarEventUrl =
 	"https://www.googleapis.com/calendar/v3/calendars/primary/events";
+const meetSpaceUrl = "https://meet.googleapis.com/v2/spaces";
 
 type GoogleTokenResponse = {
 	access_token?: string;
@@ -33,11 +34,27 @@ type GoogleCalendarEventResponse = {
 	};
 };
 
+export function extractGoogleMeetMeetingCode(meetingUrl: string) {
+	try {
+		const url = new URL(meetingUrl);
+
+		if (!url.hostname.endsWith("meet.google.com")) {
+			return null;
+		}
+
+		const meetingCode = url.pathname.replace(/^\//, "").split("/")[0]?.trim();
+
+		return meetingCode || null;
+	} catch {
+		return null;
+	}
+}
+
 function parseScopes(scope?: string | null) {
 	return scope?.split(/[,\s]+/).filter(Boolean) ?? [];
 }
 
-function hasCalendarEventScope(account: account) {
+function hasGoogleMeetScopes(account: account) {
 	const scopes = parseScopes(account.scope);
 
 	return GOOGLE_CALENDAR_SCOPES.every((scope) => scopes.includes(scope));
@@ -97,7 +114,7 @@ async function getGoogleCalendarAccessToken(userId: string) {
 		},
 	});
 
-	if (!account || !hasCalendarEventScope(account)) {
+	if (!account || !hasGoogleMeetScopes(account)) {
 		return null;
 	}
 
@@ -136,6 +153,63 @@ function getUniqueAttendees(emails: Array<string | null | undefined>) {
 	return uniqueEmails.map((email) => ({ email }));
 }
 
+function buildGoogleMeetEventDescription({
+	patientName,
+	patientEmail,
+}: {
+	patientName: string;
+	patientEmail: string | null;
+}) {
+	const patientDetails = patientEmail
+		? `${patientName} (${patientEmail})`
+		: patientName;
+
+	return [
+		"Consulta criada automaticamente pela Localiza Saúde.",
+		`Paciente: ${patientDetails}`,
+		"Participantes entram pelo link do Google Meet e aguardam aprovação do profissional.",
+	].join("\n");
+}
+
+async function configureGoogleMeetSpace({
+	accessToken,
+	meetingUrl,
+}: {
+	accessToken: string;
+	meetingUrl: string;
+}) {
+	const meetingCode = extractGoogleMeetMeetingCode(meetingUrl);
+
+	if (!meetingCode) {
+		throw new Error("Invalid Google Meet URL returned by Google Calendar");
+	}
+
+	const response = await fetch(
+		`${meetSpaceUrl}/${encodeURIComponent(meetingCode)}?updateMask=config.accessType,config.entryPointAccess,config.moderation`,
+		{
+			method: "PATCH",
+			headers: {
+				Authorization: `Bearer ${accessToken}`,
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				config: {
+					accessType: "RESTRICTED",
+					entryPointAccess: "ALL",
+					moderation: "ON",
+				},
+			}),
+		},
+	);
+	const data = (await response.json()) as { error?: unknown };
+
+	if (!response.ok) {
+		throw new Error(
+			`Failed to configure Google Meet waiting room: ${JSON.stringify(data.error ?? data)}`,
+		);
+	}
+}
+
 async function createGoogleMeetEvent({
 	accessToken,
 	appointment,
@@ -148,13 +222,11 @@ async function createGoogleMeetEvent({
 		start.getTime() + appointment.totalDurationMinutes * 60 * 1000,
 	);
 	const patientName = getAppointmentPatientName(appointment);
+	const patientEmail = getAppointmentPatientEmail(appointment);
 	const providerName =
 		appointment.healthcareProvider.displayName ||
 		appointment.healthcareProvider.name;
-	const attendees = getUniqueAttendees([
-		appointment.healthcareProvider.email,
-		getAppointmentPatientEmail(appointment),
-	]);
+	const attendees = getUniqueAttendees([appointment.healthcareProvider.email]);
 
 	const response = await fetch(
 		`${calendarEventUrl}?conferenceDataVersion=1&sendUpdates=all`,
@@ -166,8 +238,10 @@ async function createGoogleMeetEvent({
 			},
 			body: JSON.stringify({
 				summary: `Consulta online - ${patientName} com ${providerName}`,
-				description:
-					"Consulta criada automaticamente pela Localiza Saúde.",
+				description: buildGoogleMeetEventDescription({
+					patientName,
+					patientEmail,
+				}),
 				start: {
 					dateTime: start.toISOString(),
 				},
@@ -205,6 +279,8 @@ async function createGoogleMeetEvent({
 		throw new Error("Google Calendar did not return a Meet link");
 	}
 
+	await configureGoogleMeetSpace({ accessToken, meetingUrl });
+
 	return {
 		externalId: data.id ?? null,
 		meetingUrl,
@@ -229,7 +305,7 @@ export const googleMeetService = {
 
 		if (!accessToken) {
 			throw new Error(
-				"Google Calendar authorization is required to create an online appointment link",
+				"Google Calendar authorization is required to create an online appointment link. Reconnect Google to grant Meet settings access.",
 			);
 		}
 

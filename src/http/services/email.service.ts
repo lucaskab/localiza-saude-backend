@@ -3,6 +3,10 @@ import { env } from "@/env";
 const RESEND_EMAILS_API_URL = "https://api.resend.com/emails";
 const DEFAULT_RESEND_FROM_EMAIL = "Localiza Saúde <noreply@localizasaude.com>";
 
+function getFromEmail() {
+	return env.RESEND_FROM_EMAIL?.trim() || DEFAULT_RESEND_FROM_EMAIL;
+}
+
 type SendEmailData = {
 	to: string;
 	subject: string;
@@ -20,6 +24,9 @@ type ResendEmailResponse = {
 export const emailService = {
 	async send({ to, subject, html, text, idempotencyKey }: SendEmailData) {
 		if (!env.RESEND_API_KEY) {
+			console.error(
+				"[email] RESEND_API_KEY is not configured. Transactional emails will not be sent.",
+			);
 			return {
 				status: "skipped" as const,
 				errorMessage: "Resend is not configured",
@@ -34,7 +41,7 @@ export const emailService = {
 				...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
 			},
 			body: JSON.stringify({
-				from: DEFAULT_RESEND_FROM_EMAIL,
+				from: getFromEmail(),
 				to,
 				subject,
 				html,

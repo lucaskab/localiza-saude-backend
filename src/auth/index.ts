@@ -25,21 +25,25 @@ const webOrigins = [
 
 export const GOOGLE_CALENDAR_SCOPES = [
 	"https://www.googleapis.com/auth/calendar.events",
+	"https://www.googleapis.com/auth/meetings.space.settings",
 ] as const;
 
-const sendAuthEmail = (
+const sendAuthEmail = async (
 	emailPromise: ReturnType<typeof emailService.send>,
 	context: string,
 ) => {
-	void emailPromise
-		.then((result) => {
-			if (result.status === "failed" || result.status === "skipped") {
-				console.error(`[auth-email] ${context}: ${result.errorMessage}`);
-			}
-		})
-		.catch((error) => {
-			console.error(`[auth-email] ${context}:`, error);
-		});
+	try {
+		const result = await emailPromise;
+
+		if (result.status === "failed" || result.status === "skipped") {
+			const message = result.errorMessage ?? `Failed to send ${context}`;
+			console.error(`[auth-email] ${context}: ${message}`);
+			throw new Error(message);
+		}
+	} catch (error) {
+		console.error(`[auth-email] ${context}:`, error);
+		throw error;
+	}
 };
 
 export const auth = betterAuth({
@@ -76,7 +80,7 @@ export const auth = betterAuth({
 		maxPasswordLength: 128,
 		revokeSessionsOnPasswordReset: true,
 		sendResetPassword: async ({ user, url, token }) => {
-			sendAuthEmail(
+			await sendAuthEmail(
 				emailService.send({
 					to: user.email,
 					subject: "Redefina sua senha da Localiza Saúde",
@@ -103,7 +107,7 @@ export const auth = betterAuth({
 		autoSignInAfterVerification: true,
 		expiresIn: 60 * 60 * 24,
 		sendVerificationEmail: async ({ user, url, token }) => {
-			sendAuthEmail(
+			await sendAuthEmail(
 				emailService.send({
 					to: user.email,
 					subject: "Confirme seu email na Localiza Saúde",

@@ -342,6 +342,12 @@ routerLoader()
 		console.log("\n📋 Registered Routes:");
 		console.log(fastify.printRoutes());
 
+		if (!env.RESEND_API_KEY) {
+			console.warn(
+				"\n⚠️  RESEND_API_KEY is missing. Sign-up verification and password reset emails will not be sent.\n",
+			);
+		}
+
 		// Initialize server
 		fastify.listen({ port: 3333, host: "0.0.0.0" }, (err) => {
 			if (err) {
