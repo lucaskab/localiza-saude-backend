@@ -7,7 +7,12 @@ import {
 	validatorCompiler,
 	type ZodTypeProvider,
 } from "fastify-type-provider-zod";
-import { GOOGLE_CALENDAR_SCOPES, auth } from "@/auth";
+import {
+	EMAIL_VERIFICATION_EXPIRES_IN,
+	GOOGLE_CALENDAR_SCOPES,
+	auth,
+	sendVerificationEmailToUser,
+} from "@/auth";
 import { prisma } from "@/database/prisma";
 import { env } from "@/env";
 import { errorHandler } from "@/http/error-handler";
@@ -60,6 +65,10 @@ const forwardSetCookieHeaders = (headers: Headers, reply: FastifyReply) => {
 
 const webOAuthCodeBodySchema = z.object({
 	code: z.string().min(1),
+});
+const signUpEmailBodySchema = z.object({
+	email: z.email(),
+	callbackURL: z.string().optional(),
 });
 
 // Configure CORS policies
@@ -297,6 +306,25 @@ fastify.route({
 		try {
 			// Construct request URL
 			const url = new URL(request.url, getRequestOrigin(request));
+			const signUpEmailBody =
+				request.method === "POST" && url.pathname === "/api/auth/sign-up/email"
+					? signUpEmailBodySchema.safeParse(request.body)
+					: null;
+			const signUpEmailPayload = signUpEmailBody?.success
+				? signUpEmailBody.data
+				: null;
+			const existingUnverifiedUser =
+				signUpEmailPayload
+					? await prisma.user.findUnique({
+							where: { email: signUpEmailPayload.email.toLowerCase() },
+							select: {
+								id: true,
+								email: true,
+								name: true,
+								emailVerified: true,
+							},
+						})
+					: null;
 
 			// Convert Fastify headers to standard Headers object
 			const headers = fromNodeHeaders(request.headers);
@@ -310,6 +338,13 @@ fastify.route({
 
 			// Process authentication request
 			const response = await auth.handler(req);
+
+			if (response.ok && existingUnverifiedUser && !existingUnverifiedUser.emailVerified) {
+				await sendVerificationEmailToUser(existingUnverifiedUser, {
+					callbackURL: signUpEmailPayload?.callbackURL,
+					expiresIn: EMAIL_VERIFICATION_EXPIRES_IN,
+				});
+			}
 
 			// Forward response to client
 			reply.status(response.status);

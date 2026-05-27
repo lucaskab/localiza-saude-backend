@@ -1,5 +1,6 @@
 import { expo } from "@better-auth/expo";
 import { betterAuth } from "better-auth";
+import { createEmailVerificationToken } from "better-auth/api";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { openAPI } from "better-auth/plugins";
 import { prisma } from "@/database/prisma";
@@ -27,6 +28,7 @@ export const GOOGLE_CALENDAR_SCOPES = [
 	"https://www.googleapis.com/auth/calendar.events",
 	"https://www.googleapis.com/auth/meetings.space.settings",
 ] as const;
+export const EMAIL_VERIFICATION_EXPIRES_IN = 60 * 60 * 24;
 
 const sendAuthEmail = async (
 	emailPromise: ReturnType<typeof emailService.send>,
@@ -44,6 +46,69 @@ const sendAuthEmail = async (
 		console.error(`[auth-email] ${context}:`, error);
 		throw error;
 	}
+};
+
+type VerificationEmailUser = {
+	id: string;
+	email: string;
+	name?: string | null;
+};
+
+const buildVerificationUrl = async (
+	email: string,
+	callbackURL?: string,
+	expiresIn?: number,
+) => {
+	const token = await createEmailVerificationToken(
+		env.BETTER_AUTH_SECRET,
+		email,
+		undefined,
+		expiresIn,
+	);
+	const encodedCallbackURL = encodeURIComponent(callbackURL || "/");
+	const url = `${env.BETTER_AUTH_URL}/api/auth/verify-email?token=${token}&callbackURL=${encodedCallbackURL}`;
+
+	return { token, url };
+};
+
+export const sendVerificationEmailToUser = async (
+	user: VerificationEmailUser,
+	options?: {
+		callbackURL?: string;
+		token?: string;
+		url?: string;
+		expiresIn?: number;
+	},
+) => {
+	const verificationPayload =
+		options?.token && options?.url
+			? { token: options.token, url: options.url }
+			: await buildVerificationUrl(
+					user.email,
+					options?.callbackURL,
+					options?.expiresIn,
+				);
+
+	await sendAuthEmail(
+		emailService.send({
+			to: user.email,
+			subject: "Confirme seu email na Localiza Saúde",
+			html: `
+				<p>Olá${user.name ? `, ${user.name}` : ""}.</p>
+				<p>Confirme seu email para ativar sua conta na Localiza Saúde.</p>
+				<p>
+					<a href="${verificationPayload.url}" style="display:inline-block;padding:12px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;">
+						Confirmar email
+					</a>
+				</p>
+				<p>Depois da confirmação, você poderá escolher se quer usar a plataforma como paciente ou profissional.</p>
+				<p>Se você não criou esta conta, ignore este email.</p>
+			`,
+			text: `Confirme seu email na Localiza Saúde: ${verificationPayload.url}`,
+			idempotencyKey: `email-verification-${user.id}-${verificationPayload.token}`,
+		}),
+		`verification email for ${user.email}`,
+	);
 };
 
 export const auth = betterAuth({
@@ -105,28 +170,9 @@ export const auth = betterAuth({
 		sendOnSignUp: true,
 		sendOnSignIn: true,
 		autoSignInAfterVerification: true,
-		expiresIn: 60 * 60 * 24,
+		expiresIn: EMAIL_VERIFICATION_EXPIRES_IN,
 		sendVerificationEmail: async ({ user, url, token }) => {
-			await sendAuthEmail(
-				emailService.send({
-					to: user.email,
-					subject: "Confirme seu email na Localiza Saúde",
-					html: `
-						<p>Olá${user.name ? `, ${user.name}` : ""}.</p>
-						<p>Confirme seu email para ativar sua conta na Localiza Saúde.</p>
-						<p>
-							<a href="${url}" style="display:inline-block;padding:12px 18px;background:#0f766e;color:#ffffff;text-decoration:none;border-radius:8px;font-weight:600;">
-								Confirmar email
-							</a>
-						</p>
-						<p>Depois da confirmação, você poderá escolher se quer usar a plataforma como paciente ou profissional.</p>
-						<p>Se você não criou esta conta, ignore este email.</p>
-					`,
-					text: `Confirme seu email na Localiza Saúde: ${url}`,
-					idempotencyKey: `email-verification-${user.id}-${token}`,
-				}),
-				`verification email for ${user.email}`,
-			);
+			await sendVerificationEmailToUser(user, { url, token });
 		},
 	},
 	advanced: {
