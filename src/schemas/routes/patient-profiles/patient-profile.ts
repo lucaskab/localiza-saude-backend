@@ -38,7 +38,6 @@ export const patientProfileBodySchema = z.object({
 	allergies: optionalTextSchema,
 	surgeries: optionalTextSchema,
 	familyHistory: optionalTextSchema,
-	lifestyleNotes: optionalTextSchema,
 	emergencyContactName: optionalTextSchema,
 	emergencyContactPhone: optionalTextSchema,
 });

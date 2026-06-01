@@ -19,7 +19,6 @@ export type PatientProfileData = {
 	allergies?: string | null;
 	surgeries?: string | null;
 	familyHistory?: string | null;
-	lifestyleNotes?: string | null;
 	emergencyContactName?: string | null;
 	emergencyContactPhone?: string | null;
 };

@@ -106,7 +106,8 @@ export async function seedEngagement(
 					| "APPOINTMENT_REMINDER"
 					| "APPOINTMENT_STATUS_UPDATE"
 					| "NEW_APPOINTMENT_REQUEST",
-				enabled: true,
+				pushEnabled: true,
+				emailEnabled: type === "APPOINTMENT_STATUS_UPDATE",
 			})),
 		),
 	});
@@ -152,12 +153,14 @@ export async function seedEngagement(
 			{
 				userId: users.customers.lucas.id,
 				appointmentId: appointments.lucasCardio.id,
+				channel: "PUSH",
 				type: "APPOINTMENT_REMINDER",
 				status: "PENDING",
 			},
 			{
 				userId: users.providers.lucas.id,
 				appointmentId: appointments.lucasProviderOnline.id,
+				channel: "PUSH",
 				type: "NEW_APPOINTMENT_REQUEST",
 				status: "SENT",
 				expoTicketId: "seed-ticket-provider-lucas",
@@ -166,6 +169,7 @@ export async function seedEngagement(
 			{
 				userId: users.providers.ana.id,
 				appointmentId: appointments.lucasCardio.id,
+				channel: "PUSH",
 				type: "NEW_APPOINTMENT_REQUEST",
 				status: "SENT",
 				expoTicketId: "seed-ticket-ana",
@@ -174,6 +178,7 @@ export async function seedEngagement(
 			{
 				userId: users.customers.juliana.id,
 				appointmentId: appointments.julianaDermato.id,
+				channel: "PUSH",
 				type: "APPOINTMENT_STATUS_UPDATE",
 				status: "FAILED",
 				errorMessage: "Seed failure sample for notification history.",
@@ -181,6 +186,7 @@ export async function seedEngagement(
 			{
 				userId: users.staff.recepcaoPaulista.id,
 				appointmentId: appointments.lucasNutrition.id,
+				channel: "EMAIL",
 				type: "APPOINTMENT_STATUS_UPDATE",
 				status: "SKIPPED",
 				errorMessage: "User disabled this notification type.",

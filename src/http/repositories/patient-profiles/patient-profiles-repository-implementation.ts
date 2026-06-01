@@ -63,7 +63,6 @@ export const prismaPatientProfileRepository: PatientProfileRepository = {
 				allergies: data.allergies,
 				surgeries: data.surgeries,
 				familyHistory: data.familyHistory,
-				lifestyleNotes: data.lifestyleNotes,
 				emergencyContactName: data.emergencyContactName,
 				emergencyContactPhone: data.emergencyContactPhone,
 			},

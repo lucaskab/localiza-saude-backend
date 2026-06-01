@@ -1,40 +1,57 @@
 import { PROVIDERS, REAL_USERS, SEED_CUSTOMERS, SEED_STAFF } from "./constants";
 import type { SeedClient, SeedUsers } from "./types";
 
-async function ensureEmailIsAvailable(
+async function ensureEmailCanBeReused(
 	prisma: SeedClient,
-	id: string,
 	email: string,
 ) {
 	const existing = await prisma.user.findUnique({ where: { email } });
 
-	if (existing && existing.id !== id) {
+	if (existing && existing.role === "STAFF") {
 		throw new Error(
-			`Cannot seed ${email}: existing user has id ${existing.id}, expected ${id}.`,
+			`Cannot seed ${email}: existing user has incompatible role ${existing.role}.`,
 		);
 	}
+
+	return existing;
+}
+
+async function upsertRealUserByEmail(
+	prisma: SeedClient,
+	email: string,
+	createData: Parameters<typeof prisma.user.upsert>[0]["create"],
+	updateData: Parameters<typeof prisma.user.upsert>[0]["update"],
+) {
+	const existing = await ensureEmailCanBeReused(prisma, email);
+
+	if (existing) {
+		return prisma.user.update({
+			where: { id: existing.id },
+			data: {
+				...updateData,
+				email,
+			},
+		});
+	}
+
+	return prisma.user.create({
+		data: createData,
+	});
 }
 
 export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 	console.log("👥 Seeding users...");
 
 	await Promise.all([
-		ensureEmailIsAvailable(
-			prisma,
-			REAL_USERS.customerLucas.id,
-			REAL_USERS.customerLucas.email,
-		),
-		ensureEmailIsAvailable(
-			prisma,
-			REAL_USERS.providerLucas.id,
-			REAL_USERS.providerLucas.email,
-		),
-		ensureEmailIsAvailable(prisma, REAL_USERS.admin.id, REAL_USERS.admin.email),
+		ensureEmailCanBeReused(prisma, REAL_USERS.customerLucas.email),
+		ensureEmailCanBeReused(prisma, REAL_USERS.providerLucas.email),
+		ensureEmailCanBeReused(prisma, REAL_USERS.admin.email),
 	]);
 
-	const lucas = await prisma.user.upsert({
-		where: { id: REAL_USERS.customerLucas.id },
-		create: {
+	const lucas = await upsertRealUserByEmail(
+		prisma,
+		REAL_USERS.customerLucas.email,
+		{
 			id: REAL_USERS.customerLucas.id,
 			name: REAL_USERS.customerLucas.name,
 			firstName: REAL_USERS.customerLucas.firstName,
@@ -47,7 +64,7 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			cpf: "123.456.789-10",
 			dateOfBirth: new Date("1994-02-14T00:00:00.000Z"),
 		},
-		update: {
+		{
 			name: REAL_USERS.customerLucas.name,
 			firstName: REAL_USERS.customerLucas.firstName,
 			lastName: REAL_USERS.customerLucas.lastName,
@@ -59,11 +76,12 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			cpf: "123.456.789-10",
 			dateOfBirth: new Date("1994-02-14T00:00:00.000Z"),
 		},
-	});
+	);
 
-	const lucasProvider = await prisma.user.upsert({
-		where: { id: REAL_USERS.providerLucas.id },
-		create: {
+	const lucasProvider = await upsertRealUserByEmail(
+		prisma,
+		REAL_USERS.providerLucas.email,
+		{
 			id: REAL_USERS.providerLucas.id,
 			name: REAL_USERS.providerLucas.name,
 			firstName: REAL_USERS.providerLucas.firstName,
@@ -99,14 +117,13 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			approach:
 				"Consulta objetiva, acolhedora e orientada por dados, com plano de cuidado simples de acompanhar.",
 			education:
-				"Medicina pela Universidade Federal de São Paulo, residência em Clínica Médica.",
+				"Medicina pela Universidade Federal de São Paulo, residência em Clínica Médica e atuação com pacientes internacionais em Berlin.",
 			certifications: "Atualização em medicina preventiva e atenção primária.",
 			yearsOfExperience: 9,
 			targetAudiences: ["Adultos", "Idosos", "Famílias"],
 			serviceModalities: ["IN_PERSON", "ONLINE", "HOME_CARE"],
-				"Av. Paulista, 900 - Bela Vista, São Paulo - SP, 01310-100",
+			licenseState: "BE",
 			homeCareRadiusKm: 10,
-			acceptedInsurance: ["Particular", "Unimed", "Bradesco Saúde"],
 			paymentMethods: ["Pix", "Cartão de crédito", "Cartão de débito"],
 			cancellationPolicy:
 				"Cancelamentos sem custo até 24 horas antes da consulta.",
@@ -120,7 +137,7 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 				"2026-05-02T09:30:00.000Z",
 			),
 		},
-		update: {
+		{
 			name: REAL_USERS.providerLucas.name,
 			firstName: REAL_USERS.providerLucas.firstName,
 			lastName: REAL_USERS.providerLucas.lastName,
@@ -155,14 +172,13 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			approach:
 				"Consulta objetiva, acolhedora e orientada por dados, com plano de cuidado simples de acompanhar.",
 			education:
-				"Medicina pela Universidade Federal de São Paulo, residência em Clínica Médica.",
+				"Medicina pela Universidade Federal de São Paulo, residência em Clínica Médica e atuação com pacientes internacionais em Berlin.",
 			certifications: "Atualização em medicina preventiva e atenção primária.",
 			yearsOfExperience: 9,
 			targetAudiences: ["Adultos", "Idosos", "Famílias"],
 			serviceModalities: ["IN_PERSON", "ONLINE", "HOME_CARE"],
-				"Av. Paulista, 900 - Bela Vista, São Paulo - SP, 01310-100",
+			licenseState: "BE",
 			homeCareRadiusKm: 10,
-			acceptedInsurance: ["Particular", "Unimed", "Bradesco Saúde"],
 			paymentMethods: ["Pix", "Cartão de crédito", "Cartão de débito"],
 			cancellationPolicy:
 				"Cancelamentos sem custo até 24 horas antes da consulta.",
@@ -176,11 +192,12 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 				"2026-05-02T09:30:00.000Z",
 			),
 		},
-	});
+	);
 
-	const admin = await prisma.user.upsert({
-		where: { id: REAL_USERS.admin.id },
-		create: {
+	const admin = await upsertRealUserByEmail(
+		prisma,
+		REAL_USERS.admin.email,
+		{
 			id: REAL_USERS.admin.id,
 			name: REAL_USERS.admin.name,
 			firstName: REAL_USERS.admin.firstName,
@@ -191,7 +208,7 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			role: "ADMIN",
 			onboardingCompleted: true,
 		},
-		update: {
+		{
 			name: REAL_USERS.admin.name,
 			firstName: REAL_USERS.admin.firstName,
 			lastName: REAL_USERS.admin.lastName,
@@ -201,15 +218,28 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			role: "ADMIN",
 			onboardingCompleted: true,
 		},
-	});
+	);
 
 	const providers: SeedUsers["providers"] = {};
 	const staff: SeedUsers["staff"] = {};
 	providers.lucas = lucasProvider;
 
-	const juliana = await prisma.user.create({
-		data: {
+	const juliana = await prisma.user.upsert({
+		where: { id: SEED_CUSTOMERS.juliana.id },
+		create: {
 			...SEED_CUSTOMERS.juliana,
+			emailVerified: true,
+			role: "CUSTOMER",
+			onboardingCompleted: true,
+			cpf: "987.654.321-00",
+			dateOfBirth: new Date("1992-08-22T00:00:00.000Z"),
+		},
+		update: {
+			name: SEED_CUSTOMERS.juliana.name,
+			firstName: SEED_CUSTOMERS.juliana.firstName,
+			lastName: SEED_CUSTOMERS.juliana.lastName,
+			phone: SEED_CUSTOMERS.juliana.phone,
+			email: SEED_CUSTOMERS.juliana.email,
 			emailVerified: true,
 			role: "CUSTOMER",
 			onboardingCompleted: true,
@@ -219,10 +249,29 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 	});
 
 	for (const [key, provider] of Object.entries(PROVIDERS)) {
-		const { id: _seedId, ...providerData } = provider;
+		const {
+			id,
+			acceptedInsurancePlanNames: _acceptedInsurancePlanNames,
+			...providerData
+		} = provider;
 
-		providers[key] = await prisma.user.create({
-			data: {
+		providers[key] = await prisma.user.upsert({
+			where: { id },
+			create: {
+				id,
+				...providerData,
+				role: "HEALTHCARE_PROVIDER",
+				emailVerified: true,
+				onboardingCompleted: true,
+				verifiedByUserId:
+					provider.verificationStatus === "VERIFIED" ? admin.id : null,
+				termsAcceptedAt: new Date("2026-04-28T12:00:00.000Z"),
+				lgpdConsentAt: new Date("2026-04-28T12:00:00.000Z"),
+				professionalResponsibilityAcceptedAt: new Date(
+					"2026-04-28T12:00:00.000Z",
+				),
+			},
+			update: {
 				...providerData,
 				role: "HEALTHCARE_PROVIDER",
 				emailVerified: true,
@@ -239,10 +288,18 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 	}
 
 	for (const [key, staffUser] of Object.entries(SEED_STAFF)) {
-		const { id: _seedId, ...staffData } = staffUser;
+		const { id, ...staffData } = staffUser;
 
-		staff[key] = await prisma.user.create({
-			data: {
+		staff[key] = await prisma.user.upsert({
+			where: { id },
+			create: {
+				id,
+				...staffData,
+				role: "STAFF",
+				emailVerified: true,
+				onboardingCompleted: true,
+			},
+			update: {
 				...staffData,
 				role: "STAFF",
 				emailVerified: true,

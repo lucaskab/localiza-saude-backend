@@ -12,6 +12,8 @@ import { seedProfessionalCouncils } from "./professional-councils";
 import { seedScheduleExceptions } from "./schedule-exceptions";
 import type { SeedClient } from "./types";
 import { seedClinicAddresses, seedUserAddresses } from "./addresses";
+import { seedHealthInsurancePlans } from "./health-insurance-plans";
+import { seedHealthInsurancePlanLinks } from "./link-health-insurance-plans";
 import { seedUsers } from "./users";
 
 export async function runSeed(prisma: SeedClient) {
@@ -23,7 +25,9 @@ export async function runSeed(prisma: SeedClient) {
 	await cleanupSeedData(prisma);
 
 	await seedProfessionalCouncils(prisma);
+	const healthInsurancePlans = await seedHealthInsurancePlans(prisma);
 	const users = await seedUsers(prisma);
+	await seedHealthInsurancePlanLinks(prisma, healthInsurancePlans, users);
 	await seedUserAddresses(prisma, users);
 	await seedAuthFixtures(prisma, users);
 	const categories = await seedCategories(prisma, users);

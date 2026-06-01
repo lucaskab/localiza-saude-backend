@@ -1,8 +1,10 @@
 import { z } from "zod";
 
+const entityIdSchema = z.string().min(1);
+
 export const procedureChecklistItemSchema = z.object({
-	id: z.cuid(),
-	procedureId: z.cuid(),
+	id: entityIdSchema,
+	procedureId: entityIdSchema,
 	text: z.string().min(1),
 	position: z.number().int(),
 	createdAt: z.date(),
@@ -10,12 +12,12 @@ export const procedureChecklistItemSchema = z.object({
 });
 
 export const procedureSchema = z.object({
-	id: z.cuid(),
+	id: entityIdSchema,
 	name: z.string().min(1),
 	description: z.string().nullable().optional(),
 	priceInCents: z.number().int().min(0),
 	durationInMinutes: z.number().int().min(1),
-	healthcareProviderId: z.cuid(),
+	healthcareProviderId: entityIdSchema,
 	createdAt: z.date(),
 	updatedAt: z.date(),
 	checklistItems: z.array(procedureChecklistItemSchema).default([]),

@@ -3,13 +3,15 @@ import { addressInputSchema } from "@/schemas/routes/addresses/address";
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { healthcareProviderSchema } from "./get-healthcare-providers";
 
+const entityIdSchema = z.string().trim().min(1);
+
 const professionalFaqInputSchema = z.object({
 	question: z.string().trim().min(3).max(300),
 	answer: z.string().trim().min(3).max(1200),
 });
 
 export const updateHealthcareProviderParamsSchema = z.object({
-	id: z.cuid(),
+	id: entityIdSchema,
 });
 
 export const updateHealthcareProviderBodySchema = z.object({
@@ -32,7 +34,7 @@ export const updateHealthcareProviderBodySchema = z.object({
 	serviceModalities: z.array(serviceModalitySchema).optional(),
 	address: addressInputSchema.nullable().optional(),
 	homeCareRadiusKm: z.number().int().min(0).nullable().optional(),
-	acceptedInsurance: z.array(z.string().trim().min(1)).optional(),
+	acceptedHealthInsurancePlanIds: z.array(entityIdSchema).optional(),
 	paymentMethods: z.array(z.string().trim().min(1)).optional(),
 	bookingAvailabilityDays: z.number().int().min(1).max(365).nullable().optional(),
 	appointmentConfirmationReminderHoursBefore: z.number().int().min(1).max(168).nullable().optional(),

@@ -44,6 +44,16 @@ function formatPostalCode(value: string) {
 	return digits;
 }
 
+function isPostalCodeValidForCountry(value: string, countryCode: string) {
+	const digits = normalizeDigits(value);
+
+	if (countryCode === "BR") {
+		return digits.length === 8;
+	}
+
+	return value.trim().length >= 3;
+}
+
 export const addressTypeSchema = z.enum([
 	"HOME",
 	"BILLING",
@@ -63,24 +73,39 @@ export const addressInputSchema = z.object({
 		.default("BR"),
 	postalCode: z
 		.string()
-		.trim()
-		.transform(formatPostalCode)
-		.refine((value) => normalizeDigits(value).length === 8, {
-			message: "Postal code must contain 8 digits",
-		}),
+		.trim(),
 	state: z
 		.string()
 		.trim()
-		.toUpperCase()
-		.refine((value) => BRAZILIAN_STATES.includes(value as (typeof BRAZILIAN_STATES)[number]), {
-			message: "Invalid Brazilian state",
-		}),
+		.toUpperCase(),
 	city: z.string().trim().min(2).max(120),
 	neighborhood: z.string().trim().min(2).max(120),
 	street: z.string().trim().min(2).max(200),
 	number: z.string().trim().min(1).max(20),
 	complement: z.string().trim().max(120).nullable().optional(),
 	reference: z.string().trim().max(200).nullable().optional(),
+}).superRefine((address, ctx) => {
+	if (!isPostalCodeValidForCountry(address.postalCode, address.countryCode)) {
+		ctx.addIssue({
+			code: "custom",
+			path: ["postalCode"],
+			message:
+				address.countryCode === "BR"
+					? "Postal code must contain 8 digits"
+					: "Invalid postal code",
+		});
+	}
+
+	if (
+		address.countryCode === "BR" &&
+		!BRAZILIAN_STATES.includes(address.state as (typeof BRAZILIAN_STATES)[number])
+	) {
+		ctx.addIssue({
+			code: "custom",
+			path: ["state"],
+			message: "Invalid Brazilian state",
+		});
+	}
 });
 
 export const addressSchema = addressInputSchema.extend({
@@ -99,12 +124,14 @@ export type AddressInputSchema = z.infer<typeof addressInputSchema>;
 export type AddressSchema = z.infer<typeof addressSchema>;
 
 export function buildFormattedAddress(input: AddressInputSchema) {
+	const postalCode =
+		input.countryCode === "BR" ? formatPostalCode(input.postalCode) : input.postalCode;
 	const parts = [
 		`${input.street}, ${input.number}`,
 		input.complement,
 		input.neighborhood,
 		`${input.city} - ${input.state}`,
-		input.postalCode,
+		postalCode,
 		input.countryCode === "BR" ? "Brasil" : input.countryCode,
 	].filter(Boolean);
 

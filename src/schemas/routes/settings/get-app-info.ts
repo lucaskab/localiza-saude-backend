@@ -6,6 +6,7 @@ export const getAppInfoResponseSchema = z.object({
 		apiVersion: z.string(),
 		environment: z.string(),
 		serverTime: z.date(),
+		enableProviderSignUp: z.boolean(),
 	}),
 });
 

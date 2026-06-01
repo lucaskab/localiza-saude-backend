@@ -1,9 +1,11 @@
 import { z } from "zod";
 import { healthcareProviderUserSchema } from "../users/user";
 
+const entityIdSchema = z.string().trim().min(1);
+
 export const healthcareProviderScheduleSchema = z.object({
-	id: z.cuid(),
-	healthcareProviderId: z.cuid(),
+	id: entityIdSchema,
+	healthcareProviderId: entityIdSchema,
 	healthcareProvider: healthcareProviderUserSchema,
 	dayOfWeek: z.number().int().min(0).max(6),
 	startTime: z.string(),

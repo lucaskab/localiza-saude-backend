@@ -20,6 +20,10 @@ const envSchema = z.object({
 	R2_PUBLIC_URL: z.url(),
 	RESEND_API_KEY: z.string().optional(),
 	RESEND_FROM_EMAIL: z.string().optional(),
+	ENABLE_PROVIDER_SIGN_UP: z
+		.enum(["true", "false"])
+		.optional()
+		.transform((value) => value === "true"),
 });
 
 export const env = envSchema.parse(process.env);

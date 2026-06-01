@@ -35,7 +35,6 @@ export const patientProfileSchema = z.object({
 	allergies: z.string().nullable(),
 	surgeries: z.string().nullable(),
 	familyHistory: z.string().nullable(),
-	lifestyleNotes: z.string().nullable(),
 	emergencyContactName: z.string().nullable(),
 	emergencyContactPhone: z.string().nullable(),
 	createdAt: z.date(),

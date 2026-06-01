@@ -3,6 +3,7 @@ import { prismaCustomerRepository } from "@/http/repositories/customers/customer
 import { prismaHealthcareProviderRepository } from "@/http/repositories/healthcare-providers/healthcare-providers-repository-implementation";
 import { addressPresenter } from "@/http/presenters/address-presenter";
 import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
+import { findUserHealthInsurancePlans } from "@/http/services/health-insurance-plans";
 import { signUserImage } from "@/http/useCases/users/sign-user-image-url";
 import type { user } from "../../../../prisma/generated/prisma/client";
 
@@ -20,10 +21,10 @@ export const getAuthMeUseCase = {
 
 		if (user.role === "CUSTOMER") {
 			const customer = await prismaCustomerRepository.findByUserId(user.id);
-			const primaryAddress = await prismaAddressRepository.findPrimaryByOwner(
-				"USER",
-				user.id,
-			);
+			const [primaryAddress, healthInsurancePlans] = await Promise.all([
+				prismaAddressRepository.findPrimaryByOwner("USER", user.id),
+				findUserHealthInsurancePlans(user.id),
+			]);
 
 			return {
 				user,
@@ -33,6 +34,7 @@ export const getAuthMeUseCase = {
 							primaryAddress: primaryAddress
 								? addressPresenter.toHTTP(primaryAddress)
 								: null,
+							healthInsurancePlans,
 						}
 					: null,
 				healthcareProvider: null,

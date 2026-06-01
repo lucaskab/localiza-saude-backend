@@ -20,7 +20,6 @@ model patient_profile {
   allergies                     String?
   surgeries                     String?
   familyHistory                 String?              @map("family_history")
-  lifestyleNotes                String?              @map("lifestyle_notes")
   emergencyContactName          String?              @map("emergency_contact_name")
   emergencyContactPhone         String?              @map("emergency_contact_phone")
   createdAt                     DateTime             @default(now()) @map("created_at")

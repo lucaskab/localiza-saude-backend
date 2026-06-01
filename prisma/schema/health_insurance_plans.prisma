@@ -1,0 +1,42 @@
+model health_insurance_plan {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  userLinks     user_health_insurance_plan[]
+  providerLinks healthcare_provider_health_insurance_plan[]
+
+  @@index([active])
+  @@index([name])
+  @@map("health_insurance_plans")
+}
+
+model user_health_insurance_plan {
+  id                    String              @id @default(cuid())
+  userId                String              @map("user_id")
+  user                  user                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  healthInsurancePlanId String              @map("health_insurance_plan_id")
+  healthInsurancePlan   health_insurance_plan @relation(fields: [healthInsurancePlanId], references: [id], onDelete: Cascade)
+  createdAt             DateTime            @default(now()) @map("created_at")
+
+  @@unique([userId, healthInsurancePlanId])
+  @@index([userId])
+  @@index([healthInsurancePlanId])
+  @@map("user_health_insurance_plans")
+}
+
+model healthcare_provider_health_insurance_plan {
+  id                    String              @id @default(cuid())
+  healthcareProviderId  String              @map("healthcare_provider_id")
+  healthcareProvider    user                @relation("ProviderAcceptedHealthInsurancePlans", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
+  healthInsurancePlanId String              @map("health_insurance_plan_id")
+  healthInsurancePlan   health_insurance_plan @relation(fields: [healthInsurancePlanId], references: [id], onDelete: Cascade)
+  createdAt             DateTime            @default(now()) @map("created_at")
+
+  @@unique([healthcareProviderId, healthInsurancePlanId], map: "hp_health_insurance_provider_plan_key")
+  @@index([healthcareProviderId], map: "hp_health_insurance_provider_id_idx")
+  @@index([healthInsurancePlanId], map: "hp_health_insurance_plan_id_idx")
+  @@map("healthcare_provider_health_insurance_plans")
+}

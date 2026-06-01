@@ -7,6 +7,7 @@ import type {
 } from "./healthcare-providers-repository-contract";
 import { augmentHealthcareProviderSearchWhere } from "@/http/repositories/addresses/address-search";
 import { attachPrimaryAddressesToOwners } from "@/http/useCases/addresses/attach-primary-addresses";
+import { replaceProviderAcceptedHealthInsurancePlans } from "@/http/services/health-insurance-plans";
 import {
 	buildHealthcareProviderCreateData,
 	buildHealthcareProviderUpdateData,
@@ -111,10 +112,27 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 		},
 
 		async create(data: CreateHealthcareProviderData) {
-			const healthcareProvider = await prisma.user.update({
-				where: { id: data.userId },
-				data: buildHealthcareProviderCreateData(data),
-				include: healthcareProviderInclude,
+			const healthcareProvider = await prisma.$transaction(async (tx) => {
+				const createdProfessional = await tx.user.update({
+					where: { id: data.userId },
+					data: buildHealthcareProviderCreateData(data),
+				});
+
+				await replaceHealthcareProviderFaqs(
+					tx,
+					createdProfessional.id,
+					data.faqs,
+				);
+				await replaceProviderAcceptedHealthInsurancePlans(
+					tx,
+					createdProfessional.id,
+					data.acceptedHealthInsurancePlanIds,
+				);
+
+				return tx.user.findUniqueOrThrow({
+					where: { id: createdProfessional.id },
+					include: healthcareProviderInclude,
+				});
 			});
 
 			return toHealthcareProvider(healthcareProvider);
@@ -130,6 +148,11 @@ export const prismaHealthcareProviderRepository: HealthcareProviderRepository =
 				});
 
 				await replaceHealthcareProviderFaqs(tx, id, data.faqs);
+				await replaceProviderAcceptedHealthInsurancePlans(
+					tx,
+					id,
+					data.acceptedHealthInsurancePlanIds,
+				);
 
 				return tx.user.findUniqueOrThrow({
 					where: { id: updatedProfessional.id },

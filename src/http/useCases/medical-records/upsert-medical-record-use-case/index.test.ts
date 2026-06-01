@@ -13,7 +13,6 @@ type UpsertMedicalRecordInput = Partial<
 		| "allergies"
 		| "surgeries"
 		| "familyHistory"
-		| "lifestyleNotes"
 		| "emergencyContactName"
 		| "emergencyContactPhone"
 	>

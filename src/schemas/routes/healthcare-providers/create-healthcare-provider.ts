@@ -29,7 +29,7 @@ export const createHealthcareProviderBodySchema = z.object({
 	serviceModalities: z.array(serviceModalitySchema).optional(),
 	address: addressInputSchema.optional(),
 	homeCareRadiusKm: z.number().int().min(0).nullable().optional(),
-	acceptedInsurance: z.array(z.string().trim().min(1)).optional(),
+	acceptedHealthInsurancePlanIds: z.array(z.cuid()).optional(),
 	paymentMethods: z.array(z.string().trim().min(1)).optional(),
 	bookingAvailabilityDays: z.number().int().min(1).max(365).nullable().optional(),
 	appointmentConfirmationReminderHoursBefore: z.number().int().min(1).max(168).nullable().optional(),

@@ -13,6 +13,7 @@ export type UpdateCustomerData = {
 	cpf?: string | null;
 	dateOfBirth?: Date | null;
 	address?: AddressInputSchema;
+	healthInsurancePlanIds?: string[];
 };
 
 export type CustomerRepository = {

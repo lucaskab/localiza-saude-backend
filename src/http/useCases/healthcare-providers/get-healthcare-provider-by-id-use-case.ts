@@ -4,6 +4,7 @@ import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { getProviderMarketplaceMetricsByProviderIds } from "@/http/useCases/healthcare-providers/get-provider-marketplace-metrics";
 import { signClinicPhotoUrls } from "@/http/useCases/healthcare-providers/sign-clinic-photo-urls";
 import { getProviderRatingSummariesByProviderIds } from "@/http/useCases/ratings/get-provider-rating-summaries";
+import { getStartingPriceCents } from "@/http/services/provider-pricing";
 import {
 	type PublicHealthcareProvider,
 	toPublicHealthcareProvider,
@@ -20,16 +21,6 @@ type HealthcareProviderWithRatingSummary = HealthcareProviderWithRelations & {
 type PublicHealthcareProviderWithRatingSummary = PublicHealthcareProvider<
 	HealthcareProviderWithRatingSummary
 >;
-
-function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
-	if (provider.procedures.length === 0) {
-		return null;
-	}
-
-	return Math.min(
-		...provider.procedures.map((procedure) => procedure.priceInCents),
-	);
-}
 
 export const getHealthcareProviderByIdUseCase = {
 	async execute(
@@ -57,7 +48,7 @@ export const getHealthcareProviderByIdUseCase = {
 			healthcareProvider: toPublicHealthcareProvider(
 				signClinicPhotoUrls({
 					...healthcareProvider,
-					startingPriceCents: getStartingPriceCents(healthcareProvider),
+					startingPriceCents: getStartingPriceCents(healthcareProvider.procedures),
 					averageRating: ratingSummary?.averageRating ?? 0,
 					totalRatings: ratingSummary?.totalRatings ?? 0,
 					completedAppointments:

@@ -8,6 +8,7 @@ import type {
 } from "../../../../prisma/generated/prisma/client";
 import type { ServiceModality } from "@/schemas/service-modalities";
 import type { WithPrimaryAddress } from "@/http/useCases/addresses/attach-primary-addresses";
+import type { HealthInsurancePlanSummary } from "@/http/services/health-insurance-plans";
 
 export type HealthcareProviderFaqData = {
 	question: string;
@@ -45,7 +46,7 @@ export type CreateHealthcareProviderData = {
 	serviceModalities?: ServiceModality[];
 	homeCareRadiusKm?: number | null;
 	primaryAddress?: import("../../../../prisma/generated/prisma/client").address | null;
-	acceptedInsurance?: string[];
+	acceptedHealthInsurancePlanIds?: string[];
 	paymentMethods?: string[];
 	bookingAvailabilityDays?: number | null;
 	appointmentConfirmationReminderHoursBefore?: number | null;
@@ -97,7 +98,7 @@ export type UpdateHealthcareProviderData = {
 	serviceModalities?: ServiceModality[];
 	homeCareRadiusKm?: number | null;
 	primaryAddress?: import("../../../../prisma/generated/prisma/client").address | null;
-	acceptedInsurance?: string[];
+	acceptedHealthInsurancePlanIds?: string[];
 	paymentMethods?: string[];
 	bookingAvailabilityDays?: number | null;
 	appointmentConfirmationReminderHoursBefore?: number | null;
@@ -126,6 +127,7 @@ export type HealthcareProviderWithRelations = WithPrimaryAddress<
 		})[];
 		faqs: healthcare_provider_faq[];
 		professionalCouncil: professional_council | null;
+		acceptedHealthInsurancePlans: HealthInsurancePlanSummary[];
 		distanceInKm?: number | null;
 	}
 >;
@@ -135,7 +137,7 @@ export type FindAllHealthcareProviderFilters = {
 	specialty?: string;
 	serviceModality?: ServiceModality;
 	language?: string;
-	insurance?: string;
+	healthInsurancePlanId?: string;
 	maxPriceCents?: number;
 	city?: string;
 	neighborhood?: string;

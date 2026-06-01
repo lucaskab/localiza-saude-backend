@@ -4,7 +4,7 @@ import { healthcareProviderScheduleSchema } from "./get-healthcare-provider-sche
 const timeRegex = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
 
 export const updateHealthcareProviderScheduleParamsSchema = z.object({
-	id: z.cuid(),
+	id: z.string().trim().min(1),
 });
 
 export const updateHealthcareProviderScheduleBodySchema = z.object({

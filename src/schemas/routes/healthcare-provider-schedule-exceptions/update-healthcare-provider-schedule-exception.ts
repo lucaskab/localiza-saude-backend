@@ -6,7 +6,7 @@ import {
 } from "./get-schedule-exceptions-by-healthcare-provider";
 
 export const updateHealthcareProviderScheduleExceptionParamsSchema = z.object({
-	id: z.cuid(),
+	id: z.string().trim().min(1),
 });
 
 export const updateHealthcareProviderScheduleExceptionBodySchema = z.object({

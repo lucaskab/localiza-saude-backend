@@ -8,7 +8,6 @@ export type MedicalRecordInput = {
 	allergies?: string | null;
 	surgeries?: string | null;
 	familyHistory?: string | null;
-	lifestyleNotes?: string | null;
 	emergencyContactName?: string | null;
 	emergencyContactPhone?: string | null;
 };

@@ -6,7 +6,7 @@ import {
 } from "./get-schedule-exceptions-by-healthcare-provider";
 
 export const createHealthcareProviderScheduleExceptionBodySchema = z.object({
-	healthcareProviderId: z.cuid(),
+	healthcareProviderId: z.string().trim().min(1),
 	date: z.coerce.date(),
 	type: scheduleExceptionTypeSchema,
 	startTime: z.string().regex(timeRegex).nullable().optional(),

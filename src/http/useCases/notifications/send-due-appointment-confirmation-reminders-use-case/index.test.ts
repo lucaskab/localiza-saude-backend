@@ -46,7 +46,7 @@ const makeAppointment = (
 	recurringRuleId: null,
 	recurringGeneratedAt: null,
 	scheduledAt: new Date("2026-08-20T13:00:00.000Z"),
-	status: "CONFIRMED",
+	status: "SCHEDULED",
 	serviceModality: "ONLINE",
 	onlineMeetingUrl: null,
 	onlineMeetingProvider: null,
@@ -204,6 +204,25 @@ describe("sendDueAppointmentConfirmationRemindersUseCase", () => {
 		);
 
 		expect(mockPushNotificationsService.sendToUser).not.toHaveBeenCalled();
+		expect(result).toEqual({
+			processed: 1,
+			sent: 0,
+			skipped: 1,
+			failed: 0,
+		});
+	});
+
+	test("skips appointments that are already confirmed", async () => {
+		mockNotificationsRepository.findUpcomingAppointmentsForReminderWindow.mockResolvedValue(
+			[makeAppointment({ status: "CONFIRMED" })],
+		);
+
+		const result = await sendDueAppointmentConfirmationRemindersUseCase.execute(
+			new Date("2026-08-19T13:30:00.000Z"),
+		);
+
+		expect(mockPushNotificationsService.sendToUser).not.toHaveBeenCalled();
+		expect(mockEmailService.send).not.toHaveBeenCalled();
 		expect(result).toEqual({
 			processed: 1,
 			sent: 0,

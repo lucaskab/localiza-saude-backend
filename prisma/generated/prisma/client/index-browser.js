@@ -328,11 +328,32 @@ exports.Prisma.Customer_medical_recordScalarFieldEnum = {
   allergies: 'allergies',
   surgeries: 'surgeries',
   familyHistory: 'familyHistory',
-  lifestyleNotes: 'lifestyleNotes',
   emergencyContactName: 'emergencyContactName',
   emergencyContactPhone: 'emergencyContactPhone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Health_insurance_planScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.User_health_insurance_planScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  healthInsurancePlanId: 'healthInsurancePlanId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.Healthcare_provider_health_insurance_planScalarFieldEnum = {
+  id: 'id',
+  healthcareProviderId: 'healthcareProviderId',
+  healthInsurancePlanId: 'healthInsurancePlanId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.Healthcare_provider_scheduleScalarFieldEnum = {
@@ -451,7 +472,6 @@ exports.Prisma.Patient_profileScalarFieldEnum = {
   allergies: 'allergies',
   surgeries: 'surgeries',
   familyHistory: 'familyHistory',
-  lifestyleNotes: 'lifestyleNotes',
   emergencyContactName: 'emergencyContactName',
   emergencyContactPhone: 'emergencyContactPhone',
   createdAt: 'createdAt',
@@ -556,7 +576,6 @@ exports.Prisma.UserScalarFieldEnum = {
   targetAudiences: 'targetAudiences',
   serviceModalities: 'serviceModalities',
   homeCareRadiusKm: 'homeCareRadiusKm',
-  acceptedInsurance: 'acceptedInsurance',
   paymentMethods: 'paymentMethods',
   bookingAvailabilityDays: 'bookingAvailabilityDays',
   appointmentConfirmationReminderHoursBefore: 'appointmentConfirmationReminderHoursBefore',
@@ -803,6 +822,9 @@ exports.Prisma.ModelName = {
   clinic_employee: 'clinic_employee',
   customer_favorite_provider: 'customer_favorite_provider',
   customer_medical_record: 'customer_medical_record',
+  health_insurance_plan: 'health_insurance_plan',
+  user_health_insurance_plan: 'user_health_insurance_plan',
+  healthcare_provider_health_insurance_plan: 'healthcare_provider_health_insurance_plan',
   healthcare_provider_schedule: 'healthcare_provider_schedule',
   healthcare_provider_schedule_exception: 'healthcare_provider_schedule_exception',
   healthcare_provider_faq: 'healthcare_provider_faq',

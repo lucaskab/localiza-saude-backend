@@ -1,10 +1,13 @@
+import {
+	DEFAULT_APPOINTMENT_CONFIRMATION_REMINDER_HOURS,
+	MAX_APPOINTMENT_NOTIFICATION_LEAD_HOURS,
+	normalizeAppointmentNotificationLeadHours,
+} from "@/http/constants/appointment-notification-lead-hours";
 import { emailService } from "@/http/services/email.service";
 import { prismaNotificationsRepository } from "@/http/repositories/notifications/notifications-repository-implementation";
 import { pushNotificationsService } from "@/http/services/push-notifications.service";
 
 const ONE_HOUR_IN_MS = 60 * 60 * 1000;
-const DEFAULT_APPOINTMENT_CONFIRMATION_REMINDER_HOURS = 24;
-const MAX_NOTIFICATION_LEAD_HOURS = 168;
 
 const formatAppointmentDate = (date: Date) =>
 	new Intl.DateTimeFormat("pt-BR", {
@@ -29,10 +32,6 @@ const getPatientName = (
 
 const getConfirmationReminderDedupeKey = (appointmentId: string) =>
 	`appointment-confirmation:${appointmentId}`;
-
-function normalizeLeadHours(value: number | null | undefined, fallback: number) {
-	return Math.min(Math.max(value ?? fallback, 1), MAX_NOTIFICATION_LEAD_HOURS);
-}
 
 function shouldSendForLeadHours(params: {
 	now: Date;
@@ -59,20 +58,21 @@ function buildConfirmationEmailHtml(params: {
 			<div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid #d9ebe8;border-radius:24px;overflow:hidden;box-shadow:0 18px 50px rgba(20,73,80,.08);">
 				<div style="background:linear-gradient(135deg,#1e847f,#146963);padding:28px 32px;color:#ffffff;">
 					<div style="font-size:14px;letter-spacing:.08em;text-transform:uppercase;opacity:.82;">Localiza Saúde</div>
-					<h1 style="margin:12px 0 0;font-size:28px;line-height:1.15;">Sua consulta está confirmada</h1>
+					<h1 style="margin:12px 0 0;font-size:28px;line-height:1.15;">Confirme sua consulta</h1>
 				</div>
 				<div style="padding:32px;">
 					<p style="margin:0 0 16px;font-size:16px;line-height:1.7;">Olá, <strong>${params.customerName}</strong>.</p>
 					<p style="margin:0 0 16px;font-size:16px;line-height:1.7;">
-						Só passando para confirmar que sua consulta com <strong>${params.providerName}</strong> segue reservada para
+						Sua consulta com <strong>${params.providerName}</strong> está marcada para
 						<strong> ${formatAppointmentDate(params.scheduledAt)}</strong>.
+						Abra o app e confirme sua presença para manter o agendamento ativo.
 					</p>
 					<div style="margin:24px 0;padding:20px;border-radius:20px;background:#eef8f7;border:1px solid #d8ece8;">
-						<div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5f7783;">Confirmação antecipada</div>
-						<div style="margin-top:10px;font-size:18px;font-weight:700;color:#16313c;">Enviada com ${formatLeadHours(params.leadHours)} de antecedência</div>
+						<div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5f7783;">Prazo definido pelo profissional</div>
+						<div style="margin-top:10px;font-size:18px;font-weight:700;color:#16313c;">Confirme com até ${formatLeadHours(params.leadHours)} de antecedência</div>
 					</div>
 					<p style="margin:0;font-size:15px;line-height:1.7;color:#5f7783;">
-						Se precisar revisar horário, modalidade ou detalhes do atendimento, este é um bom momento para conferir tudo com calma.
+						Se precisar remarcar ou cancelar, faça isso com antecedência na área de consultas do app.
 					</p>
 				</div>
 			</div>
@@ -82,7 +82,9 @@ function buildConfirmationEmailHtml(params: {
 
 export const sendDueAppointmentConfirmationRemindersUseCase = {
 	async execute(now = new Date()) {
-		const until = new Date(now.getTime() + MAX_NOTIFICATION_LEAD_HOURS * ONE_HOUR_IN_MS);
+		const until = new Date(
+			now.getTime() + MAX_APPOINTMENT_NOTIFICATION_LEAD_HOURS * ONE_HOUR_IN_MS,
+		);
 		const appointments =
 			await prismaNotificationsRepository.findUpcomingAppointmentsForReminderWindow(
 				now,
@@ -98,10 +100,15 @@ export const sendDueAppointmentConfirmationRemindersUseCase = {
 
 		for (const appointment of appointments) {
 			const customerId = appointment.customer?.id;
-			const leadHours = normalizeLeadHours(
+			const leadHours = normalizeAppointmentNotificationLeadHours(
 				appointment.healthcareProvider.appointmentConfirmationReminderHoursBefore,
 				DEFAULT_APPOINTMENT_CONFIRMATION_REMINDER_HOURS,
 			);
+
+			if (appointment.status !== "SCHEDULED") {
+				summary.skipped += 1;
+				continue;
+			}
 
 			if (!customerId) {
 				summary.skipped += 1;
@@ -147,14 +154,15 @@ export const sendDueAppointmentConfirmationRemindersUseCase = {
 					const result = await pushNotificationsService.sendToUser({
 						userId: customerId,
 						type: "APPOINTMENT_CONFIRMATION_REMINDER",
-						title: "Sua consulta está confirmada",
-						body: `${getPatientName(appointment)}, sua consulta com ${appointment.healthcareProvider.name} segue marcada para ${formatAppointmentDate(appointment.scheduledAt)}.`,
+						title: "Confirme sua consulta",
+						body: `${getPatientName(appointment)}, confirme sua presença na consulta com ${appointment.healthcareProvider.name} em ${formatAppointmentDate(appointment.scheduledAt)}.`,
 						appointmentId: appointment.id,
 						recordDelivery: true,
 						data: {
 							screen: "appointment",
 							appointmentId: appointment.id,
 							status: appointment.status,
+							action: "confirm_appointment",
 						},
 					});
 
@@ -180,14 +188,14 @@ export const sendDueAppointmentConfirmationRemindersUseCase = {
 				if (!existingEmailDelivery) {
 					const emailResult = await emailService.send({
 						to: appointment.customer.email,
-						subject: "Sua consulta está confirmada",
+						subject: "Confirme sua consulta na Localiza Saúde",
 						html: buildConfirmationEmailHtml({
 							customerName: getPatientName(appointment),
 							providerName: appointment.healthcareProvider.name,
 							scheduledAt: appointment.scheduledAt,
 							leadHours,
 						}),
-						text: `${getPatientName(appointment)}, sua consulta com ${appointment.healthcareProvider.name} segue marcada para ${formatAppointmentDate(appointment.scheduledAt)}. Este aviso foi enviado com ${formatLeadHours(leadHours)} de antecedência.`,
+						text: `${getPatientName(appointment)}, confirme sua presença na consulta com ${appointment.healthcareProvider.name} marcada para ${formatAppointmentDate(appointment.scheduledAt)}. O profissional pediu confirmação com ${formatLeadHours(leadHours)} de antecedência.`,
 						idempotencyKey: dedupeKey,
 					});
 

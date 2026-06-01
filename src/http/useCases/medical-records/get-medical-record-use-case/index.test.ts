@@ -11,7 +11,6 @@ const blankMedicalRecord = makeMedicalRecord({
 	allergies: "",
 	surgeries: "",
 	familyHistory: "",
-	lifestyleNotes: "",
 	emergencyContactName: "",
 	emergencyContactPhone: "",
 });
@@ -148,7 +147,6 @@ describe("medical record read use cases", () => {
 				allergies: "",
 				surgeries: "",
 				familyHistory: "",
-				lifestyleNotes: "",
 				emergencyContactName: "",
 				emergencyContactPhone: "",
 			}),

@@ -18,6 +18,21 @@ export const prismaCategoryRepository: CategoryRepository = {
 							include: {
 								procedures: true,
 								professionalCouncil: true,
+								acceptedHealthInsurancePlans: {
+									include: {
+										healthInsurancePlan: {
+											select: {
+												id: true,
+												name: true,
+											},
+										},
+									},
+									orderBy: {
+										healthInsurancePlan: {
+											name: "asc",
+										},
+									},
+								},
 							},
 						},
 					},
@@ -38,6 +53,21 @@ export const prismaCategoryRepository: CategoryRepository = {
 							include: {
 								procedures: true,
 								professionalCouncil: true,
+								acceptedHealthInsurancePlans: {
+									include: {
+										healthInsurancePlan: {
+											select: {
+												id: true,
+												name: true,
+											},
+										},
+									},
+									orderBy: {
+										healthInsurancePlan: {
+											name: "asc",
+										},
+									},
+								},
 							},
 						},
 					},
@@ -69,6 +99,21 @@ export const prismaCategoryRepository: CategoryRepository = {
 							include: {
 								procedures: true,
 								professionalCouncil: true,
+								acceptedHealthInsurancePlans: {
+									include: {
+										healthInsurancePlan: {
+											select: {
+												id: true,
+												name: true,
+											},
+										},
+									},
+									orderBy: {
+										healthInsurancePlan: {
+											name: "asc",
+										},
+									},
+								},
 							},
 						},
 					},
@@ -95,6 +140,21 @@ export const prismaCategoryRepository: CategoryRepository = {
 							include: {
 								procedures: true,
 								professionalCouncil: true,
+								acceptedHealthInsurancePlans: {
+									include: {
+										healthInsurancePlan: {
+											select: {
+												id: true,
+												name: true,
+											},
+										},
+									},
+									orderBy: {
+										healthInsurancePlan: {
+											name: "asc",
+										},
+									},
+								},
 							},
 						},
 					},

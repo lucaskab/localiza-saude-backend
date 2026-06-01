@@ -13,60 +13,60 @@ export async function seedClinics(
 
 	const lucasConsultorio = await prisma.clinic.create({
 		data: {
-			name: "Consultório Dr. Lucas Furini",
+			name: "Praxis Dr. Lucas Furini",
 			type: "MEDICAL",
-			phone: "+551130001000",
+			phone: "+493012340400",
 			email: "lucas.furini.clinica@localizasaude.seed",
 			description:
-				"Consultório próprio para clínica geral, check-ups e acompanhamento preventivo.",
+				"Praxis própria para clínica geral, check-ups e acompanhamento preventivo em Berlin Mitte.",
 			ownerId: users.providers.lucas.id,
 		},
 	});
 
 	const paulista = await prisma.clinic.create({
 		data: {
-			name: "Localiza Saúde Paulista",
+			name: "Localiza Mitte Medical",
 			type: "MEDICAL",
-			phone: "+551130001001",
+			phone: "+493012340401",
 			email: "paulista@localizasaude.seed",
 			description:
-				"Clínica multidisciplinar com consultórios para atendimento presencial e online.",
+				"Clínica multidisciplinar com consultórios para atendimento presencial e online em Berlin Mitte.",
 			ownerId: users.providers.ana.id,
 		},
 	});
 
 	const pinheiros = await prisma.clinic.create({
 		data: {
-			name: "Clínica Integrada Pinheiros",
+			name: "Kreuzberg Health Hub",
 			type: "HEALTH",
-			phone: "+551130001002",
+			phone: "+493012340402",
 			email: "pinheiros@localizasaude.seed",
 			description:
-				"Núcleo de nutrição, psicologia e prevenção com foco em cuidado continuado.",
+				"Núcleo de nutrição, psicologia e prevenção com foco em cuidado continuado em Kreuzberg.",
 			ownerId: users.providers.carlos.id,
 		},
 	});
 
 	const copacabana = await prisma.clinic.create({
 		data: {
-			name: "Movimento Copacabana",
+			name: "Prenzlauer Physio Lab",
 			type: "HEALTH",
-			phone: "+552130001003",
+			phone: "+493012340403",
 			email: "copacabana@localizasaude.seed",
 			description:
-				"Espaço para reabilitação, fisioterapia ortopédica e atendimento domiciliar.",
+				"Espaço para reabilitação, fisioterapia ortopédica e atendimento domiciliar em Prenzlauer Berg.",
 			ownerId: users.providers.rafael.id,
 		},
 	});
 
 	const sorriso = await prisma.clinic.create({
 		data: {
-			name: "Sorriso Jardins",
+			name: "KuDamm Smile Studio",
 			type: "DENTAL",
-			phone: "+551130001004",
+			phone: "+493012340404",
 			email: "sorriso@localizasaude.seed",
 			description:
-				"Clínica odontológica com estética dental, planejamento digital e reabilitação oral.",
+				"Clínica odontológica com estética dental, planejamento digital e reabilitação oral em Charlottenburg.",
 			ownerId: users.providers.pedro.id,
 		},
 	});

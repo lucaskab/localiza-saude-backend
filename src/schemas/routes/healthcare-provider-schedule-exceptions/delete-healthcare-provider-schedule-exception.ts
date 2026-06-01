@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const deleteHealthcareProviderScheduleExceptionParamsSchema = z.object({
-	id: z.cuid(),
+	id: z.string().trim().min(1),
 });
 
 export type DeleteHealthcareProviderScheduleExceptionParamsSchema = z.infer<

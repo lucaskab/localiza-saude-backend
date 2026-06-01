@@ -1,7 +1,10 @@
 import { z } from "zod";
 import { addressSchema } from "@/schemas/routes/addresses/address";
+import { healthInsurancePlanSchema } from "@/schemas/routes/health-insurance-plans/health-insurance-plan";
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { procedureSchema } from "../procedures/get-procedures";
+
+const entityIdSchema = z.string().min(1);
 
 export const userRoleSchema = z.enum([
 	"CUSTOMER",
@@ -11,7 +14,7 @@ export const userRoleSchema = z.enum([
 ]);
 
 export const publicUserSchema = z.object({
-	id: z.cuid(),
+	id: entityIdSchema,
 	name: z.string(),
 	firstName: z.string().nullable().optional(),
 	lastName: z.string().nullable().optional(),
@@ -40,8 +43,8 @@ export const staffUserSchema = publicUserSchema.extend({
 });
 
 export const professionalFaqSchema = z.object({
-	id: z.cuid(),
-	healthcareProviderId: z.cuid(),
+	id: entityIdSchema,
+	healthcareProviderId: entityIdSchema,
 	question: z.string(),
 	answer: z.string(),
 	position: z.number().int(),
@@ -88,7 +91,7 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	serviceModalities: z.array(serviceModalitySchema).optional(),
 	homeCareRadiusKm: z.number().int().nullable().optional(),
 	primaryAddress: addressSchema.nullable().optional(),
-	acceptedInsurance: z.array(z.string()).optional(),
+	acceptedHealthInsurancePlans: z.array(healthInsurancePlanSchema).optional(),
 	paymentMethods: z.array(z.string()).optional(),
 	bookingAvailabilityDays: z.number().int().optional(),
 	appointmentConfirmationReminderHoursBefore: z.number().int().optional(),

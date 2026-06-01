@@ -1,4 +1,6 @@
 import { prisma } from "@/database/prisma";
+import { mapHealthInsurancePlans } from "@/http/services/health-insurance-plans";
+import { createMaxPriceFilterWhere } from "@/http/services/provider-pricing";
 import type { ServiceModality } from "@/schemas/service-modalities";
 import type { Prisma } from "../../../../prisma/generated/prisma/client";
 import type {
@@ -47,13 +49,16 @@ type HealthcareProviderQueryResult = Prisma.userGetPayload<{
 export function toHealthcareProvider(
 	user: HealthcareProviderQueryResult,
 ): HealthcareProviderWithRelations {
-	const { procedures, faqs, ...profile } = user;
+	const { procedures, faqs, acceptedHealthInsurancePlans, ...profile } = user;
 
 	return {
 		...profile,
 		primaryAddress: null,
 		procedures,
 		faqs,
+		acceptedHealthInsurancePlans: mapHealthInsurancePlans(
+			acceptedHealthInsurancePlans,
+		),
 	};
 }
 
@@ -137,22 +142,20 @@ export function createFindAllWhere(
 		conditions.push({ languages: { has: filters.language } });
 	}
 
-	if (filters.insurance) {
-		conditions.push({ acceptedInsurance: { has: filters.insurance } });
+	if (filters.healthInsurancePlanId) {
+		conditions.push({
+			acceptedHealthInsurancePlans: {
+				some: {
+					healthInsurancePlanId: filters.healthInsurancePlanId,
+				},
+			},
+		});
 	}
 
 	conditions.push({ verificationStatus: "VERIFIED" });
 
 	if (typeof filters.maxPriceCents === "number") {
-		conditions.push({
-			procedures: {
-				some: {
-					priceInCents: {
-						lte: filters.maxPriceCents,
-					},
-				},
-			},
-		});
+		conditions.push(createMaxPriceFilterWhere(filters.maxPriceCents));
 	}
 
 	return conditions.length > 0 ? { AND: conditions } : undefined;
@@ -191,7 +194,6 @@ export function buildHealthcareProviderCreateData(
 		targetAudiences: data.targetAudiences,
 		serviceModalities: data.serviceModalities,
 		homeCareRadiusKm: data.homeCareRadiusKm,
-		acceptedInsurance: data.acceptedInsurance,
 		paymentMethods: data.paymentMethods,
 		bookingAvailabilityDays: data.bookingAvailabilityDays ?? undefined,
 		appointmentConfirmationReminderHoursBefore:
@@ -298,9 +300,6 @@ export function buildHealthcareProviderUpdateData(
 		}),
 		...(data.homeCareRadiusKm !== undefined && {
 			homeCareRadiusKm: data.homeCareRadiusKm,
-		}),
-		...(data.acceptedInsurance !== undefined && {
-			acceptedInsurance: data.acceptedInsurance,
 		}),
 		...(data.paymentMethods !== undefined && {
 			paymentMethods: data.paymentMethods,

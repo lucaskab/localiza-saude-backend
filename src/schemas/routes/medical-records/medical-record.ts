@@ -37,7 +37,6 @@ export const medicalRecordSchema = z.object({
 	allergies: z.string().nullable(),
 	surgeries: z.string().nullable(),
 	familyHistory: z.string().nullable(),
-	lifestyleNotes: z.string().nullable(),
 	emergencyContactName: z.string().nullable(),
 	emergencyContactPhone: z.string().nullable(),
 	createdAt: z.date(),
@@ -52,7 +51,6 @@ export const medicalRecordBodySchema = z.object({
 	allergies: optionalMedicalTextSchema,
 	surgeries: optionalMedicalTextSchema,
 	familyHistory: optionalMedicalTextSchema,
-	lifestyleNotes: optionalMedicalTextSchema,
 	emergencyContactName: optionalMedicalTextSchema,
 	emergencyContactPhone: optionalMedicalTextSchema,
 });

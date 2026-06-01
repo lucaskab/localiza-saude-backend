@@ -99,6 +99,21 @@ export type customer_favorite_provider = $Result.DefaultSelection<Prisma.$custom
  */
 export type customer_medical_record = $Result.DefaultSelection<Prisma.$customer_medical_recordPayload>
 /**
+ * Model health_insurance_plan
+ * 
+ */
+export type health_insurance_plan = $Result.DefaultSelection<Prisma.$health_insurance_planPayload>
+/**
+ * Model user_health_insurance_plan
+ * 
+ */
+export type user_health_insurance_plan = $Result.DefaultSelection<Prisma.$user_health_insurance_planPayload>
+/**
+ * Model healthcare_provider_health_insurance_plan
+ * 
+ */
+export type healthcare_provider_health_insurance_plan = $Result.DefaultSelection<Prisma.$healthcare_provider_health_insurance_planPayload>
+/**
  * Model healthcare_provider_schedule
  * 
  */
@@ -794,6 +809,36 @@ export class PrismaClient<
   get customer_medical_record(): Prisma.customer_medical_recordDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.health_insurance_plan`: Exposes CRUD operations for the **health_insurance_plan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Health_insurance_plans
+    * const health_insurance_plans = await prisma.health_insurance_plan.findMany()
+    * ```
+    */
+  get health_insurance_plan(): Prisma.health_insurance_planDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user_health_insurance_plan`: Exposes CRUD operations for the **user_health_insurance_plan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_health_insurance_plans
+    * const user_health_insurance_plans = await prisma.user_health_insurance_plan.findMany()
+    * ```
+    */
+  get user_health_insurance_plan(): Prisma.user_health_insurance_planDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.healthcare_provider_health_insurance_plan`: Exposes CRUD operations for the **healthcare_provider_health_insurance_plan** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Healthcare_provider_health_insurance_plans
+    * const healthcare_provider_health_insurance_plans = await prisma.healthcare_provider_health_insurance_plan.findMany()
+    * ```
+    */
+  get healthcare_provider_health_insurance_plan(): Prisma.healthcare_provider_health_insurance_planDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.healthcare_provider_schedule`: Exposes CRUD operations for the **healthcare_provider_schedule** model.
     * Example usage:
     * ```ts
@@ -1433,6 +1478,9 @@ export namespace Prisma {
     clinic_employee: 'clinic_employee',
     customer_favorite_provider: 'customer_favorite_provider',
     customer_medical_record: 'customer_medical_record',
+    health_insurance_plan: 'health_insurance_plan',
+    user_health_insurance_plan: 'user_health_insurance_plan',
+    healthcare_provider_health_insurance_plan: 'healthcare_provider_health_insurance_plan',
     healthcare_provider_schedule: 'healthcare_provider_schedule',
     healthcare_provider_schedule_exception: 'healthcare_provider_schedule_exception',
     healthcare_provider_faq: 'healthcare_provider_faq',
@@ -1467,7 +1515,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "address" | "appointment_procedure" | "appointment" | "appointment_evolution_note" | "appointment_reschedule_request" | "appointment_recurring_series" | "appointment_recurring_series_rule" | "appointment_recurring_series_procedure" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "professional_council" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
+      modelProps: "account" | "address" | "appointment_procedure" | "appointment" | "appointment_evolution_note" | "appointment_reschedule_request" | "appointment_recurring_series" | "appointment_recurring_series_rule" | "appointment_recurring_series_procedure" | "appointment_waitlist_entry" | "appointment_waitlist_entry_procedure" | "category" | "healthcare_provider_category" | "clinic" | "clinic_employee" | "customer_favorite_provider" | "customer_medical_record" | "health_insurance_plan" | "user_health_insurance_plan" | "healthcare_provider_health_insurance_plan" | "healthcare_provider_schedule" | "healthcare_provider_schedule_exception" | "healthcare_provider_faq" | "conversation" | "conversation_message" | "push_token" | "notification_preference" | "notification_delivery" | "patient_profile" | "procedure" | "procedure_checklist_item" | "rating" | "session" | "support_request" | "user" | "professional_council" | "provider_verification_review" | "provider_verification_document_access_log" | "verification"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2726,6 +2774,228 @@ export namespace Prisma {
           count: {
             args: Prisma.customer_medical_recordCountArgs<ExtArgs>
             result: $Utils.Optional<Customer_medical_recordCountAggregateOutputType> | number
+          }
+        }
+      }
+      health_insurance_plan: {
+        payload: Prisma.$health_insurance_planPayload<ExtArgs>
+        fields: Prisma.health_insurance_planFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.health_insurance_planFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.health_insurance_planFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload>
+          }
+          findFirst: {
+            args: Prisma.health_insurance_planFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.health_insurance_planFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload>
+          }
+          findMany: {
+            args: Prisma.health_insurance_planFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload>[]
+          }
+          create: {
+            args: Prisma.health_insurance_planCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload>
+          }
+          createMany: {
+            args: Prisma.health_insurance_planCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.health_insurance_planCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload>[]
+          }
+          delete: {
+            args: Prisma.health_insurance_planDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload>
+          }
+          update: {
+            args: Prisma.health_insurance_planUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload>
+          }
+          deleteMany: {
+            args: Prisma.health_insurance_planDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.health_insurance_planUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.health_insurance_planUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload>[]
+          }
+          upsert: {
+            args: Prisma.health_insurance_planUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$health_insurance_planPayload>
+          }
+          aggregate: {
+            args: Prisma.Health_insurance_planAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHealth_insurance_plan>
+          }
+          groupBy: {
+            args: Prisma.health_insurance_planGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Health_insurance_planGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.health_insurance_planCountArgs<ExtArgs>
+            result: $Utils.Optional<Health_insurance_planCountAggregateOutputType> | number
+          }
+        }
+      }
+      user_health_insurance_plan: {
+        payload: Prisma.$user_health_insurance_planPayload<ExtArgs>
+        fields: Prisma.user_health_insurance_planFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.user_health_insurance_planFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.user_health_insurance_planFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload>
+          }
+          findFirst: {
+            args: Prisma.user_health_insurance_planFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.user_health_insurance_planFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload>
+          }
+          findMany: {
+            args: Prisma.user_health_insurance_planFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload>[]
+          }
+          create: {
+            args: Prisma.user_health_insurance_planCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload>
+          }
+          createMany: {
+            args: Prisma.user_health_insurance_planCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.user_health_insurance_planCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload>[]
+          }
+          delete: {
+            args: Prisma.user_health_insurance_planDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload>
+          }
+          update: {
+            args: Prisma.user_health_insurance_planUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload>
+          }
+          deleteMany: {
+            args: Prisma.user_health_insurance_planDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.user_health_insurance_planUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.user_health_insurance_planUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload>[]
+          }
+          upsert: {
+            args: Prisma.user_health_insurance_planUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_health_insurance_planPayload>
+          }
+          aggregate: {
+            args: Prisma.User_health_insurance_planAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_health_insurance_plan>
+          }
+          groupBy: {
+            args: Prisma.user_health_insurance_planGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_health_insurance_planGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.user_health_insurance_planCountArgs<ExtArgs>
+            result: $Utils.Optional<User_health_insurance_planCountAggregateOutputType> | number
+          }
+        }
+      }
+      healthcare_provider_health_insurance_plan: {
+        payload: Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>
+        fields: Prisma.healthcare_provider_health_insurance_planFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.healthcare_provider_health_insurance_planFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.healthcare_provider_health_insurance_planFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload>
+          }
+          findFirst: {
+            args: Prisma.healthcare_provider_health_insurance_planFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.healthcare_provider_health_insurance_planFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload>
+          }
+          findMany: {
+            args: Prisma.healthcare_provider_health_insurance_planFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload>[]
+          }
+          create: {
+            args: Prisma.healthcare_provider_health_insurance_planCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload>
+          }
+          createMany: {
+            args: Prisma.healthcare_provider_health_insurance_planCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.healthcare_provider_health_insurance_planCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload>[]
+          }
+          delete: {
+            args: Prisma.healthcare_provider_health_insurance_planDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload>
+          }
+          update: {
+            args: Prisma.healthcare_provider_health_insurance_planUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload>
+          }
+          deleteMany: {
+            args: Prisma.healthcare_provider_health_insurance_planDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.healthcare_provider_health_insurance_planUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.healthcare_provider_health_insurance_planUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload>[]
+          }
+          upsert: {
+            args: Prisma.healthcare_provider_health_insurance_planUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$healthcare_provider_health_insurance_planPayload>
+          }
+          aggregate: {
+            args: Prisma.Healthcare_provider_health_insurance_planAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHealthcare_provider_health_insurance_plan>
+          }
+          groupBy: {
+            args: Prisma.healthcare_provider_health_insurance_planGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Healthcare_provider_health_insurance_planGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.healthcare_provider_health_insurance_planCountArgs<ExtArgs>
+            result: $Utils.Optional<Healthcare_provider_health_insurance_planCountAggregateOutputType> | number
           }
         }
       }
@@ -4260,6 +4530,9 @@ export namespace Prisma {
     clinic_employee?: clinic_employeeOmit
     customer_favorite_provider?: customer_favorite_providerOmit
     customer_medical_record?: customer_medical_recordOmit
+    health_insurance_plan?: health_insurance_planOmit
+    user_health_insurance_plan?: user_health_insurance_planOmit
+    healthcare_provider_health_insurance_plan?: healthcare_provider_health_insurance_planOmit
     healthcare_provider_schedule?: healthcare_provider_scheduleOmit
     healthcare_provider_schedule_exception?: healthcare_provider_schedule_exceptionOmit
     healthcare_provider_faq?: healthcare_provider_faqOmit
@@ -4586,6 +4859,46 @@ export namespace Prisma {
 
 
   /**
+   * Count Type Health_insurance_planCountOutputType
+   */
+
+  export type Health_insurance_planCountOutputType = {
+    userLinks: number
+    providerLinks: number
+  }
+
+  export type Health_insurance_planCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userLinks?: boolean | Health_insurance_planCountOutputTypeCountUserLinksArgs
+    providerLinks?: boolean | Health_insurance_planCountOutputTypeCountProviderLinksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Health_insurance_planCountOutputType without action
+   */
+  export type Health_insurance_planCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Health_insurance_planCountOutputType
+     */
+    select?: Health_insurance_planCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Health_insurance_planCountOutputType without action
+   */
+  export type Health_insurance_planCountOutputTypeCountUserLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_health_insurance_planWhereInput
+  }
+
+  /**
+   * Health_insurance_planCountOutputType without action
+   */
+  export type Health_insurance_planCountOutputTypeCountProviderLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: healthcare_provider_health_insurance_planWhereInput
+  }
+
+
+  /**
    * Count Type ConversationCountOutputType
    */
 
@@ -4728,6 +5041,8 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
+    healthInsurancePlans: number
+    acceptedHealthInsurancePlans: number
     sessions: number
     accounts: number
     ownedClinics: number
@@ -4769,6 +5084,8 @@ export namespace Prisma {
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthInsurancePlans?: boolean | UserCountOutputTypeCountHealthInsurancePlansArgs
+    acceptedHealthInsurancePlans?: boolean | UserCountOutputTypeCountAcceptedHealthInsurancePlansArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     ownedClinics?: boolean | UserCountOutputTypeCountOwnedClinicsArgs
@@ -4818,6 +5135,20 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountHealthInsurancePlansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_health_insurance_planWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAcceptedHealthInsurancePlansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: healthcare_provider_health_insurance_planWhereInput
   }
 
   /**
@@ -23789,7 +24120,6 @@ export namespace Prisma {
     allergies: string | null
     surgeries: string | null
     familyHistory: string | null
-    lifestyleNotes: string | null
     emergencyContactName: string | null
     emergencyContactPhone: string | null
     createdAt: Date | null
@@ -23806,7 +24136,6 @@ export namespace Prisma {
     allergies: string | null
     surgeries: string | null
     familyHistory: string | null
-    lifestyleNotes: string | null
     emergencyContactName: string | null
     emergencyContactPhone: string | null
     createdAt: Date | null
@@ -23823,7 +24152,6 @@ export namespace Prisma {
     allergies: number
     surgeries: number
     familyHistory: number
-    lifestyleNotes: number
     emergencyContactName: number
     emergencyContactPhone: number
     createdAt: number
@@ -23842,7 +24170,6 @@ export namespace Prisma {
     allergies?: true
     surgeries?: true
     familyHistory?: true
-    lifestyleNotes?: true
     emergencyContactName?: true
     emergencyContactPhone?: true
     createdAt?: true
@@ -23859,7 +24186,6 @@ export namespace Prisma {
     allergies?: true
     surgeries?: true
     familyHistory?: true
-    lifestyleNotes?: true
     emergencyContactName?: true
     emergencyContactPhone?: true
     createdAt?: true
@@ -23876,7 +24202,6 @@ export namespace Prisma {
     allergies?: true
     surgeries?: true
     familyHistory?: true
-    lifestyleNotes?: true
     emergencyContactName?: true
     emergencyContactPhone?: true
     createdAt?: true
@@ -23966,7 +24291,6 @@ export namespace Prisma {
     allergies: string | null
     surgeries: string | null
     familyHistory: string | null
-    lifestyleNotes: string | null
     emergencyContactName: string | null
     emergencyContactPhone: string | null
     createdAt: Date
@@ -24000,7 +24324,6 @@ export namespace Prisma {
     allergies?: boolean
     surgeries?: boolean
     familyHistory?: boolean
-    lifestyleNotes?: boolean
     emergencyContactName?: boolean
     emergencyContactPhone?: boolean
     createdAt?: boolean
@@ -24018,7 +24341,6 @@ export namespace Prisma {
     allergies?: boolean
     surgeries?: boolean
     familyHistory?: boolean
-    lifestyleNotes?: boolean
     emergencyContactName?: boolean
     emergencyContactPhone?: boolean
     createdAt?: boolean
@@ -24036,7 +24358,6 @@ export namespace Prisma {
     allergies?: boolean
     surgeries?: boolean
     familyHistory?: boolean
-    lifestyleNotes?: boolean
     emergencyContactName?: boolean
     emergencyContactPhone?: boolean
     createdAt?: boolean
@@ -24054,14 +24375,13 @@ export namespace Prisma {
     allergies?: boolean
     surgeries?: boolean
     familyHistory?: boolean
-    lifestyleNotes?: boolean
     emergencyContactName?: boolean
     emergencyContactPhone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type customer_medical_recordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "bloodType" | "medications" | "chronicPain" | "preExistingConditions" | "allergies" | "surgeries" | "familyHistory" | "lifestyleNotes" | "emergencyContactName" | "emergencyContactPhone" | "createdAt" | "updatedAt", ExtArgs["result"]["customer_medical_record"]>
+  export type customer_medical_recordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "bloodType" | "medications" | "chronicPain" | "preExistingConditions" | "allergies" | "surgeries" | "familyHistory" | "emergencyContactName" | "emergencyContactPhone" | "createdAt" | "updatedAt", ExtArgs["result"]["customer_medical_record"]>
   export type customer_medical_recordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | userDefaultArgs<ExtArgs>
   }
@@ -24087,7 +24407,6 @@ export namespace Prisma {
       allergies: string | null
       surgeries: string | null
       familyHistory: string | null
-      lifestyleNotes: string | null
       emergencyContactName: string | null
       emergencyContactPhone: string | null
       createdAt: Date
@@ -24525,7 +24844,6 @@ export namespace Prisma {
     readonly allergies: FieldRef<"customer_medical_record", 'String'>
     readonly surgeries: FieldRef<"customer_medical_record", 'String'>
     readonly familyHistory: FieldRef<"customer_medical_record", 'String'>
-    readonly lifestyleNotes: FieldRef<"customer_medical_record", 'String'>
     readonly emergencyContactName: FieldRef<"customer_medical_record", 'String'>
     readonly emergencyContactPhone: FieldRef<"customer_medical_record", 'String'>
     readonly createdAt: FieldRef<"customer_medical_record", 'DateTime'>
@@ -24946,6 +25264,3225 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: customer_medical_recordInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model health_insurance_plan
+   */
+
+  export type AggregateHealth_insurance_plan = {
+    _count: Health_insurance_planCountAggregateOutputType | null
+    _min: Health_insurance_planMinAggregateOutputType | null
+    _max: Health_insurance_planMaxAggregateOutputType | null
+  }
+
+  export type Health_insurance_planMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Health_insurance_planMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type Health_insurance_planCountAggregateOutputType = {
+    id: number
+    name: number
+    active: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type Health_insurance_planMinAggregateInputType = {
+    id?: true
+    name?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Health_insurance_planMaxAggregateInputType = {
+    id?: true
+    name?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type Health_insurance_planCountAggregateInputType = {
+    id?: true
+    name?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type Health_insurance_planAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which health_insurance_plan to aggregate.
+     */
+    where?: health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of health_insurance_plans to fetch.
+     */
+    orderBy?: health_insurance_planOrderByWithRelationInput | health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned health_insurance_plans
+    **/
+    _count?: true | Health_insurance_planCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Health_insurance_planMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Health_insurance_planMaxAggregateInputType
+  }
+
+  export type GetHealth_insurance_planAggregateType<T extends Health_insurance_planAggregateArgs> = {
+        [P in keyof T & keyof AggregateHealth_insurance_plan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHealth_insurance_plan[P]>
+      : GetScalarType<T[P], AggregateHealth_insurance_plan[P]>
+  }
+
+
+
+
+  export type health_insurance_planGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: health_insurance_planWhereInput
+    orderBy?: health_insurance_planOrderByWithAggregationInput | health_insurance_planOrderByWithAggregationInput[]
+    by: Health_insurance_planScalarFieldEnum[] | Health_insurance_planScalarFieldEnum
+    having?: health_insurance_planScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Health_insurance_planCountAggregateInputType | true
+    _min?: Health_insurance_planMinAggregateInputType
+    _max?: Health_insurance_planMaxAggregateInputType
+  }
+
+  export type Health_insurance_planGroupByOutputType = {
+    id: string
+    name: string
+    active: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: Health_insurance_planCountAggregateOutputType | null
+    _min: Health_insurance_planMinAggregateOutputType | null
+    _max: Health_insurance_planMaxAggregateOutputType | null
+  }
+
+  type GetHealth_insurance_planGroupByPayload<T extends health_insurance_planGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Health_insurance_planGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Health_insurance_planGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Health_insurance_planGroupByOutputType[P]>
+            : GetScalarType<T[P], Health_insurance_planGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type health_insurance_planSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    userLinks?: boolean | health_insurance_plan$userLinksArgs<ExtArgs>
+    providerLinks?: boolean | health_insurance_plan$providerLinksArgs<ExtArgs>
+    _count?: boolean | Health_insurance_planCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["health_insurance_plan"]>
+
+  export type health_insurance_planSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["health_insurance_plan"]>
+
+  export type health_insurance_planSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["health_insurance_plan"]>
+
+  export type health_insurance_planSelectScalar = {
+    id?: boolean
+    name?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type health_insurance_planOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["health_insurance_plan"]>
+  export type health_insurance_planInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userLinks?: boolean | health_insurance_plan$userLinksArgs<ExtArgs>
+    providerLinks?: boolean | health_insurance_plan$providerLinksArgs<ExtArgs>
+    _count?: boolean | Health_insurance_planCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type health_insurance_planIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type health_insurance_planIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $health_insurance_planPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "health_insurance_plan"
+    objects: {
+      userLinks: Prisma.$user_health_insurance_planPayload<ExtArgs>[]
+      providerLinks: Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      active: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["health_insurance_plan"]>
+    composites: {}
+  }
+
+  type health_insurance_planGetPayload<S extends boolean | null | undefined | health_insurance_planDefaultArgs> = $Result.GetResult<Prisma.$health_insurance_planPayload, S>
+
+  type health_insurance_planCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<health_insurance_planFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Health_insurance_planCountAggregateInputType | true
+    }
+
+  export interface health_insurance_planDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['health_insurance_plan'], meta: { name: 'health_insurance_plan' } }
+    /**
+     * Find zero or one Health_insurance_plan that matches the filter.
+     * @param {health_insurance_planFindUniqueArgs} args - Arguments to find a Health_insurance_plan
+     * @example
+     * // Get one Health_insurance_plan
+     * const health_insurance_plan = await prisma.health_insurance_plan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends health_insurance_planFindUniqueArgs>(args: SelectSubset<T, health_insurance_planFindUniqueArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Health_insurance_plan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {health_insurance_planFindUniqueOrThrowArgs} args - Arguments to find a Health_insurance_plan
+     * @example
+     * // Get one Health_insurance_plan
+     * const health_insurance_plan = await prisma.health_insurance_plan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends health_insurance_planFindUniqueOrThrowArgs>(args: SelectSubset<T, health_insurance_planFindUniqueOrThrowArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Health_insurance_plan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {health_insurance_planFindFirstArgs} args - Arguments to find a Health_insurance_plan
+     * @example
+     * // Get one Health_insurance_plan
+     * const health_insurance_plan = await prisma.health_insurance_plan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends health_insurance_planFindFirstArgs>(args?: SelectSubset<T, health_insurance_planFindFirstArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Health_insurance_plan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {health_insurance_planFindFirstOrThrowArgs} args - Arguments to find a Health_insurance_plan
+     * @example
+     * // Get one Health_insurance_plan
+     * const health_insurance_plan = await prisma.health_insurance_plan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends health_insurance_planFindFirstOrThrowArgs>(args?: SelectSubset<T, health_insurance_planFindFirstOrThrowArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Health_insurance_plans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {health_insurance_planFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Health_insurance_plans
+     * const health_insurance_plans = await prisma.health_insurance_plan.findMany()
+     * 
+     * // Get first 10 Health_insurance_plans
+     * const health_insurance_plans = await prisma.health_insurance_plan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const health_insurance_planWithIdOnly = await prisma.health_insurance_plan.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends health_insurance_planFindManyArgs>(args?: SelectSubset<T, health_insurance_planFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Health_insurance_plan.
+     * @param {health_insurance_planCreateArgs} args - Arguments to create a Health_insurance_plan.
+     * @example
+     * // Create one Health_insurance_plan
+     * const Health_insurance_plan = await prisma.health_insurance_plan.create({
+     *   data: {
+     *     // ... data to create a Health_insurance_plan
+     *   }
+     * })
+     * 
+     */
+    create<T extends health_insurance_planCreateArgs>(args: SelectSubset<T, health_insurance_planCreateArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Health_insurance_plans.
+     * @param {health_insurance_planCreateManyArgs} args - Arguments to create many Health_insurance_plans.
+     * @example
+     * // Create many Health_insurance_plans
+     * const health_insurance_plan = await prisma.health_insurance_plan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends health_insurance_planCreateManyArgs>(args?: SelectSubset<T, health_insurance_planCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Health_insurance_plans and returns the data saved in the database.
+     * @param {health_insurance_planCreateManyAndReturnArgs} args - Arguments to create many Health_insurance_plans.
+     * @example
+     * // Create many Health_insurance_plans
+     * const health_insurance_plan = await prisma.health_insurance_plan.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Health_insurance_plans and only return the `id`
+     * const health_insurance_planWithIdOnly = await prisma.health_insurance_plan.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends health_insurance_planCreateManyAndReturnArgs>(args?: SelectSubset<T, health_insurance_planCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Health_insurance_plan.
+     * @param {health_insurance_planDeleteArgs} args - Arguments to delete one Health_insurance_plan.
+     * @example
+     * // Delete one Health_insurance_plan
+     * const Health_insurance_plan = await prisma.health_insurance_plan.delete({
+     *   where: {
+     *     // ... filter to delete one Health_insurance_plan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends health_insurance_planDeleteArgs>(args: SelectSubset<T, health_insurance_planDeleteArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Health_insurance_plan.
+     * @param {health_insurance_planUpdateArgs} args - Arguments to update one Health_insurance_plan.
+     * @example
+     * // Update one Health_insurance_plan
+     * const health_insurance_plan = await prisma.health_insurance_plan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends health_insurance_planUpdateArgs>(args: SelectSubset<T, health_insurance_planUpdateArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Health_insurance_plans.
+     * @param {health_insurance_planDeleteManyArgs} args - Arguments to filter Health_insurance_plans to delete.
+     * @example
+     * // Delete a few Health_insurance_plans
+     * const { count } = await prisma.health_insurance_plan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends health_insurance_planDeleteManyArgs>(args?: SelectSubset<T, health_insurance_planDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Health_insurance_plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {health_insurance_planUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Health_insurance_plans
+     * const health_insurance_plan = await prisma.health_insurance_plan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends health_insurance_planUpdateManyArgs>(args: SelectSubset<T, health_insurance_planUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Health_insurance_plans and returns the data updated in the database.
+     * @param {health_insurance_planUpdateManyAndReturnArgs} args - Arguments to update many Health_insurance_plans.
+     * @example
+     * // Update many Health_insurance_plans
+     * const health_insurance_plan = await prisma.health_insurance_plan.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Health_insurance_plans and only return the `id`
+     * const health_insurance_planWithIdOnly = await prisma.health_insurance_plan.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends health_insurance_planUpdateManyAndReturnArgs>(args: SelectSubset<T, health_insurance_planUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Health_insurance_plan.
+     * @param {health_insurance_planUpsertArgs} args - Arguments to update or create a Health_insurance_plan.
+     * @example
+     * // Update or create a Health_insurance_plan
+     * const health_insurance_plan = await prisma.health_insurance_plan.upsert({
+     *   create: {
+     *     // ... data to create a Health_insurance_plan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Health_insurance_plan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends health_insurance_planUpsertArgs>(args: SelectSubset<T, health_insurance_planUpsertArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Health_insurance_plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {health_insurance_planCountArgs} args - Arguments to filter Health_insurance_plans to count.
+     * @example
+     * // Count the number of Health_insurance_plans
+     * const count = await prisma.health_insurance_plan.count({
+     *   where: {
+     *     // ... the filter for the Health_insurance_plans we want to count
+     *   }
+     * })
+    **/
+    count<T extends health_insurance_planCountArgs>(
+      args?: Subset<T, health_insurance_planCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Health_insurance_planCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Health_insurance_plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Health_insurance_planAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Health_insurance_planAggregateArgs>(args: Subset<T, Health_insurance_planAggregateArgs>): Prisma.PrismaPromise<GetHealth_insurance_planAggregateType<T>>
+
+    /**
+     * Group by Health_insurance_plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {health_insurance_planGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends health_insurance_planGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: health_insurance_planGroupByArgs['orderBy'] }
+        : { orderBy?: health_insurance_planGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, health_insurance_planGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHealth_insurance_planGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the health_insurance_plan model
+   */
+  readonly fields: health_insurance_planFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for health_insurance_plan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__health_insurance_planClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    userLinks<T extends health_insurance_plan$userLinksArgs<ExtArgs> = {}>(args?: Subset<T, health_insurance_plan$userLinksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    providerLinks<T extends health_insurance_plan$providerLinksArgs<ExtArgs> = {}>(args?: Subset<T, health_insurance_plan$providerLinksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the health_insurance_plan model
+   */
+  interface health_insurance_planFieldRefs {
+    readonly id: FieldRef<"health_insurance_plan", 'String'>
+    readonly name: FieldRef<"health_insurance_plan", 'String'>
+    readonly active: FieldRef<"health_insurance_plan", 'Boolean'>
+    readonly createdAt: FieldRef<"health_insurance_plan", 'DateTime'>
+    readonly updatedAt: FieldRef<"health_insurance_plan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * health_insurance_plan findUnique
+   */
+  export type health_insurance_planFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which health_insurance_plan to fetch.
+     */
+    where: health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * health_insurance_plan findUniqueOrThrow
+   */
+  export type health_insurance_planFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which health_insurance_plan to fetch.
+     */
+    where: health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * health_insurance_plan findFirst
+   */
+  export type health_insurance_planFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which health_insurance_plan to fetch.
+     */
+    where?: health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of health_insurance_plans to fetch.
+     */
+    orderBy?: health_insurance_planOrderByWithRelationInput | health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for health_insurance_plans.
+     */
+    cursor?: health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of health_insurance_plans.
+     */
+    distinct?: Health_insurance_planScalarFieldEnum | Health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * health_insurance_plan findFirstOrThrow
+   */
+  export type health_insurance_planFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which health_insurance_plan to fetch.
+     */
+    where?: health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of health_insurance_plans to fetch.
+     */
+    orderBy?: health_insurance_planOrderByWithRelationInput | health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for health_insurance_plans.
+     */
+    cursor?: health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of health_insurance_plans.
+     */
+    distinct?: Health_insurance_planScalarFieldEnum | Health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * health_insurance_plan findMany
+   */
+  export type health_insurance_planFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which health_insurance_plans to fetch.
+     */
+    where?: health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of health_insurance_plans to fetch.
+     */
+    orderBy?: health_insurance_planOrderByWithRelationInput | health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing health_insurance_plans.
+     */
+    cursor?: health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of health_insurance_plans.
+     */
+    distinct?: Health_insurance_planScalarFieldEnum | Health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * health_insurance_plan create
+   */
+  export type health_insurance_planCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+    /**
+     * The data needed to create a health_insurance_plan.
+     */
+    data: XOR<health_insurance_planCreateInput, health_insurance_planUncheckedCreateInput>
+  }
+
+  /**
+   * health_insurance_plan createMany
+   */
+  export type health_insurance_planCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many health_insurance_plans.
+     */
+    data: health_insurance_planCreateManyInput | health_insurance_planCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * health_insurance_plan createManyAndReturn
+   */
+  export type health_insurance_planCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * The data used to create many health_insurance_plans.
+     */
+    data: health_insurance_planCreateManyInput | health_insurance_planCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * health_insurance_plan update
+   */
+  export type health_insurance_planUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+    /**
+     * The data needed to update a health_insurance_plan.
+     */
+    data: XOR<health_insurance_planUpdateInput, health_insurance_planUncheckedUpdateInput>
+    /**
+     * Choose, which health_insurance_plan to update.
+     */
+    where: health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * health_insurance_plan updateMany
+   */
+  export type health_insurance_planUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update health_insurance_plans.
+     */
+    data: XOR<health_insurance_planUpdateManyMutationInput, health_insurance_planUncheckedUpdateManyInput>
+    /**
+     * Filter which health_insurance_plans to update
+     */
+    where?: health_insurance_planWhereInput
+    /**
+     * Limit how many health_insurance_plans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * health_insurance_plan updateManyAndReturn
+   */
+  export type health_insurance_planUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * The data used to update health_insurance_plans.
+     */
+    data: XOR<health_insurance_planUpdateManyMutationInput, health_insurance_planUncheckedUpdateManyInput>
+    /**
+     * Filter which health_insurance_plans to update
+     */
+    where?: health_insurance_planWhereInput
+    /**
+     * Limit how many health_insurance_plans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * health_insurance_plan upsert
+   */
+  export type health_insurance_planUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+    /**
+     * The filter to search for the health_insurance_plan to update in case it exists.
+     */
+    where: health_insurance_planWhereUniqueInput
+    /**
+     * In case the health_insurance_plan found by the `where` argument doesn't exist, create a new health_insurance_plan with this data.
+     */
+    create: XOR<health_insurance_planCreateInput, health_insurance_planUncheckedCreateInput>
+    /**
+     * In case the health_insurance_plan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<health_insurance_planUpdateInput, health_insurance_planUncheckedUpdateInput>
+  }
+
+  /**
+   * health_insurance_plan delete
+   */
+  export type health_insurance_planDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter which health_insurance_plan to delete.
+     */
+    where: health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * health_insurance_plan deleteMany
+   */
+  export type health_insurance_planDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which health_insurance_plans to delete
+     */
+    where?: health_insurance_planWhereInput
+    /**
+     * Limit how many health_insurance_plans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * health_insurance_plan.userLinks
+   */
+  export type health_insurance_plan$userLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    where?: user_health_insurance_planWhereInput
+    orderBy?: user_health_insurance_planOrderByWithRelationInput | user_health_insurance_planOrderByWithRelationInput[]
+    cursor?: user_health_insurance_planWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_health_insurance_planScalarFieldEnum | User_health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * health_insurance_plan.providerLinks
+   */
+  export type health_insurance_plan$providerLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    where?: healthcare_provider_health_insurance_planWhereInput
+    orderBy?: healthcare_provider_health_insurance_planOrderByWithRelationInput | healthcare_provider_health_insurance_planOrderByWithRelationInput[]
+    cursor?: healthcare_provider_health_insurance_planWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Healthcare_provider_health_insurance_planScalarFieldEnum | Healthcare_provider_health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * health_insurance_plan without action
+   */
+  export type health_insurance_planDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the health_insurance_plan
+     */
+    select?: health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the health_insurance_plan
+     */
+    omit?: health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: health_insurance_planInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model user_health_insurance_plan
+   */
+
+  export type AggregateUser_health_insurance_plan = {
+    _count: User_health_insurance_planCountAggregateOutputType | null
+    _min: User_health_insurance_planMinAggregateOutputType | null
+    _max: User_health_insurance_planMaxAggregateOutputType | null
+  }
+
+  export type User_health_insurance_planMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    healthInsurancePlanId: string | null
+    createdAt: Date | null
+  }
+
+  export type User_health_insurance_planMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    healthInsurancePlanId: string | null
+    createdAt: Date | null
+  }
+
+  export type User_health_insurance_planCountAggregateOutputType = {
+    id: number
+    userId: number
+    healthInsurancePlanId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type User_health_insurance_planMinAggregateInputType = {
+    id?: true
+    userId?: true
+    healthInsurancePlanId?: true
+    createdAt?: true
+  }
+
+  export type User_health_insurance_planMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    healthInsurancePlanId?: true
+    createdAt?: true
+  }
+
+  export type User_health_insurance_planCountAggregateInputType = {
+    id?: true
+    userId?: true
+    healthInsurancePlanId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type User_health_insurance_planAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_health_insurance_plan to aggregate.
+     */
+    where?: user_health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_health_insurance_plans to fetch.
+     */
+    orderBy?: user_health_insurance_planOrderByWithRelationInput | user_health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: user_health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned user_health_insurance_plans
+    **/
+    _count?: true | User_health_insurance_planCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_health_insurance_planMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_health_insurance_planMaxAggregateInputType
+  }
+
+  export type GetUser_health_insurance_planAggregateType<T extends User_health_insurance_planAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_health_insurance_plan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_health_insurance_plan[P]>
+      : GetScalarType<T[P], AggregateUser_health_insurance_plan[P]>
+  }
+
+
+
+
+  export type user_health_insurance_planGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_health_insurance_planWhereInput
+    orderBy?: user_health_insurance_planOrderByWithAggregationInput | user_health_insurance_planOrderByWithAggregationInput[]
+    by: User_health_insurance_planScalarFieldEnum[] | User_health_insurance_planScalarFieldEnum
+    having?: user_health_insurance_planScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_health_insurance_planCountAggregateInputType | true
+    _min?: User_health_insurance_planMinAggregateInputType
+    _max?: User_health_insurance_planMaxAggregateInputType
+  }
+
+  export type User_health_insurance_planGroupByOutputType = {
+    id: string
+    userId: string
+    healthInsurancePlanId: string
+    createdAt: Date
+    _count: User_health_insurance_planCountAggregateOutputType | null
+    _min: User_health_insurance_planMinAggregateOutputType | null
+    _max: User_health_insurance_planMaxAggregateOutputType | null
+  }
+
+  type GetUser_health_insurance_planGroupByPayload<T extends user_health_insurance_planGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_health_insurance_planGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_health_insurance_planGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_health_insurance_planGroupByOutputType[P]>
+            : GetScalarType<T[P], User_health_insurance_planGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type user_health_insurance_planSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    healthInsurancePlanId?: boolean
+    createdAt?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_health_insurance_plan"]>
+
+  export type user_health_insurance_planSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    healthInsurancePlanId?: boolean
+    createdAt?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_health_insurance_plan"]>
+
+  export type user_health_insurance_planSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    healthInsurancePlanId?: boolean
+    createdAt?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["user_health_insurance_plan"]>
+
+  export type user_health_insurance_planSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    healthInsurancePlanId?: boolean
+    createdAt?: boolean
+  }
+
+  export type user_health_insurance_planOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "healthInsurancePlanId" | "createdAt", ExtArgs["result"]["user_health_insurance_plan"]>
+  export type user_health_insurance_planInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }
+  export type user_health_insurance_planIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }
+  export type user_health_insurance_planIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }
+
+  export type $user_health_insurance_planPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "user_health_insurance_plan"
+    objects: {
+      user: Prisma.$userPayload<ExtArgs>
+      healthInsurancePlan: Prisma.$health_insurance_planPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      healthInsurancePlanId: string
+      createdAt: Date
+    }, ExtArgs["result"]["user_health_insurance_plan"]>
+    composites: {}
+  }
+
+  type user_health_insurance_planGetPayload<S extends boolean | null | undefined | user_health_insurance_planDefaultArgs> = $Result.GetResult<Prisma.$user_health_insurance_planPayload, S>
+
+  type user_health_insurance_planCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<user_health_insurance_planFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: User_health_insurance_planCountAggregateInputType | true
+    }
+
+  export interface user_health_insurance_planDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['user_health_insurance_plan'], meta: { name: 'user_health_insurance_plan' } }
+    /**
+     * Find zero or one User_health_insurance_plan that matches the filter.
+     * @param {user_health_insurance_planFindUniqueArgs} args - Arguments to find a User_health_insurance_plan
+     * @example
+     * // Get one User_health_insurance_plan
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends user_health_insurance_planFindUniqueArgs>(args: SelectSubset<T, user_health_insurance_planFindUniqueArgs<ExtArgs>>): Prisma__user_health_insurance_planClient<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User_health_insurance_plan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {user_health_insurance_planFindUniqueOrThrowArgs} args - Arguments to find a User_health_insurance_plan
+     * @example
+     * // Get one User_health_insurance_plan
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends user_health_insurance_planFindUniqueOrThrowArgs>(args: SelectSubset<T, user_health_insurance_planFindUniqueOrThrowArgs<ExtArgs>>): Prisma__user_health_insurance_planClient<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_health_insurance_plan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_health_insurance_planFindFirstArgs} args - Arguments to find a User_health_insurance_plan
+     * @example
+     * // Get one User_health_insurance_plan
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends user_health_insurance_planFindFirstArgs>(args?: SelectSubset<T, user_health_insurance_planFindFirstArgs<ExtArgs>>): Prisma__user_health_insurance_planClient<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_health_insurance_plan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_health_insurance_planFindFirstOrThrowArgs} args - Arguments to find a User_health_insurance_plan
+     * @example
+     * // Get one User_health_insurance_plan
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends user_health_insurance_planFindFirstOrThrowArgs>(args?: SelectSubset<T, user_health_insurance_planFindFirstOrThrowArgs<ExtArgs>>): Prisma__user_health_insurance_planClient<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more User_health_insurance_plans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_health_insurance_planFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_health_insurance_plans
+     * const user_health_insurance_plans = await prisma.user_health_insurance_plan.findMany()
+     * 
+     * // Get first 10 User_health_insurance_plans
+     * const user_health_insurance_plans = await prisma.user_health_insurance_plan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const user_health_insurance_planWithIdOnly = await prisma.user_health_insurance_plan.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends user_health_insurance_planFindManyArgs>(args?: SelectSubset<T, user_health_insurance_planFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User_health_insurance_plan.
+     * @param {user_health_insurance_planCreateArgs} args - Arguments to create a User_health_insurance_plan.
+     * @example
+     * // Create one User_health_insurance_plan
+     * const User_health_insurance_plan = await prisma.user_health_insurance_plan.create({
+     *   data: {
+     *     // ... data to create a User_health_insurance_plan
+     *   }
+     * })
+     * 
+     */
+    create<T extends user_health_insurance_planCreateArgs>(args: SelectSubset<T, user_health_insurance_planCreateArgs<ExtArgs>>): Prisma__user_health_insurance_planClient<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many User_health_insurance_plans.
+     * @param {user_health_insurance_planCreateManyArgs} args - Arguments to create many User_health_insurance_plans.
+     * @example
+     * // Create many User_health_insurance_plans
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends user_health_insurance_planCreateManyArgs>(args?: SelectSubset<T, user_health_insurance_planCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many User_health_insurance_plans and returns the data saved in the database.
+     * @param {user_health_insurance_planCreateManyAndReturnArgs} args - Arguments to create many User_health_insurance_plans.
+     * @example
+     * // Create many User_health_insurance_plans
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many User_health_insurance_plans and only return the `id`
+     * const user_health_insurance_planWithIdOnly = await prisma.user_health_insurance_plan.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends user_health_insurance_planCreateManyAndReturnArgs>(args?: SelectSubset<T, user_health_insurance_planCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a User_health_insurance_plan.
+     * @param {user_health_insurance_planDeleteArgs} args - Arguments to delete one User_health_insurance_plan.
+     * @example
+     * // Delete one User_health_insurance_plan
+     * const User_health_insurance_plan = await prisma.user_health_insurance_plan.delete({
+     *   where: {
+     *     // ... filter to delete one User_health_insurance_plan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends user_health_insurance_planDeleteArgs>(args: SelectSubset<T, user_health_insurance_planDeleteArgs<ExtArgs>>): Prisma__user_health_insurance_planClient<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User_health_insurance_plan.
+     * @param {user_health_insurance_planUpdateArgs} args - Arguments to update one User_health_insurance_plan.
+     * @example
+     * // Update one User_health_insurance_plan
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends user_health_insurance_planUpdateArgs>(args: SelectSubset<T, user_health_insurance_planUpdateArgs<ExtArgs>>): Prisma__user_health_insurance_planClient<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more User_health_insurance_plans.
+     * @param {user_health_insurance_planDeleteManyArgs} args - Arguments to filter User_health_insurance_plans to delete.
+     * @example
+     * // Delete a few User_health_insurance_plans
+     * const { count } = await prisma.user_health_insurance_plan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends user_health_insurance_planDeleteManyArgs>(args?: SelectSubset<T, user_health_insurance_planDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_health_insurance_plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_health_insurance_planUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_health_insurance_plans
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends user_health_insurance_planUpdateManyArgs>(args: SelectSubset<T, user_health_insurance_planUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_health_insurance_plans and returns the data updated in the database.
+     * @param {user_health_insurance_planUpdateManyAndReturnArgs} args - Arguments to update many User_health_insurance_plans.
+     * @example
+     * // Update many User_health_insurance_plans
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more User_health_insurance_plans and only return the `id`
+     * const user_health_insurance_planWithIdOnly = await prisma.user_health_insurance_plan.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends user_health_insurance_planUpdateManyAndReturnArgs>(args: SelectSubset<T, user_health_insurance_planUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one User_health_insurance_plan.
+     * @param {user_health_insurance_planUpsertArgs} args - Arguments to update or create a User_health_insurance_plan.
+     * @example
+     * // Update or create a User_health_insurance_plan
+     * const user_health_insurance_plan = await prisma.user_health_insurance_plan.upsert({
+     *   create: {
+     *     // ... data to create a User_health_insurance_plan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_health_insurance_plan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends user_health_insurance_planUpsertArgs>(args: SelectSubset<T, user_health_insurance_planUpsertArgs<ExtArgs>>): Prisma__user_health_insurance_planClient<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of User_health_insurance_plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_health_insurance_planCountArgs} args - Arguments to filter User_health_insurance_plans to count.
+     * @example
+     * // Count the number of User_health_insurance_plans
+     * const count = await prisma.user_health_insurance_plan.count({
+     *   where: {
+     *     // ... the filter for the User_health_insurance_plans we want to count
+     *   }
+     * })
+    **/
+    count<T extends user_health_insurance_planCountArgs>(
+      args?: Subset<T, user_health_insurance_planCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_health_insurance_planCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_health_insurance_plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_health_insurance_planAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_health_insurance_planAggregateArgs>(args: Subset<T, User_health_insurance_planAggregateArgs>): Prisma.PrismaPromise<GetUser_health_insurance_planAggregateType<T>>
+
+    /**
+     * Group by User_health_insurance_plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_health_insurance_planGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends user_health_insurance_planGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: user_health_insurance_planGroupByArgs['orderBy'] }
+        : { orderBy?: user_health_insurance_planGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, user_health_insurance_planGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_health_insurance_planGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the user_health_insurance_plan model
+   */
+  readonly fields: user_health_insurance_planFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for user_health_insurance_plan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__user_health_insurance_planClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    healthInsurancePlan<T extends health_insurance_planDefaultArgs<ExtArgs> = {}>(args?: Subset<T, health_insurance_planDefaultArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the user_health_insurance_plan model
+   */
+  interface user_health_insurance_planFieldRefs {
+    readonly id: FieldRef<"user_health_insurance_plan", 'String'>
+    readonly userId: FieldRef<"user_health_insurance_plan", 'String'>
+    readonly healthInsurancePlanId: FieldRef<"user_health_insurance_plan", 'String'>
+    readonly createdAt: FieldRef<"user_health_insurance_plan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * user_health_insurance_plan findUnique
+   */
+  export type user_health_insurance_planFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which user_health_insurance_plan to fetch.
+     */
+    where: user_health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * user_health_insurance_plan findUniqueOrThrow
+   */
+  export type user_health_insurance_planFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which user_health_insurance_plan to fetch.
+     */
+    where: user_health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * user_health_insurance_plan findFirst
+   */
+  export type user_health_insurance_planFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which user_health_insurance_plan to fetch.
+     */
+    where?: user_health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_health_insurance_plans to fetch.
+     */
+    orderBy?: user_health_insurance_planOrderByWithRelationInput | user_health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_health_insurance_plans.
+     */
+    cursor?: user_health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_health_insurance_plans.
+     */
+    distinct?: User_health_insurance_planScalarFieldEnum | User_health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * user_health_insurance_plan findFirstOrThrow
+   */
+  export type user_health_insurance_planFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which user_health_insurance_plan to fetch.
+     */
+    where?: user_health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_health_insurance_plans to fetch.
+     */
+    orderBy?: user_health_insurance_planOrderByWithRelationInput | user_health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_health_insurance_plans.
+     */
+    cursor?: user_health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_health_insurance_plans.
+     */
+    distinct?: User_health_insurance_planScalarFieldEnum | User_health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * user_health_insurance_plan findMany
+   */
+  export type user_health_insurance_planFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which user_health_insurance_plans to fetch.
+     */
+    where?: user_health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_health_insurance_plans to fetch.
+     */
+    orderBy?: user_health_insurance_planOrderByWithRelationInput | user_health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing user_health_insurance_plans.
+     */
+    cursor?: user_health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_health_insurance_plans.
+     */
+    distinct?: User_health_insurance_planScalarFieldEnum | User_health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * user_health_insurance_plan create
+   */
+  export type user_health_insurance_planCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * The data needed to create a user_health_insurance_plan.
+     */
+    data: XOR<user_health_insurance_planCreateInput, user_health_insurance_planUncheckedCreateInput>
+  }
+
+  /**
+   * user_health_insurance_plan createMany
+   */
+  export type user_health_insurance_planCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many user_health_insurance_plans.
+     */
+    data: user_health_insurance_planCreateManyInput | user_health_insurance_planCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * user_health_insurance_plan createManyAndReturn
+   */
+  export type user_health_insurance_planCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * The data used to create many user_health_insurance_plans.
+     */
+    data: user_health_insurance_planCreateManyInput | user_health_insurance_planCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * user_health_insurance_plan update
+   */
+  export type user_health_insurance_planUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * The data needed to update a user_health_insurance_plan.
+     */
+    data: XOR<user_health_insurance_planUpdateInput, user_health_insurance_planUncheckedUpdateInput>
+    /**
+     * Choose, which user_health_insurance_plan to update.
+     */
+    where: user_health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * user_health_insurance_plan updateMany
+   */
+  export type user_health_insurance_planUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update user_health_insurance_plans.
+     */
+    data: XOR<user_health_insurance_planUpdateManyMutationInput, user_health_insurance_planUncheckedUpdateManyInput>
+    /**
+     * Filter which user_health_insurance_plans to update
+     */
+    where?: user_health_insurance_planWhereInput
+    /**
+     * Limit how many user_health_insurance_plans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_health_insurance_plan updateManyAndReturn
+   */
+  export type user_health_insurance_planUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * The data used to update user_health_insurance_plans.
+     */
+    data: XOR<user_health_insurance_planUpdateManyMutationInput, user_health_insurance_planUncheckedUpdateManyInput>
+    /**
+     * Filter which user_health_insurance_plans to update
+     */
+    where?: user_health_insurance_planWhereInput
+    /**
+     * Limit how many user_health_insurance_plans to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * user_health_insurance_plan upsert
+   */
+  export type user_health_insurance_planUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * The filter to search for the user_health_insurance_plan to update in case it exists.
+     */
+    where: user_health_insurance_planWhereUniqueInput
+    /**
+     * In case the user_health_insurance_plan found by the `where` argument doesn't exist, create a new user_health_insurance_plan with this data.
+     */
+    create: XOR<user_health_insurance_planCreateInput, user_health_insurance_planUncheckedCreateInput>
+    /**
+     * In case the user_health_insurance_plan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<user_health_insurance_planUpdateInput, user_health_insurance_planUncheckedUpdateInput>
+  }
+
+  /**
+   * user_health_insurance_plan delete
+   */
+  export type user_health_insurance_planDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter which user_health_insurance_plan to delete.
+     */
+    where: user_health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * user_health_insurance_plan deleteMany
+   */
+  export type user_health_insurance_planDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_health_insurance_plans to delete
+     */
+    where?: user_health_insurance_planWhereInput
+    /**
+     * Limit how many user_health_insurance_plans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_health_insurance_plan without action
+   */
+  export type user_health_insurance_planDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model healthcare_provider_health_insurance_plan
+   */
+
+  export type AggregateHealthcare_provider_health_insurance_plan = {
+    _count: Healthcare_provider_health_insurance_planCountAggregateOutputType | null
+    _min: Healthcare_provider_health_insurance_planMinAggregateOutputType | null
+    _max: Healthcare_provider_health_insurance_planMaxAggregateOutputType | null
+  }
+
+  export type Healthcare_provider_health_insurance_planMinAggregateOutputType = {
+    id: string | null
+    healthcareProviderId: string | null
+    healthInsurancePlanId: string | null
+    createdAt: Date | null
+  }
+
+  export type Healthcare_provider_health_insurance_planMaxAggregateOutputType = {
+    id: string | null
+    healthcareProviderId: string | null
+    healthInsurancePlanId: string | null
+    createdAt: Date | null
+  }
+
+  export type Healthcare_provider_health_insurance_planCountAggregateOutputType = {
+    id: number
+    healthcareProviderId: number
+    healthInsurancePlanId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type Healthcare_provider_health_insurance_planMinAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    healthInsurancePlanId?: true
+    createdAt?: true
+  }
+
+  export type Healthcare_provider_health_insurance_planMaxAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    healthInsurancePlanId?: true
+    createdAt?: true
+  }
+
+  export type Healthcare_provider_health_insurance_planCountAggregateInputType = {
+    id?: true
+    healthcareProviderId?: true
+    healthInsurancePlanId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type Healthcare_provider_health_insurance_planAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which healthcare_provider_health_insurance_plan to aggregate.
+     */
+    where?: healthcare_provider_health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of healthcare_provider_health_insurance_plans to fetch.
+     */
+    orderBy?: healthcare_provider_health_insurance_planOrderByWithRelationInput | healthcare_provider_health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: healthcare_provider_health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` healthcare_provider_health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` healthcare_provider_health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned healthcare_provider_health_insurance_plans
+    **/
+    _count?: true | Healthcare_provider_health_insurance_planCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Healthcare_provider_health_insurance_planMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Healthcare_provider_health_insurance_planMaxAggregateInputType
+  }
+
+  export type GetHealthcare_provider_health_insurance_planAggregateType<T extends Healthcare_provider_health_insurance_planAggregateArgs> = {
+        [P in keyof T & keyof AggregateHealthcare_provider_health_insurance_plan]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHealthcare_provider_health_insurance_plan[P]>
+      : GetScalarType<T[P], AggregateHealthcare_provider_health_insurance_plan[P]>
+  }
+
+
+
+
+  export type healthcare_provider_health_insurance_planGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: healthcare_provider_health_insurance_planWhereInput
+    orderBy?: healthcare_provider_health_insurance_planOrderByWithAggregationInput | healthcare_provider_health_insurance_planOrderByWithAggregationInput[]
+    by: Healthcare_provider_health_insurance_planScalarFieldEnum[] | Healthcare_provider_health_insurance_planScalarFieldEnum
+    having?: healthcare_provider_health_insurance_planScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Healthcare_provider_health_insurance_planCountAggregateInputType | true
+    _min?: Healthcare_provider_health_insurance_planMinAggregateInputType
+    _max?: Healthcare_provider_health_insurance_planMaxAggregateInputType
+  }
+
+  export type Healthcare_provider_health_insurance_planGroupByOutputType = {
+    id: string
+    healthcareProviderId: string
+    healthInsurancePlanId: string
+    createdAt: Date
+    _count: Healthcare_provider_health_insurance_planCountAggregateOutputType | null
+    _min: Healthcare_provider_health_insurance_planMinAggregateOutputType | null
+    _max: Healthcare_provider_health_insurance_planMaxAggregateOutputType | null
+  }
+
+  type GetHealthcare_provider_health_insurance_planGroupByPayload<T extends healthcare_provider_health_insurance_planGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Healthcare_provider_health_insurance_planGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Healthcare_provider_health_insurance_planGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Healthcare_provider_health_insurance_planGroupByOutputType[P]>
+            : GetScalarType<T[P], Healthcare_provider_health_insurance_planGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type healthcare_provider_health_insurance_planSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    healthInsurancePlanId?: boolean
+    createdAt?: boolean
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["healthcare_provider_health_insurance_plan"]>
+
+  export type healthcare_provider_health_insurance_planSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    healthInsurancePlanId?: boolean
+    createdAt?: boolean
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["healthcare_provider_health_insurance_plan"]>
+
+  export type healthcare_provider_health_insurance_planSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    healthcareProviderId?: boolean
+    healthInsurancePlanId?: boolean
+    createdAt?: boolean
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["healthcare_provider_health_insurance_plan"]>
+
+  export type healthcare_provider_health_insurance_planSelectScalar = {
+    id?: boolean
+    healthcareProviderId?: boolean
+    healthInsurancePlanId?: boolean
+    createdAt?: boolean
+  }
+
+  export type healthcare_provider_health_insurance_planOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "healthcareProviderId" | "healthInsurancePlanId" | "createdAt", ExtArgs["result"]["healthcare_provider_health_insurance_plan"]>
+  export type healthcare_provider_health_insurance_planInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }
+  export type healthcare_provider_health_insurance_planIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }
+  export type healthcare_provider_health_insurance_planIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
+    healthInsurancePlan?: boolean | health_insurance_planDefaultArgs<ExtArgs>
+  }
+
+  export type $healthcare_provider_health_insurance_planPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "healthcare_provider_health_insurance_plan"
+    objects: {
+      healthcareProvider: Prisma.$userPayload<ExtArgs>
+      healthInsurancePlan: Prisma.$health_insurance_planPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      healthcareProviderId: string
+      healthInsurancePlanId: string
+      createdAt: Date
+    }, ExtArgs["result"]["healthcare_provider_health_insurance_plan"]>
+    composites: {}
+  }
+
+  type healthcare_provider_health_insurance_planGetPayload<S extends boolean | null | undefined | healthcare_provider_health_insurance_planDefaultArgs> = $Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload, S>
+
+  type healthcare_provider_health_insurance_planCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<healthcare_provider_health_insurance_planFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Healthcare_provider_health_insurance_planCountAggregateInputType | true
+    }
+
+  export interface healthcare_provider_health_insurance_planDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['healthcare_provider_health_insurance_plan'], meta: { name: 'healthcare_provider_health_insurance_plan' } }
+    /**
+     * Find zero or one Healthcare_provider_health_insurance_plan that matches the filter.
+     * @param {healthcare_provider_health_insurance_planFindUniqueArgs} args - Arguments to find a Healthcare_provider_health_insurance_plan
+     * @example
+     * // Get one Healthcare_provider_health_insurance_plan
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends healthcare_provider_health_insurance_planFindUniqueArgs>(args: SelectSubset<T, healthcare_provider_health_insurance_planFindUniqueArgs<ExtArgs>>): Prisma__healthcare_provider_health_insurance_planClient<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Healthcare_provider_health_insurance_plan that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {healthcare_provider_health_insurance_planFindUniqueOrThrowArgs} args - Arguments to find a Healthcare_provider_health_insurance_plan
+     * @example
+     * // Get one Healthcare_provider_health_insurance_plan
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends healthcare_provider_health_insurance_planFindUniqueOrThrowArgs>(args: SelectSubset<T, healthcare_provider_health_insurance_planFindUniqueOrThrowArgs<ExtArgs>>): Prisma__healthcare_provider_health_insurance_planClient<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Healthcare_provider_health_insurance_plan that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_health_insurance_planFindFirstArgs} args - Arguments to find a Healthcare_provider_health_insurance_plan
+     * @example
+     * // Get one Healthcare_provider_health_insurance_plan
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends healthcare_provider_health_insurance_planFindFirstArgs>(args?: SelectSubset<T, healthcare_provider_health_insurance_planFindFirstArgs<ExtArgs>>): Prisma__healthcare_provider_health_insurance_planClient<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Healthcare_provider_health_insurance_plan that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_health_insurance_planFindFirstOrThrowArgs} args - Arguments to find a Healthcare_provider_health_insurance_plan
+     * @example
+     * // Get one Healthcare_provider_health_insurance_plan
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends healthcare_provider_health_insurance_planFindFirstOrThrowArgs>(args?: SelectSubset<T, healthcare_provider_health_insurance_planFindFirstOrThrowArgs<ExtArgs>>): Prisma__healthcare_provider_health_insurance_planClient<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Healthcare_provider_health_insurance_plans that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_health_insurance_planFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Healthcare_provider_health_insurance_plans
+     * const healthcare_provider_health_insurance_plans = await prisma.healthcare_provider_health_insurance_plan.findMany()
+     * 
+     * // Get first 10 Healthcare_provider_health_insurance_plans
+     * const healthcare_provider_health_insurance_plans = await prisma.healthcare_provider_health_insurance_plan.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const healthcare_provider_health_insurance_planWithIdOnly = await prisma.healthcare_provider_health_insurance_plan.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends healthcare_provider_health_insurance_planFindManyArgs>(args?: SelectSubset<T, healthcare_provider_health_insurance_planFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Healthcare_provider_health_insurance_plan.
+     * @param {healthcare_provider_health_insurance_planCreateArgs} args - Arguments to create a Healthcare_provider_health_insurance_plan.
+     * @example
+     * // Create one Healthcare_provider_health_insurance_plan
+     * const Healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.create({
+     *   data: {
+     *     // ... data to create a Healthcare_provider_health_insurance_plan
+     *   }
+     * })
+     * 
+     */
+    create<T extends healthcare_provider_health_insurance_planCreateArgs>(args: SelectSubset<T, healthcare_provider_health_insurance_planCreateArgs<ExtArgs>>): Prisma__healthcare_provider_health_insurance_planClient<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Healthcare_provider_health_insurance_plans.
+     * @param {healthcare_provider_health_insurance_planCreateManyArgs} args - Arguments to create many Healthcare_provider_health_insurance_plans.
+     * @example
+     * // Create many Healthcare_provider_health_insurance_plans
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends healthcare_provider_health_insurance_planCreateManyArgs>(args?: SelectSubset<T, healthcare_provider_health_insurance_planCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Healthcare_provider_health_insurance_plans and returns the data saved in the database.
+     * @param {healthcare_provider_health_insurance_planCreateManyAndReturnArgs} args - Arguments to create many Healthcare_provider_health_insurance_plans.
+     * @example
+     * // Create many Healthcare_provider_health_insurance_plans
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Healthcare_provider_health_insurance_plans and only return the `id`
+     * const healthcare_provider_health_insurance_planWithIdOnly = await prisma.healthcare_provider_health_insurance_plan.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends healthcare_provider_health_insurance_planCreateManyAndReturnArgs>(args?: SelectSubset<T, healthcare_provider_health_insurance_planCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Healthcare_provider_health_insurance_plan.
+     * @param {healthcare_provider_health_insurance_planDeleteArgs} args - Arguments to delete one Healthcare_provider_health_insurance_plan.
+     * @example
+     * // Delete one Healthcare_provider_health_insurance_plan
+     * const Healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.delete({
+     *   where: {
+     *     // ... filter to delete one Healthcare_provider_health_insurance_plan
+     *   }
+     * })
+     * 
+     */
+    delete<T extends healthcare_provider_health_insurance_planDeleteArgs>(args: SelectSubset<T, healthcare_provider_health_insurance_planDeleteArgs<ExtArgs>>): Prisma__healthcare_provider_health_insurance_planClient<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Healthcare_provider_health_insurance_plan.
+     * @param {healthcare_provider_health_insurance_planUpdateArgs} args - Arguments to update one Healthcare_provider_health_insurance_plan.
+     * @example
+     * // Update one Healthcare_provider_health_insurance_plan
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends healthcare_provider_health_insurance_planUpdateArgs>(args: SelectSubset<T, healthcare_provider_health_insurance_planUpdateArgs<ExtArgs>>): Prisma__healthcare_provider_health_insurance_planClient<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Healthcare_provider_health_insurance_plans.
+     * @param {healthcare_provider_health_insurance_planDeleteManyArgs} args - Arguments to filter Healthcare_provider_health_insurance_plans to delete.
+     * @example
+     * // Delete a few Healthcare_provider_health_insurance_plans
+     * const { count } = await prisma.healthcare_provider_health_insurance_plan.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends healthcare_provider_health_insurance_planDeleteManyArgs>(args?: SelectSubset<T, healthcare_provider_health_insurance_planDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Healthcare_provider_health_insurance_plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_health_insurance_planUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Healthcare_provider_health_insurance_plans
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends healthcare_provider_health_insurance_planUpdateManyArgs>(args: SelectSubset<T, healthcare_provider_health_insurance_planUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Healthcare_provider_health_insurance_plans and returns the data updated in the database.
+     * @param {healthcare_provider_health_insurance_planUpdateManyAndReturnArgs} args - Arguments to update many Healthcare_provider_health_insurance_plans.
+     * @example
+     * // Update many Healthcare_provider_health_insurance_plans
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Healthcare_provider_health_insurance_plans and only return the `id`
+     * const healthcare_provider_health_insurance_planWithIdOnly = await prisma.healthcare_provider_health_insurance_plan.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends healthcare_provider_health_insurance_planUpdateManyAndReturnArgs>(args: SelectSubset<T, healthcare_provider_health_insurance_planUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Healthcare_provider_health_insurance_plan.
+     * @param {healthcare_provider_health_insurance_planUpsertArgs} args - Arguments to update or create a Healthcare_provider_health_insurance_plan.
+     * @example
+     * // Update or create a Healthcare_provider_health_insurance_plan
+     * const healthcare_provider_health_insurance_plan = await prisma.healthcare_provider_health_insurance_plan.upsert({
+     *   create: {
+     *     // ... data to create a Healthcare_provider_health_insurance_plan
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Healthcare_provider_health_insurance_plan we want to update
+     *   }
+     * })
+     */
+    upsert<T extends healthcare_provider_health_insurance_planUpsertArgs>(args: SelectSubset<T, healthcare_provider_health_insurance_planUpsertArgs<ExtArgs>>): Prisma__healthcare_provider_health_insurance_planClient<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Healthcare_provider_health_insurance_plans.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_health_insurance_planCountArgs} args - Arguments to filter Healthcare_provider_health_insurance_plans to count.
+     * @example
+     * // Count the number of Healthcare_provider_health_insurance_plans
+     * const count = await prisma.healthcare_provider_health_insurance_plan.count({
+     *   where: {
+     *     // ... the filter for the Healthcare_provider_health_insurance_plans we want to count
+     *   }
+     * })
+    **/
+    count<T extends healthcare_provider_health_insurance_planCountArgs>(
+      args?: Subset<T, healthcare_provider_health_insurance_planCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Healthcare_provider_health_insurance_planCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Healthcare_provider_health_insurance_plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Healthcare_provider_health_insurance_planAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Healthcare_provider_health_insurance_planAggregateArgs>(args: Subset<T, Healthcare_provider_health_insurance_planAggregateArgs>): Prisma.PrismaPromise<GetHealthcare_provider_health_insurance_planAggregateType<T>>
+
+    /**
+     * Group by Healthcare_provider_health_insurance_plan.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {healthcare_provider_health_insurance_planGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends healthcare_provider_health_insurance_planGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: healthcare_provider_health_insurance_planGroupByArgs['orderBy'] }
+        : { orderBy?: healthcare_provider_health_insurance_planGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, healthcare_provider_health_insurance_planGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHealthcare_provider_health_insurance_planGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the healthcare_provider_health_insurance_plan model
+   */
+  readonly fields: healthcare_provider_health_insurance_planFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for healthcare_provider_health_insurance_plan.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__healthcare_provider_health_insurance_planClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    healthcareProvider<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    healthInsurancePlan<T extends health_insurance_planDefaultArgs<ExtArgs> = {}>(args?: Subset<T, health_insurance_planDefaultArgs<ExtArgs>>): Prisma__health_insurance_planClient<$Result.GetResult<Prisma.$health_insurance_planPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the healthcare_provider_health_insurance_plan model
+   */
+  interface healthcare_provider_health_insurance_planFieldRefs {
+    readonly id: FieldRef<"healthcare_provider_health_insurance_plan", 'String'>
+    readonly healthcareProviderId: FieldRef<"healthcare_provider_health_insurance_plan", 'String'>
+    readonly healthInsurancePlanId: FieldRef<"healthcare_provider_health_insurance_plan", 'String'>
+    readonly createdAt: FieldRef<"healthcare_provider_health_insurance_plan", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * healthcare_provider_health_insurance_plan findUnique
+   */
+  export type healthcare_provider_health_insurance_planFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_health_insurance_plan to fetch.
+     */
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan findUniqueOrThrow
+   */
+  export type healthcare_provider_health_insurance_planFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_health_insurance_plan to fetch.
+     */
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan findFirst
+   */
+  export type healthcare_provider_health_insurance_planFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_health_insurance_plan to fetch.
+     */
+    where?: healthcare_provider_health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of healthcare_provider_health_insurance_plans to fetch.
+     */
+    orderBy?: healthcare_provider_health_insurance_planOrderByWithRelationInput | healthcare_provider_health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for healthcare_provider_health_insurance_plans.
+     */
+    cursor?: healthcare_provider_health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` healthcare_provider_health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` healthcare_provider_health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of healthcare_provider_health_insurance_plans.
+     */
+    distinct?: Healthcare_provider_health_insurance_planScalarFieldEnum | Healthcare_provider_health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan findFirstOrThrow
+   */
+  export type healthcare_provider_health_insurance_planFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_health_insurance_plan to fetch.
+     */
+    where?: healthcare_provider_health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of healthcare_provider_health_insurance_plans to fetch.
+     */
+    orderBy?: healthcare_provider_health_insurance_planOrderByWithRelationInput | healthcare_provider_health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for healthcare_provider_health_insurance_plans.
+     */
+    cursor?: healthcare_provider_health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` healthcare_provider_health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` healthcare_provider_health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of healthcare_provider_health_insurance_plans.
+     */
+    distinct?: Healthcare_provider_health_insurance_planScalarFieldEnum | Healthcare_provider_health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan findMany
+   */
+  export type healthcare_provider_health_insurance_planFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter, which healthcare_provider_health_insurance_plans to fetch.
+     */
+    where?: healthcare_provider_health_insurance_planWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of healthcare_provider_health_insurance_plans to fetch.
+     */
+    orderBy?: healthcare_provider_health_insurance_planOrderByWithRelationInput | healthcare_provider_health_insurance_planOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing healthcare_provider_health_insurance_plans.
+     */
+    cursor?: healthcare_provider_health_insurance_planWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` healthcare_provider_health_insurance_plans from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` healthcare_provider_health_insurance_plans.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of healthcare_provider_health_insurance_plans.
+     */
+    distinct?: Healthcare_provider_health_insurance_planScalarFieldEnum | Healthcare_provider_health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan create
+   */
+  export type healthcare_provider_health_insurance_planCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * The data needed to create a healthcare_provider_health_insurance_plan.
+     */
+    data: XOR<healthcare_provider_health_insurance_planCreateInput, healthcare_provider_health_insurance_planUncheckedCreateInput>
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan createMany
+   */
+  export type healthcare_provider_health_insurance_planCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many healthcare_provider_health_insurance_plans.
+     */
+    data: healthcare_provider_health_insurance_planCreateManyInput | healthcare_provider_health_insurance_planCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan createManyAndReturn
+   */
+  export type healthcare_provider_health_insurance_planCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * The data used to create many healthcare_provider_health_insurance_plans.
+     */
+    data: healthcare_provider_health_insurance_planCreateManyInput | healthcare_provider_health_insurance_planCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan update
+   */
+  export type healthcare_provider_health_insurance_planUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * The data needed to update a healthcare_provider_health_insurance_plan.
+     */
+    data: XOR<healthcare_provider_health_insurance_planUpdateInput, healthcare_provider_health_insurance_planUncheckedUpdateInput>
+    /**
+     * Choose, which healthcare_provider_health_insurance_plan to update.
+     */
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan updateMany
+   */
+  export type healthcare_provider_health_insurance_planUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update healthcare_provider_health_insurance_plans.
+     */
+    data: XOR<healthcare_provider_health_insurance_planUpdateManyMutationInput, healthcare_provider_health_insurance_planUncheckedUpdateManyInput>
+    /**
+     * Filter which healthcare_provider_health_insurance_plans to update
+     */
+    where?: healthcare_provider_health_insurance_planWhereInput
+    /**
+     * Limit how many healthcare_provider_health_insurance_plans to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan updateManyAndReturn
+   */
+  export type healthcare_provider_health_insurance_planUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * The data used to update healthcare_provider_health_insurance_plans.
+     */
+    data: XOR<healthcare_provider_health_insurance_planUpdateManyMutationInput, healthcare_provider_health_insurance_planUncheckedUpdateManyInput>
+    /**
+     * Filter which healthcare_provider_health_insurance_plans to update
+     */
+    where?: healthcare_provider_health_insurance_planWhereInput
+    /**
+     * Limit how many healthcare_provider_health_insurance_plans to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan upsert
+   */
+  export type healthcare_provider_health_insurance_planUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * The filter to search for the healthcare_provider_health_insurance_plan to update in case it exists.
+     */
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+    /**
+     * In case the healthcare_provider_health_insurance_plan found by the `where` argument doesn't exist, create a new healthcare_provider_health_insurance_plan with this data.
+     */
+    create: XOR<healthcare_provider_health_insurance_planCreateInput, healthcare_provider_health_insurance_planUncheckedCreateInput>
+    /**
+     * In case the healthcare_provider_health_insurance_plan was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<healthcare_provider_health_insurance_planUpdateInput, healthcare_provider_health_insurance_planUncheckedUpdateInput>
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan delete
+   */
+  export type healthcare_provider_health_insurance_planDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    /**
+     * Filter which healthcare_provider_health_insurance_plan to delete.
+     */
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan deleteMany
+   */
+  export type healthcare_provider_health_insurance_planDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which healthcare_provider_health_insurance_plans to delete
+     */
+    where?: healthcare_provider_health_insurance_planWhereInput
+    /**
+     * Limit how many healthcare_provider_health_insurance_plans to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * healthcare_provider_health_insurance_plan without action
+   */
+  export type healthcare_provider_health_insurance_planDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
   }
 
 
@@ -34101,7 +37638,6 @@ export namespace Prisma {
     allergies: string | null
     surgeries: string | null
     familyHistory: string | null
-    lifestyleNotes: string | null
     emergencyContactName: string | null
     emergencyContactPhone: string | null
     createdAt: Date | null
@@ -34128,7 +37664,6 @@ export namespace Prisma {
     allergies: string | null
     surgeries: string | null
     familyHistory: string | null
-    lifestyleNotes: string | null
     emergencyContactName: string | null
     emergencyContactPhone: string | null
     createdAt: Date | null
@@ -34155,7 +37690,6 @@ export namespace Prisma {
     allergies: number
     surgeries: number
     familyHistory: number
-    lifestyleNotes: number
     emergencyContactName: number
     emergencyContactPhone: number
     createdAt: number
@@ -34184,7 +37718,6 @@ export namespace Prisma {
     allergies?: true
     surgeries?: true
     familyHistory?: true
-    lifestyleNotes?: true
     emergencyContactName?: true
     emergencyContactPhone?: true
     createdAt?: true
@@ -34211,7 +37744,6 @@ export namespace Prisma {
     allergies?: true
     surgeries?: true
     familyHistory?: true
-    lifestyleNotes?: true
     emergencyContactName?: true
     emergencyContactPhone?: true
     createdAt?: true
@@ -34238,7 +37770,6 @@ export namespace Prisma {
     allergies?: true
     surgeries?: true
     familyHistory?: true
-    lifestyleNotes?: true
     emergencyContactName?: true
     emergencyContactPhone?: true
     createdAt?: true
@@ -34338,7 +37869,6 @@ export namespace Prisma {
     allergies: string | null
     surgeries: string | null
     familyHistory: string | null
-    lifestyleNotes: string | null
     emergencyContactName: string | null
     emergencyContactPhone: string | null
     createdAt: Date
@@ -34382,7 +37912,6 @@ export namespace Prisma {
     allergies?: boolean
     surgeries?: boolean
     familyHistory?: boolean
-    lifestyleNotes?: boolean
     emergencyContactName?: boolean
     emergencyContactPhone?: boolean
     createdAt?: boolean
@@ -34415,7 +37944,6 @@ export namespace Prisma {
     allergies?: boolean
     surgeries?: boolean
     familyHistory?: boolean
-    lifestyleNotes?: boolean
     emergencyContactName?: boolean
     emergencyContactPhone?: boolean
     createdAt?: boolean
@@ -34444,7 +37972,6 @@ export namespace Prisma {
     allergies?: boolean
     surgeries?: boolean
     familyHistory?: boolean
-    lifestyleNotes?: boolean
     emergencyContactName?: boolean
     emergencyContactPhone?: boolean
     createdAt?: boolean
@@ -34473,14 +38000,13 @@ export namespace Prisma {
     allergies?: boolean
     surgeries?: boolean
     familyHistory?: boolean
-    lifestyleNotes?: boolean
     emergencyContactName?: boolean
     emergencyContactPhone?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type patient_profileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "dateOfBirth" | "cpf" | "phone" | "email" | "address" | "gender" | "relationshipToCustomer" | "notes" | "customerOwnerId" | "createdByHealthcareProviderId" | "bloodType" | "medications" | "chronicPain" | "preExistingConditions" | "allergies" | "surgeries" | "familyHistory" | "lifestyleNotes" | "emergencyContactName" | "emergencyContactPhone" | "createdAt" | "updatedAt", ExtArgs["result"]["patient_profile"]>
+  export type patient_profileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullName" | "dateOfBirth" | "cpf" | "phone" | "email" | "address" | "gender" | "relationshipToCustomer" | "notes" | "customerOwnerId" | "createdByHealthcareProviderId" | "bloodType" | "medications" | "chronicPain" | "preExistingConditions" | "allergies" | "surgeries" | "familyHistory" | "emergencyContactName" | "emergencyContactPhone" | "createdAt" | "updatedAt", ExtArgs["result"]["patient_profile"]>
   export type patient_profileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customerOwner?: boolean | patient_profile$customerOwnerArgs<ExtArgs>
     createdByHealthcareProvider?: boolean | patient_profile$createdByHealthcareProviderArgs<ExtArgs>
@@ -34527,7 +38053,6 @@ export namespace Prisma {
       allergies: string | null
       surgeries: string | null
       familyHistory: string | null
-      lifestyleNotes: string | null
       emergencyContactName: string | null
       emergencyContactPhone: string | null
       createdAt: Date
@@ -34979,7 +38504,6 @@ export namespace Prisma {
     readonly allergies: FieldRef<"patient_profile", 'String'>
     readonly surgeries: FieldRef<"patient_profile", 'String'>
     readonly familyHistory: FieldRef<"patient_profile", 'String'>
-    readonly lifestyleNotes: FieldRef<"patient_profile", 'String'>
     readonly emergencyContactName: FieldRef<"patient_profile", 'String'>
     readonly emergencyContactPhone: FieldRef<"patient_profile", 'String'>
     readonly createdAt: FieldRef<"patient_profile", 'DateTime'>
@@ -41460,7 +44984,6 @@ export namespace Prisma {
     targetAudiences: number
     serviceModalities: number
     homeCareRadiusKm: number
-    acceptedInsurance: number
     paymentMethods: number
     bookingAvailabilityDays: number
     appointmentConfirmationReminderHoursBefore: number
@@ -41669,7 +45192,6 @@ export namespace Prisma {
     targetAudiences?: true
     serviceModalities?: true
     homeCareRadiusKm?: true
-    acceptedInsurance?: true
     paymentMethods?: true
     bookingAvailabilityDays?: true
     appointmentConfirmationReminderHoursBefore?: true
@@ -41821,7 +45343,6 @@ export namespace Prisma {
     targetAudiences: string[]
     serviceModalities: string[]
     homeCareRadiusKm: number | null
-    acceptedInsurance: string[]
     paymentMethods: string[]
     bookingAvailabilityDays: number
     appointmentConfirmationReminderHoursBefore: number
@@ -41905,7 +45426,6 @@ export namespace Prisma {
     targetAudiences?: boolean
     serviceModalities?: boolean
     homeCareRadiusKm?: boolean
-    acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
     appointmentConfirmationReminderHoursBefore?: boolean
@@ -41928,6 +45448,8 @@ export namespace Prisma {
     updatedAt?: boolean
     professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
+    healthInsurancePlans?: boolean | user$healthInsurancePlansArgs<ExtArgs>
+    acceptedHealthInsurancePlans?: boolean | user$acceptedHealthInsurancePlansArgs<ExtArgs>
     sessions?: boolean | user$sessionsArgs<ExtArgs>
     accounts?: boolean | user$accountsArgs<ExtArgs>
     ownedClinics?: boolean | user$ownedClinicsArgs<ExtArgs>
@@ -42012,7 +45534,6 @@ export namespace Prisma {
     targetAudiences?: boolean
     serviceModalities?: boolean
     homeCareRadiusKm?: boolean
-    acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
     appointmentConfirmationReminderHoursBefore?: boolean
@@ -42079,7 +45600,6 @@ export namespace Prisma {
     targetAudiences?: boolean
     serviceModalities?: boolean
     homeCareRadiusKm?: boolean
-    acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
     appointmentConfirmationReminderHoursBefore?: boolean
@@ -42146,7 +45666,6 @@ export namespace Prisma {
     targetAudiences?: boolean
     serviceModalities?: boolean
     homeCareRadiusKm?: boolean
-    acceptedInsurance?: boolean
     paymentMethods?: boolean
     bookingAvailabilityDays?: boolean
     appointmentConfirmationReminderHoursBefore?: boolean
@@ -42169,10 +45688,12 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "onboardingStep" | "cpf" | "dateOfBirth" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "homeCareRadiusKm" | "acceptedInsurance" | "paymentMethods" | "bookingAvailabilityDays" | "appointmentConfirmationReminderHoursBefore" | "appointmentReminderHoursBefore" | "birthdayGreetingEmailEnabled" | "birthdayGreetingEmailSubjectTemplate" | "birthdayGreetingEmailHtmlTemplate" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "firstName" | "lastName" | "phone" | "email" | "emailVerified" | "image" | "role" | "onboardingCompleted" | "onboardingStep" | "cpf" | "dateOfBirth" | "displayName" | "document" | "birthDate" | "gender" | "languages" | "specialty" | "professionalCategory" | "professionalId" | "professionalCouncilId" | "licenseState" | "licenseDocumentKey" | "licenseDocumentFileName" | "licenseDocumentMimeType" | "licenseDocumentSize" | "licenseDocumentSha256" | "licenseDocumentUploadedAt" | "verificationStatus" | "verificationRejectionReason" | "verifiedAt" | "verifiedByUserId" | "bio" | "approach" | "education" | "certifications" | "yearsOfExperience" | "targetAudiences" | "serviceModalities" | "homeCareRadiusKm" | "paymentMethods" | "bookingAvailabilityDays" | "appointmentConfirmationReminderHoursBefore" | "appointmentReminderHoursBefore" | "birthdayGreetingEmailEnabled" | "birthdayGreetingEmailSubjectTemplate" | "birthdayGreetingEmailHtmlTemplate" | "cancellationPolicy" | "cancellationPolicyEnabled" | "cancellationPolicyHoursBefore" | "cancellationPolicyPenaltyType" | "cancellationPolicyFixedFeeCents" | "cancellationPolicyPercentage" | "cancellationPolicyRequiresJustification" | "clinicPhotos" | "termsAcceptedAt" | "lgpdConsentAt" | "professionalResponsibilityAcceptedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     professionalCouncil?: boolean | user$professionalCouncilArgs<ExtArgs>
     verifiedByUser?: boolean | user$verifiedByUserArgs<ExtArgs>
+    healthInsurancePlans?: boolean | user$healthInsurancePlansArgs<ExtArgs>
+    acceptedHealthInsurancePlans?: boolean | user$acceptedHealthInsurancePlansArgs<ExtArgs>
     sessions?: boolean | user$sessionsArgs<ExtArgs>
     accounts?: boolean | user$accountsArgs<ExtArgs>
     ownedClinics?: boolean | user$ownedClinicsArgs<ExtArgs>
@@ -42228,6 +45749,8 @@ export namespace Prisma {
     objects: {
       professionalCouncil: Prisma.$professional_councilPayload<ExtArgs> | null
       verifiedByUser: Prisma.$userPayload<ExtArgs> | null
+      healthInsurancePlans: Prisma.$user_health_insurance_planPayload<ExtArgs>[]
+      acceptedHealthInsurancePlans: Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>[]
       sessions: Prisma.$sessionPayload<ExtArgs>[]
       accounts: Prisma.$accountPayload<ExtArgs>[]
       ownedClinics: Prisma.$clinicPayload<ExtArgs>[]
@@ -42310,7 +45833,6 @@ export namespace Prisma {
       targetAudiences: string[]
       serviceModalities: string[]
       homeCareRadiusKm: number | null
-      acceptedInsurance: string[]
       paymentMethods: string[]
       bookingAvailabilityDays: number
       appointmentConfirmationReminderHoursBefore: number
@@ -42727,6 +46249,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     professionalCouncil<T extends user$professionalCouncilArgs<ExtArgs> = {}>(args?: Subset<T, user$professionalCouncilArgs<ExtArgs>>): Prisma__professional_councilClient<$Result.GetResult<Prisma.$professional_councilPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     verifiedByUser<T extends user$verifiedByUserArgs<ExtArgs> = {}>(args?: Subset<T, user$verifiedByUserArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    healthInsurancePlans<T extends user$healthInsurancePlansArgs<ExtArgs> = {}>(args?: Subset<T, user$healthInsurancePlansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_health_insurance_planPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    acceptedHealthInsurancePlans<T extends user$acceptedHealthInsurancePlansArgs<ExtArgs> = {}>(args?: Subset<T, user$acceptedHealthInsurancePlansArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$healthcare_provider_health_insurance_planPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessions<T extends user$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, user$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$sessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends user$accountsArgs<ExtArgs> = {}>(args?: Subset<T, user$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$accountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     ownedClinics<T extends user$ownedClinicsArgs<ExtArgs> = {}>(args?: Subset<T, user$ownedClinicsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$clinicPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -42836,7 +46360,6 @@ export namespace Prisma {
     readonly targetAudiences: FieldRef<"user", 'String[]'>
     readonly serviceModalities: FieldRef<"user", 'String[]'>
     readonly homeCareRadiusKm: FieldRef<"user", 'Int'>
-    readonly acceptedInsurance: FieldRef<"user", 'String[]'>
     readonly paymentMethods: FieldRef<"user", 'String[]'>
     readonly bookingAvailabilityDays: FieldRef<"user", 'Int'>
     readonly appointmentConfirmationReminderHoursBefore: FieldRef<"user", 'Int'>
@@ -43293,6 +46816,54 @@ export namespace Prisma {
      */
     include?: userInclude<ExtArgs> | null
     where?: userWhereInput
+  }
+
+  /**
+   * user.healthInsurancePlans
+   */
+  export type user$healthInsurancePlansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_health_insurance_plan
+     */
+    select?: user_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_health_insurance_plan
+     */
+    omit?: user_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_health_insurance_planInclude<ExtArgs> | null
+    where?: user_health_insurance_planWhereInput
+    orderBy?: user_health_insurance_planOrderByWithRelationInput | user_health_insurance_planOrderByWithRelationInput[]
+    cursor?: user_health_insurance_planWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_health_insurance_planScalarFieldEnum | User_health_insurance_planScalarFieldEnum[]
+  }
+
+  /**
+   * user.acceptedHealthInsurancePlans
+   */
+  export type user$acceptedHealthInsurancePlansArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the healthcare_provider_health_insurance_plan
+     */
+    select?: healthcare_provider_health_insurance_planSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the healthcare_provider_health_insurance_plan
+     */
+    omit?: healthcare_provider_health_insurance_planOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: healthcare_provider_health_insurance_planInclude<ExtArgs> | null
+    where?: healthcare_provider_health_insurance_planWhereInput
+    orderBy?: healthcare_provider_health_insurance_planOrderByWithRelationInput | healthcare_provider_health_insurance_planOrderByWithRelationInput[]
+    cursor?: healthcare_provider_health_insurance_planWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Healthcare_provider_health_insurance_planScalarFieldEnum | Healthcare_provider_health_insurance_planScalarFieldEnum[]
   }
 
   /**
@@ -48875,7 +52446,6 @@ export namespace Prisma {
     allergies: 'allergies',
     surgeries: 'surgeries',
     familyHistory: 'familyHistory',
-    lifestyleNotes: 'lifestyleNotes',
     emergencyContactName: 'emergencyContactName',
     emergencyContactPhone: 'emergencyContactPhone',
     createdAt: 'createdAt',
@@ -48883,6 +52453,37 @@ export namespace Prisma {
   };
 
   export type Customer_medical_recordScalarFieldEnum = (typeof Customer_medical_recordScalarFieldEnum)[keyof typeof Customer_medical_recordScalarFieldEnum]
+
+
+  export const Health_insurance_planScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    active: 'active',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type Health_insurance_planScalarFieldEnum = (typeof Health_insurance_planScalarFieldEnum)[keyof typeof Health_insurance_planScalarFieldEnum]
+
+
+  export const User_health_insurance_planScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    healthInsurancePlanId: 'healthInsurancePlanId',
+    createdAt: 'createdAt'
+  };
+
+  export type User_health_insurance_planScalarFieldEnum = (typeof User_health_insurance_planScalarFieldEnum)[keyof typeof User_health_insurance_planScalarFieldEnum]
+
+
+  export const Healthcare_provider_health_insurance_planScalarFieldEnum: {
+    id: 'id',
+    healthcareProviderId: 'healthcareProviderId',
+    healthInsurancePlanId: 'healthInsurancePlanId',
+    createdAt: 'createdAt'
+  };
+
+  export type Healthcare_provider_health_insurance_planScalarFieldEnum = (typeof Healthcare_provider_health_insurance_planScalarFieldEnum)[keyof typeof Healthcare_provider_health_insurance_planScalarFieldEnum]
 
 
   export const Healthcare_provider_scheduleScalarFieldEnum: {
@@ -49025,7 +52626,6 @@ export namespace Prisma {
     allergies: 'allergies',
     surgeries: 'surgeries',
     familyHistory: 'familyHistory',
-    lifestyleNotes: 'lifestyleNotes',
     emergencyContactName: 'emergencyContactName',
     emergencyContactPhone: 'emergencyContactPhone',
     createdAt: 'createdAt',
@@ -49148,7 +52748,6 @@ export namespace Prisma {
     targetAudiences: 'targetAudiences',
     serviceModalities: 'serviceModalities',
     homeCareRadiusKm: 'homeCareRadiusKm',
-    acceptedInsurance: 'acceptedInsurance',
     paymentMethods: 'paymentMethods',
     bookingAvailabilityDays: 'bookingAvailabilityDays',
     appointmentConfirmationReminderHoursBefore: 'appointmentConfirmationReminderHoursBefore',
@@ -50977,7 +54576,6 @@ export namespace Prisma {
     allergies?: StringNullableFilter<"customer_medical_record"> | string | null
     surgeries?: StringNullableFilter<"customer_medical_record"> | string | null
     familyHistory?: StringNullableFilter<"customer_medical_record"> | string | null
-    lifestyleNotes?: StringNullableFilter<"customer_medical_record"> | string | null
     emergencyContactName?: StringNullableFilter<"customer_medical_record"> | string | null
     emergencyContactPhone?: StringNullableFilter<"customer_medical_record"> | string | null
     createdAt?: DateTimeFilter<"customer_medical_record"> | Date | string
@@ -50995,7 +54593,6 @@ export namespace Prisma {
     allergies?: SortOrderInput | SortOrder
     surgeries?: SortOrderInput | SortOrder
     familyHistory?: SortOrderInput | SortOrder
-    lifestyleNotes?: SortOrderInput | SortOrder
     emergencyContactName?: SortOrderInput | SortOrder
     emergencyContactPhone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -51016,7 +54613,6 @@ export namespace Prisma {
     allergies?: StringNullableFilter<"customer_medical_record"> | string | null
     surgeries?: StringNullableFilter<"customer_medical_record"> | string | null
     familyHistory?: StringNullableFilter<"customer_medical_record"> | string | null
-    lifestyleNotes?: StringNullableFilter<"customer_medical_record"> | string | null
     emergencyContactName?: StringNullableFilter<"customer_medical_record"> | string | null
     emergencyContactPhone?: StringNullableFilter<"customer_medical_record"> | string | null
     createdAt?: DateTimeFilter<"customer_medical_record"> | Date | string
@@ -51034,7 +54630,6 @@ export namespace Prisma {
     allergies?: SortOrderInput | SortOrder
     surgeries?: SortOrderInput | SortOrder
     familyHistory?: SortOrderInput | SortOrder
-    lifestyleNotes?: SortOrderInput | SortOrder
     emergencyContactName?: SortOrderInput | SortOrder
     emergencyContactPhone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -51057,11 +54652,176 @@ export namespace Prisma {
     allergies?: StringNullableWithAggregatesFilter<"customer_medical_record"> | string | null
     surgeries?: StringNullableWithAggregatesFilter<"customer_medical_record"> | string | null
     familyHistory?: StringNullableWithAggregatesFilter<"customer_medical_record"> | string | null
-    lifestyleNotes?: StringNullableWithAggregatesFilter<"customer_medical_record"> | string | null
     emergencyContactName?: StringNullableWithAggregatesFilter<"customer_medical_record"> | string | null
     emergencyContactPhone?: StringNullableWithAggregatesFilter<"customer_medical_record"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"customer_medical_record"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"customer_medical_record"> | Date | string
+  }
+
+  export type health_insurance_planWhereInput = {
+    AND?: health_insurance_planWhereInput | health_insurance_planWhereInput[]
+    OR?: health_insurance_planWhereInput[]
+    NOT?: health_insurance_planWhereInput | health_insurance_planWhereInput[]
+    id?: StringFilter<"health_insurance_plan"> | string
+    name?: StringFilter<"health_insurance_plan"> | string
+    active?: BoolFilter<"health_insurance_plan"> | boolean
+    createdAt?: DateTimeFilter<"health_insurance_plan"> | Date | string
+    updatedAt?: DateTimeFilter<"health_insurance_plan"> | Date | string
+    userLinks?: User_health_insurance_planListRelationFilter
+    providerLinks?: Healthcare_provider_health_insurance_planListRelationFilter
+  }
+
+  export type health_insurance_planOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    userLinks?: user_health_insurance_planOrderByRelationAggregateInput
+    providerLinks?: healthcare_provider_health_insurance_planOrderByRelationAggregateInput
+  }
+
+  export type health_insurance_planWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    AND?: health_insurance_planWhereInput | health_insurance_planWhereInput[]
+    OR?: health_insurance_planWhereInput[]
+    NOT?: health_insurance_planWhereInput | health_insurance_planWhereInput[]
+    active?: BoolFilter<"health_insurance_plan"> | boolean
+    createdAt?: DateTimeFilter<"health_insurance_plan"> | Date | string
+    updatedAt?: DateTimeFilter<"health_insurance_plan"> | Date | string
+    userLinks?: User_health_insurance_planListRelationFilter
+    providerLinks?: Healthcare_provider_health_insurance_planListRelationFilter
+  }, "id" | "name">
+
+  export type health_insurance_planOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: health_insurance_planCountOrderByAggregateInput
+    _max?: health_insurance_planMaxOrderByAggregateInput
+    _min?: health_insurance_planMinOrderByAggregateInput
+  }
+
+  export type health_insurance_planScalarWhereWithAggregatesInput = {
+    AND?: health_insurance_planScalarWhereWithAggregatesInput | health_insurance_planScalarWhereWithAggregatesInput[]
+    OR?: health_insurance_planScalarWhereWithAggregatesInput[]
+    NOT?: health_insurance_planScalarWhereWithAggregatesInput | health_insurance_planScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"health_insurance_plan"> | string
+    name?: StringWithAggregatesFilter<"health_insurance_plan"> | string
+    active?: BoolWithAggregatesFilter<"health_insurance_plan"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"health_insurance_plan"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"health_insurance_plan"> | Date | string
+  }
+
+  export type user_health_insurance_planWhereInput = {
+    AND?: user_health_insurance_planWhereInput | user_health_insurance_planWhereInput[]
+    OR?: user_health_insurance_planWhereInput[]
+    NOT?: user_health_insurance_planWhereInput | user_health_insurance_planWhereInput[]
+    id?: StringFilter<"user_health_insurance_plan"> | string
+    userId?: StringFilter<"user_health_insurance_plan"> | string
+    healthInsurancePlanId?: StringFilter<"user_health_insurance_plan"> | string
+    createdAt?: DateTimeFilter<"user_health_insurance_plan"> | Date | string
+    user?: XOR<UserScalarRelationFilter, userWhereInput>
+    healthInsurancePlan?: XOR<Health_insurance_planScalarRelationFilter, health_insurance_planWhereInput>
+  }
+
+  export type user_health_insurance_planOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
+    user?: userOrderByWithRelationInput
+    healthInsurancePlan?: health_insurance_planOrderByWithRelationInput
+  }
+
+  export type user_health_insurance_planWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_healthInsurancePlanId?: user_health_insurance_planUserIdHealthInsurancePlanIdCompoundUniqueInput
+    AND?: user_health_insurance_planWhereInput | user_health_insurance_planWhereInput[]
+    OR?: user_health_insurance_planWhereInput[]
+    NOT?: user_health_insurance_planWhereInput | user_health_insurance_planWhereInput[]
+    userId?: StringFilter<"user_health_insurance_plan"> | string
+    healthInsurancePlanId?: StringFilter<"user_health_insurance_plan"> | string
+    createdAt?: DateTimeFilter<"user_health_insurance_plan"> | Date | string
+    user?: XOR<UserScalarRelationFilter, userWhereInput>
+    healthInsurancePlan?: XOR<Health_insurance_planScalarRelationFilter, health_insurance_planWhereInput>
+  }, "id" | "userId_healthInsurancePlanId">
+
+  export type user_health_insurance_planOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
+    _count?: user_health_insurance_planCountOrderByAggregateInput
+    _max?: user_health_insurance_planMaxOrderByAggregateInput
+    _min?: user_health_insurance_planMinOrderByAggregateInput
+  }
+
+  export type user_health_insurance_planScalarWhereWithAggregatesInput = {
+    AND?: user_health_insurance_planScalarWhereWithAggregatesInput | user_health_insurance_planScalarWhereWithAggregatesInput[]
+    OR?: user_health_insurance_planScalarWhereWithAggregatesInput[]
+    NOT?: user_health_insurance_planScalarWhereWithAggregatesInput | user_health_insurance_planScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"user_health_insurance_plan"> | string
+    userId?: StringWithAggregatesFilter<"user_health_insurance_plan"> | string
+    healthInsurancePlanId?: StringWithAggregatesFilter<"user_health_insurance_plan"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"user_health_insurance_plan"> | Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planWhereInput = {
+    AND?: healthcare_provider_health_insurance_planWhereInput | healthcare_provider_health_insurance_planWhereInput[]
+    OR?: healthcare_provider_health_insurance_planWhereInput[]
+    NOT?: healthcare_provider_health_insurance_planWhereInput | healthcare_provider_health_insurance_planWhereInput[]
+    id?: StringFilter<"healthcare_provider_health_insurance_plan"> | string
+    healthcareProviderId?: StringFilter<"healthcare_provider_health_insurance_plan"> | string
+    healthInsurancePlanId?: StringFilter<"healthcare_provider_health_insurance_plan"> | string
+    createdAt?: DateTimeFilter<"healthcare_provider_health_insurance_plan"> | Date | string
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    healthInsurancePlan?: XOR<Health_insurance_planScalarRelationFilter, health_insurance_planWhereInput>
+  }
+
+  export type healthcare_provider_health_insurance_planOrderByWithRelationInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
+    healthcareProvider?: userOrderByWithRelationInput
+    healthInsurancePlan?: health_insurance_planOrderByWithRelationInput
+  }
+
+  export type healthcare_provider_health_insurance_planWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    healthcareProviderId_healthInsurancePlanId?: healthcare_provider_health_insurance_planHealthcareProviderIdHealthInsurancePlanIdCompoundUniqueInput
+    AND?: healthcare_provider_health_insurance_planWhereInput | healthcare_provider_health_insurance_planWhereInput[]
+    OR?: healthcare_provider_health_insurance_planWhereInput[]
+    NOT?: healthcare_provider_health_insurance_planWhereInput | healthcare_provider_health_insurance_planWhereInput[]
+    healthcareProviderId?: StringFilter<"healthcare_provider_health_insurance_plan"> | string
+    healthInsurancePlanId?: StringFilter<"healthcare_provider_health_insurance_plan"> | string
+    createdAt?: DateTimeFilter<"healthcare_provider_health_insurance_plan"> | Date | string
+    healthcareProvider?: XOR<UserScalarRelationFilter, userWhereInput>
+    healthInsurancePlan?: XOR<Health_insurance_planScalarRelationFilter, health_insurance_planWhereInput>
+  }, "id" | "healthcareProviderId_healthInsurancePlanId">
+
+  export type healthcare_provider_health_insurance_planOrderByWithAggregationInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
+    _count?: healthcare_provider_health_insurance_planCountOrderByAggregateInput
+    _max?: healthcare_provider_health_insurance_planMaxOrderByAggregateInput
+    _min?: healthcare_provider_health_insurance_planMinOrderByAggregateInput
+  }
+
+  export type healthcare_provider_health_insurance_planScalarWhereWithAggregatesInput = {
+    AND?: healthcare_provider_health_insurance_planScalarWhereWithAggregatesInput | healthcare_provider_health_insurance_planScalarWhereWithAggregatesInput[]
+    OR?: healthcare_provider_health_insurance_planScalarWhereWithAggregatesInput[]
+    NOT?: healthcare_provider_health_insurance_planScalarWhereWithAggregatesInput | healthcare_provider_health_insurance_planScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"healthcare_provider_health_insurance_plan"> | string
+    healthcareProviderId?: StringWithAggregatesFilter<"healthcare_provider_health_insurance_plan"> | string
+    healthInsurancePlanId?: StringWithAggregatesFilter<"healthcare_provider_health_insurance_plan"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"healthcare_provider_health_insurance_plan"> | Date | string
   }
 
   export type healthcare_provider_scheduleWhereInput = {
@@ -51711,7 +55471,6 @@ export namespace Prisma {
     allergies?: StringNullableFilter<"patient_profile"> | string | null
     surgeries?: StringNullableFilter<"patient_profile"> | string | null
     familyHistory?: StringNullableFilter<"patient_profile"> | string | null
-    lifestyleNotes?: StringNullableFilter<"patient_profile"> | string | null
     emergencyContactName?: StringNullableFilter<"patient_profile"> | string | null
     emergencyContactPhone?: StringNullableFilter<"patient_profile"> | string | null
     createdAt?: DateTimeFilter<"patient_profile"> | Date | string
@@ -51743,7 +55502,6 @@ export namespace Prisma {
     allergies?: SortOrderInput | SortOrder
     surgeries?: SortOrderInput | SortOrder
     familyHistory?: SortOrderInput | SortOrder
-    lifestyleNotes?: SortOrderInput | SortOrder
     emergencyContactName?: SortOrderInput | SortOrder
     emergencyContactPhone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -51778,7 +55536,6 @@ export namespace Prisma {
     allergies?: StringNullableFilter<"patient_profile"> | string | null
     surgeries?: StringNullableFilter<"patient_profile"> | string | null
     familyHistory?: StringNullableFilter<"patient_profile"> | string | null
-    lifestyleNotes?: StringNullableFilter<"patient_profile"> | string | null
     emergencyContactName?: StringNullableFilter<"patient_profile"> | string | null
     emergencyContactPhone?: StringNullableFilter<"patient_profile"> | string | null
     createdAt?: DateTimeFilter<"patient_profile"> | Date | string
@@ -51810,7 +55567,6 @@ export namespace Prisma {
     allergies?: SortOrderInput | SortOrder
     surgeries?: SortOrderInput | SortOrder
     familyHistory?: SortOrderInput | SortOrder
-    lifestyleNotes?: SortOrderInput | SortOrder
     emergencyContactName?: SortOrderInput | SortOrder
     emergencyContactPhone?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -51843,7 +55599,6 @@ export namespace Prisma {
     allergies?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
     surgeries?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
     familyHistory?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
-    lifestyleNotes?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
     emergencyContactName?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
     emergencyContactPhone?: StringNullableWithAggregatesFilter<"patient_profile"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"patient_profile"> | Date | string
@@ -52272,7 +56027,6 @@ export namespace Prisma {
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
-    acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntFilter<"user"> | number
     appointmentConfirmationReminderHoursBefore?: IntFilter<"user"> | number
@@ -52295,6 +56049,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"user"> | Date | string
     professionalCouncil?: XOR<Professional_councilNullableScalarRelationFilter, professional_councilWhereInput> | null
     verifiedByUser?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
+    healthInsurancePlans?: User_health_insurance_planListRelationFilter
+    acceptedHealthInsurancePlans?: Healthcare_provider_health_insurance_planListRelationFilter
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
     ownedClinics?: ClinicListRelationFilter
@@ -52378,7 +56134,6 @@ export namespace Prisma {
     targetAudiences?: SortOrder
     serviceModalities?: SortOrder
     homeCareRadiusKm?: SortOrderInput | SortOrder
-    acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
     bookingAvailabilityDays?: SortOrder
     appointmentConfirmationReminderHoursBefore?: SortOrder
@@ -52401,6 +56156,8 @@ export namespace Prisma {
     updatedAt?: SortOrder
     professionalCouncil?: professional_councilOrderByWithRelationInput
     verifiedByUser?: userOrderByWithRelationInput
+    healthInsurancePlans?: user_health_insurance_planOrderByRelationAggregateInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planOrderByRelationAggregateInput
     sessions?: sessionOrderByRelationAggregateInput
     accounts?: accountOrderByRelationAggregateInput
     ownedClinics?: clinicOrderByRelationAggregateInput
@@ -52487,7 +56244,6 @@ export namespace Prisma {
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
-    acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntFilter<"user"> | number
     appointmentConfirmationReminderHoursBefore?: IntFilter<"user"> | number
@@ -52510,6 +56266,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"user"> | Date | string
     professionalCouncil?: XOR<Professional_councilNullableScalarRelationFilter, professional_councilWhereInput> | null
     verifiedByUser?: XOR<UserNullableScalarRelationFilter, userWhereInput> | null
+    healthInsurancePlans?: User_health_insurance_planListRelationFilter
+    acceptedHealthInsurancePlans?: Healthcare_provider_health_insurance_planListRelationFilter
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
     ownedClinics?: ClinicListRelationFilter
@@ -52593,7 +56351,6 @@ export namespace Prisma {
     targetAudiences?: SortOrder
     serviceModalities?: SortOrder
     homeCareRadiusKm?: SortOrderInput | SortOrder
-    acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
     bookingAvailabilityDays?: SortOrder
     appointmentConfirmationReminderHoursBefore?: SortOrder
@@ -52666,7 +56423,6 @@ export namespace Prisma {
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
     homeCareRadiusKm?: IntNullableWithAggregatesFilter<"user"> | number | null
-    acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntWithAggregatesFilter<"user"> | number
     appointmentConfirmationReminderHoursBefore?: IntWithAggregatesFilter<"user"> | number
@@ -54377,7 +58133,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -54395,7 +58150,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -54411,7 +58165,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54429,7 +58182,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54446,7 +58198,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -54462,7 +58213,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -54479,11 +58229,168 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type health_insurance_planCreateInput = {
+    id?: string
+    name: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userLinks?: user_health_insurance_planCreateNestedManyWithoutHealthInsurancePlanInput
+    providerLinks?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthInsurancePlanInput
+  }
+
+  export type health_insurance_planUncheckedCreateInput = {
+    id?: string
+    name: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userLinks?: user_health_insurance_planUncheckedCreateNestedManyWithoutHealthInsurancePlanInput
+    providerLinks?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthInsurancePlanInput
+  }
+
+  export type health_insurance_planUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userLinks?: user_health_insurance_planUpdateManyWithoutHealthInsurancePlanNestedInput
+    providerLinks?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthInsurancePlanNestedInput
+  }
+
+  export type health_insurance_planUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userLinks?: user_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanNestedInput
+    providerLinks?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanNestedInput
+  }
+
+  export type health_insurance_planCreateManyInput = {
+    id?: string
+    name: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type health_insurance_planUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type health_insurance_planUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_health_insurance_planCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    user: userCreateNestedOneWithoutHealthInsurancePlansInput
+    healthInsurancePlan: health_insurance_planCreateNestedOneWithoutUserLinksInput
+  }
+
+  export type user_health_insurance_planUncheckedCreateInput = {
+    id?: string
+    userId: string
+    healthInsurancePlanId: string
+    createdAt?: Date | string
+  }
+
+  export type user_health_insurance_planUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: userUpdateOneRequiredWithoutHealthInsurancePlansNestedInput
+    healthInsurancePlan?: health_insurance_planUpdateOneRequiredWithoutUserLinksNestedInput
+  }
+
+  export type user_health_insurance_planUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    healthInsurancePlanId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_health_insurance_planCreateManyInput = {
+    id?: string
+    userId: string
+    healthInsurancePlanId: string
+    createdAt?: Date | string
+  }
+
+  export type user_health_insurance_planUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_health_insurance_planUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    healthInsurancePlanId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    healthcareProvider: userCreateNestedOneWithoutAcceptedHealthInsurancePlansInput
+    healthInsurancePlan: health_insurance_planCreateNestedOneWithoutProviderLinksInput
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedCreateInput = {
+    id?: string
+    healthcareProviderId: string
+    healthInsurancePlanId: string
+    createdAt?: Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProvider?: userUpdateOneRequiredWithoutAcceptedHealthInsurancePlansNestedInput
+    healthInsurancePlan?: health_insurance_planUpdateOneRequiredWithoutProviderLinksNestedInput
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    healthInsurancePlanId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planCreateManyInput = {
+    id?: string
+    healthcareProviderId: string
+    healthInsurancePlanId: string
+    createdAt?: Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    healthInsurancePlanId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type healthcare_provider_scheduleCreateInput = {
@@ -55168,7 +59075,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -55200,7 +59106,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -55228,7 +59133,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55260,7 +59164,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55290,7 +59193,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -55315,7 +59217,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55342,7 +59243,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -55791,7 +59691,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -55814,6 +59713,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -55897,7 +59798,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -55918,6 +59818,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -55999,7 +59901,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -56022,6 +59923,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -56105,7 +60008,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -56126,6 +60028,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -56209,7 +60113,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -56272,7 +60175,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -56337,7 +60239,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -57857,7 +61758,6 @@ export namespace Prisma {
     allergies?: SortOrder
     surgeries?: SortOrder
     familyHistory?: SortOrder
-    lifestyleNotes?: SortOrder
     emergencyContactName?: SortOrder
     emergencyContactPhone?: SortOrder
     createdAt?: SortOrder
@@ -57874,7 +61774,6 @@ export namespace Prisma {
     allergies?: SortOrder
     surgeries?: SortOrder
     familyHistory?: SortOrder
-    lifestyleNotes?: SortOrder
     emergencyContactName?: SortOrder
     emergencyContactPhone?: SortOrder
     createdAt?: SortOrder
@@ -57891,11 +61790,111 @@ export namespace Prisma {
     allergies?: SortOrder
     surgeries?: SortOrder
     familyHistory?: SortOrder
-    lifestyleNotes?: SortOrder
     emergencyContactName?: SortOrder
     emergencyContactPhone?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type User_health_insurance_planListRelationFilter = {
+    every?: user_health_insurance_planWhereInput
+    some?: user_health_insurance_planWhereInput
+    none?: user_health_insurance_planWhereInput
+  }
+
+  export type Healthcare_provider_health_insurance_planListRelationFilter = {
+    every?: healthcare_provider_health_insurance_planWhereInput
+    some?: healthcare_provider_health_insurance_planWhereInput
+    none?: healthcare_provider_health_insurance_planWhereInput
+  }
+
+  export type user_health_insurance_planOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type healthcare_provider_health_insurance_planOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type health_insurance_planCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type health_insurance_planMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type health_insurance_planMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type Health_insurance_planScalarRelationFilter = {
+    is?: health_insurance_planWhereInput
+    isNot?: health_insurance_planWhereInput
+  }
+
+  export type user_health_insurance_planUserIdHealthInsurancePlanIdCompoundUniqueInput = {
+    userId: string
+    healthInsurancePlanId: string
+  }
+
+  export type user_health_insurance_planCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type user_health_insurance_planMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type user_health_insurance_planMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type healthcare_provider_health_insurance_planHealthcareProviderIdHealthInsurancePlanIdCompoundUniqueInput = {
+    healthcareProviderId: string
+    healthInsurancePlanId: string
+  }
+
+  export type healthcare_provider_health_insurance_planCountOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type healthcare_provider_health_insurance_planMaxOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type healthcare_provider_health_insurance_planMinOrderByAggregateInput = {
+    id?: SortOrder
+    healthcareProviderId?: SortOrder
+    healthInsurancePlanId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type healthcare_provider_scheduleCountOrderByAggregateInput = {
@@ -58396,7 +62395,6 @@ export namespace Prisma {
     allergies?: SortOrder
     surgeries?: SortOrder
     familyHistory?: SortOrder
-    lifestyleNotes?: SortOrder
     emergencyContactName?: SortOrder
     emergencyContactPhone?: SortOrder
     createdAt?: SortOrder
@@ -58423,7 +62421,6 @@ export namespace Prisma {
     allergies?: SortOrder
     surgeries?: SortOrder
     familyHistory?: SortOrder
-    lifestyleNotes?: SortOrder
     emergencyContactName?: SortOrder
     emergencyContactPhone?: SortOrder
     createdAt?: SortOrder
@@ -58450,7 +62447,6 @@ export namespace Prisma {
     allergies?: SortOrder
     surgeries?: SortOrder
     familyHistory?: SortOrder
-    lifestyleNotes?: SortOrder
     emergencyContactName?: SortOrder
     emergencyContactPhone?: SortOrder
     createdAt?: SortOrder
@@ -58961,7 +62957,6 @@ export namespace Prisma {
     targetAudiences?: SortOrder
     serviceModalities?: SortOrder
     homeCareRadiusKm?: SortOrder
-    acceptedInsurance?: SortOrder
     paymentMethods?: SortOrder
     bookingAvailabilityDays?: SortOrder
     appointmentConfirmationReminderHoursBefore?: SortOrder
@@ -60375,6 +64370,146 @@ export namespace Prisma {
     update?: XOR<XOR<userUpdateToOneWithWhereWithoutMedicalRecordInput, userUpdateWithoutMedicalRecordInput>, userUncheckedUpdateWithoutMedicalRecordInput>
   }
 
+  export type user_health_insurance_planCreateNestedManyWithoutHealthInsurancePlanInput = {
+    create?: XOR<user_health_insurance_planCreateWithoutHealthInsurancePlanInput, user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput> | user_health_insurance_planCreateWithoutHealthInsurancePlanInput[] | user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput[]
+    connectOrCreate?: user_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput | user_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput[]
+    createMany?: user_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope
+    connect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+  }
+
+  export type healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthInsurancePlanInput = {
+    create?: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput> | healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput[] | healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput[]
+    connectOrCreate?: healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput[]
+    createMany?: healthcare_provider_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope
+    connect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+  }
+
+  export type user_health_insurance_planUncheckedCreateNestedManyWithoutHealthInsurancePlanInput = {
+    create?: XOR<user_health_insurance_planCreateWithoutHealthInsurancePlanInput, user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput> | user_health_insurance_planCreateWithoutHealthInsurancePlanInput[] | user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput[]
+    connectOrCreate?: user_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput | user_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput[]
+    createMany?: user_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope
+    connect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthInsurancePlanInput = {
+    create?: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput> | healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput[] | healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput[]
+    connectOrCreate?: healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput[]
+    createMany?: healthcare_provider_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope
+    connect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+  }
+
+  export type user_health_insurance_planUpdateManyWithoutHealthInsurancePlanNestedInput = {
+    create?: XOR<user_health_insurance_planCreateWithoutHealthInsurancePlanInput, user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput> | user_health_insurance_planCreateWithoutHealthInsurancePlanInput[] | user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput[]
+    connectOrCreate?: user_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput | user_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput[]
+    upsert?: user_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput | user_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput[]
+    createMany?: user_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope
+    set?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    disconnect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    delete?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    connect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    update?: user_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput | user_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput[]
+    updateMany?: user_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput | user_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput[]
+    deleteMany?: user_health_insurance_planScalarWhereInput | user_health_insurance_planScalarWhereInput[]
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateManyWithoutHealthInsurancePlanNestedInput = {
+    create?: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput> | healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput[] | healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput[]
+    connectOrCreate?: healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput[]
+    upsert?: healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput[]
+    createMany?: healthcare_provider_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope
+    set?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    disconnect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    delete?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    connect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    update?: healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput[]
+    updateMany?: healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput[]
+    deleteMany?: healthcare_provider_health_insurance_planScalarWhereInput | healthcare_provider_health_insurance_planScalarWhereInput[]
+  }
+
+  export type user_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanNestedInput = {
+    create?: XOR<user_health_insurance_planCreateWithoutHealthInsurancePlanInput, user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput> | user_health_insurance_planCreateWithoutHealthInsurancePlanInput[] | user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput[]
+    connectOrCreate?: user_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput | user_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput[]
+    upsert?: user_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput | user_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput[]
+    createMany?: user_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope
+    set?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    disconnect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    delete?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    connect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    update?: user_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput | user_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput[]
+    updateMany?: user_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput | user_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput[]
+    deleteMany?: user_health_insurance_planScalarWhereInput | user_health_insurance_planScalarWhereInput[]
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanNestedInput = {
+    create?: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput> | healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput[] | healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput[]
+    connectOrCreate?: healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput[]
+    upsert?: healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput[]
+    createMany?: healthcare_provider_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope
+    set?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    disconnect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    delete?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    connect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    update?: healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput[]
+    updateMany?: healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput | healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput[]
+    deleteMany?: healthcare_provider_health_insurance_planScalarWhereInput | healthcare_provider_health_insurance_planScalarWhereInput[]
+  }
+
+  export type userCreateNestedOneWithoutHealthInsurancePlansInput = {
+    create?: XOR<userCreateWithoutHealthInsurancePlansInput, userUncheckedCreateWithoutHealthInsurancePlansInput>
+    connectOrCreate?: userCreateOrConnectWithoutHealthInsurancePlansInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type health_insurance_planCreateNestedOneWithoutUserLinksInput = {
+    create?: XOR<health_insurance_planCreateWithoutUserLinksInput, health_insurance_planUncheckedCreateWithoutUserLinksInput>
+    connectOrCreate?: health_insurance_planCreateOrConnectWithoutUserLinksInput
+    connect?: health_insurance_planWhereUniqueInput
+  }
+
+  export type userUpdateOneRequiredWithoutHealthInsurancePlansNestedInput = {
+    create?: XOR<userCreateWithoutHealthInsurancePlansInput, userUncheckedCreateWithoutHealthInsurancePlansInput>
+    connectOrCreate?: userCreateOrConnectWithoutHealthInsurancePlansInput
+    upsert?: userUpsertWithoutHealthInsurancePlansInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutHealthInsurancePlansInput, userUpdateWithoutHealthInsurancePlansInput>, userUncheckedUpdateWithoutHealthInsurancePlansInput>
+  }
+
+  export type health_insurance_planUpdateOneRequiredWithoutUserLinksNestedInput = {
+    create?: XOR<health_insurance_planCreateWithoutUserLinksInput, health_insurance_planUncheckedCreateWithoutUserLinksInput>
+    connectOrCreate?: health_insurance_planCreateOrConnectWithoutUserLinksInput
+    upsert?: health_insurance_planUpsertWithoutUserLinksInput
+    connect?: health_insurance_planWhereUniqueInput
+    update?: XOR<XOR<health_insurance_planUpdateToOneWithWhereWithoutUserLinksInput, health_insurance_planUpdateWithoutUserLinksInput>, health_insurance_planUncheckedUpdateWithoutUserLinksInput>
+  }
+
+  export type userCreateNestedOneWithoutAcceptedHealthInsurancePlansInput = {
+    create?: XOR<userCreateWithoutAcceptedHealthInsurancePlansInput, userUncheckedCreateWithoutAcceptedHealthInsurancePlansInput>
+    connectOrCreate?: userCreateOrConnectWithoutAcceptedHealthInsurancePlansInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type health_insurance_planCreateNestedOneWithoutProviderLinksInput = {
+    create?: XOR<health_insurance_planCreateWithoutProviderLinksInput, health_insurance_planUncheckedCreateWithoutProviderLinksInput>
+    connectOrCreate?: health_insurance_planCreateOrConnectWithoutProviderLinksInput
+    connect?: health_insurance_planWhereUniqueInput
+  }
+
+  export type userUpdateOneRequiredWithoutAcceptedHealthInsurancePlansNestedInput = {
+    create?: XOR<userCreateWithoutAcceptedHealthInsurancePlansInput, userUncheckedCreateWithoutAcceptedHealthInsurancePlansInput>
+    connectOrCreate?: userCreateOrConnectWithoutAcceptedHealthInsurancePlansInput
+    upsert?: userUpsertWithoutAcceptedHealthInsurancePlansInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutAcceptedHealthInsurancePlansInput, userUpdateWithoutAcceptedHealthInsurancePlansInput>, userUncheckedUpdateWithoutAcceptedHealthInsurancePlansInput>
+  }
+
+  export type health_insurance_planUpdateOneRequiredWithoutProviderLinksNestedInput = {
+    create?: XOR<health_insurance_planCreateWithoutProviderLinksInput, health_insurance_planUncheckedCreateWithoutProviderLinksInput>
+    connectOrCreate?: health_insurance_planCreateOrConnectWithoutProviderLinksInput
+    upsert?: health_insurance_planUpsertWithoutProviderLinksInput
+    connect?: health_insurance_planWhereUniqueInput
+    update?: XOR<XOR<health_insurance_planUpdateToOneWithWhereWithoutProviderLinksInput, health_insurance_planUpdateWithoutProviderLinksInput>, health_insurance_planUncheckedUpdateWithoutProviderLinksInput>
+  }
+
   export type userCreateNestedOneWithoutSchedulesInput = {
     create?: XOR<userCreateWithoutSchedulesInput, userUncheckedCreateWithoutSchedulesInput>
     connectOrCreate?: userCreateOrConnectWithoutSchedulesInput
@@ -61047,10 +65182,6 @@ export namespace Prisma {
     set: string[]
   }
 
-  export type userCreateacceptedInsuranceInput = {
-    set: string[]
-  }
-
   export type userCreatepaymentMethodsInput = {
     set: string[]
   }
@@ -61069,6 +65200,20 @@ export namespace Prisma {
     create?: XOR<userCreateWithoutVerifiedProvidersInput, userUncheckedCreateWithoutVerifiedProvidersInput>
     connectOrCreate?: userCreateOrConnectWithoutVerifiedProvidersInput
     connect?: userWhereUniqueInput
+  }
+
+  export type user_health_insurance_planCreateNestedManyWithoutUserInput = {
+    create?: XOR<user_health_insurance_planCreateWithoutUserInput, user_health_insurance_planUncheckedCreateWithoutUserInput> | user_health_insurance_planCreateWithoutUserInput[] | user_health_insurance_planUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_health_insurance_planCreateOrConnectWithoutUserInput | user_health_insurance_planCreateOrConnectWithoutUserInput[]
+    createMany?: user_health_insurance_planCreateManyUserInputEnvelope
+    connect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+  }
+
+  export type healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput> | healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput[] | healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: healthcare_provider_health_insurance_planCreateManyHealthcareProviderInputEnvelope
+    connect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
   }
 
   export type sessionCreateNestedManyWithoutUserInput = {
@@ -61341,6 +65486,20 @@ export namespace Prisma {
     connectOrCreate?: provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput | provider_verification_document_access_logCreateOrConnectWithoutAdminUserInput[]
     createMany?: provider_verification_document_access_logCreateManyAdminUserInputEnvelope
     connect?: provider_verification_document_access_logWhereUniqueInput | provider_verification_document_access_logWhereUniqueInput[]
+  }
+
+  export type user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<user_health_insurance_planCreateWithoutUserInput, user_health_insurance_planUncheckedCreateWithoutUserInput> | user_health_insurance_planCreateWithoutUserInput[] | user_health_insurance_planUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_health_insurance_planCreateOrConnectWithoutUserInput | user_health_insurance_planCreateOrConnectWithoutUserInput[]
+    createMany?: user_health_insurance_planCreateManyUserInputEnvelope
+    connect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput = {
+    create?: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput> | healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput[] | healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthcareProviderInput[]
+    createMany?: healthcare_provider_health_insurance_planCreateManyHealthcareProviderInputEnvelope
+    connect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
   }
 
   export type sessionUncheckedCreateNestedManyWithoutUserInput = {
@@ -61638,11 +65797,6 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type userUpdateacceptedInsuranceInput = {
-    set?: string[]
-    push?: string | string[]
-  }
-
   export type userUpdatepaymentMethodsInput = {
     set?: string[]
     push?: string | string[]
@@ -61675,6 +65829,34 @@ export namespace Prisma {
     delete?: userWhereInput | boolean
     connect?: userWhereUniqueInput
     update?: XOR<XOR<userUpdateToOneWithWhereWithoutVerifiedProvidersInput, userUpdateWithoutVerifiedProvidersInput>, userUncheckedUpdateWithoutVerifiedProvidersInput>
+  }
+
+  export type user_health_insurance_planUpdateManyWithoutUserNestedInput = {
+    create?: XOR<user_health_insurance_planCreateWithoutUserInput, user_health_insurance_planUncheckedCreateWithoutUserInput> | user_health_insurance_planCreateWithoutUserInput[] | user_health_insurance_planUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_health_insurance_planCreateOrConnectWithoutUserInput | user_health_insurance_planCreateOrConnectWithoutUserInput[]
+    upsert?: user_health_insurance_planUpsertWithWhereUniqueWithoutUserInput | user_health_insurance_planUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: user_health_insurance_planCreateManyUserInputEnvelope
+    set?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    disconnect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    delete?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    connect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    update?: user_health_insurance_planUpdateWithWhereUniqueWithoutUserInput | user_health_insurance_planUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: user_health_insurance_planUpdateManyWithWhereWithoutUserInput | user_health_insurance_planUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: user_health_insurance_planScalarWhereInput | user_health_insurance_planScalarWhereInput[]
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput> | healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput[] | healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: healthcare_provider_health_insurance_planCreateManyHealthcareProviderInputEnvelope
+    set?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    disconnect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    delete?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    connect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    update?: healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: healthcare_provider_health_insurance_planScalarWhereInput | healthcare_provider_health_insurance_planScalarWhereInput[]
   }
 
   export type sessionUpdateManyWithoutUserNestedInput = {
@@ -62217,6 +66399,34 @@ export namespace Prisma {
     update?: provider_verification_document_access_logUpdateWithWhereUniqueWithoutAdminUserInput | provider_verification_document_access_logUpdateWithWhereUniqueWithoutAdminUserInput[]
     updateMany?: provider_verification_document_access_logUpdateManyWithWhereWithoutAdminUserInput | provider_verification_document_access_logUpdateManyWithWhereWithoutAdminUserInput[]
     deleteMany?: provider_verification_document_access_logScalarWhereInput | provider_verification_document_access_logScalarWhereInput[]
+  }
+
+  export type user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<user_health_insurance_planCreateWithoutUserInput, user_health_insurance_planUncheckedCreateWithoutUserInput> | user_health_insurance_planCreateWithoutUserInput[] | user_health_insurance_planUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_health_insurance_planCreateOrConnectWithoutUserInput | user_health_insurance_planCreateOrConnectWithoutUserInput[]
+    upsert?: user_health_insurance_planUpsertWithWhereUniqueWithoutUserInput | user_health_insurance_planUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: user_health_insurance_planCreateManyUserInputEnvelope
+    set?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    disconnect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    delete?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    connect?: user_health_insurance_planWhereUniqueInput | user_health_insurance_planWhereUniqueInput[]
+    update?: user_health_insurance_planUpdateWithWhereUniqueWithoutUserInput | user_health_insurance_planUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: user_health_insurance_planUpdateManyWithWhereWithoutUserInput | user_health_insurance_planUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: user_health_insurance_planScalarWhereInput | user_health_insurance_planScalarWhereInput[]
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput = {
+    create?: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput> | healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput[] | healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput[]
+    connectOrCreate?: healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthcareProviderInput[]
+    upsert?: healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthcareProviderInput[]
+    createMany?: healthcare_provider_health_insurance_planCreateManyHealthcareProviderInputEnvelope
+    set?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    disconnect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    delete?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    connect?: healthcare_provider_health_insurance_planWhereUniqueInput | healthcare_provider_health_insurance_planWhereUniqueInput[]
+    update?: healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthcareProviderInput[]
+    updateMany?: healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthcareProviderInput | healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthcareProviderInput[]
+    deleteMany?: healthcare_provider_health_insurance_planScalarWhereInput | healthcare_provider_health_insurance_planScalarWhereInput[]
   }
 
   export type sessionUncheckedUpdateManyWithoutUserNestedInput = {
@@ -63477,7 +67687,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -63500,6 +67709,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
     clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
@@ -63582,7 +67793,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -63603,6 +67813,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
     clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
@@ -63699,7 +67911,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -63722,6 +67933,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
     clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
@@ -63804,7 +68017,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -63825,6 +68037,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
     clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
@@ -64117,7 +68331,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -64140,6 +68353,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -64222,7 +68437,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -64243,6 +68457,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -64306,7 +68522,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -64337,7 +68552,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -64391,7 +68605,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -64414,6 +68627,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -64496,7 +68711,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -64517,6 +68731,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -64670,7 +68886,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -64693,6 +68908,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -64775,7 +68992,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -64796,6 +69012,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -65061,7 +69279,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -65084,6 +69301,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -65166,7 +69385,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -65187,6 +69405,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -65256,7 +69476,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -65287,7 +69506,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -65347,7 +69565,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -65370,6 +69587,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -65452,7 +69671,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -65473,6 +69691,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -65644,7 +69864,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -65667,6 +69886,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -65749,7 +69970,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -65770,6 +69990,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -66086,7 +70308,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -66109,6 +70330,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -66191,7 +70414,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -66212,6 +70434,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -66275,7 +70499,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -66306,7 +70529,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -66360,7 +70582,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -66383,6 +70604,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -66465,7 +70688,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -66486,6 +70708,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -66655,7 +70879,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -66678,6 +70901,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -66760,7 +70985,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -66781,6 +71005,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -66850,7 +71076,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66881,7 +71106,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -66941,7 +71165,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -66964,6 +71187,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -67046,7 +71271,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -67067,6 +71291,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -67214,7 +71440,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -67237,6 +71462,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -67319,7 +71546,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -67340,6 +71566,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -67509,7 +71737,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -67532,6 +71759,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -67614,7 +71843,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -67635,6 +71863,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -67715,7 +71945,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -67738,6 +71967,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -67820,7 +72051,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -67841,6 +72071,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -67904,7 +72136,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -67935,7 +72166,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -67989,7 +72219,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -68012,6 +72241,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -68094,7 +72325,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -68115,6 +72345,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -68200,7 +72432,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -68223,6 +72454,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -68305,7 +72538,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -68326,6 +72558,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -68544,7 +72778,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -68567,6 +72800,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -68649,7 +72884,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -68670,6 +72904,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -68739,7 +72975,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -68770,7 +73005,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -68830,7 +73064,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -68853,6 +73086,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -68935,7 +73170,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -68956,6 +73190,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -69047,7 +73283,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -69070,6 +73305,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -69152,7 +73389,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -69173,6 +73409,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -69705,7 +73943,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -69728,6 +73965,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -69810,7 +74049,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -69831,6 +74069,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -69916,7 +74156,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -69939,6 +74178,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -70021,7 +74262,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -70042,6 +74282,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -70160,7 +74402,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -70183,6 +74424,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -70265,7 +74508,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -70286,6 +74528,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -70377,7 +74621,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -70400,6 +74643,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -70482,7 +74727,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -70503,6 +74747,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -70789,7 +75035,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -70812,6 +75057,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -70894,7 +75141,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -70915,6 +75161,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -71032,7 +75280,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -71055,6 +75302,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -71137,7 +75386,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -71158,6 +75406,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -71265,7 +75515,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -71288,6 +75537,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
@@ -71370,7 +75621,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -71391,6 +75641,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
@@ -71517,7 +75769,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -71540,6 +75791,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
@@ -71622,7 +75875,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -71643,6 +75895,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
@@ -71782,7 +76036,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -71805,6 +76058,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -71887,7 +76142,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -71908,6 +76162,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -72039,7 +76295,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -72062,6 +76317,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -72144,7 +76401,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -72165,6 +76421,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -72245,7 +76503,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -72268,6 +76525,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -72350,7 +76609,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -72371,6 +76629,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -72456,7 +76716,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -72479,6 +76738,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -72561,7 +76822,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -72582,6 +76842,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -72678,7 +76940,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -72701,6 +76962,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -72783,7 +77046,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -72804,6 +77066,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -72895,7 +77159,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -72918,6 +77181,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -73000,7 +77265,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -73021,6 +77285,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -73101,7 +77367,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -73124,6 +77389,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -73206,7 +77473,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -73227,6 +77493,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -73323,7 +77591,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -73346,6 +77613,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -73428,7 +77697,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -73449,6 +77717,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -73487,6 +77757,1070 @@ export namespace Prisma {
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type user_health_insurance_planCreateWithoutHealthInsurancePlanInput = {
+    id?: string
+    createdAt?: Date | string
+    user: userCreateNestedOneWithoutHealthInsurancePlansInput
+  }
+
+  export type user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type user_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput = {
+    where: user_health_insurance_planWhereUniqueInput
+    create: XOR<user_health_insurance_planCreateWithoutHealthInsurancePlanInput, user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput>
+  }
+
+  export type user_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope = {
+    data: user_health_insurance_planCreateManyHealthInsurancePlanInput | user_health_insurance_planCreateManyHealthInsurancePlanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput = {
+    id?: string
+    createdAt?: Date | string
+    healthcareProvider: userCreateNestedOneWithoutAcceptedHealthInsurancePlansInput
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput = {
+    id?: string
+    healthcareProviderId: string
+    createdAt?: Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthInsurancePlanInput = {
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+    create: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput>
+  }
+
+  export type healthcare_provider_health_insurance_planCreateManyHealthInsurancePlanInputEnvelope = {
+    data: healthcare_provider_health_insurance_planCreateManyHealthInsurancePlanInput | healthcare_provider_health_insurance_planCreateManyHealthInsurancePlanInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type user_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput = {
+    where: user_health_insurance_planWhereUniqueInput
+    update: XOR<user_health_insurance_planUpdateWithoutHealthInsurancePlanInput, user_health_insurance_planUncheckedUpdateWithoutHealthInsurancePlanInput>
+    create: XOR<user_health_insurance_planCreateWithoutHealthInsurancePlanInput, user_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput>
+  }
+
+  export type user_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput = {
+    where: user_health_insurance_planWhereUniqueInput
+    data: XOR<user_health_insurance_planUpdateWithoutHealthInsurancePlanInput, user_health_insurance_planUncheckedUpdateWithoutHealthInsurancePlanInput>
+  }
+
+  export type user_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput = {
+    where: user_health_insurance_planScalarWhereInput
+    data: XOR<user_health_insurance_planUpdateManyMutationInput, user_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanInput>
+  }
+
+  export type user_health_insurance_planScalarWhereInput = {
+    AND?: user_health_insurance_planScalarWhereInput | user_health_insurance_planScalarWhereInput[]
+    OR?: user_health_insurance_planScalarWhereInput[]
+    NOT?: user_health_insurance_planScalarWhereInput | user_health_insurance_planScalarWhereInput[]
+    id?: StringFilter<"user_health_insurance_plan"> | string
+    userId?: StringFilter<"user_health_insurance_plan"> | string
+    healthInsurancePlanId?: StringFilter<"user_health_insurance_plan"> | string
+    createdAt?: DateTimeFilter<"user_health_insurance_plan"> | Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthInsurancePlanInput = {
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+    update: XOR<healthcare_provider_health_insurance_planUpdateWithoutHealthInsurancePlanInput, healthcare_provider_health_insurance_planUncheckedUpdateWithoutHealthInsurancePlanInput>
+    create: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthInsurancePlanInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthInsurancePlanInput>
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthInsurancePlanInput = {
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+    data: XOR<healthcare_provider_health_insurance_planUpdateWithoutHealthInsurancePlanInput, healthcare_provider_health_insurance_planUncheckedUpdateWithoutHealthInsurancePlanInput>
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthInsurancePlanInput = {
+    where: healthcare_provider_health_insurance_planScalarWhereInput
+    data: XOR<healthcare_provider_health_insurance_planUpdateManyMutationInput, healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanInput>
+  }
+
+  export type healthcare_provider_health_insurance_planScalarWhereInput = {
+    AND?: healthcare_provider_health_insurance_planScalarWhereInput | healthcare_provider_health_insurance_planScalarWhereInput[]
+    OR?: healthcare_provider_health_insurance_planScalarWhereInput[]
+    NOT?: healthcare_provider_health_insurance_planScalarWhereInput | healthcare_provider_health_insurance_planScalarWhereInput[]
+    id?: StringFilter<"healthcare_provider_health_insurance_plan"> | string
+    healthcareProviderId?: StringFilter<"healthcare_provider_health_insurance_plan"> | string
+    healthInsurancePlanId?: StringFilter<"healthcare_provider_health_insurance_plan"> | string
+    createdAt?: DateTimeFilter<"healthcare_provider_health_insurance_plan"> | Date | string
+  }
+
+  export type userCreateWithoutHealthInsurancePlansInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    homeCareRadiusKm?: number | null
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
+    birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutHealthInsurancePlansInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    professionalCouncilId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    homeCareRadiusKm?: number | null
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
+    birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutHealthInsurancePlansInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutHealthInsurancePlansInput, userUncheckedCreateWithoutHealthInsurancePlansInput>
+  }
+
+  export type health_insurance_planCreateWithoutUserLinksInput = {
+    id?: string
+    name: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    providerLinks?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthInsurancePlanInput
+  }
+
+  export type health_insurance_planUncheckedCreateWithoutUserLinksInput = {
+    id?: string
+    name: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    providerLinks?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthInsurancePlanInput
+  }
+
+  export type health_insurance_planCreateOrConnectWithoutUserLinksInput = {
+    where: health_insurance_planWhereUniqueInput
+    create: XOR<health_insurance_planCreateWithoutUserLinksInput, health_insurance_planUncheckedCreateWithoutUserLinksInput>
+  }
+
+  export type userUpsertWithoutHealthInsurancePlansInput = {
+    update: XOR<userUpdateWithoutHealthInsurancePlansInput, userUncheckedUpdateWithoutHealthInsurancePlansInput>
+    create: XOR<userCreateWithoutHealthInsurancePlansInput, userUncheckedCreateWithoutHealthInsurancePlansInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutHealthInsurancePlansInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutHealthInsurancePlansInput, userUncheckedUpdateWithoutHealthInsurancePlansInput>
+  }
+
+  export type userUpdateWithoutHealthInsurancePlansInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutHealthInsurancePlansInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type health_insurance_planUpsertWithoutUserLinksInput = {
+    update: XOR<health_insurance_planUpdateWithoutUserLinksInput, health_insurance_planUncheckedUpdateWithoutUserLinksInput>
+    create: XOR<health_insurance_planCreateWithoutUserLinksInput, health_insurance_planUncheckedCreateWithoutUserLinksInput>
+    where?: health_insurance_planWhereInput
+  }
+
+  export type health_insurance_planUpdateToOneWithWhereWithoutUserLinksInput = {
+    where?: health_insurance_planWhereInput
+    data: XOR<health_insurance_planUpdateWithoutUserLinksInput, health_insurance_planUncheckedUpdateWithoutUserLinksInput>
+  }
+
+  export type health_insurance_planUpdateWithoutUserLinksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    providerLinks?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthInsurancePlanNestedInput
+  }
+
+  export type health_insurance_planUncheckedUpdateWithoutUserLinksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    providerLinks?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanNestedInput
+  }
+
+  export type userCreateWithoutAcceptedHealthInsurancePlansInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    homeCareRadiusKm?: number | null
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
+    birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
+    verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    sessions?: sessionCreateNestedManyWithoutUserInput
+    accounts?: accountCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordCreateNestedOneWithoutCustomerInput
+    ratings?: ratingCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userUncheckedCreateWithoutAcceptedHealthInsurancePlansInput = {
+    id?: string
+    name: string
+    firstName?: string | null
+    lastName?: string | null
+    phone?: string | null
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.UserRole
+    onboardingCompleted?: boolean
+    onboardingStep?: $Enums.OnboardingStep
+    cpf?: string | null
+    dateOfBirth?: Date | string | null
+    displayName?: string | null
+    document?: string | null
+    birthDate?: Date | string | null
+    gender?: string | null
+    languages?: userCreatelanguagesInput | string[]
+    specialty?: string | null
+    professionalCategory?: string | null
+    professionalId?: string | null
+    professionalCouncilId?: string | null
+    licenseState?: string | null
+    licenseDocumentKey?: string | null
+    licenseDocumentFileName?: string | null
+    licenseDocumentMimeType?: string | null
+    licenseDocumentSize?: number | null
+    licenseDocumentSha256?: string | null
+    licenseDocumentUploadedAt?: Date | string | null
+    verificationStatus?: string
+    verificationRejectionReason?: string | null
+    verifiedAt?: Date | string | null
+    verifiedByUserId?: string | null
+    bio?: string | null
+    approach?: string | null
+    education?: string | null
+    certifications?: string | null
+    yearsOfExperience?: number | null
+    targetAudiences?: userCreatetargetAudiencesInput | string[]
+    serviceModalities?: userCreateserviceModalitiesInput | string[]
+    homeCareRadiusKm?: number | null
+    paymentMethods?: userCreatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: number
+    appointmentConfirmationReminderHoursBefore?: number
+    appointmentReminderHoursBefore?: number
+    birthdayGreetingEmailEnabled?: boolean
+    birthdayGreetingEmailSubjectTemplate?: string | null
+    birthdayGreetingEmailHtmlTemplate?: string | null
+    cancellationPolicy?: string | null
+    cancellationPolicyEnabled?: boolean
+    cancellationPolicyHoursBefore?: number | null
+    cancellationPolicyPenaltyType?: $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: number | null
+    cancellationPolicyPercentage?: number | null
+    cancellationPolicyRequiresJustification?: boolean
+    clinicPhotos?: userCreateclinicPhotosInput | string[]
+    termsAcceptedAt?: Date | string | null
+    lgpdConsentAt?: Date | string | null
+    professionalResponsibilityAcceptedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: accountUncheckedCreateNestedManyWithoutUserInput
+    ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
+    clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
+    customerAppointments?: appointmentUncheckedCreateNestedManyWithoutCustomerInput
+    healthcareProviderAppointments?: appointmentUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    cancelledAppointments?: appointmentUncheckedCreateNestedManyWithoutCancelledByUserInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    procedures?: procedureUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    schedules?: healthcare_provider_scheduleUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    favoriteProviders?: customer_favorite_providerUncheckedCreateNestedManyWithoutCustomerInput
+    favoritedBy?: customer_favorite_providerUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    medicalRecord?: customer_medical_recordUncheckedCreateNestedOneWithoutCustomerInput
+    ratings?: ratingUncheckedCreateNestedManyWithoutCustomerInput
+    receivedRatings?: ratingUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerConversations?: conversationUncheckedCreateNestedManyWithoutCustomerInput
+    providerConversations?: conversationUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    patientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCustomerOwnerInput
+    createdPatientProfiles?: patient_profileUncheckedCreateNestedManyWithoutCreatedByHealthcareProviderInput
+    faqs?: healthcare_provider_faqUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    conversationMessages?: conversation_messageUncheckedCreateNestedManyWithoutSenderInput
+    pushTokens?: push_tokenUncheckedCreateNestedManyWithoutUserInput
+    notificationPreferences?: notification_preferenceUncheckedCreateNestedManyWithoutUserInput
+    notificationDeliveries?: notification_deliveryUncheckedCreateNestedManyWithoutUserInput
+    supportRequests?: support_requestUncheckedCreateNestedManyWithoutUserInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedCreateNestedManyWithoutRequestedByUserInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutCustomerInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCustomerInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedCreateNestedManyWithoutCreatedByUserInput
+    verifiedProviders?: userUncheckedCreateNestedManyWithoutVerifiedByUserInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedCreateNestedManyWithoutReviewerUserInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutHealthcareProviderInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedCreateNestedManyWithoutAdminUserInput
+  }
+
+  export type userCreateOrConnectWithoutAcceptedHealthInsurancePlansInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutAcceptedHealthInsurancePlansInput, userUncheckedCreateWithoutAcceptedHealthInsurancePlansInput>
+  }
+
+  export type health_insurance_planCreateWithoutProviderLinksInput = {
+    id?: string
+    name: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userLinks?: user_health_insurance_planCreateNestedManyWithoutHealthInsurancePlanInput
+  }
+
+  export type health_insurance_planUncheckedCreateWithoutProviderLinksInput = {
+    id?: string
+    name: string
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userLinks?: user_health_insurance_planUncheckedCreateNestedManyWithoutHealthInsurancePlanInput
+  }
+
+  export type health_insurance_planCreateOrConnectWithoutProviderLinksInput = {
+    where: health_insurance_planWhereUniqueInput
+    create: XOR<health_insurance_planCreateWithoutProviderLinksInput, health_insurance_planUncheckedCreateWithoutProviderLinksInput>
+  }
+
+  export type userUpsertWithoutAcceptedHealthInsurancePlansInput = {
+    update: XOR<userUpdateWithoutAcceptedHealthInsurancePlansInput, userUncheckedUpdateWithoutAcceptedHealthInsurancePlansInput>
+    create: XOR<userCreateWithoutAcceptedHealthInsurancePlansInput, userUncheckedCreateWithoutAcceptedHealthInsurancePlansInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutAcceptedHealthInsurancePlansInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutAcceptedHealthInsurancePlansInput, userUncheckedUpdateWithoutAcceptedHealthInsurancePlansInput>
+  }
+
+  export type userUpdateWithoutAcceptedHealthInsurancePlansInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
+    verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    sessions?: sessionUpdateManyWithoutUserNestedInput
+    accounts?: accountUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutAcceptedHealthInsurancePlansInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    onboardingCompleted?: BoolFieldUpdateOperationsInput | boolean
+    onboardingStep?: EnumOnboardingStepFieldUpdateOperationsInput | $Enums.OnboardingStep
+    cpf?: NullableStringFieldUpdateOperationsInput | string | null
+    dateOfBirth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    displayName?: NullableStringFieldUpdateOperationsInput | string | null
+    document?: NullableStringFieldUpdateOperationsInput | string | null
+    birthDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    languages?: userUpdatelanguagesInput | string[]
+    specialty?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalId?: NullableStringFieldUpdateOperationsInput | string | null
+    professionalCouncilId?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseState?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentKey?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentFileName?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentMimeType?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentSize?: NullableIntFieldUpdateOperationsInput | number | null
+    licenseDocumentSha256?: NullableStringFieldUpdateOperationsInput | string | null
+    licenseDocumentUploadedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verificationStatus?: StringFieldUpdateOperationsInput | string
+    verificationRejectionReason?: NullableStringFieldUpdateOperationsInput | string | null
+    verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    verifiedByUserId?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    approach?: NullableStringFieldUpdateOperationsInput | string | null
+    education?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    yearsOfExperience?: NullableIntFieldUpdateOperationsInput | number | null
+    targetAudiences?: userUpdatetargetAudiencesInput | string[]
+    serviceModalities?: userUpdateserviceModalitiesInput | string[]
+    homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentMethods?: userUpdatepaymentMethodsInput | string[]
+    bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
+    appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    appointmentReminderHoursBefore?: IntFieldUpdateOperationsInput | number
+    birthdayGreetingEmailEnabled?: BoolFieldUpdateOperationsInput | boolean
+    birthdayGreetingEmailSubjectTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    birthdayGreetingEmailHtmlTemplate?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicy?: NullableStringFieldUpdateOperationsInput | string | null
+    cancellationPolicyEnabled?: BoolFieldUpdateOperationsInput | boolean
+    cancellationPolicyHoursBefore?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPenaltyType?: NullableEnumCancellationPenaltyTypeFieldUpdateOperationsInput | $Enums.CancellationPenaltyType | null
+    cancellationPolicyFixedFeeCents?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyPercentage?: NullableIntFieldUpdateOperationsInput | number | null
+    cancellationPolicyRequiresJustification?: BoolFieldUpdateOperationsInput | boolean
+    clinicPhotos?: userUpdateclinicPhotosInput | string[]
+    termsAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdConsentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
+    ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
+    clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
+    customerAppointments?: appointmentUncheckedUpdateManyWithoutCustomerNestedInput
+    healthcareProviderAppointments?: appointmentUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    cancelledAppointments?: appointmentUncheckedUpdateManyWithoutCancelledByUserNestedInput
+    customerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentEvolutionNotes?: appointment_evolution_noteUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    procedures?: procedureUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    schedules?: healthcare_provider_scheduleUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    scheduleExceptions?: healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    healthcareProviderCategories?: healthcare_provider_categoryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    favoriteProviders?: customer_favorite_providerUncheckedUpdateManyWithoutCustomerNestedInput
+    favoritedBy?: customer_favorite_providerUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    medicalRecord?: customer_medical_recordUncheckedUpdateOneWithoutCustomerNestedInput
+    ratings?: ratingUncheckedUpdateManyWithoutCustomerNestedInput
+    receivedRatings?: ratingUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerConversations?: conversationUncheckedUpdateManyWithoutCustomerNestedInput
+    providerConversations?: conversationUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    patientProfiles?: patient_profileUncheckedUpdateManyWithoutCustomerOwnerNestedInput
+    createdPatientProfiles?: patient_profileUncheckedUpdateManyWithoutCreatedByHealthcareProviderNestedInput
+    faqs?: healthcare_provider_faqUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    conversationMessages?: conversation_messageUncheckedUpdateManyWithoutSenderNestedInput
+    pushTokens?: push_tokenUncheckedUpdateManyWithoutUserNestedInput
+    notificationPreferences?: notification_preferenceUncheckedUpdateManyWithoutUserNestedInput
+    notificationDeliveries?: notification_deliveryUncheckedUpdateManyWithoutUserNestedInput
+    supportRequests?: support_requestUncheckedUpdateManyWithoutUserNestedInput
+    appointmentRescheduleRequests?: appointment_reschedule_requestUncheckedUpdateManyWithoutRequestedByUserNestedInput
+    customerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutCustomerNestedInput
+    providerAppointmentWaitlistEntries?: appointment_waitlist_entryUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    customerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCustomerNestedInput
+    providerRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    createdRecurringAppointmentSeries?: appointment_recurring_seriesUncheckedUpdateManyWithoutCreatedByUserNestedInput
+    verifiedProviders?: userUncheckedUpdateManyWithoutVerifiedByUserNestedInput
+    providerVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
+    providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
+    adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type health_insurance_planUpsertWithoutProviderLinksInput = {
+    update: XOR<health_insurance_planUpdateWithoutProviderLinksInput, health_insurance_planUncheckedUpdateWithoutProviderLinksInput>
+    create: XOR<health_insurance_planCreateWithoutProviderLinksInput, health_insurance_planUncheckedCreateWithoutProviderLinksInput>
+    where?: health_insurance_planWhereInput
+  }
+
+  export type health_insurance_planUpdateToOneWithWhereWithoutProviderLinksInput = {
+    where?: health_insurance_planWhereInput
+    data: XOR<health_insurance_planUpdateWithoutProviderLinksInput, health_insurance_planUncheckedUpdateWithoutProviderLinksInput>
+  }
+
+  export type health_insurance_planUpdateWithoutProviderLinksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userLinks?: user_health_insurance_planUpdateManyWithoutHealthInsurancePlanNestedInput
+  }
+
+  export type health_insurance_planUncheckedUpdateWithoutProviderLinksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userLinks?: user_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanNestedInput
   }
 
   export type userCreateWithoutSchedulesInput = {
@@ -73529,7 +78863,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -73552,6 +78885,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -73634,7 +78969,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -73655,6 +78989,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -73751,7 +79087,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -73774,6 +79109,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -73856,7 +79193,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -73877,6 +79213,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -73957,7 +79295,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -73980,6 +79317,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -74062,7 +79401,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -74083,6 +79421,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -74179,7 +79519,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -74202,6 +79541,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -74284,7 +79625,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -74305,6 +79645,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -74385,7 +79727,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -74408,6 +79749,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -74490,7 +79833,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -74511,6 +79853,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -74607,7 +79951,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -74630,6 +79973,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -74712,7 +80057,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -74733,6 +80077,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -74813,7 +80159,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -74836,6 +80181,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -74918,7 +80265,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -74939,6 +80285,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -75024,7 +80372,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -75047,6 +80394,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -75129,7 +80478,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -75150,6 +80498,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -75286,7 +80636,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -75309,6 +80658,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -75391,7 +80742,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -75412,6 +80762,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -75503,7 +80855,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -75526,6 +80877,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -75608,7 +80961,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -75629,6 +80981,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -75748,7 +81102,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -75771,6 +81124,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -75853,7 +81208,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -75874,6 +81228,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -76066,7 +81422,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -76089,6 +81444,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -76171,7 +81528,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -76192,6 +81548,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -76345,7 +81703,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -76368,6 +81725,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -76450,7 +81809,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -76471,6 +81829,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -76567,7 +81927,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -76590,6 +81949,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -76672,7 +82033,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -76693,6 +82053,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -76773,7 +82135,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -76796,6 +82157,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -76878,7 +82241,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -76899,6 +82261,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -76995,7 +82359,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -77018,6 +82381,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -77100,7 +82465,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -77121,6 +82485,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -77201,7 +82567,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -77224,6 +82589,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -77306,7 +82673,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -77327,6 +82693,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -77490,7 +82858,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -77513,6 +82880,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -77595,7 +82964,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -77616,6 +82984,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -77769,7 +83139,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -77792,6 +83161,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -77874,7 +83245,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -77895,6 +83265,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -77980,7 +83352,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -78003,6 +83374,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -78085,7 +83458,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -78106,6 +83478,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -78366,7 +83740,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -78389,6 +83762,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -78471,7 +83846,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -78492,6 +83866,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -78583,7 +83959,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -78606,6 +83981,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -78688,7 +84065,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -78709,6 +84085,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -78878,7 +84256,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -78901,6 +84278,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -78983,7 +84362,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -79004,6 +84382,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -79192,7 +84572,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -79215,6 +84594,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -79297,7 +84678,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -79318,6 +84698,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -79546,7 +84928,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -79569,6 +84950,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -79651,7 +85034,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -79672,6 +85054,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -79757,7 +85141,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -79780,6 +85163,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -79862,7 +85247,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -79883,6 +85267,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -79979,7 +85365,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -80002,6 +85387,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -80084,7 +85471,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -80105,6 +85491,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -80196,7 +85584,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -80219,6 +85606,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -80301,7 +85690,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -80322,6 +85710,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -80402,7 +85792,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -80425,6 +85814,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
     clinicEmployees?: clinic_employeeCreateNestedManyWithoutUserInput
@@ -80507,7 +85898,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -80528,6 +85918,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
     clinicEmployees?: clinic_employeeUncheckedCreateNestedManyWithoutUserInput
@@ -80624,7 +86016,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -80647,6 +86038,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
     clinicEmployees?: clinic_employeeUpdateManyWithoutUserNestedInput
@@ -80729,7 +86122,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -80750,6 +86142,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
     clinicEmployees?: clinic_employeeUncheckedUpdateManyWithoutUserNestedInput
@@ -80830,7 +86224,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -80853,6 +86246,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -80935,7 +86330,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -80956,6 +86350,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -81052,7 +86448,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -81075,6 +86470,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -81157,7 +86554,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -81178,6 +86574,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -81287,7 +86685,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -81310,6 +86707,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -81392,7 +86791,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -81413,6 +86811,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -81456,6 +86856,50 @@ export namespace Prisma {
   export type userCreateOrConnectWithoutVerifiedProvidersInput = {
     where: userWhereUniqueInput
     create: XOR<userCreateWithoutVerifiedProvidersInput, userUncheckedCreateWithoutVerifiedProvidersInput>
+  }
+
+  export type user_health_insurance_planCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    healthInsurancePlan: health_insurance_planCreateNestedOneWithoutUserLinksInput
+  }
+
+  export type user_health_insurance_planUncheckedCreateWithoutUserInput = {
+    id?: string
+    healthInsurancePlanId: string
+    createdAt?: Date | string
+  }
+
+  export type user_health_insurance_planCreateOrConnectWithoutUserInput = {
+    where: user_health_insurance_planWhereUniqueInput
+    create: XOR<user_health_insurance_planCreateWithoutUserInput, user_health_insurance_planUncheckedCreateWithoutUserInput>
+  }
+
+  export type user_health_insurance_planCreateManyUserInputEnvelope = {
+    data: user_health_insurance_planCreateManyUserInput | user_health_insurance_planCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput = {
+    id?: string
+    createdAt?: Date | string
+    healthInsurancePlan: health_insurance_planCreateNestedOneWithoutProviderLinksInput
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput = {
+    id?: string
+    healthInsurancePlanId: string
+    createdAt?: Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planCreateOrConnectWithoutHealthcareProviderInput = {
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+    create: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type healthcare_provider_health_insurance_planCreateManyHealthcareProviderInputEnvelope = {
+    data: healthcare_provider_health_insurance_planCreateManyHealthcareProviderInput | healthcare_provider_health_insurance_planCreateManyHealthcareProviderInput[]
+    skipDuplicates?: boolean
   }
 
   export type sessionCreateWithoutUserInput = {
@@ -82065,7 +87509,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -82081,7 +87524,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -82223,7 +87665,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -82253,7 +87694,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -82291,7 +87731,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -82321,7 +87760,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -82831,7 +88269,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -82853,6 +88290,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -82935,7 +88374,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -82956,6 +88394,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -83213,7 +88653,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -83236,6 +88675,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -83318,7 +88759,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -83339,6 +88779,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -83377,6 +88819,38 @@ export namespace Prisma {
     adminProviderVerificationReviews?: provider_verification_reviewUncheckedUpdateManyWithoutReviewerUserNestedInput
     providerVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     adminProviderVerificationDocumentAccessLogs?: provider_verification_document_access_logUncheckedUpdateManyWithoutAdminUserNestedInput
+  }
+
+  export type user_health_insurance_planUpsertWithWhereUniqueWithoutUserInput = {
+    where: user_health_insurance_planWhereUniqueInput
+    update: XOR<user_health_insurance_planUpdateWithoutUserInput, user_health_insurance_planUncheckedUpdateWithoutUserInput>
+    create: XOR<user_health_insurance_planCreateWithoutUserInput, user_health_insurance_planUncheckedCreateWithoutUserInput>
+  }
+
+  export type user_health_insurance_planUpdateWithWhereUniqueWithoutUserInput = {
+    where: user_health_insurance_planWhereUniqueInput
+    data: XOR<user_health_insurance_planUpdateWithoutUserInput, user_health_insurance_planUncheckedUpdateWithoutUserInput>
+  }
+
+  export type user_health_insurance_planUpdateManyWithWhereWithoutUserInput = {
+    where: user_health_insurance_planScalarWhereInput
+    data: XOR<user_health_insurance_planUpdateManyMutationInput, user_health_insurance_planUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type healthcare_provider_health_insurance_planUpsertWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+    update: XOR<healthcare_provider_health_insurance_planUpdateWithoutHealthcareProviderInput, healthcare_provider_health_insurance_planUncheckedUpdateWithoutHealthcareProviderInput>
+    create: XOR<healthcare_provider_health_insurance_planCreateWithoutHealthcareProviderInput, healthcare_provider_health_insurance_planUncheckedCreateWithoutHealthcareProviderInput>
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateWithWhereUniqueWithoutHealthcareProviderInput = {
+    where: healthcare_provider_health_insurance_planWhereUniqueInput
+    data: XOR<healthcare_provider_health_insurance_planUpdateWithoutHealthcareProviderInput, healthcare_provider_health_insurance_planUncheckedUpdateWithoutHealthcareProviderInput>
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateManyWithWhereWithoutHealthcareProviderInput = {
+    where: healthcare_provider_health_insurance_planScalarWhereInput
+    data: XOR<healthcare_provider_health_insurance_planUpdateManyMutationInput, healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderInput>
   }
 
   export type sessionUpsertWithWhereUniqueWithoutUserInput = {
@@ -83740,7 +89214,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -83756,7 +89229,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -83891,7 +89363,6 @@ export namespace Prisma {
     allergies?: StringNullableFilter<"patient_profile"> | string | null
     surgeries?: StringNullableFilter<"patient_profile"> | string | null
     familyHistory?: StringNullableFilter<"patient_profile"> | string | null
-    lifestyleNotes?: StringNullableFilter<"patient_profile"> | string | null
     emergencyContactName?: StringNullableFilter<"patient_profile"> | string | null
     emergencyContactPhone?: StringNullableFilter<"patient_profile"> | string | null
     createdAt?: DateTimeFilter<"patient_profile"> | Date | string
@@ -84240,7 +89711,6 @@ export namespace Prisma {
     targetAudiences?: StringNullableListFilter<"user">
     serviceModalities?: StringNullableListFilter<"user">
     homeCareRadiusKm?: IntNullableFilter<"user"> | number | null
-    acceptedInsurance?: StringNullableListFilter<"user">
     paymentMethods?: StringNullableListFilter<"user">
     bookingAvailabilityDays?: IntFilter<"user"> | number
     appointmentConfirmationReminderHoursBefore?: IntFilter<"user"> | number
@@ -84395,7 +89865,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -84417,6 +89886,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -84499,7 +89970,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -84520,6 +89990,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -84627,7 +90099,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -84650,6 +90121,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -84732,7 +90205,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -84753,6 +90225,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -84838,7 +90312,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -84861,6 +90334,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -84943,7 +90418,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -84964,6 +90438,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -85060,7 +90536,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -85083,6 +90558,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -85165,7 +90642,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -85186,6 +90662,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -85277,7 +90755,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -85300,6 +90777,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -85382,7 +90861,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -85403,6 +90881,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -85483,7 +90963,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -85506,6 +90985,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -85588,7 +91069,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -85609,6 +91089,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -85694,7 +91176,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -85717,6 +91198,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     professionalCouncil?: professional_councilCreateNestedOneWithoutHealthcareProvidersInput
     verifiedByUser?: userCreateNestedOneWithoutVerifiedProvidersInput
+    healthInsurancePlans?: user_health_insurance_planCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionCreateNestedManyWithoutUserInput
     accounts?: accountCreateNestedManyWithoutUserInput
     ownedClinics?: clinicCreateNestedManyWithoutOwnerInput
@@ -85799,7 +91282,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -85820,6 +91302,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedCreateNestedManyWithoutUserInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedCreateNestedManyWithoutHealthcareProviderInput
     sessions?: sessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: accountUncheckedCreateNestedManyWithoutUserInput
     ownedClinics?: clinicUncheckedCreateNestedManyWithoutOwnerInput
@@ -85916,7 +91400,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -85939,6 +91422,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -86021,7 +91506,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -86042,6 +91526,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -86133,7 +91619,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -86156,6 +91641,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -86238,7 +91725,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -86259,6 +91745,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -86857,6 +92345,54 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type user_health_insurance_planCreateManyHealthInsurancePlanInput = {
+    id?: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planCreateManyHealthInsurancePlanInput = {
+    id?: string
+    healthcareProviderId: string
+    createdAt?: Date | string
+  }
+
+  export type user_health_insurance_planUpdateWithoutHealthInsurancePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: userUpdateOneRequiredWithoutHealthInsurancePlansNestedInput
+  }
+
+  export type user_health_insurance_planUncheckedUpdateWithoutHealthInsurancePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateWithoutHealthInsurancePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthcareProvider?: userUpdateOneRequiredWithoutAcceptedHealthInsurancePlansNestedInput
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedUpdateWithoutHealthInsurancePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthInsurancePlanInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthcareProviderId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type conversation_messageCreateManyConversationInput = {
     id?: string
     senderId: string
@@ -87273,6 +92809,18 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type user_health_insurance_planCreateManyUserInput = {
+    id?: string
+    healthInsurancePlanId: string
+    createdAt?: Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planCreateManyHealthcareProviderInput = {
+    id?: string
+    healthInsurancePlanId: string
+    createdAt?: Date | string
+  }
+
   export type sessionCreateManyUserInput = {
     id?: string
     expiresAt: Date | string
@@ -87530,7 +93078,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -87556,7 +93103,6 @@ export namespace Prisma {
     allergies?: string | null
     surgeries?: string | null
     familyHistory?: string | null
-    lifestyleNotes?: string | null
     emergencyContactName?: string | null
     emergencyContactPhone?: string | null
     createdAt?: Date | string
@@ -87758,7 +93304,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -87819,6 +93364,42 @@ export namespace Prisma {
     ipAddress?: string | null
     userAgent?: string | null
     createdAt?: Date | string
+  }
+
+  export type user_health_insurance_planUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlan?: health_insurance_planUpdateOneRequiredWithoutUserLinksNestedInput
+  }
+
+  export type user_health_insurance_planUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthInsurancePlanId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type user_health_insurance_planUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthInsurancePlanId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlan?: health_insurance_planUpdateOneRequiredWithoutProviderLinksNestedInput
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedUpdateWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthInsurancePlanId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    healthInsurancePlanId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type sessionUpdateWithoutUserInput = {
@@ -88597,7 +94178,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -88627,7 +94207,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -88656,7 +94235,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -88681,7 +94259,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -88711,7 +94288,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -88740,7 +94316,6 @@ export namespace Prisma {
     allergies?: NullableStringFieldUpdateOperationsInput | string | null
     surgeries?: NullableStringFieldUpdateOperationsInput | string | null
     familyHistory?: NullableStringFieldUpdateOperationsInput | string | null
-    lifestyleNotes?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactName?: NullableStringFieldUpdateOperationsInput | string | null
     emergencyContactPhone?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -89271,7 +94846,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -89293,6 +94867,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     professionalCouncil?: professional_councilUpdateOneWithoutHealthcareProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -89375,7 +94951,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -89396,6 +94971,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -89478,7 +95055,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -89662,7 +95238,6 @@ export namespace Prisma {
     targetAudiences?: userCreatetargetAudiencesInput | string[]
     serviceModalities?: userCreateserviceModalitiesInput | string[]
     homeCareRadiusKm?: number | null
-    acceptedInsurance?: userCreateacceptedInsuranceInput | string[]
     paymentMethods?: userCreatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: number
     appointmentConfirmationReminderHoursBefore?: number
@@ -89725,7 +95300,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -89747,6 +95321,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     verifiedByUser?: userUpdateOneWithoutVerifiedProvidersNestedInput
+    healthInsurancePlans?: user_health_insurance_planUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUpdateManyWithoutUserNestedInput
     accounts?: accountUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUpdateManyWithoutOwnerNestedInput
@@ -89829,7 +95405,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number
@@ -89850,6 +95425,8 @@ export namespace Prisma {
     professionalResponsibilityAcceptedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    healthInsurancePlans?: user_health_insurance_planUncheckedUpdateManyWithoutUserNestedInput
+    acceptedHealthInsurancePlans?: healthcare_provider_health_insurance_planUncheckedUpdateManyWithoutHealthcareProviderNestedInput
     sessions?: sessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: accountUncheckedUpdateManyWithoutUserNestedInput
     ownedClinics?: clinicUncheckedUpdateManyWithoutOwnerNestedInput
@@ -89932,7 +95509,6 @@ export namespace Prisma {
     targetAudiences?: userUpdatetargetAudiencesInput | string[]
     serviceModalities?: userUpdateserviceModalitiesInput | string[]
     homeCareRadiusKm?: NullableIntFieldUpdateOperationsInput | number | null
-    acceptedInsurance?: userUpdateacceptedInsuranceInput | string[]
     paymentMethods?: userUpdatepaymentMethodsInput | string[]
     bookingAvailabilityDays?: IntFieldUpdateOperationsInput | number
     appointmentConfirmationReminderHoursBefore?: IntFieldUpdateOperationsInput | number

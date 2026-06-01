@@ -4,7 +4,7 @@ import { healthcareProviderScheduleSchema } from "./get-healthcare-provider-sche
 const timeRegex = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
 
 export const createHealthcareProviderScheduleBodySchema = z.object({
-	healthcareProviderId: z.cuid(),
+	healthcareProviderId: z.string().trim().min(1),
 	dayOfWeek: z.number().int().min(0).max(6),
 	startTime: z.string().regex(timeRegex, "Time must be in HH:mm format"),
 	endTime: z.string().regex(timeRegex, "Time must be in HH:mm format"),

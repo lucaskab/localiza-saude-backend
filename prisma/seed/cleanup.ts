@@ -1,4 +1,4 @@
-import { SEED_FAKE_USER_EMAILS } from "./constants";
+import { SEED_CLINIC_EMAILS, SEED_FAKE_USER_EMAILS } from "./constants";
 import type { SeedClient } from "./types";
 
 export async function cleanupSeedData(prisma: SeedClient) {
@@ -48,6 +48,42 @@ export async function cleanupSeedData(prisma: SeedClient) {
 	await prisma.healthcare_provider_category.deleteMany({});
 	await prisma.category.deleteMany({});
 	await prisma.clinic_employee.deleteMany({});
+	await prisma.address.deleteMany({
+		where: {
+			OR: [
+				{
+					ownerType: "USER",
+					ownerId: {
+						in: (
+							await prisma.user.findMany({
+								where: {
+									email: {
+										in: SEED_FAKE_USER_EMAILS,
+									},
+								},
+								select: { id: true },
+							})
+						).map((user) => user.id),
+					},
+				},
+				{
+					ownerType: "CLINIC",
+					ownerId: {
+						in: (
+							await prisma.clinic.findMany({
+								where: {
+									email: {
+										in: [...SEED_CLINIC_EMAILS],
+									},
+								},
+								select: { id: true },
+							})
+						).map((clinic) => clinic.id),
+					},
+				},
+			],
+		},
+	});
 	await prisma.clinic.deleteMany({});
 	await prisma.user.deleteMany({
 		where: {

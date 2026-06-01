@@ -1,3 +1,5 @@
+import { mapHealthInsurancePlans } from "@/http/services/health-insurance-plans";
+import { getStartingPriceCents } from "@/http/services/provider-pricing";
 import { signUserImageUrl } from "@/http/useCases/users/sign-user-image-url";
 import type {
 	category,
@@ -15,20 +17,6 @@ type CategoryWithHealthcareProviders = category & {
 		};
 	})[];
 };
-
-function getStartingPriceCents(
-	healthcareProvider: user & { procedures: procedure[] },
-) {
-	if (healthcareProvider.procedures.length === 0) {
-		return null;
-	}
-
-	return Math.min(
-		...healthcareProvider.procedures.map(
-			(procedure) => procedure.priceInCents,
-		),
-	);
-}
 
 export const categoryPresenter = {
 	toHTTP(
@@ -62,7 +50,12 @@ export const categoryPresenter = {
 					null,
 				nextAvailableAt:
 					nextAvailableByHealthcareProviderId?.get(hpc.healthcareProvider.id) ?? null,
-				startingPriceCents: getStartingPriceCents(hpc.healthcareProvider),
+				startingPriceCents: getStartingPriceCents(
+					hpc.healthcareProvider.procedures,
+				),
+				acceptedHealthInsurancePlans: mapHealthInsurancePlans(
+					hpc.healthcareProvider.acceptedHealthInsurancePlans,
+				),
 				averageRating:
 					ratingSummariesByHealthcareProviderId?.get(hpc.healthcareProvider.id)
 						?.averageRating ?? 0,

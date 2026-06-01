@@ -1,3 +1,5 @@
+import { env } from "@/env";
+
 export const getAppInfoUseCase = {
 	async execute() {
 		return {
@@ -6,6 +8,7 @@ export const getAppInfoUseCase = {
 				apiVersion: process.env.npm_package_version || "1.0.0",
 				environment: process.env.NODE_ENV || "development",
 				serverTime: new Date(),
+				enableProviderSignUp: env.ENABLE_PROVIDER_SIGN_UP,
 			},
 		};
 	},

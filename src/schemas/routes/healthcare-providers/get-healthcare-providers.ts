@@ -12,7 +12,7 @@ export const getHealthcareProvidersQuerySchema = z.object({
 	specialty: z.string().trim().optional(),
 	serviceModality: serviceModalitySchema.optional(),
 	language: z.string().trim().optional(),
-	insurance: z.string().trim().optional(),
+	healthInsurancePlanId: z.cuid().optional(),
 	city: z.string().trim().optional(),
 	neighborhood: z.string().trim().optional(),
 	latitude: z.coerce.number().min(-90).max(90).optional(),

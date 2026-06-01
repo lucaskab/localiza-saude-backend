@@ -4,6 +4,10 @@ import type { GetHealthcareProvidersQuerySchema } from "@/schemas/routes/healthc
 import { getProviderRatingSummariesByProviderIds } from "@/http/useCases/ratings/get-provider-rating-summaries";
 import { getProviderMarketplaceMetricsByProviderIds } from "./get-provider-marketplace-metrics";
 import { getNextAvailableSlotsByProviderIds } from "./get-next-available-slots";
+import {
+	getStartingPriceCents,
+	matchesMaxPriceCentsFilter,
+} from "@/http/services/provider-pricing";
 import { signClinicPhotoUrls } from "./sign-clinic-photo-urls";
 import {
 	type PublicHealthcareProvider,
@@ -23,16 +27,6 @@ type EnrichedHealthcareProvider = HealthcareProviderWithRelations & {
 type HealthcareProviderWithNextAvailability =
 	PublicHealthcareProvider<EnrichedHealthcareProvider>;
 
-function getStartingPriceCents(provider: HealthcareProviderWithRelations) {
-	if (provider.procedures.length === 0) {
-		return null;
-	}
-
-	return Math.min(
-		...provider.procedures.map((procedure) => procedure.priceInCents),
-	);
-}
-
 function applyComputedFilters(
 	providers: EnrichedHealthcareProvider[],
 	filters: Partial<GetHealthcareProvidersQuerySchema>,
@@ -45,6 +39,13 @@ function applyComputedFilters(
 		if (
 			typeof filters.minRating === "number" &&
 			provider.averageRating < filters.minRating
+		) {
+			return false;
+		}
+
+		if (
+			typeof filters.maxPriceCents === "number" &&
+			!matchesMaxPriceCentsFilter(provider, filters.maxPriceCents)
 		) {
 			return false;
 		}
@@ -69,7 +70,7 @@ export const getHealthcareProvidersUseCase = {
 				specialty: filters.specialty,
 				serviceModality: filters.serviceModality,
 				language: filters.language,
-				insurance: filters.insurance,
+				healthInsurancePlanId: filters.healthInsurancePlanId,
 				city: filters.city,
 				neighborhood: filters.neighborhood,
 				latitude: filters.latitude,
@@ -96,7 +97,7 @@ export const getHealthcareProvidersUseCase = {
 				return {
 					...provider,
 					nextAvailableAt: nextAvailableByProviderId.get(provider.id) ?? null,
-					startingPriceCents: getStartingPriceCents(provider),
+					startingPriceCents: getStartingPriceCents(provider.procedures),
 					averageRating: ratingSummary?.averageRating ?? 0,
 					totalRatings: ratingSummary?.totalRatings ?? 0,
 					completedAppointments:

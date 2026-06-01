@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { healthcareProviderUserSchema } from "../users/user";
 
+const entityIdSchema = z.string().trim().min(1);
+
 export const scheduleExceptionTypeSchema = z.enum([
 	"DAY_OFF",
 	"TIME_BLOCK",
@@ -11,8 +13,8 @@ export const scheduleExceptionTypeSchema = z.enum([
 export const timeRegex = /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/;
 
 export const healthcareProviderScheduleExceptionSchema = z.object({
-	id: z.cuid(),
-	healthcareProviderId: z.cuid(),
+	id: entityIdSchema,
+	healthcareProviderId: entityIdSchema,
 	healthcareProvider: healthcareProviderUserSchema,
 	date: z.date(),
 	type: scheduleExceptionTypeSchema,
@@ -25,7 +27,7 @@ export const healthcareProviderScheduleExceptionSchema = z.object({
 });
 
 export const getScheduleExceptionsByHealthcareProviderParamsSchema = z.object({
-	healthcareProviderId: z.cuid(),
+	healthcareProviderId: entityIdSchema,
 });
 
 export const getScheduleExceptionsByHealthcareProviderQuerySchema = z.object({

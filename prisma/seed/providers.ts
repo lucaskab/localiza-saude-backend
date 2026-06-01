@@ -22,7 +22,7 @@ const providerFaqs = {
 		{
 			question: "Atende a domicílio?",
 			answer:
-				"Atendo a domicílio em regiões próximas à Paulista, conforme disponibilidade da agenda.",
+				"Atendo a domicílio em regiões centrais de Berlin, conforme disponibilidade da agenda.",
 		},
 	],
 	carlos: [

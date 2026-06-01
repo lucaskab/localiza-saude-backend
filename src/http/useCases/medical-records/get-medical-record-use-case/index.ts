@@ -19,7 +19,6 @@ type MedicalRecordFields = Pick<
 	| "allergies"
 	| "surgeries"
 	| "familyHistory"
-	| "lifestyleNotes"
 	| "emergencyContactName"
 	| "emergencyContactPhone"
 >;
@@ -49,7 +48,6 @@ function hasMedicalRecordContent(medicalRecord: MedicalRecordFields | null) {
 		medicalRecord.allergies,
 		medicalRecord.surgeries,
 		medicalRecord.familyHistory,
-		medicalRecord.lifestyleNotes,
 		medicalRecord.emergencyContactName,
 		medicalRecord.emergencyContactPhone,
 	].some((value) => Boolean(value?.trim()));
@@ -69,7 +67,6 @@ function patientProfileToMedicalRecord(
 		allergies: patientProfile.allergies,
 		surgeries: patientProfile.surgeries,
 		familyHistory: patientProfile.familyHistory,
-		lifestyleNotes: patientProfile.lifestyleNotes,
 		emergencyContactName: patientProfile.emergencyContactName,
 		emergencyContactPhone: patientProfile.emergencyContactPhone,
 		createdAt: patientProfile.createdAt,

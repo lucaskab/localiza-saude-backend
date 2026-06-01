@@ -42,8 +42,9 @@ model user {
   targetAudiences String[] @default([]) @map("target_audiences")
   serviceModalities String[] @default([]) @map("service_modalities")
   homeCareRadiusKm Int?    @map("home_care_radius_km")
-  acceptedInsurance String[] @default([]) @map("accepted_insurance")
   paymentMethods String[]  @default([]) @map("payment_methods")
+  healthInsurancePlans user_health_insurance_plan[]
+  acceptedHealthInsurancePlans healthcare_provider_health_insurance_plan[] @relation("ProviderAcceptedHealthInsurancePlans")
   bookingAvailabilityDays Int @default(90) @map("booking_availability_days")
   appointmentConfirmationReminderHoursBefore Int @default(24) @map("appointment_confirmation_reminder_hours_before")
   appointmentReminderHoursBefore Int @default(1) @map("appointment_reminder_hours_before")

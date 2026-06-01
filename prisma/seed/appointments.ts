@@ -133,7 +133,7 @@ export async function seedAppointments(
 		scheduledAt: daysFromSeedBase(6, 15),
 		status: "SCHEDULED",
 		serviceModality: "IN_PERSON",
-		notes: "Check-up presencial no consultório da Paulista.",
+		notes: "Check-up presencial na praxis em Berlin Mitte.",
 	});
 
 	const lucasProviderCompleted = await createAppointmentWithProcedures({
