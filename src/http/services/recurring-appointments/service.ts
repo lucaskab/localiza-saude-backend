@@ -175,17 +175,32 @@ async function syncSeriesAppointmentsTx({
 	const exceptions = await tx.healthcare_provider_schedule_exception.findMany({
 		where: {
 			healthcareProviderId: series.healthcareProviderId,
-			date: {
-				gte: startOfUtcDay(effectiveStart),
-				lte: endOfUtcDay(generationEnd),
-			},
 			isActive: true,
+			OR: [
+				{
+					endDate: null,
+					date: {
+						gte: startOfUtcDay(effectiveStart),
+						lte: endOfUtcDay(generationEnd),
+					},
+				},
+				{
+					endDate: {
+						gte: startOfUtcDay(effectiveStart),
+					},
+					date: {
+						lte: endOfUtcDay(generationEnd),
+					},
+				},
+			],
 		},
 		select: {
 			date: true,
+			endDate: true,
 			type: true,
 			startTime: true,
 			endTime: true,
+			isActive: true,
 		},
 	});
 
@@ -211,7 +226,9 @@ async function syncSeriesAppointmentsTx({
 		},
 	});
 
-	const exceptionsByDate = mapExceptionsByDate(exceptions);
+	const exceptionsByDate = mapExceptionsByDate(
+		exceptions.filter((exception) => exception.isActive),
+	);
 	const procedureIds = series.procedures.map((item) => item.procedureId);
 	const totalDurationMinutes = series.procedures.reduce(
 		(total, item) => total + item.procedure.durationInMinutes,

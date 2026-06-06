@@ -5,7 +5,7 @@ export const getProviderRatingStatsParamsSchema = z.object({
 });
 
 export const getProviderRatingStatsResponseSchema = z.object({
-	healthcareProviderId: z.string(),
+	healthcareProviderId: z.cuid(),
 	averageRating: z.number(),
 	totalRatings: z.number().int(),
 });

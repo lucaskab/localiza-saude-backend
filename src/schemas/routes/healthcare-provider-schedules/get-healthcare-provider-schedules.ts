@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { healthcareProviderUserSchema } from "../users/user";
 
-const entityIdSchema = z.string().trim().min(1);
+const entityIdSchema = z.cuid();
 
 export const healthcareProviderScheduleSchema = z.object({
 	id: entityIdSchema,

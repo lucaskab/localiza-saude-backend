@@ -371,6 +371,7 @@ exports.Prisma.Healthcare_provider_schedule_exceptionScalarFieldEnum = {
   id: 'id',
   healthcareProviderId: 'healthcareProviderId',
   date: 'date',
+  endDate: 'endDate',
   type: 'type',
   startTime: 'startTime',
   endTime: 'endTime',

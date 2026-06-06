@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test";
 import type { ScheduleExceptionType } from "../../../../../prisma/generated/prisma/client";
 import {
 	normalizeScheduleExceptionDate,
+	validateScheduleExceptionPeriod,
 	validateScheduleExceptionTimes,
 } from "./index";
 
@@ -14,7 +15,7 @@ describe("schedule exception validation", () => {
 		expect(result.toISOString()).toBe("2026-08-19T00:00:00.000Z");
 	});
 
-test("allows full day off without times", () => {
+	test("allows full day off without times", () => {
 		const type: ScheduleExceptionType = "DAY_OFF";
 
 		expect(() =>
@@ -57,5 +58,32 @@ test("allows full day off without times", () => {
 				endTime: "09:00",
 			}),
 		).toThrow("End time must be after start time");
+	});
+
+	test("accepts an exception period spanning multiple days", () => {
+		expect(() =>
+			validateScheduleExceptionPeriod({
+				startDate: new Date("2026-08-19T15:32:10.000Z"),
+				endDate: new Date("2026-08-21T10:00:00.000Z"),
+			}),
+		).not.toThrow();
+	});
+
+	test("rejects an exception period that ends before it starts", () => {
+		expect(() =>
+			validateScheduleExceptionPeriod({
+				startDate: new Date("2026-08-21T15:32:10.000Z"),
+				endDate: new Date("2026-08-19T10:00:00.000Z"),
+			}),
+		).toThrow("End date must be after or equal to start date");
+	});
+
+	test("rejects an exception period longer than 180 days", () => {
+		expect(() =>
+			validateScheduleExceptionPeriod({
+				startDate: new Date("2026-01-01T00:00:00.000Z"),
+				endDate: new Date("2026-07-01T00:00:00.000Z"),
+			}),
+		).toThrow("Schedule exception period cannot exceed 180 days");
 	});
 });

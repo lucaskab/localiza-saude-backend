@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const deleteMessageParamsSchema = z.object({
-	messageId: z.string().cuid(),
+	messageId: z.cuid(),
 });
 
 export const deleteMessageResponseSchema = z.object({

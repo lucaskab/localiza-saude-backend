@@ -1,0 +1,11 @@
+-- RenameForeignKey
+ALTER TABLE "healthcare_provider_health_insurance_plans" RENAME CONSTRAINT "healthcare_provider_health_insurance_plans_health_insurance_pla" TO "healthcare_provider_health_insurance_plans_health_insuranc_fkey";
+
+-- RenameForeignKey
+ALTER TABLE "healthcare_provider_health_insurance_plans" RENAME CONSTRAINT "healthcare_provider_health_insurance_plans_healthcare_provider_" TO "healthcare_provider_health_insurance_plans_healthcare_prov_fkey";
+
+-- RenameIndex
+ALTER INDEX "healthcare_provider_schedule_exceptions_healthcare_provider_idx" RENAME TO "hps_exc_provider_date_idx";
+
+-- RenameIndex
+ALTER INDEX "user_health_insurance_plans_user_id_health_insurance_plan_id_ke" RENAME TO "user_health_insurance_plans_user_id_health_insurance_plan_i_key";

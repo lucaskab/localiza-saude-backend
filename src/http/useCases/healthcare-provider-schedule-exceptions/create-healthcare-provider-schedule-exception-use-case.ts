@@ -6,7 +6,9 @@ import { prismaHealthcareProviderScheduleExceptionRepository } from "@/http/repo
 import { clinicRbac } from "@/http/services/clinic-rbac";
 import type { user } from "../../../../prisma/generated/prisma/client";
 import {
+	normalizeScheduleExceptionEndDate,
 	normalizeScheduleExceptionDate,
+	validateScheduleExceptionPeriod,
 	validateScheduleExceptionTimes,
 } from "./schedule-exception-validation";
 
@@ -14,7 +16,7 @@ export const createHealthcareProviderScheduleExceptionUseCase = {
 	async execute(
 		currentUser: user,
 		data: CreateScheduleExceptionData,
-	): Promise<{ exception: ScheduleExceptionWithProvider }> {
+		): Promise<{ exception: ScheduleExceptionWithProvider }> {
 		await clinicRbac.assertCanManageProvider(
 			currentUser,
 			data.healthcareProviderId,
@@ -22,11 +24,19 @@ export const createHealthcareProviderScheduleExceptionUseCase = {
 		);
 
 		validateScheduleExceptionTimes(data);
+		validateScheduleExceptionPeriod({
+			startDate: data.startDate,
+			endDate: data.endDate,
+		});
 
 		const exception =
 			await prismaHealthcareProviderScheduleExceptionRepository.create({
 				...data,
-				date: normalizeScheduleExceptionDate(data.date),
+				startDate: normalizeScheduleExceptionDate(data.startDate),
+				endDate: normalizeScheduleExceptionEndDate(
+					data.endDate,
+					data.startDate,
+				),
 			});
 
 		return { exception };

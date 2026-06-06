@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const userSchema = z.object({
-	id: z.string(),
+	id: z.cuid(),
 	name: z.string(),
 	firstName: z.string().nullable(),
 	lastName: z.string().nullable(),
@@ -9,9 +9,9 @@ const userSchema = z.object({
 });
 
 const conversationSchema = z.object({
-	id: z.string(),
-	customerId: z.string(),
-	healthcareProviderId: z.string(),
+	id: z.cuid(),
+	customerId: z.cuid(),
+	healthcareProviderId: z.cuid(),
 	lastMessageAt: z.date().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
@@ -19,7 +19,7 @@ const conversationSchema = z.object({
 	healthcareProvider: userSchema,
 	lastMessage: z
 		.object({
-			id: z.string(),
+			id: z.cuid(),
 			messageType: z.enum(["TEXT", "FILE"]),
 			content: z.string().nullable(),
 			fileUrl: z.string().nullable(),
@@ -30,19 +30,19 @@ const conversationSchema = z.object({
 });
 
 export const getConversationMessagesParamsSchema = z.object({
-	conversationId: z.string().cuid(),
+	conversationId: z.cuid(),
 });
 
 export const getConversationMessagesQuerySchema = z.object({
 	limit: z.coerce.number().int().positive().max(100).default(50),
 	offset: z.coerce.number().int().min(0).default(0),
-	relatedAppointmentId: z.string().cuid().optional(),
+	relatedAppointmentId: z.cuid().optional(),
 });
 
 export const messageWithSenderSchema = z.object({
-	id: z.string(),
-	conversationId: z.string(),
-	senderId: z.string(),
+	id: z.cuid(),
+	conversationId: z.cuid(),
+	senderId: z.cuid(),
 	senderType: z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER"]),
 	messageType: z.enum(["TEXT", "FILE"]),
 	content: z.string().nullable(),
@@ -50,11 +50,11 @@ export const messageWithSenderSchema = z.object({
 	fileName: z.string().nullable(),
 	fileSize: z.number().nullable(),
 	fileMimeType: z.string().nullable(),
-	relatedAppointmentId: z.string().nullable(),
+	relatedAppointmentId: z.cuid().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
 	sender: z.object({
-		id: z.string(),
+		id: z.cuid(),
 		name: z.string(),
 		firstName: z.string().nullable(),
 		lastName: z.string().nullable(),
@@ -62,7 +62,7 @@ export const messageWithSenderSchema = z.object({
 	}),
 	relatedAppointment: z
 		.object({
-			id: z.string(),
+			id: z.cuid(),
 			scheduledAt: z.date(),
 			status: z.string(),
 		})

@@ -2,7 +2,7 @@ import type { ClinicPermission } from "../generated/prisma/client";
 
 export const REAL_USERS = {
 	customerLucas: {
-		id: "cmnuu7gqu0001r1sc039r0a70",
+		id: "c00000000000000000000001",
 		email: "lucaslfurinide@gmail.com",
 		name: "Lucas Furini",
 		firstName: "Lucas",
@@ -10,7 +10,7 @@ export const REAL_USERS = {
 		phone: "+5511999991001",
 	},
 	providerLucas: {
-		id: "cmnuu7to60006r1scsref3kpv",
+		id: "c00000000000000000000002",
 		email: "lucaslfurini@gmail.com",
 		name: "Lucas Lopes Furini",
 		firstName: "Lucas",
@@ -18,7 +18,7 @@ export const REAL_USERS = {
 		phone: "+5511999991002",
 	},
 	admin: {
-		id: "cmovfbjl900012cscacst8y3s",
+		id: "c00000000000000000000003",
 		email: "localiza.saude.admin@gmail.com",
 		name: "Localiza Saúde Admin",
 		firstName: "Localiza",
@@ -46,7 +46,7 @@ export const SEED_CLINIC_EMAILS = [
 
 export const SEED_CUSTOMERS = {
 	juliana: {
-		id: "seed_customer_juliana_rodrigues",
+		id: "c00000000000000000000004",
 		email: "juliana.rodrigues.customer@localiza.seed",
 		name: "Juliana Rodrigues",
 		firstName: "Juliana",
@@ -57,7 +57,7 @@ export const SEED_CUSTOMERS = {
 
 export const SEED_STAFF = {
 	recepcaoPaulista: {
-		id: "seed_staff_mitte_reception",
+		id: "c00000000000000000000005",
 		email: "recepcao.paulista@localiza.seed",
 		name: "Camila Mitte Reception",
 		firstName: "Camila",
@@ -65,7 +65,7 @@ export const SEED_STAFF = {
 		phone: "+493012340201",
 	},
 	agendaPinheiros: {
-		id: "seed_staff_kreuzberg_schedule",
+		id: "c00000000000000000000006",
 		email: "agenda.pinheiros@localiza.seed",
 		name: "Thiago Kreuzberg Schedule",
 		firstName: "Thiago",
@@ -88,7 +88,7 @@ export const STAFF_PERMISSIONS: ClinicPermission[] = [
 
 export const PROVIDERS = {
 	ana: {
-		id: "seed_provider_ana_souza",
+		id: "c00000000000000000000007",
 		email: SEED_PROVIDER_EMAILS[0],
 		name: "Dra. Ana Souza",
 		firstName: "Ana",
@@ -103,7 +103,7 @@ export const PROVIDERS = {
 		specialty: "Cardiologia preventiva",
 		professionalCategory: "Médica",
 		professionalId: "123456",
-		professionalCouncilId: "professional-council-crm",
+		professionalCouncilId: "c00000000000000000000013",
 		licenseState: "BE",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_ana_souza/crm-be-123456.pdf",
@@ -139,7 +139,7 @@ export const PROVIDERS = {
 		],
 	},
 	carlos: {
-		id: "seed_provider_carlos_lima",
+		id: "c00000000000000000000008",
 		email: SEED_PROVIDER_EMAILS[1],
 		name: "Dr. Carlos Lima",
 		firstName: "Carlos",
@@ -154,7 +154,7 @@ export const PROVIDERS = {
 		specialty: "Nutrição clínica e esportiva",
 		professionalCategory: "Nutricionista",
 		professionalId: "24567",
-		professionalCouncilId: "professional-council-crn",
+		professionalCouncilId: "c00000000000000000000016",
 		licenseState: "BE",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_carlos_lima/crn-be-24567.pdf",
@@ -183,7 +183,7 @@ export const PROVIDERS = {
 		clinicPhotos: ["provider-clinic-photos/seed_provider_carlos_lima/room.jpg"],
 	},
 	marina: {
-		id: "seed_provider_marina_alves",
+		id: "c00000000000000000000009",
 		email: SEED_PROVIDER_EMAILS[2],
 		name: "Dra. Marina Alves",
 		firstName: "Marina",
@@ -198,7 +198,7 @@ export const PROVIDERS = {
 		specialty: "Psicologia clínica",
 		professionalCategory: "Psicóloga",
 		professionalId: "99887",
-		professionalCouncilId: "professional-council-crp",
+		professionalCouncilId: "c00000000000000000000015",
 		licenseState: "BE",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_marina_alves/crp-be-99887.pdf",
@@ -231,7 +231,7 @@ export const PROVIDERS = {
 		clinicPhotos: [],
 	},
 	rafael: {
-		id: "seed_provider_rafael_mendes",
+		id: "c00000000000000000000010",
 		email: SEED_PROVIDER_EMAILS[3],
 		name: "Dr. Rafael Mendes",
 		firstName: "Rafael",
@@ -246,7 +246,7 @@ export const PROVIDERS = {
 		specialty: "Fisioterapia ortopédica",
 		professionalCategory: "Fisioterapeuta",
 		professionalId: "112233",
-		professionalCouncilId: "professional-council-crefito",
+		professionalCouncilId: "c00000000000000000000017",
 		licenseState: "BE",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_rafael_mendes/crefito-be-112233.pdf",
@@ -279,7 +279,7 @@ export const PROVIDERS = {
 		],
 	},
 	beatriz: {
-		id: "seed_provider_beatriz_nunes",
+		id: "c00000000000000000000011",
 		email: SEED_PROVIDER_EMAILS[4],
 		name: "Dra. Beatriz Nunes",
 		firstName: "Beatriz",
@@ -294,7 +294,7 @@ export const PROVIDERS = {
 		specialty: "Dermatologia estética",
 		professionalCategory: "Médica",
 		professionalId: "654321",
-		professionalCouncilId: "professional-council-crm",
+		professionalCouncilId: "c00000000000000000000013",
 		licenseState: "BE",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_beatriz_nunes/crm-be-654321.pdf",
@@ -324,7 +324,7 @@ export const PROVIDERS = {
 		],
 	},
 	pedro: {
-		id: "seed_provider_pedro_rocha",
+		id: "c00000000000000000000012",
 		email: SEED_PROVIDER_EMAILS[5],
 		name: "Dr. Pedro Rocha",
 		firstName: "Pedro",
@@ -339,7 +339,7 @@ export const PROVIDERS = {
 		specialty: "Odontologia estética",
 		professionalCategory: "Dentista",
 		professionalId: "77889",
-		professionalCouncilId: "professional-council-cro",
+		professionalCouncilId: "c00000000000000000000014",
 		licenseState: "BE",
 		licenseDocumentKey:
 			"provider-verification/seed_provider_pedro_rocha/cro-be-77889.pdf",

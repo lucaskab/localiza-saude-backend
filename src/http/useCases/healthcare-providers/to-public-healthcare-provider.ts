@@ -1,4 +1,5 @@
 type VerificationFields = {
+	licenseDocumentKey?: unknown;
 	verificationStatus?: unknown;
 	verificationRejectionReason?: unknown;
 	verifiedAt?: unknown;
@@ -8,6 +9,7 @@ type VerificationFields = {
 
 export type PublicHealthcareProvider<T extends VerificationFields> = Omit<
 	T,
+	"licenseDocumentKey"
 	| "verificationStatus"
 	| "verificationRejectionReason"
 	| "verifiedAt"
@@ -19,6 +21,7 @@ export function toPublicHealthcareProvider<T extends VerificationFields>(
 	provider: T,
 ): PublicHealthcareProvider<T> {
 	const {
+		licenseDocumentKey: _licenseDocumentKey,
 		verificationStatus: _verificationStatus,
 		verificationRejectionReason: _verificationRejectionReason,
 		verifiedAt: _verifiedAt,

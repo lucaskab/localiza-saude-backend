@@ -19,15 +19,29 @@ async function ensureEmailCanBeReused(
 async function upsertRealUserByEmail(
 	prisma: SeedClient,
 	email: string,
-	createData: Parameters<typeof prisma.user.upsert>[0]["create"],
+	createData: Parameters<typeof prisma.user.upsert>[0]["create"] & { id: string },
 	updateData: Parameters<typeof prisma.user.upsert>[0]["update"],
 ) {
 	const existing = await ensureEmailCanBeReused(prisma, email);
 
 	if (existing) {
+		if (existing.id !== createData.id) {
+			const userWithTargetId = await prisma.user.findUnique({
+				where: { id: createData.id },
+				select: { id: true, email: true },
+			});
+
+			if (userWithTargetId && userWithTargetId.email !== email) {
+				throw new Error(
+					`Cannot seed ${email}: target id ${createData.id} is already used by ${userWithTargetId.email}.`,
+				);
+			}
+		}
+
 		return prisma.user.update({
 			where: { id: existing.id },
 			data: {
+				id: createData.id,
 				...updateData,
 				email,
 			},
@@ -101,7 +115,7 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			specialty: "Clínica geral",
 			professionalCategory: "Médico",
 			professionalId: "654321",
-			professionalCouncilId: "professional-council-crm",
+			professionalCouncilId: "c00000000000000000000013",
 			licenseState: "SP",
 			licenseDocumentKey:
 				"provider-verification/cmnuu7to60006r1scsref3kpv/crm-sp-654321.pdf",
@@ -156,7 +170,7 @@ export async function seedUsers(prisma: SeedClient): Promise<SeedUsers> {
 			specialty: "Clínica geral",
 			professionalCategory: "Médico",
 			professionalId: "654321",
-			professionalCouncilId: "professional-council-crm",
+			professionalCouncilId: "c00000000000000000000013",
 			licenseState: "SP",
 			licenseDocumentKey:
 				"provider-verification/cmnuu7to60006r1scsref3kpv/crm-sp-654321.pdf",

@@ -8,7 +8,7 @@ const healthcareProviderProfileWithRelationsSchema =
 	});
 
 export const getHealthcareProviderByUserIdParamsSchema = z.object({
-	userId: z.string(),
+	userId: z.cuid(),
 });
 
 export const getHealthcareProviderByUserIdResponseSchema = z.object({

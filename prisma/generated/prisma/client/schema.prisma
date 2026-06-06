@@ -472,6 +472,7 @@ model healthcare_provider_schedule_exception {
   healthcareProviderId String                @map("healthcare_provider_id")
   healthcareProvider   user                  @relation("ProviderScheduleExceptions", fields: [healthcareProviderId], references: [id], onDelete: Cascade)
   date                 DateTime
+  endDate              DateTime?             @map("end_date")
   type                 ScheduleExceptionType
   startTime            String?               @map("start_time")
   endTime              String?               @map("end_time")
@@ -480,7 +481,8 @@ model healthcare_provider_schedule_exception {
   createdAt            DateTime              @default(now()) @map("created_at")
   updatedAt            DateTime              @updatedAt @map("updated_at")
 
-  @@index([healthcareProviderId, date])
+  @@index([healthcareProviderId, date], map: "hps_exc_provider_date_idx")
+  @@index([healthcareProviderId, endDate], map: "hps_exc_provider_end_date_idx")
   @@index([type])
   @@map("healthcare_provider_schedule_exceptions")
 }

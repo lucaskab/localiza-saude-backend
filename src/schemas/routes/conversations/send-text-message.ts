@@ -4,7 +4,7 @@ import { sendTextMessageSchema } from "@/schemas/conversations";
 export const sendTextMessageBodySchema = sendTextMessageSchema;
 
 export const messageSenderSchema = z.object({
-	id: z.string(),
+	id: z.cuid(),
 	name: z.string(),
 	firstName: z.string().nullable(),
 	lastName: z.string().nullable(),
@@ -12,15 +12,15 @@ export const messageSenderSchema = z.object({
 });
 
 export const messageRelatedAppointmentSchema = z.object({
-	id: z.string(),
+	id: z.cuid(),
 	scheduledAt: z.date(),
 	status: z.string(),
 });
 
 export const messageSchema = z.object({
-	id: z.string(),
-	conversationId: z.string(),
-	senderId: z.string(),
+	id: z.cuid(),
+	conversationId: z.cuid(),
+	senderId: z.cuid(),
 	senderType: z.enum(["CUSTOMER", "HEALTHCARE_PROVIDER"]),
 	messageType: z.enum(["TEXT", "FILE"]),
 	content: z.string().nullable(),
@@ -28,7 +28,7 @@ export const messageSchema = z.object({
 	fileName: z.string().nullable(),
 	fileSize: z.number().nullable(),
 	fileMimeType: z.string().nullable(),
-	relatedAppointmentId: z.string().nullable(),
+	relatedAppointmentId: z.cuid().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
 	sender: messageSenderSchema,

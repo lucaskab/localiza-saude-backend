@@ -19,6 +19,42 @@ const scheduleExceptionInclude = {
 	},
 };
 
+function normalizeDateToUtcDay(value: Date) {
+	const result = new Date(value);
+	result.setUTCHours(0, 0, 0, 0);
+	return result;
+}
+
+function getScheduleExceptionEndDate(
+	exception: ScheduleExceptionWithProvider,
+) {
+	return exception.endDate ?? exception.date;
+}
+
+function matchesRange(
+	exception: ScheduleExceptionWithProvider,
+	range?: { from?: Date; to?: Date },
+) {
+	if (!range?.from && !range?.to) {
+		return true;
+	}
+
+	const exceptionStart = normalizeDateToUtcDay(exception.date);
+	const exceptionEnd = normalizeDateToUtcDay(getScheduleExceptionEndDate(exception));
+	const rangeStart = range.from ? normalizeDateToUtcDay(range.from) : undefined;
+	const rangeEnd = range.to ? normalizeDateToUtcDay(range.to) : undefined;
+
+	if (rangeStart && exceptionEnd < rangeStart) {
+		return false;
+	}
+
+	if (rangeEnd && exceptionStart > rangeEnd) {
+		return false;
+	}
+
+	return true;
+}
+
 export const prismaHealthcareProviderScheduleExceptionRepository: HealthcareProviderScheduleExceptionRepository =
 	{
 		async findById(id) {
@@ -34,17 +70,7 @@ export const prismaHealthcareProviderScheduleExceptionRepository: HealthcareProv
 		async findByHealthcareProviderId(healthcareProviderId, range) {
 			const exceptions =
 				await prisma.healthcare_provider_schedule_exception.findMany({
-					where: {
-						healthcareProviderId,
-						...(range?.from || range?.to
-							? {
-									date: {
-										...(range.from ? { gte: range.from } : {}),
-										...(range.to ? { lte: range.to } : {}),
-									},
-								}
-							: {}),
-					},
+					where: { healthcareProviderId },
 					include: scheduleExceptionInclude,
 					orderBy: [
 						{
@@ -56,7 +82,9 @@ export const prismaHealthcareProviderScheduleExceptionRepository: HealthcareProv
 					],
 				});
 
-			return exceptions as ScheduleExceptionWithProvider[];
+			return exceptions.filter((exception) =>
+				matchesRange(exception as ScheduleExceptionWithProvider, range),
+			) as ScheduleExceptionWithProvider[];
 		},
 
 		async create(data: CreateScheduleExceptionData) {
@@ -64,7 +92,8 @@ export const prismaHealthcareProviderScheduleExceptionRepository: HealthcareProv
 				await prisma.healthcare_provider_schedule_exception.create({
 					data: {
 						healthcareProviderId: data.healthcareProviderId,
-						date: data.date,
+						date: data.startDate,
+						endDate: data.endDate ?? data.startDate,
 						type: data.type,
 						startTime: data.startTime,
 						endTime: data.endTime,
@@ -81,7 +110,8 @@ export const prismaHealthcareProviderScheduleExceptionRepository: HealthcareProv
 				await prisma.healthcare_provider_schedule_exception.update({
 					where: { id },
 					data: {
-						...(data.date !== undefined && { date: data.date }),
+						...(data.startDate !== undefined && { date: data.startDate }),
+						...(data.endDate !== undefined && { endDate: data.endDate }),
 						...(data.type !== undefined && { type: data.type }),
 						...(data.startTime !== undefined && {
 							startTime: data.startTime,

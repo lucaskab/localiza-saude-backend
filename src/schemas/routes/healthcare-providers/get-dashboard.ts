@@ -10,7 +10,7 @@ const appointmentTrendSchema = z.object({
 });
 
 const popularProcedureSchema = z.object({
-	procedureId: z.string(),
+	procedureId: z.cuid(),
 	procedureName: z.string(),
 	count: z.number().int(),
 	revenue: z.number().int(),

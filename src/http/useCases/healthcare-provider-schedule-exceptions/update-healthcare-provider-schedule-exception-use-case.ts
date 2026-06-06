@@ -7,7 +7,9 @@ import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { clinicRbac } from "@/http/services/clinic-rbac";
 import type { user } from "../../../../prisma/generated/prisma/client";
 import {
+	normalizeScheduleExceptionEndDate,
 	normalizeScheduleExceptionDate,
+	validateScheduleExceptionPeriod,
 	validateScheduleExceptionTimes,
 } from "./schedule-exception-validation";
 
@@ -31,11 +33,21 @@ export const updateHealthcareProviderScheduleExceptionUseCase = {
 		);
 
 		const nextType = data.type ?? existingException.type;
+		const nextStartDate =
+			data.startDate ?? existingException.date;
+		const nextEndDate =
+			data.endDate ??
+			existingException.endDate ??
+			(data.startDate ?? existingException.date);
 		const nextStartTime =
 			data.startTime !== undefined ? data.startTime : existingException.startTime;
 		const nextEndTime =
 			data.endTime !== undefined ? data.endTime : existingException.endTime;
 
+		validateScheduleExceptionPeriod({
+			startDate: nextStartDate,
+			endDate: nextEndDate,
+		});
 		validateScheduleExceptionTimes({
 			type: nextType,
 			startTime: nextStartTime,
@@ -45,8 +57,14 @@ export const updateHealthcareProviderScheduleExceptionUseCase = {
 		const exception =
 			await prismaHealthcareProviderScheduleExceptionRepository.update(id, {
 				...data,
-				...(data.date !== undefined && {
-					date: normalizeScheduleExceptionDate(data.date),
+				...(data.startDate !== undefined && {
+					startDate: normalizeScheduleExceptionDate(data.startDate),
+				}),
+				...(data.endDate !== undefined && {
+					endDate: normalizeScheduleExceptionEndDate(
+						data.endDate,
+						data.startDate ?? existingException.date,
+					),
 				}),
 			});
 

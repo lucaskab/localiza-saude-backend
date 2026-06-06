@@ -29636,6 +29636,7 @@ export namespace Prisma {
     id: string | null
     healthcareProviderId: string | null
     date: Date | null
+    endDate: Date | null
     type: $Enums.ScheduleExceptionType | null
     startTime: string | null
     endTime: string | null
@@ -29649,6 +29650,7 @@ export namespace Prisma {
     id: string | null
     healthcareProviderId: string | null
     date: Date | null
+    endDate: Date | null
     type: $Enums.ScheduleExceptionType | null
     startTime: string | null
     endTime: string | null
@@ -29662,6 +29664,7 @@ export namespace Prisma {
     id: number
     healthcareProviderId: number
     date: number
+    endDate: number
     type: number
     startTime: number
     endTime: number
@@ -29677,6 +29680,7 @@ export namespace Prisma {
     id?: true
     healthcareProviderId?: true
     date?: true
+    endDate?: true
     type?: true
     startTime?: true
     endTime?: true
@@ -29690,6 +29694,7 @@ export namespace Prisma {
     id?: true
     healthcareProviderId?: true
     date?: true
+    endDate?: true
     type?: true
     startTime?: true
     endTime?: true
@@ -29703,6 +29708,7 @@ export namespace Prisma {
     id?: true
     healthcareProviderId?: true
     date?: true
+    endDate?: true
     type?: true
     startTime?: true
     endTime?: true
@@ -29789,6 +29795,7 @@ export namespace Prisma {
     id: string
     healthcareProviderId: string
     date: Date
+    endDate: Date | null
     type: $Enums.ScheduleExceptionType
     startTime: string | null
     endTime: string | null
@@ -29819,6 +29826,7 @@ export namespace Prisma {
     id?: boolean
     healthcareProviderId?: boolean
     date?: boolean
+    endDate?: boolean
     type?: boolean
     startTime?: boolean
     endTime?: boolean
@@ -29833,6 +29841,7 @@ export namespace Prisma {
     id?: boolean
     healthcareProviderId?: boolean
     date?: boolean
+    endDate?: boolean
     type?: boolean
     startTime?: boolean
     endTime?: boolean
@@ -29847,6 +29856,7 @@ export namespace Prisma {
     id?: boolean
     healthcareProviderId?: boolean
     date?: boolean
+    endDate?: boolean
     type?: boolean
     startTime?: boolean
     endTime?: boolean
@@ -29861,6 +29871,7 @@ export namespace Prisma {
     id?: boolean
     healthcareProviderId?: boolean
     date?: boolean
+    endDate?: boolean
     type?: boolean
     startTime?: boolean
     endTime?: boolean
@@ -29870,7 +29881,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type healthcare_provider_schedule_exceptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "healthcareProviderId" | "date" | "type" | "startTime" | "endTime" | "reason" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["healthcare_provider_schedule_exception"]>
+  export type healthcare_provider_schedule_exceptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "healthcareProviderId" | "date" | "endDate" | "type" | "startTime" | "endTime" | "reason" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["healthcare_provider_schedule_exception"]>
   export type healthcare_provider_schedule_exceptionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     healthcareProvider?: boolean | userDefaultArgs<ExtArgs>
   }
@@ -29890,6 +29901,7 @@ export namespace Prisma {
       id: string
       healthcareProviderId: string
       date: Date
+      endDate: Date | null
       type: $Enums.ScheduleExceptionType
       startTime: string | null
       endTime: string | null
@@ -30324,6 +30336,7 @@ export namespace Prisma {
     readonly id: FieldRef<"healthcare_provider_schedule_exception", 'String'>
     readonly healthcareProviderId: FieldRef<"healthcare_provider_schedule_exception", 'String'>
     readonly date: FieldRef<"healthcare_provider_schedule_exception", 'DateTime'>
+    readonly endDate: FieldRef<"healthcare_provider_schedule_exception", 'DateTime'>
     readonly type: FieldRef<"healthcare_provider_schedule_exception", 'ScheduleExceptionType'>
     readonly startTime: FieldRef<"healthcare_provider_schedule_exception", 'String'>
     readonly endTime: FieldRef<"healthcare_provider_schedule_exception", 'String'>
@@ -52504,6 +52517,7 @@ export namespace Prisma {
     id: 'id',
     healthcareProviderId: 'healthcareProviderId',
     date: 'date',
+    endDate: 'endDate',
     type: 'type',
     startTime: 'startTime',
     endTime: 'endTime',
@@ -54903,6 +54917,7 @@ export namespace Prisma {
     id?: StringFilter<"healthcare_provider_schedule_exception"> | string
     healthcareProviderId?: StringFilter<"healthcare_provider_schedule_exception"> | string
     date?: DateTimeFilter<"healthcare_provider_schedule_exception"> | Date | string
+    endDate?: DateTimeNullableFilter<"healthcare_provider_schedule_exception"> | Date | string | null
     type?: EnumScheduleExceptionTypeFilter<"healthcare_provider_schedule_exception"> | $Enums.ScheduleExceptionType
     startTime?: StringNullableFilter<"healthcare_provider_schedule_exception"> | string | null
     endTime?: StringNullableFilter<"healthcare_provider_schedule_exception"> | string | null
@@ -54917,6 +54932,7 @@ export namespace Prisma {
     id?: SortOrder
     healthcareProviderId?: SortOrder
     date?: SortOrder
+    endDate?: SortOrderInput | SortOrder
     type?: SortOrder
     startTime?: SortOrderInput | SortOrder
     endTime?: SortOrderInput | SortOrder
@@ -54934,6 +54950,7 @@ export namespace Prisma {
     NOT?: healthcare_provider_schedule_exceptionWhereInput | healthcare_provider_schedule_exceptionWhereInput[]
     healthcareProviderId?: StringFilter<"healthcare_provider_schedule_exception"> | string
     date?: DateTimeFilter<"healthcare_provider_schedule_exception"> | Date | string
+    endDate?: DateTimeNullableFilter<"healthcare_provider_schedule_exception"> | Date | string | null
     type?: EnumScheduleExceptionTypeFilter<"healthcare_provider_schedule_exception"> | $Enums.ScheduleExceptionType
     startTime?: StringNullableFilter<"healthcare_provider_schedule_exception"> | string | null
     endTime?: StringNullableFilter<"healthcare_provider_schedule_exception"> | string | null
@@ -54948,6 +54965,7 @@ export namespace Prisma {
     id?: SortOrder
     healthcareProviderId?: SortOrder
     date?: SortOrder
+    endDate?: SortOrderInput | SortOrder
     type?: SortOrder
     startTime?: SortOrderInput | SortOrder
     endTime?: SortOrderInput | SortOrder
@@ -54967,6 +54985,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"healthcare_provider_schedule_exception"> | string
     healthcareProviderId?: StringWithAggregatesFilter<"healthcare_provider_schedule_exception"> | string
     date?: DateTimeWithAggregatesFilter<"healthcare_provider_schedule_exception"> | Date | string
+    endDate?: DateTimeNullableWithAggregatesFilter<"healthcare_provider_schedule_exception"> | Date | string | null
     type?: EnumScheduleExceptionTypeWithAggregatesFilter<"healthcare_provider_schedule_exception"> | $Enums.ScheduleExceptionType
     startTime?: StringNullableWithAggregatesFilter<"healthcare_provider_schedule_exception"> | string | null
     endTime?: StringNullableWithAggregatesFilter<"healthcare_provider_schedule_exception"> | string | null
@@ -58472,6 +58491,7 @@ export namespace Prisma {
   export type healthcare_provider_schedule_exceptionCreateInput = {
     id?: string
     date: Date | string
+    endDate?: Date | string | null
     type: $Enums.ScheduleExceptionType
     startTime?: string | null
     endTime?: string | null
@@ -58486,6 +58506,7 @@ export namespace Prisma {
     id?: string
     healthcareProviderId: string
     date: Date | string
+    endDate?: Date | string | null
     type: $Enums.ScheduleExceptionType
     startTime?: string | null
     endTime?: string | null
@@ -58498,6 +58519,7 @@ export namespace Prisma {
   export type healthcare_provider_schedule_exceptionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     type?: EnumScheduleExceptionTypeFieldUpdateOperationsInput | $Enums.ScheduleExceptionType
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58512,6 +58534,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     type?: EnumScheduleExceptionTypeFieldUpdateOperationsInput | $Enums.ScheduleExceptionType
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58525,6 +58548,7 @@ export namespace Prisma {
     id?: string
     healthcareProviderId: string
     date: Date | string
+    endDate?: Date | string | null
     type: $Enums.ScheduleExceptionType
     startTime?: string | null
     endTime?: string | null
@@ -58537,6 +58561,7 @@ export namespace Prisma {
   export type healthcare_provider_schedule_exceptionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     type?: EnumScheduleExceptionTypeFieldUpdateOperationsInput | $Enums.ScheduleExceptionType
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58550,6 +58575,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     healthcareProviderId?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     type?: EnumScheduleExceptionTypeFieldUpdateOperationsInput | $Enums.ScheduleExceptionType
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -61949,6 +61975,7 @@ export namespace Prisma {
     id?: SortOrder
     healthcareProviderId?: SortOrder
     date?: SortOrder
+    endDate?: SortOrder
     type?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrder
@@ -61962,6 +61989,7 @@ export namespace Prisma {
     id?: SortOrder
     healthcareProviderId?: SortOrder
     date?: SortOrder
+    endDate?: SortOrder
     type?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrder
@@ -61975,6 +62003,7 @@ export namespace Prisma {
     id?: SortOrder
     healthcareProviderId?: SortOrder
     date?: SortOrder
+    endDate?: SortOrder
     type?: SortOrder
     startTime?: SortOrder
     endTime?: SortOrder
@@ -87407,6 +87436,7 @@ export namespace Prisma {
   export type healthcare_provider_schedule_exceptionCreateWithoutHealthcareProviderInput = {
     id?: string
     date: Date | string
+    endDate?: Date | string | null
     type: $Enums.ScheduleExceptionType
     startTime?: string | null
     endTime?: string | null
@@ -87419,6 +87449,7 @@ export namespace Prisma {
   export type healthcare_provider_schedule_exceptionUncheckedCreateWithoutHealthcareProviderInput = {
     id?: string
     date: Date | string
+    endDate?: Date | string | null
     type: $Enums.ScheduleExceptionType
     startTime?: string | null
     endTime?: string | null
@@ -89128,6 +89159,7 @@ export namespace Prisma {
     id?: StringFilter<"healthcare_provider_schedule_exception"> | string
     healthcareProviderId?: StringFilter<"healthcare_provider_schedule_exception"> | string
     date?: DateTimeFilter<"healthcare_provider_schedule_exception"> | Date | string
+    endDate?: DateTimeNullableFilter<"healthcare_provider_schedule_exception"> | Date | string | null
     type?: EnumScheduleExceptionTypeFilter<"healthcare_provider_schedule_exception"> | $Enums.ScheduleExceptionType
     startTime?: StringNullableFilter<"healthcare_provider_schedule_exception"> | string | null
     endTime?: StringNullableFilter<"healthcare_provider_schedule_exception"> | string | null
@@ -93000,6 +93032,7 @@ export namespace Prisma {
   export type healthcare_provider_schedule_exceptionCreateManyHealthcareProviderInput = {
     id?: string
     date: Date | string
+    endDate?: Date | string | null
     type: $Enums.ScheduleExceptionType
     startTime?: string | null
     endTime?: string | null
@@ -93973,6 +94006,7 @@ export namespace Prisma {
   export type healthcare_provider_schedule_exceptionUpdateWithoutHealthcareProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     type?: EnumScheduleExceptionTypeFieldUpdateOperationsInput | $Enums.ScheduleExceptionType
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -93985,6 +94019,7 @@ export namespace Prisma {
   export type healthcare_provider_schedule_exceptionUncheckedUpdateWithoutHealthcareProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     type?: EnumScheduleExceptionTypeFieldUpdateOperationsInput | $Enums.ScheduleExceptionType
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null
@@ -93997,6 +94032,7 @@ export namespace Prisma {
   export type healthcare_provider_schedule_exceptionUncheckedUpdateManyWithoutHealthcareProviderInput = {
     id?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     type?: EnumScheduleExceptionTypeFieldUpdateOperationsInput | $Enums.ScheduleExceptionType
     startTime?: NullableStringFieldUpdateOperationsInput | string | null
     endTime?: NullableStringFieldUpdateOperationsInput | string | null

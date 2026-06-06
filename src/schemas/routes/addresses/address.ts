@@ -111,7 +111,7 @@ export const addressInputSchema = z.object({
 export const addressSchema = addressInputSchema.extend({
 	id: z.cuid(),
 	ownerType: z.enum(["USER", "CLINIC"]),
-	ownerId: z.string(),
+	ownerId: z.cuid(),
 	isPrimary: z.boolean(),
 	latitude: z.number().nullable(),
 	longitude: z.number().nullable(),

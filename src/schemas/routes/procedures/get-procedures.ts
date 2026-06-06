@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const entityIdSchema = z.string().min(1);
+const entityIdSchema = z.cuid();
 
 export const procedureChecklistItemSchema = z.object({
 	id: entityIdSchema,

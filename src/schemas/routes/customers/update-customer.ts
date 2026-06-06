@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { addressInputSchema } from "@/schemas/routes/addresses/address";
 import { healthInsurancePlanIdsSchema } from "@/schemas/routes/health-insurance-plans/health-insurance-plan";
+import { phoneSchema } from "@/schemas/routes/_shared/phone";
 import { customerSchema } from "./get-customers";
 
 function normalizeDigits(value: string) {
@@ -12,16 +13,6 @@ function normalizeCpf(value: string) {
 
 	if (digits.length !== 11) {
 		throw new Error("CPF must contain 11 digits");
-	}
-
-	return digits;
-}
-
-function normalizePhone(value: string) {
-	const digits = normalizeDigits(value);
-
-	if (digits.length < 10 || digits.length > 11) {
-		throw new Error("Phone must contain 10 or 11 digits");
 	}
 
 	return digits;
@@ -39,25 +30,13 @@ const cpfSchema = z
 		}
 	});
 
-const phoneSchema = z
-	.string()
-	.trim()
-	.transform((value, ctx) => {
-		try {
-			return normalizePhone(value);
-		} catch {
-			ctx.addIssue({ code: "custom", message: "Invalid phone number" });
-			return z.NEVER;
-		}
-	});
-
 export const updateCustomerParamsSchema = z.object({
 	id: z.cuid(),
 });
 
 export const updateCustomerBodySchema = z.object({
 	name: z.string().trim().min(2).max(120).optional(),
-	phone: phoneSchema.nullable().optional(),
+	phone: phoneSchema().nullable().optional(),
 	cpf: cpfSchema.nullable().optional(),
 	dateOfBirth: z.coerce.date().nullable().optional(),
 	address: addressInputSchema.optional(),

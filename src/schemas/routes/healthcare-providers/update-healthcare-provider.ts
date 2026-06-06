@@ -3,7 +3,7 @@ import { addressInputSchema } from "@/schemas/routes/addresses/address";
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { healthcareProviderSchema } from "./get-healthcare-providers";
 
-const entityIdSchema = z.string().trim().min(1);
+const entityIdSchema = z.cuid();
 
 const professionalFaqInputSchema = z.object({
 	question: z.string().trim().min(3).max(300),
@@ -23,7 +23,7 @@ export const updateHealthcareProviderBodySchema = z.object({
 	specialty: z.string().trim().nullable().optional(),
 	professionalCategory: z.string().trim().nullable().optional(),
 	professionalId: z.string().trim().nullable().optional(),
-	professionalCouncilId: z.string().trim().nullable().optional(),
+	professionalCouncilId: z.cuid().nullable().optional(),
 	licenseState: z.string().trim().nullable().optional(),
 	bio: z.string().trim().nullable().optional(),
 	approach: z.string().trim().nullable().optional(),

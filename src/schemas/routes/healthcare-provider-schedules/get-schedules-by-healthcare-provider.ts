@@ -2,7 +2,7 @@ import { z } from "zod";
 import { healthcareProviderScheduleSchema } from "./get-healthcare-provider-schedules";
 
 export const getSchedulesByProfessionalParamsSchema = z.object({
-	healthcareProviderId: z.string().trim().min(1),
+	healthcareProviderId: z.cuid(),
 });
 
 export const getSchedulesByProfessionalResponseSchema = z.object({

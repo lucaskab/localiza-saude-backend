@@ -2,7 +2,7 @@ import type { SeedClient } from "./types";
 
 const professionalCouncils = [
 	{
-		id: "professional-council-crm",
+		id: "c00000000000000000000013",
 		acronym: "CRM",
 		name: "Conselho Regional de Medicina",
 		profession: "Medicina",
@@ -11,7 +11,7 @@ const professionalCouncils = [
 			"CFM permite informar valores de consultas e formas de pagamento, respeitadas as regras de publicidade médica.",
 	},
 	{
-		id: "professional-council-cro",
+		id: "c00000000000000000000014",
 		acronym: "CRO",
 		name: "Conselho Regional de Odontologia",
 		profession: "Odontologia",
@@ -20,7 +20,7 @@ const professionalCouncils = [
 			"Regra conservadora para evitar publicidade de preço em serviços odontológicos.",
 	},
 	{
-		id: "professional-council-crp",
+		id: "c00000000000000000000015",
 		acronym: "CRP",
 		name: "Conselho Regional de Psicologia",
 		profession: "Psicologia",
@@ -29,7 +29,7 @@ const professionalCouncils = [
 			"Evita uso de preço como forma de propaganda em serviços psicológicos.",
 	},
 	{
-		id: "professional-council-crn",
+		id: "c00000000000000000000016",
 		acronym: "CRN",
 		name: "Conselho Regional de Nutricionistas",
 		profession: "Nutrição",
@@ -38,7 +38,7 @@ const professionalCouncils = [
 			"Regra conservadora: evita uso de honorários, promoções ou preços como publicidade.",
 	},
 	{
-		id: "professional-council-crefito",
+		id: "c00000000000000000000017",
 		acronym: "CREFITO",
 		name: "Conselho Regional de Fisioterapia e Terapia Ocupacional",
 		profession: "Fisioterapia e Terapia Ocupacional",
@@ -47,7 +47,7 @@ const professionalCouncils = [
 			"COFFITO orienta não divulgar tabelas de preços fora do consultório ou clínica.",
 	},
 	{
-		id: "professional-council-coren",
+		id: "c00000000000000000000018",
 		acronym: "COREN",
 		name: "Conselho Regional de Enfermagem",
 		profession: "Enfermagem",
@@ -56,7 +56,7 @@ const professionalCouncils = [
 			"Regra conservadora para divulgação pública de preços em serviços de enfermagem.",
 	},
 	{
-		id: "professional-council-crf",
+		id: "c00000000000000000000019",
 		acronym: "CRF",
 		name: "Conselho Regional de Farmácia",
 		profession: "Farmácia",
@@ -65,7 +65,7 @@ const professionalCouncils = [
 			"Regra conservadora para divulgação pública de preços em serviços farmacêuticos.",
 	},
 	{
-		id: "professional-council-crbm",
+		id: "c00000000000000000000020",
 		acronym: "CRBM",
 		name: "Conselho Regional de Biomedicina",
 		profession: "Biomedicina",
@@ -74,7 +74,7 @@ const professionalCouncils = [
 			"Regra conservadora para divulgação pública de preços em serviços biomédicos.",
 	},
 	{
-		id: "professional-council-crefono",
+		id: "c00000000000000000000021",
 		acronym: "CREFONO",
 		name: "Conselho Regional de Fonoaudiologia",
 		profession: "Fonoaudiologia",
@@ -83,7 +83,7 @@ const professionalCouncils = [
 			"Código de Ética da Fonoaudiologia considera infração anunciar preços e descontos.",
 	},
 	{
-		id: "professional-council-cref",
+		id: "c00000000000000000000022",
 		acronym: "CREF",
 		name: "Conselho Regional de Educação Física",
 		profession: "Educação Física",
@@ -92,7 +92,7 @@ const professionalCouncils = [
 			"Permite exibição de preço no marketplace por padrão, sem campanhas enganosas ou abusivas.",
 	},
 	{
-		id: "professional-council-crbio",
+		id: "c00000000000000000000023",
 		acronym: "CRBio",
 		name: "Conselho Regional de Biologia",
 		profession: "Biologia",
@@ -101,7 +101,7 @@ const professionalCouncils = [
 			"Permite exibição de preço no marketplace por padrão, respeitando regras profissionais aplicáveis.",
 	},
 	{
-		id: "professional-council-crmv",
+		id: "c00000000000000000000024",
 		acronym: "CRMV",
 		name: "Conselho Regional de Medicina Veterinária",
 		profession: "Medicina Veterinária",
@@ -110,7 +110,7 @@ const professionalCouncils = [
 			"Permite exibição de preço no marketplace por padrão, respeitando regras profissionais aplicáveis.",
 	},
 	{
-		id: "professional-council-cress",
+		id: "c00000000000000000000025",
 		acronym: "CRESS",
 		name: "Conselho Regional de Serviço Social",
 		profession: "Serviço Social",
@@ -119,7 +119,7 @@ const professionalCouncils = [
 			"Regra conservadora para divulgação pública de preços em serviços sociais ligados à saúde.",
 	},
 	{
-		id: "professional-council-crq",
+		id: "c00000000000000000000026",
 		acronym: "CRQ",
 		name: "Conselho Regional de Química",
 		profession: "Química aplicada à saúde",
@@ -128,7 +128,7 @@ const professionalCouncils = [
 			"Regra conservadora para atividades de saúde vinculadas a registro em conselho de química.",
 	},
 	{
-		id: "professional-council-crtr",
+		id: "c00000000000000000000027",
 		acronym: "CRTR",
 		name: "Conselho Regional de Técnicos em Radiologia",
 		profession: "Radiologia",
@@ -137,7 +137,7 @@ const professionalCouncils = [
 			"Regra conservadora para divulgação pública de preços em serviços de radiologia.",
 	},
 	{
-		id: "professional-council-rms",
+		id: "c00000000000000000000028",
 		acronym: "RMS",
 		name: "Registro do Ministério da Saúde (Programa Mais Médicos)",
 		profession: "Medicina",
@@ -151,10 +151,21 @@ export async function seedProfessionalCouncils(prisma: SeedClient) {
 	console.log("🏛️  Seeding professional councils...");
 
 	for (const council of professionalCouncils) {
-		await prisma.professional_council.upsert({
+		const existingCouncil = await prisma.professional_council.findUnique({
 			where: { acronym: council.acronym },
-			create: council,
-			update: {
+		});
+
+		if (!existingCouncil) {
+			await prisma.professional_council.create({
+				data: council,
+			});
+			continue;
+		}
+
+		await prisma.professional_council.update({
+			where: { id: existingCouncil.id },
+			data: {
+				id: council.id,
 				name: council.name,
 				profession: council.profession,
 				allowsPriceDisplay: council.allowsPriceDisplay,

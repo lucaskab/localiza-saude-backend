@@ -4,7 +4,7 @@ import { getOrCreateConversationSchema } from "@/schemas/conversations";
 export const getOrCreateConversationBodySchema = getOrCreateConversationSchema;
 
 export const conversationParticipantUserSchema = z.object({
-	id: z.string(),
+	id: z.cuid(),
 	name: z.string(),
 	firstName: z.string().nullable(),
 	lastName: z.string().nullable(),
@@ -12,9 +12,9 @@ export const conversationParticipantUserSchema = z.object({
 });
 
 export const conversationSchema = z.object({
-	id: z.string(),
-	customerId: z.string(),
-	healthcareProviderId: z.string(),
+	id: z.cuid(),
+	customerId: z.cuid(),
+	healthcareProviderId: z.cuid(),
 	lastMessageAt: z.date().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),

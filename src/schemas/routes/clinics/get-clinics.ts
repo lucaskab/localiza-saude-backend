@@ -21,7 +21,7 @@ export const clinicSchema = z.object({
 	primaryAddress: addressSchema.nullable().optional(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
-	ownerId: z.string(),
+	ownerId: z.cuid(),
 });
 
 export const clinicEmployeeRoleSchema = z.enum(["OWNER", "PROVIDER", "STAFF"]);

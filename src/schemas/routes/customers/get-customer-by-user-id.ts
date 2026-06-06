@@ -2,7 +2,7 @@ import { z } from "zod";
 import { customerSchema } from "./get-customers";
 
 export const getCustomerByUserIdParamsSchema = z.object({
-	userId: z.string(),
+	userId: z.cuid(),
 });
 
 export const getCustomerByUserIdResponseSchema = z.object({

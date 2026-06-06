@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const getMessageFileUrlParamsSchema = z.object({
-	messageId: z.string().cuid(),
+	messageId: z.cuid(),
 });
 
 export const getMessageFileUrlResponseSchema = z.object({

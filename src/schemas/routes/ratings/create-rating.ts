@@ -6,9 +6,9 @@ import {
 
 export const ratingSchema = z.object({
 	id: z.cuid(),
-	customerId: z.string(),
+	customerId: z.cuid(),
 	customer: customerUserSchema,
-	healthcareProviderId: z.string(),
+	healthcareProviderId: z.cuid(),
 	healthcareProvider: healthcareProviderUserSchema,
 	rating: z.number().int().min(1).max(10),
 	comment: z.string().nullable(),

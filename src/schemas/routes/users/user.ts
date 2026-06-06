@@ -4,7 +4,7 @@ import { healthInsurancePlanSchema } from "@/schemas/routes/health-insurance-pla
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 import { procedureSchema } from "../procedures/get-procedures";
 
-const entityIdSchema = z.string().min(1);
+const entityIdSchema = z.cuid();
 
 export const userRoleSchema = z.enum([
 	"CUSTOMER",
@@ -53,7 +53,7 @@ export const professionalFaqSchema = z.object({
 });
 
 export const professionalCouncilSchema = z.object({
-	id: z.string(),
+	id: z.cuid(),
 	acronym: z.string(),
 	name: z.string(),
 	profession: z.string(),
@@ -74,7 +74,7 @@ export const healthcareProviderUserSchema = publicUserSchema.extend({
 	specialty: z.string().nullable().optional(),
 	professionalCategory: z.string().nullable().optional(),
 	professionalId: z.string().nullable().optional(),
-	professionalCouncilId: z.string().nullable().optional(),
+	professionalCouncilId: z.cuid().nullable().optional(),
 	professionalCouncil: professionalCouncilSchema.nullable().optional(),
 	licenseState: z.string().nullable().optional(),
 	licenseDocumentFileName: z.string().nullable().optional(),
@@ -125,5 +125,5 @@ export const healthcareProviderProfileSchema = healthcareProviderUserSchema.exte
 	verificationStatus: z.enum(["PENDING", "VERIFIED", "REJECTED"]).optional(),
 	verificationRejectionReason: z.string().nullable().optional(),
 	verifiedAt: z.date().nullable().optional(),
-	verifiedByUserId: z.string().nullable().optional(),
+	verifiedByUserId: z.cuid().nullable().optional(),
 });

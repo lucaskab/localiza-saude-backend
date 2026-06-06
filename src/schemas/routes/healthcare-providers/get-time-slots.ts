@@ -17,7 +17,7 @@ const timeSlotSchema = z.object({
 
 export const getTimeSlotsResponseSchema = z.object({
 	date: z.string(),
-	healthcareProviderId: z.string(),
+	healthcareProviderId: z.cuid(),
 	totalDurationMinutes: z.number().int(),
 	slotIntervalMinutes: z.number().int(),
 	workingHours: z.object({

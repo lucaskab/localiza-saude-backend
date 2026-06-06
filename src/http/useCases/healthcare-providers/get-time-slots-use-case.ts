@@ -1,5 +1,6 @@
 import { prisma } from "@/database/prisma";
 import { prismaAppointmentRepository } from "@/http/repositories/appointments/appointments-repository-implementation";
+import { prismaHealthcareProviderScheduleExceptionRepository } from "@/http/repositories/healthcare-provider-schedule-exceptions/healthcare-provider-schedule-exceptions-repository-implementation";
 import { BadRequestError } from "@/http/routes/_errors/bad-request-error";
 import { recurringAppointmentsService } from "@/http/services/recurring-appointments";
 import {
@@ -134,16 +135,15 @@ export const getTimeSlotsUseCase = {
 		});
 
 		const scheduleExceptions =
-			await prisma.healthcare_provider_schedule_exception.findMany({
-				where: {
+			(
+				await prismaHealthcareProviderScheduleExceptionRepository.findByHealthcareProviderId(
 					healthcareProviderId,
-					date: dateObj,
-					isActive: true,
-				},
-				orderBy: {
-					startTime: "asc",
-				},
-			});
+					{
+						from: dateObj,
+						to: dateObj,
+					},
+				)
+			).filter((exception) => exception.isActive);
 
 		const hasFullDayOff = scheduleExceptions.some(
 			(exception) =>

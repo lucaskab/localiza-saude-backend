@@ -279,6 +279,7 @@ export function canOccurrenceFitInSchedule({
 export function mapExceptionsByDate<
 	T extends {
 		date: Date;
+		endDate?: Date | null;
 		type: string;
 		startTime: string | null;
 		endTime: string | null;
@@ -287,10 +288,15 @@ export function mapExceptionsByDate<
 	const map = new Map<string, T[]>();
 
 	for (const exception of exceptions) {
-		const key = exception.date.toISOString().slice(0, 10);
-		const current = map.get(key) ?? [];
-		current.push(exception);
-		map.set(key, current);
+		const startDate = startOfUtcDay(exception.date);
+		const endDate = startOfUtcDay(exception.endDate ?? exception.date);
+
+		for (const current = new Date(startDate); current <= endDate; current.setUTCDate(current.getUTCDate() + 1)) {
+			const key = current.toISOString().slice(0, 10);
+			const currentExceptions = map.get(key) ?? [];
+			currentExceptions.push(exception);
+			map.set(key, currentExceptions);
+		}
 	}
 
 	return map;

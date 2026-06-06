@@ -18,7 +18,7 @@ export const appointmentEvolutionStatusSchema = z
 	.optional();
 
 export const appointmentEvolutionNoteSchema = z.object({
-	id: z.string(),
+	id: z.cuid(),
 	appointmentId: z.cuid(),
 	customerId: z.cuid().nullable(),
 	patientProfileId: z.cuid().nullable(),

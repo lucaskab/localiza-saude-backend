@@ -3,6 +3,7 @@ import { addressInputSchema } from "@/schemas/routes/addresses/address";
 import { medicalRecordBodySchema } from "@/schemas/routes/medical-records/medical-record";
 import { customerSchema } from "@/schemas/routes/customers/get-customers";
 import { addressSchema } from "@/schemas/routes/addresses/address";
+import { phoneSchema } from "@/schemas/routes/_shared/phone";
 
 function normalizeDigits(value: string) {
 	return value.replace(/\D/g, "");
@@ -18,16 +19,6 @@ function normalizeCpf(value: string) {
 	return digits;
 }
 
-function normalizePhone(value: string) {
-	const digits = normalizeDigits(value);
-
-	if (digits.length < 10 || digits.length > 11) {
-		throw new Error("Phone must contain 10 or 11 digits");
-	}
-
-	return digits;
-}
-
 const cpfSchema = z
 	.string()
 	.trim()
@@ -36,18 +27,6 @@ const cpfSchema = z
 			return normalizeCpf(value);
 		} catch {
 			ctx.addIssue({ code: "custom", message: "Invalid CPF" });
-			return z.NEVER;
-		}
-	});
-
-const phoneSchema = z
-	.string()
-	.trim()
-	.transform((value, ctx) => {
-		try {
-			return normalizePhone(value);
-		} catch {
-			ctx.addIssue({ code: "custom", message: "Invalid phone number" });
 			return z.NEVER;
 		}
 	});

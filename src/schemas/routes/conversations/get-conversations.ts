@@ -6,7 +6,7 @@ export const getConversationsQuerySchema = z.object({
 });
 
 export const conversationParticipantUserSchema = z.object({
-	id: z.string(),
+	id: z.cuid(),
 	name: z.string(),
 	firstName: z.string().nullable(),
 	lastName: z.string().nullable(),
@@ -14,9 +14,9 @@ export const conversationParticipantUserSchema = z.object({
 });
 
 export const conversationWithParticipantsSchema = z.object({
-	id: z.string(),
-	customerId: z.string(),
-	healthcareProviderId: z.string(),
+	id: z.cuid(),
+	customerId: z.cuid(),
+	healthcareProviderId: z.cuid(),
 	lastMessageAt: z.date().nullable(),
 	createdAt: z.date(),
 	updatedAt: z.date(),
@@ -24,7 +24,7 @@ export const conversationWithParticipantsSchema = z.object({
 	healthcareProvider: conversationParticipantUserSchema,
 	lastMessage: z
 		.object({
-			id: z.string(),
+			id: z.cuid(),
 			messageType: z.enum(["TEXT", "FILE"]),
 			content: z.string().nullable(),
 			fileUrl: z.string().nullable(),

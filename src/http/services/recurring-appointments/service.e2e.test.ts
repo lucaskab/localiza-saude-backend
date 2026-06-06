@@ -79,6 +79,7 @@ type TestException = {
 	id: string;
 	healthcareProviderId: string;
 	date: Date;
+	endDate: Date | null;
 	type: string;
 	startTime: string | null;
 	endTime: string | null;
@@ -305,20 +306,44 @@ function createMockPrisma() {
 		healthcare_provider_schedule_exception: {
 			findMany: async ({ where, select }: any) =>
 				state.exceptions
-					.filter(
-						(exception) =>
-							exception.healthcareProviderId === where.healthcareProviderId &&
-							exception.isActive === where.isActive &&
-							exception.date >= where.date.gte &&
-							exception.date <= where.date.lte,
-					)
+					.filter((exception) => {
+						if (exception.healthcareProviderId !== where.healthcareProviderId) {
+							return false;
+						}
+
+						if (exception.isActive !== where.isActive) {
+							return false;
+						}
+
+						if (!where.OR) {
+							return true;
+						}
+
+						return where.OR.some((condition: any) => {
+							if (condition.endDate === null) {
+								return (
+									exception.endDate === null &&
+									exception.date >= condition.date.gte &&
+									exception.date <= condition.date.lte
+								);
+							}
+
+							return (
+								(exception.endDate ?? exception.date) >=
+									condition.endDate.gte &&
+								exception.date <= condition.date.lte
+							);
+						});
+					})
 					.map((exception) =>
 						select
 							? {
 									date: exception.date,
+									endDate: exception.endDate,
 									type: exception.type,
 									startTime: exception.startTime,
 									endTime: exception.endTime,
+									isActive: exception.isActive,
 								}
 							: exception,
 					),

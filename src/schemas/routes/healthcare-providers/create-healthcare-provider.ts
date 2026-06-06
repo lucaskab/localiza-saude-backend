@@ -18,7 +18,7 @@ export const createHealthcareProviderBodySchema = z.object({
 	specialty: z.string().trim().nullable().optional(),
 	professionalCategory: z.string().trim().nullable().optional(),
 	professionalId: z.string().trim().nullable().optional(),
-	professionalCouncilId: z.string().trim().nullable().optional(),
+	professionalCouncilId: z.cuid().nullable().optional(),
 	licenseState: z.string().trim().nullable().optional(),
 	bio: z.string().trim().nullable().optional(),
 	approach: z.string().trim().nullable().optional(),

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { healthcareProviderUserSchema } from "../users/user";
 
-const entityIdSchema = z.string().trim().min(1);
+const entityIdSchema = z.cuid();
 
 export const scheduleExceptionTypeSchema = z.enum([
 	"DAY_OFF",
@@ -17,6 +17,7 @@ export const healthcareProviderScheduleExceptionSchema = z.object({
 	healthcareProviderId: entityIdSchema,
 	healthcareProvider: healthcareProviderUserSchema,
 	date: z.date(),
+	endDate: z.date().nullable(),
 	type: scheduleExceptionTypeSchema,
 	startTime: z.string().nullable(),
 	endTime: z.string().nullable(),

@@ -6,7 +6,8 @@ import type {
 
 export type CreateScheduleExceptionData = {
 	healthcareProviderId: string;
-	date: Date;
+	startDate: Date;
+	endDate?: Date | null;
 	type: ScheduleExceptionType;
 	startTime?: string | null;
 	endTime?: string | null;
@@ -14,7 +15,8 @@ export type CreateScheduleExceptionData = {
 };
 
 export type UpdateScheduleExceptionData = {
-	date?: Date;
+	startDate?: Date;
+	endDate?: Date | null;
 	type?: ScheduleExceptionType;
 	startTime?: string | null;
 	endTime?: string | null;
