@@ -3,7 +3,6 @@ import { addressInputSchema } from "@/schemas/routes/addresses/address";
 import { medicalRecordBodySchema } from "@/schemas/routes/medical-records/medical-record";
 import { customerSchema } from "@/schemas/routes/customers/get-customers";
 import { addressSchema } from "@/schemas/routes/addresses/address";
-import { phoneSchema } from "@/schemas/routes/_shared/phone";
 
 function normalizeDigits(value: string) {
 	return value.replace(/\D/g, "");
@@ -32,7 +31,7 @@ const cpfSchema = z
 	});
 
 export const completeCustomerProfileBodySchema = z.object({
-	phone: phoneSchema,
+	phone: z.string().trim().min(1),
 	cpf: cpfSchema,
 	address: addressInputSchema,
 });

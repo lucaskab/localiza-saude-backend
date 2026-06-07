@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { addressInputSchema } from "@/schemas/routes/addresses/address";
 import { healthInsurancePlanIdsSchema } from "@/schemas/routes/health-insurance-plans/health-insurance-plan";
-import { phoneSchema } from "@/schemas/routes/_shared/phone";
 import { customerSchema } from "./get-customers";
 
 function normalizeDigits(value: string) {
@@ -36,7 +35,7 @@ export const updateCustomerParamsSchema = z.object({
 
 export const updateCustomerBodySchema = z.object({
 	name: z.string().trim().min(2).max(120).optional(),
-	phone: phoneSchema().nullable().optional(),
+	phone: z.string().trim().min(1).nullable().optional(),
 	cpf: cpfSchema.nullable().optional(),
 	dateOfBirth: z.coerce.date().nullable().optional(),
 	address: addressInputSchema.optional(),
