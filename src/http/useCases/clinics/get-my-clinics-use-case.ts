@@ -1,4 +1,5 @@
 import { prisma } from "@/database/prisma";
+import { attachPrimaryAddressesToOwners } from "@/http/useCases/addresses/attach-primary-addresses";
 import type { user } from "../../../../prisma/generated/prisma/client";
 
 export const getMyClinicsUseCase = {
@@ -24,6 +25,8 @@ export const getMyClinicsUseCase = {
 			},
 		});
 
-		return { clinics };
+		return {
+			clinics: await attachPrimaryAddressesToOwners("CLINIC", clinics, "CLINIC"),
+		};
 	},
 };

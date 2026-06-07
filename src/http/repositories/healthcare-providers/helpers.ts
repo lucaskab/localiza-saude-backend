@@ -12,6 +12,11 @@ import type {
 
 export const healthcareProviderInclude = {
 	professionalCouncil: true,
+	acceptedHealthInsurancePlans: {
+		include: {
+			healthInsurancePlan: true,
+		},
+	},
 	procedures: {
 		include: {
 			checklistItems: {
