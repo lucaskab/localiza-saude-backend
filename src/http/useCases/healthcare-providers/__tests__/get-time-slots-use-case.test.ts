@@ -146,4 +146,55 @@ describe("Get Time Slots Use Case", () => {
 			endDate: new Date("2026-04-20T23:59:59.999Z"),
 		});
 	});
+
+	test("marks slots from earlier today as unavailable in Sao Paulo time", async () => {
+		mockPrisma.healthcare_provider_schedule.findMany.mockResolvedValue([
+			{
+				dayOfWeek: 1,
+				startTime: "09:00",
+				endTime: "18:00",
+				isActive: true,
+			},
+		]);
+		const realDate = Date;
+		const frozenNow = new realDate("2026-04-20T19:00:00.000Z");
+
+		class MockDate extends realDate {
+			constructor(value?: string | number | Date) {
+				super(value ?? frozenNow);
+			}
+
+			static now() {
+				return frozenNow.getTime();
+			}
+		}
+
+		globalThis.Date = MockDate as typeof Date;
+
+		try {
+			const result = await getTimeSlotsUseCase.execute({
+				healthcareProviderId: "provider-1",
+				date: "2026-04-20",
+				procedureIds: ["procedure-1"],
+			});
+
+			expect(result.slots.find((slot) => slot.startTime === "09:00")).toMatchObject(
+				{
+					available: false,
+				},
+			);
+			expect(result.slots.find((slot) => slot.startTime === "15:30")).toMatchObject(
+				{
+					available: false,
+				},
+			);
+			expect(result.slots.find((slot) => slot.startTime === "16:00")).toMatchObject(
+				{
+					available: true,
+				},
+			);
+		} finally {
+			globalThis.Date = realDate;
+		}
+	});
 });

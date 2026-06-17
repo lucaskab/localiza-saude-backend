@@ -11,6 +11,7 @@ export type TimeRange = {
 
 const DEFAULT_BOOKING_AVAILABILITY_DAYS = 90;
 const MAX_BOOKING_AVAILABILITY_DAYS = 365;
+const SAO_PAULO_TIME_ZONE = "America/Sao_Paulo";
 
 export function timeToMinutes(time: string): number {
 	const [hours = 0, minutes = 0] = time.split(":").map(Number);
@@ -91,4 +92,27 @@ export function getBookingWindowEndDate(
 	start.setUTCHours(0, 0, 0, 0);
 
 	return endOfUtcDay(addUtcDays(start, normalizedDays));
+}
+
+export function getCurrentSaoPauloDateTime(referenceDate = new Date()) {
+	const formatter = new Intl.DateTimeFormat("en-CA", {
+		timeZone: SAO_PAULO_TIME_ZONE,
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit",
+		hour12: false,
+	});
+	const parts = formatter.formatToParts(referenceDate);
+	const values = Object.fromEntries(
+		parts
+			.filter((part) => part.type !== "literal")
+			.map((part) => [part.type, part.value]),
+	) as Record<string, string>;
+
+	return {
+		date: `${values.year}-${values.month}-${values.day}`,
+		minutes: Number(values.hour || "0") * 60 + Number(values.minute || "0"),
+	};
 }

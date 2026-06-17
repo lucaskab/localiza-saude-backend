@@ -6,6 +6,7 @@ import { recurringAppointmentsService } from "@/http/services/recurring-appointm
 import {
 	endOfUtcDay,
 	getBookingWindowEndDate,
+	getCurrentSaoPauloDateTime,
 	getDayOfWeek,
 	getRangeBounds,
 	hasTimeOverlap,
@@ -98,6 +99,8 @@ export const getTimeSlotsUseCase = {
 
 		// Parse date as UTC to keep slot generation independent from server timezone
 		const dateObj = parseUtcDateString(date);
+		const currentSaoPauloDateTime = getCurrentSaoPauloDateTime();
+		const isTodayInSaoPaulo = date === currentSaoPauloDateTime.date;
 		const bookingWindowEnd = getBookingWindowEndDate(
 			provider.bookingAvailabilityDays,
 		);
@@ -305,10 +308,15 @@ export const getTimeSlotsUseCase = {
 					}
 				}
 
+				const isPastSlotInSaoPaulo =
+					isTodayInSaoPaulo &&
+					currentStart < currentSaoPauloDateTime.minutes;
+
 				const slot = {
 					startTime: minutesToTime(currentStart),
 					endTime: minutesToTime(currentEnd),
-					available: canFitProcedures && !hasConflict,
+					available:
+						canFitProcedures && !hasConflict && !isPastSlotInSaoPaulo,
 				};
 				const existingSlot = slotsByStartTime.get(slot.startTime);
 
