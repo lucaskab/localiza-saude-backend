@@ -69,6 +69,14 @@ function toPublicCustomer<T extends PublicCustomerLike>(customer: T) {
 	};
 }
 
+function toPublicAppointmentCustomer<T extends PublicCustomerLike>(customer: T) {
+	if (customer.role === "CUSTOMER") {
+		return toPublicCustomer(customer);
+	}
+
+	return toPublicUser(customer);
+}
+
 export function presentAppointment<T extends AppointmentLike | null>(
 	appointment: T,
 ): T {
@@ -81,7 +89,9 @@ export function presentAppointment<T extends AppointmentLike | null>(
 
 	return {
 		...appointment,
-		customer: appointment.customer ? toPublicCustomer(appointment.customer) : null,
+		customer: appointment.customer
+			? toPublicAppointmentCustomer(appointment.customer)
+			: null,
 		healthcareProvider: appointment.healthcareProvider
 			? toPublicHealthcareProvider(appointment.healthcareProvider)
 			: appointment.healthcareProvider,

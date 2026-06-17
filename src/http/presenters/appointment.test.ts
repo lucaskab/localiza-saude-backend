@@ -110,3 +110,67 @@ test("presentAppointment removes private user fields and maps recurring rules", 
 		updatedAt: new Date("2026-06-01T10:00:00.000Z"),
 	});
 });
+
+test("presentAppointment keeps historical appointment account data even if the user is no longer a customer", () => {
+	const appointment = {
+		id: "appointment-2",
+		customerId: "provider-turned-patient-1",
+		customer: makeUser({
+			id: "provider-turned-patient-1",
+			role: "HEALTHCARE_PROVIDER",
+			email: "historical-patient@example.com",
+			phone: "+5511999999999",
+			cpf: "12345678910",
+			dateOfBirth: new Date("1990-05-10T00:00:00.000Z"),
+			displayName: "Dra. Historical",
+			document: "123456",
+		}),
+		patientProfileId: null,
+		patientProfile: null,
+		healthcareProviderId: "provider-1",
+		healthcareProvider: makeUser({
+			id: "provider-1",
+			role: "HEALTHCARE_PROVIDER",
+			displayName: "Dr. Test",
+			serviceModalities: ["ONLINE"],
+		}),
+		scheduledAt: new Date("2026-06-06T10:00:00.000Z"),
+		status: "COMPLETED",
+		serviceModality: "ONLINE",
+		onlineMeetingUrl: null,
+		onlineMeetingProvider: null,
+		onlineMeetingExternalId: null,
+		onlineMeetingCreatedAt: null,
+		totalDurationMinutes: 60,
+		totalPriceCents: 15000,
+		notes: null,
+		cancellationReason: null,
+		cancellationFeeCents: null,
+		cancellationPolicyAppliedAt: null,
+		cancelledAt: null,
+		cancelledByUserId: null,
+		cancelledByUser: null,
+		recurringSeriesId: null,
+		recurringSeries: null,
+		recurringRuleId: null,
+		recurringRule: null,
+		recurringGeneratedAt: null,
+		createdAt: new Date("2026-06-01T10:00:00.000Z"),
+		updatedAt: new Date("2026-06-01T10:00:00.000Z"),
+		appointmentProcedures: [],
+		rescheduleRequests: [],
+	};
+
+	const result = presentAppointment(appointment);
+
+	expect(result.customer).toMatchObject({
+		id: "provider-turned-patient-1",
+		role: "HEALTHCARE_PROVIDER",
+		email: "historical-patient@example.com",
+		phone: "+5511999999999",
+	});
+	expect(result.customer).not.toHaveProperty("displayName");
+	expect(result.customer).not.toHaveProperty("document");
+	expect(result.customer).not.toHaveProperty("cpf");
+	expect(result.customer).not.toHaveProperty("dateOfBirth");
+});

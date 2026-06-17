@@ -1,9 +1,9 @@
 import { z } from "zod";
 import {
-	customerUserSchema,
 	healthcareProviderUserSchema,
 	publicUserSchema,
 } from "../users/user";
+import { addressSchema } from "@/schemas/routes/addresses/address";
 import { serviceModalitySchema } from "@/schemas/service-modalities";
 
 export const appointmentStatusSchema = z.enum([
@@ -120,7 +120,13 @@ const recurringSeriesSummarySchema = z.object({
 export const appointmentSchema = z.object({
 	id: z.cuid(),
 	customerId: z.cuid().nullable(),
-	customer: customerUserSchema.nullable(),
+	customer: publicUserSchema
+		.extend({
+			cpf: z.string().nullable().optional(),
+			dateOfBirth: z.date().nullable().optional(),
+			primaryAddress: addressSchema.nullable().optional(),
+		})
+		.nullable(),
 	patientProfileId: z.cuid().nullable(),
 	patientProfile: patientProfileSchema.nullable(),
 	healthcareProviderId: z.cuid(),
